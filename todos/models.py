@@ -3,7 +3,7 @@ from django.db import models
 
 
 class Todo(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField()
     open_date = models.DateTimeField(auto_now=False, auto_now_add=True)
