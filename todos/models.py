@@ -7,7 +7,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     open_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+    updated_date = models.DateTimeField(null=True, auto_now=True, auto_now_add=False)
     due_date = models.DateField(auto_now=False)
     completed_date = models.DateField()
     draft = models.BooleanField(default=False)
@@ -17,8 +17,8 @@ class Todo(models.Model):
         ('LOW', '(3) Low'),
         )
     priority = models.CharField(max_length=10, choices=PRIORITIES, default='MEDIUM')
-    project = models.ForeignKey('Project', on_delete=models.CASCADE)
-    owner = models.ForeignKey('Owner', on_delete=models.CASCADE)
+    project = models.ForeignKey('Project', null=True, on_delete=models.CASCADE)
+    owner = models.ForeignKey('Owner', null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ["-due_date", "priority"]
