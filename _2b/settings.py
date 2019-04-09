@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     # Project Apps
     'books.apps.BooksConfig',
     'api.apps.ApiConfig',
+    'todos.apps.TodosConfig',
 ]
 
 MIDDLEWARE = [
