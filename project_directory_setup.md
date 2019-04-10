@@ -5,7 +5,7 @@ The below illustrates the ideal directory structure that has a Django backend an
 /Dev
     /{overall_project_name}
         /src
-            **/1f-[react_project_name]**
+            **/aa-front-end**
                 /build
                 /node_modules
                 /public
@@ -20,7 +20,7 @@ The below illustrates the ideal directory structure that has a Django backend an
                 - package-lock.**json**
                 - package.json
                 - README.me
-            **/2b-[django_project_name]**
+            **/ab_back_end**
                 /templates
                     - base.html
                     - home.html

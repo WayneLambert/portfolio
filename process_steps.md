@@ -28,12 +28,12 @@ pipenv install bpython --dev
 pipenv install autopep8 --dev
 pipenv install markdown --dev
 cd src
-django-admin startproject _2b .
-cd _2b
-mkdir static && cd static
+django-admin startproject ab_back_end .
+cd ab_back_end
+take static
 mkdir images
 cd ..
-mkdir templates && cd templates
+take templates
 touch base.html
 touch home.html
 touch about.html

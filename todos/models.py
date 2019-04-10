@@ -12,9 +12,9 @@ class Todo(models.Model):
     completed_date = models.DateField()
     draft = models.BooleanField(default=False)
     PRIORITIES = (
-        ('HIGH', '(1) High'),
-        ('MEDIUM', '(2) Medium'),
-        ('LOW', '(3) Low'),
+        ('(1) High', 'High'),
+        ('(2) Medium', 'Medium'),
+        ('(3) Low', 'Low'),
         )
     priority = models.CharField(max_length=10, choices=PRIORITIES, default='MEDIUM')
     project = models.ForeignKey('Project', null=True, on_delete=models.CASCADE)
