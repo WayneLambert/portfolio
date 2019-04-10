@@ -61,6 +61,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -151,8 +152,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Authentication backends setup for Django Guardian
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'guardian.backends.ObjectPermissionBackend'
+    'guardian.backends.ObjectPermissionBackend',
     )
+
+
+"""
+Permit cross-domain requests where it is from the localhost on port 3000 using
+the cors-headers Django package which handles middleware implementation.
+Port 3000 is being used as that is the default port for the React.js front-end.
+"""
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
