@@ -3,18 +3,18 @@ import axios from 'axios';
 
 class App extends Component {
   state = {
-    books: []
+    posts: []
   };
 
   componentDidMount() {
-    this.getBooks();
+    this.getPosts();
   }
 
-  getBooks() {
+  getPosts() {
     axios
-      .get('http://localhost:8000/api/books/')
+      .get('http://localhost:8000/api/blog/')
       .then(res => {
-        this.setState({ books: res.data });
+        this.setState({ posts: res.data });
       })
       .catch(err => {
         console.log(err);
@@ -25,12 +25,13 @@ class App extends Component {
     return (
       <div>
         <div>
-          {this.state.books.map(item => (
+          {this.state.posts.map(item => (
             <div key={item.id}>
               <h3>{item.title}</h3>
-              <h4>{item.subtitle}</h4>
+              <h4>{item.body}</h4>
               <h4>{item.author}</h4>
-              <h6>{item.isbn}</h6>
+              <h6>{item.publish_date}</h6>
+              <h6>{item.updated_date}</h6>
             </div>
           ))}
         </div>
