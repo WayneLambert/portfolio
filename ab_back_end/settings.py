@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'api.apps.ApiConfig',
     'todos.apps.TodosConfig',
+    'blog.apps.BlogConfig',
 ]
 
 REST_FRAMEWORK = {
