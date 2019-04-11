@@ -27,10 +27,10 @@ class App extends Component {
         <div>
           {this.state.books.map(item => (
             <div key={item.id}>
-              <h1>{item.title}</h1>
-              <h2>{item.subtitle}</h2>
-              <h4>{item.title}</h4>
-              <h6>{item.title}</h6>
+              <h3>{item.title}</h3>
+              <h4>{item.subtitle}</h4>
+              <h4>{item.author}</h4>
+              <h6>{item.isbn}</h6>
             </div>
           ))}
         </div>
