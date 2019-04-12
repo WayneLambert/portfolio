@@ -17,6 +17,7 @@ django-guardian = "*"
 markdown = "*"
 pillow = "*"
 psycopg2-binary = "*"
+django-vanilla-views = "*"
 
 [requires]
 python_version = "3.7"
