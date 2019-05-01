@@ -1,0 +1,24 @@
+div.posts {
+  margin: 50px;
+}
+
+h3.item_title {
+  font-size: 24pt;
+}
+
+h5.item_author {
+  font-size: 12pt;
+}
+
+h5.item_publish_date {
+  font-size: 10pt;
+}
+
+h5.item_updated_date {
+  font-size: 10pt;
+}
+
+span.item_body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 14pt;
+}

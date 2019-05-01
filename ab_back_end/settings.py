@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'guardian',
     'crispy_forms',
     'corsheaders',
+    'bootstrap4',
 
     # Third Party Dev Apps
     'debug_toolbar',
@@ -52,12 +53,13 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'todos.apps.TodosConfig',
     'blog.apps.BlogConfig',
+    'analytics.apps.AnalyticsConfig',
 ]
 
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
@@ -159,7 +161,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'guardian.backends.ObjectPermissionBackend',
-    )
+)
 
 
 """
