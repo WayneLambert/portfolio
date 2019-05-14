@@ -28,20 +28,17 @@ const Posts = (props) => {
               <IconText type="like-o" text="156" />,
               <IconText type="message" text="2" />,
             ]}
+
             extra={
-              <img
-                width={272}
-                alt="logo"
-                src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-              />
+              <img width={272} alt="logo" src={item.image} />
             }
           >
             <List.Item.Meta
-              avatar={<Avatar src={item.image} />}
               title={<a href={`/${item.id}`}>{item.title}</a>}
               body={item.body}
               publish_date={item.publish_date}
               updated_date={item.updated_date}
+              image={<Avatar src={item.image} />}
             />
             <div className="body">{item.body}</div>
             <div>
