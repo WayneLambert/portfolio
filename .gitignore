@@ -41,6 +41,10 @@ Thumbs.db
 *__init__.py
 *migrations*
 
+
+# VS Code Settings Files #
+.vscode
+
 # SOPs and Dev Help Files #
 ################################
 
