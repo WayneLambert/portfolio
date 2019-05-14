@@ -8,6 +8,7 @@ bpython = "*"
 django-debug-toolbar = "*"
 autopep8 = "*"
 pep8 = "*"
+flake8 = "*"
 
 [packages]
 django = "*"

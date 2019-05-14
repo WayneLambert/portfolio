@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'todos.apps.TodosConfig',
     'blog.apps.BlogConfig',
     'analytics.apps.AnalyticsConfig',
+    'articles.apps.ArticlesConfig',
 ]
 
 

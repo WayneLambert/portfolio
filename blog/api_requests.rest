@@ -7,3 +7,6 @@ Authorization: Basic waynelambert testing321
 ### using a standard user login
 GET http://localhost:8000/api/blog/
 Authorization: Basic bobbyrobson italia90
+
+### Check request and response for a Google search
+GET https://www.google.com/search?q=best+vs+code+extensions

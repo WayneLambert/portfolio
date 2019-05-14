@@ -1,0 +1,1 @@
+SELECT * from books_book;

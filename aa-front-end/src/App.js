@@ -1,43 +1,48 @@
-import React, { Component } from 'react'
+import React,{ Component } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom';
+import BaseRouter from './routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/antd.css';
 import axios from 'axios'
+import Posts from './components/Post';
+import CustomLayout from './containers/Layout';
+
+const app = {
+  title: 'Blog posts about Python PEPs',
+  subtitle: 'Accepted PEPs (accepted; may not be implemented yet)'
+};
+
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  console.log('form submitted');
+};
 
 class App extends Component {
-	state = {
-		posts: []
-	}
+  state = {
+    posts: []
+  }
 
-	componentDidMount () {
-		this.getPosts()
-	}
+  componentDidMount() {
+    axios.get('http://localhost:8000/api/blog')
+      .then(res => {
+        this.setState({
+          posts: res.data
+        });
+        console.log(res.data);
+      })
+  }
 
-	getPosts () {
-		axios
-			.get('http://localhost:8000/api/blog/')
-			.then((res) => {
-				this.setState({
-					posts: res.data
-				})
-			})
-			.catch((err) => {
-				console.log(err)
-			})
-	}
+  render() {
+    return (
+      <Router>
+        <CustomLayout>
+          <h3>{app.title}</h3>
+          <h5>{app.subtitle}</h5>
+          <Posts data={this.state.posts} />
+        </CustomLayout>
+      </Router>
+    )
+  }
+};
 
-	render () {
-		return (
-			<div id="items" className="posts">
-				{this.state.posts.map((item) => (
-          < div key = { item.id } >
-            <h3 className="item_title"> {item.title} </h3>
-            <h5 className="item_author"> {item.author} </h5>
-            <h5 className="item_publish_date"> {item.publish_date} </h5>
-            <h5 className="item_updated_date"> {item.updated_date} </h5>
-            <span className="item_body"> {item.body} </span>
-					</div>
-				))}
-			</div>
-		)
-	}
-}
-
-export default App
+export default App;

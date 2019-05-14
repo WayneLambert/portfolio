@@ -45,6 +45,19 @@ Thumbs.db
 ################################
 
 
+# React Package Folders
+# dependencies
+aa-front-end/node_modules
+aa-front-end/.pnp
+aa-front-end/.pnp.js
+
+# testing
+aa-front-end/coverage
+
+# production
+aa-front-end/build
+
+
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
 

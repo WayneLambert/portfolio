@@ -1,9 +1,8 @@
-from django.contrib import admin
-from django.urls import include, path
-from .views import PostList, PostDetail
+from blog.views import PostList, PostDetail
+from django.urls import path
 
 
 urlpatterns = [
-    path('blog', PostList.as_view()),
+    path('', PostList.as_view()),
     path('<int:pk>/', PostDetail.as_view()),
 ]

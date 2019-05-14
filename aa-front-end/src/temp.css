@@ -2,8 +2,12 @@ div.posts {
   margin: 50px;
 }
 
+h1.item_title {
+  font-size: 18pt;
+}
+
 h3.item_title {
-  font-size: 24pt;
+  font-size: 14pt;
 }
 
 h5.item_author {
@@ -20,5 +24,7 @@ h5.item_updated_date {
 
 span.item_body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 14pt;
+  font-size: 12pt;
 }
+
+

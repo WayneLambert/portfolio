@@ -15,10 +15,9 @@ Including another URLconf
 """
 
 from django.conf import settings
-from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import include, path
-from . import views
+from ab_back_end import views
 
 
 urlpatterns = [

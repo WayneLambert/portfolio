@@ -3,5 +3,5 @@ from analytics.views import AnalyticsViewSet
 
 
 urlpatterns = [
-    path('', AnalyticsViewSet.as_view()),
+    path('analytics/', AnalyticsViewSet.as_view(actions={'get': 'list'})),
 ]
