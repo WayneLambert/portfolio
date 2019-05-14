@@ -37,7 +37,7 @@ const Posts = (props) => {
             }
           >
             <List.Item.Meta
-              avatar={<Avatar src={item.avatar} />}
+              avatar={<Avatar src={item.image} />}
               title={<a href={`/${item.id}`}>{item.title}</a>}
               body={item.body}
               publish_date={item.publish_date}
