@@ -33,13 +33,9 @@
 - The operator '?' reads as 'then' in a conditional statement
 - The operator ':' reads as 'else' in a conditional statement
 - '\n' is the new line escape character in JavaScript
-- An article found at https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9 states that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
-
-### Resources
-
-- <a href="https://www.youtube.com/watch?v=uZgRbnIsgrA&list=WL&index=38&t=0s">JustDjango Django and React - Tutorial 1</a>
-- <a href="https://www.youtube.com/watch?v=w-QJiQwlZzU&list=WL&index=35&t=0s">JustDjango Django and React - Tutorial 2</a>
-
+- An <a href="https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9" >article on medium.freecodecamp</a> found at  states that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
+- props (short for “properties”) and state are both plain JavaScript objects. While both hold information that influences the output of render, they are different in one important way: props get passed to the component (similar to function parameters) whereas state is managed within the component (similar to variables declared within a function).
+- Containers are very similar to components, the only difference is that containers are aware of application state. If part of your webpage is only used for displaying data (dumb) then make it a component.
 
 ### Questions to Get Answers To
 

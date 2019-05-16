@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import { formatCountdown } from 'antd/lib/statistic/utils';
 
 class Counter extends Component {
   state = {

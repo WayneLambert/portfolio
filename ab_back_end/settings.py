@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'articles.apps.ArticlesConfig',
 ]
 
-
+# TODO: Implement authorisation and authentication
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',

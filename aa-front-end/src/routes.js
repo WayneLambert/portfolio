@@ -1,19 +1,21 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route,Switch } from 'react-router-dom';
+import HomeView from './components/Home';
 import PostList from './containers/PostListView';
+import PostFormView from './containers/PostForm';
 import PostDetail from './containers/PostDetailView';
 import myCounter from './containers/Counter';
+import PageNotFound from './components/PageNotFound';
 
 const BaseRouter = () => (
-  <div>
-    <Route exact path='/' component={PostList} />
-    <Route exact path='/:postID' component={PostDetail} />
-    {/**
-    The following paths are all purposefully incorrect. They append to the back-ends API endpoint.
-    These are just in place so that we can reuse the same React app to test other React and UI functionality.
-    */}
+  <Switch>
+    <Route exact path='/' component={HomeView} />
+    <Route exact path='/blog' component={PostList} />
+    <Route exact path='/blog/post' component={PostFormView} />
+    <Route exact path='/blog/:postID' component={PostDetail} />
     <Route exact path='/counter' component={myCounter} />
-  </div>
+    <Route component={PageNotFound} />
+  </Switch>
 );
 
 export default BaseRouter;
