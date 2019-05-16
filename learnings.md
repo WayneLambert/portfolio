@@ -27,6 +27,13 @@
 - Use the 'const' keyword over 'let'. Only use 'let' when I need to reassign a variable.
 - Arrow functions do not rebind the 'this' keyword
 - The equivalent of f strings in JavaScript using ${var_name} between backtick operators
+- In JavaScript, classes are objects because they are effectively syntactic sugar over constuctor functions. Functions are also objects in JavaScript and therefore classes are also objects.
+- React.Fragment can be used in cases where you insert a div around some JSX elements that require an additional container for Babel to be able to compile it. If you use a standard <div></div> tag, then this may produce two div tags wrapping around the JSX elements (when you inspect the elements in Chrome Developer tools) which probably isn't the desired outcome.
+- The notation += appends to an existing variable. This means that the variable should be 'let' rather than a 'const'
+- The operator '?' reads as 'then' in a conditional statement
+- The operator ':' reads as 'else' in a conditional statement
+- '\n' is the new line escape character in JavaScript
+- An article found at https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9 states that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
 
 ### Resources
 
@@ -36,7 +43,6 @@
 
 ### Questions to Get Answers To
 
-- How does SEO work in React applications?
 - What is the difference between props and state?
 - What is the lifecycle events? How do they work and what are they used for?
 - What is a 'promise' in JavaScript?

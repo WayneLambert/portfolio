@@ -18,4 +18,4 @@ console.log(`The address is ${street} in ${city} in ${country}`)
 // the colon is the alias for the property before it
 const { country: ctry, city: cty, street: st } = address;
 
-ctry; cty; st
+console.log('Country:',ctry,'\n','City:',cty,'\n','Street:',st)

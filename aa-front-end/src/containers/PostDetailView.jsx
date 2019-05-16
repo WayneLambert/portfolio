@@ -14,7 +14,6 @@ class PostDetail extends React.Component {
         this.setState({
           post: res.data
         });
-        console.log(res.data);
       })
   }
 
