@@ -1,4 +1,8 @@
 import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import CounterComponent from '../containers/CounterComponent';
+import store from '../store';
 import { List,Icon } from 'antd';
 
 const IconText = ({ type,text }) => (
@@ -12,7 +16,7 @@ const Posts = (props) => {
   return (
     <List
       itemLayout="vertical"
-      size="large"
+      size="small"
       pagination={{
         onChange: page => {
           console.log(page);
@@ -21,7 +25,7 @@ const Posts = (props) => {
       }}
       dataSource={props.data}
       renderItem={item => (
-        <React.Fragment>        
+        <div>        
           <List.Item key={item.title} />
           <List.Item.Meta
             title={<a href={`/blog/${item.id}`}>{item.title}</a>}
@@ -34,12 +38,13 @@ const Posts = (props) => {
               Updated Date: {item.updated_date}<br />
               <br />
                 <React.Fragment>                
-                  <IconText type="caret-up" text="1" />
-                  <IconText type="caret-down" text="1" />
+                  <Provider store={store}>
+                    <CounterComponent />
+                  </Provider>
                 </React.Fragment>
             </div>
           </List.Item>
-        </React.Fragment>
+        </div>
       )}
     />
   )

@@ -121,6 +121,7 @@
 
 - What is a 'promise' in JavaScript?
 - Research setState()
+- A Redux implmentation within my React project consists of actions, components, containers, reducers and store. Research in more detail what each of these are in the context of a Redux project
 
 ## Sources
 
