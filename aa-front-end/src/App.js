@@ -1,9 +1,9 @@
 import React,{ Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import BaseRouter from './routes';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
-import CustomLayout from './containers/Layout';
+import SiteLayout from './containers/SiteLayout';
 
 
 class App extends Component {
@@ -15,9 +15,9 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <CustomLayout>
+          <SiteLayout>
             <BaseRouter />
-          </CustomLayout>
+          </SiteLayout>
         </Router>
       </div>
     )

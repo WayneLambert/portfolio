@@ -120,6 +120,7 @@
 ### Questions to Get Answers To
 
 - What is a 'promise' in JavaScript?
+- Research setState()
 
 ## Sources
 

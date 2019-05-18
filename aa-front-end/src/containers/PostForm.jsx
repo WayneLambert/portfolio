@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import PostForm from '../components/Form';
+import PostOrPutForm from '../components/Form';
 
 const blogAPIEndPointURL = 'http://localhost:8000/api/blog/'
 
@@ -10,7 +10,6 @@ class PostFormView extends React.Component {
   }
 
   handleFormSubmit = (event,requestType,postID) => {
-    event.preventDefault();
     const title = event.target.elements.title.value;
     const content = event.target.elements.content.value;
 
@@ -35,18 +34,23 @@ class PostFormView extends React.Component {
   componentDidMount() {
     axios.get(blogAPIEndPointURL)
       .then(res => {
-        this.setState({
+        this.setState({ 
           post: res.data
         });
         console.log(res.data);
       })
   }
 
+  renderTags() {
+    if (this.props.requestType === 'post')
+      return <PostOrPutForm onSubmit={this.handleSubmit} requestType="post"/>;
+      return <PostOrPutForm onSubmit={this.handleSubmit} requestType="put" postID={this.props.postID} />;
+  }
+
   render() {
     return (
       <div>
-        <PostForm requestType="post" postID={null}/>
-        <PostForm requestType="put" postID={this.postID}/>
+        { this.renderTags() }
       </div>
     )
   }

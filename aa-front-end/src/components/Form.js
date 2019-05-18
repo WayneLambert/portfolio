@@ -11,13 +11,13 @@ class PostOrPutForm extends React.Component {
     width: 600,
   };
 
-  handleFormSubmit = (event,requestMethod,postID) => {
+  handleFormSubmit = (event,requestType,postID) => {
     event.preventDefault();
     const title = event.target.elements.title.value
     const content = event.target.elements.content.value
 
     // eslint-disable-next-line default-case
-    switch (requestMethod) {
+    switch (requestType) {
       case 'post':
         return axios.post('http://localhost:8000/api/blog/',{
           title: title,
@@ -41,7 +41,7 @@ class PostOrPutForm extends React.Component {
       return (
         <Form id="post-form" onSubmit={(event) => this.handleFormSubmit(
           event,
-          this.props.requestMethod,
+          this.props.requestType,
           this.props.postID
         )}>
           <h5 requestType="post">Create a new post...</h5>
@@ -59,7 +59,7 @@ class PostOrPutForm extends React.Component {
       return (
         <Form id="put-form" onSubmit={(event) => this.handleFormSubmit(
           event,
-          this.props.requestMethod,
+          this.props.requestType,
           this.props.postID
         )}>
           <h5 requestType="put">Update the post...</h5>

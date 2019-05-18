@@ -4,7 +4,7 @@ import { Layout, Menu } from 'antd';
 const { Header, Content, Footer } = Layout;
 const yearOfToday = new Date().getFullYear()
 
-const CustomLayout = (props) => {
+const SiteLayout = (props) => {
     return(
         <Layout className="layout">
           <Header style={{ position: 'fixed',zIndex: 1,height: '0px',width: '100%' }}>
@@ -14,7 +14,6 @@ const CustomLayout = (props) => {
                 mode="horizontal"
                 defaultSelectedKeys={Menu.Item.key}
                 style={{ lineHeight: '50px' }}
-                textAlign="right"
               >
                 <Menu.Item key="1"><a href="/">Home</a></Menu.Item>
                 <Menu.Item key="2"><a href="/blog">Blog</a></Menu.Item>
@@ -27,10 +26,10 @@ const CustomLayout = (props) => {
             </div>
           </Content>
           <Footer className="footer" style={{ textAlign: 'left' }}>
-            &copy; <span id="year">{yearOfToday} waynelambert.dev</span>
+            &copy; <span id="year">{yearOfToday} Copyright | waynelambert.dev</span>
           </Footer>
         </Layout>
     );
 }
 
-export default CustomLayout;
+export default SiteLayout;

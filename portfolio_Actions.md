@@ -2,7 +2,13 @@
 
 - [ ] Sort out the header navigation routes
 - [ ] Add a static page for my CV
-- [ ] Add a Home page which is essentially going to be my summary 'About' page + tiles to my various dev projects
+- [ ] Add a Home page which is essentially going to be my summary 'About' page + tiles to my various dev
+- [ ] Get new icons for the post list which indicate upvotes and downvotes
+- [ ] Add a third icon for usefulness which is upvotes - downvotes
+- [ ] Add fields into the database to allow for the upvotes and downvotes
+- [ ] Correct the post form so that it uses the post method
+- [ ] Correct the post detail pages so that they use the put method
+- [ ] 
 
 
 ### Home Page

@@ -4,7 +4,6 @@ import HomeView from './components/Home';
 import PostList from './containers/PostListView';
 import PostFormView from './containers/PostForm';
 import PostDetail from './containers/PostDetailView';
-import myCounter from './containers/Counter';
 import PageNotFound from './components/PageNotFound';
 
 const BaseRouter = () => (
@@ -13,7 +12,6 @@ const BaseRouter = () => (
     <Route exact path='/blog' component={PostList} />
     <Route exact path='/blog/post' component={PostFormView} />
     <Route exact path='/blog/:postID' component={PostDetail} />
-    <Route exact path='/counter' component={myCounter} />
     <Route component={PageNotFound} />
   </Switch>
 );

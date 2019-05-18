@@ -22,8 +22,7 @@ class PostDetail extends React.Component {
     return (
       <Card title={this.state.post.title}>
         <p>{this.state.post.body}</p>
-        <h3>Update the post...</h3>
-        <PostForm requestType="put" postID={this.props.match.params.postID}/>
+        < PostForm />
       </Card>
     )
   }
