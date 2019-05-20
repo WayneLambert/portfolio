@@ -1,16 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import CounterComponent from '../containers/CounterComponent';
-import store from '../store';
-import { List,Icon } from 'antd';
-
-const IconText = ({ type,text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 6 }} />
-    {text}
-  </span>
-);
+import { List } from 'antd';
 
 const Posts = (props) => {      
   return (
@@ -37,11 +26,6 @@ const Posts = (props) => {
               Publish Date: {item.publish_date}<br />
               Updated Date: {item.updated_date}<br />
               <br />
-                <React.Fragment>                
-                  <Provider store={store}>
-                    <CounterComponent />
-                  </Provider>
-                </React.Fragment>
             </div>
           </List.Item>
         </div>

@@ -13,6 +13,7 @@
 - React is called 'React' because it reacts to state changes in the DOM
 - If you do not want to stay with the default create-react-app build configuration when it comes to production, you can run the `npm run eject` command which enables for manual changes to the build.
 - React.Fragment can be used in cases where you insert a div around some JSX elements that require an additional container for Babel to be able to compile it. If you use a standard <div></div> tag, then this may produce two div tags wrapping around the JSX elements (when you inspect the elements in Chrome Developer tools) which probably isn't the desired outcome.
+- code written inside of curly braces is regular JavaScript code
 
 ### Components
 

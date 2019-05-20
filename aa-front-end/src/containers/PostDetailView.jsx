@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import { Provider } from 'react-redux';
 import { Card } from 'antd';
-import PostForm from './PostForm';
+import CounterComponent from '../containers/CounterComponent';
+import store from '../store';
 
-class PostDetail extends React.Component {
+class PostDetail extends Component {
+
   state = {
-    post: {}
+    post: {},
   }
-  
+
   componentDidMount() {
     const postID = this.props.match.params.postID;
     axios.get(`http://localhost:8000/api/blog/${postID}`)
@@ -22,7 +25,14 @@ class PostDetail extends React.Component {
     return (
       <Card title={this.state.post.title}>
         <p>{this.state.post.body}</p>
-        < PostForm />
+        Publish Date: {this.state.post.publish_date}<br />
+        Updated Date: {this.state.post.updated_date}<br />
+        <br />
+        <React.Fragment>                
+          <Provider store={store}>
+            <CounterComponent />
+          </Provider>
+        </React.Fragment>
       </Card>
     )
   }
