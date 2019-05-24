@@ -1,0 +1,8 @@
+        // <Content className="content" style={{ padding: '0 50px',marginTop: 45 }}>
+        //   <div style={{ background: '#fff',padding: 24,minHeight: 800 }}>
+        //     {props.children}
+        //   </div>
+        // </Content>
+        // <Footer className="footer" style={{ textAlign: 'left' }}>
+        //   &copy; <span id="year">{yearOfToday} Copyright | waynelambert.dev</span>
+        // </Footer>

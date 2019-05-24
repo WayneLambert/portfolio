@@ -1,15 +1,15 @@
-export const incrementCount = count => {
+export const addOne = count => {
   const num = count + 1
   return {
-    type: 'INCREMENT_COUNT',
+    type: 'ADD_ONE',
     count: num
   }
 }
 
-export const decrementCount = count => {
+export const minusOne = count => {
   const num = count - 1
   return {
-    type: 'DECREMENT_COUNT',
+    type: 'MINUS_ONE',
     count: num
   }
 }

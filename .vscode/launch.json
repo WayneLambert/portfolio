@@ -6,12 +6,31 @@
     "configurations": [
 
         {
-            "name": "React",
+            "name": "React: Node",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceRoot}/aa-front-end/node_modules/.bin/react-scripts",
+            "args": [
+                "test",
+                "--runInBand",
+                "--no-cache",
+                "--watchAll=false"
+            ],
+            "cwd": "${workspaceRoot}/aa-front-end/",
+            "protocol": "inspector",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "React: Chrome",
             "type": "chrome",
             "request": "launch",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}/src",
-        },
+            "webRoot": "${workspaceRoot}/aa-front-end/src/",
+            "sourceMapPathOverrides": {
+                "webpack:///./*": "${webRoot}/*",
+            }
+        },    
         {
             "name": "Launch Chrome DevTools",
             "type": "devtools-for-chrome",

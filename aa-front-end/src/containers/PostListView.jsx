@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Posts from '../components/PostView';
 
 const title = 'Python PEPs';
 const subtitle = 'Accepted PEPs (accepted; may not be implemented yet)';
 
-class PostList extends React.Component {
+class PostList extends Component {
   state = {
     posts: []
   }
 
   componentDidMount() {
     axios.get('http://localhost:8000/api/blog')
-      .then(res => {
+      .then(response => {
         this.setState({
-          posts: res.data
+          posts: response.data
         });
-        console.log(res.data);
+        console.log(response.data);
       })
   }
 

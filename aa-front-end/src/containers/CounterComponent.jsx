@@ -1,49 +1,42 @@
-import React,{ Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import UpvoteButton from '../components/ButtonUpvote';
 import DownvoteButton from '../components/ButtonDownvote';
 import { connect } from 'react-redux';
-import { incrementCount,decrementCount } from '../actions/index';
+import { addOne, minusOne } from '../actions/index';
 
 class CounterComponent extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: {},
-      upvotes: this.downvotes,
-      downvotes: this.props.downvotes,
-    };
-  }
+  state = {
+    posts: [],
+    upvotes: this.props.value,
+    downvotes: this.props.value,
+  };
 
-  async incCount() {
-    const postID = this.props.match.params.postID
-    const upvotes = this.state.upvotes
-    const { data } = await axios.put(`http://localhost:8000/api/blog/${postID}`,upvotes)
-    const currentState = this.state.posts
-    this.setState({ posts: currentState.concat(upvotes) })
-  }
+  handleAddUpvote = async post => {
+    this.setState({ upvotes: this.state.upvotes + 1 });
+    await axios.patch('http://localhost:8000/api/blog{post.id}', { upvotes: post.upvotes })
+    
+    const posts = [...this.state.posts]
+    const index = posts.indexOf(post);
+    posts[index] = { ...post };
+  };
 
-  handleBtnActionIncrement = () => {
-    this.props.onIncrementClick(this.props.count)
-  }
-  
-  handleBtnActionDecrement = () => {
-    this.props.onDecrementClick(this.props.count)
+  handleAddDownvote = event => {
+    this.props.onMinusOne(this.props.count)
   }
 
   render() {
-    const { count } = this.props
     return (
       <div>
-        <span>Helpfulness Rating: {count}     </span>
+        <span>Helpfulness Rating: {this.state.upvotes}     </span>
         <UpvoteButton
           buttonTitle="+"
-          action={this.handleBtnActionIncrement}
+          action={this.handleAddUpvote}
         />
         <DownvoteButton
           buttonTitle="-"
-          action={this.handleBtnActionDecrement}
+          action={this.handleAddDownvote}
         />
       </div>
     )
@@ -58,14 +51,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onIncrementClick: (count) => {
-      dispatch(incrementCount(count))
+    onAddOne: (count) => {
+      dispatch(addOne(count))
     },
-    onDecrementClick: (count) => {
+    onMinusOne: (count) => {
       if (count !== 0)
-        dispatch(decrementCount(count))
+        dispatch(minusOne(count))
     }
   }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CounterComponent);
+// export default connect(mapStateToProps,mapDispatchToProps)(CounterComponent);
+export default CounterComponent;

@@ -1,0 +1,3 @@
+http://localhost:8000/api/blog/3/?title='Test Post Title'&subtitle='Test subtitle'
+
+Name=John+Smith&Grade=19

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Provider } from 'react-redux';
 import { Card } from 'antd';
 import CounterComponent from '../containers/CounterComponent';
-import store from '../store';
 
 class PostDetail extends Component {
 
@@ -14,9 +12,9 @@ class PostDetail extends Component {
   componentDidMount() {
     const postID = this.props.match.params.postID;
     axios.get(`http://localhost:8000/api/blog/${postID}`)
-      .then(res => {
+      .then(response => {
         this.setState({
-          post: res.data
+          post: response.data
         });
       })
   }
@@ -29,9 +27,7 @@ class PostDetail extends Component {
         Updated Date: {this.state.post.updated_date}<br />
         <br />
         <React.Fragment>                
-          <Provider store={store}>
-            <CounterComponent />
-          </Provider>
+          <CounterComponent />
         </React.Fragment>
       </Card>
     )

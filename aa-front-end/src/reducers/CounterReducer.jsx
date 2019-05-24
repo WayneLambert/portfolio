@@ -4,10 +4,10 @@ const initialState = {
 
 function CounterReducer(state = initialState,action) {
   switch (action.type) {
-    case "INCREMENT_COUNT": {
+    case "ADD_ONE": {
       return { ...state,...action }
     }
-    case "DECREMENT_COUNT": {
+    case "MINUS_ONE": {
       return { ...state,...action }
     }
     default:

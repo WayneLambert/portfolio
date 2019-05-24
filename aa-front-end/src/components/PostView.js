@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'antd';
 
-const Posts = (props) => {      
+const Posts = (props) => {
   return (
     <List
       itemLayout="vertical"
@@ -14,7 +14,7 @@ const Posts = (props) => {
       }}
       dataSource={props.data}
       renderItem={item => (
-        <div>        
+        <div>
           <List.Item key={item.title} />
           <List.Item.Meta
             title={<a href={`/blog/${item.id}`}>{item.title}</a>}
