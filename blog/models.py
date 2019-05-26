@@ -13,6 +13,7 @@ class Post(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     upvotes = models.PositiveIntegerField(default=0)
     downvotes = models.PositiveIntegerField(default=0)
+    categories = models.ManyToManyField('Category', related_name='posts')
     image = models.ImageField(
         default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
         upload_to='ab_back_end/static/profile_pics',
@@ -26,3 +27,14 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs={"pk": self.pk})
+
+
+class Category(models.Model):
+    category_name = models.CharField(max_length=25)
+
+
+class Comment(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'todos.apps.TodosConfig',
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
     'analytics.apps.AnalyticsConfig',
     'articles.apps.ArticlesConfig',
 ]
@@ -197,8 +198,13 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ()
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # For Django Debug Toolbar to be used in local development environment
 INTERNAL_IPS = '127.0.0.1'
+
+LOGIN_REDIRECT_URL = 'blog-home'
+LOGIN_URL = 'login'

@@ -20,7 +20,8 @@ urlpatterns = [
 ]
 
 """
-The urls configuration below is a for a DRF setup with a React front end.
+The urls configuration below is a for a DRF setup with a fully segregrated
+front end using React.
 """
 
 # from rest_framework.routers import DefaultRouter
