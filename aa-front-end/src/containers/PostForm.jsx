@@ -17,16 +17,16 @@ class PostFormView extends React.Component {
         title: title,
         content: content,
       })
-      .then(res => console.log(res));
+      .then(response => console.log(response));
   }
 
   componentDidMount() {
     axios.get(blogAPIEndPointURL)
-      .then(res => {
+      .then(response => {
         this.setState({ 
-          post: res.data
+          post: response.data
         });
-        console.log(res.data);
+        console.log(response.data);
       })
   }
 

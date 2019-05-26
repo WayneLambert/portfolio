@@ -1,6 +1,5 @@
 from django.urls import path, include
 
-
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('books/', include('books.urls')),

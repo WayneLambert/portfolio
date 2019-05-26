@@ -108,6 +108,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             'ab_back_end/templates/',
+            'blog/templates/blog/',
             'books/templates/books/',
         ],
         'APP_DIRS': True,
