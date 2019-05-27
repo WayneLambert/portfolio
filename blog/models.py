@@ -5,6 +5,16 @@ from os import path
 from ab_back_end.settings import BASE_DIR
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
+
+
 class Post(models.Model):
     title = models.CharField(max_length=50)
     body = models.TextField()
@@ -17,7 +27,7 @@ class Post(models.Model):
     image = models.ImageField(
         default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
         upload_to='ab_back_end/static/profile_pics',
-        )
+    )
 
     def __str__(self):
         return self.title
@@ -29,12 +39,14 @@ class Post(models.Model):
         return reverse("post-detail", kwargs={"pk": self.pk})
 
 
-class Category(models.Model):
-    category_name = models.CharField(max_length=25)
-
-
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.body
+
+    def __repr__(self):
+        return self.body
