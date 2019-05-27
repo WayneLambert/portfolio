@@ -11,7 +11,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('users/', include('users.urls')),
     # path('api/', include('api.urls')),
-    ]
+]
 
 
 if settings.DEBUG:

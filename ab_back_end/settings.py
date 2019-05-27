@@ -49,11 +49,11 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     # Project Apps
-    'books.apps.BooksConfig',
     'api.apps.ApiConfig',
-    'todos.apps.TodosConfig',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
+    'books.apps.BooksConfig',
+    'todos.apps.TodosConfig',
     'analytics.apps.AnalyticsConfig',
     'articles.apps.ArticlesConfig',
 ]
@@ -110,6 +110,7 @@ TEMPLATES = [
         'DIRS': [
             'ab_back_end/templates/',
             'blog/templates/blog/',
+            'users/templates/users/',
             'books/templates/books/',
         ],
         'APP_DIRS': True,
@@ -208,3 +209,10 @@ INTERNAL_IPS = '127.0.0.1'
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
