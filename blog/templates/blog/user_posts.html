@@ -1,6 +1,12 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  <h6 class="mb-3">Posts authored by {{ view.kwargs.username }}: {{ page_obj.paginator.count }}</h>
+  
+  {% if page_obj.paginator.count > 1 %}
+    <h6 class="mb-3">Posts authored by {{ view.kwargs.username }}: {{ page_obj.paginator.count }}</h6>
+  {% else %}
+    <h6 class="mb-3">Post authored by {{ view.kwargs.username }}: {{ page_obj.paginator.count }}</h6>  
+  {% endif %}
+
   {% for post in posts %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
@@ -9,8 +15,8 @@
           <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
           <small class="text-muted">{{ post.publish_date|date:"D d-F-y" }}</small>
         </div>
-        <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+        <p class="article-content">{{ post.body }}</p>
       </div>
     </article>
   {% endfor %}
