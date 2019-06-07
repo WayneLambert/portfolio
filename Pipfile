@@ -23,6 +23,7 @@ django-vanilla-views = "*"
 pylint = "*"
 pylint-django = "*"
 django-bootstrap4 = "*"
+django-pagedown = "*"
 
 [requires]
 python_version = "3.7"

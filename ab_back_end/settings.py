@@ -174,9 +174,6 @@ the cors-headers Django package which handles middleware implementation.
 Port 3000 is being used as that is the default port for the React.js front-end.
 """
 
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000',
-)
 
 
 # Internationalization
