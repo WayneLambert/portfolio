@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Churchill Speech</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <h5>Sir Winston Churchill Speech: 13-May-1940 @ House of Commons, London, UK</h5>
+      <em class="small">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
+        party library, Beautiful Soup and then rendered to a Django template page.</em><br><br>
+        <div class="alert alert-info" role="alert">
+          {{ churchill_speech }}
+        </div>
+        <em class="small">
+          Source: <a
+            href="www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and">
+            www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and</a><br>
+        </em><br>
+        <a href="{% url 'speech-list' %}" class="alert-link">Click here to start again</a><br><br>
+    {% endblock content %}
+  </body>
+</html>

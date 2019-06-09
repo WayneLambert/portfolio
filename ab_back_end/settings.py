@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'todos.apps.TodosConfig',
     'analytics.apps.AnalyticsConfig',
     'articles.apps.ArticlesConfig',
+    'scraping.apps.ScrapingConfig',
+    'wordcount.apps.WordcountConfig',
 ]
 
 # TODO: Implement authorisation and authentication
@@ -112,6 +114,8 @@ TEMPLATES = [
             'blog/templates/blog/',
             'users/templates/users/',
             'books/templates/books/',
+            'scraping/templates/scraping/',
+            'wordcount/templates/wordcount/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -173,7 +177,6 @@ Permit cross-domain requests where it is from the localhost on port 3000 using
 the cors-headers Django package which handles middleware implementation.
 Port 3000 is being used as that is the default port for the React.js front-end.
 """
-
 
 
 # Internationalization

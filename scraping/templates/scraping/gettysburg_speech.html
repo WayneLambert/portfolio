@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gettysburg Address</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <h5>Gettysburg Address by Abraham Lincoln: 19-Nov-1863 @ Gettysburg, Pennsylvania, USA</h5>
+      <em class="small">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
+        party library, Beautiful Soup and then rendered to a Django template page.</em><br><br>
+        <div class="alert alert-info" role="alert">
+          {{ gettysburg }}
+        </div>
+        <em class="small">
+          Source: <a
+            href="https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address">
+            https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address</a><br>
+        </em><br>
+        <a href="{% url 'speech-list' %}" class="alert-link">Click here to start again</a><br><br>
+    {% endblock content %}
+  </body>
+</html>

@@ -22,15 +22,15 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = (
-                  'id',
-                  'title',
-                  'body',
-                  'publish_date',
-                  'updated_date',
-                  'upvotes',
-                  'downvotes',
-                  'image',
-                  )
+            'id',
+            'title',
+            'body',
+            'publish_date',
+            'updated_date',
+            'upvotes',
+            'downvotes',
+            'image',
+        )
         ordering = ['-publish_date']
 
     def to_representation(self, instance):

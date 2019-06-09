@@ -6,7 +6,7 @@ from django.views.generic import (
     DeleteView,
     DetailView,
     ListView,
-    UpdateView
+    UpdateView,
 )
 
 from blog.models import Post

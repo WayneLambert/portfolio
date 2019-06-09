@@ -8,6 +8,7 @@
 - The Complete React Developer Course (w/ Hooks and Redux) - by Andrew Mead
 
 ## YouTube Videos
+
 #### DONE
 <a href="https://www.youtube.com/watch?v=uZgRbnIsgrA&list=WL&index=38&t=0s">
 JustDjango: Django and React - Tutorial 1: Creating a Full Stack Application</a></br>

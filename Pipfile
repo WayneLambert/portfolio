@@ -23,6 +23,8 @@ django-vanilla-views = "*"
 pylint = "*"
 pylint-django = "*"
 django-bootstrap4 = "*"
+requests = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.7"

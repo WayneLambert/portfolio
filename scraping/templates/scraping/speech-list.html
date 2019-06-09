@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List of Famous Speeches</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
+      <div class="alert alert-secondary">The purpose of this application is to demonstrate the use of some well known
+        Python libraries to handle web tasks such as getting content and parsing the HTML. The Django part of this
+        application merely handles the url patterns, the views which handles the request/response application
+        logic and the rendering of the final result to a Django template.
+      </div>
+      &nbsp;
+      <span class="churchill">
+        &nbsp;
+        <form action="{% url 'churchill-speech' %}" method="GET">
+          <div class="alert alert-info">Sir Winston Churchill as he took power on 13th May, 1940 @ House of Commons, London , UK.</div>
+          <input type="submit" value="View Churchill Speech" />
+        </form>
+      </span>
+      <br><hr>
+      <span class="gettysburg">
+        &nbsp;
+        <form action="{% url 'gettysburg-speech' %}" method="GET">
+          <div class="alert alert-info">The Gettysburg Address by Abraham Lincoln on 19th November, 1863 by clicking the button below.</div>
+          <input type="submit" value="View Gettysburg Address" />
+        </form>
+      </span>
+      &nbsp; &nbsp;
+    {% endblock content %}
+  </body>
+
+</html>

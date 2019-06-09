@@ -6,7 +6,7 @@ from blog.views import (
     PostUpdateView,
     PostDeleteView,
     UserPostListView,
-    about
+    about,
 )
 
 urlpatterns = [

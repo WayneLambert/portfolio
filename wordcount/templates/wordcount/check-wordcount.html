@@ -1,0 +1,25 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Check Wordcount</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <h6>Type some words in the box below and click the 'Count Words' button to get a count of each of the words.</h6>
+      <form action="{% url 'count' %}" method="GET">
+        <textarea name="fulltext" cols="100" rows="5"></textarea>
+        <br />
+        <input type="submit" value="Count Words" />
+        <br /><br />
+      </form>
+    {% endblock content %}
+  </body>
+
+</html>

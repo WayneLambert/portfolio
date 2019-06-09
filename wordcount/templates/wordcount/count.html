@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Count</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-info" role="alert">
+        <div>
+          <p>No. of words being analysed: {{ word_count }}</p>
+          <p>The entire text string being analysed was:<br></p>
+          <em class="small"><p>{{ orig_full_text }}</p></em>
+          <hr>
+          The individual words along with their count of occurences within the text is:<br>
+          {% for word, count_total in sorted_words  %}
+            <br>{{ word }}: {{ count_total }}
+          {% endfor %}
+        </div>    
+      </div>
+      <a href="{% url 'check-wordcount' %}" class="alert-link">Click here to start again</a><br><br>
+    {% endblock content %}
+  </body>
+</html>
