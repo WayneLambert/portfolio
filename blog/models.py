@@ -5,6 +5,10 @@ from os import path
 from ab_back_end.settings import BASE_DIR
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=20)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
@@ -15,6 +19,7 @@ class Post(models.Model):
         default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
         upload_to='ab_back_end/static/profile_pics',
     )
+    categories = models.ManyToManyField('Category', related_name='posts')
 
     def __str__(self):
         return self.title

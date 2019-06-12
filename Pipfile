@@ -9,6 +9,7 @@ django-debug-toolbar = "*"
 autopep8 = "*"
 pep8 = "*"
 flake8 = "*"
+coverage = "*"
 
 [packages]
 django = "*"
