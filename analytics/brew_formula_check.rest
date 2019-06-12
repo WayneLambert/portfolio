@@ -1,4 +1,0 @@
-
-#
-https://formulae.brew.sh/api/formula.json
-

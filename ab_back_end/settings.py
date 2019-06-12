@@ -52,10 +52,6 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
-    'books.apps.BooksConfig',
-    'todos.apps.TodosConfig',
-    'analytics.apps.AnalyticsConfig',
-    'articles.apps.ArticlesConfig',
     'scraping.apps.ScrapingConfig',
     'wordcount.apps.WordcountConfig',
 ]
@@ -110,10 +106,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'ab_back_end/templates/',
+            os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             'blog/templates/blog/',
             'users/templates/users/',
-            'books/templates/books/',
             'scraping/templates/scraping/',
             'wordcount/templates/wordcount/',
         ],

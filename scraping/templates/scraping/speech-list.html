@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "scraping/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,7 @@
 
   <body>
     {% block content %}
+      &nbsp;
       <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
       <div class="alert alert-secondary">The purpose of this application is to demonstrate the use of some well known
         Python libraries to handle web tasks such as getting content and parsing the HTML. The Django part of this
@@ -20,7 +21,6 @@
       </div>
       &nbsp;
       <span class="churchill">
-        &nbsp;
         <form action="{% url 'churchill-speech' %}" method="GET">
           <div class="alert alert-info">Sir Winston Churchill as he took power on 13th May, 1940 @ House of Commons, London , UK.</div>
           <input type="submit" value="View Churchill Speech" />

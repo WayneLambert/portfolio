@@ -15,4 +15,4 @@ page_content = BeautifulSoup(page_response.content, "html.parser")
 def get_churchill_speech(request):
     """Retrieves Winston Churchill's first speech as UK prime minister from goodreads.com"""
     speech_text = str(page_content.findChildren('h1')).split('\n')[1].split(';<br/>')[0].strip() + '."'
-    return render(request, 'scraping/churchill_speech.html', {'churchill_speech': speech_text})
+    return render(request, 'churchill_speech.html', {'churchill_speech': speech_text})
