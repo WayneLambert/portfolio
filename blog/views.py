@@ -9,7 +9,7 @@ from django.views.generic import (
     UpdateView,
 )
 
-from blog.models import Post, Category
+from blog.models import Post
 
 
 def home(request):
@@ -37,19 +37,6 @@ class UserPostListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-publish_date')
-
-
-class CategoryPostListView(ListView):
-    model = Post
-    template_name = 'blog/category_posts.html'
-    context_object_name = 'posts'
-    ordering = ['-publish_date']
-    paginate_by = 3
-
-    def get_queryset(self):
-        category = self.kwargs.get('category')
-        cat_id = Category.objects.filter(name=category)
-        return Post.objects.filter(categories=cat_id).order_by('-publish_date')
 
 
 class PostDetailView(DetailView):

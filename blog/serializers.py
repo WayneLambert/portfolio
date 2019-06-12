@@ -27,8 +27,6 @@ class PostSerializer(serializers.ModelSerializer):
             'body',
             'publish_date',
             'updated_date',
-            'upvotes',
-            'downvotes',
             'image',
         )
         ordering = ['-publish_date']

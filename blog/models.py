@@ -5,23 +5,12 @@ from os import path
 from ab_back_end.settings import BASE_DIR
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.name
-
-    def __repr__(self):
-        return self.name
-
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     publish_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-    categories = models.ManyToManyField('Category', related_name='posts')
     image = models.ImageField(
         default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
         upload_to='ab_back_end/static/profile_pics',
@@ -35,10 +24,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("post-detail", kwargs={"pk": self.pk})
-
-
-class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    body = models.TextField()
-    created_on = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)

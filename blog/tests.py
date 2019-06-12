@@ -14,7 +14,7 @@ class BlogTests(TestCase):
 
         test_post = Post.objects.create(
             title='Blog title', body='Body content...', author=testuser
-            )
+        )
         test_post.save()
 
     def test_blog_content(self):

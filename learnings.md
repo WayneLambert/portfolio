@@ -156,7 +156,6 @@ componentDidMount()
 
 - An <a href="https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9" >article on medium.freecodecamp</a> reports that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
 
-
 ### Questions to Get Answers To
 
 - Research setState()
