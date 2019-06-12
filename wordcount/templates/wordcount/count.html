@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "scraping/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,7 @@
 
   <body>
     {% block content %}
+      &nbsp;
       <div class="alert alert-info" role="alert">
         <div>
           <p>No. of words being analysed: {{ word_count }}</p>

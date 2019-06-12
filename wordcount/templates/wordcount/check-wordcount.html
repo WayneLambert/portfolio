@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "scraping/base.html" %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,7 @@
 
   <body>
     {% block content %}
+      &nbsp;
       <h6>Type some words in the box below and click the 'Count Words' button to get a count of each of the words.</h6>
       <form action="{% url 'count' %}" method="GET">
         <textarea name="fulltext" cols="100" rows="5"></textarea>
