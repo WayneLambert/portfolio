@@ -1,16 +1,18 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  {% for post in posts %}
+
+  <h6 class="mb-3">Posts filed under {{ categories.name|title }}: {{ page_obj.paginator.count }}</h6>
+  {% for post in post_list %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+          | In <a href="#">{{ categories.name }}</a>
           <small class="text-muted">{{ post.publish_date|date:"D d-M-y" }}</small>
         </div>
-        <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
-        <br>
-        <p class="article-content">{{ post.body|truncatewords:50  }}</p>
+        <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4><br>
+        <p class="article-content">{{ post.body|truncatewords:50 }}</p>
       </div>
     </article>
   {% endfor %}

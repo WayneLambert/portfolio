@@ -1,15 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import (
-    CreateView,
-    DeleteView,
-    DetailView,
-    ListView,
-    UpdateView,
-)
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
-from blog.models import Post
+from blog.models import Category, Post
 
 
 def home(request):
@@ -37,6 +32,22 @@ class UserPostListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('-publish_date')
+
+
+class CategoryPostListView(ListView):
+    model = Post
+    template_name = 'blog/category_posts.html'
+    ordering = ['-publish_date']
+    paginate_by = 3
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
+        return Post.objects.filter(categories=self.category)
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryPostListView, self).get_context_data(**kwargs)
+        context['categories'] = self.category
+        return context
 
 
 class PostDetailView(DetailView):

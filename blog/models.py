@@ -7,6 +7,13 @@ from ab_back_end.settings import BASE_DIR
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -28,4 +35,4 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("post-detail", kwargs={"pk": self.pk})
+        return reverse('post-detail', kwargs={'pk': self.pk})
