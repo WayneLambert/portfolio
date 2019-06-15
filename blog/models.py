@@ -1,8 +1,7 @@
+from os import path
 from django.contrib.auth.models import User
 from django.db import models
-from django.urls import reverse
 from django.template.defaultfilters import slugify
-from os import path
 from ab_back_end.settings import BASE_DIR
 
 
@@ -12,13 +11,21 @@ class Category(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = 'category'
         verbose_name_plural = 'categories'
+        ordering = ['name']
+
+    def __unicode__(self):
+        return self.name
 
     def __str__(self):
         return self.name
 
     def __repr__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return '/category/' & self.slug
 
 
 STATUS = (
@@ -32,14 +39,17 @@ class Post(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    publish_date = models.DateTimeField(auto_now_add=True)
+    publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
         default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
         upload_to='ab_back_end/static/profile_pics',
     )
-    categories = models.ManyToManyField('Category', related_name='posts')
+    categories = models.ManyToManyField(Category, blank=True, related_name='posts')
     status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-publish_date']
 
     def __str__(self):
         return self.title
@@ -52,4 +62,4 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'slug': self.slug})
+        return 'post-detail', self.slug

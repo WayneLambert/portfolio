@@ -41,9 +41,10 @@ class CategoryPostListView(ListView):
     ordering = ['-publish_date']
     paginate_by = 3
 
+    # TODO: This query needs to be resolved
     def get_queryset(self):
-        self.category = get_list_or_404(Category, name=self.name)
-        return Post.objects.filter(categories=self.category, status=1)
+        categories = get_list_or_404(Category, slug=self.slug)
+        return Post.objects.filter(category=categories)
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
