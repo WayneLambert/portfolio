@@ -11,6 +11,9 @@ class Category(models.Model):
     slug = models.SlugField(max_length=20)
     created_date = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
     def __str__(self):
         return self.name
 
