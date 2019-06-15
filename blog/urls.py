@@ -7,15 +7,12 @@ from blog.views import (CategoryPostListView, PostCreateView, PostDeleteView,
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),
-    path('category/<slug:categories:slug>/',
-         CategoryPostListView.as_view(), name='category-posts'),
-    path('category/<int:pk>/',
+    path('category/<slug:category>/',
          CategoryPostListView.as_view(), name='category-posts'),
     path('post/new/', PostCreateView.as_view(), name='post-create'),
     path('post/<slug:slug>/', PostDetailView.as_view(), name='post-detail'),
-    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
-    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
+    path('post/<slug:slug>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('about/', about, name='blog-about'),
 ]
 

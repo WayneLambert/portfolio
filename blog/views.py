@@ -1,7 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, render
-from django.utils.text import slugify
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -43,7 +42,7 @@ class CategoryPostListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
+        self.category = get_list_or_404(Category, pk=self.kwargs['pk'])
         return Post.objects.filter(categories=self.category, status=1)
 
     def get_context_data(self, **kwargs):
@@ -58,7 +57,8 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'categories', 'status']
+    template = 'blog/post_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -67,7 +67,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'categories', 'status']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
