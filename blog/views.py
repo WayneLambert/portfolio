@@ -42,7 +42,7 @@ class CategoryPostListView(ListView):
     paginate_by = 3
 
     def get_queryset(self):
-        self.category = get_list_or_404(Category, pk=self.kwargs['pk'])
+        self.category = get_list_or_404(Category, name=self.name)
         return Post.objects.filter(categories=self.category, status=1)
 
     def get_context_data(self, **kwargs):
