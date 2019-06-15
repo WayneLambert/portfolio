@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render
+from django.utils.text import slugify
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -16,6 +17,7 @@ def home(request):
 
 class PostListView(ListView):
     model = Post
+    queryset = Post.objects.filter(status=1)
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     ordering = ['-publish_date']
@@ -31,7 +33,7 @@ class UserPostListView(ListView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        return Post.objects.filter(author=user).order_by('-publish_date')
+        return Post.objects.filter(author=user, status=1).order_by('-publish_date')
 
 
 class CategoryPostListView(ListView):
@@ -42,7 +44,7 @@ class CategoryPostListView(ListView):
 
     def get_queryset(self):
         self.category = get_object_or_404(Category, pk=self.kwargs['pk'])
-        return Post.objects.filter(categories=self.category)
+        return Post.objects.filter(categories=self.category, status=1)
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
