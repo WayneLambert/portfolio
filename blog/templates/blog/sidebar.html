@@ -1,11 +1,14 @@
-<div class="col-md-3 ml-auto">
+<div class="col-md-2 ml-auto">
   <div class="panel panel-list">
     <h6>Categories</h6>
     <ul class="list-group">
-      <li class="list-group-item list-group-item-light"><a href="#"></a>Python</li>
-      <li class="list-group-item list-group-item-light"><a href="#"></a>Django</li>
-      <li class="list-group-item list-group-item-light"><a href="#"></a>JavaScript</li>
-      <li class="list-group-item list-group-item-light"><a href="#"></a>React</li>
-    </ul>
+        {% for blog_category in blog_categories %}
+          <li class="list-group-item list-group-item-light">
+            <!-- TODO Need to sort the urls for the sidebar! -->
+            <a href="{% url 'category-posts' {{ blog_category.slug }} %}"></a>
+            {{ blog_category.name|title }}
+          </li>
+        {% endfor %}
+    </ul> 
   </div>
 </div>

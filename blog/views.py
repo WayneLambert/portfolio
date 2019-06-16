@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
-
 from blog.models import Category, Post
 
 
@@ -41,14 +40,13 @@ class CategoryPostListView(ListView):
     ordering = ['-publish_date']
     paginate_by = 3
 
-    # TODO: This query needs to be resolved
     def get_queryset(self):
-        categories = get_list_or_404(Category, slug=self.slug)
-        return Post.objects.filter(category=categories)
+        self.categories = get_list_or_404(Category, slug=self.kwargs['slug'])
+        return Post.objects.filter(categories=self.categories[0].id)
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
-        context['categories'] = self.category
+        context['categories'] = self.categories
         return context
 
 
