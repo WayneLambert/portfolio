@@ -7,6 +7,8 @@ from ab_back_end import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('cv', views.view_cv, name='cv'),
+    path('contact', views.contact_form, name='contact-form'),
     path('blog/', include('blog.urls')),
     path('users/', include('users.urls')),
     path('scraping/', include('scraping.urls')),
