@@ -3,11 +3,10 @@
     <h6>Categories</h6>
     <ul class="list-group">
         {% for blog_category in blog_categories %}
-          <li class="list-group-item list-group-item-light">
-            <!-- TODO Need to sort the urls for the sidebar! -->
-            <a href="{% url 'category-posts' {{ blog_category.slug }} %}"></a>
+          <button onclick="window.location.href = '{% url "blog-home" %}category/{{ blog_category.slug }}';"
+            class="list-group-item list-group-item-action">
             {{ blog_category.name|title }}
-          </li>
+          </button>
         {% endfor %}
     </ul> 
   </div>

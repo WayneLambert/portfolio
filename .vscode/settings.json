@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": ".venv/bin/python",
+    "python.pythonPath": ".venv/bin/python3.7",
     "python.formatting.provider": "autopep8",
     "djangointellisense.projectRoot": "/Users/waynelambert/Dropbox/Programming/Dev/REST-APIs/src",
     "djangointellisense.settingsModule": "ab_back_end.settings",

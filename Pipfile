@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
+pylint-django = "*"
 bpython = "*"
 django-debug-toolbar = "*"
 autopep8 = "*"
@@ -20,11 +22,9 @@ django-guardian = "*"
 markdown = "*"
 pillow = "*"
 psycopg2-binary = "*"
-pylint = "*"
-pylint-django = "*"
-django-bootstrap4 = "*"
 requests = "*"
 beautifulsoup4 = "*"
+django-bootstrap4 = "*"
 
 [requires]
 python_version = "3.7"
