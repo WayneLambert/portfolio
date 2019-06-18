@@ -1,3 +1,5 @@
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 
@@ -6,7 +8,15 @@ def home(request):
 
 
 def view_cv(request):
-    return render(request, 'cv.html')
+    fs = FileSystemStorage()
+    cv_filename = 'cv_wayne_lambert.pdf'
+    if fs.exists(cv_filename):
+        with fs.open(cv_filename) as pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            response['Content-Disposition'] = 'inline; filename=cv_filename'
+            return response
+    else:
+        return HttpResponseNotFound('The CV was not found in the server.')
 
 
 def about_blog(request):
