@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'corsheaders',
     'bootstrap4',
+    'django_extensions',
 
     # Third Party Dev Apps
     'debug_toolbar',
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'scraping.apps.ScrapingConfig',
     'wordcount.apps.WordcountConfig',
+    'contacts.apps.ContactsConfig',
 ]
 
 

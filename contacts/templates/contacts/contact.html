@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="alert alert-info" role="alert">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Contact Form</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-info mr-2" type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

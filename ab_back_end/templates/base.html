@@ -35,44 +35,12 @@
 
 </head>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'view-cv' %}" target="_blank">CV</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Contact
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="https://www.linkedin.com/in/waynealambert/" target="_blank">LinkedIn</a>
-              <a class="dropdown-item" href="https://github.com/WayneLambert" target="_blank">GitHub</a>
-              <a class="dropdown-item" href="/contact">Contact Me</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
+{% include "header.html" %}
 
+<body>
   {% block content %}
     <!-- home.html injected here -->
   {% endblock content %}
-
-  <footer class="text-muted">
-    <div class="container">
-      <p>&copy; Copyright {% now 'Y' %} | waynelambert.dev</p>
-    </div>
-  </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

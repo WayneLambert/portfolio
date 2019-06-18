@@ -1,20 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
   <main role="main">
-    <section class="jumbotron text-center">
+    <div class="jumbotron container-fluid text-center">
       <div class="container">
         <h1 class="jumbotron-heading">Wayne Lambert</h1>
         <p class="lead text-muted">With 15 years of experience in Business Intelligence and data analysis, my goal is to
           use my aptitude in problem solving and computer programming to move into the field of web development and software engineering.<br><br>
 
-          Please see my CV for the languages, frameworks and technologies learned through my own passion.
+          Please view my CV for the languages, frameworks and technologies.
         </p>
-        <p>
-          <a href="/cv" class="btn btn-primary my-2">View my CV</a>
-          <a href="https://github.com/WayneLambert/portfolio" class="btn btn-secondary my-2">Source Code</a>
-        </p>
+          <a href="{% url 'view-cv' %}" class="btn btn-primary my-5" target="_blank">View CV</a>
+          <a href="https://github.com/WayneLambert/portfolio" class="btn btn-secondary my-5">GitHub</a>
+          <a href="https://www.linkedin.com/in/waynealambert/" class="btn btn-secondary my-5">LinkedIn</a>
       </div>
-    </section>
+    </div>
 
     <div class="album py-5 bg-light">
       <div class="container">

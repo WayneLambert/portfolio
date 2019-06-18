@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
-  <h6 class="mb-3">Posts filed under {{ categories.0.name|title }}: {{ page_obj.paginator.count }}</h6>
+  <h6 class="mb-3">Posts filed under {{ categories.0.name }}: {{ page_obj.paginator.count }}</h6>
   {% for post in post_list %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">

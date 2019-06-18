@@ -5,7 +5,7 @@
         {% for blog_category in blog_categories %}
           <button onclick="window.location.href = '{% url "blog-home" %}category/{{ blog_category.slug }}';"
             class="list-group-item list-group-item-action">
-            {{ blog_category.name|title }}
+            {{ blog_category.name }}
           </button>
         {% endfor %}
     </ul> 
