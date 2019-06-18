@@ -16,7 +16,13 @@
         {{ form|crispy }}
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-info mr-2" type="submit">Post</button>
+        <button class="btn btn-info mr-2" type="submit">
+          {% if 'update' in request.path %}
+            Update
+          {% else %}
+            Create
+          {% endif %}
+        </button>
         <a class="btn btn-secondary mr-2" href="{% url 'post-detail' object.slug %}">Cancel</a>
       </div>
     </form>

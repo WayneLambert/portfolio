@@ -1,7 +1,18 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
-    background: #fafafa;
-    color: #333333;
-    margin-top: 5rem;
+  background: #fafafa;
+  color: #333333;
+  margin-top: 4rem;
+  padding-bottom: 6rem;
 }
 
 h1,
@@ -10,81 +21,101 @@ h3,
 h4,
 h5,
 h6 {
-    color: #444444;
+  color: #444444;
 }
 
 ul {
-    margin: 0;
+  margin: 0;
 }
 
 .bg-steel {
-    background-color: #343a40;
+  background-color: #2e79b5;
+  height: 40px;
 }
 
 .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
+  color: #cbd5db;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .site-header .navbar-nav .nav-link.active {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .content-section {
-    background: #fafafa;
-    padding: 10px 20px;
-    border: 1px solid #fafafa;
-    border-radius: 3px;
-    margin-bottom: 20px;
+  background: #fafafa;
+  padding: 10px 10px;
+  border: 1px solid #fafafa;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }
 
 .article-title {
-    font-size: largest;
-    color: #444444;
+  font-size: largest;
+  color: #444444;
 }
 
 a.article-title:hover {
-    color: #428bca;
-    text-decoration: none;
+  color: #428bca;
+  text-decoration: none;
 }
 
 .article-content {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 .article-img {
-    height: 65px;
-    width: 65px;
-    margin-right: 16px;
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
 }
 
 .article-metadata {
-    padding-bottom: 1px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
 }
 
 .article-metadata a:hover {
-    color: #333;
-    text-decoration: none;
+  color: #333;
+  text-decoration: none;
 }
 
 .article-svg {
-    width: 25px;
-    height: 25px;
-    vertical-align: middle;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 .account-img {
-    height: 125px;
-    width: 125px;
-    margin-right: 20px;
-    margin-bottom: 16px;
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
 }
 
 .account-heading {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
+}
+
+footer {
+  position: absolute;
+  background-color: #2e79b5;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+
+.site-footer {
+  color: #ffffff;
+  font-size: smaller;
+  font-weight: lighter;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
 }

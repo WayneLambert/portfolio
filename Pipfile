@@ -25,6 +25,7 @@ psycopg2-binary = "*"
 requests = "*"
 beautifulsoup4 = "*"
 django-bootstrap4 = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.7"

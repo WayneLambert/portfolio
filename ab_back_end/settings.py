@@ -56,23 +56,11 @@ INSTALLED_APPS = [
     'wordcount.apps.WordcountConfig',
 ]
 
-# TODO: Implement authorisation and authentication
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    ]
-}
-
 
 MIDDLEWARE = [
-    # Third party additions
-    'corsheaders.middleware.CorsMiddleware',
-    # Django standard install applications
+    'corsheaders.middleware.CorsMiddleware',  # Third party
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Third party
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -167,13 +155,6 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-"""
-Permit cross-domain requests where it is from the localhost on port 3000 using
-the cors-headers Django package which handles middleware implementation.
-Port 3000 is being used as that is the default port for the React.js front-end.
-"""
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -193,7 +174,11 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'blog/static'),
+    os.path.join(BASE_DIR, 'static'),
+]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
