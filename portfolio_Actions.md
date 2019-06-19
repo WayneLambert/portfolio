@@ -8,7 +8,6 @@
 - [ ] Add fields into the database to allow for the upvotes and downvotes
 - [ ] Correct the post form so that it uses the post method
 - [ ] Correct the post detail pages so that they use the put method
-- [ ] 
 
 
 ### Home Page
@@ -20,5 +19,3 @@
 ### Blog Project
 
 - Home page of the blog project (/blog) should show a list of all of my blog posts. Whilst testing, these are just a list of the various Python PEPs. Later on in the project, I will replace this content with actual content which will form some useful 'know-how' content
-
-- 
