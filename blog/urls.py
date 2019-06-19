@@ -3,6 +3,7 @@ from blog.views import (CategoryPostListView, PostCreateView, PostDeleteView,
                         PostDetailView, PostListView, PostUpdateView,
                         UserPostListView, about)
 
+
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),

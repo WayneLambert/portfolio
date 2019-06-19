@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div><br>
-      Your contact details have been sent to Wayne.<br><br>
-      <a href="{% url 'home' %}">Return to home</a>
+  <div class="alert alert-light col-md-4 mb-0" role="alert">
+    <h6>Thanks for getting in touch. I will get back to you shortly.</h6>
+    <div class="border-top" pt-10>
+      <small class="text-muted">
+        <a href="{% url 'home' %}">Return to Home</a>
+      </small>
     </div>
+  </div>
 {% endblock content %}

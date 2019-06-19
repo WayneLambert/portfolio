@@ -12,15 +12,25 @@
 
   <body>
     {% block content %}
-      &nbsp;
-      <h6>Type some words in the box below and click the 'Count Words' button to get a count of each of the words.</h6>
-      <form action="{% url 'count' %}" method="GET">
-        <textarea name="fulltext" cols="100" rows="5"></textarea>
-        <br />
-        <input type="submit" value="Count Words" />
-        <br /><br />
-      </form>
-    {% endblock content %}
+      <script type="text/javascript">
+        function IsEmpty(){
+          if(document.forms['frm'].fulltext.value === "")
+        {
+          alert("Please enter some text in the box below, then click the 'Count Words' button.");
+          return false;
+        }
+          return true;
+        }
+      </script>
+      <br>
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        &nbsp;
+        <em>Type some words in the box below and click the 'Count Words' button to get a count of each of the words.</em>
+        <form name="frm" action="{% url 'count' %}" method="GET">
+          <textarea name="fulltext" cols="95" rows="5"></textarea><br>
+          <button type="submit" onclick="return IsEmpty();" class="btn btn-secondary">Count Words</button>
+        </form>
+      {% endblock content %}
+      </div>
   </body>
-
 </html>

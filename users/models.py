@@ -10,7 +10,7 @@ class Profile(models.Model):
                                         )
 
     def __str__(self):
-        return f'Profile: {self.user.username}'
+        return f'{self.user.first_name} {self.user.last_name} ({self.user.username})'
 
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)

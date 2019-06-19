@@ -13,10 +13,10 @@
   <body>
     {% block content %}
       &nbsp;
-      <div class="alert alert-info" role="alert">
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
         <div>
           <p>No. of words being analysed: {{ word_count }}</p>
-          <p>The entire text string being analysed was:<br></p>
+          <p>The entire text string analysed was:<br></p>
           <em class="small"><p>{{ orig_full_text }}</p></em>
           <hr>
           The individual words along with their count of occurences within the text is:<br>
@@ -24,9 +24,9 @@
             <br>{{ word }}: {{ count_total }}
           {% endfor %}
         </div>    
+        &nbsp;<br>
+        <a class="btn btn-secondary mr-2" href="{% url 'check-wordcount' %}">Start Again</a>
       </div>
-      &nbsp;
-      <a href="{% url 'check-wordcount' %}" class="alert-link">Click here to start again</a><br><br>
     {% endblock content %}
   </body>
 </html>

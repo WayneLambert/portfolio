@@ -12,19 +12,19 @@
 
   <body>
     {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
       &nbsp;
       <h5>Sir Winston Churchill Speech: 13-May-1940 @ House of Commons, London, UK</h5>
       <em class="small">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
         party library, Beautiful Soup and then rendered to a Django template page.</em><br><br>
-        <div class="alert alert-info" role="alert">
-          {{ churchill_speech }}
-        </div>
+        <div class="alert alert-info" role="alert">{{ churchill_speech }}</div>
         <em class="small">
           Source: <a
-            href="www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and">
+          href="www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and">
             www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and</a><br>
         </em><br>
         <a href="{% url 'speech-list' %}" class="alert-link">Click here to start again</a><br><br>
+      </div>
     {% endblock content %}
   </body>
 </html>
