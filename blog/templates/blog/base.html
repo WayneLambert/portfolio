@@ -25,7 +25,7 @@
 
 <body>
 
-  {% include "header.html" %}
+  {% include "blog/header.html" %}
 
   <main role="main" class="container">
     <div class="row">
@@ -37,7 +37,9 @@
             </div>
           {% endfor %}
         {% endif %}
-        {% block content %}{% endblock %}
+        {% block content %}
+            <!-- home.html injected here -->
+        {% endblock %}
       </div>
       {% category_sidebar %}
     </div>

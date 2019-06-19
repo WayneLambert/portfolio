@@ -12,6 +12,9 @@ autopep8 = "*"
 pep8 = "*"
 flake8 = "*"
 coverage = "*"
+django-extensions = "*"
+werkzeug = "*"
+python-dotenv = "*"
 
 [packages]
 django = "*"
@@ -26,8 +29,6 @@ requests = "*"
 beautifulsoup4 = "*"
 django-bootstrap4 = "*"
 whitenoise = "*"
-django-extensions = "*"
-werkzeug = "*"
 
 [requires]
 python_version = "3.7"

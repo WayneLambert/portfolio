@@ -2,13 +2,13 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="alert alert-info" role="alert">
+  <div class="alert alert-light col-md-4 mb-0" role="alert">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Contact Form</legend>
-        {{ form|crispy }}
-      </fieldset>
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Please get in touch!</legend>
+          <table>{{ form|crispy }}</table>
+        </fieldset>
       <div class="form-group">
         <button class="btn btn-info mr-2" type="submit">Send</button>
       </div>

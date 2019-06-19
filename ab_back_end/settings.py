@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+ENV_PATH = Path(BASE_DIR) / '.env'
+load_dotenv(dotenv_path=ENV_PATH)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^2l(7*dyta1pn#4^s78#^zvn*&z5^9hsubi!7rk(qv!!-qv#!='
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -101,6 +105,7 @@ TEMPLATES = [
             'users/templates/users/',
             'scraping/templates/scraping/',
             'wordcount/templates/wordcount/',
+            'contacts/templates/contacts/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -120,12 +125,16 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+DATABASE_NAME = os.getenv('DATABASE_NAME'),
+DATABASE_USER = os.getenv('DATABASE_USER'),
+DATABASE_PASS = os.getenv('DATABASE_PASS'),
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'rest_apis',
         'USER': 'waynelambert',
-        'PASSWORD': 'rest1234',
+        'PASSWORD': DATABASE_PASS,
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -193,8 +202,8 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
+EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
