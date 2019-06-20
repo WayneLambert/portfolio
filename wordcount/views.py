@@ -23,9 +23,12 @@ def count(request):
             word_dict[word] = 1
 
     sorted_words = sorted(word_dict.items(), key=operator.itemgetter(1), reverse=True)
-    return render(request, 'wordcount/count.html', {
+
+    context = {
         'orig_full_text': '"' + orig_full_text + '"',
         'context': context,
         'word_count': word_count,
         'sorted_words': sorted_words,
-    })
+    }
+
+    return render(request, 'wordcount/count.html', context)
