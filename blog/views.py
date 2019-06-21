@@ -19,7 +19,6 @@ class PostListView(ListView):
     queryset = Post.objects.filter(status=1)
     template_name = 'blog/home.html'
     context_object_name = 'posts'
-    ordering = ['-publish_date']
     paginate_by = 3
 
 
@@ -27,7 +26,6 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
-    ordering = ['-publish_date']
     paginate_by = 3
 
     def get_queryset(self):
@@ -38,7 +36,6 @@ class UserPostListView(ListView):
 class CategoryPostListView(ListView):
     model = Post
     template_name = 'blog/category_posts.html'
-    ordering = ['-publish_date']
     paginate_by = 3
 
     def get_queryset(self):
@@ -96,18 +93,3 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     return render(request, 'blog/about.html', {'title': 'About'})
-
-
-"""
-The code below is for an API implementation of the blog using serializers as
-opposed to views.
-"""
-
-# from rest_framework import viewsets
-# from blog.models import Post
-# from blog.serializers import PostSerializer
-
-
-# class PostViewSet(viewsets.ModelViewSet):
-#     serializer_class = PostSerializer
-#     queryset = Post.objects.all()
