@@ -6,8 +6,11 @@
     <div class="media">
       <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
       <div class="media-body">
-        <h2 class="account-heading">{{ user.username }}</h2>
-        <p class="text-secondary">{{ user.email }}</p>
+        <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
+        <em class="account-heading">{{ user.username }}</em><br><br>
+        <p class="text-secondary"><b>Email: </b><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        <p class="text-secondary"><b>Join Date: </b><em>{{ user.date_joined }}</em></p>
+        <p class="text-secondary"><b>Last logged in at: </b><em>{{ user.last_login }}</em></p>
       </div>
     </div>
     <form method="POST" enctype="multipart/form-data">
