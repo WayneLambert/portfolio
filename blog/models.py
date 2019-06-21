@@ -2,6 +2,7 @@ from os import path
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 from ab_back_end.settings import BASE_DIR
 
 
@@ -52,3 +53,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'slug': self.slug})

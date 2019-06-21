@@ -1,6 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.urls import reverse
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
@@ -54,20 +53,16 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'body', 'categories', 'status']
-    template = 'blog/post_form.html'
+    fields = ('title', 'slug', 'body', 'categories', 'status',)
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def get_absolute_url(self):
-        return reverse('post-create')
-
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'body', 'categories', 'status']
+    fields = ('title', 'slug', 'body', 'categories', 'status',)
 
     def form_valid(self, form):
         form.instance.author = self.request.user

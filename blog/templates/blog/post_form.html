@@ -23,7 +23,11 @@
             Create
           {% endif %}
         </button>
-        <a class="btn btn-secondary mr-2" href="{% url 'post-detail' object.slug %}">Cancel</a>
+        {% if 'update' in request.path %}
+          <a class="btn btn-secondary mr-2" href="{% url 'post-detail' object.slug %}">Cancel</a>
+        {% else %}
+          <a class="btn btn-secondary mr-2" href="{% url 'blog-home' %}">Cancel</a>
+        {% endif %}        
       </div>
     </form>
   </div>
