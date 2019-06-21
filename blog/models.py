@@ -7,7 +7,7 @@ from ab_back_end.settings import BASE_DIR
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-    slug = models.SlugField(max_length=20)
+    slug = models.SlugField(max_length=20, unique=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -21,20 +21,15 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    def __repr__(self):
-        return self.name
-
     def get_absolute_url(self):
         return '/category/' & self.slug
 
 
-STATUS = (
-    (0, 'Draft'),
-    (1, 'Publish')
-)
-
-
 class Post(models.Model):
+    STATUS = (
+        (0, 'Draft'),
+        (1, 'Publish')
+    )
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
     body = models.TextField()
@@ -54,12 +49,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def __repr__(self):
-        return self.title
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
-
-    def get_absolute_url(self):
-        return 'post-detail', self.slug
