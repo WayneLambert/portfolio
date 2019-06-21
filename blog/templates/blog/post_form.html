@@ -5,30 +5,25 @@
   <div class="content-section">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
+      {% if 'update' in request.path %}
       <fieldset class="form-group">
-        <legend class="border-bottom mb-4">
-          {% if 'update' in request.path %}
-            Update Post
-          {% else %}
-            Create Post
-          {% endif %}
-        </legend>
+        <legend class="border-bottom mb-4">Update Post</legend>
         {{ form|crispy }}
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-info mr-2" type="submit">
-          {% if 'update' in request.path %}
-            Update
-          {% else %}
-            Create
-          {% endif %}
-        </button>
-        {% if 'update' in request.path %}
-          <a class="btn btn-secondary mr-2" href="{% url 'post-detail' object.slug %}">Cancel</a>
-        {% else %}
-          <a class="btn btn-secondary mr-2" href="{% url 'blog-home' %}">Cancel</a>
-        {% endif %}        
+        <button class="btn btn-info mr-2" type="submit">Update</button>
+        <a class="btn btn-secondary mr-2" href="{% url 'post-detail' object.slug %}">Cancel</a>
       </div>
+      {% else %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Create Post</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-info mr-2" type="submit">Create</button>
+        <a class="btn btn-secondary mr-2" href="{% url 'blog-home' %}">Cancel</a>
+      </div>
+      {% endif %}
     </form>
   </div>
 {% endblock content %}
