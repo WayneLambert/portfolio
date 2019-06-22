@@ -119,3 +119,14 @@ footer {
   vertical-align: middle;
   line-height: 30px;
 }
+
+#btn-home {
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-home:hover {
+  background-color: limegreen;
+}

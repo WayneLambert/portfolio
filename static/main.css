@@ -1,0 +1,77 @@
+.bg-steel {
+  background-color: #2e79b5;
+  height: 40px;
+}
+
+
+footer {
+  position: absolute;
+  background-color: #333333;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+
+.site-footer {
+  color: #ffffff;
+  font-size: smaller;
+  font-weight: lighter;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+#no-words-msgbox {
+  color: red;
+}
+
+#btn-home {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-home:hover {
+  background-color: lightgray;
+}
+
+#btn-github {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-github:hover {
+  background-color: lightgray;
+}
+
+#btn-contact {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-contact:hover {
+  background-color: lightgray;
+}
+
+#btn-cv-jumbotron {
+  color: blue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn-github-jumbotron {
+  color: blue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}

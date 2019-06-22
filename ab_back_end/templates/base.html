@@ -15,6 +15,11 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
   integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Icon Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom CSS stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
 
   <style>
     .bd-placeholder-img {
@@ -41,6 +46,8 @@
   {% block content %}
     {% include "home.html" %}
   {% endblock content %}
+
+  {% include "footer.html" %}
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
