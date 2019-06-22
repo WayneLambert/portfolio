@@ -49,6 +49,17 @@ footer {
   background-color: lightgray;
 }
 
+#btn-linkedin {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-linkedin:hover {
+  background-color: lightgray;
+}
+
 #btn-contact {
   border: none;
   color: white;
