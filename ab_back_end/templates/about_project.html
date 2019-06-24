@@ -1,4 +1,12 @@
-{% extends "base.html" %}
+{% load static %}
 {% block content %}
-  <h1>About The Project</h1>
+  &nbsp; &nbsp;
+  <div id="about-project">
+    <p id="about-project-title"></p>
+    <div id="about-project-body"></div><br>
+    <a href="#" onclick="hideElement();" class="btn btn-sm btn-secondary mr-10" id="btn-dismiss">
+      <i class="fa fa-times-circle"></i>
+      Dismiss
+    </a>
+  </div>
 {% endblock content %}

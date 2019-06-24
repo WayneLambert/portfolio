@@ -1,63 +1,10 @@
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="35" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Blog Project</title>
-                <rect width="100%" height="100%" fill="#343A45" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Blog
-                  Project</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">A full CRUD blog application built using core MVT functionality in Django with
-                  Bootstrap 4 and Django Crispy Forms.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-block">
-                    <a class="btn btn-sm btn-secondary mr-10" href="{% url 'blog-home' %}" role="button">View Blog</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="35" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Scrape It Project</title>
-                <rect width="100%" height="100%" fill="#343A45" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Scrape
-                  It Project</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">An app that scrapes famous speeches content from the web using a third party Python library
-                  called Beautiful Soup.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-secondary" href="{% url 'speech-list' %}" role="button">Scrape It!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="35" xmlns="http://www.w3.org/2000/svg"
-                preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                <title>Word Counting Project</title>
-                <rect width="100%" height="100%" fill="#343A45" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Word
-                  Counting Project</text>
-              </svg>
-              <div class="card-body">
-                <p class="card-text">An app that counts the number of words input and returns the number of words for
-                  each unique word.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a class="btn btn-sm btn-secondary" href="{% url 'check-wordcount' %}" role="button">Count Words!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+{% load static %}
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      {% include "album_blog_project.html" %}
+      {% include "album_scraping_project.html" %}
+      {% include "album_wordcount_project.html" %}
     </div>
+  </div>
+</div>
