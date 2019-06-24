@@ -12,8 +12,12 @@ function aboutProject(context) {
 }
 
 function getAboutProjectTitle(context) {
-  return 'About ' + context + ' Project';
-}
+  if (context === 'count') {
+    return 'About ' + context + 'ing Project';
+  }
+  else
+    return 'About ' + context + ' Project';  
+  }
 
 function getAboutProjectText(context) {
   if (context === 'blog') {
@@ -97,5 +101,27 @@ The speeches scraped for the app can be found from the following links: <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript<br>
 <b>Frameworks: </b>Django, Bootstrap, FontAwesome<br>
-<b>Other: </b>GitHub<br><br>
+<b>Other: </b>GitHub<br>
+`;
+
+
+const countDescription =
+`
+The counting project uses core Python functionality in addition to Django to count the number   
+of occurences that each word and letter appears within the textbox.<br><br>
+
+<b>Features</b><br><br>
+
+&bull; Uses Python lists to store results from logic<br>
+&bull; Uses Pythonic for [each] loop to iterate over every letter of the alphabet   
+to test for presence<br>
+&bull; Uses Python's string interpolation (i.e. f strings) to make readable sentances<br>
+&bull; Creates a context dictionary with several elements used within the Django  
+template to give the user rich information about their request<br>
+&bull; JavaScript code in conjunction with a Django HTML template and CSS means   
+that you can see this 'About' page<br><br>
+
+<b>Languages: </b>Python, HTML / CSS, JavaScript<br>
+<b>Frameworks: </b>Django, Bootstrap, FontAwesome<br>
+<b>Other: </b>GitHub<br>
 `;
