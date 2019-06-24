@@ -3,8 +3,8 @@ from typing import operator
 import re
 
 
-def check_wordcount(request):
-    return render(request, 'wordcount/check-wordcount.html')
+def check_count(request):
+    return render(request, 'count/check_count.html')
 
 
 def count(request):
@@ -51,4 +51,4 @@ def count(request):
         'letter_count': letter_count,
     }
 
-    return render(request, 'wordcount/count.html', context)
+    return render(request, 'count/count.html', context)

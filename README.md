@@ -2,7 +2,7 @@
 
 The site will soon be hosted at waynelambert.dev and is intended to illustrate the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
 
-It is accepted that in some cases, the solutions are overkill in terms of what would suffice in an actual production environment and the site is merely intended to demonstrate the application of programming skill and usage of applicable technologies.
+It is accepted that in some cases, the solutions are overkill in terms of what would suffice in an actual production environment and the site is intended to demonstrate the application of programming skill and usage of applicable technologies.
 
 The blog is not intended to be a full production product, therefore some typical blog features have been purposefully omitted. For example, comments could be added to the blog, however this one has been designed for dictators. :)
 
@@ -27,16 +27,16 @@ Various relationships exist within the blog to demonstrate the use of differnet 
 
 The Scrape It! demonstrates the use of the Requests library to handle the request/response cycle for the GET requests that are required to retrieve data from another website.
 
-Python's third party library, Beautiful Soup, is used to parse the required HTML. Python text functions are used to target, strip and append any required text so that it's in a suitable format.
+Python's third party library, Beautiful Soup, is used to parse the required HTML from the response object. Python text functions are used to target, strip and append any required text so that it's in a suitable format.
 
-Finally, the Django component of this application is the handling of the URLs to target a view which returns the required response to the a Django template. In other words, there is no 'M' component used within this app, it just uses the 'V' and the 'T' components of the MVT architectural paradigm.
+Finally, the Django component of the application is the handling of the URLs to target a view which returns the required response to the Django template. In other words, there is no 'M' component used within this app, it just uses the 'V' and the 'T' components of the MVT architectural paradigm that Django uses.
 
 ## The Word Counting App
 
-The word counting app is another demonstration of using Python to calculate the number of occurences of each of the words used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
+The word counting app is another demonstration of using Python to calculate the number of occurences of each of the words and letters used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
 
 ## License
 
 Copyright (c) Wayne Lambert. All rights reserved.
 
-Licensed under the [MIT](LICENSE.txt) License.
+Licensed under the [MIT](/LICENSE) License.

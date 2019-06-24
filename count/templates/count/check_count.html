@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Check Wordcount</title>
+    <title>Check Count</title>
   </head>
 
   <body>
@@ -18,7 +18,7 @@
           button to get a count of each of the words.
         </em>
         <form name="frm" action="{% url 'count' %}" method="GET">
-          <textarea name="fulltext" cols="95" rows="5"></textarea><br>
+          <textarea name="fulltext" cols="95" rows="5"></textarea><br><br>
           <button type="submit" onclick="return IsEmpty();" class="btn btn-sm btn-success mr-10"
             id="btn-count-words">
             <i class="fa fa-book"></i>

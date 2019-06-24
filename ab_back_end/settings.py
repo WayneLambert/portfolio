@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'scraping.apps.ScrapingConfig',
-    'wordcount.apps.WordcountConfig',
+    'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
 ]
 
@@ -104,7 +104,7 @@ TEMPLATES = [
             'blog/templates/blog/',
             'users/templates/users/',
             'scraping/templates/scraping/',
-            'wordcount/templates/wordcount/',
+            'count/templates/count/',
             'contacts/templates/contacts/',
         ],
         'APP_DIRS': True,
@@ -188,7 +188,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'blog/static'),
-    os.path.join(BASE_DIR, 'wordcount/static'),
+    os.path.join(BASE_DIR, 'count/static'),
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

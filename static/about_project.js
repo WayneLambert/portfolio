@@ -20,8 +20,8 @@ function getAboutProjectText(context) {
     return blogDescription
   } else if (context === 'scraping') {
     return scrapingDescription
-  } else if (context === 'wordcount') {
-    return wordcountDescription
+  } else if (context === 'count') {
+    return countDescription
   } else
     return 'The context is unknown'
 }

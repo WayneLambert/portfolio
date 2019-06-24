@@ -19,7 +19,7 @@ urlpatterns = [
          ),
     path('users/', include('users.urls')),
     path('scraping/', include('scraping.urls')),
-    path('wordcount/', include('wordcount.urls')),
+    path('count/', include('count.urls')),
 ]
 
 
