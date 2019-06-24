@@ -18,7 +18,7 @@ pt-5, .py-5 {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   background-color: #333333;
   text-align: center;
   bottom: 0;

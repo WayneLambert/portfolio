@@ -11,40 +11,43 @@
   </head>
 
   <body>
-    
     {% block content %}
       <div class="alert alert-light col-md-10 mb-0" role="alert">
       &nbsp;
       <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
-      <div class="alert alert-secondary">The purpose of this application is to demonstrate the use of some well known
-          Python libraries to handle web tasks such as getting content and parsing the HTML. The Django part of this
-          application handles the url patterns, the views handles the request/response application
-          logic and the rendering of the final result to a Django template.
-        </div>
+      <div class="alert alert-secondary">The purpose of this application is to demonstrate  
+          the use of some well known Python libraries to handle web tasks such as getting   
+          content and parsing the HTML. The Django part of this application handles the   
+          url patterns, the views handles the request/response application logic and  
+          the rendering of the final result to a Django template.
+      </div>
+      &nbsp;
+      <span class="churchill">
+        <form action="{% url 'churchill-speech' %}" method="GET">
+          <div class="alert alert-info">Sir Winston Churchill as he took power on   
+            13th May, 1940 @ House of Commons, London , UK.</div>
+          <a href="{% url 'churchill-speech' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-scrape-it">
+            <i class="fa fa-comment"></i>
+            View Churchill Speech
+          </a>
+        </form>
+      </span>
+      <hr>
+      <span class="gettysburg">
         &nbsp;
-        <span class="churchill">
-          <form action="{% url 'churchill-speech' %}" method="GET">
-            <div class="alert alert-info">Sir Winston Churchill as he took power on 13th May, 1940 @ House of Commons, London , UK.</div>
-            <a href="{% url 'churchill-speech' %}" class="btn btn-sm btn-success mr-10" id="btn-scrape-it">
-              <i class="fa fa-comment"></i>
-              View Churchill Speech
-            </a>
-          </form>
-        </span>
-        <hr>
-        <span class="gettysburg">
-          &nbsp;
-          <form action="{% url 'gettysburg-speech' %}" method="GET">
-            <div class="alert alert-info">The Gettysburg Address by Abraham Lincoln on 19th November, 1863 by clicking the button below.</div>
-            <a href="{% url 'gettysburg-speech' %}" class="btn btn-sm btn-success mr-10" id="btn-scrape-it">
-              <i class="fa fa-comment"></i>
-              View Gettysburg Address
-            </a>
-          </form>
-        </span>
-        &nbsp; &nbsp;
-        </div>
-      {% endblock content %}
-    </body>
-
+        <form action="{% url 'gettysburg-speech' %}" method="GET">
+          <div class="alert alert-info">The Gettysburg Address by Abraham Lincoln on  
+            19th November, 1863 by clicking the button below.</div>
+          <a href="{% url 'gettysburg-speech' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-scrape-it">
+            <i class="fa fa-comment"></i>
+            View Gettysburg Address
+          </a>
+        </form>
+      </span>
+      &nbsp; &nbsp;
+      </div>
+    {% endblock content %}
+  </body>
 </html>

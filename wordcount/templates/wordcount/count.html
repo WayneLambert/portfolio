@@ -12,20 +12,35 @@
 
   <body>
     {% block content %}
-      &nbsp;
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        <div>
-          <p>No. of words being analysed: {{ word_count }}</p>
-          <p>The entire text string analysed was:<br></p>
-          <em class="small"><p>{{ orig_full_text }}</p></em>
+      <div class="counting-content-block col-md-10 mb-0">
+        &nbsp;
+        <h6>Word and Letter Counting</h6>
+        <div class="alert alert-info col-md-10 mb-0" role="alert">
+          <div class="count-words">
+            <p>No. of words being analysed: {{ word_count }}</p>
+            <p>The entire text string analysed was:<br></p>
+            <em class="small"><p>{{ orig_full_text }}</p></em>
+            <hr>
+            The individual words along with their count of occurences is:<br>
+            {% for word, count_total in sorted_words  %}
+              <br>{{ word }}: {{ count_total }}
+            {% endfor %}
+          </div>    
+          &nbsp;<br>
           <hr>
-          The individual words along with their count of occurences within the text is:<br>
-          {% for word, count_total in sorted_words  %}
-            <br>{{ word }}: {{ count_total }}
-          {% endfor %}
-        </div>    
-        &nbsp;<br>
-        <a class="btn btn-secondary mr-2" href="{% url 'check-wordcount' %}">Start Again</a>
+          <div class="count-letters">
+            The individual letters along with their count of occurences is:<br>
+            {% for letter in letter_count  %}
+              <br>{{ letter }}
+            {% endfor %}
+          <br><br>
+          </div>
+        </div><br>
+        <a href="{% url 'check-wordcount' %}" class="btn btn-sm btn-success mr-10"
+          id="btn-check-wordcount">
+          <i class="fa fa-repeat"></i>
+          Start Again
+        </a>
       </div>
     {% endblock content %}
   </body>

@@ -102,7 +102,7 @@ a.article-title:hover {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   background-color: #2e79b5;
   text-align: center;
   bottom: 0;
