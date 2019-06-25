@@ -10,19 +10,26 @@
         <table style="width:100%">
           <tr>
             <td>
-              <h2 class="account-heading">{{ user.first_name }} {{ user.last_name }}</h2>
+              <h2 class="account-heading-name" id="account-heading-name">
+                {{ user.first_name }} {{ user.last_name }}
+              </h2>
             </td>
             <td>
-              <em><h2 class="account-heading">( {{ user.username }} )</h2></em>
+              <em>
+                <h4 class="account-heading-username" id="account-heading-username"
+                  style="text-align: right">
+                  (Username: {{ user.username }} )
+                </h3>
+              </em>
             </td>
           </tr>
         </table>
-
+        <br>
         <table style="width:100%">
           <tr>
             <th>Email</th>
-            <th>Join Date</th>
-            <th>Last Login Date</th>
+            <th style="text-align: center">Join Date</th>
+            <th style="text-align: right">Last Login Date</th>
           </tr>
           <tr>
             <td>
@@ -31,10 +38,14 @@
               </p>
             </td>
             <td>
-              <p class="text-secondary"><em>{{ user.date_joined }}</em></p>
+              <p class="text-secondary" style="text-align: center">
+                <em>{{ user.date_joined }}</em>
+              </p>
             </td>
             <td>
-              <p class="text-secondary"><em>{{ user.last_login }}</em></p>
+              <p class="text-secondary" style="text-align: right">
+                <em>{{ user.last_login }}</em>
+              </p>
             </td>
           </tr>
         </table>
@@ -43,8 +54,26 @@
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset class="form-group">
-        {{ user_form|crispy }}
-        {{ profile_form|crispy }}
+        <div class="form-row">
+          <div class="form-group col-md-6 mb-0">
+            {{ user_form.username|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-6 mb-0">
+            {{ user_form.email|as_crispy_field }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4 mb-0">
+            {{ user_form.first_name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-4 mb-0">
+            {{ user_form.last_name|as_crispy_field }}
+          </div>
+          <div class="form-group col-md-4 mb-0">
+            {{ profile_form.author_view|as_crispy_field }}
+          </div>
+        </div>
+        {{ profile_form.profile_picture|as_crispy_field }}
       </fieldset>
       <div class="form-group">
         <button type="submit" class="btn btn-success mr-2">

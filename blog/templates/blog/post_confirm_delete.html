@@ -4,16 +4,23 @@
     <form method="POST">
       {% csrf_token %}
       <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Delete Post?</legend>
-        <h5>Are you sure that you would like to delete the below post?
-          <br><br>
-          {{ object.title }}
-        </h5><br> 
-          <p class="article-content">{{ object.body }}</p>
+        <legend class="border-bottom mb-4" id="warning-text">Delete Post?</legend>
+        <h6 id="warning-text">Are you sure that you would like to delete the below post?</h6>
+          <br>
+          <h4>{{ object.title }}</h4>
+        <br>
+          {{ object.body|truncatewords:100 }}<br><br>
+          <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a><br>
       </fieldset>
       <div class="form-group">
-        <button class="btn btn-danger" type="submit">Yes, Delete</button>
-        <a class="btn btn-secondary" href="{% url 'post-detail' object.slug %}">Cancel</a>
+        <button class="btn btn-danger" type="submit">
+          <i class="fa fa-trash"></i>
+           Yes, Delete
+        </button>
+        <a class="btn btn-secondary" href="{% url 'post-detail' object.slug %}">
+          <i class="fa fa-close"></i>
+          Cancel
+        </a>
       </div>
     </form>
   </div>

@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'status', 'publish_date')
+    list_display = ('title', 'reference_url', 'status', 'publish_date')
     list_filter = ('status', )
     search_fields = ['title', 'body']
     prepopulated_fields = {'slug': ('title',)}

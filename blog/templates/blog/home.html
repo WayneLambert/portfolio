@@ -2,15 +2,13 @@
 {% block content %}
   {% for post in posts %}
     <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
+      <img class="rounded article-img" src="{{ post.author.profile.profile_picture.url }}">
       <div class="media-body">
-        <div class="article-metadata">
-          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-          <small class="text-muted">{{ post.publish_date|date:"D d-M-y H:i" }}</small>
-        </div>
+        {% include "blog/author_view.html" %}
         <h4><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h4>
-        <br>
-        <p class="article-content">{{ post.body|truncatewords:50  }}</p>
+        <img class="article-image-small" id="article-image-small" src="{{ post.image.url }}" }}>
+        <p class="article-content">{{ post.body|linebreaks|truncatewords:75  }}</p>
+        <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a><br><br>
         <a href="{% url 'post-detail' post.slug  %}" class="btn btn-info">Read More &raquo;</a>
       </div>
     </article>

@@ -1,0 +1,10 @@
+<div class="article-metadata">
+  <a class="mr-2" href="{% url 'user-posts' post.author.username %}">
+    {% if post.author.profile.author_view == 0 %}
+      {{ post.author.username }}
+    {% else %}
+      {{ post.author.first_name }} {{ post.author.last_name }}
+    {% endif %}
+  </a>
+  <small class="text-muted">{{ post.publish_date|date:"D d-M-y H:i" }}</small>
+</div>

@@ -1,13 +1,23 @@
 from django.contrib.auth.models import User
 from django.db import models
+import os
 from PIL import Image
+from ab_back_end.settings import DEFAULT_IMAGES_ROOT
 
 
 class Profile(models.Model):
+
+    AUTHOR_VIEW = (
+        (0, 'Username'),
+        (1, 'Full Name')
+    )
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    profile_picture = models.ImageField(default='python-logo.png',
-                                        upload_to='profile_pics'
-                                        )
+    profile_picture = models.ImageField(
+        default=os.path.join(DEFAULT_IMAGES_ROOT, 'default-user.png'),
+        upload_to='ab_back_end/static/profile_images',
+    )
+    author_view = models.IntegerField(choices=AUTHOR_VIEW, default=0)
 
     def __str__(self):
         return f'{self.user.first_name} {self.user.last_name} ({self.user.username})'
