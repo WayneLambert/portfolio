@@ -7,9 +7,15 @@
         <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
         <small class="text-muted">{{ object.publish_date|date:"D d-M-y H:i" }}</small>
         {% if object.author == user %}
-        <div>
-          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.slug %}">Update</a>
-          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.slug %}">Delete</a>
+        <div class="form-group" style="text-align:right;">
+          <a class="btn btn-sm btn-success mr-2" href="{% url 'post-update' object.slug %}">
+            <i class="fa fa-upload"></i>
+            Update
+          </a>
+          <a class="btn btn-sm btn-danger mr-2" href="{% url 'post-delete' object.slug %}">
+            <i class="fa fa-times-circle"></i>
+            Delete
+          </a>
         </div>
         {% endif %}
       </div>

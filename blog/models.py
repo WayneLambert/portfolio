@@ -31,14 +31,14 @@ class Post(models.Model):
         (0, 'Draft'),
         (1, 'Publish')
     )
-    title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True)
+    title = models.CharField(max_length=65)
+    slug = models.SlugField(max_length=65, unique=True)
     body = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        default=path.join(BASE_DIR, 'ab_back_end/static/images/default.jpg'),
+        default=path.join(BASE_DIR, 'ab_back_end/static/images/default.png'),
         upload_to='ab_back_end/static/profile_pics',
     )
     categories = models.ManyToManyField(Category, blank=True, related_name='posts')
