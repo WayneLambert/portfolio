@@ -16,6 +16,7 @@ class Profile(models.Model):
     profile_picture = models.ImageField(
         default=os.path.join(DEFAULT_IMAGES_ROOT, 'default-user.png'),
         upload_to='ab_back_end/static/profile_images',
+        max_length=200,
     )
     author_view = models.IntegerField(choices=AUTHOR_VIEW, default=0)
 

@@ -14,6 +14,9 @@ load_dotenv(dotenv_path=ENV_PATH)
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
+# Additional field to adjust the login point for the Admin site
+ADMIN_ALIAS = os.getenv('ADMIN_ALIAS')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -89,6 +92,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
+            os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             'blog/templates/blog/',
             'users/templates/users/',
             'scraping/templates/scraping/',
@@ -113,16 +117,12 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASE_NAME = os.getenv('DATABASE_NAME'),
-DATABASE_USER = os.getenv('DATABASE_USER'),
-DATABASE_PASS = os.getenv('DATABASE_PASS'),
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rest_apis',
-        'USER': 'waynelambert',
-        'PASSWORD': DATABASE_PASS,
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASS'),
         'HOST': 'localhost',
         'PORT': '5432',
     }

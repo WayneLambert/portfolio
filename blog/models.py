@@ -36,15 +36,17 @@ class Post(models.Model):
     slug = models.SlugField(max_length=65, unique=True)
     body = models.TextField()
     reference_url = models.URLField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
         default=os.path.join(DEFAULT_IMAGES_ROOT, 'default-post.jpg'),
         upload_to='ab_back_end/static/post_images',
+        max_length=200,
     )
-    categories = models.ManyToManyField(Category, blank=True, related_name='posts')
     status = models.IntegerField(choices=STATUS, default=0)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(
+        Category, blank=True, related_name='posts')
 
     class Meta:
         ordering = ['-publish_date']
@@ -58,8 +60,8 @@ class Post(models.Model):
 
         img = Image.open(self.image.path)
 
-        if img.height > 180 or img.width > 180:
-            output_size = (180, 180)
+        if img.height > 120 or img.width > 120:
+            output_size = (120, 120)
             img.thumbnail(output_size)
             img.save(self.image.path)
 
