@@ -20,8 +20,11 @@ ADMIN_ALIAS = os.getenv('ADMIN_ALIAS')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    'www.waynelambert.dev',
+    '109.237.24.228'
+]
 
 # Application definition
 

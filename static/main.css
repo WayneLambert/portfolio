@@ -1,6 +1,14 @@
+.main-body {
+  line-height: 1.4;
+}
+
 .bg-steel {
-  background-color: #2e79b5;
+  background-color: #563C7C;
   height: 40px;
+}
+
+.bg-dark {
+  background-color: #563C7C !important;
 }
 
 .jumbotron {
@@ -19,7 +27,7 @@ pt-5, .py-5 {
 
 footer {
   position: fixed;
-  background-color: #333333;
+  background-color: #563C7C;
   text-align: center;
   bottom: 0;
   left: 0;
