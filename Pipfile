@@ -29,6 +29,7 @@ requests = "*"
 beautifulsoup4 = "*"
 django-bootstrap4 = "*"
 whitenoise = "*"
+apache2 = "*"
 
 [requires]
 python_version = "3.7"
