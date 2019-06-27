@@ -23,7 +23,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     'www.waynelambert.dev',
-    '109.237.24.228'
+    '109.237.24.228',
 ]
 
 # Application definition
@@ -89,6 +89,16 @@ if DEBUG:
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
     SHOW_TOOLBAR_CALLBACK = True
+
+# Production Settings - changes suggested from $ python3 manage.py check --deploy
+if not DEBUG:
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'
+
 
 TEMPLATES = [
     {
