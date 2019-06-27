@@ -42,6 +42,9 @@ Thumbs.db
 *migrations*
 
 
+# Bash Scripts
+setup.sh
+
 # VS Code Settings Files #
 .vscode/
 
