@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  web:
+    build: .
+    depends_on:
+      - db
+    env_file: 
+      - .env
+    container_name: portfolio
+    command: python /src/manage.py runserver 0.0.0.0:8000
+    #  command: gunicorn -c gunicorn.py --reload "ab_back_end.wsgi:application"
+    ports:
+      #  - 5000:5000  #  Gunicorn
+      - 8000:8000  # Dev
+    volumes:
+      - .:/src
+volumes:
+  postgres_data:

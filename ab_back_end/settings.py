@@ -18,12 +18,16 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 ADMIN_ALIAS = os.getenv('ADMIN_ALIAS')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
+# When developing in a Docker container
+DOCKER = True
 
 ALLOWED_HOSTS = [
     'localhost',
     'www.waynelambert.dev',
     '109.237.24.228',
+    '127.0.0.1',
 ]
 
 # Application definition
@@ -42,7 +46,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'corsheaders',
     'bootstrap4',
-    'django_extensions',
 
     # Third Party Dev Apps
     'debug_toolbar',
@@ -137,7 +140,7 @@ if DEBUG:  # In Development
             'NAME': os.getenv('DATABASE_NAME'),
             'USER': os.getenv('DATABASE_USER'),
             'PASSWORD': os.getenv('DATABASE_PASS'),
-            'HOST': 'localhost',
+            'HOST': 'db' if DOCKER is True else 'localhost',
             'PORT': '5432',
         }
     }
@@ -148,7 +151,7 @@ else:  # In Production
             'NAME': os.getenv('DATABASE_NAME'),
             'USER': os.getenv('DATABASE_USER'),
             'PASSWORD': os.getenv('DATABASE_PASS'),
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '',
         }
     }

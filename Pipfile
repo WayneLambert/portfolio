@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+pylint-django = "*"
+bpython = "*"
+django-debug-toolbar = "*"
+autopep8 = "*"
+pep8 = "*"
+flake8 = "*"
+coverage = "*"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+django-crispy-forms = "*"
+django-guardian = "*"
+markdown = "*"
+pillow = "*"
+psycopg2-binary = "*"
+requests = "*"
+beautifulsoup4 = "*"
+django-bootstrap4 = "*"
+whitenoise = "*"
+python-dotenv = "*"
+gunicorn = "*"
+
+[requires]
+python_version = "3.7"

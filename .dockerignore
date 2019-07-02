@@ -1,3 +1,9 @@
+# Docker
+.dockerignore
+
+# Git
+.git
+
 # Compiled source #
 ###################
 *.com
@@ -46,7 +52,7 @@ Thumbs.db
 setup.sh
 
 # VS Code Settings Files #
-.vscode/
+.vscode/*
 
 # SOPs and Dev Help Files #
 ################################
@@ -190,7 +196,7 @@ venv.bak/
 .ropeproject
 
 # mkdocs documentation
-/site
+**/site
 
 # mypy
 .mypy_cache/
