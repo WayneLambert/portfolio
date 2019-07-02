@@ -21,7 +21,7 @@ ADMIN_ALIAS = os.getenv('ADMIN_ALIAS')
 DEBUG = True
 
 # When developing in a Docker container
-DOCKER = True
+DOCKER = False
 
 ALLOWED_HOSTS = [
     'localhost',
