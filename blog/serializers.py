@@ -33,7 +33,7 @@ class PostSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
-            'body',
+            'content',
             'publish_date',
             'updated_date',
             'image',

@@ -54,7 +54,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ('title', 'slug', 'body', 'content', 'categories',
+    fields = ('title', 'slug', 'content', 'categories',
               'reference_url', 'status', 'image',
               )
 
@@ -65,7 +65,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ('title', 'slug', 'body', 'content', 'categories',
+    fields = ('title', 'slug', 'content', 'categories',
               'reference_url', 'status', 'image',
               )
 

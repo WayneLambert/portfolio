@@ -75,10 +75,7 @@ a.article-title:hover {
 }
 
 .article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 1px;
-  border-bottom: 1px solid #e3e3e3;
-  border-bottom-style: solid; 
+  border-top: 1px solid #e3e3e3;
 }
 
 .article-metadata a:hover {
@@ -90,6 +87,18 @@ a.article-title:hover {
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+
+.author_name {
+  float: left;
+}
+
+.date_stamp {
+  float: right;
+}
+
+.author-metadata-block {
+  clear: both;
 }
 
 .account-img {
@@ -108,17 +117,19 @@ a.article-title:hover {
 }
 
 .search-box {
+  border-radius: 10px;
+  padding: 20px;
   width: 100%;
   height: 2.3rem;
-  padding: 10px;
   border:1px solid #2e79b5;
   border-color: #F0F0F0;
   color: #444444;
   font-weight: 300;
-  font-style: italic;
 }
 
 .search-box:focus {
+  border-radius: 10px;
+  padding: 20px;
   font-style: normal;
   color: #444444;
   box-shadow: none;

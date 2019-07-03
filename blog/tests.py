@@ -16,7 +16,7 @@ class BlogTests(TestCase):
         test_post = Post.objects.create(
             title='Blog title',
             slug='blog-title',
-            body='Body content...',
+            content='Body content...',
             url='www.example.com',
             author=testuser,
             publish_date=datetime.now(),
@@ -28,14 +28,14 @@ class BlogTests(TestCase):
         post = Post.objects.get(id=1)
         expected_title = f'{post.title}'
         expected_slug = f'{post.slug}'
-        expected_body = f'{post.body}'
+        expected_content = f'{post.content}'
         expected_url = f'{post.reference_url}'
         expected_author = f'{post.author}'
         expected_publish_date = f'{post.publish_date}'
         expected_status = f'{post.status}'
         self.assertEqual(expected_title, 'Blog title')
         self.assertEqual(expected_slug, 'blog-title')
-        self.assertEqual(expected_body, 'Body content...')
+        self.assertEqual(expected_content, 'Body content...')
         self.assertEqual(expected_url, 'www.example.com')
         self.assertEqual(expected_author, 'michael_jackson')
         self.assertGreaterEqual(expected_publish_date, datetime.now())

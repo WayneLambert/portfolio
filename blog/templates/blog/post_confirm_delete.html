@@ -9,7 +9,7 @@
           <br>
           <h4>{{ object.title }}</h4>
         <br>
-          {{ object.body|truncatewords:100 }}<br><br>
+          {{ object.content|safe|truncatewords:100 }}<br><br>
           <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a><br>
       </fieldset>
       <div class="form-group">

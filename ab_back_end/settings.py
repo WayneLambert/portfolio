@@ -215,14 +215,22 @@ MEDIA_URL = '/media/'
 DEFAULT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'ab_back_end/static/default_images')
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-# CK Editor Settings
 CKEDITOR_CONFIGS = {
     'default': {
-        'height': 500,
-#        'width': 900,
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Image', 'Table', 'HorizontalRule'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'],
+            ['RemoveFormat', 'CodeSnippet'],
+        ],
+        'extraPlugins': 'codesnippet',
     }
 }
-
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
