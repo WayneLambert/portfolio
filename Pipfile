@@ -28,6 +28,7 @@ django-bootstrap4 = "*"
 whitenoise = "*"
 python-dotenv = "*"
 gunicorn = "*"
+django-ckeditor = "*"
 
 [requires]
 python_version = "3.7"

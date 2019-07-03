@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'corsheaders',
     'bootstrap4',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # Third Party Dev Apps
     'debug_toolbar',
@@ -205,11 +207,22 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog/static'),
     os.path.join(BASE_DIR, 'count/static'),
 ]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'ab_back_end/static/default_images')
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+# CK Editor Settings
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': 500,
+#        'width': 900,
+    }
+}
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

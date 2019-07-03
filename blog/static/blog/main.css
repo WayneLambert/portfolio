@@ -76,8 +76,9 @@ a.article-title:hover {
 
 .article-metadata {
   padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
+  margin-bottom: 1px;
+  border-bottom: 1px solid #e3e3e3;
+  border-bottom-style: solid; 
 }
 
 .article-metadata a:hover {
@@ -100,6 +101,27 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.list-group-item {
+  background-color: #F0F0F0;
+}
+
+.search-box {
+  width: 100%;
+  height: 2.3rem;
+  padding: 10px;
+  border:1px solid #2e79b5;
+  border-color: #F0F0F0;
+  color: #444444;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.search-box:focus {
+  font-style: normal;
+  color: #444444;
+  box-shadow: none;
 }
 
 footer {
@@ -128,8 +150,17 @@ footer {
   cursor: pointer;
 }
 
-.btn-home:hover {
-  background-color: limegreen;
+#btn-home:hover {
+  background-color: #563C7C;
+}
+
+.form-group {
+  margin-bottom: 0.3rem;
+  border-bottom-color: #ffffff;
+}
+
+.django-ckeditor-widget {
+  width: 105%;
 }
 
 #account-heading-username {
@@ -161,3 +192,4 @@ footer {
   height: 100px;
   width: 100px;
 }
+

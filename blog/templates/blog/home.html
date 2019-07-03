@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
+  {% include "blog/search_box.html" %}
   {% for post in posts %}
     <article class="media content-section">
       <img class="rounded article-img" src="{{ post.author.profile.profile_picture.url }}">
@@ -7,7 +8,7 @@
         {% include "blog/author_view.html" %}
         <h4><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h4>
         <img class="article-image-small" id="article-image-small" src="{{ post.image.url }}" }}>
-        <p class="article-content">{{ post.body|linebreaks|truncatewords:75  }}</p>
+        <p class="article-content">{{ post.content|safe|truncatewords:75  }}</p>
         <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a><br><br>
         <a href="{% url 'post-detail' post.slug  %}" class="btn btn-info">Read More &raquo;</a>
       </div>

@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.db.models import Q
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 from blog.models import Category, Post
@@ -53,7 +54,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ('title', 'slug', 'body', 'categories',
+    fields = ('title', 'slug', 'body', 'content', 'categories',
               'reference_url', 'status', 'image',
               )
 
@@ -64,7 +65,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ('title', 'slug', 'body', 'categories',
+    fields = ('title', 'slug', 'body', 'content', 'categories',
               'reference_url', 'status', 'image',
               )
 
@@ -89,3 +90,19 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'blog/search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Post.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+        return object_list
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchResultsView, self).get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+        return context

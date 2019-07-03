@@ -1,6 +1,7 @@
 import os
 from django.contrib.auth.models import User
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from PIL import Image
@@ -8,8 +9,8 @@ from ab_back_end.settings import DEFAULT_IMAGES_ROOT
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=20)
-    slug = models.SlugField(max_length=20, unique=True)
+    name = models.CharField(max_length=16)
+    slug = models.SlugField(max_length=16, unique=True)
     created_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -35,6 +36,7 @@ class Post(models.Model):
     title = models.CharField(max_length=65)
     slug = models.SlugField(max_length=65, unique=True)
     body = models.TextField()
+    content = RichTextUploadingField()
     reference_url = models.URLField()
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
@@ -55,7 +57,8 @@ class Post(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 
         img = Image.open(self.image.path)

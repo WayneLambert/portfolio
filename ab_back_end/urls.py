@@ -30,6 +30,7 @@ urlpatterns = [
         name='password_reset_complete',
     ),
     path(f'{ADMIN_ALIAS}/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', ab_back_end_views.home, name='home'),
     path('cv', ab_back_end_views.view_cv, name='view-cv'),
     path('about-blog', ab_back_end_views.about_blog, name='about-blog'),

@@ -5,6 +5,7 @@
   <div class="content-section">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
+      {{ form.media }}
       {% if 'update' in request.path %}
       <fieldset class="form-group">
         <legend class="border-bottom mb-4">Update Post</legend>

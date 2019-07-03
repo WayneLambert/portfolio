@@ -22,7 +22,7 @@
       {% if object.image.url %}
         <img class="article-image" id="article-image" src="{{ object.image.url }}" }}>
       {% endif %}
-      <p class="article-content"></p>{{ object.body|linebreaks }}</p>
+      <p class="article-content"></p>{{ object.content|safe }}</p>
       <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a>
     </div>
   </article>
