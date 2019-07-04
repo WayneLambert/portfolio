@@ -34,9 +34,16 @@ class Post(models.Model):
         (1, 'Publish')
     )
     title = models.CharField(max_length=65)
-    slug = models.SlugField(max_length=65, unique=True)
+    slug = models.SlugField(
+        max_length=65,
+        unique=True,
+        help_text="""
+        The slug can be any words you like separated by dashes.
+        Prepositions and pronouns are unncessary from an SEO perspective.
+        """,
+    )
     content = RichTextUploadingField()
-    reference_url = models.URLField()
+    reference_url = models.URLField(blank=True)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
@@ -47,7 +54,7 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     categories = models.ManyToManyField(
-        Category, blank=True, related_name='posts')
+        Category, related_name='posts')
 
     class Meta:
         ordering = ['-publish_date']

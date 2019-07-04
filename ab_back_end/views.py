@@ -19,9 +19,9 @@ def view_cv(request):
         return HttpResponseNotFound('The CV was not found in the server.')
 
 
-def about_blog(request):
-    return render(request, 'about_blog.html')
-
-
 def contact_form(request):
     return render(request, 'contact.html')
+
+
+def error_404(request, exception):
+    return render(request, 'templates/404.html')

@@ -40,7 +40,7 @@ Thumbs.db
 *__pycache__*
 *__init__.py
 *migrations*
-
+screenshot_template.py
 
 # Bash Scripts
 setup.sh

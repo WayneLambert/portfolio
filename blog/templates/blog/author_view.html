@@ -9,7 +9,10 @@
       </a>
     </p>
     <p class="date_stamp">
-      <small class="text-muted">{{ post.publish_date|date:"D d-M-y H:i" }}</small>
+      <small class="text-muted">
+        Published: {{ post.publish_date|date:"D d-M-y H:i" }}  |  
+        Updated: {{ post.updated_date|date:"D d-M-y H:i" }}
+      </small>
     </p>
 </div>
 <div class="author-metadata-block"></div>
