@@ -1,16 +1,16 @@
 {% extends "blog/base.html" %}
 {% block content %}
+  <h3>Contents Page</h3>
   {% for category in categories %}
-    <h5><a class="article-title" href="#">{{ category.name }}</a></h5>
+    <br>
+    <h6><a class="category-name"
+        href="{% url "blog-home" %}category/{{ category.slug }}">{{ category.name }}</a>
+    </h6>
     {% for post in posts %}
-      {% if {{ post.categories.0.name }} == category %} 
-        <article class="media content-section">
-          <img class="rounded article-img" src="{{ post.author.profile.profile_picture.url }}">
-          <div class="media-body">
-            {% include "blog/author_view.html" %}
-            <h6><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h6>
-          </div>
-        </article>
+      {% if category.id == posts.categories.id %}
+      <a class="article-title"
+        href="{% url 'post-detail' post.slug %}">- {{ post.title }}
+      </a><br>
       {% endif %}
     {% endfor %}
   {% endfor %}

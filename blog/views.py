@@ -109,16 +109,17 @@ class SearchResultsView(ListView):
 
 
 # TODO: Continue working on this view
-def get_contents_page(request):
-    categories = Category.objects.all().order_by('name')
-    posts = Post.objects.filter(status=1).order_by('-publish_date')
+class ContentsListView(ListView):
 
-    context = {}
-    for category in categories:
-        for post in posts:
-            if post.categories['name'] == category.name:
-                context.update(
-                    {'category': category.name},
-                    {'post': post.title},
-                )
-    return render(request, 'blog/contents.html', context)
+    model = Category
+    template_name = 'blog/contents.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ContentsListView, self).get_context_data(**kwargs)
+        categories = Category.objects.all().order_by('name')
+        posts = Post.objects.filter(status=1).order_by('-publish_date')
+        context = {
+            'categories': categories,
+            'posts': posts,
+        }
+        return context

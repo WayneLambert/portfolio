@@ -1,12 +1,3 @@
-""" Django Rest Framework implementation of 'Blog Project'
-
-This module is in place from a previous stage of the development cycle when
-I was building the blog with a React front end and passing the blog data to and
-from the front end using Django Rest Framework.
-
-TODO: Pick up project again once deployed with standard Django templates.
-"""
-
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from blog.models import Post
@@ -33,10 +24,15 @@ class PostSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'title',
+            'slug',
             'content',
+            'reference_url',
             'publish_date',
             'updated_date',
             'image',
+            'status',
+            'author',
+            'categories',
         )
         ordering = ['-publish_date']
 
