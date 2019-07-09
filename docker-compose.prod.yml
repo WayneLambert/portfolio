@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  web:
+    build: .
+    restart: on-failure
+    env_file:
+      - .env
+    container_name: web-gunicorn
+    command: gunicorn --bind 0.0.0.0:8080 ab_back_end.wsgi
+    ports:
+      - 8080:8080
+    depends_on:
+      - nginx
+  nginx:
+    image: "nginx"
+    restart: always
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./staticfiles:/static
+      - ./mediafiles:/media
+    ports:
+      - 80:80

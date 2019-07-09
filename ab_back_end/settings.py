@@ -1,31 +1,39 @@
 import os
-from dotenv import load_dotenv
-from pathlib import Path
+import sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-ENV_PATH = Path(BASE_DIR) / '.env'
-load_dotenv(dotenv_path=ENV_PATH)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+if os.environ['SECRET_KEY']:
+    SECRET_KEY = os.environ['SECRET_KEY']
+else:
+    print(""" A secret key needs to be set as an environment variable within
+        the project's .env file. Remember that this should be listed
+        in the project's .gitignore file.""")
+    sys.exit(1)
 
 # Additional field to adjust the login point for the Admin site
-ADMIN_ALIAS = os.getenv('ADMIN_ALIAS')
+ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.getenv('DEBUG', False)))
 
-# When developing in a Docker container
-DOCKER = False
+# Gets Django web host for development purposes
+DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
+
+# Gets Domain name for production
+HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
+
+# Gets Django database host for development purposes
+DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    'localhost',
-    'www.waynelambert.dev',
+    DJANGO_WEBHOST,
+    HOST_DOMAIN_NAME,
     '109.237.24.228',
     '127.0.0.1',
 ]
@@ -135,28 +143,16 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-if DEBUG:  # In Development
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DATABASE_NAME'),
-            'USER': os.getenv('DATABASE_USER'),
-            'PASSWORD': os.getenv('DATABASE_PASS'),
-            'HOST': 'db' if DOCKER is True else 'localhost',
-            'PORT': '5432',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ['POSTGRES_DB'],
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+        'HOST': 'db',
+        'PORT': os.environ['POSTGRES_PORT'],
     }
-else:  # In Production
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.getenv('DATABASE_NAME'),
-            'USER': os.getenv('DATABASE_USER'),
-            'PASSWORD': os.getenv('DATABASE_PASS'),
-            'HOST': 'db',
-            'PORT': '',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -238,14 +234,19 @@ CKEDITOR_CONFIGS = {
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # For Django Debug Toolbar to be used in local development environment
-INTERNAL_IPS = '127.0.0.1'
+INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
+
+# For Django Debug Toolbar to be used in local dockerized development environment
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
+}
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.getenv('EMAIL_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASS')
+EMAIL_HOST = os.environ['EMAIL_HOST'],
+EMAIL_PORT = os.environ['EMAIL_PORT'],
+EMAIL_USER = os.environ['EMAIL_USER'],
+EMAIL_PASS = os.environ['EMAIL_PASS'],
+EMAIL_USE_TLS = bool(int(os.getenv('DEBUG', False)))

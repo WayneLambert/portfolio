@@ -42,6 +42,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('scraping/', include('scraping.urls')),
     path('count/', include('count.urls')),
+    path('api/', include('api.urls')),
 ]
 
 handler404 = 'ab_back_end.views.error_404'

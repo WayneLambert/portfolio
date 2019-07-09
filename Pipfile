@@ -29,6 +29,7 @@ whitenoise = "*"
 python-dotenv = "*"
 gunicorn = "*"
 django-ckeditor = "*"
+drf-yasg = "*"
 
 [requires]
 python_version = "3.7"

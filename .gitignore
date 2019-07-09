@@ -199,3 +199,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Docker Mounted Directories
+staticfiles/
+mediafiles/
+postgres/data/
+
+# Temporary / Reference Project Files
+settings_local.py

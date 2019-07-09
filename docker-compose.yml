@@ -2,22 +2,56 @@ version: '3.7'
 
 services:
   db:
-    image: postgres:alpine
+    image: postgres
+    restart: unless-stopped
+    container_name: portfolio_db
+    environment: 
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASS: ${POSTGRES_PASSWORD}
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data
+    networks: 
+      - backend
+    ports:
+      - 5432:5432
+
+  db-admin:
+    image: dpage/pgadmin4
+    container_name: portfolio_db_admin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
   web:
     build: .
     depends_on:
       - db
-    env_file: 
+    restart_policy:
+      - condition: on-failure
+      - delay: 5s
+      - max_attempts: 3
+      - window: 150ms
+    env_file:
       - .env
-    container_name: portfolio
-    command: python /src/manage.py runserver 0.0.0.0:8000
-    #  command: gunicorn -c gunicorn.py --reload "ab_back_end.wsgi:application"
+    container_name: portfolio_web
+    networks:
+      - backend
+    command: sh /code/run-dev.sh
     ports:
-      #  - 5000:5000  #  Gunicorn
-      - 8000:8000  # Dev
+      - 8001:8001
     volumes:
-      - .:/src
+      - .:/code
+
+networks:
+  backend:
+    driver: bridge
+
 volumes:
   postgres_data:
