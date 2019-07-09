@@ -108,7 +108,6 @@ class SearchResultsView(ListView):
         return context
 
 
-# TODO: Continue working on this view
 class ContentsListView(ListView):
 
     model = Category
