@@ -35,7 +35,7 @@ services:
       - db
     restart_policy:
       - condition: on-failure
-      - delay: 5s
+      - delay: 3s
       - max_attempts: 3
       - window: 150ms
     env_file:

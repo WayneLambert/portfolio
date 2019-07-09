@@ -29,20 +29,22 @@ ul {
 }
 
 .bg-steel {
-  background-color: #2e79b5;
-  height: 40px;
+  background-color: #563C7C;
+  height: 50px;
 }
 
 .site-header .navbar-nav .nav-link {
   color: #cbd5db;
+  font-weight: 300;
 }
 
 .site-header .navbar-nav .nav-link:hover {
   color: #ffffff;
+  font-weight: 300;
 }
 
 .site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
+  font-weight: bolder;
 }
 
 .content-section {
@@ -137,7 +139,7 @@ a.article-title:hover {
 
 footer {
   position: fixed;
-  background-color: #2e79b5;
+  background-color: #563C7C;
   text-align: center;
   bottom: 0;
   left: 0;
@@ -157,13 +159,14 @@ footer {
 #btn-home {
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
 #btn-home:hover {
-  background-color: #563C7C;
+  background-color: lightgray;
 }
+
 
 .form-group {
   margin-bottom: 0.3rem;

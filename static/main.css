@@ -3,12 +3,13 @@
 }
 
 .bg-steel {
-  background-color: #563C7C;
-  height: 40px;
+  background-color: #02244D;
+  height: 50px;
 }
 
 .bg-dark {
-  background-color: #563C7C !important;
+  background-color: #02244D !important;
+  height: 50px;
 }
 
 .jumbotron {
@@ -27,7 +28,7 @@ pt-5, .py-5 {
 
 footer {
   position: fixed;
-  background-color: #563C7C;
+  background-color: #02244D;
   text-align: center;
   bottom: 0;
   left: 0;
