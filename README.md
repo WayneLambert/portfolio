@@ -4,7 +4,7 @@ The site will soon be hosted at waynelambert.dev and is intended to illustrate t
 
 It is accepted that in some cases, the solutions are overkill in terms of what would suffice in an actual production environment and the site is intended to demonstrate the application of programming skill and usage of applicable technologies.
 
-The blog is not intended to be a full production product, therefore some typical blog features have been purposefully omitted. For example, comments could be added to the blog, however this one has been designed for dictators. :)
+The blog is not intended to be a full production product, therefore some typical blog features have been purposefully omitted. For example, comments or tags could be added to the blog, however this blog has been designed for dictators. :)
 
 ## Blog
 
@@ -12,16 +12,18 @@ The blog is implemented as a classic CRUD application which uses views for each 
 
 The blog ties together users and profiles with signals so that profile data can be created when a new user is registered. The blog uses the Pillow library to compress and adjust images when a user registers to the site.
 
-Various relationships exist within the blog to demonstrate the use of differnet database relationships and how the ORM can be queried using querysets. The relationships of the database tables can be seen in the diagram captured from JetBrains' DataGrip software [ INSERT LINK HERE ]
-
 ### Blog Features
 
-- CREATE a new post assigned to the user which is logged in at the time.
+- CREATE a new post assigned to the user which is logged in at the time
 - READ existing posts that are either assigned to a given author, or in their entirety or simply on its own.
-- UPDATE or DELETE existing post(s). This can only be achieved by the author of the post, therefore authentication checking is implemented.
-- A users and profiles components of the overall app that is tied together using signals. A save_profile function is augmented with the ability to save a new profile instance based upon the event of a post being saved by a given user. This is done by the use of a @receiver decorator.
-- Each profile can have a profile picture attached to it.
-- The use of Django Crispy Forms makes the forms secure from cross-site attacks. The formatting of the forms are also consistent and improve upon Django's standard forms.
+- UPDATE or DELETE existing post(s). This can only be achieved by the author of the post, therefore authentication checking is implemented
+- Authentication and authorisation implemented
+- Profiles can be viewed and adjusted as the registered author's desires
+- The use of Django Crispy Forms makes the forms secure from cross-site attacks. The formatting of the forms are also consistent and improve upon Django's standard forms
+- There are views by all posts, by author, by category and blog post detail views
+- Search engine to help people navigate their way around the blog
+- Contents page allowing people to see the full range of posts on the blog
+- A custom 404 page that makes the best out of a bad situation. It presents the visitor with the search bar followed by the contents.
 
 ## The Scrape It! Project
 
@@ -34,6 +36,15 @@ Finally, the Django component of the application is the handling of the URLs to 
 ## The Word Counting App
 
 The word counting app is another demonstration of using Python to calculate the number of occurences of each of the words and letters used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
+
+## API Endpoints
+
+The blog app also has some API endpoints programmed in that can be used by a front-end developer with a framework such as React, Vue or Angular.
+
+These can be accessed by either going to <https://waynelambert.dev/api/blog/> to see the blog list view or to
+<https://waynelambert.dev/api/blog/1> to see the detail view. The '1' part of the url can be exchanged for any other valid primary key number for the post.
+
+These addresses expose the browsable endpoints that Django Rest Framework provides.
 
 ## License
 
