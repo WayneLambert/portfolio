@@ -33,11 +33,7 @@ services:
     build: .
     depends_on:
       - db
-    restart_policy:
-      - condition: on-failure
-      - delay: 3s
-      - max_attempts: 3
-      - window: 150ms
+    restart: on-failure
     env_file:
       - .env
     container_name: portfolio_web

@@ -21,7 +21,3 @@ def view_cv(request):
 
 def contact_form(request):
     return render(request, 'contact.html')
-
-
-def error_404(request, exception):
-    return render(request, 'templates/404.html')

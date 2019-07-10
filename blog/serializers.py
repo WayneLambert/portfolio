@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from blog.models import Post
+from blog.models import Category, Post
 
 User = get_user_model()
 
@@ -11,14 +11,34 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = [
+        fields = (
             'username',
             'first_name',
             'last_name',
-        ]
+        )
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'id',
+            'name',
+            'slug',
+            'created_date',
+        )
+        ordering = ['name']
+
+    def to_representation(self, instance):
+        representation = super(CategorySerializer, self).to_representation(instance)
+        representation['created_date'] = instance.created_date.strftime(format='%a %d-%b-%Y %H:%M')
+        return representation
 
 
 class PostSerializer(serializers.ModelSerializer):
+    categories = serializers.StringRelatedField(many=True)
+    author_name = serializers.StringRelatedField(source='profile.first_name')
+
     class Meta:
         model = Post
         fields = (
@@ -31,7 +51,11 @@ class PostSerializer(serializers.ModelSerializer):
             'updated_date',
             'image',
             'status',
-            'author',
+            'author_name',
+            'categories',
+        )
+        read_only_fields = (
+            'id',
             'categories',
         )
         ordering = ['-publish_date']

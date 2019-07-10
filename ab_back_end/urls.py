@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.conf.urls import handler404
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
@@ -44,9 +43,6 @@ urlpatterns = [
     path('count/', include('count.urls')),
     path('api/', include('api.urls')),
 ]
-
-handler404 = 'ab_back_end.views.error_404'
-
 
 if settings.DEBUG:
     import debug_toolbar
