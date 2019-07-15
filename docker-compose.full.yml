@@ -1,0 +1,65 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: portfolio_db
+    build: .
+    restart: unless-stopped
+    environment: 
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+    volumes:
+      - type: volume
+        source: postgres_data
+        target: /var/lib/postgresql/data
+    networks: 
+      - backend
+    ports:
+      - 5432:5432
+
+  db-admin:
+    image: dpage/pgadmin4
+    container_name: portfolio_db_admin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    networks:
+      - backend
+
+#   web:
+#     container_name: portfolio_web
+#     build: .
+#     depends_on:
+#       - db
+#     restart: always
+#     env_file:
+#       - .env
+#     networks:
+#       - backend
+#     ports:
+#       - 8001:8001
+#     volumes:
+#       - type: volume
+#         source: src_code
+#         target: /code:consistent
+#         volume:
+#           nocopy: true
+#       - type: bind
+#         source: ./static
+#         target: /opt/app/static
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  #src_code:

@@ -1,14 +1,31 @@
+    volumes:
+      - type: volume
+        source: web_vol
+        target: /src
+        volume:
+          nocopy: true
+      - type: volume
+        source: web_static
+        target: /opt/app/static
+        volume:
+          nocopy: true
+
+
+
+Working config ...
+
+
 version: '3.7'
 
 services:
-  postgres:
+  db:
     container_name: portfolio_db
     build:
       context: ./docker/db
     restart: always
     volumes:
       - type: volume
-        source: postgres_vol
+        source: db_vol
         target: /var/lib/postgresql/data
     ports:
       - 5432:5432
@@ -19,12 +36,12 @@ services:
     container_name: portfolio_pg_admin4
     build:
       context: ./docker/pg-admin
-    restart: on-failure
+    restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     depends_on:
-      - postgres
+      - db
     ports:
       - 8080:80
     networks:
@@ -36,20 +53,14 @@ services:
       dockerfile: ./docker/web/Dockerfile
       context: .
     depends_on:
-      - postgres
-      - pg-admin
+      - db
     restart: always
     env_file:
       - .env
     volumes:
       - type: volume
         source: web_vol
-        target: ${WEB_CONTAINER_PATH}
-        consistency: consistent
-      - type: volume
-        source: web_vol_static
-        target: ${WEB_CONTAINER_STATIC_PATH}
-        consistency: static
+        target: /code
     ports:
       - 8001:8001
     networks:
@@ -60,16 +71,6 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_vol:
+  db_vol:
   web_vol:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/${WEB_HOST_PATH}
-      o: bind
-  web_vol_static:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/${WEB_HOST_STATIC_PATH}
-      o: bind
+  web_static

@@ -32,10 +32,9 @@ HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    DJANGO_WEBHOST,
-    HOST_DOMAIN_NAME,
     '109.237.24.228',
     '127.0.0.1',
+    'localhost',
 ]
 
 # Application definition
@@ -57,9 +56,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
 
-    # Third Party Dev Apps
-    'debug_toolbar',
-
     # Project Apps
     'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
@@ -68,7 +64,6 @@ INSTALLED_APPS = [
     'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
 ]
-
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Third party
@@ -86,6 +81,13 @@ ROOT_URLCONF = 'ab_back_end.urls'
 
 # Django Debug Toolbar Settings
 if DEBUG:
+    # For Django Debug Toolbar to be used in local development environment
+    INSTALLED_APPS += ('debug_toolbar',)
+    INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
+    # For Django Debug Toolbar to be used in local dockerized development environment
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
+    }
     MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     DEBUG_TOOLBAR_PANELS = [
         'debug_toolbar.panels.versions.VersionsPanel',
@@ -103,8 +105,11 @@ if DEBUG:
     ]
     SHOW_TOOLBAR_CALLBACK = True
 
-# Production Settings - changes suggested from $ python3 manage.py check --deploy
+# Production Settings
 if not DEBUG:
+    ALLOWED_HOSTS += ('HOST_DOMAIN_NAME',)
+
+    # Changes suggested from $ python3 manage.py check --deploy
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_SSL_REDIRECT = True
@@ -146,11 +151,11 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['POSTGRES_DB'],
-        'USER': os.environ['POSTGRES_USER'],
-        'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-        'HOST': 'db',
-        'PORT': os.environ['POSTGRES_PORT'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': os.environ['DB_DOCKER_SERVICE'],
+        'PORT': os.environ['DB_PORT'],
     }
 }
 
@@ -232,14 +237,6 @@ CKEDITOR_CONFIGS = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-# For Django Debug Toolbar to be used in local development environment
-INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
-
-# For Django Debug Toolbar to be used in local dockerized development environment
-DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
-}
 
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'

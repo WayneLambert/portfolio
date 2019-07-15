@@ -37,7 +37,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     categories = serializers.StringRelatedField(many=True)
-    author_name = serializers.StringRelatedField(source='profile.first_name')
+    # author_username = serializers.CharField(source='author.username')
+    # status = serializers.ChoiceField(choices=Post.Status)
 
     class Meta:
         model = Post
@@ -51,7 +52,7 @@ class PostSerializer(serializers.ModelSerializer):
             'updated_date',
             'image',
             'status',
-            'author_name',
+            'author_username',
             'categories',
         )
         read_only_fields = (
