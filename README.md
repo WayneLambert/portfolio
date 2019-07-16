@@ -44,7 +44,7 @@ The blog app also has some API endpoints programmed in that can be used by a fro
 These can be accessed by either going to <https://waynelambert.dev/api/blog/> to see the blog list view or to
 <https://waynelambert.dev/api/blog/1> to see the detail view. The '1' part of the url can be exchanged for any other valid primary key number for the post.
 
-These addresses expose the browsable endpoints that Django Rest Framework provides.
+These addresses expose the browsable API endpoints that Django Rest Framework provides.
 
 ## License
 

@@ -4,7 +4,7 @@ services:
   postgres:
     container_name: portfolio_db
     build:
-      context: ./docker/pg-admin
+      context: ./docker/postgres
     restart: always
     volumes_from:
       - data
