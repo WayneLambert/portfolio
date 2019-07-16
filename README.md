@@ -33,7 +33,7 @@ Finally, the Django component of the application is the handling of the URLs to 
 
 ## The Word Counting App
 
-The word counting app is another demonstration of using Python to calculate the number of occurences of each of the words and letters used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
+The word counting app is a demonstration of using Python to calculate the number of occurences of each of the words and letters used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
 
 ## API Endpoints
 
