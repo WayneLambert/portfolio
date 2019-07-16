@@ -2,8 +2,6 @@
 
 The site will soon be hosted at waynelambert.dev and is intended to illustrate the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
 
-It is accepted that in some cases, the solutions are overkill in terms of what would suffice in an actual production environment and the site is intended to demonstrate the application of programming skill and usage of applicable technologies.
-
 The blog is not intended to be a full production product, therefore some typical blog features have been purposefully omitted. For example, comments and tags could be additional features developed for the blog.
 
 ## Blog
