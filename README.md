@@ -20,7 +20,7 @@ The blog ties together users and profiles with signals so that profile data can 
 - The use of Django Crispy Forms makes the forms secure from cross-site attacks. The formatting of the forms are also consistent and improve upon Django's standard forms
 - There are views by all posts, by author, by category and blog post detail views
 - Search engine to help people navigate their way around the blog
-- Contents page allowing people to see the full range of posts on the blog
+- Contents page allowing people to see the full range of posts on the blog. The relationship between categories and posts is a many-to-many relationship.
 - A custom 404 page that makes the best out of a bad situation. It presents the visitor with the search bar followed by the contents.
 
 ## The Scrape It! Project
