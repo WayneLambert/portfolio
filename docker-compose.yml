@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   postgres:
-    container_name: portfolio_db
+    container_name: portfolio_postgres 
     build:
       context: ./docker/postgres
     restart: always

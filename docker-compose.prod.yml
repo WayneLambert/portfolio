@@ -2,76 +2,46 @@ version: '3.7'
 
 services:
   postgres:
-    container_name: portfolio_db
+    container_name: portfolio_postgres
     build:
-      context: ./docker/postgres
+      context: ./docker/postgres  
     restart: always
-    volumes_from:
-      - data
     volumes:
       - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./backups/postgresql:/backup
-    env_file:
-      - env
     expose:
       - 5432
 
-  pg-admin:
-    container_name: portfolio_pg_admin4
-    build:
-      context: ./docker/pg-admin
-    restart: on-failure
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-    depends_on:
-      - postgres
-    ports:
-      - 8080:82
-
-  web:
-    container_name: portfolio_web
-    build:
-      dockerfile: ./docker/web/Dockerfile
-      context: .
-    depends_on:
-      - postgres
-      - pg-admin
-    restart: always
-    env_file:
-      - .env
-    expose:
-      - 8002
-    links:
-      - postgres: postgres
-      - redis: redis
-    volumes:
-      - .:/data/web
-    command: /usr/bin/gunicorn ab_back_end.wsgi:application -w 2 -b :8002
-
   nginx:
     container_name: portfolio_nginx
+    image: nginx
     restart: always
-    build: ./nginx/
     ports:
       - 80:80
-    volumes_from:
-      - web
-    links:
-      - web:web
-
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./staticfiles:/static
+      - ./mediafiles:/media
 
   redis:
     container_name: portfolio_redis
-    restart: always
     image: redis:latest
+    restart: always
     expose:
       - 6379
 
-  data:
-    container_name: portfolio_data
-    restart: always
-    image: alpine
-    volumes:
-      - /var/lib/postgresql
-    command: "true"
+  web:
+    container_name: portfolio_web
+    build: .
+    depends_on:
+      - postgres
+      - nginx
+    restart: on-failure
+    env_file:
+      - .env
+    expose:
+      - 8080:8080
+    links:
+      - postgres: postgres
+      - redis: redis
+    command: gunicorn --bind 0.0.0.0:8080 ab_back_end.wsgi

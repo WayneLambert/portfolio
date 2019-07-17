@@ -6,6 +6,9 @@ LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
     version="2019.07" \
     description="Docker image for web service of portfolio site."
 
+# Causes all output to stdout to be flushed immediately
+ENV PYTHONUNBUFFERED 1
+
 # Create and set working directory
 WORKDIR /code
 
