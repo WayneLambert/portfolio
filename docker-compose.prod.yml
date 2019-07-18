@@ -1,47 +1,49 @@
 version: '3.7'
 
 services:
-  postgres:
-    container_name: portfolio_postgres
+  postgres_prod:
+    container_name: portfolio_postgres_prod 
     build:
-      context: ./docker/postgres  
+      context: ./docker/prod/postgres
     restart: always
     volumes:
-      - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - ./backups/postgresql:/backup
+      - type: volume
+        source: postgres_vol_prod
+        target: /var/lib/postgresql/data
     expose:
       - 5432
 
-  nginx:
-    container_name: portfolio_nginx
-    image: nginx
+  nginx_prod:
+    container_name: portfolio_nginx_prod
+    build:
+      dockerfile: ./docker/prod/nginx/Dockerfile
+      context: .
     restart: always
     ports:
-      - 80:80
+      - 8080:80
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d
-      - ./staticfiles:/static
-      - ./mediafiles:/media
+      - ./docker/prod/nginx:/etc/nginx/conf.d
+      - static_prod:/static
+      - media_prod:/media
 
-  redis:
-    container_name: portfolio_redis
-    image: redis:latest
-    restart: always
-    expose:
-      - 6379
-
-  web:
-    container_name: portfolio_web
-    build: .
+  web_prod:
+    container_name: portfolio_web_prod
+    build:
+      dockerfile: ./docker/prod/web/Dockerfile
+      context: .
     depends_on:
-      - postgres
-      - nginx
+      - postgres_prod
+      - nginx_prod
     restart: on-failure
     env_file:
       - .env
+    volumes:
+      - static_prod:/static
+      - media_prod:/media
     expose:
-      - 8080:8080
-    links:
-      - postgres: postgres
-      - redis: redis
-    command: gunicorn --bind 0.0.0.0:8080 ab_back_end.wsgi
+      - 80
+
+volumes:
+  postgres_vol_prod:
+  static_prod:
+  media_prod:

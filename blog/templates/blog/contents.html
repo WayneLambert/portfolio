@@ -1,7 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  <h3>Contents Page 2</h3><br>
-  {% for category in categories %}
+  <h3>Contents Page</h3><br>
+  {% for category in categories %}   
     <h6><a class="category-name"
         href="{% url "blog-home" %}category/{{ category.slug }}">{{ category.name }}</a>
     </h6><br>

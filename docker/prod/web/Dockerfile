@@ -1,4 +1,4 @@
-# Official Python runtime as the base image
+# Use Alpine version of the Python runtime as the base image
 FROM python:3.7.4-alpine
 
 # Add metadata to the image
@@ -13,7 +13,6 @@ WORKDIR /code
 RUN apk --update add \
     build-base \
     gettext \
-    nginx \
     # Postgres Dependencies
     libpq \
     --virtual .build-deps \
@@ -39,7 +38,13 @@ RUN pip install pipenv
 COPY Pipfile Pipfile.lock /code/
 
 # Install project dependencies using exact versions in Pipfile.lock
-RUN pipenv install --system --ignore-pipfile --deploy --dev
+RUN pipenv install --system --ignore-pipfile --deploy
 
 # Copy local source code directory to container's source code directory
-COPY . .
+COPY . . 
+
+# Exposes port 8080
+EXPOSE 8080
+
+# Starts up the Gunicorn application server on port 8080
+CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8080"]

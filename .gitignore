@@ -206,3 +206,6 @@ postgres/data/
 
 # Temporary / Reference Project Files
 settings_local.py
+
+# Logging files
+logs/*

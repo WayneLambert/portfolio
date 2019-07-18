@@ -207,3 +207,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Logging files
+logs/*

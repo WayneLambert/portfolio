@@ -1,55 +1,52 @@
 version: '3.7'
 
 services:
-  postgres:
-    container_name: portfolio_postgres 
+  postgres_dev:
+    container_name: portfolio_postgres_dev
     build:
-      context: ./docker/postgres
+      context: ./docker/dev/postgres
     restart: always
     volumes:
       - type: volume
-        source: postgres_vol
+        source: postgres_vol_dev
         target: /var/lib/postgresql/data
     ports:
       - 5432:5432
     networks: 
       - backend
 
-  pg-admin:
-    container_name: portfolio_pg_admin4
+  pg_admin_dev:
+    container_name: portfolio_pg_admin4_dev
     build:
-      context: ./docker/pg-admin
+      context: ./docker/dev/pg-admin
     restart: on-failure
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
     depends_on:
-      - postgres
+      - postgres_dev
     ports:
-      - 8080:80
+      - 5050:5050
     networks:
       - backend
 
-  web:
-    container_name: portfolio_web
+  web_dev:
+    container_name: portfolio_web_dev
     build:
-      dockerfile: ./docker/web/Dockerfile
+      dockerfile: ./docker/dev/web/Dockerfile
       context: .
     depends_on:
-      - postgres
-      - pg-admin
+      - postgres_dev
+      - pg_admin_dev
     restart: always
     env_file:
       - .env
     volumes:
       - type: volume
-        source: web_vol
+        source: web_vol_dev
         target: ${WEB_CONTAINER_PATH}
         consistency: consistent
-      - type: volume
-        source: web_vol_static
-        target: ${WEB_CONTAINER_STATIC_PATH}
-        consistency: static
     ports:
       - 8001:8001
     networks:
@@ -60,16 +57,10 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_vol:
-  web_vol:
+  postgres_vol_dev:
+  web_vol_dev:
     driver: local
     driver_opts:
       type: none
       device: $PWD/${WEB_HOST_PATH}
-      o: bind
-  web_vol_static:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/${WEB_HOST_STATIC_PATH}
       o: bind

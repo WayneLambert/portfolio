@@ -1,0 +1,8 @@
+  redis_prod:
+    container_name: portfolio_redis_prod
+    build:
+      dockerfile: ./docker/prod/redis/Dockerfile
+      context: .
+    restart: always
+    expose:
+      - 6379
