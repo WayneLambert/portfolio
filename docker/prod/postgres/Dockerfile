@@ -2,9 +2,9 @@
 FROM postgres:11.4-alpine
 
 # Add metadata to the image
-LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2019.07" \
-    description="Docker image for db service of portfolio site."
+LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
+    dev.waynelambert.version="2019.07" \
+    dev.waynelambert.description="Docker image for postgres service"
 
 # Run the rest of the commands as the 'postgres' user
 USER postgres

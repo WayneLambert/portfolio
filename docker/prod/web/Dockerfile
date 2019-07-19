@@ -2,9 +2,9 @@
 FROM python:3.7.4-alpine
 
 # Add metadata to the image
-LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2019.07" \
-    description="Docker image for web service of portfolio site."
+LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
+    dev.waynelambert.version="2019.07" \
+    dev.waynelambert.description="Docker image for web service"
 
 # Create and set working directory
 WORKDIR /code
@@ -47,4 +47,4 @@ COPY . .
 EXPOSE 8080
 
 # Starts up the Gunicorn application server on port 8080
-CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8080"]
+CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8080", "--chdir=/code"]

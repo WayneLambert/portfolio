@@ -11,9 +11,9 @@ services:
         source: postgres_vol_dev
         target: /var/lib/postgresql/data
     ports:
-      - 5432:5432
-    networks: 
-      - backend
+      - "5432:5432"
+    networks:
+      - backend_dev
 
   pg_admin_dev:
     container_name: portfolio_pg_admin4_dev
@@ -27,9 +27,9 @@ services:
     depends_on:
       - postgres_dev
     ports:
-      - 5050:5050
+      - "5050:5050"
     networks:
-      - backend
+      - backend_dev
 
   web_dev:
     container_name: portfolio_web_dev
@@ -42,18 +42,19 @@ services:
     restart: always
     env_file:
       - .env
+      - dev.env
     volumes:
       - type: volume
         source: web_vol_dev
         target: ${WEB_CONTAINER_PATH}
         consistency: consistent
     ports:
-      - 8001:8001
+      - "8001:8001"
     networks:
-      - backend
+      - backend_dev
 
 networks:
-  backend:
+  backend_dev:
     driver: bridge
 
 volumes:
