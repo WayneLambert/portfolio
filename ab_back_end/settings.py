@@ -32,10 +32,11 @@ HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    '109.237.24.228',
+    '178.79.156.225',
     '172.31.0.4',
     '127.0.0.1',
     'localhost',
+    '0.0.0.0',
 ]
 
 # Application definition
@@ -206,7 +207,6 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'blog/static'),
     os.path.join(BASE_DIR, 'count/static'),
 ]
