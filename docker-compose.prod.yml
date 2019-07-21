@@ -10,8 +10,8 @@ services:
       - type: volume
         source: postgres_vol_prod
         target: /var/lib/postgresql/data
-    expose:
-      - "5432"
+    ports:
+      - "5432:5432"
     networks: 
       - backend_prod
 
