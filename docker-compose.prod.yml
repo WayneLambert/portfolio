@@ -47,8 +47,6 @@ services:
       - media_volume:/code/mediafiles
     expose:
       - "8000"
-    command:
-      - gunicorn ab_back_end.wsgi:application --bind 0.0.0.0:8000 --workers=3
     networks:
       - backend
 

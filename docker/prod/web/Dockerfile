@@ -43,3 +43,6 @@ COPY . .
 
 # Exposes port 8000
 EXPOSE 8000
+
+# Start up the Gunicorn server with 3 workers and binding port 8000
+CMD ["gunicorn", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8000", "--workers=3"]
