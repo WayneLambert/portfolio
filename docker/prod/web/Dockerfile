@@ -29,9 +29,6 @@ RUN apk --update add \
     tree \
     --no-cache su-exec
 
-# Delete unrequired build dependencies
-RUN apk del build-deps
-
 # Install pipenv from PyPI
 RUN pip install pipenv
 
