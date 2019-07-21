@@ -22,7 +22,7 @@ services:
       context: .
     restart: always
     ports:
-      - "0.0.0.0:80:80"
+      - "80:80"
     volumes:
       - ./docker/prod/nginx:/etc/nginx/conf.d
       - static_prod:/static
@@ -45,8 +45,8 @@ services:
     volumes:
       - static_prod:/static
       - media_prod:/media
-    expose:
-      - "5959"
+    ports:
+      - "8002:8002"
     networks:
       - backend_prod
 
