@@ -1,22 +1,22 @@
 version: '3.7'
 
 services:
-  postgres_prod:
-    container_name: portfolio_postgres_prod 
+  postgres:
+    container_name: portfolio_postgres
     build:
       context: ./docker/prod/postgres
     restart: always
     volumes:
       - type: volume
-        source: postgres_vol_prod
+        source: postgres_volume
         target: /var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks: 
-      - backend_prod
+      - backend
 
-  nginx_prod:
-    container_name: portfolio_nginx_prod
+  nginx:
+    container_name: portfolio_nginx
     build:
       dockerfile: ./docker/prod/nginx/Dockerfile
       context: .
@@ -25,36 +25,38 @@ services:
       - "80:80"
     volumes:
       - ./docker/prod/nginx:/etc/nginx/conf.d
-      - static_prod:/static
-      - media_prod:/media
+      - static_volume:/code/staticfiles
+      - media_volume:/code/mediafiles
     networks:
-      - backend_prod
+      - backend
 
-  web_prod:
-    container_name: portfolio_web_prod
+  web:
+    container_name: portfolio_web
     build:
       dockerfile: ./docker/prod/web/Dockerfile
       context: .
     depends_on:
-      - postgres_prod
-      - nginx_prod
+      - postgres
+      - nginx
     restart: on-failure
     env_file:
       - .env
       - prod.env
     volumes:
-      - static_prod:/static
-      - media_prod:/media
-    ports:
-      - "8000:8000"
+      - static_volume:/code/staticfiles
+      - media_volume:/code/mediafiles
+    expose:
+      - "8000"
+    command:
+      - gunicorn ab_back_end.wsgi:application --bind 0.0.0.0:8000 --workers=3
     networks:
-      - backend_prod
+      - backend
 
 networks:
-  backend_prod:
+  backend:
     driver: bridge
 
 volumes:
-  postgres_vol_prod:
-  static_prod:
-  media_prod:
+  postgres_volume:
+  static_volume:
+  media_volume:

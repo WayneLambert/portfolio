@@ -15,9 +15,7 @@ RUN apk --update add \
     gettext \
     # Postgres Dependencies
     libpq \
-    --virtual .build-deps \
-    gcc \
-    musl-dev \
+    --virtual build-deps gcc python3-dev musl-dev \
     postgresql \
     postgresql-dev \
     # Pillow dependencies
@@ -30,6 +28,9 @@ RUN apk --update add \
     sudo \
     tree \
     --no-cache su-exec
+
+# Delete unrequired build dependencies
+RUN apk del build-deps
 
 # Install pipenv from PyPI
 RUN pip install pipenv
@@ -45,6 +46,3 @@ COPY . .
 
 # Exposes port 8000
 EXPOSE 8000
-
-# Starts up the Gunicorn application server on port 8000
-CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8000"]

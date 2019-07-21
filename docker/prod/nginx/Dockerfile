@@ -1,5 +1,5 @@
 # Use official Nginx image as the base image
-FROM nginx:1.17.1
+FROM nginx:1.17.1-alpine
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
