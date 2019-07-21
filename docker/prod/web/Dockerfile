@@ -41,7 +41,10 @@ COPY Pipfile Pipfile.lock /code/
 RUN pipenv install --system --ignore-pipfile --deploy
 
 # Copy local source code directory to container's source code directory
-COPY . . 
+COPY . .
+
+# Exposes port 8000
+EXPOSE 8000
 
 # Starts up the Gunicorn application server on port 8000
 CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8000"]
