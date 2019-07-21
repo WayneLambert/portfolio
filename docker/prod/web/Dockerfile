@@ -44,4 +44,4 @@ RUN pipenv install --system --ignore-pipfile --deploy
 COPY . . 
 
 # Starts up the Gunicorn application server on port 8002
-CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8002"]
+CMD ["gunicorn", "--workers=3", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8000"]

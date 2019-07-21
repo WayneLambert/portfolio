@@ -46,7 +46,7 @@ services:
       - static_prod:/static
       - media_prod:/media
     ports:
-      - "8002:8002"
+      - "8000:8000"
     networks:
       - backend_prod
 
