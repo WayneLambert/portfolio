@@ -39,7 +39,6 @@ Thumbs.db
 ################################
 *__pycache__*
 *__init__.py
-*migrations*
 
 # Bash Scripts
 setup.sh
@@ -201,7 +200,7 @@ dmypy.json
 
 # Docker Mounted Directories
 staticfiles/
-mediafiles/
+media/
 postgres/data/
 
 # Temporary / Reference Project Files

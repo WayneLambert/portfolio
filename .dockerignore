@@ -48,11 +48,6 @@ Thumbs.db
 ################################
 *__pycache__*
 *__init__.py
-*migrations*
-
-
-# Bash Scripts
-setup.sh
 
 # VS Code Settings Files #
 .vscode/*

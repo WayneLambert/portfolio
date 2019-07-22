@@ -13,7 +13,27 @@ services:
     ports:
       - "5432:5432"
     networks: 
-      - backend
+      - postgres_network
+
+  web:
+    container_name: portfolio_web
+    build:
+      dockerfile: ./docker/prod/web/Dockerfile
+      context: .
+    depends_on:
+      - postgres
+    restart: on-failure
+    env_file:
+      - .env
+      - prod.env
+    volumes:
+      - static_volume:/code/staticfiles
+      - media_volume:/code/media
+    ports:
+      - "8000:8000"
+    networks:
+      - nginx_network
+      - postgres_network
 
   nginx:
     container_name: portfolio_nginx
@@ -26,32 +46,16 @@ services:
     volumes:
       - ./docker/prod/nginx:/etc/nginx/conf.d
       - static_volume:/code/staticfiles
-      - media_volume:/code/mediafiles
-    networks:
-      - backend
-
-  web:
-    container_name: portfolio_web
-    build:
-      dockerfile: ./docker/prod/web/Dockerfile
-      context: .
+      - media_volume:/code/media
     depends_on:
-      - postgres
-      - nginx
-    restart: on-failure
-    env_file:
-      - .env
-      - prod.env
-    volumes:
-      - static_volume:/code/staticfiles
-      - media_volume:/code/mediafiles
-    expose:
-      - "8000"
+      - web
     networks:
-      - backend
+      - nginx_network
 
 networks:
-  backend:
+  nginx_network:
+    driver: bridge
+  postgres_network:
     driver: bridge
 
 volumes:
