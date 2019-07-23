@@ -158,7 +158,7 @@ DATABASES = {
         'NAME': os.environ['DB_NAME'],
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASS'],
-        'HOST': os.environ['DB_DOCKER_SERVICE_DEV'] if DEBUG else os.environ['DB_DOCKER_SERVICE_PROD'],
+        'HOST': os.environ['DB_DOCKER_POSTGRES_SERVICE'],
         'PORT': os.environ['DB_PORT'],
     }
 }

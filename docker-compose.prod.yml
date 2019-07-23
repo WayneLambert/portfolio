@@ -4,11 +4,12 @@ services:
   postgres:
     container_name: portfolio_postgres
     build:
-      context: ./docker/prod/postgres
+      context: ./docker/postgres
     restart: always
     env_file:
-      - .env
       - prod.env
+      - .env
+      - postgres.env
     volumes:
       - type: volume
         source: postgres_volume
@@ -27,6 +28,7 @@ services:
     env_file:
       - .env
       - prod.env
+      - postgres.env
     volumes:
       - static_volume:/code/staticfiles
       - media_volume:/code/media

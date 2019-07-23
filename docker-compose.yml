@@ -1,65 +1,68 @@
 version: '3.7'
 
 services:
-  postgres_dev:
-    container_name: portfolio_postgres_dev
+  postgres:
+    container_name: portfolio_postgres
     build:
-      context: ./docker/dev/postgres
+      context: ./docker/postgres
     restart: always
+    env_file:
+      - dev.env
+      - .env
+      - postgres.env
     volumes:
       - type: volume
-        source: postgres_vol_dev
+        source: postgres_volume
         target: /var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
-      - backend_dev
+      - backend
 
-  pg_admin_dev:
-    container_name: portfolio_pg_admin4_dev
+  pg_admin:
+    container_name: portfolio_pg_admin4
     build:
       context: ./docker/dev/pg-admin
     restart: on-failure
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+    env_file:
+      - postgres.env
     depends_on:
-      - postgres_dev
+      - postgres
     ports:
       - "5050:5050"
     networks:
-      - backend_dev
+      - backend
 
-  web_dev:
-    container_name: portfolio_web_dev
+  web:
+    container_name: portfolio_web
     build:
       dockerfile: ./docker/dev/web/Dockerfile
       context: .
     depends_on:
-      - postgres_dev
-      - pg_admin_dev
+      - postgres
+      - pg_admin
     restart: always
     env_file:
-      - .env
       - dev.env
+      - .env
+      - postgres.env
     volumes:
       - type: volume
-        source: web_vol_dev
+        source: web_volume
         target: ${WEB_CONTAINER_PATH}
         consistency: consistent
     ports:
       - "8001:8001"
     networks:
-      - backend_dev
+      - backend
 
 networks:
-  backend_dev:
+  backend:
     driver: bridge
 
 volumes:
-  postgres_vol_dev:
-  web_vol_dev:
+  postgres_volume:
+  web_volume:
     driver: local
     driver_opts:
       type: none
