@@ -6,13 +6,16 @@ services:
     build:
       context: ./docker/prod/postgres
     restart: always
+    env_file:
+      - .env
+      - prod.env
     volumes:
       - type: volume
         source: postgres_volume
         target: /var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks: 
+    networks:
       - postgres_network
 
   web:
@@ -20,8 +23,6 @@ services:
     build:
       dockerfile: ./docker/prod/web/Dockerfile
       context: .
-    depends_on:
-      - postgres
     restart: on-failure
     env_file:
       - .env
@@ -29,11 +30,12 @@ services:
     volumes:
       - static_volume:/code/staticfiles
       - media_volume:/code/media
-    ports:
-      - "8000:8000"
+    command: gunicorn ab_back_end.wsgi:application --bind 0.0.0.0:8000 --workers=3
+    depends_on:
+      - postgres
     networks:
-      - nginx_network
       - postgres_network
+      - nginx_network
 
   nginx:
     container_name: portfolio_nginx
@@ -43,8 +45,8 @@ services:
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./docker/prod/nginx:/etc/nginx/conf.d
       - static_volume:/code/staticfiles
       - media_volume:/code/media
     depends_on:

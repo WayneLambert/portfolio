@@ -10,27 +10,14 @@ LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
 WORKDIR /code
 
 # Install additional project dependencies
-RUN apk --update add \
-    build-base \
-    gettext \
-    # Postgres Dependencies
-    libpq \
-    --virtual build-deps gcc python3-dev musl-dev \
-    postgresql \
-    postgresql-dev \
-    # Pillow dependencies
-    jpeg-dev \
-    zlib-dev \
-    # Install Bash and sudo for a better development shell
-    bash \
-    bash-doc \
-    bash-completion \
-    sudo \
-    tree \
-    --no-cache su-exec
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql-dev \
+    && pip install psycopg2 \
+    && apk add jpeg-dev zlib-dev
 
 # Install pipenv from PyPI
-RUN pip install pipenv
+RUN pip install --upgrade pip && pip install pipenv
 
 # Copy local files to container
 COPY Pipfile Pipfile.lock /code/
@@ -38,11 +25,14 @@ COPY Pipfile Pipfile.lock /code/
 # Install project dependencies using exact versions in Pipfile.lock
 RUN pipenv install --system --ignore-pipfile --deploy
 
+# Remove any unrequired build dependencies
+RUN apk del build-deps
+
 # Copy local source code directory to container's source code directory
 COPY . .
 
-# Exposes port 8000
-EXPOSE 8000
+# Make the entrypoint script executable
+RUN chmod +x ./docker/prod/web/entrypoint.prod.sh
 
-# Start up the Gunicorn server with 3 workers and binding port 8000
-CMD ["gunicorn", "ab_back_end.wsgi:application", "--bind 0.0.0.0:8000", "--workers=3"]
+# Run entrypoint.prod.sh script
+ENTRYPOINT ["./docker/prod/web/entrypoint.prod.sh"]
