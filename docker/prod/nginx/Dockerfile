@@ -6,6 +6,8 @@ LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
     dev.waynelambert.version="2019.07" \
     dev.waynelambert.description="Docker image for nginx service"
 
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+
 # Delete the existing default configuration for nginx
 RUN rm /etc/nginx/conf.d/default.conf
 
