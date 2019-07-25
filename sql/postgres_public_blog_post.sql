@@ -311,9 +311,9 @@ RUN apk --update add \
 WORKDIR /code
 
 # Add metadata to the image
-LABEL author="Wayne Lambert &lt;contact@waynelambert.dev&gt;" \
+LABEL author="Wayne Lambert &lt;contact@waynelambert.co.uk&gt;" \
     version="2019.07" \
-    description="Docker image for portfolio site. Hosted at https://waynelambert.dev"
+    description="Docker image for portfolio site. Hosted at https://waynelambert.co.uk"
 
 # Install pipenv from PyPI
 RUN pip install pipenv
@@ -373,9 +373,9 @@ WORKDIR /code</code></pre>
 
 <pre>
 <code># Add metadata to the image
-LABEL author="Wayne Lambert &lt;contact@waynelambert.dev&gt;" \
+LABEL author="Wayne Lambert &lt;contact@waynelambert.co.uk&gt;" \
     version="2019.07" \
-    description="Docker image for portfolio site. Hosted at https://waynelambert.dev"</code></pre>
+    description="Docker image for portfolio site. Hosted at https://waynelambert.co.uk"</code></pre>
 
 <p>This just adds some metadata to the image that you&#39;re creating which might be useful when you put the image onto Docker Hub later.</p>
 
@@ -448,7 +448,7 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 
 <p>The JavaScript uses a functional programming style with each of the functions handling only what is necessary to accomplish the task. The DRY principle of a function doing one thing and one thing well is used.</p>
 
-<p><a href="https://waynelambert.dev">https://waynelambert.dev</a></p>');
+<p><a href="https://waynelambert.co.uk">https://waynelambert.co.uk</a></p>');
 INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (2, 'Advanced Form Rendering with Django Crispy Forms', 'advanced-form-rendering-with-django-crispy-forms', 'https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html', '2019-06-26 18:02:14.983456', '2019-07-10 18:20:44.092789', 'ab_back_end/static/post_images/django-logo_XFSSmOr.png', 1, 6, '<p>A useful blog post that explains how to render Django Crispy Forms across multiple columns by individually placing the fields within a template.</p>');
 INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (11, 'Embedding CK Editor into Blog App', 'embedding-ckeditor-into-blog-app', '', '2019-07-03 20:15:01.642403', '2019-07-10 16:16:44.027130', 'ab_back_end/static/post_images/django-logo_oGybUeq.png', 1, 2, '<p>The content fields for the blog posts on this site have been created using a rich text WYSIWYG editor called CK Editor.</p>
 

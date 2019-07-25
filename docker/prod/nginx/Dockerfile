@@ -2,11 +2,12 @@
 FROM nginx:1.17.1-alpine
 
 # Add metadata to the image
-LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2019.07" \
-    dev.waynelambert.description="Docker image for nginx service"
+LABEL uk.co.waynelambert.author="Wayne Lambert <contact@waynelambert.co.uk>" \
+    uk.co.waynelambert.version="2019.07" \
+    uk.co.waynelambert.description="Docker image for nginx service"
 
-RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
+# Save a copy of the original config file for reference
+# RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig
 
 # Delete the existing default configuration for nginx
 RUN rm /etc/nginx/conf.d/default.conf

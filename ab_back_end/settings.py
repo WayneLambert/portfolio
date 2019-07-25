@@ -32,7 +32,7 @@ HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    'waynelambert.dev',
+    'waynelambert.co.uk',
     '178.79.156.225',
     '172.31.0.4',
     '127.0.0.1',

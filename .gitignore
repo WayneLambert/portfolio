@@ -210,3 +210,6 @@ postgres/data/
 settings_local.py
 
 django_architecture.png
+
+# LetsEncrypt Certbot
+docker/prod/certbot
