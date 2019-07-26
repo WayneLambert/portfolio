@@ -8,7 +8,7 @@ class SiteFooter extends Component {
   render() { 
     return (
       <Footer className="footer" style={{ textAlign: 'left' }}>
-        &copy; <span id="year">{yearOfToday} Copyright | waynelambert.co.uk</span>
+        &copy; <span id="year">{yearOfToday} Copyright | waynelambert.dev</span>
       </Footer>
     );
   }

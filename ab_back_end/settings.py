@@ -32,7 +32,7 @@ HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    'waynelambert.co.uk',
+    'waynelambert.dev',
     '178.79.156.225',
     '172.31.0.4',
     '127.0.0.1',
@@ -114,12 +114,12 @@ if not DEBUG:
     ALLOWED_HOSTS += ('HOST_DOMAIN_NAME',)
 
     # Changes suggested from $ python3 manage.py check --deploy
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    X_FRAME_OPTIONS = 'DENY'
+    # SECURE_CONTENT_TYPE_NOSNIFF = True
+    # SECURE_BROWSER_XSS_FILTER = True
+    # SECURE_SSL_REDIRECT = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+    # X_FRAME_OPTIONS = 'DENY'
 
 
 TEMPLATES = [
