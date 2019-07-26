@@ -2,7 +2,7 @@
 FROM python:3.7.4-alpine
 
 # Add metadata to the image
-LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
+LABEL author="Wayne Lambert <contact@waynelambert.co.uk>" \
     version="2019.07" \
     description="Docker image for web service of portfolio site."
 

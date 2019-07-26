@@ -31,7 +31,7 @@ services:
       - postgres.env
     volumes:
       - static_volume:/code/staticfiles
-      - media_volume:/code/mediafiles
+      - media_volume:/code/media
     ports:
       - "8000:8000"
     command: gunicorn ab_back_end.wsgi:application --bind 0.0.0.0:8000 --workers=3
@@ -49,13 +49,34 @@ services:
     restart: always
     ports:
       - "80:80"
+      # - "443:443"
     volumes:
       - static_volume:/code/staticfiles
-      - media_volume:/code/mediafiles
+      - media_volume:/code/media
+      # - ./docker/prod/nginx:/etc/nginx/conf.d
+      # - ./docker/prod/certbot/conf:/etc/letsencrypt
+      # - ./docker/prod/certbot/www:/var/www/certbot
     depends_on:
       - web
+    # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     networks:
       - nginx_network
+
+  # certbot:
+  #   container_name: portfolio_certbot
+  #   build:
+  #     dockerfile: ./docker/prod/certbot/Dockerfile
+  #     context: .
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./docker/prod/certbot/conf:/etc/letsencrypt
+  #     - ./docker/prod/certbot/www:/var/www/certbot
+  #   depends_on:
+  #     - nginx
+  #     - web
+  #   command: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  #   networks:
+  #     - nginx_network
 
 networks:
   nginx_network:

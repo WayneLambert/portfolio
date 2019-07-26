@@ -1,6 +1,12 @@
 import os
 import sys
 
+from django.conf.global_settings import (SECURE_BROWSER_XSS_FILTER,
+                                         SECURE_HSTS_INCLUDE_SUBDOMAINS,
+                                         SECURE_HSTS_PRELOAD,
+                                         SECURE_HSTS_SECONDS,
+                                         SECURE_PROXY_SSL_HEADER)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,13 +32,15 @@ DEBUG = bool(int(os.getenv('DEBUG', False)))
 DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
 
 # Gets Domain name for production
-HOST_DOMAIN_NAME = os.environ['HOST_DOMAIN_NAME']
+HOST_DOMAIN_NAME_1 = os.environ['HOST_DOMAIN_NAME_1']
+HOST_DOMAIN_NAME_2 = os.environ['HOST_DOMAIN_NAME_2']
 
 # Gets Django database host for development purposes
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    'waynelambert.dev',
+    'waynelambert.co.uk',
+    'waynelambert.co.uk',
     '178.79.156.225',
     '172.31.0.4',
     '127.0.0.1',
@@ -111,7 +119,7 @@ if DEBUG:
 
 # Production Settings
 if not DEBUG:
-    ALLOWED_HOSTS += ('HOST_DOMAIN_NAME',)
+    ALLOWED_HOSTS += ('HOST_DOMAIN_NAME_1', 'HOST_DOMAIN_NAME_2',)
 
     # Changes suggested from $ python3 manage.py check --deploy
     # SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -120,7 +128,10 @@ if not DEBUG:
     # SESSION_COOKIE_SECURE = True
     # CSRF_COOKIE_SECURE = True
     # X_FRAME_OPTIONS = 'DENY'
-
+    # SECURE_HSTS_SECONDS = 3600
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_PRELOAD = True
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 TEMPLATES = [
     {
@@ -202,9 +213,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-
+# Static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = [
@@ -212,11 +221,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'blog/static'),
     os.path.join(BASE_DIR, 'count/static'),
 ]
-
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
+# Media Files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+MEDIA_URL = '/mediafiles/'
 DEFAULT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'ab_back_end/static/default_images')
 
 # Logging Configuration
@@ -256,9 +269,9 @@ DEFAULT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'ab_back_end/static/default_image
 #         },
 #     }
 
-# In settings.py
-CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+# CK Editor Settings
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
