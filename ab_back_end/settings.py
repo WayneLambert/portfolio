@@ -175,15 +175,8 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 HEROKU_DEPLOY = bool(int(os.getenv('HEROKU_DEPLOY', False)))
 
 if HEROKU_DEPLOY:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': 'db',
-            'PORT': 5432,
-        }
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
     }
 else:
     DATABASES = {
@@ -329,7 +322,3 @@ EMAIL_PORT = os.environ['EMAIL_PORT'],
 EMAIL_USER = os.environ['EMAIL_USER'],
 EMAIL_PASS = os.environ['EMAIL_PASS'],
 EMAIL_USE_TLS = bool(int(os.getenv('DEBUG', False)))
-
-# Heroku
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
