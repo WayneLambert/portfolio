@@ -1,6 +1,6 @@
-# Portfolio Project - waynelambert.co.uk
+# Portfolio Project - waynelambert.dev
 
-The site will soon be hosted at waynelambert.co.uk and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
+The site will soon be hosted at waynelambert.dev and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
 
 The blog is not intended to be a full production product, therefore some typical blog features have been purposefully omitted. For example, comments and tags are additional features that could be developed for the blog.
 
@@ -39,8 +39,8 @@ The word counting app is a demonstration of using Python to calculate the number
 
 The blog app also has some API endpoints programmed in that can be used by a front-end developer with a framework such as React, Vue or Angular.
 
-These can be accessed by either going to <https://waynelambert.co.uk/api/blog/> to see the blog list view or to
-<https://waynelambert.co.uk/api/blog/1> to see the detail view. The '1' part of the url can be exchanged for any other valid primary key number for the post.
+These can be accessed by either going to <https://waynelambert.dev/api/blog/> to see the blog list view or to
+<https://waynelambert.dev/api/blog/1> to see the detail view. The '1' part of the url can be exchanged for any other valid primary key number for the post.
 
 These addresses expose the browsable API endpoints that Django Rest Framework provides.
 

@@ -5,10 +5,10 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(waynelambert.co.uk www.waynelambert.co.uk)
+domains=(waynelambert.dev www.waynelambert.dev)
 rsa_key_size=4096
 data_path="./docker/prod/certbot"
-email="contact@waynelambert.co.uk"
+email="contact@waynelambert.dev"
 staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits
 
 if [ -d "$data_path" ]; then

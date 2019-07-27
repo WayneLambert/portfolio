@@ -42,7 +42,7 @@ DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 ALLOWED_HOSTS = [
     # Linode
     'waynelambert.dev',
-    'waynelambert.co.uk',
+    'waynelambert.dev',
     '178.79.156.225',
     # Heroku
     '.herokuapp.com',
