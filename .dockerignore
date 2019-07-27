@@ -1,8 +1,3 @@
-# Docker
-.dockerignore
-Dockerfile*
-
-
 # Git
 .git
 .gitignore
