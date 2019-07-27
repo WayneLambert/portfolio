@@ -45,7 +45,7 @@ ALLOWED_HOSTS = [
     'waynelambert.dev',
     '178.79.156.225',
     # Heroku
-    '.herokuapp.com',
+    'wl-portfolio.herokuapp.com',
     '172.31.0.4',
     '127.0.0.1',
     'localhost',
