@@ -6,6 +6,10 @@ LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
     dev.waynelambert.version="2019.07" \
     dev.waynelambert.description="Docker image for web service"
 
+# Set environment varibles
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # Create and set working directory
 WORKDIR /code
 
