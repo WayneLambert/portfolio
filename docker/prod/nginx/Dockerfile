@@ -10,4 +10,4 @@ LABEL uk.co.waynelambert.author="Wayne Lambert <contact@waynelambert.co.uk>" \
 RUN rm /etc/nginx/conf.d/default.conf
 
 # Copy my own custom configuration for nginx into the required server folder
-COPY ./docker/prod/nginx/nginx.conf /etc/nginx/conf.d/
+COPY ./docker/prod/nginx/nginx.conf /etc/nginx/conf.d/nginx.conf

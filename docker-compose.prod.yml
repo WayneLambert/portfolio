@@ -30,11 +30,12 @@ services:
       - prod.env
       - postgres.env
     volumes:
+      - .:/code
       - static_volume:/code/staticfiles
       - media_volume:/code/mediafiles
-    ports:
-      - "8000:8000"
-    command: gunicorn ab_back_end.wsgi:application --bind 0.0.0.0:8000 --workers=3
+    expose:
+      - "80"
+    command: gunicorn ab_back_end.wsgi --config docker/prod/gunicorn/conf.py
     depends_on:
       - postgres
     networks:
@@ -64,6 +65,7 @@ networks:
     driver: bridge
 
 volumes:
+  code_volume:
   postgres_volume:
   static_volume:
   media_volume:

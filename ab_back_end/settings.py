@@ -1,3 +1,4 @@
+import dj_database_url
 import os
 import sys
 
@@ -39,9 +40,12 @@ HOST_DOMAIN_NAME_2 = os.environ['HOST_DOMAIN_NAME_2']
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
-    'waynelambert.co.uk',
+    # Linode
+    'waynelambert.dev',
     'waynelambert.co.uk',
     '178.79.156.225',
+    # Heroku
+    '.herokuapp.com',
     '172.31.0.4',
     '127.0.0.1',
     'localhost',
@@ -49,7 +53,6 @@ ALLOWED_HOSTS = [
 ]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -58,6 +61,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     # Third Party
     'rest_framework',
@@ -67,6 +71,8 @@ INSTALLED_APPS = [
     'bootstrap4',
     'ckeditor',
     'ckeditor_uploader',
+    'allauth',
+    'allauth.account',
 
     # Project Apps
     'api.apps.ApiConfig',
@@ -76,6 +82,7 @@ INSTALLED_APPS = [
     'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
 ]
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Third party
@@ -122,16 +129,16 @@ if not DEBUG:
     ALLOWED_HOSTS += ('HOST_DOMAIN_NAME_1', 'HOST_DOMAIN_NAME_2',)
 
     # Changes suggested from $ python3 manage.py check --deploy
-    # SECURE_CONTENT_TYPE_NOSNIFF = True
-    # SECURE_BROWSER_XSS_FILTER = True
-    # SECURE_SSL_REDIRECT = True
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
-    # X_FRAME_OPTIONS = 'DENY'
-    # SECURE_HSTS_SECONDS = 3600
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # SECURE_HSTS_PRELOAD = True
-    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 TEMPLATES = [
     {
@@ -195,6 +202,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Authentication backends setup for Django Guardian
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
 )
 
@@ -215,7 +223,7 @@ USE_TZ = True
 
 # Static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'blog/static'),
@@ -228,9 +236,9 @@ STATICFILES_FINDERS = [
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media Files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-MEDIA_URL = '/mediafiles/'
-DEFAULT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'ab_back_end/static/default_images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
 
 # Logging Configuration
 # if DEBUG:
@@ -292,12 +300,20 @@ CKEDITOR_CONFIGS = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# Django-allauth Config
+SITE_ID = 1
 LOGIN_REDIRECT_URL = 'blog-home'
+LOGOUT_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = os.environ['EMAIL_HOST'],
 EMAIL_PORT = os.environ['EMAIL_PORT'],
 EMAIL_USER = os.environ['EMAIL_USER'],
 EMAIL_PASS = os.environ['EMAIL_PASS'],
 EMAIL_USE_TLS = bool(int(os.getenv('DEBUG', False)))
+
+# Heroku
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)

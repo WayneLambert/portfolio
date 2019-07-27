@@ -29,6 +29,8 @@ python-dotenv = "*"
 gunicorn = "*"
 django-ckeditor = "*"
 django-guardian = "*"
+django-allauth = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.7"
