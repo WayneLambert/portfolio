@@ -203,8 +203,6 @@ dmypy.json
 .pyre/
 
 # Docker Mounted Directories
-staticfiles/
-media/
 postgres/data/
 
 # Temporary / Reference Project Files

@@ -1,0 +1,125 @@
+.main-body {
+  line-height: 1.4;
+}
+
+.bg-steel {
+  background-color: #02244D;
+  height: 50px;
+}
+
+.bg-dark {
+  background-color: #02244D !important;
+  height: 50px;
+}
+
+.jumbotron {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-bottom: 0.1rem;
+}
+
+.pb-5, .py-5 {
+  padding-bottom: 1rem !important;
+}
+
+pt-5, .py-5 {
+  padding-top: 2rem !important;
+}
+
+footer {
+  position: fixed;
+  background-color: #02244D;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+}
+
+.site-footer {
+  color: #ffffff;
+  font-size: smaller;
+  font-weight: lighter;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+#no-words-msgbox {
+  color: red;
+}
+
+#btn-home {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-home:hover {
+  background-color: lightgray;
+}
+
+#btn-github {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-github:hover {
+  background-color: lightgray;
+}
+
+#btn-linkedin {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-linkedin:hover {
+  background-color: lightgray;
+}
+
+#btn-contact {
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#btn-contact:hover {
+  background-color: lightgray;
+}
+
+#btn-cv-jumbotron {
+  color: blue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#btn-github-jumbotron {
+  color: blue;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#about-project {
+  margin-left: 13%;
+  margin-right: 13%;
+  padding: 30px 30px 30px 30px;
+  background-color: #e9ecef;
+  border-radius: 15px;
+  display: none;
+}
+
+#about-project-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
