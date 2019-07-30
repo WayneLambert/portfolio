@@ -31,20 +31,19 @@ DEBUG = bool(int(os.getenv('DEBUG', False)))
 # Gets Django web host for development purposes
 DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
 
-# Gets Domain name for production
-HOST_DOMAIN_NAME_1 = os.environ['HOST_DOMAIN_NAME_1']
-HOST_DOMAIN_NAME_2 = os.environ['HOST_DOMAIN_NAME_2']
 
 # Gets Django database host for development purposes
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
 ALLOWED_HOSTS = [
     # Linode
-    'waynelambert.dev',
-    'www.waynelambert.dev',
+    'waynelambert.co.uk',
     '178.79.156.225',
     # Heroku
     'wl-portfolio.herokuapp.com',
+    'waynelambert.dev',
+    'www.waynelambert.dev',
+    # Local development
     '172.31.0.4',
     '127.0.0.1',
     'localhost',
@@ -126,12 +125,6 @@ if DEBUG:
 
 # Production Settings
 if not DEBUG:
-    ALLOWED_HOSTS += (
-        'HOST_DOMAIN_NAME_1',
-        'HOST_DOMAIN_NAME_2',
-        'HOST_DOMAIN_NAME_3'
-    )
-
     # Changes suggested from $ python3 manage.py check --deploy
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
