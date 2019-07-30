@@ -1,7 +1,6 @@
 import dj_database_url
 import os
 import sys
-
 from django.conf.global_settings import (SECURE_BROWSER_XSS_FILTER,
                                          SECURE_HSTS_INCLUDE_SUBDOMAINS,
                                          SECURE_HSTS_PRELOAD,
@@ -42,7 +41,7 @@ DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 ALLOWED_HOSTS = [
     # Linode
     'waynelambert.dev',
-    'waynelambert.dev',
+    'www.waynelambert.dev',
     '178.79.156.225',
     # Heroku
     'wl-portfolio.herokuapp.com',
@@ -73,6 +72,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'allauth',
     'allauth.account',
+    'storages',
 
     # Project Apps
     'api.apps.ApiConfig',
@@ -126,7 +126,11 @@ if DEBUG:
 
 # Production Settings
 if not DEBUG:
-    ALLOWED_HOSTS += ('HOST_DOMAIN_NAME_1', 'HOST_DOMAIN_NAME_2',)
+    ALLOWED_HOSTS += (
+        'HOST_DOMAIN_NAME_1',
+        'HOST_DOMAIN_NAME_2',
+        'HOST_DOMAIN_NAME_3'
+    )
 
     # Changes suggested from $ python3 manage.py check --deploy
     SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -177,7 +181,6 @@ HEROKU_DEPLOY = bool(int(os.getenv('HEROKU_DEPLOY', False)))
 if HEROKU_DEPLOY:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
-    }
 else:
     DATABASES = {
         'default': {
@@ -317,8 +320,17 @@ LOGIN_URL = 'login'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = os.environ['EMAIL_HOST'],
-EMAIL_PORT = os.environ['EMAIL_PORT'],
-EMAIL_USER = os.environ['EMAIL_USER'],
-EMAIL_PASS = os.environ['EMAIL_PASS'],
+EMAIL_HOST = os.environ['EMAIL_HOST']
+EMAIL_PORT = os.environ['EMAIL_PORT']
+EMAIL_USER = os.environ['EMAIL_USER']
+EMAIL_PASS = os.environ['EMAIL_PASS']
 EMAIL_USE_TLS = bool(int(os.getenv('DEBUG', False)))
+
+# Django Storages Settings
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_S3_FILE_OVERWRITE = False
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_DEFAULT_ACL = None

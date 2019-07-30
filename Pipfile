@@ -29,6 +29,8 @@ django-ckeditor = "*"
 django-allauth = "*"
 django-guardian = "*"
 dj-database-url = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.7"

@@ -47,8 +47,8 @@ class Post(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        default=os.path.join(DEFAULT_IMAGES_ROOT, 'default-post.jpg'),
-        upload_to='ab_back_end/static/post_images',
+        default='default-post.jpg',
+        upload_to='post_images',
         max_length=200,
     )
     status = models.IntegerField(choices=STATUS, default=0)
@@ -67,12 +67,12 @@ class Post(models.Model):
             self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
 
-        img = Image.open(self.image.path)
+        # img = Image.open(self.image.path)
 
-        if img.height > 120 or img.width > 120:
-            output_size = (120, 120)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
+        # if img.height > 120 or img.width > 120:
+        #     output_size = (120, 120)
+        #     img.thumbnail(output_size)
+        #     img.save(self.image.path)
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
