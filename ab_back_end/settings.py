@@ -26,8 +26,7 @@ else:
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if not os.getenv('HEROKU_DEPLOY'):
-    DEBUG = bool(int(os.getenv('DEBUG', False)))
+DEBUG = bool(int(os.getenv('DEBUG', False)))
 
 # Gets Django web host for development purposes
 DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
