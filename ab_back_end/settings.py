@@ -26,9 +26,7 @@ else:
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ['HEROKU_DEPLOY'] == 1:
-    DEBUG = False
-else:
+if not os.getenv('HEROKU_DEPLOY'):
     DEBUG = bool(int(os.getenv('DEBUG', False)))
 
 # Gets Django web host for development purposes
@@ -174,20 +172,20 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 # SECURITY WARNING: don't run with debug turned on in production!
 HEROKU_DEPLOY = bool(int(os.getenv('HEROKU_DEPLOY', False)))
 
-if HEROKU_DEPLOY:
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
-else:
+if not HEROKU_DEPLOY:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ['DB_NAME'],
-            'USER': os.environ['DB_USER'],
-            'PASSWORD': os.environ['DB_PASS'],
-            'HOST': os.environ['DB_DOCKER_POSTGRES_SERVICE'],
-            'PORT': os.environ['DB_PORT'],
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASS'),
+            'HOST': os.getenv('DB_DOCKER_POSTGRES_SERVICE'),
+            'PORT': os.getenv('DB_PORT'),
         }
     }
+else:
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
