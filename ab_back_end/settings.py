@@ -310,6 +310,8 @@ DATABASES['default'].update(db_from_env)
 
 # Django SES Eamil Backend Settings
 EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_REGION_NAME = 'eu-west-2'
+AWS_SES_REGION_ENDPOINT = 'email.eu-west-2.amazonaws.com'
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
