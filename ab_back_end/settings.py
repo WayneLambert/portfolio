@@ -310,7 +310,6 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # Django SES Eamil Backend Settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 SES_ACCESS_KEY = os.environ['SES_ACCESS_KEY']
 SES_SECRET_KEY = os.environ['SES_SECRET_KEY']
 SES_REGION_NAME = 'eu-west-2'
