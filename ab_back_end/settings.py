@@ -73,7 +73,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'storages',
-    'django_ses',
 
     # Project Apps
     'api.apps.ApiConfig',
@@ -310,10 +309,7 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # Django SES Eamil Backend Settings
-SES_ACCESS_KEY = os.environ['SES_ACCESS_KEY']
-SES_SECRET_KEY = os.environ['SES_SECRET_KEY']
-SES_REGION_NAME = 'eu-west-2'
-
+EMAIL_BACKEND = 'django_ses.SESBackend'
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
