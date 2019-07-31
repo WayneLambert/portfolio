@@ -1,9 +1,9 @@
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (1, 'Using CSS for Image Borders', 'using-css-for-image-borders', '', '2019-06-26 17:58:00.751457', '2019-07-10 18:08:53.147970', 'ab_back_end/static/post_images/html5-css3-logo_kvb5xbh.png', 1, 2, '<p>A handy reference for setting some properties to make images with borders. For example, user profile or blog post images.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (1, 'Using CSS for Image Borders', 'using-css-for-image-borders', ', '2019-06-26 17:58:00.751457', '2019-07-10 18:08:53.147970', 'ab_back_end/static/post_images/html5-css3-logo_kvb5xbh.png', 1, 2, '<p>A handy reference for setting some properties to make images with borders. For example, user profile or blog post images.</p>
 
 <p>This was implemented within the blog to give the post&#39;s image a distinct border and can be seen on any of the blog view pages.</p>
 
 <p><a href="https://css-tricks.com/using-css-for-image-borders/" target="_blank">https://css-tricks.com/using-css-for-image-borders/</a></p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (7, 'Customise Author Name Appearance', 'customise-author-name-appearance', '', '2019-06-26 19:56:18.161662', '2019-07-10 18:30:01.485553', 'ab_back_end/static/post_images/django-logo_sIin4jR.png', 1, 2, '<p>Within the profile settings page for a registered user on this site, there is a drop-down selection which enables them to choose how their posts will be seen by visitors. a</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (7, 'Customise Author Name Appearance', 'customise-author-name-appearance', ', '2019-06-26 19:56:18.161662', '2019-07-10 18:30:01.485553', 'ab_back_end/static/post_images/django-logo_sIin4jR.png', 1, 2, '<p>Within the profile settings page for a registered user on this site, there is a drop-down selection which enables them to choose how their posts will be seen by visitors. a</p>
 
 <p>The author of a post can display their user bio with either their full name or their username. This gives them the ability to either post with anonymity should they wish to choose an obscure username, an alias should they wish to represent a company/product, or their own name if they wish for complete transparency and the more personal touch.</p>
 
@@ -22,8 +22,8 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 class Profile(models.Model):
 
     AUTHOR_VIEW = (
-        (0, ''Username''),
-        (1, ''Full Name'')
+        (0, 'Username'),
+        (1, 'Full Name')
     )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -37,7 +37,7 @@ class Profile(models.Model):
 <pre>
 <code class="language-html">&lt;div class="article-metadata"&gt;
     &lt;p class="author_name"&gt;
-      &lt;a href="{% url ''user-posts'' post.author.username %}"&gt;
+      &lt;a href="{% url 'user-posts' post.author.username %}"&gt;
         {% if post.author.profile.author_view == 0 %}
           {{ post.author.username }}
         {% else %}
@@ -64,10 +64,10 @@ class Profile(models.Model):
 <p>In the admin panel, this looks like...</p>
 
 <p><img alt="" src="/media/images/admin_panel_author_view_options.png" style="height:100%; width:100%" /></p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (9, 'Using WhiteNoise for Static Files', 'using-whitenoise-for-static-files', '', '2019-06-27 16:37:29.224954', '2019-07-04 19:51:13.689634', 'ab_back_end/static/post_images/django-logo_x1yao7z.png', 1, 2, '<p>WhiteNoise is perhaps Django&#39;s de facto standard in helping manage the deployment of static assets on your production server. It works through a few small configuration settings being set in your settings.py file.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (9, 'Using WhiteNoise for Static Files', 'using-whitenoise-for-static-files', ', '2019-06-27 16:37:29.224954', '2019-07-04 19:51:13.689634', 'ab_back_end/static/post_images/django-logo_x1yao7z.png', 1, 2, '<p>WhiteNoise is perhaps Django&#39;s de facto standard in helping manage the deployment of static assets on your production server. It works through a few small configuration settings being set in your settings.py file.</p>
 
 <p>Check out the great PyCon US talk called &#39;<a href="https://www.youtube.com/watch?v=E613X3RBegI">Assets in Django without losing your hair</a>&#39; for more information on how to configure this in your project.</p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (3, 'The Profile Page', 'the-profile-page', '', '2019-06-26 18:17:43.607254', '2019-07-10 18:29:34.878952', 'ab_back_end/static/post_images/django-logo_GsYUSDr.png', 1, 2, '<p>The profile page consists of the fields that can be updated from both the User and the custom Profile models. The form uses Django Crispy Forms and the rendering is achieved by targeting the individual fields and using some HTML, CSS and Bootstrap styling to get the columns appearing the way they do.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (3, 'The Profile Page', 'the-profile-page', ', '2019-06-26 18:17:43.607254', '2019-07-10 18:29:34.878952', 'ab_back_end/static/post_images/django-logo_GsYUSDr.png', 1, 2, '<p>The profile page consists of the fields that can be updated from both the User and the custom Profile models. The form uses Django Crispy Forms and the rendering is achieved by targeting the individual fields and using some HTML, CSS and Bootstrap styling to get the columns appearing the way they do.</p>
 
 <p>I implemented the profile page (illustrated below) using Django Crispy Forms. When a user registers for an account, they will have access to their profile page by clicking the <strong>(Logged in as [user-name]</strong><strong>)</strong> link in the top right corner of the blog application.</p>
 
@@ -200,7 +200,7 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 <pre>
 <code class="language-python">@login_required
 def profile(request):
-    if request.method == ''POST'':
+    if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST,
                                          request.FILES,
@@ -209,19 +209,19 @@ def profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, f''Your account has been updated!'')
-            return redirect(''profile'')
+            messages.success(request, f'Your account has been updated!')
+            return redirect('profile')
 
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
-        ''user_form'': user_form,
-        ''profile_form'': profile_form,
+        'user_form': user_form,
+        'profile_form': profile_form,
     }
 
-    return render(request, ''users/profile.html'', context)</code></pre>
+    return render(request, 'users/profile.html', context)</code></pre>
 
 <p>The view contains the @login_required decorator function which means that it can only be exposed when the user is logged in.</p>
 
@@ -429,7 +429,7 @@ python manage.py runserver 0.0.0.0:8001</code></pre>
 <p>Since the <strong>docker-compose.yml</strong> file invokes the build process listed within the <strong>Dockerfile</strong>,<em> </em>there is a mapping that maps the ports on the Django project&#39;s service (often called <em>&#39;web&#39;</em>) from port 8000 to 8001. Django&#39;s development port is port 8000 and I have chosen to map it to port 8001 within the container. I have found this another useful indicator that you are browsing your project through a Docker container rather than Django&#39;s standard development server.</p>
 
 <p>The Dockerfile on GitHub for this particular post is <a href="https://github.com/WayneLambert/portfolio/blob/6594d30dde032f259235aa99d71258d675ca2f0e/Dockerfile">here</a>. The link below is where the project&#39;s most-up-date version is in case I find further enhancements to the build process.</p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (8, 'The Database Schema', 'the-database-schema', '', '2019-06-26 20:42:25.710699', '2019-07-10 18:20:23.952317', 'ab_back_end/static/post_images/postgresql-logo.png', 1, 6, '<p>This post gives a visual representation of the database schema used for this portfolio site.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (8, 'The Database Schema', 'the-database-schema', ', '2019-06-26 20:42:25.710699', '2019-07-10 18:20:23.952317', 'ab_back_end/static/post_images/postgresql-logo.png', 1, 6, '<p>This post gives a visual representation of the database schema used for this portfolio site.</p>
 
 <p>The database schema is illustrated by the visualisation tool built into JetBrains&#39; database software called DataGrip. As an aside, I have tried many different database clients to handle PostgreSQL databases and DataGrip is certainly my favourite of them all.</p>
 
@@ -444,13 +444,13 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 <p>There is also a custom user model which links Django&#39;s users to profiles. This is achieved by using Django signals.</p>
 
 <p>The contacts app contains a database table which captures the contact details for when people contact me through the contact form in hte top left hand corner of the home page of the site.</p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (6, 'JavaScript About Pages', 'javascript-about-pages', '', '2019-06-26 19:51:22.729121', '2019-07-10 18:10:12.590320', 'ab_back_end/static/post_images/javascript-logo_DFQwqVi.png', 1, 2, '<p>The about pages on the home page of the website is implemented with JavaScript. Some JavaScript functions were set up to present the website viewer with information that relates to the features of the application in addition to the technologies used.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (6, 'JavaScript About Pages', 'javascript-about-pages', ', '2019-06-26 19:51:22.729121', '2019-07-10 18:10:12.590320', 'ab_back_end/static/post_images/javascript-logo_DFQwqVi.png', 1, 2, '<p>The about pages on the home page of the website is implemented with JavaScript. Some JavaScript functions were set up to present the website viewer with information that relates to the features of the application in addition to the technologies used.</p>
 
 <p>The JavaScript uses a functional programming style with each of the functions handling only what is necessary to accomplish the task. The DRY principle of a function doing one thing and one thing well is used.</p>
 
 <p><a href="https://waynelambert.dev">https://waynelambert.dev</a></p>');
 INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (2, 'Advanced Form Rendering with Django Crispy Forms', 'advanced-form-rendering-with-django-crispy-forms', 'https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html', '2019-06-26 18:02:14.983456', '2019-07-10 18:20:44.092789', 'ab_back_end/static/post_images/django-logo_XFSSmOr.png', 1, 6, '<p>A useful blog post that explains how to render Django Crispy Forms across multiple columns by individually placing the fields within a template.</p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (11, 'Embedding CK Editor into Blog App', 'embedding-ckeditor-into-blog-app', '', '2019-07-03 20:15:01.642403', '2019-07-10 16:16:44.027130', 'ab_back_end/static/post_images/django-logo_oGybUeq.png', 1, 2, '<p>The content fields for the blog posts on this site have been created using a rich text WYSIWYG editor called CK Editor.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (11, 'Embedding CK Editor into Blog App', 'embedding-ckeditor-into-blog-app', ', '2019-07-03 20:15:01.642403', '2019-07-10 16:16:44.027130', 'ab_back_end/static/post_images/django-logo_oGybUeq.png', 1, 2, '<p>The content fields for the blog posts on this site have been created using a rich text WYSIWYG editor called CK Editor.</p>
 
 <p>This is a JavaScript based editor that can be added to a Django project to give it the ability to add rich text and media to the website.</p>
 
@@ -472,21 +472,21 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 <code class="language-python"># In settings.py
 
 INSTALLED_APPS = [
-    ''django.contrib.admin'',
-    ''django.contrib.auth'',
-    ''django.contrib.contenttypes'',
-    ''django.contrib.sessions'',
-    ''django.contrib.messages'',
-    ''django.contrib.staticfiles'',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
 
     # Third Party
     ...
-    ''ckeditor'',  # Add
-    ''ckeditor_uploader'',  # Add
+    'ckeditor',  # Add
+    'ckeditor_uploader',  # Add
     ...
 
     # Project Apps
-    ''myapp.apps.MyappConfig'',
+    'myapp.apps.MyappConfig',
     ...
 ]</code></pre>
 
@@ -496,23 +496,23 @@ INSTALLED_APPS = [
 <code class="language-python"># In settings.py
 ...
 
-CKEDITOR_UPLOAD_PATH = ''uploads/''
+CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 CKEDITOR_CONFIGS = {
-    ''default'': {
-        ''toolbar'': ''Custom'',
-        ''toolbar_Custom'': [
-        [''Styles'', ''Format'', ''Bold'', ''Italic'', ''Underline'', ''Strike'',
-            ''SpellChecker'', ''Undo'', ''Redo''],
-        [''Link'', ''Unlink'', ''Anchor''],
-        [''Image'', ''Table'', ''HorizontalRule''],
-        [''NumberedList'', ''BulletedList'', ''-'', ''Outdent'', ''Indent'', ''-'',
-            ''JustifyLeft'', ''JustifyCenter'', ''JustifyRight'', ''JustifyBlock''],
-        [''TextColor'', ''BGColor''],
-        [''Smiley'', ''SpecialChar''],
-        [''RemoveFormat'', ''CodeSnippet''],
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+        ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
+            'SpellChecker', 'Undo', 'Redo'],
+        ['Link', 'Unlink', 'Anchor'],
+        ['Image', 'Table', 'HorizontalRule'],
+        ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+            'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+        ['TextColor', 'BGColor'],
+        ['Smiley', 'SpecialChar'],
+        ['RemoveFormat', 'CodeSnippet'],
         ],
-        ''extraPlugins'': ''codesnippet'',
+        'extraPlugins': 'codesnippet',
     }
 }
 
@@ -536,11 +536,11 @@ class Post(models.Model):
 <p>You will need to place a reference to the CK Editors in-built urls.py file within your project&#39;s urls.py file.</p>
 
 <pre>
-<code class="language-python"># In your project''s urls.py
+<code class="language-python"># In your project's urls.py
 
 urlpatterns = [
     ... ,
-    path(''ckeditor/'', include(''ckeditor_uploader.urls'')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     ... ,
 ]</code></pre>
 
@@ -561,10 +561,10 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
 <p>Next up, when your project runs, it needs to get the environment variable into the settings. For a simple, key/value pair storage within your <strong>.env</strong> file, this is achieved like this.</p>
 
 <pre>
-<code class="language-python"># In your project''s settings.py
+<code class="language-python"># In your project's settings.py
 
 # Additional field to adjust the login point for the Admin site
-ADMIN_ALIAS = os.environ[''ADMIN_ALIAS'']</code></pre>
+ADMIN_ALIAS = os.environ['ADMIN_ALIAS']</code></pre>
 
 <p>Finally, all of the URLs within your project that pertain to the admin panel need some adjustments so that when the administrator of the website navigates to them, they will still access them as they would do if the admin was delivered out of the box by Django.</p>
 
@@ -576,31 +576,31 @@ from my_project.settings import ADMIN_ALIAS
 
 urlpatterns = [
     path(
-        f''{ADMIN_ALIAS}/password_reset/'',
+        f'{ADMIN_ALIAS}/password_reset/',
         auth_views.PasswordResetView.as_view(),
-        name=''admin_password_reset'',
+        name='admin_password_reset',
     ),
     path(
-        f''{ADMIN_ALIAS}/password_reset/done/'',
+        f'{ADMIN_ALIAS}/password_reset/done/',
         auth_views.PasswordResetDoneView.as_view(),
-        name=''password_reset_done'',
+        name='password_reset_done',
     ),
     path(
-        ''reset/&lt;uidb64&gt;/&lt;token&gt;/'',
+        'reset/&lt;uidb64&gt;/&lt;token&gt;/',
         auth_views.PasswordResetConfirmView.as_view(),
-        name=''password_reset_confirm'',
+        name='password_reset_confirm',
     ),
     path(
-        ''reset/done/'',
+        'reset/done/',
         auth_views.PasswordResetCompleteView.as_view(),
-        name=''password_reset_complete'',
+        name='password_reset_complete',
     ),
-    path(f''{ADMIN_ALIAS}/'', admin.site.urls),
+    path(f'{ADMIN_ALIAS}/', admin.site.urls),
     ...
 ]</code></pre>
 
 <p>Now, your site has an additional level of protection applied.</p>');
-INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (12, 'Custom 404 Page', 'custom-404-page', '', '2019-07-03 21:40:15.582893', '2019-07-10 15:32:19.069126', 'ab_back_end/static/post_images/django-logo_uBu3UWS.png', 1, 2, '<p>A custom 404 error provides an opportunity to turn a lost visitor into an engaged one by providing navigation options to direct them to a useful place within the website.</p>
+INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, updated_date, image, status, author_id, content) VALUES (12, 'Custom 404 Page', 'custom-404-page', ', '2019-07-03 21:40:15.582893', '2019-07-10 15:32:19.069126', 'ab_back_end/static/post_images/django-logo_uBu3UWS.png', 1, 2, '<p>A custom 404 error provides an opportunity to turn a lost visitor into an engaged one by providing navigation options to direct them to a useful place within the website.</p>
 
 <p>A 404 page could be a contents page, most visited posts page, a search box to help them find what they&#39;re looking for, etc. In Django, a 404 page is implemented by adding a 404.html to the project&#39;s templates folder.</p>
 
@@ -616,7 +616,7 @@ INSERT INTO public.blog_post (id, title, slug, reference_url, publish_date, upda
     &lt;/h6&gt;&lt;br&gt;
     {% for item in category.posts.all %}
       &lt;a class="article-title"
-          href="{% url ''post-detail'' item.slug %}"&gt;- {{ item.title }}
+          href="{% url 'post-detail' item.slug %}"&gt;- {{ item.title }}
       &lt;/a&gt;&lt;br&gt;
     {% endfor %}
     &lt;hr&gt;

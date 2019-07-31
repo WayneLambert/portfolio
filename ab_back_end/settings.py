@@ -1,7 +1,9 @@
-import dj_database_url
 import os
 import sys
-from django.conf.global_settings import (SECURE_BROWSER_XSS_FILTER,
+
+import dj_database_url
+from django.conf.global_settings import (EMAIL_BACKEND,
+                                         SECURE_BROWSER_XSS_FILTER,
                                          SECURE_HSTS_INCLUDE_SUBDOMAINS,
                                          SECURE_HSTS_PRELOAD,
                                          SECURE_HSTS_SECONDS,
@@ -30,7 +32,6 @@ DEBUG = bool(int(os.getenv('DEBUG', False)))
 
 # Gets Django web host for development purposes
 DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
-
 
 # Gets Django database host for development purposes
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
@@ -72,6 +73,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'storages',
+    'django_ses',
 
     # Project Apps
     'api.apps.ApiConfig',
@@ -307,12 +309,12 @@ LOGIN_URL = 'login'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = os.environ['EMAIL_HOST']
-EMAIL_PORT = os.environ['EMAIL_PORT']
-EMAIL_USER = os.environ['EMAIL_USER']
-EMAIL_PASS = os.environ['EMAIL_PASS']
-EMAIL_USE_TLS = bool(int(os.getenv('DEBUG', False)))
+# Django SES Eamil Backend Settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+SES_ACCESS_KEY = os.environ['SES_ACCESS_KEY']
+SES_SECRET_KEY = os.environ['SES_SECRET_KEY']
+SES_REGION_NAME = 'eu-west-2'
+
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

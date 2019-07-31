@@ -31,6 +31,7 @@ django-guardian = "*"
 dj-database-url = "*"
 boto3 = "*"
 django-storages = "*"
+django-ses-email-backend = "*"
 
 [requires]
 python_version = "3.7"
