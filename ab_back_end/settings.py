@@ -146,6 +146,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             'blog/templates/blog/',
             'users/templates/users/',
+            'users/templates/registration/',
             'scraping/templates/scraping/',
             'count/templates/count/',
             'contacts/templates/contacts/',
@@ -308,10 +309,18 @@ LOGIN_URL = 'login'
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-# Django SES Eamil Backend Settings
+# Django SES Email Backend Settings
 EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = 'eu-west-1'
 AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
+
+if not DEBUG:
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'Wayne Lambert <admin@waynelambert.dev>'
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
