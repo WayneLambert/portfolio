@@ -34,6 +34,14 @@ Finally, the Django component of the application is the handling of the URLs to 
 
 The word counting app is a demonstration of using Python to calculate the number of occurrences of each of the words and letters used within the string input/pasted by the user. Again, no models are required for this app, however Django's view handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
 
+## API Endpoints
+
+The blog app also has some API endpoints programmed in that can be used by a front-end developer with a framework such as React, Vue or Angular.
+
+These can be accessed by either going to <https://waynelambert.dev/api/blog/> to see the blog list view or to <https://waynelambert.dev/api/blog/1> to see the detail view. The '1' part of the url can be exchanged for any other valid primary key number for the post.
+
+These addresses expose the browsable API endpoints that Django Rest Framework provides.
+
 ## License
 
 Copyright (c) Wayne Lambert. All rights reserved.
