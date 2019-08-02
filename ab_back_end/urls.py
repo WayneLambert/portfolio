@@ -6,6 +6,9 @@ from django.urls import include, path
 from ab_back_end.settings import ADMIN_ALIAS
 from ab_back_end.views import home, view_cv
 from contacts import views as contacts_views
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemap import CategorySitemap, PostSitemap
+
 
 urlpatterns = [
     path(
@@ -42,6 +45,16 @@ urlpatterns = [
     path('scraping/', include('scraping.urls')),
     path('count/', include('count.urls')),
     path('api/', include('api.urls')),
+]
+
+sitemaps = {
+    'categories': CategorySitemap,
+    'posts': PostSitemap,
+}
+
+urlpatterns += [
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 if settings.DEBUG:
