@@ -145,6 +145,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
+            os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
             'blog/templates/blog/',
             'users/templates/users/',
             'users/templates/registration/',

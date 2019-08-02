@@ -1,10 +1,14 @@
-from django.test import TestCase
-from django.contrib.auth.models import User
-from blog.models import Post
 from datetime import datetime
+from django.contrib.auth.models import User
+from django.test import TestCase
+from blog.models import Post
 
 
 class BlogTests(TestCase):
+    try:
+        from unittest.mock import MagicMock
+    except:
+        from mock import MagicMock
 
     @classmethod
     def setUpTestData(cls):
@@ -18,7 +22,7 @@ class BlogTests(TestCase):
             slug='blog-title',
             content='Body content...',
             url='www.example.com',
-            author=testuser,
+            author=testuser.username,
             publish_date=datetime.now(),
             status=1,
         )

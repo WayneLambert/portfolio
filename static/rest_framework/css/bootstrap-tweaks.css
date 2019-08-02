@@ -19,7 +19,7 @@ a single block in the template.
 }
 
 .navbar-inverse .brand a {
-  color: #999999;
+  color: #cbd5db;
 }
 .navbar-inverse .brand:hover a {
   color: white;
@@ -35,10 +35,10 @@ a single block in the template.
 }
 
 .navbar {
-  background: #2C2C2C;
-  color: white;
+  background: #563C7C;
+  color: cbd5db;
   border: none;
-  border-top: 5px solid #A30000;
+  /* border-top: 5px solid #A30000; */
   border-radius: 0px;
 }
 
@@ -96,10 +96,10 @@ html {
   margin: 0 auto;
 }*/
 
-body {
+/* body {
   background: url("../img/grid.png") repeat-x;
   background-attachment: fixed;
-}
+} */
 
 #content {
   margin: 0;

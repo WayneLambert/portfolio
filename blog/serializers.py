@@ -37,11 +37,17 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     categories = serializers.StringRelatedField(many=True)
-    # author_username = serializers.CharField(source='author.username')
-    # status = serializers.ChoiceField(choices=Post.Status)
+    author_username = serializers.CharField(source='author.username')
+    author_first_name = serializers.CharField(source='author.first_name')
+    author_last_name = serializers.CharField(source='author.last_name')
+    status = serializers.CharField(source='get_status_display')
 
     class Meta:
         model = Post
+
+        def get_status(self, obj):
+            return obj.get_status_display()
+
         fields = (
             'id',
             'title',
@@ -53,11 +59,14 @@ class PostSerializer(serializers.ModelSerializer):
             'image',
             'status',
             'author_username',
+            'author_first_name',
+            'author_last_name',
             'categories',
         )
         read_only_fields = (
             'id',
-            'categories',
+            'author_first_name',
+            'author_last_name',
         )
         ordering = ['-publish_date']
 
