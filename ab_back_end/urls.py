@@ -2,13 +2,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
+
 from ab_back_end.settings import ADMIN_ALIAS
 from ab_back_end.views import home, view_cv
-from contacts import views as contacts_views
-from django.contrib.sitemaps.views import sitemap
 from blog.sitemap import CategorySitemap, PostSitemap
-
+from contacts import views as contacts_views
 
 urlpatterns = [
     path(

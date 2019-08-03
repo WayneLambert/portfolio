@@ -36,7 +36,7 @@ RUN apk --update add \
     --no-cache su-exec
 
 # Install pipenv from PyPI
-RUN pip install pipenv
+RUN pip install --upgrade pip && pip install pipenv
 
 # Copy local files to container
 COPY Pipfile Pipfile.lock /code/
