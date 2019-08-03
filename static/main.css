@@ -123,3 +123,12 @@ footer {
   font-weight: bold;
   text-transform: capitalize;
 }
+
+.count-words-box {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #4B4C4C;
+  vertical-align: text-top;
+}

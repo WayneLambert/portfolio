@@ -53,29 +53,12 @@ The blog project is built with Django and uses a PostgreSQL database. It is a
 full CRUD application with the ability to create, update and delete posts. Views
 within the application are total posts, posts by author, and posts by category.<br><br>
 
-<b>Features</b><br><br>
+The full list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
+<br><br>
 
-&bull; Full user registration and login with author-level permissions<br>
-&bull; Profile creation in line with user creation using Django signals<br>
-&bull; Django Crispy Forms is used to handle form applications<br>
-&bull; Category selector in the sidebar gives a view of posts by category<br>
-&bull; Clicking the link for an author gives a view of posts written by the author<br>
-&bull; Pagination is implemented to speed up page loading and assist with navigation<br>
-&bull; A read-only view of profile details for the logged in user<br>
-&bull; Django template code is in easily maintainable files<br>
-&bull; A many-to-many database relationship between blog posts and categories<br>
-&bull; Static file management is implemented with the third party Django package, WhiteNoise<br>
-&bull; JavaScript code in conjunction with a Django HTML template and CSS means that you can see this 'About' page<br><br>
-
-<b>Languages: </b>Python, HTML / CSS, JavaScript<br>
+<b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
 <b>Frameworks: </b>Django, Bootstrap, FontAwesome<br>
-<b>Other: </b>PostgreSQL, GitHub<br><br>
-
-<b>Disclaimer: </b>The posts written within the blog are purely copied from the
-relevant documentation sites. They are only intended for a visual representation
-of content and, in my opinion, give a better representation of the final product
-that is intended by the blog's design than just using some standard
-<em>lorem ipsum</em> text.
+<b>Other: </b>PostgreSQL, GitHub, Docker, Heroku, S3, Simple Email Service<br><br>
 `;
 
 
