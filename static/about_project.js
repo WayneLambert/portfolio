@@ -59,6 +59,11 @@ The full list of features can be found on the project's <a href="https://github.
 <b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
 <b>Frameworks: </b>Django, Bootstrap, FontAwesome<br>
 <b>Other: </b>PostgreSQL, GitHub, Docker, Heroku, S3, Simple Email Service<br><br>
+
+The blog also comes with an API built with Django Rest Framework. The endpoints can be found at:
+
+- List View:    https://waynelambert.dev/api/blog/posts
+- Detail View:  https://waynelambert.dev/api/blog/posts/1
 `;
 
 

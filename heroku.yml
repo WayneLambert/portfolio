@@ -7,6 +7,6 @@ build:
 release:
   image: web
   command:
-    - python manage.py collectstatic --noinput
+    - python manage.py collectstatic --noinput --clear
 run:
   web: gunicorn ab_back_end.wsgi
