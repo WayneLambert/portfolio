@@ -7,7 +7,7 @@ def home(request):
 
 
 def view_cv(request):
-    return redirect('https://wl-portfolio.s3.eu-west-2.amazonaws.com/media/public/cv_wayne_lambert.pdf')
+    return redirect('https://wl-portfolio.s3.eu-west-2.amazonaws.com/documents/cv_wayne_lambert.pdf')
 
 
 def contact_form(request):
