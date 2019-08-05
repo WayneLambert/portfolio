@@ -235,49 +235,11 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Media Files
 MEDIA_URL = '/media/'
 DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
-
-# Logging Configuration
-# if DEBUG:
-#     LOGGING = {
-#         'version': 1,
-#         'disable_existing_loggers': False,
-#         'handlers': {
-#             'console': {
-#                 'class': 'logging.StreamHandler',
-#             },
-#         },
-#         'loggers': {
-#             'django': {
-#                 'handlers': ['console'],
-#                 'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
-#             },
-#         },
-#     }
-# else:
-#     LOGGING = {
-#         'version': 1,
-#         'disable_existing_loggers': False,
-#         'handlers': {
-#             'file': {
-#                 'level': 'DEBUG',
-#                 'class': 'logging.FileHandler',
-#                 'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
-#             },
-#         },
-#         'loggers': {
-#             'django': {
-#                 'handlers': ['file'],
-#                 'level': 'DEBUG',
-#                 'propagate': True,
-#             },
-#         },
-#     }
-
 
 # CK Editor Settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
