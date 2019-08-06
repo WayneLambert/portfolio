@@ -53,17 +53,17 @@ The blog project is built with Django and uses a PostgreSQL database. It is a
 full CRUD application with the ability to create, update and delete posts. Views
 within the application are total posts, posts by author, and posts by category.<br><br>
 
-The full list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
+A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
 <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
-<b>Frameworks: </b>Django, Bootstrap, FontAwesome<br>
+<b>Frameworks: </b>Django, Django REST, Bootstrap, FontAwesome<br>
 <b>Other: </b>PostgreSQL, GitHub, Docker, Heroku, S3, Simple Email Service<br><br>
 
-The blog also comes with an API built with Django Rest Framework. The endpoints can be found at:
+The blog also comes with an API built with Django Rest Framework. The endpoints can be found at:<br><br>
 
-- List View:    https://waynelambert.dev/api/blog/posts
-- Detail View:  https://waynelambert.dev/api/blog/posts/1
+- <a href="https://waynelambert.dev/api/blog/posts">List View</a><br>
+- <a href="https://waynelambert.dev/api/blog/posts/1">Detail View</a>
 `;
 
 

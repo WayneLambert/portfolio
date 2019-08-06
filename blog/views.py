@@ -16,7 +16,7 @@ def home(request):
 
 class PostListView(ListView):
     model = Post
-    queryset = Post.objects.filter(status=1)
+    queryset = Post.objects.filter(status=1).prefetch_related('author')
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     paginate_by = 3

@@ -6,12 +6,22 @@
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
         <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Please get in touch!</legend>
+          <legend class="border-bottom mb-4">Please Get in Touch!</legend>
+          <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/profile_pics/Casual_Gravatar_180_x_180.jpg"
+          alt="Wayne Lambert">
           <table>{{ form|crispy }}</table>
         </fieldset>
       <div class="form-group">
-        <button class="btn btn-secondary mr-2" type="submit">Send Email</button>
+        <button class="btn btn-secondary mr-2" type="submit">
+          <i class="fa fa-envelope-open"></i>
+          Send Message
+        </button><br><br>
       </div>
     </form>
+    <b>Links</b><br><br>
+    <ul style="list-style-type:square;">
+      <li><a href="{% url 'about-me' %}">About Me</a></li>
+      <li><a href="{% url 'reading-list' %}">Reading List</a></li>
+    </ul>
   </div>
 {% endblock content %}

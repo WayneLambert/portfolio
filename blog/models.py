@@ -1,11 +1,8 @@
-import os
 from django.contrib.auth.models import User
 from django.db import models
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-from PIL import Image
-from ab_back_end.settings import DEFAULT_IMAGES_ROOT
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -17,9 +14,6 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
         ordering = ['name']
-
-    def __unicode__(self):
-        return self.name
 
     def __str__(self):
         return self.name
@@ -52,9 +46,8 @@ class Post(models.Model):
         max_length=200,
     )
     status = models.IntegerField(choices=STATUS, default=0)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    categories = models.ManyToManyField(
-        Category, related_name='posts')
+    author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category, related_name='posts')
 
     class Meta:
         ordering = ['-publish_date']
@@ -66,13 +59,6 @@ class Post(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Post, self).save(*args, **kwargs)
-
-        # img = Image.open(self.image.path)
-
-        # if img.height > 120 or img.width > 120:
-        #     output_size = (120, 120)
-        #     img.thumbnail(output_size)
-        #     img.save(self.image.path)
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'slug': self.slug})
