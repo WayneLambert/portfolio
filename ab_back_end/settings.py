@@ -248,11 +248,11 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Custom',
         'toolbar_Custom': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
-                'SpellChecker', 'Undo', 'Redo'],
+             'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
-                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'],
             ['RemoveFormat', 'CodeSnippet'],

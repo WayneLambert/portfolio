@@ -24,3 +24,6 @@ RUN pipenv install --system --ignore-pipfile --deploy
 
 # Copy local source code directory to container's source code directory
 COPY . .
+
+# Remove all contents of the staticfiles folder
+RUN rm -rf /code/staticfiles/*
