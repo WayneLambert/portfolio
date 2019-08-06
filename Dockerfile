@@ -24,6 +24,3 @@ RUN pipenv install --system --ignore-pipfile --deploy
 
 # Copy local source code directory to container's source code directory
 COPY . .
-
-# Collect the static files from afresh
-RUN python manage.py collectstatic --noinput --clear
