@@ -16,10 +16,7 @@
         <h6>Type or paste some text in the box below and click the 'Count!'
           button to get a usage count for each of the words and letters.</h6>
         <form name="frm" action="{% url 'count' %}" method="GET">
-          <textarea class="count-words-box" id="count-words-box" name="fulltext"
-            placeholder="Enter text here..."
-            cols="95" rows="5">
-          </textarea><br>
+          <textarea class="count-words-box" id="count-words-box" name="fulltext" placeholder="Enter text here..." cols="95" rows="20"></textarea><br>
           <small class="text-muted ml-2">
             <b><u>Note</u>:</b> You can import <em>'lorem ipsum'</em> text to save you time if you do not want to use your own text.
             The text you use is not recorded or seen in any analytics.
