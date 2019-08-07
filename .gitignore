@@ -214,4 +214,3 @@ docker/prod/certbot
 
 # Temp Files
 /ab_back_end/templates/about_me.html
-/ab_back_end/templates/reading_list.html
