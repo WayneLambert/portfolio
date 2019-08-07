@@ -1,18 +1,18 @@
 <div class="article-metadata">
-    <p class="author_name">
-      <a href="{% url 'user-posts' post.author.username %}">
-        {% if post.author.profile.author_view == 0 %}
-          {{ post.author.username }}
-        {% else %}
-          {{ post.author.first_name }} {{ post.author.last_name }}
-        {% endif %}
-      </a>
-    </p>
-    <p class="date_stamp">
-      <small class="text-muted">
-        Published: {{ post.publish_date|date:"D d-M-y H:i" }}  |  
-        Updated: {{ post.updated_date|date:"D d-M-y H:i" }}
-      </small>
-    </p>
+  <p class="author_name">
+    <a href="{% url 'user-posts' post.author.username %}">
+      {% if post.author.profile.author_view == 0 %}
+        {{ post.author.username }}
+      {% else %}
+        {{ post.author.first_name }} {{ post.author.last_name }}
+      {% endif %}
+    </a>
+  </p>
+  <p class="date_stamp">
+    <small class="text-muted">
+      Published: {{ post.publish_date|date:"D d-M-y" }}  |  
+      Updated: {{ post.updated_date|date:"D d-M-y" }}
+    </small>
+  </p>
 </div>
 <div class="author-metadata-block"></div>

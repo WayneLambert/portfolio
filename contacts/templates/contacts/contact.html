@@ -2,39 +2,28 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Contact Me | Wayne Lambert</title>
-  </head>
-
-  <body>
-    {% block content %}
-      <div class="alert alert-light col-md-4 mb-0" role="alert">
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-            <fieldset class="form-group">
-              <legend class="border-bottom mb-4">Please Get in Touch!</legend>
-              <table>{{ form|crispy }}</table>
-            </fieldset>
-          <div class="form-group">
-            <button class="btn btn-secondary mr-2" type="submit">
-              <i class="fa fa-envelope-open"></i>
-              Send Message
-            </button><br><br>
-          </div>
-        </form>
-        <b>Links</b><br><br>
-        <ul style="list-style-type:square;">
-          <li><a href="https://notebooks.azure.com/wayne-a-lambert/projects" target="_blank">
-            Data Science Notebooks</a>
-          </li>
-        </ul>
-        <br><br>
+{% block content %}
+  <div class="alert alert-light col-md-4 mb-0" role="alert">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Please Get in Touch!</legend>
+          <table>{{ form|crispy }}</table>
+        </fieldset>
+      <div class="form-group">
+        <button class="btn btn-secondary mr-2" type="submit">
+          <i class="fa fa-envelope-open"></i>
+          Send Message
+        </button><br><br>
       </div>
-    {% endblock content %}
-  </body>
-</html>
+    </form>
+    <b>Links</b><br><br>
+    <ul style="list-style-type:square;">
+      <li><a href="{% url 'reading-list' %}">Reading List</a></li>
+      <li><a href="https://notebooks.azure.com/wayne-a-lambert/projects" target="_blank">
+        Data Science Notebooks</a>
+      </li>
+    </ul>
+    <br><br>
+  </div>
+{% endblock content %}

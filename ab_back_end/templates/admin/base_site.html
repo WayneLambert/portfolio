@@ -1,9 +1,13 @@
 {% extends "admin/base.html" %}
 
-{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+{% block title %}
+  {{ title }} | {{ site_title|default:_('Django site admin') }}
+{% endblock title %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">Portfolio Project: Admin Panel</a></h1>
-{% endblock %}
+  <h1 id="site-name">
+    <a href="{% url 'admin:index' %}">Portfolio Project: Admin Panel</a>
+  </h1>
+{% endblock branding %}
 
-{% block nav-global %}{% endblock %}
+{% block nav-global %}{% endblock nav-global %}

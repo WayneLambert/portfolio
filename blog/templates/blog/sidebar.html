@@ -3,7 +3,7 @@
     <h6>Categories</h6>
     <ul class="list-group">
         {% for blog_category in blog_categories %}
-          <button onclick="window.location.href = '{% url "blog-home" %}category/{{ blog_category.slug }}';"
+          <button onclick="window.location.href ='{% url "blog-home" %}category/{{ blog_category.slug }}';"
             class="list-group-item list-group-item-action">
             {{ blog_category.name }}
           </button>
