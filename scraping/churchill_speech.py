@@ -1,18 +1,26 @@
 from bs4 import BeautifulSoup
-import requests
 from django.shortcuts import render
+import requests
+# pylint: disable=invalid-name
 
-
-url = "https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
-page_response = requests.get(url, timeout=5)
+URL = "https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
 
 # Fetch the content from the url, using the requests library
-page_content = BeautifulSoup(page_response.content, "html.parser")
+page_response = requests.get(URL, timeout=5)
 
-# Use the html parser to parse the url content and store it in a variable.
+# Parse the url content
+page_content = BeautifulSoup(page_response.content, "html.parser")
 
 
 def get_churchill_speech(request):
-    """Retrieves Winston Churchill's first speech as UK prime minister from goodreads.com"""
-    speech_text = str(page_content.findChildren('h1')).split('\n')[1].split(';<br/>')[0].strip() + '."'
-    return render(request, 'churchill_speech.html', {'churchill_speech': speech_text})
+    """
+    Retrieves Winston Churchill's first speech as UK prime minister from the goodreads.com
+    website removing any new line escape characters returned from the parsed HTML.
+    """
+    speech_text = str(page_content.findChildren
+                      ('h1')).split('\n')[1].split(';<br/>')[0].strip() + '."'
+    return render(
+        request,
+        'churchill_speech.html',
+        {'churchill_speech': speech_text}
+    )

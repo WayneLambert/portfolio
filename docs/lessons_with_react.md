@@ -1,14 +1,4 @@
-# Learnings
-
-## Programmimg
-
-- An 'asynchronous call' is something that will happen in the future.
-
-## Django / Python
-
-- Viewsets can be used to make code tidy in cases where each of the HTTP methods will be used. Blog posts makes a good use case for this as it is likely that you would want to be able to create, read, update and delete blog posts.
-
-## React / JSX / JavaScript
+# Lessons with React
 
 - React is called _'React'_ because it reacts to state changes in the DOM
 - React manages a virtual DOM which is reconciled against the Real DOM which is managed by the browser. Any React element that is different in the Virtual DOM is then refreshed in the Real DOM so that the two are always kept in sync and changes are inexpensive and lightweight. This gives responsive applications.
@@ -16,16 +6,16 @@
 - Every application is composed of a tree of components which produces a complex markup. A component is a piece of the user interface. Every application contains at least the root component.
 - The Render() method is the only mandatory method within a React component. It describes what the UI should look like.
 - If you do not want to stay with the default `create-react-app` build configuration when it comes to production, you can run the `npm run eject` command which enables for manual changes to the build.
-- `React.Fragment` can be used in cases where you insert a div around some JSX elements that require an additional container for Babel to be able to compile it. If you use a standard `<div></div>` tag, then this may produce two div tags wrapping around the JSX elements when you inspect the elements in Chrome Developer tools. This mosty likely isn't the desired outcome.
+- `React.Fragment` can be used in cases where you insert a div around some JSX elements that require an additional container for Babel to be able to compile it. If you use a standard `<div></div>` tag, then this may produce two div tags wrapping around the JSX elements when you inspect the elements in Chrome Developer tools. This most likely isn't the desired outcome.
 - Code written inside of curly braces is regular JavaScript code
-- React components don’t automatically bind _this_ to the instance. I have to explicitly use `.bind(this)` within the constructor lifecycle method. This will take the following format where the classMethodName is replaced with the name given to my class method.
+- React components do not automatically bind _this_ to the instance. I have to explicitly use `.bind(this)` within the constructor lifecycle method. This will take the following format where the classMethodName is replaced with the name given to my class method.
   - `this.classMethodName. = this.classMethodName.bind(this);`
   - _Formik_ is a JavaScript library that enables better building of React forms. It is the equivalent of Crispy Forms for Django. It handles things such as formatting in addition to data validation.
 
 ### Components
 
 - React components are small, reusable pieces of code that return a React element to be rendered to the page.
-- Components are not aware of application state. If my webpage is only going to be used for displaying data, then make it a component.
+- Components are not aware of application state. If my web page is only going to be used for displaying data, then make it a component.
 - The component that **owns** a piece of the state should be the one **modifying** it.
 - **Controlled Components**
   - An input form element whose value is controlled by React is called a controlled component.
@@ -38,7 +28,7 @@
 
 ### Containers
 
-- Containers are very similar to components. The only difference is that containers are aware of application state. If my webpage needs to be aware of application state, then make it a container.
+- Containers are very similar to components. The only difference is that containers are aware of application state. If my web page needs to be aware of application state, then make it a container.
 - This means that `props` is used to handle updates within the virtual DOM for a component whereas `state` is used to handle updates within the virtual DOM for a container.
 
 ### Vanilla JavaScript
@@ -65,7 +55,7 @@
 ### Classes
 
 - Classes are used to define components by extending them
-- In JavaScript, classes are objects because they are effectively syntactic sugar over constuctor functions. Functions are also objects in JavaScript and therefore classes are also objects.
+- In JavaScript, classes are objects because they are effectively syntactic sugar over constructor functions. Functions are also objects in JavaScript and therefore classes are also objects.
 
 ### State
 
@@ -150,14 +140,8 @@ componentDidMount()
 
 - React supports a special attribute that you can attach to any component. The ref attribute can be an object created by React.createRef() function or a callback function, or a string (in legacy API).
 - When the ref attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
-- Use refs sparingly. If you find yourself often using refs to “make things happen” in your app, consider getting more familiar with top-down data flow.
+- Use 'refs' sparingly. If you find yourself often using 'refs' to “make things happen” in your app, consider getting more familiar with top-down data flow.
 
 ### SEO
 
 - An <a href="https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9" >article on medium.freecodecamp</a> reports that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
-
-### Questions to Get Answers To
-
-- Research setState()
-- A Redux implmentation within my React project consists of actions, components, containers, reducers and store. Research in more detail what each of these are in the context of a Redux project
-- What is a 'payload'?

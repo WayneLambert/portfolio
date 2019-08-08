@@ -2,12 +2,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Count</title>
+    <title>Words and Letters Count</title>
   </head>
 
   <body>
@@ -33,14 +32,19 @@
             {% for letter in letter_count  %}
               <br>{{ letter }}
             {% endfor %}
-          <br><br>
           </div>
-        </div><br>
-        <a href="{% url 'check-count' %}" class="btn btn-sm btn-success mr-10"
-          id="btn-check-count">
-          <i class="fa fa-repeat"></i>
-          Start Again
-        </a>
+        </div><br><br>
+        <div>        
+          <a href="{% url 'check-count' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-check-count">
+            <i class="fa fa-repeat"></i>
+            Start Again
+          </a><br><br>
+          <h6>The code for this scraping process can be seen
+            <a href="https://github.com/WayneLambert/portfolio/blob/master/count/views.py"
+            target="_blank">here</a>.
+          </h6><br><br>
+        </div>
       </div>
     {% endblock content %}
   </body>

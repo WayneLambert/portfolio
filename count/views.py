@@ -1,14 +1,14 @@
-from django.shortcuts import render
 from typing import operator
 import re
+from django.shortcuts import render
 
+
+ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 
 def check_count(request):
     return render(request, 'count/check_count.html')
 
-
 def count(request):
-    ALPHABET = "abcdefghijklmnopqrstuvwxyz"
     word_list = []
     orig_full_text = request.GET['fulltext']
     cleaned_full_text = re.sub('[!@#.,/\';]', '', orig_full_text).lower()
@@ -39,8 +39,8 @@ def count(request):
             perc = 100 * count_char(cleaned_full_text,
                                     test_char) / len(cleaned_full_text)
             letter_count_str = f"""{test_char} appeared {char_count}
-            {'time' if char_count==1 else 'times'}
-            constituting an appearance rate of {round(perc,2)}%"""
+                {'time' if char_count==1 else 'times'}
+                constituting an appearance rate of {round(perc,2)}%"""
             letter_count.append(letter_count_str.strip('\n'))
 
     context = {
