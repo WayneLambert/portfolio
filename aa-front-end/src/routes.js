@@ -11,7 +11,7 @@ const BaseRouter = () => (
     <Route exact path='/' component={HomeView} />
     <Route exact path='/blog' component={PostList} />
     <Route exact path='/blog/post' component={PostFormView} />
-    <Route exact path='/blog/:postID' component={PostDetail} />
+    <Route exact path='/blog/post/:postID' component={PostDetail} />
     <Route component={PageNotFound} />
   </Switch>
 );

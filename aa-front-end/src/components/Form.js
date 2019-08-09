@@ -17,11 +17,11 @@ class PostForm extends Component {
     const content = event.target.elements.content.value
 
     try {
-      const response = await axios.post('http://localhost:8000/api/blog/',{
+      const res = await axios.post('http://localhost:8001/api/blog/posts/',{
         title: title,
         content: content,
       });
-      return console.log(response);
+      return console.log(res);
     }
     catch (error) {
       return console.log(error);

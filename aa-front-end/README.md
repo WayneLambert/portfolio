@@ -1,14 +1,13 @@
+# React version of Portfolio's Blog Project
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
 
-This was created at an earlier stage in the project when I was using React for the
-front end and picking up the data for the blog from the REST endpoints created with
-Django Rest Framework.
+Initial setup is to use `npm create-react-app aa-front-end`
+The next steps are to install of the additional packages using `npm install ...`
 
-At some point in the future, I may choose to develop another application and use
-DRF and React.
+## Details
 
-I have kept this in view on the repo as an example for how to structure a project
-that has a distinct back end and front end as well as having some examples of React
-code an package management with npm.
+This app is created to demonstrate consuming the API data endpoints created with
+Django Rest Framework. The axios package is used to retrieve and render the data to the web page.

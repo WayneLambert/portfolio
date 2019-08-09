@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Posts from '../components/PostView';
 
-const title = 'Python PEPs';
-const subtitle = 'Accepted PEPs (accepted; may not be implemented yet)';
+const title = 'Blog Posts';
+const subtitle = 'Blog posts in development of the React version of the blog';
 
 class PostList extends Component {
   state = {
@@ -11,7 +11,7 @@ class PostList extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/api/blog')
+    axios.get('http://localhost:8001/api/blog/posts/')
       .then(response => {
         this.setState({
           posts: response.data

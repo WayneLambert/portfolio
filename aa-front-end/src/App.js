@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import BaseRouter from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'antd/dist/antd.css';
-// import 'bulma.css';
 import SiteLayout from './components/SiteLayout';
 
 

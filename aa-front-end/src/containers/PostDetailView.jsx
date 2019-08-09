@@ -11,7 +11,7 @@ class PostDetail extends Component {
 
   componentDidMount() {
     const postID = this.props.match.params.postID;
-    axios.get(`http://localhost:8000/api/blog/${postID}`)
+    axios.get(`http://localhost:8001/api/blog/posts/${postID}`)
       .then(response => {
         this.setState({
           post: response.data
@@ -26,7 +26,7 @@ class PostDetail extends Component {
         Publish Date: {this.state.post.publish_date}<br />
         Updated Date: {this.state.post.updated_date}<br />
         <br />
-        <React.Fragment>                
+        <React.Fragment>
           <CounterComponent />
         </React.Fragment>
       </Card>

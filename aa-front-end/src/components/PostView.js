@@ -1,6 +1,7 @@
 import React from 'react';
 import { List } from 'antd';
 
+
 const Posts = (props) => {
   return (
     <List
@@ -17,14 +18,18 @@ const Posts = (props) => {
         <div>
           <List.Item key={item.title} />
           <List.Item.Meta
-            title={<a href={`/blog/${item.id}`}>{item.title}</a>}
+            title={<a href={`/blog/posts/${item.id}`}>{item.title}</a>}
             body={item.body}
           />
-          <div className="body">{item.body}</div>
+          <div className="content">{item.content}</div>
           <List.Item>
             <div>
+              Slug: {item.slug}<br />
+              Categories: {item.categories}<br />
+              Author: {item.author_first_name} {item.author_last_name}<br />
               Publish Date: {item.publish_date}<br />
               Updated Date: {item.updated_date}<br />
+              Image URL: {item.image}<br />
               <br />
             </div>
           </List.Item>

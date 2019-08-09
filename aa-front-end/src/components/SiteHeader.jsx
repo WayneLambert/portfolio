@@ -14,7 +14,6 @@ class SiteHeader extends Component {
       >
         <Menu.Item key="1"><a href="/">Home</a></Menu.Item>
         <Menu.Item key="2"><a href="/blog">Blog</a></Menu.Item>
-        <Menu.Item key="3"><a href="/cv">CV</a></Menu.Item>
       </Menu>
     </PageHeader>
     )
