@@ -1,9 +1,9 @@
 # Use Alpine version of the Python runtime as the base image
-FROM python:3.7.4-slim
+FROM python:3.7.1-slim
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2019.07" \
+    dev.waynelambert.version="2019.08" \
     dev.waynelambert.description="Docker image for web service"
 
 # Set environment varibles

@@ -1,20 +1,13 @@
 # Use Alpine version of the Python runtime as the base image
-FROM python:3.7.4-alpine
+FROM python:3.7.1-slim
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2019.07" \
+    dev.waynelambert.version="2019.08" \
     dev.waynelambert.description="Docker image for web service"
 
 # Create and set working directory
 WORKDIR /code
-
-# Install additional project dependencies
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql-dev \
-    && pip install psycopg2 \
-    && apk add jpeg-dev zlib-dev
 
 # Install pipenv from PyPI
 RUN pip install --upgrade pip && pip install pipenv
@@ -24,9 +17,6 @@ COPY Pipfile Pipfile.lock /code/
 
 # Install project dependencies using exact versions in Pipfile.lock
 RUN pipenv install --system --ignore-pipfile --deploy
-
-# Remove any unrequired build dependencies
-RUN apk del build-deps
 
 # Copy local source code directory to container's source code directory
 COPY . .

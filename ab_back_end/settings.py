@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'storages',
+    'captcha',
 
     # Project Apps
     'api.apps.ApiConfig',
@@ -274,17 +275,24 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 # Django SES Email Backend Settings
-EMAIL_BACKEND = 'django_ses.SESBackend'
-AWS_SES_REGION_NAME = 'eu-west-1'
-AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
-
 if not DEBUG:
+    EMAIL_BACKEND = 'django_ses.SESBackend'
+    AWS_SES_REGION_NAME = 'eu-west-1'
+    AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
     EMAIL_HOST = os.environ['EMAIL_HOST']
     EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
     EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
     DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

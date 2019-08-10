@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect
+from django.conf import settings
+from django.core.mail import send_mail
+from django.shortcuts import redirect, render
+
 from contacts.forms import ContactForm
 
 
@@ -10,6 +13,13 @@ def contact(request):
 
         if form.is_valid():
             form.save()
+            send_mail(
+                subject='Contact Form',
+                message=request.POST['message'],
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=['contact@waynelambert.dev'],
+                fail_silently=False
+            )
             return redirect('contact-submitted')
     else:
         form = ContactForm()

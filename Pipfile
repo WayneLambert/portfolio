@@ -32,6 +32,9 @@ dj-database-url = "*"
 boto3 = "*"
 django-storages = "*"
 django-ses = "*"
+django-simple-captcha = "*"
+django-filter = "*"
+pygments = "*"
 
 [requires]
 python_version = "3.7"

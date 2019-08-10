@@ -1,9 +1,9 @@
 # Official Python runtime as the base image
-FROM python:3.7.4-alpine
+FROM python:3.7.1-slim
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2019.07" \
+    version="2019.08" \
     description="Docker image for web service of portfolio site."
 
 # Causes all output to stdout to be flushed immediately
@@ -11,29 +11,6 @@ ENV PYTHONUNBUFFERED 1
 
 # Create and set working directory
 WORKDIR /code
-
-# Install additional project dependencies
-RUN apk --update add \
-    build-base \
-    gettext \
-    nginx \
-    # Postgres Dependencies
-    libpq \
-    --virtual .build-deps \
-    gcc \
-    musl-dev \
-    postgresql \
-    postgresql-dev \
-    # Pillow dependencies
-    jpeg-dev \
-    zlib-dev \
-    # Install Bash and sudo for a better development shell
-    bash \
-    bash-doc \
-    bash-completion \
-    sudo \
-    tree \
-    --no-cache su-exec
 
 # Install pipenv from PyPI
 RUN pip install --upgrade pip && pip install pipenv
