@@ -3,17 +3,8 @@
       <a href="{% url 'home' %}" class="btn" id="btn-home"><i class="fa fa-home"></i></a>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-          <a href="https://github.com/WayneLambert" target="_blank"
-            class="btn" id="btn-github">
-            <i class="fa fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/waynealambert/" target="_blank"
-            class="btn" id="btn-linkedin">
-            <i class="fa fa-linkedin-square"></i>
-          </a>
-          <a href="{% url 'contact' %}" class="btn" id="btn-contact">
-            <i class="fa fa-at"></i>
-          </a>
+          {% include "header_github.html" %}
+          {% include "header_linkedin.html" %}
         </ul>
       </div>
     </nav>

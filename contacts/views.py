@@ -16,7 +16,7 @@ def contact(request):
             send_mail(
                 subject='Contact Form',
                 message=request.POST['message'],
-                from_email=settings.EMAIL_HOST_USER,
+                from_email='settings.DEFAULT_FROM_EMAIL',
                 recipient_list=['contact@waynelambert.dev'],
                 fail_silently=False
             )
