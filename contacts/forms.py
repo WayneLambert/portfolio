@@ -8,6 +8,7 @@ class ContactForm(forms.ModelForm):
     captcha = ReCaptchaField(
         widget=ReCaptchaV3(
             attrs={
+                'data-theme': 'light',
                 'data-size': 'invisible',
             }
         )
