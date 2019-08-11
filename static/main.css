@@ -132,3 +132,11 @@ footer {
   color: #4B4C4C;
   vertical-align: text-top;
 }
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.grecapture.render {
+  size: invisible;
+}

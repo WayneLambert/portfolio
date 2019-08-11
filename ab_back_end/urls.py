@@ -47,7 +47,6 @@ urlpatterns = [
     path('about-me/', about_me, name='about-me'),
     path('reading-list/', reading_list, name='reading-list'),
     path('api/', include('api.urls')),
-    path(r'captcha/', include('captcha.urls')),
 ]
 
 sitemaps = {

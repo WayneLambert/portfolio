@@ -10,7 +10,6 @@
           <legend class="border-bottom mb-4">Please Get in Touch!</legend>
           <table>{{ form|crispy }}</table>
         </fieldset>
-        {{ form.captcha }}<br><br>
       <div class="form-group">
         <button class="btn btn-secondary mr-2" type="submit">
           <i class="fa fa-envelope-open"></i>
@@ -26,5 +25,8 @@
       </li>
     </ul>
     <br><br>
+    This site is protected by reCAPTCHA and the Google
+    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
   </div>
 {% endblock content %}
