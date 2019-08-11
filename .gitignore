@@ -39,7 +39,6 @@ Thumbs.db
 # Python Directories and Files #
 ################################
 *__pycache__*
-*__init__.py
 
 # Bash Scripts
 setup.sh

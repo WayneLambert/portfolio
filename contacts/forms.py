@@ -5,7 +5,13 @@ from contacts.models import Contact
 
 
 class ContactForm(forms.ModelForm):
-    captcha = ReCaptchaField(widget=ReCaptchaV3)
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV3(
+            attrs={
+                'data-size': 'invisible',
+            }
+        )
+    )
     class Meta:
         model = Contact
         fields = ('first_name', 'last_name', 'email', 'message')
