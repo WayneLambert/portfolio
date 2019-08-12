@@ -13,10 +13,11 @@ def contact(request):
 
         if form.is_valid():
             form.save()
+            full_name = f"{request.POST['first_name'].strip()} {request.POST['last_name'].strip()}"
             send_mail(
-                subject='Contact Form',
+                subject=f'Contact Form - from {full_name}',
                 message=request.POST['message'],
-                from_email='settings.DEFAULT_FROM_EMAIL',
+                from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=['contact@waynelambert.dev'],
                 fail_silently=False
             )
