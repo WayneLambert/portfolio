@@ -1,13 +1,14 @@
 from django.urls import include, path
-from blog.views_api import (PostListAPI_View,
-                            PostDetailAPI_View,
-                            CategoryListAPI_View
-                            )
+from blog.views_api import (
+    PostListAPIView,
+    PostDetailAPIView,
+    CategoryListAPIView,
+)
 
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
-    path('blog/posts/', PostListAPI_View.as_view()),
-    path('blog/posts/<int:pk>/', PostDetailAPI_View.as_view()),
-    path('blog/categories/', CategoryListAPI_View.as_view()),
+    path('blog/posts/', PostListAPIView.as_view()),
+    path('blog/posts/<int:pk>/', PostDetailAPIView.as_view()),
+    path('blog/categories/', CategoryListAPIView.as_view()),
 ]

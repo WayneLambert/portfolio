@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Posts from '../components/PostView';
-
-const title = 'Blog Posts';
-const subtitle = 'Blog posts in development of the React version of the blog';
+import Posts from './../components/PostView';
 
 class PostList extends Component {
   state = {
@@ -23,9 +20,7 @@ class PostList extends Component {
   render() {
     return (
       <div>
-        <h4>{title}</h4>
-        <h6>{subtitle}</h6>
-        <Posts data={this.state.posts} />     
+        <Posts data={this.state.posts} />
       </div>
     )
   }

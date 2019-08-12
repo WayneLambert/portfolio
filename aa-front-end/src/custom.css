@@ -1,0 +1,80 @@
+div.posts {
+  margin: 0px;
+}
+
+h1.item_title {
+  font-size: 18pt;
+}
+
+h3.item_title {
+  font-size: 14pt;
+}
+
+h5.item_author {
+  font-size: 12pt;
+}
+
+h5.item_publish_date {
+  font-size: 10pt;
+}
+
+h5.item_updated_date {
+  font-size: 10pt;
+}
+
+span.item_body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 12pt;
+}
+
+.ant-page-header-content {
+  padding-top: 0px;
+}
+
+.ant-page-header {
+  position: fixed;
+  z-index: 1;
+  height: 0px;
+  width: 100%;
+  margin: 0px;
+  padding: 0 0 0 0;
+}
+
+.title {
+  color: #444444;
+}
+
+.title:hover {
+  color: #428bca;
+}
+
+.ant-menu {
+  position: fixed;
+  background-color: #563C7C;
+  text-align: left;
+  color: #ffffff;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+}
+
+.footer {
+  position: fixed;
+  background-color: #563C7C;
+  text-align: center;
+  color: #ffffff;
+  font-size: smaller;
+  font-weight: lighter;
+  height: 10px;
+  line-height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.site-content {
+  width: 100%;
+  padding: 40px 0px 0px 10px;
+  margin-top: 0;
+  min-height: 200px;
+}

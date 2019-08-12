@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import PostForm from '../components/Form';
+import PostForm from './../components/Form';
 
-const blogAPIEndPointURL = 'http://localhost:8001/api/blog/posts/'
+const blogAPIEndPointURL = process.env.DEV_API_URL
 
 class PostFormView extends React.Component {
   state = {

@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Card } from 'antd';
 import CounterComponent from '../containers/CounterComponent';
 
+const blogAPIEndPointURL = process.env.DEV_API_URL
+
 class PostDetail extends Component {
 
   state = {
@@ -11,7 +13,7 @@ class PostDetail extends Component {
 
   componentDidMount() {
     const postID = this.props.match.params.postID;
-    axios.get(`http://localhost:8001/api/blog/posts/${postID}`)
+    axios.get(`${blogAPIEndPointURL}${postID}`)
       .then(response => {
         this.setState({
           post: response.data
