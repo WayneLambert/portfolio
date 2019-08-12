@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import UpvoteButton from '../components/ButtonUpvote';
 import DownvoteButton from '../components/ButtonDownvote';
-import { connect } from 'react-redux';
-import { addOne, minusOne } from '../actions/index';
+
 
 class CounterComponent extends Component {
 
@@ -40,24 +39,6 @@ class CounterComponent extends Component {
         />
       </div>
     )
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    count: state.counter.count
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onAddOne: (count) => {
-      dispatch(addOne(count))
-    },
-    onMinusOne: (count) => {
-      if (count !== 0)
-        dispatch(minusOne(count))
-    }
   }
 }
 

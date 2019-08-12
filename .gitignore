@@ -52,7 +52,7 @@ setup.sh
 
 # React Package Folders
 # dependencies
-aa-front-end/node_modules
+aa-front-end/node_modules/*
 aa-front-end/.pnp
 aa-front-end/.pnp.js
 

@@ -6,6 +6,4 @@ class IsAuthorOrReadOnly(permissions.BasePermission):
         """ Read-only permissions for any request """
         if request.method in permissions.SAFE_METHODS:
             return True
-
-        """ Write permissions for author only """
         return obj.author == request.user

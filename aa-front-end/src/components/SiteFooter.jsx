@@ -7,8 +7,8 @@ const yearOfToday = new Date().getFullYear()
 class SiteFooter extends Component {
   render() { 
     return (
-      <Footer className="footer" style={{ textAlign: 'left' }}>
-        &copy; <span id="year">{yearOfToday} Copyright | waynelambert.dev</span>
+      <Footer className="footer">
+        &copy; Copyright <span id="year">{yearOfToday} | waynelambert.dev</span>
       </Footer>
     );
   }

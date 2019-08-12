@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import PostForm from '../components/Form';
+import PostForm from './../components/Form';
 
-const blogAPIEndPointURL = 'http://localhost:8000/api/blog/'
+const blogAPIEndPointURL = process.env.DEV_API_URL
 
 class PostFormView extends React.Component {
   state = {
@@ -17,16 +17,16 @@ class PostFormView extends React.Component {
         title: title,
         content: content,
       })
-      .then(response => console.log(response));
+      .then(res => console.log(res));
   }
 
   componentDidMount() {
     axios.get(blogAPIEndPointURL)
-      .then(response => {
+      .then(res => {
         this.setState({ 
-          post: response.data
+          post: res.data
         });
-        console.log(response.data);
+        console.log(res.data);
       })
   }
 
