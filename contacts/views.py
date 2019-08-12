@@ -14,11 +14,12 @@ def contact(request):
         if form.is_valid():
             form.save()
             full_name = f"{request.POST['first_name'].strip()} {request.POST['last_name'].strip()}"
+            sender_email = request.POST['email']
             send_mail(
                 subject=f'Contact Form - from {full_name}',
                 message=request.POST['message'],
                 from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['contact@waynelambert.dev'],
+                recipient_list=['contact@waynelambert.dev', sender_email],
                 fail_silently=False
             )
             return redirect('contact-submitted')
