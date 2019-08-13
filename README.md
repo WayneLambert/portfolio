@@ -56,7 +56,7 @@ These addresses expose the browsable API endpoints that Django Rest Framework pr
 
 ## [Contact](https://www.waynelambert.dev/contact/)
 
-You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the [contact form](https://www.waynelambert.dev/contact/).
+You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the [contact form](https://www.waynelambert.dev/contact/) on the site.
 
 ## License
 
