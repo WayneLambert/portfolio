@@ -162,6 +162,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # Custom processors
+                'ab_back_end.context_processors.ga_tracking_id',
             ],
         },
     },
@@ -319,3 +321,6 @@ AWS_DEFAULT_ACL = None
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+
+# Google Analytics
+GA_TRACKING_ID = os.environ['GA_TRACKING_ID']

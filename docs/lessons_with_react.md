@@ -12,7 +12,7 @@
   - `this.classMethodName. = this.classMethodName.bind(this);`
   - _Formik_ is a JavaScript library that enables better building of React forms. It is the equivalent of Crispy Forms for Django. It handles things such as formatting in addition to data validation.
 
-### Components
+## Components
 
 - React components are small, reusable pieces of code that return a React element to be rendered to the page.
 - Components are not aware of application state. If my web page is only going to be used for displaying data, then make it a component.
@@ -26,12 +26,12 @@
   - When a user inputs data into a form field (an input box, dropdown, etc) the updated information is reflected without React needing to do anything.
 - In most cases, I should use controlled components.
 
-### Containers
+## Containers
 
 - Containers are very similar to components. The only difference is that containers are aware of application state. If my web page needs to be aware of application state, then make it a container.
 - This means that `props` is used to handle updates within the virtual DOM for a component whereas `state` is used to handle updates within the virtual DOM for a container.
 
-### Vanilla JavaScript
+## Vanilla JavaScript
 
 - _Axios_ is a library used to read data from my back ends API endpoint
 - The _Map_ function can be used to render a list of items as HTML elements/items. This is useful in any scenario where I need to render elements in a _for each_ scenario
@@ -43,28 +43,28 @@
 - The equivalent of Python's f strings (string interpolation) in JavaScript is using `${var_name}` between backtick operators
 - A _'promise'_ is a state that this temporarily 'pending' until an outcome is either _'resolved'_ or _'rejected'_. For example, this might be a call to an external API. If the API is programmed correctly and the server is reachable, then the promise will be successful (i.e. _'resolved'_), else it will be unsuccessful (i.e. _'rejected'_). The _'.then()'_ is method chained to the function to return a promise. The _'.catch()'_ method should be used to handle the scenario where the promise was not fulfilled (i.e. _'rejected'_).
 
-### JSX
+## JSX
 
 - JSX combines HTML and JavaScript to define the output within the `Render()` class method
 
-### Compiling
+## Compiling
 
 - _Babel_ is a modern JavaScript compiler
 - _"Hot module Reloading"_ is where the browser is automatically updated with any changes that are made within the IDE once the file has been saved.
 
-### Classes
+## Classes
 
 - Classes are used to define components by extending them
 - In JavaScript, classes are objects because they are effectively syntactic sugar over constructor functions. Functions are also objects in JavaScript and therefore classes are also objects.
 
-### State
+## State
 
 - The _state_ needs to be set within a `ComponentDidMount()` lifecycle method
 - The _setState()_ function tells React that the component and all of its children need to be re-rendered with the updated state.
   - This is the primary method that is used to update the user interface in response to an event handler or server responses.
   - _setState()_ can be thought of as a **request** rather than an immediate command to update the component.
 
-### Props
+## Props
 
 - _Props_ are inputs to a react component
   - They are passed from parent to child components
@@ -78,7 +78,7 @@
   - _state_ is managed within the component (similar to variables declared within a function)
 - `props.children` is available on every component. It contains the content between the opening and closing tags of a component.
 
-### Functions
+## Functions
 
 - Arrow functions ( => ) should be used to make the code more readable and concise
 - Arrow functions do not rebind the _this_ keyword
@@ -86,16 +86,16 @@
   - When the function is a raw function, the _this_ binding is in the context of the function.
   - The function's context is lost once the function has been assigned to a constant.
 
-### Styling
+## Styling
 
 - Ant is a styling library used for React
 - Bootstrap can still be used within React and it needs the library installing
 
-### Reconciliation
+## Reconciliation
 
 - When a component’s _props_ or _state_ change, React decides whether an actual DOM update is necessary by comparing the newly returned element with the previously rendered one. When they are not equal, React will update the DOM.
 
-### Lifecycle Methods
+## Lifecycle Methods
 
 - Lifecycle methods are custom functionality that gets executed during the different phases of a component.
 - There are methods available when the component gets...
@@ -124,11 +124,11 @@ componentDidMount()
     }
 ```
 
-### Routers
+## Routers
 
 - A BrowserRouter (aliased as Router) can be used to render each of the items. For example, this could be to render each of the blog posts.
 
-### Keys
+## Keys
 
 - A “key” is a special string attribute you need to include when creating arrays of elements.
   - Keys help React identify which items have changed, are added, or are removed.
@@ -136,12 +136,12 @@ componentDidMount()
   - Keys only need to be unique among sibling elements in the same array. They don’t need to be unique across the whole application or even a single component.
   - Ideally, keys should correspond to unique and stable identifiers coming from your data, such as _post.id_
 
-### Refs
+## Refs
 
 - React supports a special attribute that you can attach to any component. The ref attribute can be an object created by React.createRef() function or a callback function, or a string (in legacy API).
 - When the ref attribute is a callback function, the function receives the underlying DOM element or class instance (depending on the type of element) as its argument. This allows you to have direct access to the DOM element or component instance.
 - Use 'refs' sparingly. If you find yourself often using 'refs' to “make things happen” in your app, consider getting more familiar with top-down data flow.
 
-### SEO
+## SEO
 
 - An <a href="https://medium.freecodecamp.org/seo-vs-react-is-it-neccessary-to-render-react-pages-in-the-backend-74ce5015c0c9" >article on medium.freecodecamp</a> reports that Google has stated in its own documentation that Google is able to crawl and therefore index web pages that are rendered from the client side so long as webmasters do not prevent Googlebot from crawling their JavaScript content. As long as Google can read what is being rendered to the DOM, then their search ranking will not be affected.
