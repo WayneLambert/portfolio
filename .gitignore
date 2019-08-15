@@ -213,3 +213,4 @@ docker/prod/certbot
 
 # Temp Files
 /ab_back_end/templates/about_me.html
+playground/*
