@@ -11,6 +11,7 @@ django-debug-toolbar = "*"
 autopep8 = "*"
 pep8 = "*"
 coverage = "*"
+ptvsd = "*"
 
 [packages]
 django = "*"

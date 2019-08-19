@@ -16,13 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if os.environ['SECRET_KEY']:
-    SECRET_KEY = os.environ['SECRET_KEY']
-else:
-    print(""" A secret key needs to be set as an environment variable within
-        the project's .env file. Remember that this should be listed
-        in the project's .gitignore file.""")
-    sys.exit(1)
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Additional field to adjust the login point for the Admin site
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
@@ -83,6 +77,7 @@ INSTALLED_APPS = [
     'scraping.apps.ScrapingConfig',
     'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
+    'countdown.apps.CountdownConfig',
 ]
 
 
@@ -154,6 +149,7 @@ TEMPLATES = [
             'scraping/templates/scraping/',
             'count/templates/count/',
             'contacts/templates/contacts/',
+            'countdown/templates/countdown/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {

@@ -14,7 +14,7 @@ def contact(request):
         if form.is_valid():
             form.save()
             full_name = f"{request.POST['first_name'].strip()} {request.POST['last_name'].strip()}"
-            sender_email = request.POST['email']
+            sender_email = request.POST['email'].strip()
             send_mail(
                 subject=f'Contact Form - from {full_name}',
                 message=request.POST['message'],

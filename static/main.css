@@ -140,3 +140,43 @@ footer {
 .grecapture.render {
   size: invisible;
 }
+
+/* Countdown Project */
+
+.countdown-photo {
+  padding: 20px 0px 0px 20px;
+}
+
+.countdown-text {
+  padding: 20px 0px 0px 20px;
+}
+
+.letters-selected {
+  font-size: 32pt;
+  font-weight: bold;
+  color: white;
+  background-color: #07429B;
+  text-align: center;
+}
+
+.player-answer {
+  font-size: 18pt;
+  font-weight: bold;
+  color: blue;
+  padding-bottom: 20px;
+  padding-left: 50px;
+}
+
+.susie-answer {
+  font-size: 18pt;
+  font-weight: bold;
+  color: red;
+  padding-left: 50px;
+}
+
+.single-letter-choice {
+  font-size: 18pt;
+  font-weight: bold;
+  color: white;
+  padding: 2px 2px 2px 2px;
+}

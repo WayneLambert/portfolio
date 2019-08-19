@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="countdown-photo">
+  <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
+  alt="countdown">
+</div>
+<div class="countdown-text">
+  <h6>Results from the game</h6>
+  <div class="player-answer col-sm-4"><br>
+    Your Answer: {{ request.session.players_word }}
+  </div>
+  <div class="susie-answer col-sm-4">
+    Susie's Answer: {{ request.session.players_word }}
+  </div>
+</div>
+{% endblock content %}
