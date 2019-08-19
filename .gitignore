@@ -46,6 +46,9 @@ setup.sh
 # VS Code Settings Files #
 .vscode/
 
+# PyCharm Files
+.idea/
+
 # SOPs and Dev Help Files #
 ################################
 
