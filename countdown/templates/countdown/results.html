@@ -10,10 +10,10 @@
 <div class="countdown-text">
   <h6>Results from the game</h6>
   <div class="player-answer col-sm-4"><br>
-    Your Answer: {{ request.session.players_word }}
+    Your Answer: {{ request.GET.players_word }}
   </div>
   <div class="susie-answer col-sm-4">
-    Susie's Answer: {{ request.session.players_word }}
+    Susie's Answer:
   </div>
 </div>
 {% endblock content %}

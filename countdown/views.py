@@ -1,9 +1,5 @@
 from random import choices, random
 from urllib.parse import urlencode
-
-import requests
-from allauth.utils import build_absolute_uri
-from bs4 import BeautifulSoup
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
@@ -11,20 +7,7 @@ from countdown.forms import LetterSelectionForm, SelectedLettersForm
 
 MAX_GAME_LETTERS = 9
 
-def render_selection_screen(request):
-    form = LetterSelectionForm()
-    if request.method == 'POST':
-        form = LetterSelectionForm(request.POST)
-        if form.is_valid():
-            num_vowels_selected = form.cleaned_data.get('num_vowels_selected')
-            return redirect('game', num_vowels=num_vowels_selected)
-    else:
-        form = LetterSelectionForm()
-
-    return render(request, 'countdown/selection.html', {'form': form})
-
-
-def get_letters_chosen(num_vowels):
+def get_letters_chosen(num_vowels: int) -> str:
     WEIGHTED_VOWELS = list(
         'AAAAAAAAAAAAAAAEEEEEEEEEEEEEEEEEEEEEIIIIIIIIIIIIIOOOOOOOOOOOOOUUUUU')
     WEIGHTED_CONSONANTS = list(
@@ -44,46 +27,55 @@ def get_letters_chosen(num_vowels):
         letters_chosen.append(consonant_picked)
 
     letters_chosen = sorted(letters_chosen, key=lambda k: random())
-    return letters_chosen
-
-
-# FIXME: Still doesn't seem to be getting the referring url
-def get_parsed_letters_selected(referring_url):
-    page_response = requests.get(referring_url, timeout=5)
-    page_content = BeautifulSoup(page_response.content, "html.parser")
-    parsed_letters = page_content.find("div", {"class": "letters-selected"}).text
-    parsed_letters = parsed_letters.replace('\n', '').replace('              ', '').strip()
-    return parsed_letters
-
-
-def get_letters_selected(request, num_vowels: int):
-    form = SelectedLettersForm()
-
-    letters_chosen = get_letters_chosen(num_vowels=num_vowels)
-    letters_chosen_str = ''.join([
+    letters_param = ''.join([
         item for ind_letter_list in letters_chosen for item in ind_letter_list])
+    return letters_param
+
+
+def selection_screen(request):
+    form = LetterSelectionForm()
+    if request.method == 'POST':
+        form = LetterSelectionForm(request.POST)
+        if form.is_valid():
+            num_vowels_selected = form.cleaned_data.get('num_vowels_selected')
+            letters_chosen = get_letters_chosen(num_vowels=num_vowels_selected)
+            base_url = reverse('game')
+            letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
+            full_url = f'{base_url}?{letters_chosen_url}'
+            return redirect(full_url)
+    else:
+        form = LetterSelectionForm()
+
+    return render(request, 'countdown/selection.html', {'form': form})
+
+
+def game_screen(request):
+    form = SelectedLettersForm()
 
     if request.method == 'POST':
         form = SelectedLettersForm(request.POST)
         if form.is_valid():
-            players_word = form.cleaned_data.get('players_word')
-            referring_url = request.META['HTTP_HOST'] + request.META.get['HTTP_REFERER']
-            letters_chosen_str = get_parsed_letters_selected(referring_url)
-
             base_url = reverse('results')
-            letters_chosen_url = urlencode({'letters_chosen_str': letters_chosen_str})
+
+            letters_chosen = request.META['HTTP_REFERER'][-MAX_GAME_LETTERS:]
+            letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
+
+            players_word = form.cleaned_data.get('players_word')
             players_word_url = urlencode({'players_word': players_word})
+
+            # susies_word_url = ...
+            # longest_possible_word = get_longest_possible_word(letters_chosen)
+            # longest_possible_word_url = urlencode(
+            #     {'longest_possible_word': longest_possible_word})
+
             full_url = f'{base_url}?{letters_chosen_url}?{players_word_url}'
             return redirect(full_url)
         else:
             form = SelectedLettersForm()
 
     context = {
-        'num_vowels': num_vowels,
-        'letters_chosen': letters_chosen,
-        'letters_chosen_str': letters_chosen_str,
+        'form': form,
     }
-    context.update({'form': form})
 
     return render(request, 'countdown/game.html', context)
 
@@ -97,7 +89,7 @@ words_list = tuple(words_list)
 
 
 # FIXME: letters_chosen was orignally a hard-coded list. This needs to be passed on
-def get_longest_possible_word(words: tuple) -> str:
+def get_longest_possible_word(words: tuple, letters_chosen: str) -> str:
     """ Returns the longest word in words.txt from the selected letters. """
     cumulative_max_letter_count = 0
     for tested_word in words:
@@ -142,7 +134,7 @@ def get_answer_length(answer: str) -> int:
         return len(answer)
 
 
-def render_results_screen(request):
+def results_screen(request):
 
     # Check player's anser is valid in the words.txt file
     # Check player's answer is eligible

@@ -10,11 +10,9 @@
   <div class="countdown-text">
     <h6>Please choose the longest eligible word you can find using letters below.</h6><br>
     <div class="letters-selected col-sm-4">
-      {% for letter in letters_chosen %}
-        {{ letter|cut:"["|cut:"'"|cut:"]"|add:" " }}
-      {% endfor %}
+      {{ request.GET.letters_chosen }}
     </div><br>
-    <form id="selected-letters-form" action="{% url 'game' num_vowels=num_vowels %}"
+    <form id="selected-letters-form" action="{% url 'game' %}"
       method="POST" class="form-horizontal col-sm-4">
       {% csrf_token %}
       {{ form|crispy }}
