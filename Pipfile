@@ -12,6 +12,8 @@ autopep8 = "*"
 pep8 = "*"
 coverage = "*"
 ptvsd = "*"
+django-extensions = "*"
+jupyter = "*"
 
 [packages]
 django = "*"

@@ -56,6 +56,18 @@ services:
     networks:
       - backend
 
+  jupyter:
+    container_name: portfolio_jupyter
+    build:
+      dockerfile: ./docker/dev/jupyter/Dockerfile
+      context: .
+    depends_on:
+      - web
+    ports:
+      - "8888:8888"
+    networks:
+      - backend
+
 networks:
   backend:
     driver: bridge

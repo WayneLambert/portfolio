@@ -63,12 +63,7 @@ def game_screen(request):
             players_word = form.cleaned_data.get('players_word')
             players_word_url = urlencode({'players_word': players_word})
 
-            # susies_word_url = ...
-            # longest_possible_word = get_longest_possible_word(letters_chosen)
-            # longest_possible_word_url = urlencode(
-            #     {'longest_possible_word': longest_possible_word})
-
-            full_url = f'{base_url}?{letters_chosen_url}?{players_word_url}'
+            full_url = f'{base_url}?{letters_chosen_url}&{players_word_url}'
             return redirect(full_url)
         else:
             form = SelectedLettersForm()
@@ -136,17 +131,16 @@ def get_answer_length(answer: str) -> int:
 
 def results_screen(request):
 
-    # Check player's anser is valid in the words.txt file
+    # Retrieve letters chosen from the url
+    # Retrieve player's answer from the url
+    # Check player's answer is valid in the words.txt file
     # Check player's answer is eligible
-    # Create context which gives the answer length
-    # Create context variable that gives the player's score
+    # Create context variable which gives the player's answer length
+    # Create context variable that gives the player's score [ new function]
     # Compute Susie's answer to the word puzzle
     # Create context variable for Susie's answer
     # Create context variable for Susie's number_of_letters_used
     # Create context variable for Susie's score
-
-    # comp_answer = get_longest_possible_word(words_list)
-
     context = {}
 
     return render(request, 'countdown/results.html', context)

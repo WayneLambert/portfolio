@@ -97,8 +97,8 @@ ROOT_URLCONF = 'ab_back_end.urls'
 
 # Django Debug Toolbar Settings
 if DEBUG:
-    # For Django Debug Toolbar to be used in local development environment
-    INSTALLED_APPS += ('debug_toolbar',)
+    # For Django Debug Toolbar and Django Extensions to be used in development
+    INSTALLED_APPS += ('debug_toolbar', 'django_extensions',)
     INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
     # For Django Debug Toolbar to be used in local dockerized development environment
     DEBUG_TOOLBAR_CONFIG = {
@@ -318,3 +318,10 @@ RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Google Analytics
 # GA_TRACKING_ID = os.environ['GA_TRACKING_ID']
+
+# Jupyter Notebook Settings
+NOTEBOOK_ARGUMENTS = [
+    '--ip', '0.0.0.0',
+    '--allow-root',
+    '--no-browser',
+]
