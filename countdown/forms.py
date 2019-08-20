@@ -11,6 +11,7 @@ class LetterSelectionForm(forms.Form):
 
 class SelectedLettersForm(forms.Form):
     players_word = forms.CharField(
-        label="Enter your word here...",
+        label="Enter the longest word you can find here...",
         required=True,
+        strip=True,
     )

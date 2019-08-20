@@ -151,32 +151,52 @@ footer {
   padding: 20px 0px 0px 20px;
 }
 
+.game-subheading {
+  font-size: 12pt;
+  font-weight: bold;
+  padding-bottom: 20px;
+  text-decoration: underline;
+}
+
 .letters-selected {
   font-size: 32pt;
   font-weight: bold;
   color: white;
-  background-color: #07429B;
+  background-color: #03388C;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #0E3564;
   text-align: center;
+  letter-spacing: 20px;
 }
 
+#alert-answer {
+  padding: 20px 20px 0px 20px;
+}
+
+
 .player-answer {
-  font-size: 18pt;
+  font-size: 22pt;
   font-weight: bold;
   color: blue;
   padding-bottom: 20px;
-  padding-left: 50px;
+  padding-left: 20px;
 }
 
 .susie-answer {
-  font-size: 18pt;
+  font-size: 22pt;
   font-weight: bold;
   color: red;
-  padding-left: 50px;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }
 
-.single-letter-choice {
-  font-size: 18pt;
-  font-weight: bold;
-  color: white;
-  padding: 2px 2px 2px 2px;
+.not-accepted-answer{
+  text-decoration: line-through;
+}
+
+.scores-message {
+  font-size: 12pt;
+  padding-bottom: 20px;
+  padding-left: 20px;
 }

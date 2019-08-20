@@ -1,5 +1,8 @@
+import os
 from random import choices, random
 from urllib.parse import urlencode
+
+from django.conf import settings
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
@@ -65,8 +68,6 @@ def game_screen(request):
 
             full_url = f'{base_url}?{letters_chosen_url}&{players_word_url}'
             return redirect(full_url)
-        else:
-            form = SelectedLettersForm()
 
     context = {
         'form': form,
@@ -75,44 +76,43 @@ def game_screen(request):
     return render(request, 'countdown/game.html', context)
 
 
-words_list = []
-with open('countdown/words.txt', 'r') as words_file:
-    for word in words_file:
-        words_list.append(word.strip('\n'))
+def get_words():
+    words_list = []
+    words_filename = os.path.join(settings.BASE_DIR, 'countdown/words.txt')
+    with open(words_filename, 'r') as words_file:
+        for word in words_file:
+            words_list.append(word.strip('\n'))
 
-words_list = tuple(words_list)
+    words = tuple(words_list)
+    return words
 
 
-# FIXME: letters_chosen was orignally a hard-coded list. This needs to be passed on
-def get_longest_possible_word(words: tuple, letters_chosen: str) -> str:
+def get_longest_possible_word(words: tuple, letters: str) -> str:
     """ Returns the longest word in words.txt from the selected letters. """
     cumulative_max_letter_count = 0
+    letters_in_selection = list(letters)
     for tested_word in words:
-        letters_in_selection = list(letters_chosen)
-        letters_in_tested_word = list(tested_word)
+        letters_in_tested_word = list(tested_word.upper())
         if len(letters_in_tested_word) < len(letters_in_selection):
             common_letters = set(letters_in_selection).intersection(
                 letters_in_tested_word)
             letter_count = len(common_letters)
             if letter_count > cumulative_max_letter_count:
-                cumulative_max_letter_count = letter_count
-                longest_possible_word = tested_word
-    return longest_possible_word
+                if len(tested_word) == len(common_letters):
+                    cumulative_max_letter_count = letter_count
+                    longest_possible_word = tested_word
+    return longest_possible_word.upper()
 
 
 def is_valid_word(answer: str) -> bool:
-    """ Is deemed a valid word if it belongs to the words.txt file """
+    words_list = get_words()
     if answer.lower() in words_list:
         return True
 
 
-def is_eligible_answer(answer: str) -> bool:
-    """
-    Returns whether the answer given is an eligible one
-    (i.e. it uses only available letters)
-    """
-    letters_in_selection = list(letters_selection)
+def is_eligible_answer(answer: str, letters: str) -> bool:
     letters_in_answer = list(answer)
+    letters_in_selection = list(letters)
     while letters_in_answer:
         for letter in answer:
             if letter in letters_in_answer and letter in letters_in_selection:
@@ -123,24 +123,40 @@ def is_eligible_answer(answer: str) -> bool:
         return True
 
 
-def get_answer_length(answer: str) -> int:
-    """ If answer is valid, returns the length of the answer given by the player. """
-    if is_eligible_answer(answer) and is_valid_word(answer):
-        return len(answer)
+def get_game_score(word_len: int) -> int:
+    if word_len == 9:
+        return word_len ** 2
+    else:
+        return word_len
 
 
 def results_screen(request):
+    letters_chosen = request.GET['letters_chosen']
+    listed_words = get_words()
 
-    # Retrieve letters chosen from the url
-    # Retrieve player's answer from the url
-    # Check player's answer is valid in the words.txt file
-    # Check player's answer is eligible
-    # Create context variable which gives the player's answer length
-    # Create context variable that gives the player's score [ new function]
-    # Compute Susie's answer to the word puzzle
-    # Create context variable for Susie's answer
-    # Create context variable for Susie's number_of_letters_used
-    # Create context variable for Susie's score
-    context = {}
+    players_word = request.GET['players_word']
+    valid_word = is_valid_word(players_word)
+    eligible_answer = is_eligible_answer(players_word, letters_chosen)
+    if valid_word and eligible_answer:
+        player_word_len = len(players_word)
+        player_score = get_game_score(player_word_len)
+    else:
+        player_word_len = 0
+        player_score = 0
+
+    comp_answer = get_longest_possible_word(listed_words, letters_chosen)
+    comp_word_len = len(comp_answer)
+    comp_score = get_game_score(comp_word_len)
+
+    context = {
+        'letters_chosen': letters_chosen,
+        'players_word': players_word,
+        'eligible_answer': eligible_answer,
+        'player_word_len': player_word_len,
+        'player_score': player_score,
+        'comp_answer': comp_answer,
+        'comp_word_len': comp_word_len,
+        'comp_score': comp_score,
+    }
 
     return render(request, 'countdown/results.html', context)

@@ -2,12 +2,14 @@ import os
 import sys
 
 import dj_database_url
-from django.conf.global_settings import (EMAIL_BACKEND,
-                                         SECURE_BROWSER_XSS_FILTER,
-                                         SECURE_HSTS_INCLUDE_SUBDOMAINS,
-                                         SECURE_HSTS_PRELOAD,
-                                         SECURE_HSTS_SECONDS,
-                                         SECURE_PROXY_SSL_HEADER)
+from django.conf.global_settings import (
+    EMAIL_BACKEND,
+    SECURE_BROWSER_XSS_FILTER,
+    SECURE_HSTS_INCLUDE_SUBDOMAINS,
+    SECURE_HSTS_PRELOAD,
+    SECURE_HSTS_SECONDS,
+    SECURE_PROXY_SSL_HEADER
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +24,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.getenv('DEBUG', False)))
+DEBUG = bool(int(os.getenv('DEBUG', True)))
 
 # Gets Django web host for development purposes
 DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
@@ -95,11 +97,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ab_back_end.urls'
 
-# Django Debug Toolbar Settings
 if DEBUG:
     # For Django Debug Toolbar and Django Extensions to be used in development
     INSTALLED_APPS += ('debug_toolbar', 'django_extensions',)
+
+    # Django Debug Toolbar Settings
     INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
+
     # For Django Debug Toolbar to be used in local dockerized development environment
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
@@ -120,6 +124,13 @@ if DEBUG:
         'debug_toolbar.panels.redirects.RedirectsPanel',
     ]
     SHOW_TOOLBAR_CALLBACK = True
+
+    # Jupyter Notebook Settings
+    NOTEBOOK_ARGUMENTS = [
+        '--ip', '0.0.0.0',
+        '--allow-root',
+        '--no-browser',
+    ]
 
 # Production Settings
 if not DEBUG:
@@ -285,21 +296,21 @@ if not DEBUG:
     EMAIL_BACKEND = 'django_ses.SESBackend'
     AWS_SES_REGION_NAME = 'eu-west-1'
     AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
-    EMAIL_HOST = os.environ['EMAIL_HOST']
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_HOST = os.environ['EMAIL_HOST_SES']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
 else:
     # Gmail Backend Settings
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
+    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_GMAIL']
+    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_GMAIL']
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL']
+    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_GMAIL']
 
 
 # Django Storages Settings
@@ -318,10 +329,3 @@ RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Google Analytics
 # GA_TRACKING_ID = os.environ['GA_TRACKING_ID']
-
-# Jupyter Notebook Settings
-NOTEBOOK_ARGUMENTS = [
-    '--ip', '0.0.0.0',
-    '--allow-root',
-    '--no-browser',
-]

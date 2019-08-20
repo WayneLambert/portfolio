@@ -8,12 +8,37 @@
   alt="countdown">
 </div>
 <div class="countdown-text">
-  <h6>Results from the game</h6>
-  <div class="player-answer col-sm-4"><br>
-    Your Answer: {{ request.GET.players_word }}
+  <div class="game-subheading">
+    Game Letters
   </div>
-  <div class="susie-answer col-sm-4">
-    Susie's Answer:
+  <div class="letters-selected col-sm-4">
+    {{ request.GET.letters_chosen }}
+  </div><br>
+  <div class="game-subheading">
+    Game Results
+  </div>
+  <div id="alert-answer" class="alert-info col-md-4">
+    <div class="player-answer">
+      {% if eligible_answer %}
+        Your Answer: {{ players_word }}
+      {% else %}
+        <div class="not-accepted-answer">
+          Your Answer: {{ players_word }}
+        </div>
+      {% endif %}
+    </div>
+  </div><br>
+  <div id="alert-answer" class="alert-info col-md-4">
+    <div class="susie-answer">
+      Susie's Answer: {{ comp_answer }}
+    </div>
+  </div><br>
+  <div class="scores-message">
+    &#8627; You found a {{ player_word_len }}-lettered word and scored {{ player_score }} points.<br>
+    &#8627; Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points.
+  </div>
+  <div class="scores-message">
+    You must try harder to beat our resident lexicographer!
   </div>
 </div>
 {% endblock content %}
