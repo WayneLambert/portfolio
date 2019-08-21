@@ -27,7 +27,7 @@ The blog ties together users and profiles with signals so that profile data can 
 - Media is stored on Amazon S3
 - The sites transactional emails are handled using Amazon's Simple Email Service
 
-## [The Scrape It Project](https://waynelambert.dev/scraping/speech-list/)
+## [The Scrape It Project](https://waynelambert.dev/scraping/scraping-options/)
 
 The Scrape It project demonstrates the use of the Requests library to handle the request/response cycle for the GET requests that are required to retrieve data from another website.
 

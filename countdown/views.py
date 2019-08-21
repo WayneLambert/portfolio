@@ -1,12 +1,18 @@
 import os
 from random import choices, random
 from urllib.parse import urlencode
-
 from django.conf import settings
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
+import requests
 
 from countdown.forms import LetterSelectionForm, SelectedLettersForm
+
+# Oxford Dictionaries API Credentials
+OD_API_BASE_URL = os.environ['OD_API_BASE_URL']
+OD_APPLICATION_ID = os.environ['OD_APPLICATION_ID']
+OD_APPLICATION_KEY_1 = os.environ['OD_APPLICATION_KEY_1']
 
 MAX_GAME_LETTERS = 9
 
@@ -129,6 +135,50 @@ def get_game_score(word_len: int) -> int:
     else:
         return word_len
 
+def lookup_definition(request, word_to_lookup: str) -> dict:
+    """ Retrieve dictionary definition of winning word using 'Oxford Dictionaries' API """
+    LANGUAGE = 'en-gb'
+    url = f'{OD_API_BASE_URL}{LANGUAGE}{"/"}{word_to_lookup.lower()}'
+    headers = {
+        "app_id": OD_APPLICATION_ID,
+        "app_key": OD_APPLICATION_KEY_1,
+    }
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 404:
+        definition_found = False
+        definition = ''
+        definition_not_found_msg = f""" {word_to_lookup.lower().capitalize()} has not
+                                    been found in the Oxford Dictionary API. """
+        messages.add_message(
+            request=request,
+            level=messages.INFO,
+            message=definition_not_found_msg,
+        )
+    else:
+        definition_found = True
+        response_json = response.json()
+        definition = response_json['results'][0]['lexicalEntries'][0]['entries'][0]
+        definition = definition['senses'][0]['definitions'][0].capitalize().strip()
+        definition_not_found_msg = ''
+
+    definition_result = {
+        'definition_found': definition_found,
+        'definition': definition,
+        'definition_not_found_msg': definition_not_found_msg,
+    }
+
+    return definition_result
+
+
+def get_result(player_word: str, comp_word: str) -> str:
+    if len(player_word) > len(comp_word):
+        return 'Player wins'
+    if len(player_word) < len(comp_word):
+        return 'Susie wins'
+    else:
+        return 'Draw'
+
 
 def results_screen(request):
     letters_chosen = request.GET['letters_chosen']
@@ -144,9 +194,12 @@ def results_screen(request):
         player_word_len = 0
         player_score = 0
 
-    comp_answer = get_longest_possible_word(listed_words, letters_chosen)
-    comp_word_len = len(comp_answer)
+    comp_word = get_longest_possible_word(listed_words, letters_chosen)
+    comp_word_len = len(comp_word)
     comp_score = get_game_score(comp_word_len)
+    winning_word = comp_word if comp_word_len > player_word_len else players_word
+    definition = lookup_definition(request, winning_word)
+    result = get_result(players_word, comp_word)
 
     context = {
         'letters_chosen': letters_chosen,
@@ -154,9 +207,12 @@ def results_screen(request):
         'eligible_answer': eligible_answer,
         'player_word_len': player_word_len,
         'player_score': player_score,
-        'comp_answer': comp_answer,
+        'comp_word': comp_word,
         'comp_word_len': comp_word_len,
         'comp_score': comp_score,
+        'winning_word': winning_word,
+        'definition': definition,
+        'result': result,
     }
 
     return render(request, 'countdown/results.html', context)

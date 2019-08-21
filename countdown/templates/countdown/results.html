@@ -3,42 +3,55 @@
 {% load static %}
 
 {% block content %}
-<div class="countdown-photo">
-  <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
-  alt="countdown">
-</div>
-<div class="countdown-text">
-  <div class="game-subheading">
-    Game Letters
+  <div class="countdown-photo">
+    <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
+    alt="countdown">
   </div>
-  <div class="letters-selected col-sm-4">
-    {{ request.GET.letters_chosen }}
-  </div><br>
-  <div class="game-subheading">
-    Game Results
-  </div>
-  <div id="alert-answer" class="alert-info col-md-4">
-    <div class="player-answer">
+  <div class="countdown-text">
+    <div class="game-subheading">
+      Game Letters
+    </div>
+    <div class="letters-selected col-sm-4">
+      {{ request.GET.letters_chosen }}
+    </div><br>
+    <div class="game-subheading">
+      Game Results
+    </div>
+    <div class="scores-message">
       {% if eligible_answer %}
-        Your Answer: {{ players_word }}
+        &#8627; You found a {{ player_word_len }}-lettered word and scored {{ player_score }} points.<br>
       {% else %}
-        <div class="not-accepted-answer">
-          Your Answer: {{ players_word }}
-        </div>
+        &#8627; Your answer is <u>not</u> eligible, therefore you scored no points.<br>
       {% endif %}
+        &#8627; Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points.<br>
+        &#8627; <b>Result: </b>{{ result }}
     </div>
-  </div><br>
-  <div id="alert-answer" class="alert-info col-md-4">
-    <div class="susie-answer">
-      Susie's Answer: {{ comp_answer }}
+    <div id="alert-answer" class="alert-info col-md-4">
+      <div class="player-answer">
+        {% if eligible_answer %}
+          My Answer: {{ players_word }}
+        {% else %}
+          <div class="not-accepted-answer">
+            My Answer: {{ players_word }}
+          </div>
+        {% endif %}
+      </div>
+    </div><br>
+    <div id="alert-answer" class="alert-info col-md-4">
+      <div class="susie-answer">
+        Susie's Answer: {{ comp_word }}
+      </div>
+    </div><br>
+    <div class="alert alert-secondary col-md-4" role="alert">
+      {% if definition.definition_found %}
+        <b>{{ comp_word|lower|capfirst }} </b><br>
+        <em>{{ definition.definition }}</em>
+      {% else %}
+        <em>{{ definition.definition_not_found_msg }}</em>
+      {% endif %}
+    </div><br>
+    <div class="scores-message">
+      You must try harder to beat our resident lexicographer!
     </div>
-  </div><br>
-  <div class="scores-message">
-    &#8627; You found a {{ player_word_len }}-lettered word and scored {{ player_score }} points.<br>
-    &#8627; Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points.
   </div>
-  <div class="scores-message">
-    You must try harder to beat our resident lexicographer!
-  </div>
-</div>
 {% endblock content %}

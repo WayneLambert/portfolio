@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random Joke</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        &nbsp;
+        <em class="small">The joke below has been scraped using Python's requests library and
+          targeting the json element within the page.
+        </em><br><br>
+          <div class="alert alert-info" role="alert">{{ joke }}</div>
+        <em class="small">
+            By the way, don't hold it against me personally for the quality of the joke.
+            The website generates random jokes so it may generate something different to that on this page.
+          </em><br><br>
+          <em class="small">
+            Source: <a href="https://icanhazdadjoke.com/" target="_blank">https://icanhazdadjoke.com/</a><br>
+          </em><br>
+          <a href="{% url 'scraping-options' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
+            <i class="fa fa-repeat"></i>
+            Start Again
+          </a><br><br>
+          <h6>The code for this scraping process can be seen
+            <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/jokes.py" target="_blank">here</a>.
+          </h6>
+      </div>
+    {% endblock content %}
+  </body>
+</html>

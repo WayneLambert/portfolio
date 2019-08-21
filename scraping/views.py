@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 
-def speech_list(request):
-    return render(request, 'speech-list.html')
+def scraping_options_list(request):
+    return render(request, 'scraping-options.html')
