@@ -107,8 +107,8 @@ A comprehensive list of features can be found on the project's <a href="https://
 <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript<br>
-<b>Frameworks: </b>React, Django, Django REST, CSS<br>
-<b>Other: </b>PostgreSQL, GitHub, Docker<br><br>
+<b>Frameworks: </b>React, Django, Django REST, CSS, Bootstrap, Ant<br>
+<b>Other: </b>PostgreSQL, GitHub, Docker, Axios<br><br>
 
 `;
 

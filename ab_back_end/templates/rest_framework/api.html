@@ -4,9 +4,15 @@
 
 {% block title %}WayneLambert.dev Blog{% endblock title %}
 
+<!-- Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 {% block branding %}
   <span>
-    <a href="" rel="nofollow" class="navbar-brand">
+    <a href="{% url 'home' %}" class="navbar-brand">
+      Home
+    </a>
+    <a href="{% url 'blog-api' %}" rel="nofollow" class="navbar-brand">
       WayneLambert.dev Blog API <span class="version">1</span>
     </a>
   </span>
