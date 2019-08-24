@@ -18,11 +18,13 @@
   margin-bottom: 0.1rem;
 }
 
-.pb-5, .py-5 {
+.pb-5,
+.py-5 {
   padding-bottom: 1rem !important;
 }
 
-pt-5, .py-5 {
+pt-5,
+.py-5 {
   padding-top: 2rem !important;
 }
 
@@ -37,12 +39,27 @@ footer {
 }
 
 .site-footer {
+  font-weight: normal;
   color: #ffffff;
-  font-size: smaller;
-  font-weight: lighter;
+  font-size: small;
   display: inline-block;
   vertical-align: middle;
   line-height: 30px;
+}
+
+.copyright-notice {
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.privacy-policy {
+  font-weight: normal;
+  color: #ffffff;
+  padding-left: 80%;
+}
+
+#album-row {
+  height: 200px;
 }
 
 #no-words-msgbox {
@@ -139,4 +156,132 @@ footer {
 
 .grecapture.render {
   size: invisible;
+}
+
+/* Countdown Project */
+
+.countdown-photo {
+  padding: 20px 0px 0px 20px;
+}
+
+.countdown-text {
+  padding: 20px 0px 0px 20px;
+}
+
+.game-subheading {
+  font-size: 12pt;
+  font-weight: bold;
+  padding-bottom: 20px;
+  text-decoration: underline;
+}
+
+.letters-selected {
+  font-size: 32pt;
+  font-weight: bold;
+  color: white;
+  background-color: #03388C;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #0E3564;
+  text-align: center;
+  letter-spacing: 20px;
+  width: 500px;
+}
+
+.form-horizontal {
+  width: 500px;
+}
+
+#alert-answer {
+  padding: 20px 20px 0px 20px;
+  width: 500px;
+  border-width: 2px;
+  border-color: darkgrey;
+}
+
+.player-answer {
+  font-size: 20pt;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.not-accepted-answer {
+  text-decoration: line-through;
+}
+
+.scores-message {
+  font-size: 12pt;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.winning-word {
+  font-size: 14pt;
+  font-weight: bolder;
+  padding-bottom: 0px;
+}
+
+.word-class {
+  font-size: 10pt;
+  padding: 10px 5px 10px 0px;
+}
+
+#word-definition-box {
+  width: 500px;
+  border-width: 2px;
+  border-color: darkgrey;
+  padding-top: 10px;
+}
+
+.word-definition {
+  font-size: 11pt;
+  vertical-align: middle;
+  padding-left: 15px;
+}
+
+.word-definition-not-found {
+  padding-top: 15px;
+  font-size: 12pt;
+  color: red;
+  padding-left: 20px;
+}
+
+.start-again-button {
+  padding-bottom: 50px;
+}
+
+.col-1 {
+  width: 50%;
+  text-align: left;
+}
+
+.col-2 {
+  width: 50%;
+  text-align: right;
+}
+
+.player-desc {
+  width: 70%;
+  text-align: right;
+  padding-bottom: 5px;
+  padding-right: 20px;
+}
+
+.player-word {
+  width: 30%;
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+.susie-desc {
+  width: 70%;
+  text-align: right;
+  padding-bottom: 5px;
+  padding-right: 20px;
+}
+
+.susie-word {
+  width: 30%;
+  text-align: left;
+  padding-bottom: 5px;
 }
