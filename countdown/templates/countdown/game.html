@@ -8,12 +8,12 @@
     alt="countdown">
   </div>
   <div class="countdown-text">
-    <h6>Please choose the longest eligible word you can find using letters below.</h6><br>
-    <div class="letters-selected col-sm-4">
+    <h6>The letters selected at random for you are...</h6><br>
+    <div class="letters-selected">
       {{ request.GET.letters_chosen }}
     </div><br>
     <form id="selected-letters-form" action="{% url 'game' %}"
-      method="POST" class="form-horizontal col-sm-4">
+      method="POST" class="form-horizontal">
       {% csrf_token %}
       {{ form|crispy }}
       <button class="btn btn-sm btn-success mr-10" type="submit">

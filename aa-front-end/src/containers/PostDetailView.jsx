@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Card } from 'antd';
-import CounterComponent from '../containers/CounterComponent';
 
-const blogAPIEndPointURL = process.env.DEV_API_URL
 
 class PostDetail extends Component {
 
@@ -13,7 +11,7 @@ class PostDetail extends Component {
 
   componentDidMount() {
     const postID = this.props.match.params.postID;
-    axios.get(`${blogAPIEndPointURL}${postID}`)
+    axios.get(`${process.env.REACT_APP_API_ENDPOINT}${postID}`)
       .then(response => {
         this.setState({
           post: response.data
@@ -28,9 +26,6 @@ class PostDetail extends Component {
         Publish Date: {this.state.post.publish_date}<br />
         Updated Date: {this.state.post.updated_date}<br />
         <br />
-        <React.Fragment>
-          <CounterComponent />
-        </React.Fragment>
       </Card>
     )
   }

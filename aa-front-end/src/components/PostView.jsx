@@ -11,28 +11,22 @@ const Posts = (props) => {
         onChange: page => {
           console.log(page);
         },
-        pageSize: 3,
+        pageSize: 1,
       }}
       dataSource={props.data}
 
       renderItem={item => (
         <div>
-          <div className="title">
-            <List.Item key={item.title} />
-            <List.Item.Meta
-              title={<a href={`/blog/posts/${item.id}`}>{item.title}</a>}
-              />
-          </div>
           <List.Item>
-            <div className='content'>
-              {renderHTML(item.content)}
+            <a className="post-title" href={`/react/blog/posts/${item.id}`}>{item.title}</a>
+            <div className="post-image"> 
+              <img src={item.image} alt="" height="100px" width="100px"/>
             </div>
-            Categories: {item.categories}<br />
-            Author: {item.author_first_name} {item.author_last_name}<br />
-            Publish Date: {item.publish_date}<br />
-            Updated Date: {item.updated_date}<br />
-            Image URL: {item.image}<br />
-            <br />
+            <div className='content'>{renderHTML(item.content)}</div>
+            <li><b>Author: </b> {item.author_first_name} {item.author_last_name}</li>
+            <li><b>Categories: </b> {item.categories}</li>
+            <li><b>Published: </b> {item.publish_date}</li>
+            <li><b>Updated: </b> {item.updated_date}</li>
           </List.Item>
         </div>
       )}

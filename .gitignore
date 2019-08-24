@@ -215,6 +215,7 @@ django_architecture.png
 docker/prod/certbot
 
 # Temp Files
+idea/*
 /ab_back_end/templates/about_me.html
 playground/*
 notebooks/.ipynb_checkpoints

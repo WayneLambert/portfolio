@@ -1,5 +1,12 @@
-<footer class="site-footer"
+<footer class="site-footer">
   <div class="footer">
-    <p>&copy; Copyright {% now 'Y' %} | waynelambert.dev</p>
+    <span class="copyright-notice">&copy; {% now 'Y' %} waynelambert.dev</span>
+    <span class="privacy-policy">
+      <a href="{% url 'privacy-policy' %}" style="color: white;">Privacy</a>
+    </span>
+    <span class="contact" style="color: white;"> | </span>
+    <span class="contact">
+      <a href="{% url 'contact' %}" style="color: white;">Contact</a>
+    </span>
   </div>
 </footer>

@@ -19,7 +19,7 @@ h5.item_publish_date {
 }
 
 h5.item_updated_date {
-  font-size: 10pt;
+  font-size: 41pt;
 }
 
 span.item_body {
@@ -40,17 +40,38 @@ span.item_body {
   padding: 0 0 0 0;
 }
 
-.title {
-  color: #444444;
+.ant-menu-item {
+  padding: 0px 2px 0px 15px;
 }
 
-.title:hover {
-  color: #428bca;
+#btn-home {
+  border: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  cursor: pointer;
+}
+
+#btn-home:hover {
+  background-color: lightgray;
+}
+
+.post-title {
+  font-size: 24pt;
+  color: #000000;
+  padding: 10px 0px 40px 0px;
+}
+
+.post-title:hover {
+  font-size: 24pt;
+  color: blue;
+  text-decoration: underline;
 }
 
 .ant-menu {
   position: fixed;
   background-color: #563C7C;
+  padding-left: 8px;
   text-align: left;
   color: #ffffff;
   height: 50px;
@@ -58,23 +79,76 @@ span.item_body {
   width: 100%;
 }
 
-.footer {
+.ant-menu-item {
+  font-size: 11pt;
+  vertical-align: middle;
+  color: white;
+  padding-left: 6px;
+  padding-bottom: 10px;
+}
+
+.ant-layout-footer {
+  padding: 15px 25px;
+}
+
+.site-footer {
+  width: 100%;
   position: fixed;
   background-color: #563C7C;
-  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
   color: #ffffff;
-  font-size: smaller;
-  font-weight: lighter;
-  height: 10px;
-  line-height: 2px;
+  font-size: normal;
+  font-weight: normal;
+  line-height: 0px;
   bottom: 0;
   left: 0;
   right: 0;
 }
 
+.footer-links {
+  float: right;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.footer-links:hover {
+  float: right;
+  text-decoration: underline;
+  font-weight: normal;
+  color: #ffffff;
+}
+
 .site-content {
   width: 100%;
-  padding: 40px 0px 0px 10px;
+  padding: 50px 150px 70px 150px;
   margin-top: 0;
   min-height: 200px;
+}
+
+.author {
+  float: left;
+  padding: 20px 0 20px 0;
+}
+
+.post-image {
+  float: right;
+  padding: 20px;
+}
+
+
+#article-image-small {
+  float: right;
+  vertical-align: top;
+  padding: 2px;
+  border: 1px solid #2e79b5;
+  text-align: right;
+  height: 100px;
+  width: 100px;
+}
+
+.content {
+  color: #000000;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

@@ -2,7 +2,6 @@ import os
 from random import choices, random
 from urllib.parse import urlencode
 from django.conf import settings
-from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
 import requests
@@ -148,24 +147,18 @@ def lookup_definition(request, word_to_lookup: str) -> dict:
     if response.status_code == 404:
         definition_found = False
         definition = ''
-        definition_not_found_msg = f""" {word_to_lookup.lower().capitalize()} has not
-                                    been found in the Oxford Dictionary API. """
-        messages.add_message(
-            request=request,
-            level=messages.INFO,
-            message=definition_not_found_msg,
-        )
+        word_class = ''
     else:
         definition_found = True
         response_json = response.json()
-        definition = response_json['results'][0]['lexicalEntries'][0]['entries'][0]
-        definition = definition['senses'][0]['definitions'][0].capitalize().strip()
-        definition_not_found_msg = ''
+        definition = response_json['results'][0]['lexicalEntries'][0]
+        word_class = definition['lexicalCategory']['text']
+        definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
 
     definition_result = {
         'definition_found': definition_found,
         'definition': definition,
-        'definition_not_found_msg': definition_not_found_msg,
+        'word_class': word_class,
     }
 
     return definition_result

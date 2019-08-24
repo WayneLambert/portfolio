@@ -3,7 +3,6 @@ import { Form,Input,Button } from 'antd';
 import axios from 'axios';
 
 const FormItem = Form.Item;
-const blogAPIEndPointURL = process.env.DEV_API_URL
 
 class PostForm extends Component {
 
@@ -18,7 +17,7 @@ class PostForm extends Component {
     const content = event.target.elements.content.value
 
     try {
-      const res = await axios.post(blogAPIEndPointURL,{
+      const res = await axios.post(process.env.blogAPIEndPointURL,{
         title: title,
         content: content,
       });

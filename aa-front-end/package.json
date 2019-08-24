@@ -6,6 +6,8 @@
     "antd": "^3.21.4",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "dotenv": "^8.1.0",
+    "env-cmd": "^9.0.3",
     "formik": "^1.5.8",
     "html-react-parser": "^0.9.1",
     "jquery": "^3.4.1",
@@ -18,9 +20,9 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "env-cmd --file src/config/.env.dev react-scripts start",
+    "build": "env-cmd --file src/config/.env.prod react-scripts build",
+    "test": "env-cmd --file src/config/.env.dev react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,5 +39,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

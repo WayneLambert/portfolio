@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #fafafa;
+  background: #FFFFFF;
   color: #333333;
   margin-top: 4rem;
   padding-bottom: 6rem;
@@ -48,9 +48,8 @@ ul {
 }
 
 .content-section {
-  background: #fafafa;
+  background: #FFFFFF;
   padding: 10px 20px;
-  border: 1px solid #fafafa;
   border-radius: 3px;
   margin-bottom: 10px;
 }
@@ -148,12 +147,23 @@ footer {
 }
 
 .site-footer {
+  font-weight: normal;
   color: #ffffff;
-  font-size: smaller;
-  font-weight: lighter;
+  font-size: small;
   display: inline-block;
   vertical-align: middle;
   line-height: 30px;
+}
+
+.copyright-notice {
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.privacy-policy {
+  font-weight: normal;
+  color: #ffffff;
+  padding-left: 80%;
 }
 
 #btn-home {
@@ -192,18 +202,16 @@ footer {
 #article-image {
   float: right;
   vertical-align: top;
-  padding:4px;
-  border:2px solid #2e79b5;
+  padding:10px;
   text-align: right;
 }
 
 #article-image-small {
   float: right;
   vertical-align: top;
-  padding:2px;
+  padding:5px;
   border:1px solid #2e79b5;
   text-align: right;
   height: 100px;
   width: 100px;
 }
-

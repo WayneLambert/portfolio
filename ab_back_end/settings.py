@@ -1,15 +1,5 @@
 import os
-import sys
-
 import dj_database_url
-from django.conf.global_settings import (
-    EMAIL_BACKEND,
-    SECURE_BROWSER_XSS_FILTER,
-    SECURE_HSTS_INCLUDE_SUBDOMAINS,
-    SECURE_HSTS_PRELOAD,
-    SECURE_HSTS_SECONDS,
-    SECURE_PROXY_SSL_HEADER
-)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,6 +22,9 @@ DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
 # Gets Django database host for development purposes
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
+# AWS React Bucket Location
+AWS_REACT_BUCKET_LOCATION = os.environ['AWS_REACT_BUCKET_LOCATION']
+
 ALLOWED_HOSTS = [
     # Linode
     'waynelambert.co.uk',
@@ -40,6 +33,8 @@ ALLOWED_HOSTS = [
     'wl-portfolio.herokuapp.com',
     'waynelambert.dev',
     'www.waynelambert.dev',
+    # Amazon S3 React Bucket
+    AWS_REACT_BUCKET_LOCATION,
     # Local development
     '172.31.0.4',
     '127.0.0.1',
@@ -154,6 +149,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
+            AWS_REACT_BUCKET_LOCATION,
             'blog/templates/blog/',
             'users/templates/users/',
             'users/templates/registration/',
@@ -322,6 +318,9 @@ AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_DEFAULT_ACL = None
+
+# React S3 Settings
+AWS_REACT_BUCKET_NAME = os.environ['AWS_REACT_BUCKET_NAME']
 
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']

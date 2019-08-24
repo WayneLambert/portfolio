@@ -1,10 +1,15 @@
 {% load static %}
 <div class="album py-5 bg-light">
   <div class="container">
-    <div class="row">
+    <div class="row" id="album-row">
       {% include "album_blog_project.html" %}
-      {% include "album_scraping_project.html" %}
+      {% include "album_blog_api_project.html" %}
+      {% include "album_blog_react_project.html" %}
+    </div>
+    <div class="row" id="album-row">
+      {% include "album_countdown_project.html" %}
       {% include "album_count_project.html" %}
+      {% include "album_scraping_project.html" %}
     </div>
   </div>
 </div>

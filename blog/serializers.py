@@ -31,7 +31,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super(CategorySerializer, self).to_representation(instance)
-        representation['created_date'] = instance.created_date.strftime(format='%a %d-%b-%Y %H:%M')
+        representation['created_date'] = instance.created_date.strftime(format='%a %d-%b-%Y')
         return representation
 
 
@@ -72,6 +72,6 @@ class PostSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super(PostSerializer, self).to_representation(instance)
-        representation['publish_date'] = instance.publish_date.strftime(format='%a %d-%b-%Y %H:%M')
-        representation['updated_date'] = instance.updated_date.strftime(format='%a %d-%b-%Y %H:%M')
+        representation['publish_date'] = instance.publish_date.strftime(format='%a %d-%b-%Y')
+        representation['updated_date'] = instance.updated_date.strftime(format='%a %d-%b-%Y')
         return representation
