@@ -19,11 +19,11 @@ a single block in the template.
 }
 
 .navbar-inverse .brand a {
-  color: #cbd5db;
+  color: white;
 }
 .navbar-inverse .brand:hover a {
   color: white;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* custom navigation styles */
@@ -36,18 +36,22 @@ a single block in the template.
 
 .navbar {
   background: #563C7C;
-  color: cbd5db;
   border: none;
   /* border-top: 5px solid #A30000; */
   border-radius: 0px;
+  color: white;
 }
 
 .navbar .nav li, .navbar .nav li a, .navbar .brand:hover {
   color: white;
 }
 
+.navbar-brand {
+  color: white !important;
+}
+
 .nav-list > .active > a, .nav-list > .active > a:hover {
-  background: #2C2C2C;
+  background: rgb(114, 109, 109);
 }
 
 .navbar .dropdown-menu li a, .navbar .dropdown-menu li {

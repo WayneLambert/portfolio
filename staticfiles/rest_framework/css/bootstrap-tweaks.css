@@ -14,16 +14,17 @@ a single block in the template.
 }
 
 #generic-content-form textarea {
-  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+  font-family: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
   font-size: 80%;
 }
 
 .navbar-inverse .brand a {
-  color: #cbd5db;
+  color: white;
 }
+
 .navbar-inverse .brand:hover a {
   color: white;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 /* custom navigation styles */
@@ -36,21 +37,29 @@ a single block in the template.
 
 .navbar {
   background: #563C7C;
-  color: cbd5db;
   border: none;
   /* border-top: 5px solid #A30000; */
   border-radius: 0px;
-}
-
-.navbar .nav li, .navbar .nav li a, .navbar .brand:hover {
   color: white;
 }
 
-.nav-list > .active > a, .nav-list > .active > a:hover {
-  background: #2C2C2C;
+.navbar .nav li,
+.navbar .nav li a,
+.navbar .brand:hover {
+  color: white;
 }
 
-.navbar .dropdown-menu li a, .navbar .dropdown-menu li {
+.navbar-brand {
+  color: white !important;
+}
+
+.nav-list>.active>a,
+.nav-list>.active>a:hover {
+  background: rgb(114, 109, 109);
+}
+
+.navbar .dropdown-menu li a,
+.navbar .dropdown-menu li {
   color: #A30000;
 }
 
@@ -87,7 +96,7 @@ ul.breadcrumb {
 /*=== dabapps bootstrap styles ====*/
 
 html {
-  width:100%;
+  width: 100%;
   background: none;
 }
 
@@ -107,7 +116,8 @@ html {
 }
 
 /* sticky footer and footer */
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -126,8 +136,8 @@ html, body {
 
 .well {
   -webkit-box-shadow: none;
-     -moz-box-shadow: none;
-          box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .well .form-actions {
@@ -143,7 +153,7 @@ html, body {
   border: 0;
 }
 
-.nav-tabs > li {
+.nav-tabs>li {
   float: right;
 }
 
@@ -151,11 +161,11 @@ html, body {
   margin-right: 0;
 }
 
-.nav-tabs > .active > a {
+.nav-tabs>.active>a {
   background: #F5F5F5;
 }
 
-.nav-tabs > .active > a:hover {
+.nav-tabs>.active>a:hover {
   background: #F5F5F5;
 }
 
@@ -197,7 +207,8 @@ footer a:hover {
 }
 
 /* custom general page styles */
-.hero-unit h1, .hero-unit h2 {
+.hero-unit h1,
+.hero-unit h2 {
   color: #A30000;
 }
 
@@ -210,7 +221,7 @@ body a:hover {
 }
 
 .request-info {
-  clear:both;
+  clear: both;
 }
 
 .horizontal-checkbox label {

@@ -4,10 +4,6 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Additional field to adjust the login point for the Admin site
@@ -149,7 +145,6 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
-            AWS_REACT_BUCKET_LOCATION,
             'blog/templates/blog/',
             'users/templates/users/',
             'users/templates/registration/',
@@ -275,7 +270,11 @@ REST_FRAMEWORK = {
     ]
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+# Cors Headers Settings
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    AWS_REACT_BUCKET_LOCATION,
+]
 
 # Django-allauth Config
 SITE_ID = 1
@@ -283,7 +282,7 @@ LOGIN_REDIRECT_URL = 'blog-home'
 LOGOUT_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 
-# if HEROKU_DEPLOY:
+# Heroku Deployment Settings
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 

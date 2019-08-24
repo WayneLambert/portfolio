@@ -4,10 +4,9 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
-from django.views.generic import TemplateView
-from ab_back_end.settings import ADMIN_ALIAS, AWS_REACT_BUCKET_LOCATION
+from ab_back_end.settings import ADMIN_ALIAS
 from ab_back_end.views import (about_me, home, privacy_policy,
-                               reading_list, view_cv)
+                               react_blog, reading_list, view_cv)
 from blog.sitemap import CategorySitemap, PostSitemap
 from contacts import views as contacts_views
 
@@ -37,8 +36,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('cv', view_cv, name='view-cv'),
     path('blog/', include('blog.urls')),
-    re_path('react-blog/.*',
-            TemplateView.as_view(template_name=AWS_REACT_BUCKET_LOCATION)),
+    re_path('react-blog/*', react_blog, name='react-blog'),
     path('contact/', include('contacts.urls')),
     path(
         'contact-submitted/',
