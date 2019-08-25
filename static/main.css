@@ -58,7 +58,10 @@ footer {
 
 #album-row {
   height: 200px;
-  padding-bottom: 10px;
+}
+
+.spacer {
+  padding: 4px;
 }
 
 #no-words-msgbox {
