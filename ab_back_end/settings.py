@@ -278,8 +278,8 @@ CORS_ORIGIN_WHITELIST = [
 
 # Django-allauth Config
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'blog-home'
-LOGOUT_REDIRECT_URL = 'blog-home'
+LOGIN_REDIRECT_URL = 'blog-django'
+LOGOUT_REDIRECT_URL = 'blog-django'
 LOGIN_URL = 'login'
 
 # Heroku Deployment Settings

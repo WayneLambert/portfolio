@@ -2,20 +2,20 @@
   <div class="card mb-4 shadow-sm">
     <svg class="bd-placeholder-img card-img-top" width="100%" height="35" xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-      <title>Counting Project</title>
+      <title>CountdownProject</title>
       <rect width="100%" height="100%" fill="#282E34" />
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Counting Project</text>
+      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Countdown Project</text>
     </svg>
     <div class="card-body">
-      <p class="card-text">Counts the number of words and letters input/pasted
-        and returns the number of times each word/letter appears.</p>
+      <p class="card-text">Take on Susie Dent in this simulation of the well known
+      letters game from the British TV game show, Countdown.</p>
       <div class="d-flex justify-content-between align-items-center">
-        <a href="{% url 'check-count' %}" class="btn btn-sm btn-success mr-10" id="btn-count-words">
+        <a href="{% url 'selection' %}" class="btn-view-project btn-sm btn-success mr-10" id="btn-scrape-it">
           <i class="fa fa-book"></i>
-          Count Words!
+          Play Countdown
         </a>
-        <a id="btn-about-count" class="btn btn-sm btn-info mr-10" href="#"
-          onclick="aboutProject(context='count');return false;">
+        <a id="btn-about-count-words" class="btn btn-sm btn-info mr-10" href="#"
+          onclick="aboutProject(context='countdown');return false;">
           <i class="fa fa-info-circle"></i>
           About
         </a>

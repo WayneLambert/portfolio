@@ -57,7 +57,7 @@ footer {
 }
 
 #album-row {
-  height: 200px;
+  height: 210px;
 }
 
 #no-words-msgbox {
@@ -122,6 +122,11 @@ footer {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+
+.btn-view-project {
+  width: 140px;
+  text-align: center;
 }
 
 #about-project {

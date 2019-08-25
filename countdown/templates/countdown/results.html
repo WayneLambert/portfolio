@@ -56,7 +56,8 @@
             <th class="col-2"><p class="word-class">{{ definition.word_class }}</p></th>
           </tr>
         </table>
-        <p class="word-definition">{{ definition.definition }}</p>
+        <p class="word-definition">{{ definition.definition }}</p><br>
+        <em class="small">(British - English)</em>
       {% else %}
         <p class="word-definition-not-found">
           <em>'{{ winning_word|lower|capfirst }}'</em> has not been found in the Oxford Dictionary<br><br>
