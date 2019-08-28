@@ -1,5 +1,4 @@
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,9 +17,6 @@ DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
 # Gets Django database host for development purposes
 DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
 
-# AWS React Bucket Location
-AWS_REACT_BUCKET_LOCATION = os.environ['AWS_REACT_BUCKET_LOCATION']
-
 ALLOWED_HOSTS = [
     # Linode
     'waynelambert.co.uk',
@@ -29,8 +25,6 @@ ALLOWED_HOSTS = [
     'wl-portfolio.herokuapp.com',
     'waynelambert.dev',
     'www.waynelambert.dev',
-    # Amazon S3 React Bucket
-    AWS_REACT_BUCKET_LOCATION,
     # Local development
     '172.31.0.4',
     '127.0.0.1',
@@ -276,7 +270,6 @@ REST_FRAMEWORK = {
 # Cors Headers Settings
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    AWS_REACT_BUCKET_LOCATION,
 ]
 
 # Django-allauth Config
@@ -286,8 +279,10 @@ LOGOUT_REDIRECT_URL = 'blog-django'
 LOGIN_URL = 'login'
 
 # Heroku Deployment Settings
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+if not DEBUG:
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
 if not DEBUG:
     # Django SES Email Backend Settings
@@ -323,6 +318,7 @@ AWS_DEFAULT_ACL = None
 
 # React S3 Settings
 AWS_REACT_BUCKET_NAME = os.environ['AWS_REACT_BUCKET_NAME']
+AWS_REACT_BUCKET_LOCATION = os.environ['AWS_REACT_BUCKET_LOCATION']
 
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']

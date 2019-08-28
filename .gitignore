@@ -74,7 +74,8 @@ aa-front-end/build
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
+migrations
+
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
@@ -120,11 +121,8 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
 .tox/
 .nox/
-.coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
@@ -220,3 +218,4 @@ idea/*
 playground/*
 notebooks/.ipynb_checkpoints
 notebooks/django_debugging.ipynb
+docs/theprofitshare_archive.md

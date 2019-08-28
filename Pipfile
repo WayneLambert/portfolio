@@ -17,6 +17,9 @@ jupyter = "*"
 pytest-django = "*"
 pytest = "*"
 pytest-cov = "*"
+mixer = "*"
+dj-database-url = "*"
+pdbpp = "*"
 
 [packages]
 django = "*"

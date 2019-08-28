@@ -1,0 +1,23 @@
+[run]
+omit =
+  *apps.py,
+  *migrations/*,
+  *settings*,
+  *tests/*,
+  *wsgi.py,
+  manage.py,
+  *__init__.py,
+  *__pycache__,
+
+branch = True
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
+    if 0:
+    if __name__ == .__main__.:
