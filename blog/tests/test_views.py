@@ -1,26 +1,15 @@
 # pylint: disable=redefined-outer-name
+import pdb
 import pytest
-from django.contrib.auth.models import AnonymousUser
-from django.test import RequestFactory
 from django.urls import reverse
-from mixer.backend.django import mixer
 import blog.views as blog_views
-pytestmark = pytest.mark.django_db
-
-@pytest.fixture
-def factory():
-    return RequestFactory()
-
-@pytest.fixture
-def post(db):
-    return mixer.blend('blog.Post')
-
-@pytest.fixture
-def user(db):
-    return mixer.blend('auth.User')
+pytestmark = pytest.mark.django_db  # Request database access
 
 
 def test_home(factory):
+    """
+    Determines whether any user can access complete list of posts
+    """
     path = reverse('blog-django')
     request = factory.get(path)
     response = blog_views.home(request)
@@ -29,6 +18,9 @@ def test_home(factory):
 
 
 class TestPostListView:
+    """
+    Determines whether any user can access complete list of posts
+    """
     def test_post_list_view(self, factory):
         path = reverse('blog-django')
         request = factory.get(path)
@@ -37,9 +29,26 @@ class TestPostListView:
 
 
 class TestUserPostListView:
+    """
+    Determines whether any user can access list of
+    filtered posts authored by username parameter
+    """
     def test_user_post_list_view(self, factory, user):
-        path = reverse('user-posts', {'username': user})
+        kwargs = {'username': user.username}
+        path = reverse('user-posts', kwargs=kwargs)
         request = factory.get(path)
-        response = blog_views.UserPostListView.as_view()(request)
+        response = blog_views.UserPostListView.as_view()(request, **kwargs)
         assert response.status_code == 200, 'Should be callable by anyone'
 
+# FIXME: Need solution to kwargs value to make valid test case
+class TestCategoryPostListView:
+    """
+    Determines whether any user can access list of
+    filtered posts belonging to a given category
+    """
+    def test_category_post_list_view(self, factory, post):
+        kwargs = {'slug': post.categories}
+        path = reverse('category-posts', kwargs=kwargs)
+        request = factory.get(path)
+        response = blog_views.CategoryPostListView.as_view()(request, **kwargs)
+        assert response.status_code == 200, 'Should be callable by anyone'

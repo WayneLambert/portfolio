@@ -20,6 +20,7 @@ pytest-cov = "*"
 mixer = "*"
 dj-database-url = "*"
 pdbpp = "*"
+pytest-xdist = "*"
 
 [packages]
 django = "*"

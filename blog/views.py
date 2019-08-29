@@ -109,7 +109,6 @@ class SearchResultsView(ListView):
 
 
 class ContentsListView(ListView):
-
     model = Category
     template_name = 'blog/contents.html'
 
