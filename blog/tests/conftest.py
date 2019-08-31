@@ -10,6 +10,11 @@ def factory():
 
 
 @pytest.fixture
+def category(db):
+    return mixer.blend('blog.Category')
+
+
+@pytest.fixture
 def post(db):
     return mixer.blend('blog.Post')
 
