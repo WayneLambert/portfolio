@@ -70,8 +70,8 @@ class PostSerializer(serializers.ModelSerializer):
         )
         ordering = ['-publish_date']
 
-    def to_representation(self, instance):
-        representation = super(PostSerializer, self).to_representation(instance)
-        representation['publish_date'] = instance.publish_date.strftime(format='%a %d-%b-%Y')
-        representation['updated_date'] = instance.updated_date.strftime(format='%a %d-%b-%Y')
-        return representation
+    # def to_representation(self, instance):
+    #     representation = super(PostSerializer, self).to_representation(instance)
+    #     representation['publish_date'] = instance.publish_date.strftime(format='%a %d-%b-%Y')
+    #     representation['updated_date'] = instance.updated_date.strftime(format='%a %d-%b-%Y')
+    #     return representation
