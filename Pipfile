@@ -21,6 +21,9 @@ mixer = "*"
 dj-database-url = "*"
 pdbpp = "*"
 pytest-xdist = "*"
+hypothesis = "*"
+hypothesis-django = "*"
+mypy = "*"
 
 [packages]
 django = "*"

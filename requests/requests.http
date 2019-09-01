@@ -3,4 +3,4 @@ https://waynelambert.dev
 
 ###
 
-https://www.waynelambert.dev/users/password-reset/
+CURL http://localhost:8001/blog/post/test-post-6/update
