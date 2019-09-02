@@ -1,9 +1,8 @@
 # pylint: disable=redefined-outer-name
+from urllib.parse import urlparse
 import pytest
 from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
-from hypothesis import given
-from hypothesis.strategies import text
 import blog.views as blog_views
 pytestmark = pytest.mark.django_db  # Request database access
 
@@ -139,9 +138,20 @@ class TestPostDeleteView:
 
 
 class TestSearchResultsView:
-    def test_search_results_view(self, factory):
-        """ Asserts user can retrieve search results of post(s) """
-        path = f"(reverse('search-results'), {'?=test'})"
-        request = factory.get(path)
-        response = blog_views.PostDeleteView.as_view()(request)
-        assert response.status_code == 200, 'Should be callable by logged in user'
+    def test_search_results_view_logged_in(self, factory, search_terms, user):
+        """ Asserts logged in user can retrieve search results of qualified post(s) """
+        for index, item in enumerate(search_terms):
+            path = f"({reverse('search-results')}{'?q='}{search_terms[index]})"
+            request = factory.get(path)
+            request.user = user
+            response = blog_views.SearchResultsView.as_view()(request)
+            assert response.status_code == 200, 'Search results should be returned by logged in user'
+
+    def test_search_results_view_logged_out(self, factory, search_terms):
+        """ Asserts anonymous user can retrieve search results of qualified post(s) """
+        for index, item in enumerate(search_terms):
+            path = f"({reverse('search-results')}{'?q='}{search_terms[index]})"
+            request = factory.get(path)
+            request.user = AnonymousUser()
+            response = blog_views.SearchResultsView.as_view()(request)
+            assert response.status_code == 200, 'Search results should be returned by anyone'

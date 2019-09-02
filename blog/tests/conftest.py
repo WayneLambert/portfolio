@@ -22,3 +22,8 @@ def post(db):
 @pytest.fixture
 def user(db):
     return mixer.blend(User)
+
+
+@pytest.fixture
+def search_terms():
+    return ['python', 'PYTHON', 'pyTHon', '01234', '&*^%$']
