@@ -14,7 +14,7 @@ The content of the blog itself is about various topics in computer programming a
 ## Django Rest Framework API Endpoints
 
 - [API Endpoints](https://www.waynelambert.dev/api/blog/posts/)
-- [README](https://github.com/WayneLambert/portfolio/tree/master/blog)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/api)
 
 ## React Blog
 
