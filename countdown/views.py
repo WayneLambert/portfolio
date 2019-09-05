@@ -156,7 +156,8 @@ def lookup_definition(request, word_to_lookup: str) -> dict:
         try:
             definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
         except KeyError:
-            definition = f"The definition of {word_to_lookup} cannot be found in the Oxford Dictionary API."
+            definition = f"""The definition for {word_to_lookup} cannot be found
+                             in the Oxford Dictionary API."""
 
     definition_result = {
         'definition_found': definition_found,
