@@ -1,3 +1,10 @@
+"""
+These unit tests are not actually used as I favour the PyTest framework for testing.
+They exist in the project's code for demonstration purposes of using Django's
+standard unitest framework.
+"""
+
+
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.test import TestCase
