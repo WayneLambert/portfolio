@@ -12,4 +12,4 @@ A player scores points on a letters game by writing down a valid word within the
 
 After the contestants have offered their solution, Dictionary Corner offer a few more words which either equal or beat whatever the contestants have offered. Dictionary Corner is usually made up of Susie Dent and a celebrity guest, helped by Damian Eadie who communicates the answers to Susie via an earpiece.
 
-Based on the pool of letters used in Series 66 (typical of most recent series), and disregarding the ordering of the letters, there are a total of 9,719,199 different possible letters games. Among all possible nine-letter words that can be formed from this pool, WAKIZASHI is the least likely to be available. 
+Based on the pool of letters used in Series 66 (typical of most recent series), and disregarding the ordering of the letters, there are a total of 9,719,199 different possible letters games. Among all possible nine-letter words that can be formed from this pool, WAKIZASHI is the least likely to be available.

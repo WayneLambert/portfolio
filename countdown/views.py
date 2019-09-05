@@ -153,7 +153,10 @@ def lookup_definition(request, word_to_lookup: str) -> dict:
         response_json = response.json()
         definition = response_json['results'][0]['lexicalEntries'][0]
         word_class = definition['lexicalCategory']['text']
-        definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
+        try:
+            definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
+        except KeyError:
+            definition = f"The definition of {word_to_lookup} cannot be found in the Oxford Dictionary API."
 
     definition_result = {
         'definition_found': definition_found,
