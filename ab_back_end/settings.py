@@ -113,6 +113,44 @@ if DEBUG:
     ]
     SHOW_TOOLBAR_CALLBACK = True
 
+    # Do not log static request files to the console
+    def skip_static_requests(record):
+        if record.args[0].startswith('GET /static/'):
+            return False
+        return True
+
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'filters': {
+            'skip_static_requests': {
+                '()': 'django.utils.log.CallbackFilter',
+                'callback': skip_static_requests,
+            }
+        },
+        'formatters': {
+            'django.server': {
+                '()': 'django.utils.log.ServerFormatter',
+                'format': '[%(server_time)s] %(message)s',
+            }
+        },
+        'handlers': {
+            'django.server': {
+                'level': 'INFO',
+                'filters': ['skip_static_requests'],  # <- ...with one change
+                'class': 'logging.StreamHandler',
+                'formatter': 'django.server',
+            },
+        },
+        'loggers': {
+            'django.server': {
+                'handlers': ['django.server'],
+                'level': 'INFO',
+                'propagate': False,
+            },
+        }
+    }
+
     # Jupyter Notebook Settings
     NOTEBOOK_ARGUMENTS = [
         '--ip', '0.0.0.0',
