@@ -65,17 +65,12 @@ The blog project is built with Django and uses a PostgreSQL database. It is a
 full CRUD application with the ability to create, update and delete posts. Views
 within the application are total posts, posts by author, and posts by category.<br><br>
 
-A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
+A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio/tree/master/blog">README file on GitHub</a>
 <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
 <b>Frameworks: </b>Django, Django REST, Bootstrap, FontAwesome<br>
 <b>Other: </b>PostgreSQL, GitHub, Docker, Heroku, S3, Simple Email Service<br><br>
-
-The blog also comes with an API built with Django Rest Framework. The endpoints can be found at:<br><br>
-
-- <a href="https://waynelambert.dev/api/blog/posts">List View</a><br>
-- <a href="https://waynelambert.dev/api/blog/posts/1">Detail View</a>
 `;
 
 
@@ -84,7 +79,7 @@ const blogAPIDescription =
 The blog API is built using Django REST Framework. In addition to standard serializers, some of
 data points have been transformed to give the front end developer something more useful than the ID.<br><br>
 
-A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
+A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio/tree/master/api">README file on GitHub</a>
 <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
@@ -103,7 +98,7 @@ const blogReactDescription =
 The React version of the blog utilises the API endpoints developed in the 'Blog Project: API Endpoints'
 <br><br>
 
-A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio">README file on GitHub</a>
+A comprehensive list of features can be found on the project's <a href="https://github.com/WayneLambert/portfolio/tree/master/aa-front-end">README file on GitHub</a>
 <br><br>
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript<br>
