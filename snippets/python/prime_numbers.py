@@ -1,7 +1,5 @@
 # List prime numbers between 2 and 100
 
-prime_numbers = []
-
 def is_prime(number):
     """ Determines whether given number is prime or not """
     for factor in range(2, number):
@@ -9,6 +7,7 @@ def is_prime(number):
             return False
         return True
 
+prime_numbers = []
 def get_prime_numbers(max_num):
     """ Builds list of prime numbers up to a maximum of max_num """
     for tested_num in range(2, max_num):
