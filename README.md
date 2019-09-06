@@ -1,4 +1,4 @@
-# [Portfolio Project - at waynelambert.dev](https://waynelambert.dev)
+# [Portfolio Project - hosted at https://waynelambert.dev](https://waynelambert.dev)
 
 This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies. It is intended to be a desktop site and is not fully optimised for the mobile experience.
 
@@ -9,7 +9,7 @@ The blog is not intended to be a fully blown production product, therefore some 
 - [Home Page](https://waynelambert.dev/blog)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/blog)
 
-The content of the blog itself is about various topics in computer programming and web development to demonstrate my understanding of the topics.
+The content of the blog itself is about various topics in computer programming and web development. The posts are intended to demonstrate my understanding of the topics in addition to my own learning and documentation for specific processes that I am likely to need again when I integrate them in future projects.
 
 ## Django Rest Framework API Endpoints
 
@@ -27,7 +27,7 @@ COMING SOON: This project is not yet available online.
 - [Countdown](https://www.waynelambert.dev/countdown/selection/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/countdown)
 
-## Word/Letter Counting
+## Counting
 
 - [Counting](https://www.waynelambert.dev/count/check-count/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/counting)
@@ -37,7 +37,7 @@ COMING SOON: This project is not yet available online.
 - [Scraping](https://www.waynelambert.dev/scraping/scraping-options/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/scraping)
 
-## [Contact](https://www.waynelambert.dev/contact/)
+## Contact
 
 You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the [contact form](https://www.waynelambert.dev/contact/) on the site.
 
