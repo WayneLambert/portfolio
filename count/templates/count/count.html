@@ -21,20 +21,20 @@
             <em class="small"><p>{{ orig_full_text }}</p></em>
             <hr>
             The individual words along with their count of occurences is:<br>
-            {% for word, count_total in sorted_words  %}
+            {% for word, count_total in sorted_words %}
               <br>{{ word }}: {{ count_total }}
             {% endfor %}
-          </div>    
+          </div>
           &nbsp;<br>
           <hr>
           <div class="count-letters">
             The individual letters along with their count of occurences is:<br>
-            {% for letter in letter_count  %}
+            {% for letter in letter_count %}
               <br>{{ letter }}
             {% endfor %}
           </div>
         </div><br><br>
-        <div>        
+        <div>
           <a href="{% url 'check-count' %}" class="btn btn-sm btn-success mr-10"
             id="btn-check-count">
             <i class="fa fa-repeat"></i>
