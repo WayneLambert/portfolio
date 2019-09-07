@@ -47,6 +47,7 @@ urlpatterns = [
     path('scraping/', include('scraping.urls')),
     path('count/', include('count.urls')),
     path('countdown/', include('countdown.urls')),
+    path('roulette/', include('roulette.urls')),
     path('about-me/', about_me, name='about-me'),
     path('privacy-policy/', privacy_policy, name='privacy-policy'),
     path('reading-list/', reading_list, name='reading-list'),
