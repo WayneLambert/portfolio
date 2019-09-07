@@ -84,12 +84,7 @@ A comprehensive list of features can be found on the project's <a href="https://
 
 <b>Languages: </b>Python, HTML / CSS, JavaScript, SQL<br>
 <b>Frameworks: </b>Django, Django REST, CSS<br>
-<b>Other: </b>PostgreSQL, GitHub, Docker<br><br>
-
-The endpoints can be found using the following links:<br><br>
-
-- <a href="https://waynelambert.dev/api/blog/posts">List View</a><br>
-- <a href="https://waynelambert.dev/api/blog/posts/1">Detail View</a>
+<b>Other: </b>PostgreSQL, GitHub, Docker<br>
 `;
 
 

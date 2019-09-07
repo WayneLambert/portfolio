@@ -9,6 +9,7 @@
 
 html {
   height: 100%;
+  padding-top: 50px;
   box-sizing: border-box;
 }
 
@@ -19,9 +20,9 @@ html {
 }
 
 .jumbotron {
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 1.5rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.05rem;
 }
 
 .pb-5, .py-5 {
