@@ -7,13 +7,19 @@
   height: 50px;
 }
 
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
 .bg-dark {
   background-color: #02244D !important;
   height: 50px;
 }
 
 .jumbotron {
-  padding-top: 1.5rem;
+  padding-top: 50px;
   padding-bottom: 1.5rem;
   margin-bottom: 0.1rem;
 }
@@ -286,4 +292,9 @@ footer {
   width: 30%;
   text-align: left;
   padding-bottom: 5px;
+}
+
+.log-file-contents {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px 0px 20px 0px;
 }

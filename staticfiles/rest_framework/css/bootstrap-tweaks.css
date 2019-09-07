@@ -36,7 +36,7 @@ a single block in the template.
 }
 
 .navbar {
-  background: #563C7C;
+  background: #02244D;
   border: none;
   /* border-top: 5px solid #A30000; */
   border-radius: 0px;
@@ -174,14 +174,14 @@ body {
 }
 
 footer {
-  position: absolute;
+  position: fixed;
+  background-color: #02244D;
+  text-align: center;
   bottom: 0;
   left: 0;
-  clear: both;
-  z-index: 10;
-  height: 60px;
+  right: 0;
+  height: 30px;
   width: 95%;
-  margin: 0 2.5%;
 }
 
 footer p {
