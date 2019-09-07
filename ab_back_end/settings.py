@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
     'countdown.apps.CountdownConfig',
+    'roulette.apps.RouletteConfig',
 ]
 
 
@@ -187,6 +188,7 @@ TEMPLATES = [
             'count/templates/count/',
             'contacts/templates/contacts/',
             'countdown/templates/countdown/',
+            'roulette/templates/roulette/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
