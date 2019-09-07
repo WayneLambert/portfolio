@@ -15,6 +15,7 @@
     {% block content %}
       <div class="alert alert-light col-md-10 mb-0" role="alert">
         <h5>Congratulations! You are going to {{ most_selected_place }}!</h5><br>
+        <img src={{ destination_image_url }}><br><br>
         <h6>The results of the selections were:</h6><br>
         {% for key, value in places_to_go.items %}
           {{ key }} : {{ value }}<br>

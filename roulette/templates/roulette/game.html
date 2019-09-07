@@ -13,12 +13,16 @@
 
   <body>
     {% block content %}
+      <div class="countdown-photo">
+        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/holiday-roulette.png"
+        alt="holiday-roulette">
+      </div>
       <div class="alert alert-light col-md-10 mb-0" role="alert">
         <h6>Click the button below to find out where you're going on holiday next!</h6>
         <form name="frm" action="{% url 'holiday-destination' %}" method="GET">
-          <button type="submit" onclick="#" class="btn btn-sm btn-success mr-2"
+          <button type="submit" class="btn btn-sm btn-success mr-2"
             id="btn-count-words">
-            <i class="fa fa-book"></i>
+            <i class="fa fa-plane"></i>
             Spin Wheel
           </button>
         </form><br><br>

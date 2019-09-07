@@ -2,9 +2,9 @@ import operator
 import random
 import time
 from logging import DEBUG, basicConfig, debug
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 
-
+BASE_LOC = 'https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/'
 log_file = 'roulette/holiday_roulette.log'
 
 # Detailed logging example below...
@@ -27,26 +27,31 @@ def game_screen(request):
 
 
 places_to_go = {
+    'Aruba': 0,
     'Barbados': 0,
-    'Koh Samui': 0,
-    'Langkawi': 0,
-    'Seychelles': 0,
-    'Hawaii': 0,
     'Bora Bora': 0,
     'Fiji': 0,
-    'St. Lucia': 0,
-    'Aruba': 0,
-    'Santorini': 0,
-    'Palawan': 0,
+    'Hawaii': 0,
+    'Koh Samui': 0,
+    'Langkawi': 0,
     'Maldives': 0,
+    'Palawan': 0,
+    'Santorini': 0,
+    'Seychelles': 0,
+    'St. Lucia': 0,
 }
 
 
+def reset_places_to_go(request):
+    for key in places_to_go:
+        places_to_go[key] = 0
+
+
 def get_roulette_result(request):
-    num_of_choices = 500
+    num_of_choices = 1000
     detailed_choices = []
     for place_selected in range(1, num_of_choices + 1):
-        # time.sleep(0.1)
+        # time.sleep(0.005)
         choice_num = random.randint(0, len(places_to_go) - 1)
         choice = list(places_to_go.keys())[choice_num]
         places_to_go[choice] += 1
@@ -66,13 +71,35 @@ def get_roulette_result(request):
     )
 
 
+def get_picture_url(destination):
+    locations = {
+        'Aruba': f"{BASE_LOC}{'aruba.jpg'}",
+        'Barbados': f"{BASE_LOC}{'barbados.jpg'}",
+        'Bora Bora': f"{BASE_LOC}{'bora-bora.jpg'}",
+        'Fiji': f"{BASE_LOC}{'fiji.jpg'}",
+        'Hawaii': f"{BASE_LOC}{'hawaii.jpg'}",
+        'Koh Samui': f"{BASE_LOC}{'koh-samui.jpg'}",
+        'Langkawi': f"{BASE_LOC}{'langkawi.jpg'}",
+        'Maldives': f"{BASE_LOC}{'maldives.jpg'}",
+        'Palawan': f"{BASE_LOC}{'palawan.jpg'}",
+        'Santorini': f"{BASE_LOC}{'santorini.jpg'}",
+        'Seychelles': f"{BASE_LOC}{'seychelles.jpg'}",
+        'St. Lucia': f"{BASE_LOC}{'st-lucia.jpg'}",
+    }
+    return locations.get(destination, "Invalid destination")
+
+
 def destination_screen(request):
+    reset_places_to_go(request)
+    clear_down_log_file(request)
     roulette_result = get_roulette_result(request)
+    destination_image_url = get_picture_url(roulette_result[1])
     context = {
         'places_to_go': roulette_result[0],
         'most_selected_place': roulette_result[1],
         'number_of_times_selected': roulette_result[2],
         'detailed_choices': roulette_result[3],
+        'destination_image_url': destination_image_url,
     }
 
     return render(request, 'roulette/destination.html', context)
