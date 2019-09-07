@@ -3,14 +3,14 @@ from blog.serializers import CategorySerializer, PostSerializer
 from blog.models import Category, Post
 
 
-class CategoryListAPIView(generics.ListCreateAPIView):
+class CategoryListAPIView(generics.ListAPIView):
     """ API endpoint that enables category list to be viewed. """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     lookup_fields = ('name')
 
 
-class PostListAPIView(generics.ListCreateAPIView):
+class PostListAPIView(generics.ListAPIView):
     """ API endpoint that enables post list to be viewed. """
     queryset = Post.objects.all()
     serializer_class = PostSerializer

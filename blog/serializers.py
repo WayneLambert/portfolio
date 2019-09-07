@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+
 from blog.models import Category, Post
 
 User = get_user_model()
@@ -36,10 +37,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    categories = serializers.StringRelatedField(many=True)
     author_username = serializers.CharField(source='author.username')
-    author_first_name = serializers.CharField(source='author.first_name')
-    author_last_name = serializers.CharField(source='author.last_name')
     status = serializers.CharField(source='get_status_display')
 
     class Meta:
@@ -59,13 +57,7 @@ class PostSerializer(serializers.ModelSerializer):
             'image',
             'status',
             'author_username',
-            'author_first_name',
-            'author_last_name',
             'categories',
         )
-        read_only_fields = (
-            'id',
-            'author_first_name',
-            'author_last_name',
-        )
+
         ordering = ['-publish_date']
