@@ -2,20 +2,20 @@
   <div class="card mb-4 shadow-sm">
     <svg class="bd-placeholder-img card-img-top" width="100%" height="35" xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-      <title>Countdown</title>
+      <title>Countdown Letters</title>
       <rect width="100%" height="100%" fill="#02244D" />
-      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Countdown</text>
+      <text x="50%" y="50%" fill="#eceeef" dy=".3em">Countdown: Letters Game</text>
     </svg>
     <div class="card-body">
       <p class="card-text">Take on Susie Dent in this simulation of the well known
       letters game from the British TV game show, Countdown.</p>
       <div class="d-flex justify-content-between align-items-center">
-        <a href="{% url 'selection' %}" class="btn btn-sm btn-success mr-10" id="btn-scrape-it">
+        <a href="{% url 'countdown-letters:selection' %}" class="btn btn-sm btn-success mr-10" id="btn-scrape-it">
           <i class="fa fa-hourglass"></i>
           Play
         </a>
         <a id="btn-about-count-words" class="btn btn-sm btn-info mr-10" href="#"
-          onclick="aboutProject(context='countdown');return false;">
+          onclick="aboutProject(context='countdown-letters');return false;">
           <i class="fa fa-info-circle"></i>
           About
         </a>

@@ -64,7 +64,8 @@ INSTALLED_APPS = [
     'scraping.apps.ScrapingConfig',
     'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
-    'countdown.apps.CountdownConfig',
+    'countdown_letters.apps.CountdownLettersConfig',
+    'countdown_numbers.apps.CountdownNumbersConfig',
     'roulette.apps.RouletteConfig',
 ]
 
@@ -187,7 +188,8 @@ TEMPLATES = [
             'scraping/templates/scraping/',
             'count/templates/count/',
             'contacts/templates/contacts/',
-            'countdown/templates/countdown/',
+            'countdown_letters/templates/countdown_letters/',
+            'countdown_numbers/templates/countdown_numbers/',
             'roulette/templates/roulette/',
         ],
         'APP_DIRS': True,
