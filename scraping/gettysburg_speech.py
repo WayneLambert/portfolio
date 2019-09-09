@@ -16,8 +16,7 @@ def get_gettysburg_speech(request):
     text_content = []
     split_string = []
     for i in range(0, 2):
-        paragraphs = page_content.find_all('div',
-                                           attrs={"class": "quoteText"})[i].text
+        paragraphs = page_content.find_all('div', attrs={"class": "quoteText"})[i].text
         text_content.append(paragraphs)
     split_string = text_content[1].strip('\n').strip().split('\n')
     gettysburg_speech = split_string[0]
