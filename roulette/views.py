@@ -51,7 +51,7 @@ def get_roulette_result(request):
     num_of_choices = 1000
     detailed_choices = []
     for place_selected in range(1, num_of_choices + 1):
-        # time.sleep(0.005)
+        time.sleep(0.005)
         choice_num = random.randint(0, len(places_to_go) - 1)
         choice = list(places_to_go.keys())[choice_num]
         places_to_go[choice] += 1

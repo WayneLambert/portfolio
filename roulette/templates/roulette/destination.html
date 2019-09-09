@@ -18,8 +18,14 @@
         <img src={{ destination_image_url }}><br><br>
         <h6>The results of the selections were:</h6><br>
         {% for key, value in places_to_go.items %}
-          {{ key }} : {{ value }}<br>
+          {% if key == most_selected_place %}
+            <b>{{ key }} : {{ value }}</b><br>
+          {% else %}
+            {{ key }} : {{ value }}<br>
+          {% endif %}
         {% endfor %}<br>
+        <h6>The logging of the choices can be viewed here:</h6>
+        <a href="{% url 'destination-log-file' %}">Log File</a><br><br>
         <h6>The detailed list of choices were:</h6><br>
         {% for detailed_choice in detailed_choices %}
           {{ detailed_choice }}<br>
