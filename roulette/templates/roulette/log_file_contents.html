@@ -14,6 +14,13 @@
   <body>
     {% block content %}
       <div class="alert alert-light col-md-10 mb-0" role="alert">
+        <div class="small"><b>Note:</b> The process was purposefully slowed down with
+        the 'sleep' function to build suspense for the purposes of the game.</div>
+        <div class="small"><b>Note:</b> Times are in UTC time zone.</div><br>
+        <h6>The code for this holiday roulette simulation can be seen at
+          <a href="https://github.com/WayneLambert/portfolio/blob/master/roulette/views.py"
+          target="_blank">here</a>.<br><br>
+        </h6>
         <h6>The contents of the log file were:</h6>
         <div class="log-file-contents">
           {% for line in log_file_contents %}
