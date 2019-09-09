@@ -1,4 +1,4 @@
-# [Portfolio Project - hosted at https://waynelambert.dev](https://waynelambert.dev)
+# Portfolio Project
 
 This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies. It is intended to be a desktop site and is not fully optimised for the mobile experience.
 
@@ -21,6 +21,10 @@ The content of the blog itself is about various topics in computer programming a
 COMING SOON: This project is not yet available online.
 
 - [README](https://github.com/WayneLambert/portfolio/tree/master/aa-front-end)
+
+**Note:** I am favouring the development of more complete test coverage for the project in addition to bolstering up the portfolio with additional projects.
+
+This is likely to be completed in the intermediate term.
 
 ## Countdown: Letters Game
 
