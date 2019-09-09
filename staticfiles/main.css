@@ -9,6 +9,7 @@
 
 html {
   height: 100%;
+  padding-top: 50px;
   box-sizing: border-box;
 }
 
@@ -19,9 +20,9 @@ html {
 }
 
 .jumbotron {
-  padding-top: 60px;
+  padding-top: 20px;
   padding-bottom: 1.5rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.05rem;
 }
 
 .pb-5,
@@ -168,7 +169,7 @@ footer {
   size: invisible;
 }
 
-/* Countdown Project */
+/* Countdown Letters Project */
 
 .countdown-photo {
   padding: 20px 0px 0px 20px;
@@ -299,4 +300,18 @@ footer {
 .log-file-contents {
   font-family: 'Courier New', Courier, monospace;
   padding: 20px 0px 20px 0px;
+}
+
+/* Countdown Numbers Game */
+.numbers-selected {
+  font-size: 32pt;
+  font-weight: bold;
+  color: white;
+  background-color: #03388C;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #0E3564;
+  text-align: center;
+  width: 500px;
+  height: 80px;
 }

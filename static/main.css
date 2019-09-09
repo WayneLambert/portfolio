@@ -167,7 +167,7 @@ footer {
   size: invisible;
 }
 
-/* Countdown Project */
+/* Countdown Letters Project */
 
 .countdown-photo {
   padding: 20px 0px 0px 20px;
@@ -298,4 +298,18 @@ footer {
 .log-file-contents {
   font-family: 'Courier New', Courier, monospace;
   padding: 20px 0px 20px 0px;
+}
+
+/* Countdown Numbers Game */
+.numbers-selected {
+  font-size: 32pt;
+  font-weight: bold;
+  color: white;
+  background-color: #03388C;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #0E3564;
+  text-align: center;
+  width: 500px;
+  height: 80px;
 }

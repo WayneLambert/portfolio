@@ -36,8 +36,8 @@ function getAboutProjectText(context) {
     return scrapingDescription
   } else if (context === 'count') {
     return countDescription
-  } else if (context === 'countdown') {
-    return countdownDescription
+  } else if (context === 'countdown-letters') {
+    return countdownLettersDescription
   } else
     return 'The context is unknown'
 }
@@ -102,7 +102,7 @@ A comprehensive list of features can be found on the project's <a href="https://
 
 `;
 
-const countdownDescription =
+const countdownLettersDescription =
 `
 The countdown project uses the logic from the letters game on Countdown to enable a player to
 play against the computer attempting to get the longest word that they can.
