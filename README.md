@@ -22,10 +22,10 @@ COMING SOON: This project is not yet available online.
 
 - [README](https://github.com/WayneLambert/portfolio/tree/master/aa-front-end)
 
-## Countdown
+## Countdown: Letters Game
 
-- [Countdown](https://www.waynelambert.dev/countdown/selection/)
-- [README](https://github.com/WayneLambert/portfolio/tree/master/countdown)
+- [Countdown: Letters Game](https://www.waynelambert.dev/countdown-letters/selection/)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_letters)
 
 ## Counting
 
