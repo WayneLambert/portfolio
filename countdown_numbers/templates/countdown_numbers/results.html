@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load template_helpers %}
 
 {% block content %}
   <div class="countdown-photo">
@@ -8,11 +9,27 @@
     alt="countdown">
   </div>
   <div class="countdown-text">
+    <h6>The target number was ...</h6><br>
+    <div class="numbers-selected">
+      {{ request.GET.target_number }}
+    </div><br>
     <div class="game-subheading">
       Game Numbers
     </div>
     <div class="numbers-selected">
-      {{ request.GET.numbers_chosen }}
+      {{ request.GET.numbers_chosen|remove_brackets }}
+    </div><br>
+    <div class="game-subheading">
+      Your Calculation
+    </div>
+    <div class="numbers-selected">
+      {{ request.GET.players_calculation }}
+    </div><br>
+    <div class="game-subheading">
+      Carol's Calculation
+    </div>
+    <div class="numbers-selected">
+      {{ closest_answer }}
     </div><br>
     <div class="game-subheading">
       Game Results

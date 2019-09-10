@@ -27,30 +27,27 @@ def get_numbers_chosen(num_from_top: int) -> list:
 
     return numbers_chosen
 
-# TEMP BLOCK:
-test_numbers_chosen = get_numbers_chosen(3)
-# END TEMP BLOCK:
 
 def get_target_number():
     return randint(100, 999)
 
+
 def build_game_url(form):
     num_from_top = form.cleaned_data.get('num_from_top')
-    numbers_chosen = get_numbers_chosen(num_from_top=num_from_top)
-    target_number = get_target_number()
     base_url = reverse('countdown-numbers:game')
-    numbers_chosen_url = urlencode({'numbers_chosen': numbers_chosen})
-    target_number_url = urlencode({'target_number': target_number})
-    full_url = f'{base_url}?{numbers_chosen_url}&{target_number_url}'
+    target_number_url = urlencode({'target_number': get_target_number()})
+    numbers_chosen_url = urlencode(
+        {'numbers_chosen': get_numbers_chosen(num_from_top=num_from_top)})
+    full_url = f'{base_url}?{target_number_url}&{numbers_chosen_url}'
     return full_url
 
+
 def selection_screen(request):
-    form = NumberSelectionForm()
     if request.method == 'POST':
         form = NumberSelectionForm(request.POST)
         if form.is_valid():
-            url = build_game_url(form)
-            return redirect(url)
+            game_screen_url = build_game_url(form)
+            return redirect(game_screen_url)
     else:
         form = NumberSelectionForm()
 
@@ -58,36 +55,37 @@ def selection_screen(request):
 
 
 def game_screen(request):
-    form = SelectedNumbersForm()
-
     if request.method == 'POST':
         form = SelectedNumbersForm(request.POST)
         if form.is_valid():
             base_url = reverse('countdown-numbers:results')
+            referer_url = request.META['HTTP_REFERER'].split('?')[-1]
 
-            numbers_chosen = request.META['HTTP_REFERER'][-MAX_GAME_NUMBERS:]
-            numbers_chosen_url = urlencode({'numbers_chosen': numbers_chosen})
+            players_calc_url = urlencode(
+                {'players_calculation': form.cleaned_data.get('players_calculation')})
 
-            players_calculation = form.cleaned_data.get('players_calculation')
-            players_calculation_url = urlencode(
-                {'players_calculation': players_calculation})
+            results_screen_url = f'{base_url}?{referer_url}&{players_calc_url}'
+            return redirect(results_screen_url)
+    else:
+        form = SelectedNumbersForm()
 
-            full_url = f'{base_url}?{numbers_chosen_url}&{players_calculation_url}'
-            return redirect(full_url)
+    return render(request, 'countdown_numbers/game.html', {'form': form})
+
+
+def validate_calculation(request) ->bool:
+    pass
+
+
+def get_closest_answer(request) ->int:
+    return 100
+
+
+def results_screen(request):
+    validate_calculation(request)
+    closest_answer = get_closest_answer(request)
 
     context = {
-        'form': form,
+        'closest_answer': closest_answer,
     }
 
-    return render(request, 'countdown_numbers/game.html', context)
-
-
-# def results_screen(request):
-#     numbers_chosen = request.GET['numbers_chosen']
-
-
-#     context = {
-#         'numbers_chosen': numbers_chosen,
-#     }
-
-#     return render(request, 'countdown_numbers/results.html', context)
+    return render(request, 'countdown_numbers/results.html', context)
