@@ -174,3 +174,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Temporary directory/file ignore
+countdown_numbers/*

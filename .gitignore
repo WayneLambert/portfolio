@@ -221,3 +221,8 @@ playground/*
 notebooks/.ipynb_checkpoints
 notebooks/django_debugging.ipynb
 docs/theprofitshare_archive.md
+create_requirements.py
+roulette/*
+countdown_numbers/*
+countdown_letters/is_abecedarian.py
+snippets/python/dance.py
