@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     'bootstrap4',
     'ckeditor',
     'ckeditor_uploader',
-    'allauth',
-    'allauth.account',
     'storages',
     'captcha',
 
@@ -169,7 +167,7 @@ if not DEBUG:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     X_FRAME_OPTIONS = 'DENY'
-    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_SECONDS = 2592000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -208,8 +206,6 @@ WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -222,8 +218,6 @@ DATABASES = {
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -248,16 +242,10 @@ AUTHENTICATION_BACKENDS = (
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
