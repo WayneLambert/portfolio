@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Find Your Next Holiday Destination</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="countdown-photo">
+        <img style="border:2px solid red"
+        src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/holiday-roulette.png"
+        alt="holiday-roulette">
+      </div>
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        <h6>Click the button below to find out where you're going on holiday next!</h6>
+        <form name="frm" action="{% url 'holiday-destination' %}" method="GET">
+          <button type="submit" class="btn btn-sm btn-success mr-2"
+            id="btn-count-words">
+            <i class="fa fa-plane"></i>
+            Spin Wheel
+          </button>
+        </form><br><br>
+      </div>
+    {% endblock content %}
+  </body>
+</html>

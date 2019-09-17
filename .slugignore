@@ -176,4 +176,4 @@ dmypy.json
 .pyre/
 
 # Temporary directory/file ignore
-countdown_numbers/*
+

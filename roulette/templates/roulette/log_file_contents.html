@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Holiday Roulette Game Log File</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        <div class="small"><b>Note:</b> The process was purposefully slowed down with
+        the 'sleep' function to build suspense for the purposes of the game.</div>
+        <div class="small"><b>Note:</b> Times are in UTC time zone.</div><br>
+        <h6>The code for this holiday roulette simulation can be seen at
+          <a href="https://github.com/WayneLambert/portfolio/blob/master/roulette/views.py"
+          target="_blank">here</a>.<br><br>
+        </h6>
+        <h6>The contents of the log file were:</h6>
+        <div class="log-file-contents">
+          {% for line in log_file_contents %}
+            {{ line }}<br>
+          {% endfor %}
+        </div>
+      </div><br>
+    {% endblock content %}<br><br><br><br><br>
+  </body>
+</html>

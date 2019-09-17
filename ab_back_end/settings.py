@@ -67,7 +67,6 @@ INSTALLED_APPS = [
     'roulette.apps.RouletteConfig',
 ]
 
-
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Third party
     'django.middleware.security.SecurityMiddleware',

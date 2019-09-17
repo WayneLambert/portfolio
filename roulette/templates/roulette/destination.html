@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Next Holiday Destination</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        <h5>Congratulations! You are going to {{ most_selected_place }}!</h5><br>
+          <img style="border:2px solid red" src={{ destination_image_url }}><br><br>
+        <h6>The results of the selections were:</h6><br>
+        {% for key, value in places_to_go.items %}
+          {% if key == most_selected_place %}
+            <span style="background-color: #FFFF00">
+              <b>{{ key }} : {{ value }}</b><br>
+            </span>
+          {% else %}
+            {{ key }} : {{ value }}<br>
+          {% endif %}
+        {% endfor %}<br>
+        <h6>The logging of the choices can be viewed here:</h6>
+        <a href="{% url 'destination-log-file' %}">Log File</a><br><br>
+        <h6>The detailed list of choices were:</h6><br>
+        {% for detailed_choice in detailed_choices %}
+          {{ detailed_choice }}<br>
+        {% endfor %}
+      </div><br><br>
+    {% endblock content %}
+  </body>
+</html>
