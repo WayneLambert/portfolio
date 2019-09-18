@@ -1,7 +1,10 @@
 from random import choices, randint
 from urllib.parse import urlencode
+import re
+import ast
 from django.shortcuts import redirect, render
 from django.urls import reverse
+# pylint: disable=eval-used
 
 from countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
 
@@ -72,10 +75,33 @@ def game_screen(request):
     return render(request, 'countdown_numbers/game.html', {'form': form})
 
 
-def validate_calculation(request) ->bool:
-    players_calc = list(request.GET.get('players_calculation'))[0]
+def get_permissible_nums(request) -> list:
+    game_nums = request.GET.get('numbers_chosen')
+    game_nums = ast.literal_eval(game_nums)
+    return game_nums
 
 
+def get_nums_used(request, players_calc) -> list:
+    nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
+    nums_used[:] = (int(item) for item in nums_used if item != '')
+    return nums_used
+
+
+def is_calc_valid(request) ->bool:
+    players_calc = request.GET.get('players_calculation')
+    nums_used = get_nums_used(request, players_calc)
+    permissible_nums = get_permissible_nums(request)
+    for test_num in nums_used:
+        if test_num not in permissible_nums:
+            return False
+        permissible_nums.remove(test_num)
+    return True
+
+
+def get_players_answer(request) ->int:
+    players_calc = request.GET.get('players_calculation')
+    players_answer = eval(players_calc)
+    return players_answer
 
 
 def get_closest_answer(request) ->int:
@@ -83,10 +109,14 @@ def get_closest_answer(request) ->int:
 
 
 def results_screen(request):
-    validate_calculation(request)
+    valid_calc = is_calc_valid(request)
+    if valid_calc:
+        players_answer = get_players_answer(request)
     closest_answer = get_closest_answer(request)
 
     context = {
+        'valid_calc': valid_calc,
+        'players_answer': players_answer,
         'closest_answer': closest_answer,
     }
 
