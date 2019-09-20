@@ -306,7 +306,7 @@ footer {
 
 /* Countdown Numbers Game */
 .numbers-selected {
-  font-size: 30pt;
+  font-size: 18pt;
   font-weight: bold;
   color: white;
   background-color: #03388C;
@@ -316,4 +316,5 @@ footer {
   text-align: center;
   width: 500px;
   height: 80px;
+  line-height: 60px;
 }
