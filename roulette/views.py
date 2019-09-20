@@ -13,7 +13,8 @@ basicConfig(
     level=DEBUG,
     format="""%(asctime)s.%(msecs)03d %(levelname)-8s %(filename)s:
         %(module)s: %(lineno)d - %(funcName)s: %(message)s""",
-    datefmt="%Y-%m-%d %H:%M:%S")
+    datefmt="%Y-%m-%d %H:%M:%S"
+)
 
 
 def clear_down_log_file(request):
