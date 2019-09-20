@@ -9,4 +9,4 @@ def remove_brackets(value):
 
 @register.filter
 def change_symbols(value):
-    return value.replace("*", chr(10005)).replace("/", u"\u00F7")
+    return value.replace("*", chr(215)).replace("/", chr(247))

@@ -1,18 +1,23 @@
+import ast
+import itertools
+import operator
+import re
+from collections import defaultdict, deque
 from random import choices, randint
 from urllib.parse import urlencode
-import re
-import ast
+
 from django.shortcuts import redirect, render
 from django.urls import reverse
-# pylint: disable=eval-used
 
 from countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
+# pylint: disable=eval-used
+
 
 MAX_GAME_NUMBERS = 6
 
 def get_numbers_chosen(num_from_top: int) -> list:
     NUMS_FROM_TOP = [25, 50, 75, 100]
-    NUMS_FROM_BOTTOM = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10]
+    NUMS_FROM_BOTTOM = list(range(1, 11)) * 2
 
     num_from_bottom = MAX_GAME_NUMBERS - num_from_top
 
@@ -100,24 +105,115 @@ def is_calc_valid(request) ->bool:
 
 def get_players_answer(request) ->int:
     players_calc = request.GET.get('players_calculation')
-    players_answer = eval(players_calc)
+    players_answer = int(eval(players_calc))
     return players_answer
 
+operator_symbols = {
+    '+': operator.add,
+    '-': operator.sub,
+    chr(215): operator.mul,
+    chr(247): operator.truediv,
+}
 
-def get_closest_answer(request) ->int:
-    return 100
+
+def game_answers(request, game_nums, stop_on=None):
+    game_nums_permutations = itertools.permutations(game_nums)
+    operator_combinations = itertools.product(operator_symbols.keys(), repeat=5)
+
+    possibilities = itertools.product(game_nums_permutations, operator_combinations)
+
+    results = defaultdict(list)
+    calc_string = u'(((({0} {6} {1}) {7} {2}) {8} {3}) {9} {4}) {10} {5}'
+    for (game_nums, operators) in possibilities:
+        calc = calc_string.format(*(game_nums + operators))
+
+        value_queue = deque(game_nums)
+        operators_queue = deque(operators)
+
+        answer = value_queue.popleft()
+        while value_queue:
+            operator_function = operator_symbols[operators_queue.popleft()]
+            next_value = value_queue.popleft()
+            answer = operator_function(answer, next_value)
+            if answer < 0 or answer != int(answer):
+                break
+        else:
+            results[answer].append(calc)
+            if answer == stop_on:
+                break
+
+    return results
+
+
+def get_best_solution(request, game_nums, target):
+    all_answers = game_answers(request, game_nums, stop_on=target)
+
+    if int(target) in all_answers:
+        return all_answers[int(target)][0]
+    else:
+        for num in range(1, 11):
+            if int(target) + num in all_answers:
+                return all_answers[int(target) + num][0]
+            elif int(target) - num in all_answers:
+                return all_answers[int(target) - num][0]
+        return f'No solution could be found'
+
+
+def get_score_awarded(request, target_number, players_answer):
+    if players_answer == target_number:
+        points_awarded = 10
+    elif target_number - 5 <= players_answer <= target_number + 5:
+        points_awarded = 7
+    elif target_number - 10 <= players_answer <= target_number + 10:
+        points_awarded = 5
+    else:
+        points_awarded = 0
+    return points_awarded
+
+
+def get_closest_answer(target_number: int, answers: dict) ->int:
+    closest_num = min(answers.values(), key=lambda num: abs(num - target_number))
+    return closest_num
+
+
+def get_game_result(closest_num: int, answers: dict) -> str:
+    winner = list(answers.keys())[list(answers.values()).index(closest_num)]
+    return winner
 
 
 def results_screen(request):
     valid_calc = is_calc_valid(request)
     if valid_calc:
         players_answer = get_players_answer(request)
-    closest_answer = get_closest_answer(request)
+    else:
+        player_score = 0
+
+    game_nums = get_permissible_nums(request)
+    target_number = int(request.GET.get('target_number'))
+    best_solution = get_best_solution(request, game_nums, target_number)
+    best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
+    comp_answer = int(eval(best_solution))
+    solution_string = f"""
+        {best_solution.replace('*', chr(215)).replace('/', chr(247))} = {comp_answer}"""
+    player_score = get_score_awarded(request, target_number, players_answer)
+    comp_score = get_score_awarded(request, target_number, comp_answer)
+    answers = {
+        'players_answer': players_answer,
+        'comp_answer': comp_answer,
+    }
+    closest_num = get_closest_answer(target_number, answers)
+    game_result = get_game_result(closest_num, answers)
 
     context = {
+        'game_nums': game_nums,
         'valid_calc': valid_calc,
         'players_answer': players_answer,
-        'closest_answer': closest_answer,
+        'target_number': target_number,
+        'comp_answer': comp_answer,
+        'solution_string': solution_string,
+        'player_score': player_score,
+        'comp_score': comp_score,
+        'game_result': game_result,
     }
 
     return render(request, 'countdown_numbers/results.html', context)
