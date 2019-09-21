@@ -34,7 +34,7 @@
               <p class="player-desc">My Word: </p>
             </th>
             <th class="player-word">
-              <p class="player-word">{{ players_word }}</p>
+              <p class="player-word">{{ players_word|upper }}</p>
             </th>
           </tr>
           <tr>
@@ -49,25 +49,20 @@
       </div>
     </div><br>
     <div class="alert alert-success" role="alert" id="word-definition-box">
-      {% if definition.definition_found %}
-        <table>
-          <tr>
-            <th class="col-1"><p class="winning-word">{{ winning_word|lower|capfirst }}</p></th>
-            <th class="col-2"><p class="word-class">{{ definition.word_class }}</p></th>
-          </tr>
-        </table>
-        <p class="word-definition">{{ definition.definition }}</p><br>
+    <table>
+      <tr>
+        <th class="col-1">
+          <p class="winning-word">{{ definition_result.alt_word_lookup|lower|capfirst }}</p>
+        </th>
+        <th class="col-2"><p class="word-class">{{ definition_result.word_class }}</p></th>
+      </tr>
+    </table>
+        <p class="word-definition">{{ definition_result.definition }}</p><br>
         <em class="small">(British - English)</em>
-      {% else %}
-        <p class="word-definition-not-found">
-          <em>'{{ winning_word|lower|capfirst }}'</em> has not been found in the Oxford Dictionary<br><br>
-          <em class="small">(British - English)</em>
-        </p>
-      {% endif %}
     </div>
     <div class="scores-message">
       {% if player_word_len > comp_word_len %}
-        Wow, you did great! Congratulation!!
+        Wow, you did great! Congratulations!!
       {% elif comp_word_len > player_word_len %}
         You must try harder to beat our resident lexicographer!
       {% else %}
@@ -80,7 +75,7 @@
         Start Again
       </a>
     </p>
-    <h6>The code for this Countdown Letters application can be seen at 
+    <h6>The code for this 'Countdown: Letters Game' application can be seen 
       <a href="https://github.com/WayneLambert/portfolio/blob/master/countdown_letters/views.py"
       target="_blank">here</a>.
     </h6><br>
