@@ -38,9 +38,7 @@ def count(request):
             char_count = count_char(cleaned_full_text, test_char)
             perc = 100 * count_char(cleaned_full_text,
                                     test_char) / len(cleaned_full_text)
-            letter_count_str = f"""{test_char} appeared {char_count}
-                {'time' if char_count==1 else 'times'}
-                constituting an appearance rate of {round(perc,2)}%"""
+            letter_count_str = f"""{test_char}: {char_count} ({round(perc,1)}%)"""
             letter_count.append(letter_count_str.strip('\n'))
 
     context = {
