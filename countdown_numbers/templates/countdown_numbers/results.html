@@ -23,13 +23,13 @@
       Your Calculation
     </div>
     <div class="numbers-selected">
-      {{ request.GET.players_calculation|change_symbols }} = {{ players_answer }}
+      {{ request.GET.players_calculation|change_symbols }} = {{ player_num_achieved }}
     </div><br>
     <div class="game-subheading">
       Carol's Calculation
     </div>
     <div class="numbers-selected">
-      {{ solution_string }}
+      {{ solution_str }}
     </div><br>
     <div class="game-subheading">
       Game Results
@@ -42,9 +42,9 @@
       {% endif %}
         &#8627; Carol scored {{ comp_score }} points<br>
         &#8627; <b>Result: </b>
-        {% if game_result == 'comp_answer' %}
+        {% if game_result == 'comp_num_achieved' %}
           Carol wins
-        {% elif game_result == 'player_answer' %}
+        {% elif game_result == 'player_num_achieved' %}
           You win
         {% endif %}
     </div>
@@ -55,7 +55,7 @@
         Start Again
       </a>
     </p>
-    <h6>The code for this Countdown Numbers application can be seen 
+    <h6>The code for this 'Countdown: Numbers Game' application can be seen 
       <a href="https://github.com/WayneLambert/portfolio/blob/master/countdown_numbers/views.py"
       target="_blank">here</a>.
     </h6><br>

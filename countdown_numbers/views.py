@@ -103,10 +103,10 @@ def is_calc_valid(request) ->bool:
     return True
 
 
-def get_players_answer(request) ->int:
+def get_player_num_achieved(request) ->int:
     players_calc = request.GET.get('players_calculation')
-    players_answer = int(eval(players_calc))
-    return players_answer
+    player_num_achieved = int(eval(players_calc))
+    return player_num_achieved
 
 operator_symbols = {
     '+': operator.add,
@@ -116,13 +116,13 @@ operator_symbols = {
 }
 
 
-def game_answers(request, game_nums, stop_on=None):
+def get_game_calcs(request, game_nums, stop_on=None):
     game_nums_permutations = itertools.permutations(game_nums)
     operator_combinations = itertools.product(operator_symbols.keys(), repeat=5)
 
     possibilities = itertools.product(game_nums_permutations, operator_combinations)
 
-    results = defaultdict(list)
+    game_calcs = defaultdict(list)
     calc_string = u'(((({0} {6} {1}) {7} {2}) {8} {3}) {9} {4}) {10} {5}'
     for (game_nums, operators) in possibilities:
         calc = calc_string.format(*(game_nums + operators))
@@ -138,33 +138,33 @@ def game_answers(request, game_nums, stop_on=None):
             if answer < 0 or answer != int(answer):
                 break
         else:
-            results[answer].append(calc)
+            game_calcs[answer].append(calc)
             if answer == stop_on:
                 break
 
-    return results
+    return game_calcs
 
 
 def get_best_solution(request, game_nums, target):
-    all_answers = game_answers(request, game_nums, stop_on=target)
+    game_calcs = get_game_calcs(request, game_nums, stop_on=target)
 
-    if int(target) in all_answers:
-        return all_answers[int(target)][0]
+    if int(target) in game_calcs:
+        return game_calcs[int(target)][0]
     else:
         for num in range(1, 11):
-            if int(target) + num in all_answers:
-                return all_answers[int(target) + num][0]
-            elif int(target) - num in all_answers:
-                return all_answers[int(target) - num][0]
+            if int(target) + num in game_calcs:
+                return game_calcs[int(target) + num][0]
+            elif int(target) - num in game_calcs:
+                return game_calcs[int(target) - num][0]
         return f'No solution could be found'
 
 
-def get_score_awarded(request, target_number, players_answer):
-    if players_answer == target_number:
+def get_score_awarded(request, target_number: int, num_achieved: int)-> int:
+    if num_achieved == target_number:
         points_awarded = 10
-    elif target_number - 5 <= players_answer <= target_number + 5:
+    elif target_number - 5 <= num_achieved <= target_number + 5:
         points_awarded = 7
-    elif target_number - 10 <= players_answer <= target_number + 10:
+    elif target_number - 10 <= num_achieved <= target_number + 10:
         points_awarded = 5
     else:
         points_awarded = 0
@@ -184,7 +184,7 @@ def get_game_result(closest_num: int, answers: dict) -> str:
 def results_screen(request):
     valid_calc = is_calc_valid(request)
     if valid_calc:
-        players_answer = get_players_answer(request)
+        player_num_achieved = get_player_num_achieved(request)
     else:
         player_score = 0
 
@@ -192,14 +192,15 @@ def results_screen(request):
     target_number = int(request.GET.get('target_number'))
     best_solution = get_best_solution(request, game_nums, target_number)
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
-    comp_answer = int(eval(best_solution))
-    solution_string = f"""
-        {best_solution.replace('*', chr(215)).replace('/', chr(247))} = {comp_answer}"""
-    player_score = get_score_awarded(request, target_number, players_answer)
-    comp_score = get_score_awarded(request, target_number, comp_answer)
+    comp_num_achieved = int(eval(best_solution))
+    solution_str = f"""
+        {best_solution.replace('*', chr(215)).replace('/', chr(247))} = {comp_num_achieved}"""
+    if valid_calc:
+        player_score = get_score_awarded(request, target_number, player_num_achieved)
+    comp_score = get_score_awarded(request, target_number, comp_num_achieved)
     answers = {
-        'players_answer': players_answer,
-        'comp_answer': comp_answer,
+        'player_num_achieved': player_num_achieved,
+        'comp_num_achieved': comp_num_achieved,
     }
     closest_num = get_closest_answer(target_number, answers)
     game_result = get_game_result(closest_num, answers)
@@ -207,10 +208,10 @@ def results_screen(request):
     context = {
         'game_nums': game_nums,
         'valid_calc': valid_calc,
-        'players_answer': players_answer,
         'target_number': target_number,
-        'comp_answer': comp_answer,
-        'solution_string': solution_string,
+        'player_num_achieved': player_num_achieved,
+        'comp_num_achieved': comp_num_achieved,
+        'solution_str': solution_str,
         'player_score': player_score,
         'comp_score': comp_score,
         'game_result': game_result,
