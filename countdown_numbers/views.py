@@ -8,6 +8,7 @@ from urllib.parse import urlencode
 
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.contrib import messages
 
 from countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
 # pylint: disable=eval-used
@@ -62,9 +63,54 @@ def selection_screen(request):
     return render(request, 'countdown_numbers/selection.html', {'form': form})
 
 
+def check_chars(request, players_calc: str):
+    pattern = r'^[0-9()\+\-\*\/]*$'
+    match_set = re.search(pattern, players_calc)
+    if match_set is None:
+        messages.add_message(request, messages.INFO, f"""Only arithmetic operators,
+            numbers, and rounded brackets permitted.""")
+        return False
+    else:
+        return True
+
+
+def check_brackets(request, players_calc: str) ->bool:
+    if players_calc.count('(') != players_calc.count(')'):
+        messages.add_message(request, messages.INFO, f"""Mismatch in the number
+            of opening/closing brackets used.""")
+        return False
+    else:
+        return True
+
+
+def check_spaces(request, players_calc: str) ->bool:
+    if ' ' in players_calc:
+        messages.add_message(request, messages.INFO, f"""There are spaces used
+            within your calculation.""")
+        return False
+    else:
+        return True
+
+
+def calc_entered_is_valid(request, players_calc) -> bool:
+    has_valid_chars = check_chars(request, players_calc)
+    has_valid_brackets = check_brackets(request, players_calc)
+    has_no_spaces = check_spaces(request, players_calc)
+    if all([has_valid_chars, has_valid_brackets, has_no_spaces]):
+        return True
+    else:
+        messages.add_message(request, messages.INFO, message=f'\n{players_calc}',
+                             extra_tags=players_calc)
+        return False
+
+
 def game_screen(request):
     if request.method == 'POST':
         form = SelectedNumbersForm(request.POST)
+        calc_entered = form['players_calculation'].data
+        is_valid_calc = calc_entered_is_valid(request, calc_entered)
+        if not is_valid_calc:
+            return redirect(request.META['HTTP_REFERER'])
         if form.is_valid():
             base_url = reverse('countdown-numbers:results')
             referer_url = request.META['HTTP_REFERER'].split('?')[-1]
@@ -80,19 +126,19 @@ def game_screen(request):
     return render(request, 'countdown_numbers/game.html', {'form': form})
 
 
-def get_permissible_nums(request) -> list:
+def get_permissible_nums(request)-> list:
     game_nums = request.GET.get('numbers_chosen')
     game_nums = ast.literal_eval(game_nums)
     return game_nums
 
 
-def get_nums_used(request, players_calc) -> list:
+def get_nums_used(request, players_calc)-> list:
     nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
     nums_used[:] = (int(item) for item in nums_used if item != '')
     return nums_used
 
 
-def is_calc_valid(request) ->bool:
+def is_calc_valid(request)-> bool:
     players_calc = request.GET.get('players_calculation')
     nums_used = get_nums_used(request, players_calc)
     permissible_nums = get_permissible_nums(request)
@@ -103,7 +149,7 @@ def is_calc_valid(request) ->bool:
     return True
 
 
-def get_player_num_achieved(request) ->int:
+def get_player_num_achieved(request)-> int:
     players_calc = request.GET.get('players_calculation')
     player_num_achieved = int(eval(players_calc))
     return player_num_achieved
@@ -176,20 +222,21 @@ def get_closest_answer(target_number: int, answers: dict) ->int:
     return closest_num
 
 
-def get_game_result(closest_num: int, answers: dict) -> str:
+def get_game_result(closest_num: int, answers: dict)-> str:
     winner = list(answers.keys())[list(answers.values()).index(closest_num)]
     return winner
 
 
 def results_screen(request):
     valid_calc = is_calc_valid(request)
+    player_num_achieved = get_player_num_achieved(request)
+    target_number = int(request.GET.get('target_number'))
     if valid_calc:
-        player_num_achieved = get_player_num_achieved(request)
+        player_score = get_score_awarded(request, target_number, player_num_achieved)
     else:
         player_score = 0
 
     game_nums = get_permissible_nums(request)
-    target_number = int(request.GET.get('target_number'))
     best_solution = get_best_solution(request, game_nums, target_number)
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
     comp_num_achieved = int(eval(best_solution))

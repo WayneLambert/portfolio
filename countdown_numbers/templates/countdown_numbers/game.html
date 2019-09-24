@@ -13,10 +13,14 @@
       <div class="numbers-selected">
         {{ request.GET.target_number }}
       </div><br>
-    <h6>The numbers selected at random for you are...</h6><br>
+    <h6>The numbers selected at random are...</h6><br>
       <div class="numbers-selected">
         {{ request.GET.numbers_chosen|remove_brackets }}
-      </div><br>
+      </div><br><br>
+    <h6>Enter the calculation for the closest number to the target number here...</h6><br>
+    <em class="small">Use matching sets of rounded brackets, digits and arithmetic operators.<br>
+      No spaces, equals sign or answer permitted.*
+    </em>
     <form id="selected-numbers-form" action="{% url 'countdown-numbers:game' %}"
       method="POST" class="form-horizontal">
       {% csrf_token %}
@@ -26,5 +30,20 @@
         Submit
       </button><br><br>
     </form>
+    {% if messages %}
+      <div class="alert alert-warning col-md-4 mb-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <b>There are problems in your calculation requiring attention</b><br><br>
+        <div class="messages">
+          # TODO: Start from here
+          {% for message in messages %}
+            &#x204D {{ message }}<br>
+          {% endfor %}
+        </div><br><br>
+        <b>Re-submit your calculation in accordance with the guidelines</b>
+      </div>
+    {% endif %}
   </div>
 {% endblock content %}
