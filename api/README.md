@@ -14,3 +14,10 @@ These can be accessed by going to either of the following urls:
 - These addresses expose the browsable API endpoints that Django Rest Framework provides.
 - Pagination is applied to the posts view so that only 5 posts per page are displayed.
 - The time is left in its raw format so that a front-end library such as `moment` can format the time according to each user's locale.
+
+## Technology Stack
+
+- Languages: Python, HTML / CSS
+- Frameworks: Django / Django REST Framework
+- Databases: PostgreSQL, SQLite3
+- Other: GitHub / Docker
