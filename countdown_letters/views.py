@@ -173,8 +173,7 @@ def get_alt_word(word: str) -> str:
     Retrieve alternative word to the exact winning word. The singular form of the
     word may be the referenced word in the Oxford definitions API. """
     lemmas_json = get_lemmas_response_json(word)
-    alt_word_lookup = lemmas_json['results'][0]
-    alt_word_lookup = alt_word_lookup['lexicalEntries'][0]
+    alt_word_lookup = lemmas_json['results'][0]['lexicalEntries'][0]
     alt_word_lookup = alt_word_lookup['inflectionOf'][0]['id']
     return alt_word_lookup
 
@@ -213,6 +212,13 @@ def lookup_definition(word: str) -> dict:
     return definition_result
 
 
+def present_definition(definition_result):
+    for value in definition_result.items():
+        if isinstance(value, dict):
+            return value['definition']
+    return definition_result['definition']
+
+
 def get_result(player_word: str, comp_word: str) -> str:
     if len(player_word) > len(comp_word):
         return 'You win'
@@ -242,6 +248,7 @@ def results_screen(request):
     comp_score = get_game_score(comp_word_len)
     winning_word = comp_word if comp_word_len > player_word_len else players_word
     definition_result = lookup_definition(winning_word)
+    definition = present_definition(definition_result)
     result = get_result(players_word, comp_word)
 
     context = {
@@ -255,6 +262,7 @@ def results_screen(request):
         'comp_score': comp_score,
         'winning_word': winning_word,
         'definition_result': definition_result,
+        'definition': definition,
         'result': result,
     }
 
