@@ -42,10 +42,12 @@
       {% endif %}
         &#8627; Carol scored {{ comp_score }} points<br>
         &#8627; <b>Result: </b>
-        {% if game_result == 'comp_num_achieved' %}
+        {% if comp_score > player_score %}
           Carol wins
-        {% elif game_result == 'player_num_achieved' %}
+        {% elif player_score > comp_score %}
           You win
+        {% else %}
+          Draw
         {% endif %}
     </div>
 
@@ -59,5 +61,5 @@
       <a href="https://github.com/WayneLambert/portfolio/blob/master/countdown_numbers/views.py"
       target="_blank">here</a>.
     </h6><br>
-  </div>
+  </div><br>
 {% endblock content %}
