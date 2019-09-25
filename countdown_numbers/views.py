@@ -100,7 +100,7 @@ def calc_entered_is_valid(request, players_calc) -> bool:
         return True
     else:
         messages.add_message(request, messages.INFO, message=f'\n{players_calc}',
-                             extra_tags=players_calc)
+                             extra_tags=f'Your Calculation Entered: {players_calc}')
         return False
 
 

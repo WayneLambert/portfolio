@@ -35,14 +35,20 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <b>There are problems in your calculation requiring attention</b><br><br>
+        <b><font color="red">
+          There are problems in your calculation requiring attention
+        </font></b><br><br>
         <div class="messages">
-          # TODO: Start from here
           {% for message in messages %}
-            &#x204D {{ message }}<br>
+            {% if 'Your Calculation Entered:' in message.tags %}
+              <br><b>{{ message.extra_tags }}</b>
+            {% else %}
+              &#x204D {{ message }}
+            {% endif %}<br>
           {% endfor %}
-        </div><br><br>
-        <b>Re-submit your calculation in accordance with the guidelines</b>
+
+        </div><br>
+        <b class="small">Please resubmit your calculation in accordance with the guidelines</b>
       </div>
     {% endif %}
   </div>
