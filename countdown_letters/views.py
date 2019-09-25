@@ -181,7 +181,7 @@ def get_alt_word(word: str) -> str:
 
 def lookup_definition(word: str) -> dict:
     """
-    Retrieve dictionary definition of winning word using 'Oxford Dictionaries' API.
+    Retrieve dictionary definition of winning word using 'Oxford Dictionaries API'.
     An alternative form of the word is used if the Oxford API does not return a
     definition for the exact match of the winning form. In this case, it return a
     result from the lemmas query.

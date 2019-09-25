@@ -18,6 +18,7 @@ The countdown project uses the logic from the letters game on Countdown to enabl
 
 - Languages: Python, HTML / CSS
 - Frameworks: Django, Bootstrap, FontAwesome
+- Libraries: os, random, urllib, requests
 - Other: GitHub, Docker, Oxford Dictionary API
 
 ## Sources

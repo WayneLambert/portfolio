@@ -36,3 +36,14 @@ Here are the rules for the numbers game on Countdown:
 - 5 points are awarded for getting within 10 points of the required solution
 - Additional points are not granted for a closer solution within the same banding
   - For example, a player that is one away from the target scores the same as a player that is two away from the target. The game is considered a draw, although the player closest may be invited to show their calculation.
+
+## Technologies Used
+
+- Languages: Python, HTML / CSS
+- Frameworks: Django, Bootstrap, FontAwesome
+- Libraries: ast, itertools, operator, re, collections, random, urllib
+- Other: GitHub, Docker
+
+## Sources
+
+Information and rules of the game was sourced from <http://datagenetics.com/blog/august32014/index.html>

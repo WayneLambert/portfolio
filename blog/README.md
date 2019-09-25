@@ -24,3 +24,10 @@ The blog itself contains articles that document some of the processes and design
 - Django templates code is written in many files making it more easily maintainable and following the DRY principle.
 - Media is stored on Amazon S3.
 - The sites transactional emails are handled using Amazon's Simple Email Service.
+
+## Technologies Used
+
+- Languages: Python, HTML / CSS
+- Frameworks: Django, Django REST Framework, Bootstrap, FontAwesome
+- Libraries: Whitenoise, PyTest, Bandit
+- Other: GitHub, Docker
