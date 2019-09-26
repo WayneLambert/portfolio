@@ -23,7 +23,7 @@
       Your Calculation
     </div>
     <div class="numbers-selected">
-      {{ request.GET.players_calculation|change_symbols }} = {{ player_num_achieved }}
+      {{ request.GET.players_calculation|add_spacing|change_symbols }} = {{ player_num_achieved }}
     </div><br>
     <div class="game-subheading">
       Carol's Calculation
@@ -42,12 +42,12 @@
       {% endif %}
         &#8627; Carol scored {{ comp_score }} points<br>
         &#8627; <b>Result: </b>
-        {% if comp_score > player_score %}
+        {% if game_result == 'comp_num_achieved' %}
           Carol wins
-        {% elif player_score > comp_score %}
+        {% elif game_result == player_num_achieved %}
           You win
         {% else %}
-          Draw
+          {{ game_result }}
         {% endif %}
     </div>
 

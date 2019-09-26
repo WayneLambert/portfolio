@@ -217,14 +217,12 @@ def get_score_awarded(request, target_number: int, num_achieved: int)-> int:
     return points_awarded
 
 
-def get_closest_answer(target_number: int, answers: dict) ->int:
-    closest_num = min(answers.values(), key=lambda num: abs(num - target_number))
-    return closest_num
-
-
-def get_game_result(closest_num: int, answers: dict)-> str:
-    winner = list(answers.keys())[list(answers.values()).index(closest_num)]
-    return winner
+def get_game_result(target: int, answers: dict):
+    if answers['comp_num_achieved'] == answers['player_num_achieved']:
+        result = 'Draw'
+    else:
+        result = min(answers.items(), key=lambda kv: abs(kv[1] - target))[0]
+    return result
 
 
 def results_screen(request):
@@ -242,15 +240,20 @@ def results_screen(request):
     comp_num_achieved = int(eval(best_solution))
     solution_str = f"""
         {best_solution.replace('*', chr(215)).replace('/', chr(247))} = {comp_num_achieved}"""
-    if valid_calc:
-        player_score = get_score_awarded(request, target_number, player_num_achieved)
-    comp_score = get_score_awarded(request, target_number, comp_num_achieved)
     answers = {
         'player_num_achieved': player_num_achieved,
         'comp_num_achieved': comp_num_achieved,
     }
-    closest_num = get_closest_answer(target_number, answers)
-    game_result = get_game_result(closest_num, answers)
+    game_result = get_game_result(target_number, answers)
+
+    if valid_calc and game_result != 'comp_num_achieved':
+        player_score = get_score_awarded(request, target_number, player_num_achieved)
+    else:
+        player_score = 0
+    if game_result != 'player_num_achieved':
+        comp_score = get_score_awarded(request, target_number, comp_num_achieved)
+    else:
+        comp_score = 0
 
     context = {
         'game_nums': game_nums,
