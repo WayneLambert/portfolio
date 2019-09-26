@@ -49,6 +49,7 @@ django-ses = "*"
 django-filter = "*"
 pygments = "*"
 django-recaptcha = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"

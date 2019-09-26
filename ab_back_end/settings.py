@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'storages',
     'captcha',
+    'allauth',
+    'allauth.account',
 
     # Project Apps
     'api.apps.ApiConfig',
