@@ -31,10 +31,20 @@ This is likely to be completed in the intermediate term.
 - [Countdown: Letters Game](https://www.waynelambert.dev/countdown-letters/selection/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_letters)
 
+## Countdown: Numbers Game
+
+- [Countdown: Numbers Game](https://www.waynelambert.dev/countdown-numbers/selection/)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_numbers)
+
 ## Counting
 
 - [Counting](https://www.waynelambert.dev/count/check-count/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/counting)
+
+## Holiday Roulette
+
+- [Holiday Roulette](https://www.waynelambert.dev/roulette/game/)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/roulette)
 
 ## Scraping
 
