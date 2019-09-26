@@ -25,6 +25,10 @@ html {
   margin-bottom: 0.05rem;
 }
 
+.bd-placeholder-img {
+  padding: 2px;
+}
+
 .pb-5, .py-5 {
   padding-bottom: 1rem !important;
 }
