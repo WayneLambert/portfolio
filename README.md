@@ -1,6 +1,6 @@
 # Portfolio Project
 
-This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies. It is intended to be a desktop site and is not fully optimised for the mobile experience.
+This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
 
 The blog is not intended to be a fully blown production product, therefore some typical blog features have been purposefully omitted. For example, comments and tags are additional features that could be developed for the blog.
 
