@@ -10,9 +10,17 @@
       <p class="card-text">A React application that uses the API endpoints from the Blog API project
       to render the fields to the user interface.</p>
       <div class="d-flex justify-content-between align-items-center">
-        <a href="#" class="btn btn-sm btn-success mr-10" id="btn-view-blog">
+        <a href="#" class="btn btn-sm btn-success mr-10" id="btn-project">
           <i class="fa fa-rss-square"></i>
           <strike>Blog</strike>
+        </a>
+        <a href="#"
+          {% comment "open in new tab" %}
+            target="_blank"
+          {% endcomment %}
+          class="btn btn-sm btn-dark mr-10" id="btn-project">
+          <i class="fa fa-github"></i>
+          <strike>View</strike>
         </a>
       </div>
     </div>

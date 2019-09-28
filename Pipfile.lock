@@ -34,18 +34,18 @@
         },
         "boto3": {
             "hashes": [
-                "sha256:874b3d8b16f94cec8365bdf0d1bd40951ee0373152b84f9f72d46d2e89999962",
-                "sha256:b2bcbf26b33b54666d95cc9650517ed8cc6ec50563a2ac3f12f5c4bbacfa0d9e"
+                "sha256:2fc1c407a5ab08cfcf54eb4171d85c523bd27019ab890de257d018af2770f71d",
+                "sha256:c215cf2c8e5e7b28ae7544b1cbdbc3216bef983d7adb8b701a64f9b893e0320b"
             ],
             "index": "pypi",
-            "version": "==1.9.237"
+            "version": "==1.9.238"
         },
         "botocore": {
             "hashes": [
-                "sha256:717f4bb3a16a8b5c2b3546e3f839ee3707ddfc8d0379dcb31030fbb7917b8a9b",
-                "sha256:9fd8c57edc9661ae9848ab67d6fa7a6b0d19aed569674654b17085187b0feb45"
+                "sha256:1ca993f0dc70591e0fca6cf3837ee9be52fd4fbbf1aa96ba1d4a860b41f676b7",
+                "sha256:6ec3297b87d3e2c4d88b009f91061aaecdb2ceef6d9be9386394571353909adb"
             ],
-            "version": "==1.12.237"
+            "version": "==1.12.238"
         },
         "certifi": {
             "hashes": [
@@ -593,10 +593,10 @@
         },
         "gitdb2": {
             "hashes": [
-                "sha256:83361131a1836661a155172932a13c08bda2db3674e4caa32368aa6eb02f38c2",
-                "sha256:e3a0141c5f2a3f635c7209d56c496ebe1ad35da82fe4d3ec4aaa36278d70648a"
+                "sha256:1b6df1433567a51a4a9c1a5a0de977aa351a405cc56d7d35f3388bad1f630350",
+                "sha256:96bbb507d765a7f51eb802554a9cfe194a174582f772e0d89f4e87288c288b7b"
             ],
-            "version": "==2.0.5"
+            "version": "==2.0.6"
         },
         "gitpython": {
             "hashes": [
@@ -634,11 +634,11 @@
                 "django"
             ],
             "hashes": [
-                "sha256:89d15022e696519a7418850cace11947bebfba4bd8be87c4a4e0b0b0527a9eea",
-                "sha256:fa9b38937f3ce0c8c54a8a459adf61ab087ec16aa79b3491992d04823bffa55e"
+                "sha256:854e09e070d0b90ff039b51d55d969920fd943963972a4da598d51016a039b5e",
+                "sha256:cad6f6066883650a61591ac197cd03b6b0611951aca8399d345e2b029437254b"
             ],
             "index": "pypi",
-            "version": "==4.36.2"
+            "version": "==4.37.0"
         },
         "hypothesis-django": {
             "hashes": [
@@ -1036,9 +1036,10 @@
         },
         "pylint-plugin-utils": {
             "hashes": [
-                "sha256:8d9e31d5ea8b7b0003e1f0f136b44a5235896a32e47c5bc2ef1143e9f6ba0b74"
+                "sha256:2f30510e1c46edf268d3a195b2849bd98a1b9433229bb2ba63b8d776e1fc4d0a",
+                "sha256:57625dcca20140f43731311cd8fd879318bf45a8b0fd17020717a8781714a25a"
             ],
-            "version": "==0.5"
+            "version": "==0.6"
         },
         "pyparsing": {
             "hashes": [

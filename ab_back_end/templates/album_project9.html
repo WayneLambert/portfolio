@@ -12,9 +12,17 @@
         <a href="{% url 'contact' %}">contact me.</a>
       </p>
       <div class="d-flex justify-content-between align-items-center">
-        <a href="#" class="btn btn-sm btn-success mr-10" id="btn-view-blog">
+        <a href="#" class="btn btn-sm btn-success mr-10" id="btn-project">
           <i class="fa fa-question"></i>
-          <strike>Project 9</strike>
+          <strike>SOON</strike>
+        </a>
+        <a href="#"
+          {% comment "open in new tab" %}
+            target="_blank"
+          {% endcomment %}
+          class="btn btn-sm btn-dark mr-10" id="btn-project">
+          <i class="fa fa-github"></i>
+          <strike>View</strike>
         </a>
       </div>
     </div>

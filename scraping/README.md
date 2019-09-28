@@ -17,7 +17,7 @@ The two sites give scraping examples using string manipulation of DOM elements a
 
 ## Sources
 
-Famous speeches: <https://www.goodreads.com>
+Famous speeches: <https://www.goodreads.com><br>
 Dad jokes: <https://icanhazdadjoke.com/>
 
 ## Disclaimer

@@ -139,6 +139,11 @@ footer {
   cursor: pointer;
 }
 
+#btn-project {
+  width: 80px;
+  text-align: center;
+}
+
 #about-project {
   margin-left: 13%;
   margin-right: 13%;
