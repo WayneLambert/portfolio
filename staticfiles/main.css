@@ -13,7 +13,6 @@ html {
   box-sizing: border-box;
 }
 
-
 .bg-dark {
   background-color: #02244D !important;
   height: 50px;
@@ -26,7 +25,18 @@ html {
 }
 
 .bd-placeholder-img {
+  font-size: 1rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   padding: 2px;
+}
+
+.img-fluid {
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .pb-5,
@@ -67,10 +77,6 @@ footer {
   font-weight: normal;
   color: #ffffff;
   padding-left: 80%;
-}
-
-#album-row {
-  height: 200px;
 }
 
 .spacer {
