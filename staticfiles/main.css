@@ -109,14 +109,14 @@ footer {
   background-color: lightgray;
 }
 
-#btn-linkedin {
+#btn-azure-notebooks {
   border: none;
   color: white;
   font-size: 20px;
   cursor: pointer;
 }
 
-#btn-linkedin:hover {
+#btn-azure-notebooks:hover {
   background-color: lightgray;
 }
 
