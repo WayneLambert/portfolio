@@ -39,7 +39,7 @@ This is likely to be completed in the intermediate term.
 ## Counting
 
 - [Counting](https://www.waynelambert.dev/count/check-count/)
-- [README](https://github.com/WayneLambert/portfolio/tree/master/counting)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/count)
 
 ## Holiday Roulette
 
