@@ -2,5 +2,5 @@ const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e
 `
 
 function useLoremIpsum() {
-  document.getElementById('analyse-text-box').value = lorem;
+  document.getElementById('text-analysis-box').value = lorem;
 }
