@@ -2,5 +2,5 @@ const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do e
 `
 
 function useLoremIpsum() {
-  document.getElementById('count-words-box').value = lorem;
+  document.getElementById('analyse-text-box').value = lorem;
 }
