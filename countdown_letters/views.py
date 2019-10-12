@@ -171,7 +171,8 @@ def get_lemmas_response_json(word: str) ->dict:
 def get_alt_word(word: str) -> str:
     """
     Retrieve alternative word to the exact winning word. The singular form of the
-    word may be the referenced word in the Oxford definitions API. """
+    word may be the referenced word in the Oxford definitions API.
+    """
     lemmas_json = get_lemmas_response_json(word)
     alt_word_lookup = lemmas_json['results'][0]['lexicalEntries'][0]
     alt_word_lookup = alt_word_lookup['inflectionOf'][0]['id']
@@ -186,9 +187,9 @@ def lookup_definition(word: str) -> dict:
     result from the lemmas query.
     """
     definitions_url = f'{OD_API_BASE_URL}{"entries/"}{LANGUAGE}{"/"}{word.lower()}'
-    response = requests.get(definitions_url, headers=headers)
-    if response.status_code == 200:
-        definitions_response_json = response.json()
+    definitions_response = requests.get(definitions_url, headers=headers)
+    if definitions_response.status_code == 200:
+        definitions_response_json = definitions_response.json()
         definition = definitions_response_json['results'][0]['lexicalEntries'][0]
         word_class = definition['lexicalCategory']['text']
         try:
@@ -213,9 +214,8 @@ def lookup_definition(word: str) -> dict:
 
 
 def present_definition(definition_result):
-    for value in definition_result.items():
-        if isinstance(value, dict):
-            return value['definition']
+    if isinstance(definition_result['definition'], dict):
+        return definition_result['definition']['definition']
     return definition_result['definition']
 
 
