@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Text Analysis</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="counting-content-block col-md-10 mb-0">
+        &nbsp;
+        <div class="alert alert-info col-md-10 mb-0" role="alert">
+          <div class="count-words">
+            <p>No. of words being analysed: {{ word_count }}</p>
+            <p>The entire text string analysed was:<br></p>
+            <em class="small"><p>"{{ orig_full_text }}"</p></em>
+            <hr>
+            The individual words along with their count of occurences is:<br>
+            {% for word, count_total in sorted_words %}
+              <br>{{ word }}: {{ count_total }}
+            {% endfor %}
+          </div>
+          &nbsp;<br>
+          <hr>
+          <div class="count-letters">
+            The individual count of occurences and appearance rate for each letter is:<br>
+            {% for letter in letter_count %}
+              <br>{{ letter }}
+            {% endfor %}
+          </div>
+        </div><br><br>
+        <div>
+          <a href="{% url 'analyse' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-analyse">
+            <i class="fa fa-repeat"></i>
+            Start Again
+          </a><br><br>
+          <h6>The code for this text analysis utility can be reviewed
+            <a href="https://github.com/WayneLambert/portfolio/blob/master/text_analysis/views.py"
+            target="_blank">here</a>.
+          </h6><br><br>
+        </div>
+      </div>
+    {% endblock content %}
+  </body>
+</html>

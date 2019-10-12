@@ -44,11 +44,11 @@ urlpatterns = [
         name='contact-submitted'
     ),
     path('users/', include('users.urls')),
-    path('scraping/', include('scraping.urls')),
-    path('count/', include('count.urls')),
     path('countdown-letters/', include('countdown_letters.urls')),
     path('countdown-numbers/', include('countdown_numbers.urls')),
+    path('text_analysis/', include('text_analysis.urls')),
     path('roulette/', include('roulette.urls')),
+    path('scraping/', include('scraping.urls')),
     path('about-me/', about_me, name='about-me'),
     path('privacy-policy/', privacy_policy, name='privacy-policy'),
     path('reading-list/', reading_list, name='reading-list'),

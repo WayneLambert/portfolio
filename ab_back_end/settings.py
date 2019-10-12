@@ -58,15 +58,15 @@ INSTALLED_APPS = [
     'allauth.account',
 
     # Project Apps
-    'api.apps.ApiConfig',
     'blog.apps.BlogConfig',
+    'api.apps.ApiConfig',
     'users.apps.UsersConfig',
-    'scraping.apps.ScrapingConfig',
-    'count.apps.WordcountConfig',
     'contacts.apps.ContactsConfig',
     'countdown_letters.apps.CountdownLettersConfig',
     'countdown_numbers.apps.CountdownNumbersConfig',
+    'text_analysis.apps.TextAnalysisConfig',
     'roulette.apps.RouletteConfig',
+    'scraping.apps.ScrapingConfig',
 ]
 
 MIDDLEWARE = [
@@ -184,12 +184,12 @@ TEMPLATES = [
             'blog/templates/blog/',
             'users/templates/users/',
             'users/templates/registration/',
-            'scraping/templates/scraping/',
-            'count/templates/count/',
             'contacts/templates/contacts/',
             'countdown_letters/templates/countdown_letters/',
             'countdown_numbers/templates/countdown_numbers/',
+            'text_analysis/templates/text_analysis/',
             'roulette/templates/roulette/',
+            'scraping/templates/scraping/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -256,7 +256,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'blog/static'),
-    os.path.join(BASE_DIR, 'count/static'),
+    os.path.join(BASE_DIR, 'text_analysis/static'),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

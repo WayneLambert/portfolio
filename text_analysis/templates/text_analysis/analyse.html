@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculate Word and Letter Count</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        <h6>Type or paste some text below, then click the 'Calculate!' button to get the
+        number of occurences for each word and letter.</h6>
+        <form name="frm" action="{% url 'analysis' %}" method="GET">
+          <textarea class="text-analysis-box" id="text-analysis-box" name="fulltext" placeholder="Enter text here..." cols="95" rows="15"></textarea><br>
+          <small class="text-muted ml-2">
+            <b><u>Note</u>:</b> You can import <em>'lorem ipsum'</em> text to save you time if you do not want to use your own text.
+            The text you use is not recorded or seen in any analytics.
+          </small><br><br>
+          <button type="submit" onclick="return IsEmpty();" class="btn btn-sm btn-success mr-2"
+            id="btn-analyse-text">
+            <i class="fa fa-book"></i>
+            Calculate!
+          </button>
+          <input type="button" onclick="useLoremIpsum()" class='btn btn-sm btn-info mr-2'
+            id='btn-analyse-text' value="Use Lorem Ipsum"><br>
+          &nbsp;
+          <em><div id="no-words-msgbox"></div></em>
+        </form><br><br>
+      </div>
+      <script src={% static "no_words_warning.js" %} type="text/javascript"></script>
+      <script src={% static "use_lorem_ipsum.js" %} type="text/javascript"></script>
+    {% endblock content %}
+  </body>
+</html>
