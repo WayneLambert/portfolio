@@ -36,10 +36,10 @@ This is likely to be completed in the intermediate term.
 - [Countdown: Numbers Game](https://www.waynelambert.dev/countdown-numbers/selection/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_numbers)
 
-## Counting
+## Text Analysis
 
-- [Counting](https://www.waynelambert.dev/count/check-count/)
-- [README](https://github.com/WayneLambert/portfolio/tree/master/count)
+- [Text Analysis](https://www.waynelambert.dev/text_analysis/analyse/)
+- [README](https://github.com/WayneLambert/portfolio/tree/master/text_analysis)
 
 ## Holiday Roulette
 
