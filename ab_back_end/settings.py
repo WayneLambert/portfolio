@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'captcha',
     'allauth',
     'allauth.account',
+    'google_analytics',
 
     # Project Apps
     'blog.apps.BlogConfig',
@@ -358,4 +359,6 @@ RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Google Analytics
-# GA_TRACKING_ID = os.environ['GA_TRACKING_ID']
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': os.environ['GA_TRACKING_ID'],
+}

@@ -50,6 +50,7 @@ django-filter = "*"
 pygments = "*"
 django-recaptcha = "*"
 django-allauth = "*"
+django-google-analytics-app = "*"
 
 [requires]
 python_version = "3.7"

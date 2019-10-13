@@ -33,6 +33,7 @@ urlpatterns = [
     ),
     path(f'{ADMIN_ALIAS}/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path(r'^djga/', include('google_analytics.urls')),
     path('', home, name='home'),
     path('cv', view_cv, name='view-cv'),
     path('blog/', include('blog.urls')),
