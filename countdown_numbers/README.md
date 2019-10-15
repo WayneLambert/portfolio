@@ -8,7 +8,7 @@ The countdown project uses the logic from the numbers game on Countdown to enabl
 - Validates that the calculation method used by the player is permitted
 - Returns a game result and score displaying the winner
 - Returns a calculation by Carol Vorderman which is as close as possible to the target number
-- There is no 30 second clock like there is on the actual game. This is intended so that recruiters and hiring managers don't have to wait for a countdown timer to expire
+- Unlike the TV game show, there is no 30 second clock. This is intended so that recruiters and hiring managers don't have to wait for a countdown timer to expire
 
 ## Rules
 
