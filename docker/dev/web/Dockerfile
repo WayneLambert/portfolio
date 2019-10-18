@@ -1,9 +1,9 @@
 # Official Python runtime as the base image
-FROM python:3.7.1-slim
+FROM python:3.7.3-slim
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2019.08" \
+    version="2019.10" \
     description="Docker image for web service of portfolio site."
 
 # Causes all output to stdout to be flushed immediately

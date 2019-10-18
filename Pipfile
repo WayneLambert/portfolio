@@ -4,9 +4,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pylint = "*"
-pylint-django = "*"
-bpython = "*"
 django-debug-toolbar = "*"
 autopep8 = "*"
 pep8 = "*"
@@ -28,13 +25,13 @@ bandit = "*"
 ipdb = "*"
 
 [packages]
+psycopg2-binary = "*"
+pillow = "*"
 django = "*"
 djangorestframework = "*"
 django-cors-headers = "*"
 django-crispy-forms = "*"
 markdown = "*"
-pillow = "*"
-psycopg2-binary = "*"
 requests = "*"
 beautifulsoup4 = "*"
 django-bootstrap4 = "*"
