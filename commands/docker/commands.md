@@ -38,7 +38,7 @@ $ `docker rm -f $(docker ps -a -q)`
 
 ### Remove a Specific Image
 
-$ `docker container rmi <image-name-or-id>`
+$ `docker image rmi <image-name-or-id>`
 
 ### Remove All Images
 
