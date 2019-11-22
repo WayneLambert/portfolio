@@ -26,7 +26,6 @@ ipdb = "*"
 pylint = "*"
 pylint-django = "*"
 bpython = "*"
-psycopg2-binary = "*"
 
 [packages]
 django = "*"
@@ -51,6 +50,7 @@ pygments = "*"
 django-recaptcha = "*"
 django-allauth = "*"
 django-google-analytics-app = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
