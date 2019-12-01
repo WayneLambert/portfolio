@@ -22,6 +22,19 @@
           and the rendering of the final result (templates).
       </div>
       &nbsp;
+      <span class="referendum">
+        <form action="{% url 'referendum' %}" method="GET">
+          <div class="alert alert-info"><b>Referendum: </b>
+            Results on the British vote on membership of the European Union (a.k.a. Brexit)
+          </div>
+          <a href="{% url 'referendum' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-scrape-it">
+            <i class="fa fa-bar-chart"></i>
+            View Referendum Results
+          </a>
+        </form>
+      </span>
+      <hr>
       <span class="churchill">
         <form action="{% url 'churchill-speech' %}" method="GET">
           <div class="alert alert-info"><b>Speech 1: </b>Sir Winston Churchill as he took power on   
@@ -43,6 +56,18 @@
             id="btn-scrape-it">
             <i class="fa fa-comment"></i>
             View Gettysburg Address
+          </a>
+        </form>
+      </span>
+      <hr>
+      <span class="word-of-the-day">
+        &nbsp;
+        <form action="{% url 'word-of-the-day' %}" method="GET">
+          <div class="alert alert-info"><b>Word of the Day: </b>Word of the day from Dictionary.com</div>
+          <a href="{% url 'word-of-the-day' %}" class="btn btn-sm btn-success mr-10"
+            id="btn-scrape-it">
+            <i class="fa fa-mortar-board"></i>
+            View Word of the Day
           </a>
         </form>
       </span>

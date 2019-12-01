@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2016 Brexit Referendum</title>
+  </head>
+
+  <body>
+    {% block content %}
+      <div class="alert alert-light col-md-10 mb-0" role="alert">
+        &nbsp;
+        <h5>Results of the Referendum on Membership of the EU (a.k.a. Brexit): 23-Jun-2016</h5><br>
+        <div>Whilst the results table below looks like ordinary static text, the area names, remain
+        votes, leave votes, and the turnout percentage have all been scraped from the BBC website. The
+        leave and remain percentages, and the area votes fields have been calculated within the
+        logic of the application.
+        </div><br>
+        <div>
+          <table class="blueTable" width="740px">
+            <tbody>
+              <tr>
+                <td width="220px">
+                  <b>Area Name</b><br>
+                  {% for value in context.results.area_name %}
+                    {{ value }}<br>
+                  {% endfor %}
+                </td>
+                <td width="100px">
+                  <b>Leave Votes</b><br>
+                  {% for value in context.results.leave_votes %}
+                    {{ value|intcomma }}<br>
+                  {% endfor %}
+                </td>
+                <td width="80px">
+                  <b>Leave %</b><br>
+                  {% for value in context.results.leave_percent %}
+                    {{ value }}<br>
+                  {% endfor %}
+                </td>
+                <td width="100px">
+                  <b>Remain Votes</b><br>
+                  {% for value in context.results.remain_votes %}
+                    {{ value|intcomma }}<br>
+                  {% endfor %}
+                </td>
+                <td width="80px">
+                  <b>Remain %</b><br>
+                  {% for value in context.results.remain_percent %}
+                    {{ value }}<br>
+                  {% endfor %}
+                </td>
+                <td width="100px">
+                  <b>Area Votes</b><br>
+                  {% for value in context.results.area_votes %}
+                    {{ value|intcomma }}<br>
+                  {% endfor %}
+                </td>
+                <td width="80px">
+                  <b>Turnout</b><br>
+                  {% for value in context.results.turnout %}
+                    {{ value }}<br>
+                  {% endfor %}
+                </td>
+              </tr>
+            </tbody>
+          </table><br>
+          <b>Total Leave Votes: </b>{{ context.leave_votes|intcomma }} ({{ context.total_leave_percent }})<br>
+          <b>Total Remain Votes: </b>{{ context.remain_votes|intcomma }} ({{ context.total_remain_percent }})<br>
+          <b>Total Votes: </b>{{ context.total_votes|intcomma }}
+        </div><br>
+        <em class="small">
+          Example Page Source: <a
+            href="https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a"
+            target="_blank">
+            https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a</a><br>
+        </em><br>
+        <a href="{% url 'scraping-options' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
+          <i class="fa fa-repeat"></i>
+          Start Again
+        </a><br><br>
+        <h6>The code for this scraping process can be seen
+          <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/referendum.py" target="_blank">here</a>.
+        </h6>
+      </div><br>
+    {% endblock content %}
+  </body>
+</html>
