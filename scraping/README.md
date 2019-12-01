@@ -8,7 +8,7 @@ Finally, the Django component of the application is the handling of the URLs to 
 
 The examples give scraping examples using string manipulation of DOM elements and from reading JSON formatted data.
 
-The most comprehensive example is the `EU Membership Referendum Results` as it consists of scraping the voting results from the BBC website. Other fields are calculated elements within the logic of the application.
+The most comprehensive example is the **EU Membership Referendum Results** as it consists of scraping the voting results from the BBC website. Other fields are calculated elements within the logic of the application.
 
 ## Technologies Used
 
