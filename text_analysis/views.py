@@ -1,9 +1,11 @@
-from typing import operator
 import re
+import string
+from os.path import abspath
+from typing import operator
+
 from django.shortcuts import render
 
-
-ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+ALPHABET = string.ascii_lowercase
 
 def analyse(request):
     return render(request, 'text_analysis/analyse.html')
