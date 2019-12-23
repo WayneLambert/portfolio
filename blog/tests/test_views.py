@@ -7,7 +7,6 @@ from blog.tests.helpers import lilo_users
 
 pytestmark = pytest.mark.django_db  # Request database access
 
-
 @pytest.mark.parametrize('lilo_users', lilo_users)
 def test_home(request, factory, lilo_users):
     """ Asserts any user can access complete list of posts """

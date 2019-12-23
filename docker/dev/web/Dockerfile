@@ -1,10 +1,13 @@
 # Official Python runtime as the base image
-FROM python:3.7.3-slim
+FROM python:3.8.1-buster
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2019.10" \
+    version="2019.12" \
     description="Docker image for web service of portfolio site."
+
+# Prevents Python from writing .pyc files
+ENV PYTHONDONTWRITEBYTECODE 1
 
 # Causes all output to stdout to be flushed immediately
 ENV PYTHONUNBUFFERED 1
@@ -24,4 +27,4 @@ RUN pipenv install --system --ignore-pipfile --deploy --dev
 # Copy local source code directory to container's source code directory
 COPY . .
 
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8001" ]
+CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8001" ]
