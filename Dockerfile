@@ -27,4 +27,4 @@ RUN pipenv install --ignore-pipfile --deploy
 # Copy local source code directory to container's source code directory
 COPY . .
 
-CMD [ "python3", "manage.py", "collectstatic", "--noinput", "--clear" ]
+CMD [ "python", "manage.py", "collectstatic", "--noinput", "--clear" ]
