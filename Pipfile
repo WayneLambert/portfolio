@@ -48,7 +48,7 @@ django-ses = "==0.8.12"
 django-filter = "==2.2.0"
 pygments = "==2.4.2"
 django-recaptcha = "==2.0.6"
-django-allauth = "==0.40.0"
+django-allauth = "==0.41.0"
 django-google-analytics-app = "==4.4.0"
 psycopg2-binary = "==2.8.4"
 
