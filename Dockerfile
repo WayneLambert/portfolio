@@ -1,9 +1,9 @@
 # Official Python runtime as the base image
-FROM python:3.8.1-buster
+FROM python:3.8.2-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2019.12" \
+    dev.waynelambert.version="2020.02" \
     dev.waynelambert.description="Docker image for web service"
 
 # Prevents Python from writing .pyc files
