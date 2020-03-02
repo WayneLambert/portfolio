@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ce88c32e1b42b5b2c509632a7b5566233af24ce22c97a9dc2ddceb897357516c"
+            "sha256": "4fe334d044ec28a533185026460cce4b6d4c8db9afdd722b85f5cc28f38d4515"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -173,11 +173,11 @@
         },
         "django-google-analytics-app": {
             "hashes": [
-                "sha256:4413ab2170233fc43860042b3ecba775eae0581567db4511d675bf090020347b",
-                "sha256:e6ba42b53fc9f18525a65de0d62f3f02004deb3d52beeacc3f0bb0ba0367e91b"
+                "sha256:5fabd2a52977d311da221f48c649a6db5322a065bbc60e77756ac127d312240c",
+                "sha256:eb20a6c669a48d09f57b23fc42b6cdc13ec89ab80280a73ae494caf4852be673"
             ],
             "index": "pypi",
-            "version": "==4.4.0"
+            "version": "==4.4.1"
         },
         "django-guardian": {
             "hashes": [
