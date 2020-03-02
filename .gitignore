@@ -203,22 +203,3 @@ dmypy.json
 
 # Docker Mounted Directories
 postgres/data/
-
-# Temporary / Reference Project Files
-settings_local.py
-
-django_architecture.png
-
-# LetsEncrypt Certbot
-docker/prod/certbot
-
-# Temp Files
-idea/*
-/ab_back_end/templates/about_me.html
-playground/*
-notebooks/.ipynb_checkpoints
-notebooks/django_debugging.ipynb
-docs/theprofitshare_archive.md
-create_requirements.py
-countdown_letters/is_abecedarian.py
-snippets/python/dance.py
