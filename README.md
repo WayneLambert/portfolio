@@ -83,7 +83,7 @@ Explore fascinating datasets using Python's Data Science libraries.
 
 - [Data Science Projects](https://github.com/WayneLambert/library-python/tree/master/data_science)
 
-![Data Science Projects](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/data_science.jpg)
+![Data Science Projects](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python_data_science_home_page.png)
 
 ## Contact Me
 
