@@ -5,22 +5,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-# Additional field to adjust the login point for the Admin site
+# Login URL for the Admin panel
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = bool(int(os.getenv('DEBUG', True)))
 
-# Gets Django web host for development purposes
-DJANGO_WEBHOST = os.getenv('DJANGO_WEB_HOST', default='localhost')
-
-# Gets Django database host for development purposes
-DB_HOST = os.getenv('DJANGO_DB_HOST', default='localhost')
-
 ALLOWED_HOSTS = [
-    # Linode
-    'waynelambert.co.uk',
-    '178.79.156.225',
     # Heroku
     'wl-portfolio.herokuapp.com',
     'waynelambert.dev',
@@ -140,7 +130,7 @@ if DEBUG:
         'handlers': {
             'django.server': {
                 'level': 'INFO',
-                'filters': ['skip_static_requests'],  # <- ...with one change
+                'filters': ['skip_static_requests'],
                 'class': 'logging.StreamHandler',
                 'formatter': 'django.server',
             },
@@ -153,13 +143,6 @@ if DEBUG:
             },
         }
     }
-
-    # Jupyter Notebook Settings
-    NOTEBOOK_ARGUMENTS = [
-        '--ip', '0.0.0.0',
-        '--allow-root',
-        '--no-browser',
-    ]
 
 # Production Settings
 if not DEBUG:

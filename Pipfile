@@ -22,7 +22,7 @@ bpython = "==0.18"
 pylint = "==2.4.4"
 pylint-django = "==2.0.14"
 pycodestyle = "==2.5.0"
-ipdb = "==0.13.1"
+ipdb = "==0.13.2"
 
 [packages]
 django = "==3.0.4"
@@ -48,7 +48,6 @@ django-allauth = "==0.41.0"
 django-google-analytics-app = "==4.4.1"
 psycopg2-binary = "==2.8.4"
 pillow = "==7.0.0"
-ipdb = "==0.13.2"
 
 [requires]
 python_version = "3.8"
