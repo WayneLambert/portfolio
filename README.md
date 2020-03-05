@@ -1,4 +1,4 @@
-# Portfolio Project
+![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio.png)
 
 This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
 
