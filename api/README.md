@@ -1,4 +1,4 @@
-# Django Rest Framework API Endpoints
+# API Endpoints
 
 ![Django REST API Endpoints](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-rest-framework.png)
 

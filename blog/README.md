@@ -1,4 +1,4 @@
-# Blog
+# Django Blog
 
 ![Django Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-blog.png)
 
@@ -25,7 +25,7 @@ The blog itself contains articles that document some of the processes and design
 - A [contents page](https://waynelambert.dev/blog/contents/) allows visitors to see the full range of posts on the blog. The relationship between categories and posts is a many-to-many relationship, therefore the same post may appear more than once on the contents page.
 - Django templates code is written in many files making it more easily maintainable and following the DRY principle.
 - Media is stored on Amazon S3.
-- The sites transactional emails are handled using Amazon's Simple Email Service.
+- The site's transactional emails are handled using Amazon's Simple Email Service.
 
 ## Technologies Used
 
