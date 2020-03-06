@@ -1,5 +1,7 @@
 # Holiday Roulette
 
+![Holiday Roulette](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/holiday-roulette.png)
+
 This code is designed for the procrastinating traveller that just can't decide where they should go to next. There is a very small sleep between each generated choice.
 This is a design decision to slow down the code so that the traveller can feel the suspense whilst the roulette wheel determines their fate. :)
 

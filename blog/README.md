@@ -1,5 +1,7 @@
 # Blog
 
+![Django Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-blog.png)
+
 The blog is implemented as a classic CRUD application which uses views for each of the HTTP methods individually rather than using Django's viewsets. This is a design decision to demonstrate the ability to use the views individually.
 
 For rapid prototyping and development of a full CRUD application, Django's viewsets are likely to be a better choice.

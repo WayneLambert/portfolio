@@ -1,5 +1,7 @@
 # Countdown Letters Game
 
+![Countdown Letters](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg)
+
 The countdown project uses the logic from the letters game on Countdown to enable a player to play against the computer attempting to get the longest word that they can.
 
 ## Features

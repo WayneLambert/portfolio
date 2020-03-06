@@ -1,5 +1,7 @@
 # Scraping Project
 
+![Web Scraping](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/web_scraping.png)
+
 The `Scraping` project demonstrates the use of the `Requests` library to handle the request/response cycle for the GET requests that are required to retrieve data from another website.
 
 Python's third party library, `Beautiful Soup`, is used to parse the required HTML from the response object. Python text functions are used to target, strip and split any required text so that it's in a suitable format to render for human readability.

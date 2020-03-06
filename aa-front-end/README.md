@@ -1,5 +1,7 @@
 # React version of Portfolio's Blog Project
 
+![React Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/react-blog.jpg)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup

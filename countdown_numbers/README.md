@@ -1,5 +1,7 @@
 # Countdown Numbers Game
 
+![Countdown Numbers](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_numbers.png)
+
 The countdown project uses the logic from the numbers game on Countdown to enable a player to play against Carol (the computer) attempting to get the closest number they can to the target.
 
 ## Features

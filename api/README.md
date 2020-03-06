@@ -1,5 +1,7 @@
 # Django Rest Framework API Endpoints
 
+![Django REST API Endpoints](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-rest-framework.png)
+
 The Django blog also has some REST API endpoints that can be used by a front-end developer with a framework such as React, Vue, Angular or Ember.
 
 These can be accessed by going to either of the following urls:

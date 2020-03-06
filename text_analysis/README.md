@@ -1,5 +1,7 @@
 # Text Analysis
 
+![Text Analysis](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/matrix_numbers.jpg)
+
 The text analysis app is a demonstration of using Python to calculate the number of occurrences of each of the words and letters used within the string input/pasted by the user. No models are required for this app, however Django's views handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
 
 There are also some mathematical calculations for the rate of any given letter appearing within the text being evaluated.
