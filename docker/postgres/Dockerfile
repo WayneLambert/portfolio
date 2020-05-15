@@ -1,5 +1,5 @@
 # Use official Postgres image as the base image
-FROM postgres:11.5-alpine
+FROM postgres:11.7-alpine
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \

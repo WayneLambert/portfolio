@@ -1,1 +1,0 @@
-FROM dpage/pgadmin4 AS portfolio_pgadmin4_dev

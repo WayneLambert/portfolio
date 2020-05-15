@@ -1,5 +1,5 @@
-# Use Alpine version of the Python runtime as the base image
-FROM python:3.8.1-buster
+# Base image fpr Python
+FROM python:3.8.3-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
