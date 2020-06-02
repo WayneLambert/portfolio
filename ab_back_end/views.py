@@ -6,9 +6,6 @@ AWS_DOCUMENTS_FOLDER = 'documents/'
 AWS_CV_FILENAME = 'cv_wayne_lambert.pdf'
 
 
-def home(request):
-    return render(request, 'home.html')
-
 def contact_form(request):
     return render(request, 'contact.html')
 

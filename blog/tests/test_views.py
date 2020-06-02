@@ -10,7 +10,7 @@ pytestmark = pytest.mark.django_db  # Request database access
 @pytest.mark.parametrize('lilo_users', lilo_users)
 def test_home(request, factory, lilo_users):
     """ Asserts any user can access complete list of posts """
-    path = reverse('blog-django')
+    path = reverse('blog_home')
     request = factory.get(path)
     request.user = lilo_users
     response = blog_views.home(request)
@@ -22,7 +22,7 @@ def test_home(request, factory, lilo_users):
 class TestPostListView:
     def test_post_list_view(self, request, factory, lilo_users):
         """ Asserts any user can access complete list of posts """
-        path = reverse('blog-django')
+        path = reverse('blog_home')
         request = factory.get(path)
         request.user = lilo_users
         response = blog_views.PostListView.as_view()(request)
@@ -57,7 +57,7 @@ class TestPostDetailView:
     def test_post_detail_view(self, request, factory, post, lilo_users):
         """ Asserts any user can access a single post detail view """
         kwargs = {'slug': post.slug}
-        path = reverse('post-detail', kwargs=kwargs)
+        path = reverse('post_detail', kwargs=kwargs)
         request = factory.get(path)
         request.user = lilo_users
         response = blog_views.PostDetailView.as_view()(request, **kwargs)

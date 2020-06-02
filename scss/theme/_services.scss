@@ -1,0 +1,99 @@
+.pricing-table {
+  
+  .pricing-package-title {
+    font-size: 1rem;
+    color: $theme-color-primary;
+    background: $smoky-white;
+    text-align: center;
+    padding: 1rem;
+  }
+  .price-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .pricing-desc-row {
+    vertical-align: inherit;
+  }
+
+  tbody th {  
+      background: $smoky-white;
+    padding: 1rem;
+    width: 30%;
+    font-size: 0.875rem;
+    
+  }
+  tbody td {
+    padding: 1rem;
+    width: 23.3333333%;
+    text-align: center;
+    font-size: 0.875rem;
+    
+    .pricing-package-desc {
+      font-size: 0.875rem;
+      line-height: 1;
+    }
+  }
+  .pricing-desc-row  {
+    
+    td {
+      text-align: left;
+      line-height: 1.4;
+      
+    }
+  }
+  tfoot td {
+    padding: 1rem;
+    text-align: center;
+    
+  }
+  .btn {
+    height: inherit;
+  }
+  
+}
+
+.pricing-tab {
+  display: block;
+  text-align: center;
+  padding: 0.5rem;
+  width: 100%;
+  @include border-radius(4px);
+  font-weight: bold;
+  background: darken($smoky-white, 10%);
+  color: $theme-text-color-secondary;
+  &:hover {
+    text-decoration: none;
+    color: $theme-text-color-secondary;
+  }
+
+  &.active {
+    background: $theme-color-primary;
+    color: #fff;
+  }
+}
+
+.faq-accordion { 
+  .card-toggle {
+    color: $theme-text-color-secondary;
+    text-decoration: none;
+    display: block;
+    &:hover {
+      color: $theme-text-color-primary;
+    }
+  }
+  .card-title {
+    position: relative;
+    padding-right: 2rem;
+    font-size: 1rem;
+    .svg-inline--fa {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    
+  }
+  .card-body {
+    font-size: 0.875rem;
+  }
+}

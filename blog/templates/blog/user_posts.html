@@ -1,21 +1,14 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
+
 {% block content %}
-  {% include "blog/search_box.html" %}
-  <h6 class="mb-3">
-    Post{{page_obj.paginator.count|pluralize}}
-    authored by {{ view.kwargs.username }}: {{ page_obj.paginator.count }}
-  </h6>
-  {% for post in posts %}
-    <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
-      <div class="media-body">
-        {% include "blog/author_view.html" %}
-        <h4><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h4>
-        <p class="article-content">{{ post.content|safe|truncatewords:25 }}</p>
-        <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a><br><br>
-        <a href="{% url 'post-detail' post.slug  %}" class="btn btn-info">Read More &rarr;</a>
+  <section class="blog-list px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="row">
+        {% for post in posts %}
+          {% include 'post_components/post-card.html' %}
+        {% endfor %}
       </div>
-    </article>
-  {% endfor %}
-  {% include "blog/pagination_links.html" %}
+    </div>
+  </section>
+  {% include 'post_components/pagination_links.html' %}
 {% endblock content %}

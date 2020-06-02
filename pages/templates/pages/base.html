@@ -1,0 +1,34 @@
+{% load google_analytics_tags %}
+
+<!doctype html>
+<html lang="en">
+  {% include "head.html" %}
+
+  {% block additional_meta %}
+    <!-- Extra meta data insertions -->
+  {% endblock additional_meta %}
+
+  {% block additional_css %}
+    <!-- Extra CSS stylesheet insertions -->
+  {% endblock additional_css %}
+
+  <body>
+    <!-- Sidebar Header -->
+    {% include "header.html" %}
+
+    <div class="main-wrapper">
+      {% block content %}
+        <!-- Content injected here -->
+      {% endblock content %}
+
+      <!-- Global Footer -->
+      {% include 'footer.html' %}
+    </div>
+
+    {% include "js.html" %}
+
+    {% block additional_js %}
+      <!-- Additional Page Specific JavaScript -->
+    {% endblock additional_js %}
+  </body>
+</html>

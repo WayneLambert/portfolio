@@ -1,29 +1,21 @@
-{% extends "blog/base.html" %}
+{% extends "base.html" %}
+{% load static %}
+
 {% block content %}
-  <article class="media content-section">
-    <img class="rounded article-img" src="{{ object.author.profile.profile_picture.url }}">
-    <div class="media-body">
-      <div class="article-metadata">
-        {% include "blog/author_view.html" %}
-        {% if object.author == user %}
-          <div class="form-group">
-            <a class="btn btn-sm btn-success mr-2" href="{% url 'post-update' object.slug %}">
-              <i class="fa fa-upload"></i>
-              Update
-            </a>
-            <a class="btn btn-sm btn-danger mr-2" href="{% url 'post-delete' object.slug %}">
-              <i class="fa fa-trash"></i>
-              Delete
-            </a>
-          </div>
-        {% endif %}
-      </div>
-      <h3 class="article-title">{{ object.title }}</h3>
-      {% if object.image.url %}
-        <img class="article-image" id="article-image" src="{{ object.image.url }}" }}>
-      {% endif %}
-      <p class="article-content"></p>{{ object.content|safe }}</p>
-      <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      {% include "post_components/meta_data.html" %}
+      <!-- Post Author and Meta Data -->
+
+      <!-- Post Image and Caption -->
+      {% include 'post_components/image.html' %}
+
+      <!-- Post Content -->
+      <p class="article-content">{{ post.content|safe }}</p>
+      <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+
+      <!-- Nav Links -->
+      {% include 'post_components/nav.html' %}
     </div>
   </article>
 {% endblock content %}

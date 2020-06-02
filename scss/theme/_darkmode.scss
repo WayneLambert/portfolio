@@ -1,0 +1,259 @@
+//Define dark mode colors
+$dark-mode-bg-primary: #151e29;
+$dark-mode-bg-secondary: lighten($dark-mode-bg-primary, 5%);
+$dark-mode-bg-light: lighten($dark-mode-bg-primary, 0.01%);
+$dark-mode-text-primary: rgba(256, 256, 256, 0.95);
+$dark-mode-text-secondary: rgba(256, 256, 256, 0.7);
+$dark-mode-text-muted: rgba(256, 256, 256, 0.4);
+$dark-mode-divider: rgba(256, 256, 256, 0.08);
+$dark-mode-border: rgba(256, 256, 256, 0.05);
+
+
+//Dark mode page styling
+body.dark-mode {
+  background: $dark-mode-bg-primary;
+  
+  .theme-bg-light {
+    background: $dark-mode-bg-light !important;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    color: $dark-mode-text-primary;
+  }
+  hr {
+    border-color: $dark-mode-divider;
+  }
+  .meta {
+    color: $dark-mode-text-muted;
+  }
+  .blockquote-footer {
+    color: $dark-mode-text-muted;
+  }
+  .text-muted {
+    color: $dark-mode-text-muted !important;
+  }
+  .copyright {
+    color: $dark-mode-text-muted;
+  }
+  a.theme-link {
+    color: $dark-mode-text-primary;
+    -webkit-text-decoration-color: $dark-mode-text-muted;
+    text-decoration-color: $dark-mode-text-muted;
+    
+    &:hover {
+      color: $theme-color-primary;
+          -webkit-text-decoration-color: $theme-color-primary;
+          text-decoration-color: $theme-color-primary;
+    }
+  }
+  .btn-secondary {
+    background: lighten($dark-mode-bg-light, 15%);
+      border-color: lighten($dark-mode-bg-light, 15%);
+    &:hover {
+      background: lighten($dark-mode-bg-light, 20%);
+      border-color: lighten($dark-mode-bg-light, 20%);
+    }
+  }
+  .table {
+    color: $dark-mode-text-secondary;
+    td, th {
+      border-color: $dark-mode-border;
+    }
+  }
+  .table thead th {
+    border-color: $dark-mode-border;
+  }
+  .table-bordered {
+    td, th {
+      border: 1px solid $dark-mode-border;
+    }
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .header {
+    background: $dark-mode-bg-secondary;
+    /* Forefox scrollbar */
+      scrollbar-color: $dark-mode-border $dark-mode-bg-secondary;
+      
+      /* Chrome webkit scrollbar */
+    
+    &::-webkit-scrollbar {
+        background: $dark-mode-bg-secondary;
+    } 
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: $dark-mode-border;
+        @include border-radius(0.5rem);
+    }
+  
+    .nav-item {
+      &.active {
+        .nav-link {
+          color: $theme-color-primary;
+          &:hover {
+            color: $theme-color-primary;
+          }
+        }
+      }
+      .nav-link {
+        color: $dark-mode-text-secondary;
+        &:hover {
+          color: #fff;
+        }
+      }
+      .dropdown-menu {
+        background: rgba(0, 0, 0, 0.1);
+        .dropdown-item {
+          &:hover, &:focus, &:active {
+            background: rgba(0, 0, 0, 0.2);
+          }
+          &.active {
+            color: $theme-color-primary;
+            background: rgba(0, 0, 0, 0.2);
+          }
+        }
+        
+      }
+    }
+    .btn-primary {
+      background: $theme-color-primary;
+    }
+  }
+  .social-list {
+    a {
+      background: $theme-color-primary;
+      .svg-inline--fa  {
+        color: #fff;
+      }
+    }
+  }
+  .main-wrapper {
+    background: darken($dark-mode-bg-secondary, 7.5%);
+    color: $dark-mode-text-secondary;
+    & > .cta-section {
+      border-bottom: 1px solid rgba(256, 256, 256, 0.05);
+      background: none !important;
+    }
+  }
+  .about-me-section {
+    border-bottom: 1px solid rgba(256, 256, 256, 0.05);
+    background: none !important;
+  }
+  .overview-section {
+    .item-desc {
+      color: $dark-mode-text-secondary;
+      
+    }
+  }
+  .testimonial-carousel{
+    .item-inner {
+      background: $dark-mode-bg-light;
+    }
+    
+  }
+  .project-card {
+    background: $dark-mode-bg-light;
+    border: none;
+    &:hover {
+      .link-mask {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  
+  .blog-post-card {
+    background: $dark-mode-bg-light;
+    border: none;
+  }
+  
+  .blog-post {
+    .blockquote {
+      border-color: $theme-color-primary;
+    }
+  }
+  
+  .filters  {
+    .type {
+      color: $dark-mode-text-muted;
+      &.active {
+        color: $theme-color-primary;
+        &:hover {
+          color: $theme-color-primary;
+        }
+      }
+      &:hover {
+        color: $dark-mode-text-secondary;
+      }
+    }
+  }
+  
+  .pricing-table {
+    background: $dark-mode-bg-light;
+    tbody th {
+      background: $dark-mode-bg-light;
+    }
+    .pricing-package-title {
+      background: $dark-mode-bg-light;
+    }
+
+  }
+  
+  .faq-accordion {
+    .card-toggle {
+      color: $dark-mode-text-secondary;
+      &:hover {
+        color: $dark-mode-text-primary;
+      }
+      &[aria-expanded="true"] {
+        color: $dark-mode-text-primary;
+      }
+    }
+  }
+
+  
+  a.cv-link {
+    color: $dark-mode-text-secondary;
+  }
+  
+  .project-meta .client-meta .svg-inline--fa {
+    color: $dark-mode-text-primary;
+  }
+  
+  .metric-data {
+    color: $dark-mode-text-primary;
+    .unit {
+      color: $dark-mode-text-muted;
+    }
+  }
+  
+  .metric-desc {
+    color: $dark-mode-text-secondary;
+  }
+  
+  .client-quote {
+    background: $dark-mode-bg-light;
+  }
+  
+  .blog-list .item .title a {
+    color: $dark-mode-text-primary;
+  }
+  
+  .owl-theme .owl-dots .owl-dot span {
+    background: $dark-mode-text-muted;
+  }
+  .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: $dark-mode-text-primary;
+  }
+  
+  .testiomonial-carousel-container .tns-nav button {
+    background: $dark-mode-text-muted;
+    &.tns-nav-active, &:hover {
+      background: $dark-mode-text-primary;
+    }
+  }
+  
+  
+  
+}

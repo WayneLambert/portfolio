@@ -5,8 +5,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 from ab_back_end.settings import ADMIN_ALIAS
-from ab_back_end.views import (about_me, home, privacy_policy,
-                               react_blog, reading_list, view_cv)
+from ab_back_end.views import about_me, privacy_policy, reading_list
 from blog.sitemap import CategorySitemap, PostSitemap
 from contacts import views as contacts_views
 
@@ -34,16 +33,10 @@ urlpatterns = [
     path(f'{ADMIN_ALIAS}/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     re_path('djga/', include('google_analytics.urls')),
-    path('', home, name='home'),
-    path('cv', view_cv, name='view-cv'),
+    path('', include('pages.urls')),
     path('blog/', include('blog.urls')),
-    re_path('react-blog/*', react_blog, name='react-blog'),
     path('contact/', include('contacts.urls')),
-    path(
-        'contact-submitted/',
-        contacts_views.contact_submitted,
-        name='contact-submitted'
-    ),
+    path('contact-submitted/', contacts_views.contact_submitted, name='contact-submitted'),
     path('users/', include('users.urls')),
     path('countdown-letters/', include('countdown_letters.urls')),
     path('countdown-numbers/', include('countdown_numbers.urls')),
@@ -73,3 +66,4 @@ if settings.DEBUG:
     ]
 
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_URL)

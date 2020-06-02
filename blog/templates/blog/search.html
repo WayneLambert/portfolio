@@ -1,0 +1,24 @@
+{% comment %} <section class="cta-section theme-bg-light py-3">
+  <div class="search-container text-center">
+    <div class="main-search-box pt-3 d-block mx-auto">
+      <form action="{% url 'blog:search_results' %}" method="get" class="search-form w-100">
+        <input placeholder="Search Blog..." name="q" type="text"
+        onfocus="if (this.placeholder=='Search Blog...') {this.placeholder='';}">
+      </form>
+    </div>
+  </div>
+</section> {% endcomment %}
+
+
+
+<section class="cta-section theme-bg-light py-5">
+  <div class="container text-center">
+    <form class="signup-form form-inline justify-content-center pt-3">
+      <div class="form-group" action="{% url 'blog:search_results' %}" method="get">
+        <input placeholder="Search Blog..." name="q" type="text" class="form-control mr-md-1 semail"
+        onfocus="if (this.placeholder=='Search Blog...') {this.placeholder='';}">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  </div>
+</section>

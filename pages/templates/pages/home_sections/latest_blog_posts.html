@@ -1,0 +1,27 @@
+{% load static %}
+
+<section class="latest-blog-section p-3 p-lg-5">
+  <div class="container">
+    <h2 class="section-title font-weight-bold mb-5">Latest Blog Posts</h2>
+    <div class="row">
+      {% for post in posts %}
+        <div class="col-md-4 mb-5">
+          <div class="card blog-post-card">
+            <img class="card-img-top" src="{% static 'assets/images/blog/blog-post-thumb-card-1.jpg' %}" alt="image">
+            <div class="card-body">
+              <h5 class="card-title"><a class="theme-link" href="blog-post.html">{{ post.title }}</a></h5>
+              <p class="card-text">{{ post.content|safe|truncatewords:25 }}</p>
+              <p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
+              
+            </div>
+            <div class="card-footer">
+              <li><small class="text-muted">Published {{ post.publish_date|timesince }} ago</small></li>
+              <li><small class="text-muted">Updated {{ post.updated_date|timesince }} ago</small></li>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="text-center py-3"><a href="#" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Blog</a></div>
+  </div>
+</section>

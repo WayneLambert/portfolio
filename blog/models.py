@@ -1,8 +1,9 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -27,9 +28,9 @@ class Post(models.Model):
         (0, 'Draft'),
         (1, 'Publish')
     )
-    title = models.CharField(max_length=65)
+    title = models.CharField(max_length=60, validators=[MinLengthValidator(30)])
     slug = models.SlugField(
-        max_length=65,
+        max_length=60,
         unique=True,
         help_text="""
         The slug can be any words you like separated by dashes.
@@ -61,7 +62,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'slug': self.slug})
+        return reverse('post_detail', kwargs={'slug': self.slug})
 
     def get_excerpt(self, char):
         return self.content[:char]

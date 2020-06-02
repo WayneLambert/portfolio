@@ -1,32 +1,25 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import get_list_or_404, get_object_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404
 from django.db.models import Q
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
-from blog.models import Category, Post
+from .models import Category, Post
 
 
-def home(request):
-    context = {
-        'posts': Post.objects.all().order_by('-publish_date'),
-    }
-    return render(request, 'blog/home.html', context)
-
-
-class PostListView(ListView):
+class BlogHomeView(ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).prefetch_related('author')
+    queryset = Post.objects.all().order_by('-publish_date')
     template_name = 'blog/home.html'
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 6
 
 
 class UserPostListView(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -36,7 +29,7 @@ class UserPostListView(ListView):
 class CategoryPostListView(ListView):
     model = Post
     template_name = 'blog/category_posts.html'
-    paginate_by = 3
+    paginate_by = 6
 
     def get_queryset(self):
         self.categories = get_list_or_404(Category, slug=self.kwargs['slug'])
@@ -94,6 +87,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class SearchResultsView(ListView):
     model = Post
     template_name = 'blog/search_results.html'
+    paginate_by = 10
 
     def get_queryset(self):
         query = self.request.GET.get('q')

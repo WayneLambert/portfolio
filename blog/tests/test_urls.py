@@ -3,8 +3,8 @@ from django.urls import resolve, reverse
 class TestUrls:
 
     def test_blog_django_home(self):
-        path = reverse('blog-django')
-        assert resolve(path).view_name == 'blog-django'
+        path = reverse('blog_home')
+        assert resolve(path).view_name == 'blog_home'
 
     def test_user_posts(self):
         path = reverse('user-posts', kwargs={'username': 'test-username'})
@@ -19,8 +19,8 @@ class TestUrls:
         assert resolve(path).view_name == 'post-create'
 
     def test_post_detail(self):
-        path = reverse('post-detail', kwargs={'slug': 'test-post-slug'})
-        assert resolve(path).view_name == 'post-detail'
+        path = reverse('post_detail', kwargs={'slug': 'test-post-slug'})
+        assert resolve(path).view_name == 'post_detail'
 
     def test_post_update(self):
         path = reverse('post-update', kwargs={'slug': 'test-post-slug'})

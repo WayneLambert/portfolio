@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    {% include 'home_sections/jumbotron.html' %}
+    {% include 'home_sections/featured_projects.html' %}
+    <div class="container"><hr></div>
+    {% include 'home_sections/skills.html' %}
+    <div class="container"><hr></div>
+    {% include 'home_sections/latest_blog_posts.html' %}
+    <div class="container"><hr></div>
+    {% include 'home_sections/testimonials.html' %}
+    {% include 'footer.html' %}
+{% endblock content %}

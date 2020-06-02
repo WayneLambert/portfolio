@@ -1,0 +1,47 @@
+<div class="col-md-4 mb-3">
+  <div class="card blog-post-card">
+    <a href="{% url 'blog:post_detail' post.slug %}">
+      <img src="{{ post.image.url }}">
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">
+        <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+          {{ post.title }}
+        </a>
+      </h5>
+      <span class="card-text">{{ post.content|truncatechars:110|safe }}</span>
+      <hr>
+      <ul class="no-bullets">
+        <li>
+          <a class="theme-link" href="{% url 'blog:user_posts' post.author.username %}">
+            {% if post.author.profile.author_view == 0 %}
+              {{ post.author.username }}
+            {% else %}
+              {{ post.author.first_name }} {{ post.author.last_name }}
+            {% endif %}
+          </a>
+        </li>
+        <li>
+          <small class="text-muted">
+            Categories: 
+            {% for category in post.categories.all %}
+              {{ category.name }}
+              {% if not forloop.last %}  |  {% endif %}
+            {% endfor %}
+          </small>
+        </li>
+        <li>
+          <small class="text-muted">Published: {{ post.publish_date|date:"D d-M-y" }}</small>
+        </li>
+        <li>
+          <small class="text-muted">Updated: {{ post.updated_date|date:"D d-M-y" }}</small>
+        </li>
+        <li>
+          <p class="mb-0">
+            <a class="more-link" href="{% url 'blog:post_detail' post.slug %}">Read more &rarr;</a>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

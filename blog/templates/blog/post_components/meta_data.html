@@ -1,0 +1,50 @@
+{% load mathfilters %}
+
+<div class="article-metadata">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <td>
+          <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
+        </td>
+        <td>
+          <a href="{% url 'blog:user_posts' post.author.username %}">
+            {% if post.author.profile.author_view == 0 %}
+              {{ post.author.username }}
+            {% else %}
+              {{ post.author.first_name }} {{ post.author.last_name }}
+            {% endif %}
+          </a>
+          <br>
+          <small class="text-muted">
+            Published: {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
+            Updated: {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
+          </small><br>
+          <small class="text-muted">
+            Categories: 
+            {% for category in post.categories.all %}
+              {{ category.name }}
+              {% if not forloop.last %}  |  {% endif %}
+            {% endfor %}
+          </small>
+          <br>
+          <small class="text-muted">
+            {% with numerator=post.content|wordcount denominator=75 %}
+              <span class="time">{{ post.content|wordcount }} words</span>  |  <span class="time">{{ numerator|intdiv:denominator }} min read</span>
+            {% endwith %}
+          </small><br>
+          <!-- Update/Delete Buttons -->
+          {% if post.author == user %}
+            <hr>
+            <small class="text-muted">
+              <div class="form-group">
+                <a href="{% url 'blog:post_update' object.slug %}">Update</a>  |  
+                <a href="{% url 'blog:post_delete' object.slug %}">Delete</a>
+              </div>
+            </small>
+          {% endif %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

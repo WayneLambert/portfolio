@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'google_analytics',
+    'mathfilters',
 
     # Project Apps
     'blog.apps.BlogConfig',
@@ -166,6 +167,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
+            'pages/templates/pages/',
             'blog/templates/blog/',
             'users/templates/users/',
             'users/templates/registration/',
@@ -292,8 +294,8 @@ CORS_ORIGIN_WHITELIST = [
 
 # Django-allauth Config
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'blog-django'
-LOGOUT_REDIRECT_URL = 'blog-django'
+LOGIN_REDIRECT_URL = 'blog_home'
+LOGOUT_REDIRECT_URL = 'blog_home'
 LOGIN_URL = 'login'
 
 # Heroku Deployment Settings
