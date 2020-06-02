@@ -21,9 +21,5 @@ class ContactView(TemplateView):
     template_name = "contact.html"
 
 
-class WorkSearchProjectView(TemplateView):
-    template_name = "work_search.html"
-
-
 class BlogPostExampleView(TemplateView):
     template_name = "blog_post.html"

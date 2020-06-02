@@ -3,7 +3,9 @@
 <header class="header text-center">
   <div class="force-overflow">
     <nav class="navbar navbar-expand-lg navbar-dark" >
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navigation" aria-controls="navigation" aria-expanded="false" 
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div id="navigation" class="collapse navbar-collapse flex-column" >
@@ -15,40 +17,51 @@
           </div>
           
           <h6 class="blog-name"><a href="{% url 'pages:home' %}">Wayne Lambert</a></h6>
-          <div class="bio mb-3">Hi, my name is Wayne Lambert and I'm an aspiring software engineer. Welcome to my personal website!</div><!--//bio-->
+          <div class="bio mb-3">Hi, my name is Wayne Lambert and I'm an aspiring software engineer. Welcome to my personal website!</div>
           <ul class="social-list list-inline py-2 mx-auto">
-            <li class="list-inline-item"><a href="https://github.com/WayneLambert/" target="_blank"><i class="fab fa-github-alt fa-fw"></i></a></li>
-            <li class="list-inline-item"><a href="https://stackoverflow.com/users/11211077/wayne-lambert?tab=profile" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i></a></li>
-            <li class="list-inline-item"><a href="https://www.linkedin.com/in/waynealambert/" target="_blank"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+            <li class="list-inline-item">
+              <a href="https://github.com/WayneLambert/" target="_blank">
+                <i class="fab fa-github-alt fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://stackoverflow.com/users/11211077/wayne-lambert?tab=profile" target="_blank">
+                <i class="fab fa-stack-overflow fa-fw"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/waynealambert/" target="_blank">
+                <i class="fab fa-linkedin-in fa-fw"></i>
+              </a>
+            </li>
           </ul>
           <hr> 
         </div>
 
         <ul class="navbar-nav flex-column text-left">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:portfolio' %}"><i class="fas fa-laptop-code fa-fw mr-2"></i>Portfolio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:cv' %}"><i class="fas fa-file-alt fa-fw mr-2"></i>CV</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:blog_home' %}"><i class="fas fa-blog fa-fw mr-2"></i>Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:contact' %}"><i class="fas fa-envelope-open-text fa-fw mr-2"></i>Contact</a>
-          </li>
-
-          <!-- More Pages Nav Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-cogs fa-fw mr-2"></i>More...
+            <a class="nav-link" href="{% url 'pages:portfolio' %}">
+              <i class="fas fa-laptop-code fa-fw mr-2"></i>
+              Portfolio
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'pages:blog_post_example' %}">Example Blog Post</a>
-              <a class="dropdown-item" href="#">Important Page 2</a>
-              <a class="dropdown-item" href="#">Important Page 3</a>
-              <a class="dropdown-item" href="#">Important Page 4</a>
-            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:cv' %}">
+              <i class="fas fa-file-alt fa-fw mr-2"></i>
+              CV
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog:blog_home' %}">
+              <i class="fas fa-blog fa-fw mr-2"></i>
+              Blog
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:contact' %}">
+              <i class="fas fa-envelope-open-text fa-fw mr-2"></i>
+              Contact
+            </a>
           </li>
         </ul>
 
@@ -60,7 +73,6 @@
               <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
             </input>
         </div>
-
       </div>
     </nav>
   </div>
