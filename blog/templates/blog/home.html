@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% include 'search.html' %}
+  {% include 'post_components/search.html' %}
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">
         {% for post in posts %}
-          {% include 'post_components/post-card.html' %}
+          {% include 'post_components/post_card.html' %}
         {% endfor %}
       </div>
     </div>
   </section>
   {% include 'post_components/pagination_links.html' %}
-  {% include 'subscribe.html' %}
+  {% include 'post_components/subscribe.html' %}
 {% endblock content %}

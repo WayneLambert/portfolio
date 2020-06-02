@@ -1,27 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% include 'search.html' %}
-  <div class="container single-col-max-width">
-    <h6 class="mb-3">{{ post_list.count }} posts found related to "{{ request.GET.q }}"</h6>
+  {% include 'post_components/search.html' %}
+  <div class="container single-col-max-width alert alert-primary mt-3">
+    <h6>{{ post_list.count }} posts found related to "{{ request.GET.q }}"</h6>
   </div>
 
   <!-- The Search Results -->
   {% for post in post_list %}
-    <article class="blog-post px-3 py-5 p-md-5">
+    <article class="blog-post">
       <div class="container single-col-max-width">
         <h6 class="card-title">
           <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
             {{ post.title }}
           </a>
         </h6>
-        <p class="article-content">{{ post.content|truncatewords:20|safe }}</p>
+        <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
         {% include "post_components/meta_data.html" %}
+        <hr>
       </div>
     </article>
-    <hr>
   {% endfor %}
-
   {% include 'post_components/pagination_links.html' %}
-
 {% endblock content %}

@@ -1,7 +1,7 @@
 <div class="col-md-4 mb-3">
   <div class="card blog-post-card">
     <a href="{% url 'blog:post_detail' post.slug %}">
-      <img src="{{ post.image.url }}">
+      <img src="{{ post.image.url }}" width="43%" height="43%">
     </a>
     <div class="card-body">
       <h5 class="card-title">
@@ -25,7 +25,7 @@
           <small class="text-muted">
             Categories: 
             {% for category in post.categories.all %}
-              {{ category.name }}
+              <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
               {% if not forloop.last %}  |  {% endif %}
             {% endfor %}
           </small>

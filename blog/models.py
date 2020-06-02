@@ -1,5 +1,6 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -56,13 +57,29 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
+    def save(self):
+        if not self.slug.strip():
             self.slug = slugify(self.title)
-        super(Post, self).save(*args, **kwargs)
+
+        _slug = self.slug
+        _count = 1
+
+        while True:
+            try:
+                Post.objects.all().exclude(pk=self.pk).get(slug=_slug)
+            except MultipleObjectsReturned:
+                pass
+            except ObjectDoesNotExist:
+                break
+            _slug = f"{self.slug}{_count}"
+            _count += 1
+
+        self.slug = _slug
+
+        super(Post, self).save()
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'slug': self.slug})
+        return reverse('blog:post_detail', kwargs={'slug': self.slug})
 
     def get_excerpt(self, char):
         return self.content[:char]

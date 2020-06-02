@@ -29,6 +29,7 @@ class UserPostListView(ListView):
 class CategoryPostListView(ListView):
     model = Post
     template_name = 'blog/category_posts.html'
+    context_object_name = 'posts'
     paginate_by = 6
 
     def get_queryset(self):
@@ -47,6 +48,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
+    template_name = 'blog/post_form.html'
     fields = ('title', 'slug', 'content', 'categories',
               'reference_url', 'status', 'image',
               )

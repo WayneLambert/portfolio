@@ -23,7 +23,7 @@
           <small class="text-muted">
             Categories: 
             {% for category in post.categories.all %}
-              {{ category.name }}
+              <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
               {% if not forloop.last %}  |  {% endif %}
             {% endfor %}
           </small>
