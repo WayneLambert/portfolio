@@ -1,3 +1,5 @@
+import math
+
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
@@ -30,14 +32,7 @@ class Post(models.Model):
         (1, 'Publish')
     )
     title = models.CharField(max_length=60, validators=[MinLengthValidator(30)])
-    slug = models.SlugField(
-        max_length=60,
-        unique=True,
-        help_text="""
-        The slug can be any words you like separated by dashes.
-        Prepositions and pronouns are unncessary from an SEO perspective.
-        """,
-    )
+    slug = models.SlugField(max_length=60, unique=True)
     content = RichTextUploadingField()
     reference_url = models.URLField(blank=True)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
@@ -49,13 +44,25 @@ class Post(models.Model):
     )
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category, related_name='posts')
+    categories = models.ManyToManyField(
+        Category,
+        related_name='posts',
+        help_text='Select more than one category by holding down Ctrl or Cmd key'
+    )
 
     class Meta:
         ordering = ['-publish_date']
 
     def __str__(self):
         return self.title
+
+    @property
+    def word_count(self):
+        return len(self.content.split())
+
+    @property
+    def reading_time(self):
+        return math.ceil(self.word_count / 75)
 
     def save(self):
         if not self.slug.strip():

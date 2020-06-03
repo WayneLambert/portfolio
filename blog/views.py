@@ -1,13 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
-from django.shortcuts import get_list_or_404, get_object_or_404
 from django.db.models import Q
+from django.shortcuts import get_list_or_404, get_object_or_404
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
+
+from .forms import PostForm
 from .models import Category, Post
 
 
-class BlogHomeView(ListView):
+class HomeView(ListView):
     model = Post
     queryset = Post.objects.all().order_by('-publish_date')
     template_name = 'blog/home.html'
@@ -48,10 +50,8 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    template_name = 'blog/post_form.html'
-    fields = ('title', 'slug', 'content', 'categories',
-              'reference_url', 'status', 'image',
-              )
+    form_class = PostForm
+    template_name = 'post_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -60,9 +60,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ('title', 'slug', 'content', 'categories',
-              'reference_url', 'status', 'image',
-              )
+    form_class = PostForm
+    template_name = 'post_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -77,6 +76,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
+    template_name = 'post_components/post_confirm_delete.html'
     success_url = '/blog/'
 
     def test_func(self):

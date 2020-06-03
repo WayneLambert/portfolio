@@ -12,7 +12,6 @@
               <h5 class="card-title"><a class="theme-link" href="blog-post.html">{{ post.title }}</a></h5>
               <p class="card-text">{{ post.content|safe|truncatewords:25 }}</p>
               <p class="mb-0"><a class="more-link" href="blog-post.html">Read more &rarr;</a></p>
-              
             </div>
             <div class="card-footer">
               <li><small class="text-muted">Published {{ post.publish_date|timesince }} ago</small></li>

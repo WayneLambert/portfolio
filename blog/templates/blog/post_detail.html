@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- Atom One Dark Syntax Highlighting CSS File -->
+{% block additional_css %}
+  <link rel="stylesheet" href="{% static 'highlight/styles/atom-one-dark.css' %}">
+{% endblock additional_css %}
+
 {% block content %}
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
@@ -12,10 +17,21 @@
 
       <!-- Post Content -->
       <p class="article-content">{{ post.content|safe }}</p>
-      <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+
+      {% if post.reference_url %}
+        <div class="alert alert-info" role="alert">
+          <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+        </div>
+      {% endif %}
 
       <!-- Nav Links -->
       {% include 'post_components/nav.html' %}
     </div>
   </article>
 {% endblock content %}
+
+<!-- CDN Link for Syntax Highlighting JS from highlightjs.org/download -->
+{% block additional_js %}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock additional_js %}

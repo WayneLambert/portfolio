@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% include 'post_components/search.html' %}
-  <div class="container single-col-max-width alert alert-primary mt-3">
-    <h6>{{ post_list.count }} posts found related to "{{ request.GET.q }}"</h6>
-  </div>
-
-  <!-- The Search Results -->
-  {% for post in post_list %}
+  <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} Posts)</h6>
+  {% for post in posts %}
     <article class="blog-post">
       <div class="container single-col-max-width">
         <h6 class="card-title">
@@ -17,8 +12,7 @@
         </h6>
         <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
         {% include "post_components/meta_data.html" %}
-        {% comment %} <hr style="background-color: #1762dd; height: 1.5px" /> {% endcomment %}
-        <hr class="results-hr">
+        <hr style="background-color: #1762dd; height: 1.5px" />
       </div>
     </article>
   {% endfor %}

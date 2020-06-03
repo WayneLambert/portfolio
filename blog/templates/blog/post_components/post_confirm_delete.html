@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!-- Atom One Dark Syntax Highlighting CSS File -->
+{% block additional_css %}
+  <link rel="stylesheet" href="{% static 'highlight/styles/atom-one-dark.css' %}">
+{% endblock additional_css %}
+
+{% block content %}
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4" id="warning-text">Delete Post?</legend>
+          <h6 id="warning-text">Are you sure that you would like to delete this post?</h6>
+            <br>
+            <h4>{{ object.title }}</h4>
+          <br>
+            {{ object.content|safe|truncatewords:100 }}<br><br>
+            <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a><br>
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-danger" type="submit">
+            <i class="fa fa-trash"></i>
+            Yes, Delete
+          </button>
+          <a class="btn btn-secondary" href="{% url 'blog:post_detail' object.slug %}">
+            <i class="fa fa-close"></i>
+            Cancel
+          </a>
+        </div>
+      </form>
+    </div>
+  </article>
+{% endblock content %}
+
+<!-- CDN Link for Syntax Highlighting JS from highlightjs.org/download -->
+{% block additional_js %}
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+{% endblock additional_js %}

@@ -1,4 +1,4 @@
-{% load mathfilters %}
+{% load humanize %}
 
 <div class="article-metadata">
   <table class="table table-striped">
@@ -29,11 +29,9 @@
           </small>
           <br>
           <small class="text-muted">
-            {% with numerator=post.content|wordcount denominator=75 %}
-              <span class="time">{{ post.content|wordcount }} words</span>  |  <span class="time">{{ numerator|intdiv:denominator }} min read</span>
-            {% endwith %}
-          </small><br>
-          <!-- Update/Delete Buttons -->
+            <span class="time">{{ post.word_count|intcomma }} words</span>  |  <span class="time">{{ post.reading_time }} min read</span>
+          </small>
+          <!-- Update/Delete Links -->
           {% if post.author == user %}
             <hr>
             <small class="text-muted">

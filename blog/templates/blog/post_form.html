@@ -1,44 +1,20 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
-<h1>Test form</h1>
-
-{% comment %} {% block content %}
-  <div class="content-section">
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.media }}
+{% block content %}
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
       {% if 'update' in request.path %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Update Post</legend>
-        {{ form|crispy }}
-      </fieldset>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success mr-2">
-          <i class="fa fa-upload"></i>
-          Update
-        </button>
-        <a class="btn btn-secondary mr-2" href="{% url 'post_detail' object.slug %}">
-          <i class="fa fa-close"></i>
-          Cancel
-        </a>
-      </div>
+        {% include 'post_components/post_update.html' %}
       {% else %}
-      <fieldset class="form-group">
-        <legend class="border-bottom mb-4">Create Post</legend>
-        {{ form|crispy }}
-      </fieldset>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success mr-2">
-          <i class="fa fa-upload"></i>
-          Create
-        </button>
-        <a class="btn btn-secondary mr-2" href="{{ request.META.HTTP_REFERER }}">
-          <i class="fa fa-close"></i>
-          Cancel
-        </a>
-      </div>
+        {% include 'post_components/post_create.html' %}
       {% endif %}
-    </form>
-  </div>
-{% endblock content %} {% endcomment %}
+    </div>
+  </article>
+
+{% endblock content %}
+
+<!-- Functionality for character counter -->
+{% block additional_js %}
+  <script src={% static 'assets/js/counter.js' %} type="text/javascript"></script>
+{% endblock additional_js %}

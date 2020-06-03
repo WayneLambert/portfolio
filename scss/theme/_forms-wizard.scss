@@ -1,0 +1,228 @@
+/* ===== Forms (wizard) ===== */
+.wizard > .content {
+  min-height: 300px;
+  background: $smoky-white;
+  margin: 0;
+  margin-bottom: 15px;
+  @include border-radius(0);
+}
+
+.wizard.vertical > .content {
+  background: $smoky-white;
+  margin: 0;
+  margin-left: 30px;
+  margin-bottom: 15px;
+}
+
+.wizard > .content > .body {
+    padding: 30px;
+    width: inherit;
+    height: inherit;
+}
+
+.wizard > .steps .number {
+  background: rgba(0, 0, 0, 0.12);
+  font-size: 13px;
+  @include border-radius(50%);
+  color: #fff;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 2px;
+  margin-right: 5px;
+}
+
+.wizard > .steps .current a, .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
+  background: $color-primary;
+  font-weight: 600;
+  
+  .theme-2 & {
+    background: $theme-2;
+  }
+  .theme-3 & {
+    background: $theme-3;
+  }
+  .theme-4 & {
+    background: $theme-4;
+  }
+}
+.wizard > .steps .done a, .wizard > .steps .done a:hover, .wizard > .steps .done a:active {
+  background: lighten($color-primary, 25%);
+  
+  .theme-2 & {
+    background: lighten($theme-2, 25%);
+  }
+  .theme-3 & {
+    background: lighten($theme-3, 25%);
+  }
+  .theme-4 & {
+    background: lighten($theme-4, 25%);
+  }
+
+}
+.wizard > .steps .disabled a, .wizard > .steps .disabled a:hover, .wizard > .steps .disabled a:active {
+  background: $smoky-white;
+  color: lighten($text-color-secondary, 10%);
+}
+
+.wizard > .steps a, .wizard > .steps a:hover, .wizard > .steps a:active {
+  padding: 10px 20px;
+  margin: 0;
+  @include border-radius(0);
+  @include transition(none);
+}
+
+.wizard > .steps > ul > li {
+  width: auto;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  >a {
+    position: relative;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.wizard > .steps > ul > li.current .step-arrow {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid $color-primary;
+  position: absolute;
+  bottom: -10px;
+  margin-left: -10px;
+  left: 50%;
+  
+  .theme-2 & {
+        border-top-color: $theme-2;
+    }
+    .theme-3 & {
+        border-top-color: $theme-3;
+    }
+    .theme-4 & {
+        border-top-color: $theme-4;
+    }
+}
+
+.wizard.vertical > .steps > ul > li.current .step-arrow {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid $color-primary;
+  bottom: 50%;
+  left: auto;
+  right: -20px;
+  margin-left: auto;
+  top: auto;
+  margin-bottom: -10px;
+  
+  .theme-2 & {
+        border-left-color: $theme-2;
+    }
+    .theme-3 & {
+        border-left-color: $theme-3;
+    }
+    .theme-4 & {
+        border-left-color: $theme-4;
+    }
+
+}
+
+.wizard > .steps > ul > li.current.done .step-arrow {
+    border-top-color: lighten($color-primary, 25%);
+    
+    .theme-2 & {
+        border-top-color: lighten($theme-2, 25%);
+    }
+    .theme-3 & {
+        border-top-color: lighten($theme-3, 25%);
+    }
+    .theme-4 & {
+        border-top-color: lighten($theme-4, 25%);
+    }
+}
+
+.wizard.vertical > .steps > ul > li.current.done .step-arrow {
+    border-left-color: lighten($color-primary, 25%);
+    border-top-color: transparent;
+    
+    .theme-2 & {
+        border-left-color: lighten($theme-2, 25%);
+    }
+    .theme-3 & {
+        border-left-color: lighten($theme-3, 25%);
+    }
+    .theme-4 & {
+        border-left-color: lighten($theme-4, 25%);
+    }
+}
+
+
+.wizard > .actions .disabled a, .wizard > .actions .disabled a:hover, .wizard > .actions .disabled a:active {
+  background: $smoky-white !important;
+  color: lighten($text-color-secondary, 30%) !important;
+}
+
+.wizard > .actions a, .wizard > .actions a:hover, .wizard > .actions a:active {
+  background: $color-primary;
+  
+  .theme-2 & {
+    background: $theme-2;
+  }
+  .theme-3 & {
+    background: $theme-3;
+  }
+  .theme-4 & {
+    background: $theme-4;
+  }
+}
+
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+    .wizard > .steps > ul > li {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    
+    .wizard > .steps > ul > li.current .step-arrow {
+        display: none;
+        
+    }
+    
+    .wizard.vertical > .steps {
+        width: 100%;
+    }
+    
+    .wizard.vertical > .content {
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    .wizard > .content > .body {
+        padding: 20px;
+    }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

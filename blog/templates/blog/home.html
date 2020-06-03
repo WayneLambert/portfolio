@@ -2,6 +2,21 @@
 
 {% block content %}
   {% include 'post_components/search.html' %}
+
+  {% if user.is_authenticated %}
+    <small class="text-muted">
+      <div class="text-center mt-2">
+        <a href="{% url 'blog:contents' %}">Blog Contents</a>  |  <a href="{% url 'blog:post_create' %}">Create New Post</a>
+      </div>
+    </small>
+  {% else %}
+    <small class="text-muted">
+      <div class="text-center mt-2">
+        <a href="{% url 'blog:contents' %}">Blog Contents</a>
+      </div>
+    </small>
+  {% endif %}
+
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">

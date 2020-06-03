@@ -260,6 +260,8 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
+        'width': '100%',
+        'height': '400',
         'toolbar_Custom': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
              'SpellChecker', 'Undo', 'Redo'],
@@ -292,10 +294,9 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
-# Django-allauth Config
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'blog_home'
-LOGOUT_REDIRECT_URL = 'blog_home'
+LOGIN_REDIRECT_URL = '/blog/'
+LOGOUT_REDIRECT_URL = '/blog/'
 LOGIN_URL = 'login'
 
 # Heroku Deployment Settings

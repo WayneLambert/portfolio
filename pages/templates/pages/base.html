@@ -2,33 +2,29 @@
 
 <!doctype html>
 <html lang="en">
-  {% include "head.html" %}
+  {% include 'head.html' %}
 
-  {% block additional_meta %}
-    <!-- Extra meta data insertions -->
-  {% endblock additional_meta %}
+  <!-- Extra meta data insertions -->
+  {% block additional_head %}{% endblock additional_head %}
 
-  {% block additional_css %}
-    <!-- Extra CSS stylesheet insertions -->
-  {% endblock additional_css %}
+  <!-- Extra CSS stylesheet insertions -->
+  {% block additional_css %}{% endblock additional_css %}
 
   <body>
     <!-- Sidebar Header -->
-    {% include "header.html" %}
+    {% include 'header.html' %}
 
     <div class="main-wrapper">
-      {% block content %}
-        <!-- Content injected here -->
-      {% endblock content %}
+      <!-- Content injected here -->
+      {% block content %}{% endblock content %}
 
       <!-- Global Footer -->
       {% include 'footer.html' %}
     </div>
 
-    {% include "js.html" %}
+    {% include 'js.html' %}
 
-    {% block additional_js %}
-      <!-- Additional Page Specific JavaScript -->
-    {% endblock additional_js %}
+    <!-- Additional Page Specific JavaScript -->
+    {% block additional_js %}{% endblock additional_js %}
   </body>
 </html>

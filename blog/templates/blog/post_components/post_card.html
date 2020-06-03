@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <div class="col-md-4 mb-3">
   <div class="card blog-post-card">
     <a href="{% url 'blog:post_detail' post.slug %}">
@@ -22,6 +24,13 @@
           </a>
         </li>
         <li>
+          <small class="text-muted">Published: {{ post.publish_date|date:"D d-M-y" }}</small>
+        </li>
+        <li>
+          <small class="text-muted">Updated: {{ post.updated_date|date:"D d-M-y" }}</small>
+        </li>
+        <li>
+        <li>
           <small class="text-muted">
             Categories: 
             {% for category in post.categories.all %}
@@ -31,12 +40,10 @@
           </small>
         </li>
         <li>
-          <small class="text-muted">Published: {{ post.publish_date|date:"D d-M-y" }}</small>
+          <small class="text-muted">
+              <span class="time">{{ post.word_count|intcomma }} words</span>  |  <span class="time">{{ post.reading_time }} min read</span>
+          </small>
         </li>
-        <li>
-          <small class="text-muted">Updated: {{ post.updated_date|date:"D d-M-y" }}</small>
-        </li>
-        <li>
           <p class="mb-0">
             <a class="more-link" href="{% url 'blog:post_detail' post.slug %}">Read more &rarr;</a>
           </p>
