@@ -15,6 +15,7 @@ class HomeView(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'posts'
     paginate_by = 6
+    extra_context = {'categories_list': Category.objects.all()}
 
 
 class UserPostListView(ListView):
@@ -22,6 +23,7 @@ class UserPostListView(ListView):
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
     paginate_by = 6
+    extra_context = {'categories_list': Category.objects.all()}
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -33,6 +35,7 @@ class CategoryPostListView(ListView):
     template_name = 'blog/category_posts.html'
     context_object_name = 'posts'
     paginate_by = 6
+    extra_context = {'categories_list': Category.objects.all()}
 
     def get_queryset(self):
         self.categories = get_list_or_404(Category, slug=self.kwargs['slug'])
@@ -46,6 +49,7 @@ class CategoryPostListView(ListView):
 
 class PostDetailView(DetailView):
     model = Post
+    extra_context = {'categories_list': Category.objects.all()}
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -88,8 +92,10 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class SearchResultsView(ListView):
     model = Post
-    template_name = 'blog/search_results.html'
+    template_name = 'blog/posts_list.html'
+    context_object_name = 'posts'
     paginate_by = 10
+    extra_context = {'categories_list': Category.objects.all()}
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -106,13 +112,15 @@ class SearchResultsView(ListView):
 
 class ContentsListView(ListView):
     model = Category
-    template_name = 'blog/contents.html'
+    template_name = 'blog/posts_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(ContentsListView, self).get_context_data(**kwargs)
+        categories_list = Category.objects.all().order_by('name')
         categories = Category.objects.all().order_by('name')
         posts = Post.objects.filter(status=1).order_by('-publish_date')
         context = {
+            'categories_list': categories_list,
             'categories': categories,
             'posts': posts,
         }

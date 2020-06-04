@@ -17,11 +17,11 @@
           </a>
           <br>
           <small class="text-muted">
-            Published: {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
-            Updated: {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
+            <strong>Published:</strong> {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
+            <strong>Updated:</strong> {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
           </small><br>
           <small class="text-muted">
-            Categories: 
+            <strong>Categories:</strong> 
             {% for category in post.categories.all %}
               <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
               {% if not forloop.last %}  |  {% endif %}
@@ -31,16 +31,6 @@
           <small class="text-muted">
             <span class="time">{{ post.word_count|intcomma }} words</span>  |  <span class="time">{{ post.reading_time }} min read</span>
           </small>
-          <!-- Update/Delete Links -->
-          {% if post.author == user %}
-            <hr>
-            <small class="text-muted">
-              <div class="form-group">
-                <a href="{% url 'blog:post_update' object.slug %}">Update</a>  |  
-                <a href="{% url 'blog:post_delete' object.slug %}">Delete</a>
-              </div>
-            </small>
-          {% endif %}
         </td>
       </tr>
     </tbody>
