@@ -1,7 +1,7 @@
 from django.urls import path
 from countdown_letters import views as countdown_letters_views
 
-app_name = 'countdown-letters'
+app_name = 'countdown_letters'
 
 urlpatterns = [
     path('selection/', countdown_letters_views.selection_screen, name='selection'),

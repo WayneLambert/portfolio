@@ -7,6 +7,8 @@ from scraping import (
 )
 from scraping import views as scraping_views
 
+app_name = 'scraping'
+
 urlpatterns = [
     path('scraping-options/', scraping_views.scraping_options_list,
          name='scraping-options'),

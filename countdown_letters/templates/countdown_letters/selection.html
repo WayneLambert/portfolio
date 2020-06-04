@@ -12,7 +12,7 @@
         </div>
         <div class="countdown-text">
           <h6>Pick a selection of 3, 4 or 5 vowels with the remainder as consonants.</h6>
-          <form id="letter-selection-form" action="{% url 'countdown-letters:selection' %}"
+          <form id="letter-selection-form" action="{% url 'countdown_letters:selection' %}"
             method="POST" class="form-horizontal col-sm-1">
             {% csrf_token %}
             {{form|crispy}}

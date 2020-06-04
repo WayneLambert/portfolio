@@ -2,6 +2,8 @@ from django.urls import path
 from roulette import views as roulette_views
 
 
+app_name = 'roulette'
+
 urlpatterns = [
     path('game/', roulette_views.game_screen, name='holiday-roulette'),
     path('destination/', roulette_views.destination_screen,

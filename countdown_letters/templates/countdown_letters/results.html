@@ -1,6 +1,6 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
   <div class="countdown-photo">
@@ -70,7 +70,7 @@
       {% endif %}
     </div>
     <p class="start-again-button">
-      <a href="{% url 'countdown-letters:selection' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
+      <a href="{% url 'countdown_letters:selection' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
         <i class="fa fa-repeat"></i>
         Start Again
       </a>

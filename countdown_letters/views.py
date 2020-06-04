@@ -58,7 +58,7 @@ def selection_screen(request):
         if form.is_valid():
             num_vowels_selected = form.cleaned_data.get('num_vowels_selected')
             letters_chosen = get_letters_chosen(num_vowels=num_vowels_selected)
-            base_url = reverse('countdown-letters:game')
+            base_url = reverse('countdown_letters:game')
             letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
             full_url = f'{base_url}?{letters_chosen_url}'
             return redirect(full_url)
@@ -74,7 +74,7 @@ def game_screen(request):
     if request.method == 'POST':
         form = SelectedLettersForm(request.POST)
         if form.is_valid():
-            base_url = reverse('countdown-letters:results')
+            base_url = reverse('countdown_letters:results')
 
             letters_chosen = request.META['HTTP_REFERER'][-MAX_GAME_LETTERS:]
             letters_chosen_url = urlencode({'letters_chosen': letters_chosen})

@@ -5,6 +5,7 @@ from blog.views_api import (
     CategoryListAPIView,
 )
 
+app_name = 'api'
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),

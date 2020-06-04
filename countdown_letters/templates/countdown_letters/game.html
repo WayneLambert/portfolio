@@ -1,6 +1,6 @@
-{% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% extends 'base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
   <div class="countdown-photo">
@@ -12,7 +12,7 @@
     <div class="letters-selected">
       {{ request.GET.letters_chosen }}
     </div><br>
-    <form id="selected-letters-form" action="{% url 'countdown-letters:game' %}"
+    <form id="selected-letters-form" action="{% url 'countdown_letters:game' %}"
       method="POST" class="form-horizontal">
       {% csrf_token %}
       {{ form|crispy }}
