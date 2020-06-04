@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <div class="row">
+        <section class="module">
+          <div class="module-inner">
+            <div class="content-panel">
+              <img class="rounded-circle account-img mb-5" src="{{ user.profile.profile_picture.url }}">
+              <form class="user-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4">{{ user.profile.full_name }}: Update Profile</legend>
+                <fieldset class="form-group">
+                  <div class="form-row">
+                    <div class="form-group col-md-12 mb-0">
+                      {{ user_form.email|as_crispy_field }}
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4 mb-0">
+                      {{ user_form.username|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
+                      {{ user_form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-4 mb-0">
+                      {{ user_form.last_name|as_crispy_field }}
+                    </div>
+                  </div>
+                  <!-- Profile Image -->
+                  <div class="custom-file mb-4">
+                    <input type="file" class="custom-file-input" id="id_profile_picture">
+                    <label class="custom-file-label" for="id_profile_picture">Upload Profile Picture...</label>
+                  </div>
+                  <small> Display my posts using my...</small>
+                  <div class="form-group col-md-12 mb-0">
+                    {% for radio in profile_form.author_view %}
+                      <label for="{{ radio.id_for_label }}">
+                        {{ radio.choice_label }}
+                        <span class="radio">{{ radio.tag }}</span>
+                      </label>
+                    {% endfor %}
+                  </div>
+                </fieldset>
+                <hr>
+                <!-- Buttons -->
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success mr-2">
+                    <i class="fa fa-upload"></i>
+                      Update
+                  </button>
+                  <a class="btn btn-secondary mr-2"
+                    href="{{ request.META.HTTP_REFERER }}">
+                    <i class="fa fa-close"></i>
+                    Cancel
+                  </a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

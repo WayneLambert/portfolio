@@ -1,91 +1,22 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-{% load crispy_forms_tags %}
+
 {% block content %}
-  <div class="content-section">
-    <legend class="border-bottom mb-4">Profile Info</legend>
-    <div class="media">
-      <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
-      <div class="media-body">
-        <table style="width:100%">
-          <tr>
-            <td>
-              <h2 class="account-heading-name" id="account-heading-name">
-                {{ user.first_name }} {{ user.last_name }}
-              </h2>
-            </td>
-            <td>
-              <em>
-                <h4 class="account-heading-username" id="account-heading-username"
-                  style="text-align: right">
-                  (Username: {{ user.username }} )
-                </h4>
-              </em>
-            </td>
-          </tr>
-        </table>
-        <br>
-        <table style="width:100%">
-          <tr>
-            <th>Email</th>
-            <th style="text-align: center">Join Date</th>
-            <th style="text-align: right">Last Login Date</th>
-          </tr>
-          <tr>
-            <td>
-              <p class="text-secondary">
-                <a href="mailto:{{ user.email }}">{{ user.email }}</a>
-              </p>
-            </td>
-            <td>
-              <p class="text-secondary" style="text-align: center">
-                <em>{{ user.date_joined }}</em>
-              </p>
-            </td>
-            <td>
-              <p class="text-secondary" style="text-align: right">
-                <em>{{ user.last_login }}</em>
-              </p>
-            </td>
-          </tr>
-        </table>
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <legend class="border-bottom mb-4">{{ user.profile.full_name }}</legend>
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
+        <div class="media-body">
+          <p class="ml-5">Username: {{ user.username }}</p>
+          <p><a class="ml-5" href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+          <ul class="no-bullets mt-3">
+            <li><small class="ml-5">Join Date: {{ user.date_joined|date:"d-M-y H:i" }}</small></li>
+            <li><small class="ml-5">Last Seen: {{ user.last_login|date:"d-M-y H:i" }}</small></li>
+          </ul>
+        </div>
       </div>
+      <a class="small ml-5" href="{% url 'users:profile_update' %}">Update Profile</a>
     </div>
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <fieldset class="form-group">
-        <div class="form-row">
-          <div class="form-group col-md-6 mb-0">
-            {{ user_form.username|as_crispy_field }}
-          </div>
-          <div class="form-group col-md-6 mb-0">
-            {{ user_form.email|as_crispy_field }}
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md-4 mb-0">
-            {{ user_form.first_name|as_crispy_field }}
-          </div>
-          <div class="form-group col-md-4 mb-0">
-            {{ user_form.last_name|as_crispy_field }}
-          </div>
-          <div class="form-group col-md-4 mb-0">
-            {{ profile_form.author_view|as_crispy_field }}
-          </div>
-        </div>
-        {{ profile_form.profile_picture|as_crispy_field }}
-      </fieldset>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success mr-2">
-          <i class="fa fa-upload"></i>
-            Update
-        </button>
-        <a class="btn btn-secondary mr-2"
-          href="{{ request.META.HTTP_REFERER }}">
-          <i class="fa fa-close"></i>
-          Cancel
-        </a>
-      </div>
-    </form>
-  </div>
+  </section>
 {% endblock content %}
