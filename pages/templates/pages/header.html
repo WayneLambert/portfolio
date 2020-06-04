@@ -3,19 +3,13 @@
 <header class="header text-center">
   <div class="force-overflow">
     <nav class="navbar navbar-expand-lg navbar-dark" >
-      <button class="navbar-toggler" type="button" data-toggle="collapse" 
-        data-target="#navigation" aria-controls="navigation" aria-expanded="false" 
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <div id="navigation" class="collapse navbar-collapse flex-column" >
         <div class="profile-section pt-3 pt-lg-0">
-          <div class="profile-avatar">
+          <div class="profile-avatar mt-5 mb-1">
             <div class="inner">
               <img class="profile-image" src="{% static 'assets/images/gravatar.jpg' %}" alt="Wayne Lambert">
             </div>
           </div>
-          
           <h6 class="blog-name"><a href="{% url 'pages:home' %}">Wayne Lambert</a></h6>
           <div class="bio mb-3">Hi, my name is Wayne Lambert and I'm an aspiring software engineer. Welcome to my personal website!</div>
           <ul class="social-list list-inline py-2 mx-auto">
@@ -40,38 +34,47 @@
 
         <ul class="navbar-nav flex-column text-left">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:portfolio' %}">
-              <i class="fas fa-laptop-code fa-fw mr-2"></i>
-              Portfolio
-            </a>
+            <a class="nav-link" href="{% url 'pages:portfolio' %}"><i class="fas fa-laptop-code fa-fw mr-2"></i>Portfolio Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:cv' %}">
-              <i class="fas fa-file-alt fa-fw mr-2"></i>
-              CV
-            </a>
+            <a class="nav-link" href="{% url 'pages:cv' %}"><i class="fas fa-file-alt fa-fw mr-2"></i>CV</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog:home' %}">
-              <i class="fas fa-blog fa-fw mr-2"></i>
-              Blog
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-blog fa-fw mr-2"></i>Blog
             </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'blog:home' %}">Home</a>
+              <a class="dropdown-item" href="{% url 'blog:contents' %}">Contents</a>
+            </div>
           </li>
+          {% if user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user fa-fw mr-2"></i>Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'users:profile' %}">View</a>
+              </div>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'users:profile_update' %}">Update</a>
+              </div>
+            </li>
+          {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:contact' %}">
-              <i class="fas fa-envelope-open-text fa-fw mr-2"></i>
-              Contact
-            </a>
+            <a class="nav-link" href="{% url 'pages:contact' %}"><i class="fas fa-envelope-open-text fa-fw mr-2"></i>Contact</a>
           </li>
         </ul>
-
-        <!-- Dark Mode Toggle Button -->
+        <hr> 
+        {% if 'blog' in request.path %}
+          {% include 'blog/category_sidebar.html' %}
+        {% endif %}
+        <!-- Dark Mode Toggle -->
         <div class="dark-mode-toggle text-center w-100">
           <hr class="mb-4">
             <h4 class="toggle-name mb-3 "><i class="fas fa-adjust mr-1"></i>Dark Mode</h4>
             <input class="toggle" id="darkmode" type="checkbox">
-              <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
-            </input>
+            <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
         </div>
       </div>
     </nav>
