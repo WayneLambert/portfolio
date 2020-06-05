@@ -1,17 +1,11 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
   <div class="alert alert-light col-md-4 mb-0" role="alert">
     <h6>Thanks for getting in touch. I will get back to you shortly.</h6>
     <div class="border-top" pt-10>
       <small class="text-muted">
-        - <a href="{% url 'home' %}">Return to home page</a>
-      </small><br>
-      <small class="text-muted">
-        - <a href="https://wl-portfolio.s3.eu-west-2.amazonaws.com/documents/cv_wayne_lambert.pdf">View CV</a>
-      </small><br>
-      <small class="text-muted">
-        - <a href="https://github.com/WayneLambert/portfolio">View Portfolio Source Code on GitHub</a>
+        - <a href="{% url 'pages:home' %}">Return to home page</a>
       </small>
     </div>
   </div>

@@ -1,35 +1,106 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="alert alert-light col-md-4 mb-0" role="alert">
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-        <fieldset class="form-group">
-          <legend class="border-bottom mb-4">Please Get in Touch!</legend>
-          <table>{{ form|crispy }}</table>
-        </fieldset>
-      <div class="form-group">
-        <button class="btn btn-secondary mr-2" type="submit">
-          <i class="fa fa-envelope-open"></i>
-          Send Message
-        </button><br><br>
-      </div>
-    </form>
-    <b>Links</b><br><br>
-    <ul style="list-style-type:square;">
-      <li><a href="{% url 'reading-list' %}">Reading List</a></li><br>
-      <li><a href="https://notebooks.azure.com/wayne-a-lambert/projects"
-        target="_blank">Data Science Notebooks</a>
-      </li>
-      <p class="small">The notebooks at the link above are either data science projects, process notes or
-      work-in-progress notebooks used for testing and debugging. You are welcome
-      to review them.</p><br>
-    </ul>
-    <br><br>
-    This site is protected by reCAPTCHA and the Google
-    <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-    <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-  </div><br><br>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container theme-bg-light single-col-max-width mt-5">
+      <figure class="blog-banner mt-5">
+        <a href="#"><img class="img-fluid mt-5" 
+          src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/business-meeting-with-laptops.jpg" 
+          alt="image">
+        </a>
+      </figure>
+      <section class="cta-section">
+        <div class="container text-center single-col-max-width">
+          <div class="intro">
+            <p>Please fill in the contact form below or send me an email at <a href="mailto:contact@waynelambert.dev">contact@waynelambert.dev</a></p>
+          </div>
+        </div>
+      </section>
+      <section class="contact-section py-5 px-3 p-md-5">
+        <div class="container">
+          <form method="POST" enctype="multipart/form-data" id="contact-form" class="contact-form col-lg-8 mx-lg-auto">
+            {% csrf_token %}
+            <h3 class="text-center mb-3">Get In Touch</h3>
+            <!-- First and Last Name -->
+            <div class="form-group">
+              <div class="form-row">
+                <!-- First Name -->
+                <div class="col-6">
+                  <div class="input-group">
+                    {{ form.first_name|as_crispy_field }}
+                  </div>
+                </div>
+                <!-- Last Name -->
+                <div class="col-6">
+                  <div class="input-group">
+                    {{ form.last_name|as_crispy_field }}
+                  </div>
+                </div>
+              </div>
+
+                <!-- Email -->
+                <div class="col-12">
+                  <div class="input-group">
+                    {{ form.email|as_crispy_field }}
+                  </div>
+                </div>
+                <!-- Message -->
+                <div class="col-12">
+                  <div class="input-group">
+                    {{ form.message|as_crispy_field }}
+                  </div>
+                </div>
+
+            </div>
+            <!-- Submit Button -->
+            <div class="form-group col-12">
+              <button type="submit" class="btn btn-block btn-primary py-2">
+              <i class="fa fa-envelope-open"></i>
+              Send Now
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </section>
+      <section class="cta-section py-5">
+        <div class="container text-center single-col-max-width">
+          <div class="intro">
+            <p>Feel free to connect using the social media channels below.</p>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mb-3">
+                <a class="github" href="https://github.com/WayneLambert/"
+                  target="_blank">
+                  <i class="fab fa-github-alt fa-fw fa-lg"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mb-3">
+                <a class="stack-overflow" href="https://stackoverflow.com/users/11211077/wayne-lambert?tab=profile" 
+                  target="_blank">
+                  <i class="fab fa-stack-overflow fa-fw fa-lg"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mb-3">
+                <a class="linkedin" href="https://www.linkedin.com/in/waynealambert/" 
+                  target="_blank">
+                  <i class="fab fa-linkedin-in fa-fw fa-lg"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="cta-section text-muted">
+        <div class="container text-center single-col-max-width">
+          <div class="intro mb-2">
+            This site is protected by reCAPTCHA and the Google
+            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
 {% endblock content %}
