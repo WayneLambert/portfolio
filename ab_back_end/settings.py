@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'google_analytics',
+    'widget_tweaks',
 
     # Project Apps
     'blog.apps.BlogConfig',
