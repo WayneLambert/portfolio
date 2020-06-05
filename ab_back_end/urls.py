@@ -7,7 +7,6 @@ from django.urls import include, path, re_path
 
 from ab_back_end.settings import ADMIN_ALIAS
 from blog.sitemap import CategorySitemap, PostSitemap
-from contacts import views as contacts_views
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -15,7 +14,7 @@ urlpatterns = [
     path('', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contacts.urls', namespace='contacts')),
-    path('contact-submitted/', contacts_views.contact_submitted, 'contact-submitted'),
+    path('cv/', include('cv.urls', namespace='cv')),
     path('users/', include('users.urls', namespace='users')),
     path('countdown-letters/', include('countdown_letters.urls', namespace='countdown_letters')),
     path('countdown-numbers/', include('countdown_numbers.urls', namespace='countdown_numbers')),

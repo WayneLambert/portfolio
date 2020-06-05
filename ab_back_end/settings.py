@@ -48,12 +48,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'google_analytics',
-    'mathfilters',
 
     # Project Apps
     'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
+    'cv.apps.CvConfig',
     'contacts.apps.ContactsConfig',
     'countdown_letters.apps.CountdownLettersConfig',
     'countdown_numbers.apps.CountdownNumbersConfig',
@@ -169,6 +169,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
             'pages/templates/pages/',
             'blog/templates/blog/',
+            'cv/templates/cv/',
             'users/templates/users/',
             'users/templates/registration/',
             'contacts/templates/contacts/',
