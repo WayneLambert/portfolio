@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ block.super }} | Blog Home{% endblock title %}
+
 {% block content %}
   {% include 'post_components/search.html' %}
 
@@ -26,6 +28,6 @@
       </div>
     </div>
   </section>
-  {% include 'post_components/pagination_links.html' %}
+  {% include 'post_components/pagination_nav.html' %}
   {% include 'post_components/subscribe.html' %}
 {% endblock content %}

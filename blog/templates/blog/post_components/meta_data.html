@@ -5,7 +5,7 @@
     <tbody>
       <tr>
         <td>
-          <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
+          <img class="rounded-circle article-img" src="{{ post.author.user.profile_picture.url }}">
         </td>
         <td>
           <a href="{% url 'blog:user_posts' post.author.username %}">

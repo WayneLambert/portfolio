@@ -4,7 +4,7 @@
   </li>
 </ul>
 <ul class="navbar-nav flex-column text-left">
-  {% for category in categories_list %}
+  {% for category in category_list %}
     <li class="nav-item">
       <a class="nav-link" href="{% url "blog:home" %}category/{{ category.slug }}">
         <i class="fas fa-book fa-fw ml-2 mr-2"></i>

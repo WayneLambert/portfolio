@@ -13,7 +13,7 @@
               <tr>
                 <!-- 1st Column with User Avatar -->
                 <th>
-                  <img class="rounded-circle article-img" src="{{ post.author.profile.profile_picture.url }}">
+                  <img class="rounded-circle article-img" src="{{ post.author.user.profile_picture.url }}">
                 </th>
                 <!-- 2nd Column with all other post data -->
                 <th>
@@ -28,10 +28,10 @@
                         <small class="text-muted"><strong>Author: </strong></small>
                         <small class="text-muted">
                           <a href="{% url 'blog:user_posts' post.author.username %}">
-                          {% if post.author.profile.author_view == 0 %}
+                          {% if post.author.user.author_view == 0 %}
                             {{ post.author.username }}
                           {% else %}
-                            {{ post.author.profile.full_name }}
+                            {{ post.author.user.full_name }}
                           {% endif %}
                           </a>
                         </small>
@@ -71,5 +71,5 @@
       </div>
     </article>
   {% endfor %}
-  {% include 'post_components/pagination_links.html' %}
+  {% include 'post_components/pagination_nav.html' %}
 {% endblock content %}
