@@ -46,7 +46,7 @@ django-allauth = "==0.41.0"
 django-google-analytics-app = "==4.4.1"
 psycopg2-binary = "==2.8.5"
 pillow = "==7.1.2"
-django-mathfilters = "==1.0.0"
+django-widget-tweaks = "==1.4.8"
 
 [requires]
 python_version = "3.8"
