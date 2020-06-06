@@ -1,14 +1,13 @@
-from django.views.generic import ListView, TemplateView
+from django.views.generic import TemplateView
 
-from blog.models import Post
+from blog.views import PostView
 
 
-class HomeView(ListView):
-    model = Post
+class HomeView(PostView):
     template_name = 'home.html'
-    queryset = Post.get_posts()[:3]
-    context_object_name = 'posts'
 
+    def get_queryset(self):
+        return self.queryset[:3]
 
 class PortfolioView(TemplateView):
     template_name = 'portfolio.html'

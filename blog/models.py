@@ -25,11 +25,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return '/category/' & self.slug
 
-    @staticmethod
-    def get_categories():
-        qs = Category.objects.all().prefetch_related('posts')
-        return qs
-
 
 class Post(models.Model):
     STATUS = (
@@ -60,11 +55,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-    @staticmethod
-    def get_posts():
-        qs = Post.objects.prefetch_related('categories').select_related('author__user')
-        return qs
 
     @property
     def word_count(self):
