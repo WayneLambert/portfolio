@@ -103,8 +103,9 @@ hr {
   width: $sidebar-width;
   background: $theme-color-primary;
   color: #fff;
-  overflow-y: auto;
-  
+  overflow-y: hidden;
+  overflow-x: hidden;
+
   /* Forefox scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.2) $theme-color-primary;
     scrollbar-width: thin;

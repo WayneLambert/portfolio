@@ -5,9 +5,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark" >
       <div id="navigation" class="collapse navbar-collapse flex-column" >
         <div class="profile-section pt-3 pt-lg-0">
-          <div class="profile-avatar mt-5 mb-1">
+          <div class="profile-avatar rounded-circle mt-2 mb-1">
             <div class="inner">
-              <img class="profile-image" src="{% static 'assets/images/gravatar.jpg' %}" alt="Wayne Lambert">
+              <img class="profile-image rounded-circle" src="{% static 'assets/images/gravatar.jpg' %}" alt="Wayne Lambert">
             </div>
           </div>
           <h6 class="blog-name"><a href="{% url 'pages:home' %}">Wayne Lambert</a></h6>
@@ -29,23 +29,24 @@
               </a>
             </li>
           </ul>
-          <hr> 
+          <hr>
         </div>
 
         <ul class="navbar-nav flex-column text-left">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:portfolio' %}"><i class="fas fa-laptop-code fa-fw mr-2"></i>Portfolio Projects</a>
+            <a class="nav-link" href="{% url 'pages:portfolio' %}"><i class="fa fa-briefcase mr-2"></i>Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'cv:cv' %}"><i class="fas fa-file-alt fa-fw mr-2"></i>CV</a>
+            <a class="nav-link" href="{% url 'cv:cv' %}"><i class="fa fa-align-left mr-2"></i>CV</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-blog fa-fw mr-2"></i>Blog
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'blog:home' %}">Home</a>
-              <a class="dropdown-item" href="{% url 'blog:contents' %}">Contents</a>
+              <a class="dropdown-item" href="{% url 'blog:home' %}"><i class="fas fa-home fa-fw mr-2"></i>Home</a>
+              <a class="dropdown-item" href="{% url 'blog:contents' %}"><i class="fa fa-list mr-2"></i>Contents</a>
+              <a class="dropdown-item" href="#"><i class="fa fa-rss mr-2"></i>Subscribe</a>
             </div>
           </li>
           {% if user.is_authenticated %}
@@ -54,15 +55,25 @@
                 <i class="fas fa-user fa-fw mr-2"></i>Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'users:profile' %}">View</a>
+                <a class="dropdown-item" href="{% url 'users:profile' %}"><i class="fa fa-user-circle mr-2"></i>View</a>
+                <a class="dropdown-item" href="{% url 'users:profile_update' %}"><i class="fa fa-pencil mr-2"></i>Update</a>
+                <a class="dropdown-item" href="#"><i class="fa fa-rss mr-2"></i>Subscribe</a>
+                <a class="dropdown-item" href="{% url 'users:logout' %}"><i class="fa fa-sign-out mr-2"></i>Logout</a>
               </div>
+            </li>
+          {% else %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user fa-fw mr-2"></i>Profile
+              </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'users:profile_update' %}">Update</a>
+                <a class="dropdown-item" href="{% url 'users:login' %}"><i class="fa fa-sign-in mr-2"></i>Login</a>
+                <a class="dropdown-item" href="{% url 'users:register' %}"><i class="fa fa-handshake-o mr-2"></i>Register</a>
               </div>
             </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fas fa-envelope-open-text fa-fw mr-2"></i>Contact</a>
+            <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fa fa-envelope mr-2"></i>Contact</a>
           </li>
         </ul>
         <hr> 
