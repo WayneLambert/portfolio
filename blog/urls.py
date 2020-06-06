@@ -1,9 +1,9 @@
 from django.urls import path
 
+from .feeds import LatestPostsFeed
 from .views import (CategoryPostListView, ContentsListView, HomeView,
                     PostCreateView, PostDeleteView, PostDetailView,
                     PostUpdateView, SearchResultsView, UserPostListView)
-
 
 app_name = 'blog'
 
@@ -17,4 +17,5 @@ urlpatterns = [
     path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post_delete'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('contents/', ContentsListView.as_view(), name='contents'),
+    path('feed/latest/rss', LatestPostsFeed(), name='post_feed'),
 ]
