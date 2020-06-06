@@ -206,4 +206,3 @@ postgres/data/
 .coverage
 
 static/assets/*
-scss/bootstrap/*

@@ -194,7 +194,12 @@
   .card-img {
     @include border-radius(0);
   }
-  
+
+  .card-img-top {
+    width:348px;
+    height: 244px;
+  }
+
   .card-title {
     font-size: 1.125rem;
   }
