@@ -4,9 +4,9 @@
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
-      <legend class="border-bottom mb-4">{{ user.profile.full_name }}</legend>
+      <legend class="border-bottom mb-4">{{ user.user.full_name }}</legend>
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.profile_picture.url }}">
+        <img class="rounded-circle account-img" src="{{ user.user.profile_picture.url }}">
         <div class="media-body">
           <p class="ml-5">Username: {{ user.username }}</p>
           <p><a class="ml-5" href="mailto:{{ user.email }}">{{ user.email }}</a></p>
@@ -16,7 +16,6 @@
           </ul>
         </div>
       </div>
-      <a class="small ml-5" href="{% url 'users:profile_update' %}">Update Profile</a>
     </div>
   </section>
 {% endblock content %}
