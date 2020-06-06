@@ -23,7 +23,7 @@ pycodestyle = "==2.6.0"
 ipdb = "==0.13.2"
 
 [packages]
-django = "==3.0.6"
+django = "==3.0.7"
 djangorestframework = "==3.11.0"
 django-cors-headers = "==3.2.1"
 django-crispy-forms = "==1.9.0"
