@@ -7,7 +7,7 @@
       {% for post in posts %}
         <div class="col-md-4 mb-5">
           <div class="card blog-post-card">
-            <img class="card-img-top" src="{% static 'assets/images/blog/blog-post-thumb-card-1.jpg' %}" alt="image">
+            <img class="card-img-top" src="{{ post.image.url }}">
             <div class="card-body">
               <h5 class="card-title"><a class="theme-link" href="blog-post.html">{{ post.title }}</a></h5>
               <p class="card-text">{{ post.content|safe|truncatewords:25 }}</p>
