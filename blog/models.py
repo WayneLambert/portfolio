@@ -41,6 +41,7 @@ class Post(models.Model):
         default='default-post.jpg',
         upload_to='post_images',
         max_length=200,
+        help_text='For bests results, use an image that is 1,200px wide x 600px high',
     )
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
