@@ -5,9 +5,14 @@
   <section class="cta-section theme-bg-light py-5">
     <div class="container text-center single-col-max-width">
       <h2 class="heading">Portfolio</h2>
-      <div class="intro"><p>Welcome to my Portfolio website demonstrating skills with Python, Django, JavaScript, HTML, CSS, Sass, PostgreSQL, PyTest, Docker and Git</p></div>
+      <div class="intro">
+        <p>
+          Welcome to my Portfolio website demonstrating skills with Python, Django, 
+          JavaScript, HTML, CSS, Sass, PostgreSQL, PyTest, Docker and Git
+        </p>
+      </div>
       <a class="btn btn-primary" href="{% url 'contacts:contact' %}" target="_blank">
-        <i class="fas fa-paper-plane mr-2"></i>Hire Me
+        <i class="fas fa-envelope mr-2"></i>Contact Me
       </a>
     </div>
   </section>
@@ -19,197 +24,20 @@
           <li class="type active mb-3 mb-lg-0" data-filter="*">All</li>
           <li class="type mb-3 mb-lg-0" data-filter=".djangoapp">Django</li>
           <li class="type mb-3 mb-lg-0" data-filter=".pythonapp">Python</li>
-          <li class="type mb-3 mb-lg-0" data-filter=".sass">Sass</li>
           <li class="type mb-3 mb-lg-0" data-filter=".datasciencework">Data Science</li>
         </ul>
       </div>
-
+      <!--- Projects -->
       <div class="project-cards row isotope">
-      <div class="isotope-item col-md-6 mb-5 djangoapp pythonapp">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-1.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="#" class="theme-link">Work Search</a></h5>
-                <p class="card-text">Project intro lorem ipsum dolor sit amet, consectetuer adipiscing elit. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="#"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="#">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
+        {% include 'projects/work_search.html' %}
+        {% include 'projects/blog.html' %}
+        {% include 'projects/countdown_letters.html' %}
+        {% include 'projects/countdown_numbers.html' %}
+        {% include 'projects/roulette.html' %}
+        {% include 'projects/scraping.html' %}
+        {% include 'projects/text_analysis.html' %}
+        {% include 'projects/data_science.html' %}
       </div>
-      <div class="isotope-item col-md-6 mb-5 pythonapp sass">	
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-2.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 mobileapp">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-3.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 pythonapp datasciencework">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-4.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 mobileapp sass">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-5.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 pythonapp datasciencework">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-6.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 pythonapp sass datasciencework">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-7.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="isotope-item col-md-6 mb-5 pythonapp sass">
-        <div class="card project-card">
-          <div class="row no-gutters">
-            <div class="col-lg-4 card-img-holder">
-              <img src="static/assets/images/project/project-8.jpg" class="card-img" alt="image">
-            </div>
-            <div class="col-lg-8">
-              <div class="card-body">
-                <h5 class="card-title"><a href="project.html" class="theme-link">Project Heading</a></h5>
-                <p class="card-text">{% lorem 1 b random %}</p>
-              </div>
-            </div>
-          </div>
-          <div class="link-mask">
-            <a class="link-mask-link" href="project.html"></a>
-            <div class="link-mask-text">
-              <a class="btn btn-secondary" href="project.html">
-                <i class="fas fa-eye mr-2"></i>View Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </section>
   {% block additional_js %}
