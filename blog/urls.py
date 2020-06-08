@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 
 from .feeds import LatestPostsFeed
 from .views import (CategoryPostListView, ContentsListView, HomeView,
@@ -9,8 +9,8 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('user/<str:username>/', UserPostListView.as_view(), name='user_posts'),
-    path('category/<slug:slug>/', CategoryPostListView.as_view(), name='category_posts'),
+    path('user/<str:username>/posts', UserPostListView.as_view(), name='user_posts'),
+    path('category/<slug:slug>/posts', CategoryPostListView.as_view(), name='category_posts'),
     path('post/new/', PostCreateView.as_view(), name='post_create'),
     path('post/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
     path('post/<slug:slug>/update/', PostUpdateView.as_view(), name='post_update'),
@@ -18,4 +18,5 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('contents/', ContentsListView.as_view(), name='contents'),
     path('feed/latest/rss', LatestPostsFeed(), name='post_feed'),
+    path('users/', include('users.urls', namespace='users')),
 ]

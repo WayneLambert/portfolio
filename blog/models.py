@@ -31,7 +31,11 @@ class Post(models.Model):
         (0, 'Draft'),
         (1, 'Publish')
     )
-    title = models.CharField(max_length=60, validators=[MinLengthValidator(30)])
+    title = models.CharField(
+        max_length=60,
+        validators=[MinLengthValidator(40)],
+        help_text='The length of the post must be between 40 and 60 characters'
+    )
     slug = models.SlugField(max_length=60, unique=True)
     content = RichTextUploadingField()
     reference_url = models.URLField(blank=True)
