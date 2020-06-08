@@ -1,22 +1,39 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block content %}
-  <div class="countdown-photo">
-    <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
-    alt="countdown">
-  </div>
-  <div class="countdown-text">
-    <h6>How many numbers do you want from the top?</h6>
-    <form id="number-selection-form" action="{% url 'countdown-numbers:selection' %}"
-      method="POST" class="form-horizontal col-sm-1">
-      {% csrf_token %}
-      {{form|crispy}}
-      <button class="btn btn-sm btn-success mr-10" type="submit">
-        <i class="fa fa-sign-in"></i>
-        Select
-      </button><br><br>
-    </form>
-  </div>
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'countdown_numbers/layout_components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <h6 class="font-weight-bold mb-0 lead mt-3">Take on Rachel Riley Dent at the Numbers Game</h6>
+          <img class="mt-3 mb-3" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_numbers.png" 
+            alt="countdown">
+          <div class="client-quote d-flex flex-column col-6 mb-4 offset-lg-3">
+            <blockquote class="font-italic quote-content">
+              I've been racing 8 core CPUs recently. Good luck!
+            </blockquote>
+            <i class="fas fa-quote-left"></i>
+          </div>
+          <form method="POST" action="{% url 'countdown_numbers:selection' %}"
+            class="col-lg-2 offset-lg-5 div-wrapper d-flex">
+            {% csrf_token %}
+            {{form|crispy}}
+            <button class="btn btn-sm btn-success ml-2" type="submit">
+              <i class="fa fa-sign-in"></i>
+            </button>
+          </form>
+          <p class="text-small text-muted">
+            How many numbers do you want from the top?
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock content %}

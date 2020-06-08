@@ -1,55 +1,96 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% load template_helpers %}
 
 {% block content %}
-  <div class="countdown-photo">
-    <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
-    alt="countdown">
-  </div>
-  <div class="countdown-text">
-    <h6>The target number is ...</h6><br>
-      <div class="numbers-selected">
-        {{ request.GET.target_number }}
-      </div><br>
-    <h6>The numbers selected at random are...</h6><br>
-      <div class="numbers-selected">
-        {{ request.GET.numbers_chosen|remove_brackets }}
-      </div><br><br>
-    <h6>Enter the calculation for the closest number to the target number here...</h6><br>
-    <em class="small">Use matching sets of rounded brackets, digits and arithmetic operators.<br>
-      No spaces, equals sign or answer permitted.*
-    </em>
-    <form id="selected-numbers-form" action="{% url 'countdown-numbers:game' %}"
-      method="POST" class="form-horizontal">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="btn btn-sm btn-success mr-10" type="submit">
-        <i class="fa fa-sign-in"></i>
-        Submit
-      </button><br><br>
-    </form>
-    {% if messages %}
-      <div class="alert alert-warning col-md-4 mb-0" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <b><font color="red">
-          There are problems in your calculation requiring attention
-        </font></b><br><br>
-        <div class="messages">
-          {% for message in messages %}
-            {% if 'Your Calculation Entered:' in message.tags %}
-              <br><b>{{ message.extra_tags }}</b>
-            {% else %}
-              &#x204D {{ message }}
-            {% endif %}<br>
-          {% endfor %}
-
-        </div><br>
-        <b class="small">Please resubmit your calculation in accordance with the guidelines</b>
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'countdown_numbers/layout_components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <!-- Target Number -->
+          <h6 class="font-weight-bold mb-0 lead mt-3">The target number is...</h6>
+          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3" style="font-size: xxx-large;">
+            <blockquote class="quote-content">
+              <table>
+                <tr>
+                  <div class="alert alert-primary" role="alert">
+                    {{ request.GET.target_number }}
+                  </div>
+                </tr>
+              </table>
+            </blockquote>
+          </div>
+          <!-- Chosen Numbers -->
+          <h6 class="font-weight-bold mb-0 lead mt-1">The numbers selected at random for you are...</h6>
+          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3" style="font-size: xx-large;">
+            <blockquote class="quote-content">
+              <table>
+                <tr>
+                  <div class="alert alert-primary" role="alert">
+                    {{ request.GET.numbers_chosen|remove_brackets }}
+                  </div>
+                </tr>
+              </table>
+            </blockquote>
+          </div>
+          <!-- Form -->
+          <div class="d-flex flex-column col-10 offset-lg-1">
+            <form method="POST" action="{% url 'countdown_numbers:game' %}">
+              {% csrf_token %}
+              {{ form|crispy }}
+              <button class="btn btn-sm btn-success mr-5" type="submit">
+                Submit Calculation
+                <i class="fa fa-calculator"></i>
+              </button>
+            </form>
+          </div>
+          <!--- Help Text -->
+          <hr>
+          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3">
+            <blockquote class="quote-content text-center ml-3">
+              <p class="small mb-3">Use matching sets of rounded brackets, digits and arithmetic operators.<br>
+                No spaces, equals sign or answer permitted.*</p>
+              <p class="small ml-5">
+                Valid calc example:   (((25+75)*4)/4)+1<br>
+                Invalid calc example: (((25+75* 4)/ 4)+1z
+              </p>
+            </blockquote>
+          </div>
+          <!--- Messages -->
+          <div class="d-flex flex-column col-12 offset-lg-3">
+            <blockquote class="quote-content text-left ml-3">
+              {% if messages %}
+                <div class="alert alert-warning col-8 mb-0" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>
+                    <font color="red mb-2">
+                      There are problems in your calculation requiring attention
+                    </font>
+                  </strong>
+                  <div class="messages">
+                    {% for message in messages %}
+                      {% if 'Your Calculation Entered:' in message.tags %}
+                        <strong>{{ message.extra_tags }}</strong>
+                      {% else %}
+                        <i class="fa fa-chevron-right"></i> {{ message }}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <strong class="small">Please resubmit your calculation in accordance with the guidelines</strong>
+                </div>
+              {% endif %}
+            </blockquote>
+          </div>
+        </div>
       </div>
-    {% endif %}
-  </div>
+    </div>
+  </section>
 {% endblock content %}
