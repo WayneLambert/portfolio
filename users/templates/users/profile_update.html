@@ -36,11 +36,16 @@
                       {{ user_form.last_name|as_crispy_field }}
                     </div>
                   </div>
-                  <!-- Profile Image -->
+                  <!-- Post Image -->
                   <div class="custom-file mb-4">
-                    <input type="file" class="custom-file-input" id="id_profile_picture">
-                    <label class="custom-file-label" for="id_profile_picture">Upload Profile Picture...</label>
+                    <input type="file" class="custom-file-input" name="image" accept="image/*" id="{{ profile_form.profile_picture.id_for_label }}">
+                    <label class="custom-file-label" for="{{ profile_form.profile_picture.id_for_label }}">
+                      Select Profile Image...
+                    </label>
+                    <div class="small text-muted">{{ profile_form.profile_picture.help_text }}</div>
+                    <span class="text-danger small">{{ profile_form.profile_picture.errors }}</span>
                   </div>
+                  <!-- Radio buttons to display user posts with either username or full name -->
                   <small> Display my posts using my...</small>
                   <div class="form-group col-md-12 mb-0">
                     {% for radio in profile_form.author_view %}
@@ -58,11 +63,11 @@
                     <i class="fa fa-upload"></i>
                       Update
                   </button>
-                  <a class="btn btn-secondary mr-2"
-                    href="{{ request.META.HTTP_REFERER }}">
+                  <button type="cancel" class="btn btn-secondary mr-2" 
+                    onclick="window.location='{{ request.META.HTTP_REFERER }}';return false;">
                     <i class="fa fa-close"></i>
                     Cancel
-                  </a>
+                  </button>
                 </div>
               </form>
             </div>
@@ -72,3 +77,8 @@
     </div>
   </section>
 {% endblock content %}
+
+{% block additional_js %}
+  <!-- Functionality for selected filename from input selector to be displayed -->
+  <script src={% static 'assets/js/input-filename.js' %} type="application/javascript"></script>
+{% endblock additional_js %}

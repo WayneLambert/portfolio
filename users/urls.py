@@ -1,14 +1,15 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from users import views as user_views
+# from users import views as user_views
+from .views import UserRegisterView, ProfileView, ProfileUpdateView
 
 
 app_name = 'users'
 
 urlpatterns = [
-    path('register/', user_views.register, name='register'),
-    path('profile/', user_views.profile, name='profile'),
-    path('profile/update/', user_views.profile_update, name='profile_update'),
+    path('register/', UserRegisterView.as_view(), name='register'),
+    path('<str:slug>/profile/', ProfileView.as_view(), name='profile'),
+    path('<slug:slug>/profile/update/', ProfileUpdateView.as_view(), name='profile_update'),
 ]
 
 # Custom Login and Password Reset Process
