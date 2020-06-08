@@ -16,9 +16,12 @@ urlpatterns = [
     path('contact/', include('contacts.urls', namespace='contacts')),
     path('cv/', include('cv.urls', namespace='cv')),
     path('users/', include('users.urls', namespace='users')),
-    path('countdown-letters/', include('countdown_letters.urls', namespace='countdown_letters')),
-    path('countdown-numbers/', include('countdown_numbers.urls', namespace='countdown_numbers')),
-    path('text_analysis/', include('text_analysis.urls', namespace='text_analysis')),
+    path('countdown-letters/', include(
+        'countdown_letters.urls', namespace='countdown_letters')),
+    path('countdown-numbers/', include(
+        'countdown_numbers.urls', namespace='countdown_numbers')),
+    path('text_analysis/', include(
+        'text_analysis.urls', namespace='text_analysis')),
     path('roulette/', include('roulette.urls', namespace='roulette')),
     path('scraping/', include('scraping.urls', namespace='scraping')),
     path('api/', include('api.urls', namespace='api')),

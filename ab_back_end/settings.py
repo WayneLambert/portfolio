@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
     'cv.apps.CvConfig',
     'contacts.apps.ContactsConfig',
     'countdown_letters.apps.CountdownLettersConfig',
