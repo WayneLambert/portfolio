@@ -1,16 +1,18 @@
 import operator
 import random
+import os
 import time
-from logging import DEBUG, basicConfig, debug
+from logging import DEBUG, basicConfig, debug, INFO, info
+
+from django.conf import settings
 from django.shortcuts import render
 
-BASE_LOC = 'https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/'
-log_file = 'roulette/holiday_roulette.log'
+log_file = os.path.join(settings.BASE_DIR, 'roulette/holiday_roulette.log')
 
 # Detailed logging example below...
 basicConfig(
     filename=log_file,
-    level=DEBUG,
+    level=INFO,
     format="""%(asctime)s.%(msecs)03d %(levelname)-8s %(filename)s:
         %(module)s: %(lineno)d - %(funcName)s: %(message)s""",
     datefmt="%Y-%m-%d %H:%M:%S"
@@ -48,44 +50,39 @@ def reset_places_to_go(request):
         places_to_go[key] = 0
 
 
-def get_roulette_result(request):
+def get_roulette_result(request) ->tuple:
     num_of_choices = 1000
     detailed_choices = []
+    # log_file = os.path.join(settings.BASE_DIR, 'roulette/holiday_roulette.log')
     for place_selected in range(1, num_of_choices + 1):
-        time.sleep(0.005)
+        time.sleep(0.003)
         choice_num = random.randint(0, len(places_to_go) - 1)
         choice = list(places_to_go.keys())[choice_num]
         places_to_go[choice] += 1
-        choice_item = f'Choice #{place_selected} was {choice}'
-        debug(choice_item)
+        choice_item = f"Choice #{place_selected} was {choice}"
+        info(choice_item)
         print(choice_item)
         detailed_choices.append(choice_item)
-    most_selected_place = max(places_to_go.items(),
-                              key=operator.itemgetter(1))[0]
-    number_of_times_selected = max(
-        places_to_go.items(), key=operator.itemgetter(1))[1]
-    return (
-        places_to_go,
-        most_selected_place,
-        number_of_times_selected,
-        detailed_choices
-    )
+    most_selected_place = max(places_to_go.items(), key=operator.itemgetter(1))[0]
+    number_of_times_selected = max(places_to_go.items(), key=operator.itemgetter(1))[1]
+    return (places_to_go, most_selected_place, number_of_times_selected, detailed_choices)
 
 
-def get_picture_url(destination):
+def get_picture_url(destination: str) ->str:
+    AWS_FOLDER = f"{settings.AWS_BASE_BUCKET_ADDRESS}/post_images/holiday-roulette/"
     locations = {
-        'Aruba': f"{BASE_LOC}{'aruba.jpg'}",
-        'Barbados': f"{BASE_LOC}{'barbados.jpg'}",
-        'Bora Bora': f"{BASE_LOC}{'bora-bora.jpg'}",
-        'Fiji': f"{BASE_LOC}{'fiji.jpg'}",
-        'Hawaii': f"{BASE_LOC}{'hawaii.jpg'}",
-        'Koh Samui': f"{BASE_LOC}{'koh-samui.jpg'}",
-        'Langkawi': f"{BASE_LOC}{'langkawi.jpg'}",
-        'Maldives': f"{BASE_LOC}{'maldives.jpg'}",
-        'Palawan': f"{BASE_LOC}{'palawan.jpg'}",
-        'Santorini': f"{BASE_LOC}{'santorini.jpg'}",
-        'Seychelles': f"{BASE_LOC}{'seychelles.jpg'}",
-        'St. Lucia': f"{BASE_LOC}{'st-lucia.jpg'}",
+        'Aruba': f"{AWS_FOLDER}aruba.jpg",
+        'Barbados': f"{AWS_FOLDER}barbados.jpg",
+        'Bora Bora': f"{AWS_FOLDER}bora-bora.jpg",
+        'Fiji': f"{AWS_FOLDER}fiji.jpg",
+        'Hawaii': f"{AWS_FOLDER}hawaii.jpg",
+        'Koh Samui': f"{AWS_FOLDER}koh-samui.jpg",
+        'Langkawi': f"{AWS_FOLDER}langkawi.jpg",
+        'Maldives': f"{AWS_FOLDER}maldives.jpg",
+        'Palawan': f"{AWS_FOLDER}palawan.jpg",
+        'Santorini': f"{AWS_FOLDER}santorini.jpg",
+        'Seychelles': f"{AWS_FOLDER}seychelles.jpg",
+        'St. Lucia': f"{AWS_FOLDER}st-lucia.jpg",
     }
     return locations.get(destination, "Invalid destination")
 
@@ -106,7 +103,7 @@ def destination_screen(request):
     return render(request, 'roulette/destination.html', context)
 
 
-def read_log_file(request):
+def read_log_file(request) ->list:
     with open(log_file, 'r') as file:
         contents = []
         for line in file.readlines():
@@ -115,8 +112,5 @@ def read_log_file(request):
 
 
 def view_log_file_contents(request):
-    log_file_contents = read_log_file(request)
-    context = {
-        'log_file_contents': log_file_contents,
-    }
+    context = {'log_file_contents': read_log_file(request)}
     return render(request, 'roulette/log_file_contents.html', context)
