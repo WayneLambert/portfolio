@@ -1,0 +1,1 @@
+Whilst the results table below looks like ordinary static text, the area names, remain votes, leave votes, and the turnout percentage have all been scraped from the BBC website. The leave and remain percentages, and the area votes fields have been calculated within the logic of the application.

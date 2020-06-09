@@ -57,8 +57,4 @@ def get_referendum_results(request):
         'total_remain_percent': total_remain_percent,
     }
 
-    return render(
-        request,
-        'referendum.html',
-        {'context': context}
-    )
+    return render(request, 'referendum.html', {'context': context})

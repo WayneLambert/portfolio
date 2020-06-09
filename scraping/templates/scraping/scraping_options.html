@@ -1,79 +1,54 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>List of Famous Speeches</title>
-  </head>
-
-  <body>
-    {% block content %}
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'scraping/layout_components/game_title.html' %}
+    </div>
+  </section>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
       <div class="alert alert-light col-md-10 mb-0" role="alert">
-      &nbsp;
-      <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
-      <div class="alert alert-secondary">The purpose of this application is to demonstrate
-          the use of some well known Python libraries to handle web tasks such as getting
-          content from websites and parsing their HTML. The Django component of the application
-          handles the navigation patterns (urls), the request/response application logic (views)
-          and the rendering of the final result (templates).
-      </div>
-      &nbsp;
-      <span class="referendum">
-        <form action="{% url 'referendum' %}" method="GET">
-          <div class="alert alert-info"><b>Referendum: </b>
-            Results on the British vote on membership of the European Union (a.k.a. Brexit)
+        <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
+        {% include 'scraping/content_components/desc.txt' %}
+        <hr class="col-8">
+        <form action="{% url 'scraping:referendum' %}" method="GET">
+          <div class="alert alert-info mt-2"><strong>EU Referendum: </strong>
+            Results on the British vote on membership of the EU
           </div>
-          <a href="{% url 'referendum' %}" class="btn btn-sm btn-success mr-10"
-            id="btn-scrape-it">
+          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success mr-10">
             <i class="fa fa-bar-chart"></i>
             View Referendum Results
-          </a><br>
-          <em class="small">Please be patient waiting for the results page to load as the process is
-          scraping from a page for each letter of the alphabet from the BBC website.</em>
-        </form>
-      </span>
-      <hr>
-      <span class="churchill">
-        <form action="{% url 'churchill-speech' %}" method="GET">
-          <div class="alert alert-info"><b>Speech 1: </b>Sir Winston Churchill as he took power on   
-            13th May, 1940 @ House of Commons, London, UK.</div>
-          <a href="{% url 'churchill-speech' %}" class="btn btn-sm btn-success mr-10"
-            id="btn-scrape-it">
-            <i class="fa fa-comment"></i>
-            View Churchill Speech
           </a>
+          <p>
+            <em class="small">Please be patient waiting for the results page to load as the process is
+            scraping from a page for each letter of the alphabet from the BBC website.</em>
+          </p>
         </form>
-      </span>
-      <hr>
-      <span class="gettysburg">
-        <form action="{% url 'gettysburg-speech' %}" method="GET">
-          <div class="alert alert-info"><b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on  
-            19th November, 1863 by clicking the button below.</div>
-          <a href="{% url 'gettysburg-speech' %}" class="btn btn-sm btn-success mr-10"
-            id="btn-scrape-it">
-            <i class="fa fa-comment"></i>
-            View Gettysburg Address
-          </a>
-        </form>
-      </span>
-      <hr>
-      <span class="jokes">
-        <form action="{% url 'jokes' %}" method="GET">
-          <div class="alert alert-info">If you're in the mood for something a little more light hearted,
-            you can take a look at one of these jokes.</div>
-          <a href="{% url 'jokes' %}" class="btn btn-sm btn-success mr-10" id="btn-scrape-it">
-            <i class="fa fa-smile-o"></i>
-            View Joke
-          </a>
-        </form>
-      </span>
-      <hr>
-      &nbsp; &nbsp;
+        <hr class="col-8">
+        <span class="churchill">
+          <form action="{% url 'scraping:churchill_speech' %}" method="GET">
+            <div class="alert alert-info"><strong>Speech 1: </strong>Sir Winston Churchill as he took power on
+              13th May, 1940 @ House of Commons, London, UK.</div>
+            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success mr-10">
+              <i class="fa fa-comment"></i>
+              View Churchill Speech
+            </a>
+          </form>
+        </span>
+        <hr class="col-8">
+        <span class="gettysburg">
+          <form action="{% url 'scraping:gettysburg_speech' %}" method="GET">
+            <div class="alert alert-info"><b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on
+              19th November, 1863 by clicking the button below.</div>
+            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success mr-10">
+              <i class="fa fa-comment"></i>
+              View Gettysburg Address
+            </a>
+          </form>
+        </span>
       </div>
-    {% endblock content %}
-  </body>
-</html>
+    </div>
+  </article>
+{% endblock content %}

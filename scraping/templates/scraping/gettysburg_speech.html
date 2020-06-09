@@ -1,38 +1,38 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gettysburg Address</title>
-  </head>
 
-  <body>
-    {% block content %}
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        &nbsp;
-        <h5>Gettysburg Address by Abraham Lincoln: 19-Nov-1863 @ Gettysburg, Pennsylvania, USA</h5><br>
-        <div>Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'scraping/layout_components/game_title.html' %}
+    </div>
+  </section>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <h5>Gettysburg Address by Abraham Lincoln: 19-Nov-1863 @ Gettysburg, Pennsylvania, USA</h5>
+      <div class="mt-3">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
           party library, Beautiful Soup and then rendered to a Django template page.
-        </div><br>
-        <div class="alert alert-info" role="alert">{{ gettysburg }}</div>
-        <em class="small">
-          Source: <a
-            href="https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address"
-            target="_blank">
-            https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address</a><br>
-        </em><br>
-        <a href="{% url 'scraping-options' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
-          <i class="fa fa-repeat"></i>
-          Start Again
-        </a><br><br>
-        <h6>The code for this scraping process can be seen
-          <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/gettysburg_speech.py" target="_blank">here</a>.
-        </h6>
       </div>
-    {% endblock content %}
-  </body>
-</html>
+      <div class="alert alert-info mt-3" role="alert">{{ gettysburg }}</div>
+      <div class="mb-3">
+        <em class="small">
+          Source: 
+          <a href="https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address" target="_blank">
+            https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address
+          </a>
+        </em>
+      </div>
+      <!--- Start Again Button -->
+      <a href="{% url 'scraping:scraping_options' %}" class="btn btn-sm btn-success mr-10">
+        <i class="fa fa-repeat"></i>
+        Start Again
+      </a>
+      <!--- View Code on GitHub Button -->
+      <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/gettysburg_speech.py" target="_blank"
+        class="btn btn-dark mr-2 ml-2">
+        <i class="fa fa-github"></i>
+        View Code
+      </a>
+    </div>
+  </article>
+{% endblock content %}

@@ -1,39 +1,38 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Churchill Speech</title>
-  </head>
 
-  <body>
-    {% block content %}
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        &nbsp;
-        <h5>Sir Winston Churchill Speech: 13-May-1940 @ House of Commons, London, UK</h5><br>
-        <div>Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
-          party library, Beautiful Soup and then rendered to a Django template page.
-        </div><br>
-        <div class="alert alert-info" role="alert">{{ churchill_speech }}</div>
-        <em class="small">
-          Source: <a
-          href="https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
-          target="_blank">
-          www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and</a><br>
-        </em><br>
-        <a href="{% url 'scraping-options' %}" class="btn btn-sm btn-success mr-10" id="btn-start-again">
-          <i class="fa fa-repeat"></i>
-          Start Again
-        </a><br><br>
-        <h6>The code for this scraping process can be seen 
-          <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/churchill_speech.py"
-          target="_blank">here</a>.
-        </h6>
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'scraping/layout_components/game_title.html' %}
+    </div>
+  </section>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <h5>Sir Winston Churchill Speech: 13-May-1940 @ House of Commons, London, UK</h5>
+      <div class="mt-3">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
+        party library, Beautiful Soup and then rendered to a Django template page.
       </div>
-    {% endblock content %}
-  </body>
-</html>
+      <div class="alert alert-info mt-3" role="alert">{{ churchill_speech }}</div>
+      <div class="mb-3">
+        <em class="small">
+          Source: 
+          <a href="https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and" target="_blank">
+            www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and
+          </a>
+        </em>
+      </div>
+      <!--- Start Again Button -->
+      <a href="{% url 'scraping:scraping_options' %}" class="btn btn-sm btn-success mr-10">
+        <i class="fa fa-repeat"></i>
+        Start Again
+      </a>
+      <!--- View Code on GitHub Button -->
+      <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/churchill_speech.py" target="_blank"
+        class="btn btn-dark mr-2 ml-2">
+        <i class="fa fa-github"></i>
+        View Code
+      </a>
+    </div>
+  </article>
+{% endblock content %}
