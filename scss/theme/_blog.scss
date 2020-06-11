@@ -26,8 +26,8 @@
 }
 
 .article-img {
-  height: 65px;
-  width: 65px;
+  height: 110px;
+  width: 110px;
   margin-right: 16px;
 }
 
@@ -160,9 +160,9 @@
     padding-right: 3rem;
     padding-left: 1.5rem;
 
-    &:focus {
-      border-color: $theme-divider;
-    }
+    // &:focus {
+    //   border-color: $theme-divider;
+    // }
   }
 
   .search-btn {
