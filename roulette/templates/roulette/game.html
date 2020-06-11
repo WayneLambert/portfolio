@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}{{ block.super }} | Roulette | Game{% endblock title %}
+
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
@@ -19,7 +21,7 @@
           <button class="btn btn-sm btn-success mt-3" 
             onclick="window.location='{% url 'roulette:holiday_destination' %}';return false;">
             <i class="fa fa-plane"></i>
-            Start Again
+            Find Destination
           </button>
         </div>
       </div>
