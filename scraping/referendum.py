@@ -1,12 +1,29 @@
+import string
 from collections import defaultdict
 from decimal import Decimal
-import string
-from django.shortcuts import render
+
 import requests
 from bs4 import BeautifulSoup
+from django.shortcuts import render
 
 ALPHABET = string.ascii_lowercase
 BASE_URL = 'https://www.bbc.co.uk/news/politics/eu_referendum/results/local/'
+
+def get_area_results(results: dict) ->list:
+    area_results = zip(
+        results['area_name'],
+        results['leave_votes'],
+        results['leave_percent'],
+        results['remain_votes'],
+        results['remain_percent'],
+        results['area_votes'],
+        results['turnout'],
+    )
+    results = []
+    for area in area_results:
+        results.append(area)
+
+    return results
 
 def get_referendum_results(request):
     """
@@ -46,6 +63,8 @@ def get_referendum_results(request):
                 total_remain_percent = f"{remain_votes / total_votes:.1%}"
         else:
             continue
+    results = get_area_results(dict(results))
+
 
     context = {
         'results': results,

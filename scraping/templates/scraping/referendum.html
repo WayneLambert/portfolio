@@ -25,45 +25,23 @@
           </tr>
         </thead>
         <tbody>
-          <td>
-            {% for value in context.results.area_name %}
-              {{ value }}<br>
-            {% endfor %}
-          </td>
-          <td>
-            {% for value in context.results.leave_votes %}
-              {{ value|intcomma }}<br>
-            {% endfor %}
-          </td>
-          <td>
-            {% for value in context.results.leave_percent %}
-              {{ value }}<br>
-            {% endfor %}
-          </tdx>
-          <td>
-            {% for value in context.results.remain_votes %}
-              {{ value|intcomma }}<br>
-            {% endfor %}
-          </td>
-          <td>
-            {% for value in context.results.remain_percent %}
-              {{ value }}<br>
-            {% endfor %}
-          </tdx>
-          <td>
-            {% for value in context.results.area_votes %}
-              {{ value|intcomma }}<br>
-            {% endfor %}
-          </td>
-          <td>
-            {% for value in context.results.turnout %}
-              {{ value }}<br>
-            {% endfor %}
-          </tdx>
+          {% for result in context.results %}
+            <tr>
+              <td scope="row">{{ result.0 }}</td>
+              <td class="text-right" scope="row">{{ result.1|intcomma }}</td>
+              <td class="text-right" scope="row">{{ result.2 }}</td>
+              <td class="text-right" scope="row">{{ result.3|intcomma }}</td>
+              <td class="text-right" scope="row">{{ result.4 }}</td>
+              <td class="text-right" scope="row">{{ result.5|intcomma }}</td>
+              <td class="text-right" scope="row">{{ result.6 }}</td>
+            </tr>
+          {% endfor %}
         </tbody>
       </table>
+      <hr class="col-10 mt-5">
       <div>
-        <strong>Number of Areas: </strong>: {{ context.results.area_names.count|intcomma }}
+        {{ context.results.count }}
+        <strong>Number of Areas</strong>: {{ context.results|length|intcomma }}
       </div>
       <div>
         <strong>Total Leave Votes: </strong>
