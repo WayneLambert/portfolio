@@ -11,24 +11,8 @@
             </div>
           </div>
           <p class="blog-name"><a href="{% url 'pages:home' %}">Wayne Lambert</a></p>
-          <div class="bio mb-3">Hi, my name is Wayne Lambert and I'm an aspiring software engineer. Welcome to my personal website!</div>
-          <ul class="social-list list-inline py-2 mx-auto">
-            <li class="list-inline-item">
-              <a href="https://github.com/WayneLambert/" target="_blank">
-                <i class="fab fa-github-alt fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://stackoverflow.com/users/11211077/wayne-lambert?tab=profile" target="_blank">
-                <i class="fab fa-stack-overflow fa-fw"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.linkedin.com/in/waynealambert/" target="_blank">
-                <i class="fab fa-linkedin-in fa-fw"></i>
-              </a>
-            </li>
-          </ul>
+          <div class="bio mb-3">Insert blurb here...</div>
+          {% include 'layout_components/social_buttons.html' %}
           <hr>
         </div>
 
