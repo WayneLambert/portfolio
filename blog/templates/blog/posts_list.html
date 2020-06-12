@@ -4,7 +4,7 @@
 {% block title %}{{ block.super }} | Blog Posts{% endblock title %}
 
 {% block content %}
-  {% include 'post_components/search.html' %}
+  {% include 'components/search.html' %}
   {% include 'blog/posts_list_count.html' %}
   {% for post in posts %}
     <article class="blog-post mt-1">
@@ -73,5 +73,5 @@
       </div>
     </article>
   {% endfor %}
-  {% include 'post_components/pagination_nav.html' %}
+  {% include 'components/pagination_nav.html' %}
 {% endblock content %}

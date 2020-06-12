@@ -32,8 +32,6 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('blog:users:profile', kwargs={'slug': self.slug})
 
-
-    # TODO: Is this signature set up correctly?
     def save(self, *args, **kwargs):
         if not self.slug.strip():
             self.slug = slugify(self.full_name)

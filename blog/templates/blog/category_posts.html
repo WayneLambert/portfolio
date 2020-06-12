@@ -7,10 +7,10 @@
     <div class="container">
       <div class="row">
         {% for post in posts %}
-          {% include 'post_components/post_card.html' %}
+          {% include 'components/post_card.html' %}
         {% endfor %}
       </div>
     </div>
   </section>
-  {% include 'post_components/pagination_nav.html' %}
+  {% include 'components/pagination_nav.html' %}
 {% endblock content %}

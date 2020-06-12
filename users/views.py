@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views.generic import CreateView, TemplateView, UpdateView
 
 from users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
@@ -34,20 +34,21 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         return obj
 
     def get_context_data(self, **kwargs):
-        kwargs['profile'] = self.get_object()
-        if 'user_form' not in kwargs:
-            kwargs['user_form'] = self.form_class(instance=self.request.user)
-        if 'profile_form' not in kwargs:
-            kwargs['profile_form'] = self.profile_form_class(
+        context = super(ProfileUpdateView, self).get_context_data(**kwargs)
+        if 'user_form' not in context:
+            context['user_form'] = self.form_class(instance=self.request.user)
+        if 'profile_form' not in context:
+            context['profile_form'] = self.profile_form_class(
                 self.request.FILES, instance=self.request.user.user)
-        return kwargs
+        return context
 
     def form_valid(self, form):
-        user_form = self.form_class(
-            self.request.POST, instance=self.request.user)
-        profile_form = self.profile_form_class(
-            self.request.POST, self.request.FILES, instance=self.request.user.user)
+        user_form = UserUpdateForm(self.request.POST, instance=self.request.user)
+        profile_form = ProfileUpdateForm(
+            self.request.POST, self.request.FILES, instance=self.request.user)
         super(ProfileUpdateView, self).form_valid(form)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+
+        return super().form_valid(profile_form)

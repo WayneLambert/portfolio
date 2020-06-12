@@ -3,15 +3,15 @@
 {% block title %}{{ block.super }} | Blog Home{% endblock title %}
 
 {% block content %}
-  {% include 'post_components/search.html' %}
+  {% include 'components/search.html' %}
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">
         {% for post in posts %}
-          {% include 'post_components/post_card.html' %}
+          {% include 'components/post_card.html' %}
         {% endfor %}
       </div>
     </div>
   </section>
-  {% include 'post_components/pagination_nav.html' %}
+  {% include 'components/pagination_nav.html' %}
 {% endblock content %}

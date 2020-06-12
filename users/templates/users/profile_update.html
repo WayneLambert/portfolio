@@ -12,7 +12,7 @@
           <div class="module-inner">
             <div class="content-panel">
               <img class="rounded-circle account-img mb-5" src="{{ user.user.profile_picture.url }}">
-              <form class="user-form" method="POST" enctype="multipart/form-data">
+              <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <legend class="border-bottom mb-4">
                   {% if user.user.first_name and user.user.last_name %}
@@ -38,39 +38,11 @@
                       {{ user_form.last_name|as_crispy_field }}
                     </div>
                   </div>
-                  <!-- Post Image -->
-                  <div class="custom-file mb-4">
-                    <input type="file" class="custom-file-input" name="image" accept="image/*" id="{{ profile_form.profile_picture.id_for_label }}">
-                    <label class="custom-file-label" for="{{ profile_form.profile_picture.id_for_label }}">
-                      Select Profile Image...
-                    </label>
-                    <div class="small text-muted">{{ profile_form.profile_picture.help_text }}</div>
-                    <span class="text-danger small">{{ profile_form.profile_picture.errors }}</span>
-                  </div>
-                  <!-- Radio buttons to display user posts with either username or full name -->
-                  <small> Display my posts using my...</small>
-                  <div class="form-group col-md-12 mb-0">
-                    {% for radio in profile_form.author_view %}
-                      <label for="{{ radio.id_for_label }}">
-                        {{ radio.choice_label }}
-                        <span class="radio">{{ radio.tag }}</span>
-                      </label>
-                    {% endfor %}
-                  </div>
+                  {% include 'components/profile_picture.html' %}
+                  {% include 'components/author_view.html' %}
+                  <hr>
+                  {% include 'components/buttons.html' %}
                 </fieldset>
-                <hr>
-                <!-- Buttons -->
-                <div class="form-group">
-                  <button type="submit" class="btn btn-success mr-2">
-                    <i class="fa fa-upload"></i>
-                      Update
-                  </button>
-                  <button type="cancel" class="btn btn-secondary mr-2" 
-                    onclick="window.location='{{ request.META.HTTP_REFERER }}';return false;">
-                    <i class="fa fa-close"></i>
-                    Cancel
-                  </button>
-                </div>
               </form>
             </div>
           </div>

@@ -11,10 +11,10 @@
           </a>
         </h6>
         <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
-        {% include "post_components/meta_data.html" %}
+        {% include "components/meta_data.html" %}
         <hr style="background-color: #1762dd; height: 1.5px" />
       </div>
     </article>
   {% endfor %}
-  {% include 'post_components/pagination_nav.html' %}
+  {% include 'components/pagination_nav.html' %}
 {% endblock content %}

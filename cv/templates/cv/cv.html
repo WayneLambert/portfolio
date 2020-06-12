@@ -4,29 +4,29 @@
 {% block title %}{{ block.super }} | CV{% endblock title %}
 
 {% block content %}
-  {% include 'cv_components/pdf_download.html' %}
+  {% include 'components/pdf_download.html' %}
   <div class="container px-3 px-lg-5">
     <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
-      {% include 'cv_components/header.html' %}
+      {% include 'components/header.html' %}
       <hr>
-      {% include 'cv_components/statement.html' %}
+      {% include 'components/statement.html' %}
       <hr>
       <div class="cv-body">
         <div class="row">
           <div class="cv-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
-            {% include 'cv_components/career_history.html' %}
-            {% include 'cv_components/projects.html' %}
+            {% include 'components/career_history.html' %}
+            {% include 'components/projects.html' %}
           </div>
           <aside class="cv-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
             <section class="skills-section py-3">
-            {% include 'cv_components/skills.html' %}
-            {% include 'cv_components/education.html' %}
-            {% include 'cv_components/interests.html' %}
+            {% include 'components/skills.html' %}
+            {% include 'components/education.html' %}
+            {% include 'components/interests.html' %}
           </aside>
         </div>
       </div>
       <hr>
-      {% include 'cv_components/footer.html' %}
+      {% include 'components/footer.html' %}
     </article>
   </div>
 {% endblock content %}

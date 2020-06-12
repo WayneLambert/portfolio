@@ -11,12 +11,12 @@
 {% block content %}
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
-      {% include "post_components/post_title.html" %}
-      {% include "post_components/meta_data.html" %}
+      {% include "components/post_title.html" %}
+      {% include "components/meta_data.html" %}
       <!-- Post Author and Meta Data -->
 
       <!-- Post Image and Caption -->
-      {% include 'post_components/image.html' %}
+      {% include 'components/image.html' %}
 
       <!-- Post Content -->
       <p class="article-content">{{ post.content|safe }}</p>
@@ -28,7 +28,7 @@
       {% endif %}
 
       <!-- Nav Links -->
-      {% include 'post_components/post_detail_nav.html' %}
+      {% include 'components/post_detail_nav.html' %}
     </div>
   </article>
 {% endblock content %}

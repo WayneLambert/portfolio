@@ -5,9 +5,9 @@
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       {% if 'update' in request.path %}
-        {% include 'post_components/post_update.html' %}
+        {% include 'components/post_update.html' %}
       {% else %}
-        {% include 'post_components/post_create.html' %}
+        {% include 'components/post_create.html' %}
       {% endif %}
     </div>
   </article>

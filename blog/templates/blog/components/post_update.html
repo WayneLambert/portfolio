@@ -4,24 +4,24 @@
   {% csrf_token %}
   {{ form.media }}
   <fieldset class="form-group">
-    <legend class="border-bottom mb-4">Create New Post</legend>
+    <legend class="border-bottom mb-4">Update Post: {{ post.title }}</legend>
     {{ form.title|as_crispy_field }}
-    <div class="small mb-3" id="title-length">Title Length: 0/60</div>
+    <div class="small mb-3" id="title-length">Title Length: {{ post.title|length }}/60</div>
     {{ form.content|as_crispy_field }}
     {{ form.categories|as_crispy_field }}
     {{ form.reference_url|as_crispy_field }}
 
     <!-- Post Image -->
-    {% include 'post_components/post_image_update.html' %}
+    {% include 'components/post_image_update.html' %}
     <!-- Post Status -->
-    {% include 'post_components/post_status_selectors.html' %}
+    {% include 'components/post_status_selectors.html' %}
   </fieldset>
 
   <!-- Buttons Form Group -->
   <div class="form-group">
     <button type="submit" class="btn btn-success mr-2">
       <i class="fa fa-upload"></i>
-      Create
+      Update
     </button>
     <button type="cancel" class="btn btn-secondary mr-2" 
       onclick="window.location='{{ request.META.HTTP_REFERER }}';return false;">
