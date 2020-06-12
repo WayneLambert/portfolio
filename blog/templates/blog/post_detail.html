@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{% static 'highlight/styles/atom-one-dark.css' %}">
 {% endblock additional_css %}
 
+{% block title %}{{ block.super }} | {{ post.title }}{% endblock title %}
+
 {% block content %}
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">

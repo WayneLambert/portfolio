@@ -11,34 +11,35 @@
           {{ post.title }}
         </a>
       </h6>
-      <span class="card-text">{{ post.content|truncatechars:40|safe }}</span>
       <div class="article-metadata">
         <table class="table table-striped" style="height: 150px;">
           <tbody>
             <tr>
               <td>
-                <a href="{% url 'blog:user_posts' post.author.username %}">
+                <a class="mb-2" href="{% url 'blog:user_posts' post.author.username %}">
                   {% if post.author.user.author_view == 0 %}
                     {{ post.author.username }}
                   {% else %}
                     {{ post.author.user.full_name }}
                   {% endif %}
                 </a>
-                <br>
                 <small class="text-muted">
-                  <strong>Published:</strong> {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)
-                  <strong>Updated:</strong> {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
-                </small><br>
+                  <ul class="no-bullets">
+                    <li><strong>Published:</strong> {{ post.publish_date|date:"D d-M-y" }}</li>
+                    <li><strong>Updated:</strong> {{ post.updated_date|date:"D d-M-y" }}</li>
+                  </ul>
+                </small>
                 <small class="text-muted">
                   <strong>Categories:</strong> 
-                  {% for category in post.categories.all %}
+                  {% for category in post.categories.all|slice:":2" %}
                     <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
                     {% if not forloop.last %}  |  {% endif %}
                   {% endfor %}
                 </small>
                 <br>
                 <small class="text-muted">
-                  <span class="time">{{ post.word_count|intcomma }} words</span>  |  <span class="time">{{ post.reading_time }} min read</span>
+                  <span class="time">{{ post.word_count|intcomma }} words</span>  |  
+                  <span class="time">{{ post.reading_time }} min read</span>
                 </small>
               </td>
             </tr>

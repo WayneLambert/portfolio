@@ -12,21 +12,9 @@
     {{ form.reference_url|as_crispy_field }}
 
     <!-- Post Image -->
-    <div class="custom-file">
-      <input type="file" class="custom-file-input" name="image" accept="image/*" id="{{ form.image.id_for_label }}">
-      <label class="custom-file-label" for="{{ form.image.id_for_label }}">
-        Select Post Image...
-      </label>
-      <div class="small text-muted">{{ form.image.help_text }}</div>
-      <span class="text-danger small">{{ form.image.errors }}</span>
-    </div>
-
-    {% for radio in form.status %}
-      <label class="mt-4" for="{{ radio.id_for_label }}">
-        {{ radio.choice_label }}
-        <span class="radio">{{ radio.tag }}</span>
-      </label>
-    {% endfor %}
+    {% include 'post_components/post_image_update.html' %}
+    <!-- Post Status -->
+    {% include 'post_components/post_status_selectors.html' %}
   </fieldset>
 
   <!-- Buttons Form Group -->
@@ -37,7 +25,7 @@
     </button>
     <button type="cancel" class="btn btn-secondary mr-2" 
       onclick="window.location='{{ request.META.HTTP_REFERER }}';return false;">
-      <i class="fa fa-trash-o"></i>
+      <i class="fa fa-close"></i>
       Cancel
     </button>
   </div>

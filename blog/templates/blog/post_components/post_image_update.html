@@ -1,0 +1,9 @@
+<!-- Post Image -->
+<div class="custom-file">
+  <input type="file" class="custom-file-input" name="image" accept="image/*" id="{{ form.image.id_for_label }}">
+  <label class="custom-file-label" for="{{ form.image.id_for_label }}">
+    Select Post Image...
+  </label>
+  <div class="small text-muted">{{ form.image.help_text }}</div>
+  <span class="text-danger small">{{ form.image.errors }}</span>
+</div>

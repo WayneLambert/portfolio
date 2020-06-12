@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} | Blog Home{% endblock title %}
+{% block title %}{{ block.super }} | Blog Home{% endblock title %}
 
 {% block content %}
   {% include 'post_components/search.html' %}

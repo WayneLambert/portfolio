@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load humanize %}
 
+{% block title %}{{ block.super }} | Blog Posts{% endblock title %}
+
 {% block content %}
   {% include 'post_components/search.html' %}
   {% include 'blog/posts_list_count.html' %}

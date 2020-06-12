@@ -22,4 +22,4 @@ class AboutMeView(TemplateView):
 
 
 class PrivacyPolicyView(TemplateView):
-    template_name = 'privacy_policy.html'
+    template_name = 'privacy.html'

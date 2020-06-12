@@ -8,29 +8,51 @@
           <img class="rounded-circle article-img" src="{{ post.author.user.profile_picture.url }}">
         </td>
         <td>
-          <a href="{% url 'blog:user_posts' post.author.username %}">
-            {% if post.author.profile.author_view == 0 %}
-              {{ post.author.username }}
-            {% else %}
-              {{ post.author.first_name }} {{ post.author.last_name }}
-            {% endif %}
-          </a>
-          <br>
-          <small class="text-muted">
-            <strong>Published:</strong> {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
-            <strong>Updated:</strong> {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
-          </small><br>
-          <small class="text-muted">
-            <strong>Categories:</strong> 
-            {% for category in post.categories.all %}
-              <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
-              {% if not forloop.last %}  |  {% endif %}
-            {% endfor %}
-          </small>
-          <br>
-          <small class="text-muted">
-            <span class="time">{{ post.word_count|intcomma }} words</span>  |  <span class="time">{{ post.reading_time }} min read</span>
-          </small>
+          <ul class="no-bullets">
+            <!-- Author Name or Username -->
+            <li>
+              <a href="{% url 'blog:user_posts' post.author.username %}">
+                {% if post.author.user.author_view == 0 %}
+                  {{ post.author.username }}
+                {% else %}
+                  {{ post.author.user.full_name }}
+                {% endif %}
+              </a>
+            </li>
+
+            <!-- Published and Updated Dates -->
+            <li>
+              <small class="text-muted">
+                <strong>Published:</strong>
+                {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
+                <strong>Updated:</strong> 
+                {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
+              </small>
+            </li>
+
+            <!-- Post Categories -->
+            <li>
+              <small class="text-muted">
+                <strong>Categories:</strong> 
+                {% for category in post.categories.all %}
+                  <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
+                  {% if not forloop.last %}  |  {% endif %}
+                {% endfor %}
+              </small>
+            </li>
+
+            <!-- Word Count, Reading Time, and Update/Delete Links (if authenticated) -->
+            <li>
+              <small class="text-muted">
+                <span class="time">{{ post.word_count|intcomma }} words</span>  |  
+                <span class="time">{{ post.reading_time }} min read</span>
+                {% if user.is_authenticated %}
+                   | <a href="{% url 'blog:post_update' post.slug %}">Update</a>
+                   | <a href="{% url 'blog:post_delete' post.slug %}">Delete</a>
+                {% endif %}
+              </small>
+            </li>
+          </ul>
         </td>
       </tr>
     </tbody>

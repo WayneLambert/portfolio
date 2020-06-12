@@ -2,6 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+{% block title %}{{ block.super }} | {{ user.user.full_name }} | Profile Update{% endblock title %}
+
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">

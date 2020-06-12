@@ -6,29 +6,31 @@
   <link rel="stylesheet" href="{% static 'highlight/styles/atom-one-dark.css' %}">
 {% endblock additional_css %}
 
+{% block title %}{{ block.super }} | Post Delete{% endblock title %}
+
 {% block content %}
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
-          <legend class="border-bottom mb-4" id="warning-text">Delete Post?</legend>
-          <h6 id="warning-text">Are you sure that you would like to delete this post?</h6>
-            <br>
-            <h4>{{ object.title }}</h4>
-          <br>
-            {{ object.content|safe|truncatewords:100 }}<br><br>
-            <a href="{{ object.reference_url }}" id="reference_url">{{ object.reference_url }}</a><br>
+          <legend class="border-bottom mb-4" id="warning-text">
+            Delete <em>"{{ post.title }}"</em>?
+          </legend>
+            {{ object.content|safe|truncatewords:100 }}
+            <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
         </fieldset>
+        <!-- Buttons -->
         <div class="form-group">
           <button class="btn btn-danger" type="submit">
             <i class="fa fa-trash"></i>
-            Yes, Delete
+            Delete
           </button>
-          <a class="btn btn-secondary" href="{% url 'blog:post_detail' object.slug %}">
+          <button type="cancel" class="btn btn-secondary mr-2" 
+            onclick="window.location='{% url 'blog:post_detail' post.slug %}';return false;">
             <i class="fa fa-close"></i>
             Cancel
-          </a>
+          </button>
         </div>
       </form>
     </div>

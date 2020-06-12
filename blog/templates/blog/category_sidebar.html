@@ -6,7 +6,7 @@
 <ul class="navbar-nav flex-column text-left">
   {% for category in categories_list %}
     <li class="nav-item">
-      <a class="nav-link" href="{% url "blog:home" %}category/{{ category.slug }}">
+      <a class="nav-link" href="{% url "blog:home" %}category/{{ category.slug }}/posts">
         <i class="fas fa-book fa-fw ml-2 mr-2"></i>
         {{ category.name }} <span class="badge badge-light badge-pill"> {{category.posts.count}}</span>
       </a>

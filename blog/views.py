@@ -128,7 +128,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ Permits a logged in user to delete an existing post """
     model = Post
-    template_name = 'post_components/post_confirm_delete.html'
+    template_name = 'post_confirm_delete.html'
     success_url = '/blog/'
 
     def test_func(self):
