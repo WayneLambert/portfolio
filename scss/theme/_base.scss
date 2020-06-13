@@ -103,7 +103,7 @@ hr {
   width: $sidebar-width;
   background: $theme-color-primary;
   color: #fff;
-  overflow-y: auto;
+  overflow-y: scroll;
   overflow-x: auto;
 
   /* Forefox scrollbar */

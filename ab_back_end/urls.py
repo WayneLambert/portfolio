@@ -5,8 +5,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 
-from ab_back_end.settings import ADMIN_ALIAS
 from blog.sitemap import CategorySitemap, PostSitemap
+
+from .settings import ADMIN_ALIAS
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
@@ -15,7 +16,6 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contacts.urls', namespace='contacts')),
     path('cv/', include('cv.urls', namespace='cv')),
-    path('users/', include('users.urls', namespace='users')),
     path('countdown-letters/', include(
         'countdown_letters.urls', namespace='countdown_letters')),
     path('countdown-numbers/', include(
@@ -27,12 +27,8 @@ urlpatterns = [
     path('api/', include('api.urls', namespace='api')),
 ]
 
-sitemaps = {
-    'categories': CategorySitemap,
-    'posts': PostSitemap,
-}
 
-# Admin Site and Password Reset Functionality
+# Admin Site URLs
 urlpatterns += [
     path(
         f'{ADMIN_ALIAS}/password_reset/',
@@ -58,6 +54,11 @@ urlpatterns += [
 ]
 
 # Sitemap Config
+sitemaps = {
+    'categories': CategorySitemap,
+    'posts': PostSitemap,
+}
+
 urlpatterns += [
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
