@@ -8,19 +8,15 @@ from django.urls import reverse
 
 class Profile(models.Model):
 
-    AUTHOR_VIEW = (
-        (0, 'Username'),
-        (1, 'Full Name')
-    )
+    class AuthorView(models.IntegerChoices):
+        USERNAME = 0
+        FULL_NAME = 1
 
     user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True)
+    author_view = models.IntegerField(choices=AuthorView.choices, default=0)
     profile_picture = models.ImageField(
-        default='default-user.jpg',
-        upload_to='profile_pics',
-        max_length=200,
-    )
-    author_view = models.IntegerField(choices=AUTHOR_VIEW, default=0)
+        default='default-user.jpg', upload_to='profile_pics', max_length=200)
 
     @property
     def full_name(self):

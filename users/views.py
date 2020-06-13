@@ -3,8 +3,7 @@ from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 from django.views.generic import CreateView, TemplateView, UpdateView
 
-from users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
-
+from .forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 from .models import Profile
 
 
@@ -14,7 +13,7 @@ class UserRegisterView(CreateView):
     template_name = 'users/register.html'
 
     def get_success_url(self):
-        return reverse('users:login')
+        return reverse('blog:users:login')
 
 
 class ProfileView(TemplateView):
@@ -52,3 +51,6 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
             profile_form.save()
 
         return super().form_valid(profile_form)
+
+    def get_success_url(self):
+        return reverse('blog:users:profile', kwargs={'slug': self.request.user.user.slug})

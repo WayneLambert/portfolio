@@ -4,7 +4,7 @@
 {% block title %}{{ block.super }} | Login{% endblock title %}
 
 {% block content %}
-  <article class="blog-post col-md-6 px-3 py-5 p-md-5">
+  <article class="blog-post col-md-3 px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <form method="POST">
         {% csrf_token %}
@@ -13,18 +13,20 @@
           {{ form|crispy }}
         </fieldset>
         <div class="form-group">
-          <button class="btn btn-info" type="submit">
+          <button class="btn btn-info mb-2" type="submit">
             <i class="fa fa-sign-in"></i>
             Login
-          </button><br><br>
-          <small class="text-muted ml-2">
-            <a href="{% url 'users:password_reset_form' %}">Forgotten Password?</a>
-          </small>
+          </button>
+          <p>
+            <small class="text-muted ml-2">
+              <a href="{% url 'blog:users:password_reset_form' %}">Forgotten Password?</a>
+            </small>
+          </p>
         </div>
       </form>
       <div class="border-top" pt-3>
         <small class="text-muted">
-          Need an account? <a class="ml-2" href="{% url 'users:register' %}">Register</a>
+          Need an account? <a class="ml-2" href="{% url 'blog:users:register' %}">Register</a>
         </small>
       </div>
     </div>

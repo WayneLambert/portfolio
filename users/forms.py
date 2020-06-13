@@ -55,10 +55,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_picture', 'author_view']
-
         widgets = {
             'author_view': forms.RadioSelect(attrs={
-                'class': 'custom-control-inline',
+                'class': 'form-check-inline',
             }),
         }
 
