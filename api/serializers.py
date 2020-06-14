@@ -7,8 +7,7 @@ User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(
-        required=False, allow_blank=True, read_only=True)
+    username = serializers.CharField(required=False, allow_blank=True, read_only=True)
 
     class Meta:
         model = User
@@ -60,4 +59,4 @@ class PostSerializer(serializers.ModelSerializer):
             'categories',
         )
 
-        ordering = ['-publish_date']
+        ordering = ['-updated_date', '-publish_date']

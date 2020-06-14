@@ -1,6 +1,8 @@
 from rest_framework import generics
-from blog.serializers import CategorySerializer, PostSerializer
+
 from blog.models import Category, Post
+
+from .serializers import CategorySerializer, PostSerializer
 
 
 class CategoryListAPIView(generics.ListAPIView):
