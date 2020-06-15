@@ -14,8 +14,6 @@ $theme-border-color:  lighten($theme-text-color-primary, 60%);
 $smoky-white: #fafafa;
 $theme-error: #D9603C;
 
-
-
 /*************************** Variables Section. *****************************/
 // Create variables to override the default value for variables used in the Bootstrap SCSS files.
 $gray-100: lighten($theme-text-color-primary, 60%);
@@ -33,9 +31,17 @@ $theme-colors: (
   "secondary":  $theme-text-color-secondary, 
 );
 
-/*************************** Import Bootstrap  *****************************/
+/**************************** Import Bootstrap ******************************/
 @import "bootstrap/scss/bootstrap.scss";
 
-
-/*************************** Theme Styles Section ****************************/
-@import "theme/styles.scss"
+/***************************** Imports Section ******************************/
+@import "theme/mixins";
+@import "theme/base";
+@import "theme/home";
+@import "theme/portfolio";
+@import "theme/services";
+@import "theme/cv";
+@import "theme/blog";
+@import "theme/responsive";
+@import "theme/text-analysis";
+@import "theme/darkmode";
