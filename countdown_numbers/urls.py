@@ -1,10 +1,11 @@
 from django.urls import path
-from countdown_numbers import views as countdown_numbers_views
+
+from .views import game_screen, results_screen, selection_screen
 
 app_name = 'countdown_numbers'
 
 urlpatterns = [
-    path('selection/', countdown_numbers_views.selection_screen, name='selection'),
-    path('game/', countdown_numbers_views.game_screen, name='game'),
-    path('results/', countdown_numbers_views.results_screen, name='results'),
+    path('selection/', selection_screen, name='selection'),
+    path('game/', game_screen, name='game'),
+    path('results/', results_screen, name='results'),
 ]

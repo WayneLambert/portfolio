@@ -29,7 +29,7 @@
                       <li>
                         <small class="text-muted"><strong>Author: </strong></small>
                         <small class="text-muted">
-                          <a href="{% url 'blog:user_posts' post.author.username %}">
+                          <a class="theme-link" href="{% url 'blog:user_posts' post.author.username %}">
                           {% if post.author.user.author_view == 0 %}
                             {{ post.author.username }}
                           {% else %}
@@ -48,7 +48,7 @@
                         <small class="text-muted">
                           <strong>Categories:</strong>
                           {% for category in post.categories.all %}
-                            <a href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
+                            <a class="theme-link" href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
                             {% if not forloop.last %}  |  {% endif %}
                           {% endfor %}
                         </small>

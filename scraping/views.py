@@ -1,5 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-def scraping_options_list(request):
-    return render(request, 'scraping/scraping_options.html')
+class ScrapingOptionsView(TemplateView):
+    template_name = 'scraping_options.html'

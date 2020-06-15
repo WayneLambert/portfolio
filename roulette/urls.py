@@ -1,12 +1,11 @@
 from django.urls import path
-from roulette import views as roulette_views
 
+from .views import destination_screen, game_screen, view_log_file_contents
 
 app_name = 'roulette'
 
 urlpatterns = [
-    path('game/', roulette_views.game_screen, name='holiday_roulette'),
-    path('destination/', roulette_views.destination_screen, name='holiday_destination'),
-    path('destination-log-file/',
-         roulette_views.view_log_file_contents, name='destination_log_file'),
+    path('game/', game_screen, name='holiday_roulette'),
+    path('destination/', destination_screen, name='holiday_destination'),
+    path('destination-log-file/', view_log_file_contents, name='destination_log_file'),
 ]

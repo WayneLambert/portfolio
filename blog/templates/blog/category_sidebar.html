@@ -1,16 +1,14 @@
-<ul class="no-bullets">
-  <li class="nav-item">
-    <h6 class="nav-link">Blog Categories</h6>
-  </li>
-</ul>
+<div class="nav-item btn text-wrap text-sm-left mb-2">
+  <h6 class="nav-link">Blog Categories</h6>
+</div>
 <ul class="navbar-nav flex-column text-left">
   {% for category in categories_list %}
-    <li class="nav-item">
+    <li class="nav-item font-weight-light">
       <a class="nav-link" href="{% url "blog:home" %}category/{{ category.slug }}/posts">
-        <i class="fas fa-book fa-fw ml-2 mr-2"></i>
+        <i class="fa fa-arrow-circle-right ml-2 mr-2"></i>
         {{ category.name }} <span class="badge badge-light badge-pill"> {{category.posts.count}}</span>
       </a>
     </li>
   {% endfor %}
 </ul>
-<hr class="mb-4">
+<hr class="col-8">

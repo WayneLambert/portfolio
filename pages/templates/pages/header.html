@@ -7,16 +7,24 @@
         <div class="profile-section pt-3 pt-lg-0">
           <div class="profile-avatar rounded-circle mt-2 mb-1">
             <div class="inner">
-              <img class="profile-image rounded-circle" src="{% static 'assets/images/gravatar.jpg' %}" alt="Wayne Lambert">
+              <a href="{% url 'pages:home' %}"><img class="profile-image rounded-circle" 
+                src="{% static 'assets/images/gravatar.jpg' %}" alt="Wayne Lambert">
+              </a>
             </div>
           </div>
-          <p class="blog-name"><a href="{% url 'pages:home' %}">Wayne Lambert</a></p>
-          <div class="bio mb-3">Insert blurb here...</div>
+          <p class="blog-name">
+            <a class="theme-link" href="{% url 'pages:home' %}">
+              Wayne Lambert
+            </a>
+          </p>
           {% include 'components/social_buttons.html' %}
           <hr>
         </div>
 
         <ul class="navbar-nav flex-column text-left">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:home' %}"><i class="fa fa-home mr-2"></i>Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'pages:portfolio' %}"><i class="fa fa-briefcase mr-2"></i>Portfolio Projects</a>
           </li>
@@ -60,18 +68,12 @@
             <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fa fa-envelope mr-2"></i>Contact</a>
           </li>
         </ul>
-        <hr>
-        {% if 'blog' in request.path %}
+        <hr class="col-8">
+        {% if 'blog' in request.path and 'users' not in request.path %}
           {% include 'blog/category_sidebar.html' %}
         {% endif %}
         <!-- Dark Mode Toggle -->
-        <div class="dark-mode-toggle text-center w-100 mb-5">
-          <hr class="mb-4">
-            <h4 class="toggle-name mb-3 "><i class="fas fa-adjust mr-1"></i>Dark Mode</h4>
-            <input class="toggle" id="darkmode" type="checkbox">
-            <label class="toggle-btn mx-auto mb-0" for="darkmode"></label>
-        </div>
-      </div>
+        {% include 'components/dark_mode_toggle.html' %}
     </nav>
   </div>
 </header>

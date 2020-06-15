@@ -10,12 +10,9 @@
           <div class="card blog-post-card">
             <img class="card-img-top" src="{{ post.image.url }}">
             <div class="card-body">
-              <h5 class="card-title">
+              <h6 class="card-title">
                 <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a>
-              </h5>
-              <p class="mb-0">
-                <a class="more-link" href="{% url 'blog:post_detail' post.slug %}">Read more &rarr;</a>
-              </p>
+              </h6>
               <small class="text-muted">
                 <ul class="no-bullets">
                   <li>
@@ -29,7 +26,7 @@
                 </ul>
               </small><br>
               <small class="text-muted">
-                <span class="time">{{ post.word_count|intcomma }} words</span>
+                <span class="time">{{ post.word_count|intcomma }} words</span>  |  
                 <span class="time">{{ post.reading_time }} min read</span>
               </small>
             </div>

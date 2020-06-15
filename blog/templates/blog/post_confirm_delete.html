@@ -18,7 +18,7 @@
             Delete <em>"{{ post.title }}"</em>?
           </legend>
             {{ object.content|safe|truncatewords:100 }}
-            <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+            <a class="theme-link" href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
         </fieldset>
         <!-- Buttons -->
         <div class="form-group">

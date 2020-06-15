@@ -3,21 +3,21 @@
     <div class="profile-teaser media flex-column flex-lg-row">
       <div class="media-body">
         <h2 class="name font-weight-bold mb-1">Wayne Lambert</h2>
-        <div class="tagline mb-3">Software Engineer</div>
         <div class="bio mb-4">
-          Insert blurb here... 
-          <a class="link-on-bg" href="#">my blog</a>. 
-          Check out my project <a class="link-on-bg" href="{% url 'pages:portfolio' %}">portfolio</a> 
-          and <a class="link-on-bg" href="{% url 'cv:cv' %}">online CV</a>.
+          <p>Welcome to my portfolio website. Feel free to take a look around.</p> 
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <a class="btn btn-primary mr-2 mb-3" href="{% url 'pages:portfolio' %}">
-            <i class="fas fa-arrow-alt-circle-right mr-2"></i>
-            <span class="d-none d-md-inline">View</span> Portfolio
+            <i class="fas fa-briefcase mr-2"></i>
+            <span class="d-none d-md-inline">Portfolio</span>
+          </a>
+          <a class="btn btn-success mr-2 mb-3" href="{% url 'blog:home' %}">
+            <i class="fas fa-blog mr-2"></i>
+            <span class="d-none d-md-inline">Blog</span>
           </a>
           <a class="btn btn-secondary mb-3" href="{% url 'cv:cv' %}">
-            <i class="fas fa-file-alt mr-2"></i>
-            <span class="d-none d-md-inline">View</span> CV
+            <i class="fas fa-align-left mr-2"></i>
+            <span class="d-none d-md-inline">CV</span>
           </a>
         </div>
       </div>
