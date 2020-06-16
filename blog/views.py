@@ -71,17 +71,24 @@ class CategoryPostListView(PostView):
 class SearchResultsView(PostView):
     """ Facilitates the search results """
     template_name = 'blog/posts_list.html'
-    paginate_by = 10
+    paginate_by = 5
+    paginate_orphans = 2
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        qs = self.queryset.filter(Q(title__icontains=query) | Q(content__icontains=query))
+        if query:
+            qs = self.queryset.filter(
+                Q(title__icontains=query) | Q(content__icontains=query))
+        else:
+            qs = self.queryset
         return qs
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)
         current_page = context.pop('page_obj', None)
         context['current_page'] = current_page
+        context['num_posts'] = current_page.paginator.object_list.count()
+        context['query'] = context['view'].request.GET['q']
         return context
 
 
