@@ -1,0 +1,121 @@
+.footer {
+  background: $theme-color-footer;
+  color: #fff;
+  padding: 15px 0;
+
+  .footer-col {
+
+    padding-top: 15px;
+
+    .p {
+      color: $theme-color-bottom-bar;
+    }
+
+    &.about {
+      .more {
+        .svg-inline--fa {
+          color: $theme-text-color-primary;
+          margin-left: 5px;
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+
+    &.links {
+      .svg-inline--fa {
+        margin-right: 5px;
+      }
+    }
+
+    &.contact {
+      p {
+        color: darken($theme-text-color-primary, 25%);
+      }
+
+      .svg-inline--fa {
+        margin-right: 10px;
+        color: darken($theme-text-color-primary, 25%);
+      }
+    }
+
+    .title {
+      color: darken($theme-text-color-primary, 30%);
+      font-weight: normal;
+      font-size: 18px;
+    }
+
+    p {
+      color: #fff;
+    }
+
+    a {
+      color: darken($theme-text-color-primary, 25%);
+
+      &:hover {
+        color: darken($theme-text-color-primary, 40%);
+      }
+    }
+  }
+
+}
+
+// Bottom Bar
+.bottom-bar {
+  background: $theme-color-bottom-bar;
+  font-size: 16px;
+  padding: 10px 0;
+
+  .copyright {
+    line-height: 1.8;
+    color: $smoky-white;
+  }
+
+  .social {
+    margin-bottom: 0;
+    text-align: right;
+
+    li {
+      margin-left: 20px;
+      margin-right: 0;
+      float: right;
+      text-align: right;
+
+      a {
+        .svg-inline--fa {
+          color: lighten($smoky-white, 10%);
+          font-size: 20px;
+        }
+
+        &:hover {
+          .svg-inline--fa {
+            color: $theme-text-color-secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Top Control
+#topcontrol {
+  background: $theme-color-primary;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border: none;
+  @include border-radius(2px);
+  @include transition (all 0.4s ease-in-out);
+
+  &:hover {
+    background: $theme-color-primary;
+  }
+
+  .svg-inline--fa {
+    position: relative;
+    top: 3px;
+    font-size: 25px;
+  }
+}

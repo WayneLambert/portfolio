@@ -303,31 +303,6 @@ hr {
   }
 }
 
-/* Footer */
-.footer{
-  
-  &.theme-bg-light {
-    color: lighten($theme-text-color-secondary, 20%);
-    a {
-      color: lighten($theme-text-color-secondary, 20%);
-      &:hover {
-        color: lighten($theme-text-color-secondary, 15%);
-      }
-    }
-  }
-  &.theme-bg-dark {
-    color: rgba(256, 256, 256, 0.7);
-    a {
-      color: rgba(256, 256, 256, 0.7);
-      &:hover {
-        color: rgba(256, 256, 256, 0.8);
-      }
-  
-    }
-  }
-  
-}
-
 /* Dark Mode Toggle */
 .dark-mode-toggle {
   .toggle-name {

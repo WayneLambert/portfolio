@@ -5,7 +5,7 @@
   {% for category in categories_list %}
     <li class="nav-item font-weight-light">
       <a class="nav-link" href="{% url "blog:home" %}category/{{ category.slug }}/posts">
-        <i class="fa fa-arrow-circle-right ml-2 mr-2"></i>
+        <i class="fa fa-caret-right ml-2 mr-2"></i>
         {{ category.name }} <span class="badge badge-light badge-pill"> {{category.posts.count}}</span>
       </a>
     </li>

@@ -1,5 +1,55 @@
-<footer class="footer text-center py-4">
-  <div class="container">
-    <p class="copyright">&copy; 2019 - {% now 'Y' %} waynelambert.dev</p>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col col-lg-5 col-md-7 col-12 about">
+          <div class="footer-col-inner">
+            <h3 class="title mb-3">About Me</h3>
+            <p class="text-secondary text-wrap">I am a passionate web developer, programmer and data scientist.</p>
+            <p><a class="more" href="#">Read more<i class="fas fa-long-arrow-alt-right ml-2"></i></a></p>
+          </div>
+        </div>
+        <div class="footer-col col-lg-3 col-md-4 col-12 mr-lg-auto">
+          <div class="footer-col-inner">
+            <h3 class="title">Links</h3>
+            <ul class="list-unstyled">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'pages:privacy' %}">
+                <i class="fas fa-caret-right"></i>
+                Privacy Policy
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                <i class="fas fa-caret-right"></i>
+                Skills
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                <i class="fas fa-caret-right"></i>
+                Reading List
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-col col-lg-3 col-12 contact">
+          <div class="footer-col-inner">
+            <h3 class="title mb-3">Get in touch</h3>
+            <div class="row">
+              <p class="tel col-lg-12 col-md-4 col-12 ml-2">
+                <i class="fas fa-phone"></i>
+                07950 315504
+              </p>
+              <p class="email col-lg-12 col-md-4 col-12 ml-2">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:contact@waynelambert.dev">contact@waynelambert.dev</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </footer>
