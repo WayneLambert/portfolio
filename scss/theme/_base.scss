@@ -1,10 +1,18 @@
 /* ============= Base ============= */
 
 /*********** Theme Generic **********/
+
+html {
+  height: 100%;
+}
+
 body { 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $theme-text-color-secondary;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 h1, h2, h3, h4, h5, h6 {

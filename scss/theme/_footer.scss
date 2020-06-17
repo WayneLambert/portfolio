@@ -1,7 +1,10 @@
 .footer {
   background: $theme-color-footer;
+  margin-left: $sidebar-width;
   color: #fff;
-  padding: 15px 0;
+  padding-top: 15px;
+  grid-row-start: 2;
+  grid-row-end: 3;
 
   .footer-col {
 
