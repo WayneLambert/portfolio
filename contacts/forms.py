@@ -1,7 +1,8 @@
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV3
 from django import forms
-from contacts.models import Contact
+
+from .models import Contact
 
 
 class ContactForm(forms.ModelForm):

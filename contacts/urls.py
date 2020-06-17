@@ -6,5 +6,5 @@ app_name = 'contacts'
 
 urlpatterns = [
     path('', contact, name='contact'),
-    path('submitted/', contact_submitted, name='contact_submitted'),
+    path('submitted/', contact_submitted, name='submitted'),
 ]
