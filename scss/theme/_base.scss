@@ -65,6 +65,16 @@ hr {
   color: #fff;
 }
 
+.btn-github {
+  background-color: $github-primary-color;
+  color: white;
+    &:hover {
+      text-decoration: none;
+      background-color: darken($github-primary-color, 10%);
+      color: white;
+    }
+}
+
 .form-control {
   padding-top: 0.875rem;
   padding-bottom: 0.875rem;
