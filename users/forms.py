@@ -1,8 +1,8 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
 from .models import Profile
+from django.forms.widgets import RadioSelect
 
 
 class InactiveUserFound(Exception):
@@ -43,12 +43,20 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['username', 'email', 'first_name', 'last_name']
 
     def clean_username(self):
-        username = self.cleaned_data['username'].lower().strip()
+        username = self.cleaned_data['username'].casefold().strip()
         return username
 
     def clean_email(self):
         email = self.cleaned_data['email'].casefold().strip()
         return email
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data['first_name'].title().strip()
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data['last_name'].title().strip()
+        return last_name
 
 
 class ProfileUpdateForm(forms.ModelForm):
