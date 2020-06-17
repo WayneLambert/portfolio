@@ -299,27 +299,16 @@ if not DEBUG:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
-if not DEBUG:
-    # Django SES Email Backend Settings
-    EMAIL_BACKEND = 'django_ses.SESBackend'
-    AWS_SES_REGION_NAME = 'eu-west-1'
-    AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
-    EMAIL_HOST = os.environ['EMAIL_HOST_SES']
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
-else:
-    # Gmail Backend Settings
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_GMAIL']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_GMAIL']
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_GMAIL']
-
+# Django SES Email Backend Settings
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_REGION_NAME = 'eu-west-1'
+AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
+EMAIL_HOST = os.environ['EMAIL_HOST_SES']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -333,8 +322,11 @@ AWS_DEFAULT_ACL = None
 AWS_BASE_BUCKET_ADDRESS = os.environ['AWS_BASE_BUCKET_ADDRESS']
 
 # Simple Captcha Settings
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+if DEBUG:
+    SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+else:
+    RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+    RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Google Analytics
 GOOGLE_ANALYTICS = {
