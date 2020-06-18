@@ -13,7 +13,7 @@
             </div>
           </div>
           <p class="blog-name">
-            <a class="theme-link" href="{% url 'pages:home' %}">Wayne Lambert</a>
+            <a href="{% url 'pages:home' %}">Wayne Lambert</a>
           </p>
           {% include 'components/social_buttons.html' %}
           <hr>
@@ -36,7 +36,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'blog:home' %}"><i class="fas fa-home fa-fw mr-2"></i>Home</a>
               <a class="dropdown-item" href="{% url 'blog:contents' %}"><i class="fa fa-list mr-2"></i>Contents</a>
-              <a class="dropdown-item" href="#"><i class="fa fa-rss mr-2"></i>Subscribe</a>
               {% if user.is_authenticated %}
                 <hr class="col-8">
                 <a class="dropdown-item" href="{% url 'blog:post_create' %}">

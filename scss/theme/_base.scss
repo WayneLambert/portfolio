@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a.theme-link {
   color: $theme-text-color-primary;
-  text-decoration: none;
+  text-decoration: underline;
     -webkit-text-decoration-color: rgba($theme-text-color-primary,0.3);
     text-decoration-color: rgba($theme-text-color-primary,0.3);
     &:hover {

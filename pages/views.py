@@ -13,6 +13,10 @@ class PortfolioView(TemplateView):
     template_name = 'portfolio.html'
 
 
+class DevSkillsView(TemplateView):
+    template_name = 'dev_skills.html'
+
+
 class ReadingListView(TemplateView):
     template_name = 'reading_list.html'
 
@@ -23,3 +27,8 @@ class AboutMeView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'privacy.html'
+
+
+# Reviews
+class BlogReviewView(TemplateView):
+    template_name = 'reviews/blog.html'

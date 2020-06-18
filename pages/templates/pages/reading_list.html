@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Reading List{% endblock title %}
+
+{% block content %}
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Reading List</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">Below are some of the books that I have studied in the domain 
+        of programming and web development. I hope that you nejoy them as much as I did.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project py-3">
+    <div class="container">
+      <h3 class="project-section-title mb-1">Theoretical Books</h3>
+    </div>
+  </section>
+
+  <!--- Book 1 -->
+  <section class="project px-3 mb-3">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="260px"
+          src="{% static 'assets/images/reading-list/clean-code.png' %}" alt="Python Code">
+        <div class="media-body">
+          <div class="client-info">
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2 ml-2"><i class="fas fa-book fa-fw mr-2"></i>
+                <strong>Clean Code</strong>
+              </li>
+              <li class="mb-2 ml-2"><i class="fas fa-tag fa-fw mr-2"></i><span>A Handbook of Agile Software Craftmanship</span></li>
+              <li class="mb-2 ml-2"><i class="fas fa-user fa-fw mr-2"></i><span>Robert C. Martin</span></li>
+            </ul>
+            <hr>
+            <h6 class="font-weight-bold mb-4">Synopsis</h6>
+            <div class="client-bio mb-4">
+              <p>
+                Code that is difficult to understand carries with it 'technical debt' which 
+                becomes a direct time cost to the programmers maintaining it as well as a 
+                financial cost to a company's bottom line. It is often said that programmers 
+                spend 10 times the amount reading code as they do writing it. Bob Martin 
+                teaches how to write and maintain clean code.
+              </p>
+                <p>
+                  A few key takeaway points from the book include:
+                </p>
+
+                <ul class="no-bullets">
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Give elements such as classes, functions and variables meaningful names
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Observe the DRY principle (Don't Repeat Yourself)
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Leave the code in a better place than when you found it
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Keep function sizes small. They should do one thing and do it well!
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Design functions to take fewer arguments
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Comments should explain why code is in place. The code itself should explain what it does
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Keep lines of code short for readability
+                  </li>
+                  <li class="mb-2 ml-2"><i class="fa fa-chevron-right mr-2"></i>
+                    Use just one assertion per test
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}
