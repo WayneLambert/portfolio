@@ -14,7 +14,7 @@ class PortfolioView(TemplateView):
 
 
 class DevSkillsView(TemplateView):
-    template_name = 'dev_skills.html'
+    template_name = 'skills/back_end.html'
 
 
 class ReadingListView(TemplateView):

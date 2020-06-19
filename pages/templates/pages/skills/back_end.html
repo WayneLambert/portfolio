@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} | Back End Web Development Skills{% endblock title %}
+
+{% block content %}
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Back End Web Developer Skills</h2>
+    </div>
+  </section>
+
+  <!--- Opening Statement -->
+  <section class="cta-section py-5">
+    <div class="container">
+      <p>
+        The objective of this page is to answer questions relating to the skills I have 
+        in relation to back-end development.
+      </p>
+      <p>
+        I have often been asked to rate myself in a particular skill between 1 and 10. This is not 
+        a helpful way to judge a skill since a rating between 1 and 10 can be thought of in many 
+        different ways. Amongst other ways of thinking about this scale, a 10 score could either be 
+        <em>"knowing the sum of all knowledge relating to a skill"</em> 
+        or <em>"being the best in the world at a particular skill"</em>. 
+        <p>
+          The two measures are a mile off one another. The person with the most knowledge in the world
+          of a skill in a vast subject area, let's say Python, might only score a 6 in 
+          terms of <em>"knowing the sum of all knowledge"</em> relating to Python.
+          There is simply too much to know. There are over 240,000 projects released on PyPI solving
+          many problems across many sectors, therefore it is impossible to <em>"know the sum of all knowledge"</em>. 
+        </p>
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  {% include 'skills/skill/python.html' %}
+  {% include 'skills/skill/django.html' %}
+{% endblock content %}
