@@ -4,53 +4,32 @@
       <div class="row">
         <div class="footer-col col-lg-5 col-md-7 col-12 about">
           <div class="footer-col-inner">
-            <h3 class="title mb-3">About Me</h3>
-            <p class="text-secondary text-wrap">I am a passionate web developer, programmer and data scientist.</p>
-            <p><a class="more" href="#">Read more<i class="fas fa-long-arrow-alt-right ml-2"></i></a></p>
+            <a href="{% url 'pages:about_me' %}"><h3 class="title">About Me</h3></a>
+            <p>I am a passionate web developer and data scientist.</p>
+            <p>I enjoy developing websites with Django and Python as well as analysing datasets with Python's Data Science libraries.</p>
+            <p><a class="more" href="{% url 'pages:about_me' %}">Learn more<i class="fas fa-long-arrow-alt-right ml-2"></i></a></p>
           </div>
         </div>
-        <div class="footer-col col-lg-3 col-md-4 col-12 mr-lg-auto">
+        <div class="footer-col col-lg-3 col-md-4 col-12 mr-lg-auto links">
           <div class="footer-col-inner">
             <h3 class="title">Links</h3>
             <ul class="list-unstyled">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'pages:privacy' %}">
-                <i class="fas fa-caret-right"></i>
-                Privacy Policy
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'pages:dev_skills' %}">
-                <i class="fas fa-caret-right"></i>
-                Skills
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'pages:reading_list' %}">
-                <i class="fas fa-caret-right"></i>
-                Reading List
-                </a>
-              </li>
+              <li><a href="{% url 'pages:portfolio' %}"><i class="fas fa-caret-right mr-2"></i>Portfolio</a></li>
+              <li><a href="{% url 'pages:reading_list' %}"><i class="fas fa-caret-right mr-2"></i>Reading List</a></li>
+              <li><a href="{% url 'pages:dev_skills' %}"><i class="fas fa-caret-right mr-2"></i>Skills</a></li>
+              <li><a href="{% url 'pages:privacy' %}"><i class="fas fa-caret-right mr-2"></i>Privacy Policy</a></li>
             </ul>
           </div>
         </div>
-        <div class="footer-col col-lg-3 col-12 contact">
+        <div class="footer-col col-lg-3 col-md-4 col-12 mr-lg-auto links">
           <div class="footer-col-inner">
-            <h3 class="title mb-3">Get in touch</h3>
-            <div class="row">
-              <p class="tel col-lg-12 col-md-4 col-12 ml-2">
-                <i class="fa fa-paper-plane mr-2"></i>
-                <a href="{% url 'contacts:contact' %}">Contact</a>
-              </p>
-              <p class="tel col-lg-12 col-md-4 col-12 ml-2">
-                <i class="fas fa-phone mr-2"></i>
-                07950 315504
-              </p>
-              <p class="email col-lg-12 col-md-4 col-12 ml-2">
-                <i class="fas fa-envelope mr-2"></i>
-                <a href="mailto:contact@waynelambert.dev">contact@waynelambert.dev</a>
-              </p>
-            </div>
+            <h3 class="title">Get in Touch</h3>
+            <ul class="list-unstyled">
+              <li><a href="https://www.google.co.uk/maps/place/Edgbaston,+Birmingham" target="_blank"><i class="fa fa-map-marker mr-3"></i>Edgbaston, Birmingham, UK</a></li>
+              <li><a><i class="fas fa-mobile mr-3"></i>+44 (0)7950 315504</a></li>
+              <li><a href="mailto:contact@waynelambert.dev"><i class="fa fa-envelope mr-3"></i>Email Me</a></li>
+              <li><a href="{% url 'contacts:contact' %}"><i class="fas fa-paper-plane mr-3"></i>Contact Form</a></li>
+            </ul>
           </div>
         </div>
       </div>

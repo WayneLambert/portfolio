@@ -2,7 +2,7 @@
 
 /*********** Theme Generic **********/
 
-html {
+html, body {
   height: 100%;
 }
 
@@ -21,15 +21,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a.theme-link {
-  color: $theme-text-color-primary;
+  color: darken($theme-color-primary, 10%);
   text-decoration: underline;
-    -webkit-text-decoration-color: rgba($theme-text-color-primary,0.3);
-    text-decoration-color: rgba($theme-text-color-primary,0.3);
+    -webkit-text-decoration-color: darken($theme-color-primary, 10%);
+    text-decoration-color: darken($theme-color-primary, 10%);
     &:hover {
-      color: $theme-color-primary;
+      color: darken($theme-color-primary, 20%);
       text-decoration: underline;
-      -webkit-text-decoration-color: rgba($theme-color-primary,0.8);
-          text-decoration-color: rgba($theme-color-primary,0.8);
+      -webkit-text-decoration-color: darken($theme-color-primary, 20%);
+          text-decoration-color: darken($theme-color-primary, 20%);
     }
 }
 

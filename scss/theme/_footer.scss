@@ -1,23 +1,18 @@
 .footer {
+  font-family: 'Lato', arial, sans-serif;
   background: $theme-color-footer;
   margin-left: $sidebar-width;
   color: #fff;
   padding-top: 15px;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  font-size: 16px;
 
   .footer-col {
 
     padding-top: 15px;
 
-    .p {
-      color: $theme-color-bottom-bar;
-    }
-
     &.about {
       .more {
         .svg-inline--fa {
-          color: $theme-text-color-primary;
           margin-left: 5px;
           position: relative;
           top: 1px;
@@ -26,26 +21,28 @@
     }
 
     &.links {
-      .svg-inline--fa {
-        margin-right: 5px;
+      margin-right: 5px;
+
+      li {
+        margin-bottom: 10px;
       }
     }
 
     &.contact {
+      font-size: 16px;
+      margin-right: 10px;
+
       p {
-        color: darken($theme-text-color-primary, 25%);
+        color: $theme-color-bottom-bar;
       }
 
-      .svg-inline--fa {
-        margin-right: 10px;
-        color: darken($theme-text-color-primary, 25%);
-      }
     }
 
     .title {
-      color: darken($theme-text-color-primary, 30%);
+      color: $theme-color-bottom-bar;
       font-weight: normal;
       font-size: 18px;
+      padding-bottom: 10px;
     }
 
     p {
@@ -53,46 +50,43 @@
     }
 
     a {
-      color: darken($theme-text-color-primary, 25%);
+      color: #37712E;
 
       &:hover {
-        color: darken($theme-text-color-primary, 40%);
+        color: darken($theme-color-bottom-bar, 40%);
       }
     }
   }
 
-}
 
-// Bottom Bar
-.bottom-bar {
-  background: $theme-color-bottom-bar;
-  font-size: 16px;
-  padding: 10px 0;
+  .bottom-bar {
+    background: $theme-color-bottom-bar;
+    color: lighten($grey, 10%);
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 6px;
 
-  .copyright {
-    line-height: 1.8;
-    color: $smoky-white;
-  }
+    .copyright {
+      line-height: 1.8;
+    }
 
-  .social {
-    margin-bottom: 0;
-    text-align: right;
-
-    li {
-      margin-left: 20px;
-      margin-right: 0;
-      float: right;
+    .social {
+      margin-bottom: 0;
+      margin-top: 5px;
       text-align: right;
 
-      a {
-        .svg-inline--fa {
-          color: lighten($smoky-white, 10%);
-          font-size: 20px;
-        }
+      li {
+        margin-left: 20px;
+        margin-right: 0;
+        float: right;
+        text-align: right;
 
-        &:hover {
-          .svg-inline--fa {
-            color: $theme-text-color-secondary;
+        a {
+          color: $grey;
+          font-size: 20px;
+
+          &:hover {
+            color: darken($grey, 10%);
           }
         }
       }

@@ -13,9 +13,12 @@ $theme-bg-dark: #223142;
 $theme-border-color:  lighten($theme-text-color-primary, 60%);
 $smoky-white: #fafafa;
 $theme-error: #d9603c;
-$theme-color-footer: #54b689;
-$theme-color-bottom-bar: #253a44;
+
+// Footer Colours
+$theme-color-footer: #6dbd63;
+$theme-color-bottom-bar: #444;
 $github-primary-color: #292e35;
+$grey: #999;
 
 /*************************** Variables Section. *****************************/
 // Create variables to override the default value for variables used in the Bootstrap SCSS files.
@@ -45,7 +48,7 @@ $theme-colors: (
 @import "theme/services";
 @import "theme/cv";
 @import "theme/blog";
+@import "theme/footer";
 @import "theme/responsive";
 @import "theme/text-analysis";
-@import "theme/footer";
 @import "theme/darkmode";
