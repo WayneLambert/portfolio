@@ -11,7 +11,12 @@
   <meta name="description" content="Portfolio of Wayne Lambert">
   <meta name="author" content="Wayne Lambert">
   <title>{% block title %}WayneLambert.dev{% endblock title %}</title>
-  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-touch-icon.png' %}">
+  <link rel="shortcut icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png' %}">
+  <link rel="shortcut icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'assets/favicon/site.webmanifest' %}">
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
