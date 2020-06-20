@@ -18,9 +18,7 @@
           <em>'lorem ipsum'</em> text to save time.</p>
       </h6>
       <form name="frm" action="{% url 'text_analysis:analysis' %}" method="GET">
-        <textarea class="text-analysis-box mt-2 mb-2" id="text-analysis-box" name="fulltext" 
-          placeholder="Enter text here..." cols="82" rows="15">
-        </textarea>
+        <textarea class="text-analysis-box mt-2 mb-2" id="text-analysis-box" name="fulltext" autofocus="autofocus" placeholder="Enter text here..." cols="82" rows="15"></textarea>
         <p class="ml-2">
           <strong class="mb-2"><u>Disclaimer</u>:</strong> 
           <span class="text-muted">The text you use is not recorded, logged or seen in any analytics.</span>
@@ -44,6 +42,7 @@
 {% block additional_js %}
   <!-- Functionality to use Lorem Ipsum text in the input box -->
   <script src={% static 'assets/js/use_lorem_ipsum.js' %} type="text/javascript"></script>
+
   <!-- Functionality to return a no wards warning -->
   <script src={% static 'assets/js/no_words_warning.js' %} type="text/javascript"></script>
 {% endblock additional_js %}
