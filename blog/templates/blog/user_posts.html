@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ block.super }} | Posts by {{ user.user.full_name }}{% endblock title %}
+
 {% block content %}
+  {% include 'components/search.html' %}
+  <h6 class="text-center mt-5">{{ num_posts }} posts written by {{ user.user.full_name }}</h6>
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">
@@ -10,5 +14,5 @@
       </div>
     </div>
   </section>
-  {% include 'components/pagination_nav.html' %}
+  {% if is_paginated %}{% include 'components/pagination_nav.html' %}{% endif %}
 {% endblock content %}

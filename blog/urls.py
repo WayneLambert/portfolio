@@ -1,9 +1,9 @@
 from django.urls import include, path
 
 from .feeds import LatestPostsFeed
-from .views import (CategoryPostListView, ContentsListView, HomeView,
-                    PostCreateView, PostDeleteView, PostDetailView,
-                    PostUpdateView, SearchResultsView, UserPostListView)
+from .views import (CategoryPostListView, ContentsListView, HomeView, IndexListView,
+                    PostCreateView, PostDeleteView, PostDetailView, PostUpdateView,
+                    SearchResultsView, UserPostListView)
 
 app_name = 'blog'
 
@@ -16,6 +16,7 @@ urlpatterns = [
     path('post/<slug:slug>/update/', PostUpdateView.as_view(), name='post_update'),
     path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post_delete'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('index/', IndexListView.as_view(), name='index'),
     path('contents/', ContentsListView.as_view(), name='contents'),
     path('feed/latest/rss', LatestPostsFeed(), name='post_feed'),
     path('users/', include('users.urls', namespace='users')),

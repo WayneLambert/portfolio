@@ -145,7 +145,7 @@ class TestSearchResultsView:
 class TestContentsListView:
     def test_contents_list_view(self, request, factory, lilo_users):
         """ Asserts logged in/out users can access `contents` page """
-        path = reverse('blog:contents')
+        path = reverse('blog:contents_detailed')
         request = factory.get(path)
         request.user = lilo_users
         response = blog_views.ContentsListView.as_view()(request)

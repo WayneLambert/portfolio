@@ -2,8 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView)
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from .forms import PostForm
 from .models import Category, Post
@@ -17,6 +16,13 @@ class PostView(ListView):
     category_list = Category.objects.all().prefetch_related('posts')
     extra_context = {'categories_list': category_list}
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')
+
+    def get_context_data(self, **kwargs):
+        context = super(PostView, self).get_context_data(**kwargs)
+        current_page = context.pop('page_obj', None)
+        context['current_page'] = current_page
+        context['num_posts'] = current_page.paginator.object_list.count()
+        return context
 
 
 class PostCreateView(LoginRequiredMixin, CreateView):
@@ -33,18 +39,31 @@ class HomeView(PostView):
     """ Drives the list of posts returned on the blog's home page """
     template_name = 'blog/home.html'
     paginate_by = 6
+    paginate_orphans = 3
+
+
+class IndexListView(ListView):
+    """ Facilitates the short contents page """
+    model = Post
+    template_name = 'blog/index_page.html'
+    context_object_name = 'posts'
+    category_list = Category.objects.all().prefetch_related('posts')
+    extra_context = {'categories_list': category_list}
+    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
 
 
 class ContentsListView(PostView):
     """ Facilitates the contents page """
-    template_name = 'blog/posts_list.html'
-    paginate_by = 10
+    template_name = 'blog/contents.html'
+    paginate_by = 20
+    paginate_orphans = 3
 
 
 class UserPostListView(PostView):
     """ Drives the list of posts written by a given author """
     template_name = 'blog/user_posts.html'
     paginate_by = 6
+    paginate_orphans = 3
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -56,6 +75,7 @@ class CategoryPostListView(PostView):
     """ Drives the list of posts for a given category. """
     template_name = 'blog/category_posts.html'
     paginate_by = 6
+    paginate_orphans = 3
 
     def get_queryset(self):
         self.categories = get_list_or_404(Category, slug=self.kwargs['slug'])
@@ -70,8 +90,8 @@ class CategoryPostListView(PostView):
 
 class SearchResultsView(PostView):
     """ Facilitates the search results """
-    template_name = 'blog/posts_list.html'
-    paginate_by = 5
+    template_name = 'blog/search_results.html'
+    paginate_by = 10
     paginate_orphans = 2
 
     def get_queryset(self):
@@ -85,9 +105,6 @@ class SearchResultsView(PostView):
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)
-        current_page = context.pop('page_obj', None)
-        context['current_page'] = current_page
-        context['num_posts'] = current_page.paginator.object_list.count()
         context['query'] = context['view'].request.GET['q']
         return context
 

@@ -1,8 +1,8 @@
 from django.urls import reverse
 
-from blog.views import (CategoryPostListView, ContentsListView, HomeView,
-                        PostCreateView, PostDeleteView, PostDetailView,
-                        PostUpdateView, SearchResultsView, UserPostListView)
+from blog.views import (CategoryPostListView, ContentsListView, HomeView, IndexListView,
+                        PostCreateView, PostDeleteView, PostDetailView, PostUpdateView,
+                        SearchResultsView, UserPostListView)
 
 
 class TestUrls:
@@ -27,7 +27,6 @@ class TestUrls:
         path = reverse('blog:post_detail', kwargs={'slug': 'test-post-slug'})
         assert path, PostDetailView.as_view().__name__
 
-
     def test_post_update(self):
         path = reverse('blog:post_update', kwargs={'slug': 'test-post-slug'})
         assert path, PostUpdateView.as_view().__name__
@@ -43,3 +42,7 @@ class TestUrls:
     def test_contents(self):
         path = reverse('blog:contents')
         assert path, ContentsListView.as_view().__name__
+
+    def test_inde(self):
+        path = reverse('blog:index')
+        assert path, IndexListView.as_view().__name__
