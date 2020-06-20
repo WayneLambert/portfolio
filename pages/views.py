@@ -1,13 +1,15 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView, TemplateView
 
-from blog.views import PostView
+from blog.models import Post
 
 
-class HomeView(PostView):
+class HomeView(ListView):
+    """ Custom view sets default behaviour for all list views to subclass
+        and inherit for their own implementation """
+    model = Post
     template_name = 'home.html'
-
-    def get_queryset(self):
-        return self.queryset[:3]
+    context_object_name = 'posts'
+    queryset = Post.objects.prefetch_related('categories').select_related('author__user')[:3]
 
 class PortfolioView(TemplateView):
     template_name = 'portfolio.html'
