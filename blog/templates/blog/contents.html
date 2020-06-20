@@ -7,7 +7,7 @@
   <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} Posts)</h6>
   {% for post in posts %}
     <article class="blog-post">
-      <div class="alert alert-light container single-col-max-width">
+      <div class="container single-col-max-width alert">
         <table>
           <tr>
             <td width="75%">
@@ -24,5 +24,6 @@
         {% include "components/meta_data.html" %}
       </div>
     </article>
+    {% if not forloop.last %}<hr class="theme-link col-8">{% endif %}
   {% endfor %}
 {% endblock content %}
