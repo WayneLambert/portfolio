@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}{{ block.super }} | Blog | Review{% endblock title %}
+{% block title %}{{ block.super }} | Blog Review{% endblock title %}
 
 {% block content %}
 
@@ -73,13 +73,13 @@
             Predominantly built using Class-Based Views, therefore easier to maintain
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Efficient Retrieval of data from the PostgreSQL database
+            Efficient Retrieval of data from PostgreSQL database
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Tests are written using the PyTest framework
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            List view pagination on contents, author, category, and search results pages
+            List view pagination on index, contents, author, category, and search results pages
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Detail view pagination
@@ -126,7 +126,13 @@
           <p>
             I desired to build a blog that included the way that I would like to view and
             navigate content. Features such as a category sidebar with the number of posts 
-            included within each category
+            included within each category.
+          </p>
+          <p>
+            The blog should include a detailed amount of meta data which informs the reader
+            on how useful the blog article is. One of my own dislikes is when I am reading a 
+            blog post on the web and there is no creation or updated date on the post leading
+            me to wonder if the solution provided is in sync with my own challenge.
           </p>
         </div>
 
