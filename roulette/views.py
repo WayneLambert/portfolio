@@ -53,7 +53,6 @@ def reset_places_to_go(request):
 def get_roulette_result(request) ->tuple:
     num_of_choices = 1000
     detailed_choices = []
-    # log_file = os.path.join(settings.BASE_DIR, 'roulette/holiday_roulette.log')
     for place_selected in range(1, num_of_choices + 1):
         time.sleep(0.003)
         choice_num = random.randint(0, len(places_to_go) - 1)
