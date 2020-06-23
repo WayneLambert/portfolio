@@ -2,19 +2,17 @@ import operator
 import random
 import os
 import time
-from logging import DEBUG, basicConfig, debug, INFO, info
+import logging
 
 from django.conf import settings
 from django.shortcuts import render
 
 log_file = os.path.join(settings.BASE_DIR, 'roulette/holiday_roulette.log')
 
-# Detailed logging example below...
-basicConfig(
+logging.basicConfig(
     filename=log_file,
-    level=INFO,
-    format="""%(asctime)s.%(msecs)03d %(levelname)-8s %(filename)s:
-        %(module)s: %(lineno)d - %(funcName)s: %(message)s""",
+    level=logging.INFO,
+    format="""%(asctime)s.%(msecs)03d %(levelname)-8s %(filename)s %(module)s: %(lineno)d - %(funcName)s: %(message)s""",
     datefmt="%Y-%m-%d %H:%M:%S"
 )
 
@@ -59,7 +57,7 @@ def get_roulette_result(request) ->tuple:
         choice = list(places_to_go.keys())[choice_num]
         places_to_go[choice] += 1
         choice_item = f"Choice #{place_selected} was {choice}"
-        info(choice_item)
+        logging.info(choice_item)
         print(choice_item)
         detailed_choices.append(choice_item)
     most_selected_place = max(places_to_go.items(), key=operator.itemgetter(1))[0]
