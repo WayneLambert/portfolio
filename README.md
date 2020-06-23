@@ -9,11 +9,11 @@ The blog is not intended to be a fully blown production product, therefore some 
 A full CRUD application using Django's models, views, and templates.
 
 - [Home Page](https://waynelambert.dev/blog)
-- [README](https://github.com/WayneLambert/portfolio/tree/master/blog)
+- [README](https://waynelambert.dev/portfolio/reviews/blog/)
 
 The content of the blog itself is about various topics in computer programming and web development. The posts are intended to demonstrate my understanding of the topics in addition to my own learning and documentation for specific processes that I am likely to need again when I integrate them in future projects.
 
-![Django Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-blog.png)
+![Django Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/api.jpg)
 
 ## Django Rest API Endpoints
 
@@ -24,14 +24,6 @@ API endpoints enabling front-end developers to consume with their preferred fram
 
 ![Django REST API Endpoints](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/django-rest-framework.png)
 
-## React Blog (COMING SOON)
-
-Uses React to render Django Blog fields to the user interface using the API.
-
-- [README](https://github.com/WayneLambert/portfolio/tree/master/aa-front-end)
-
-![React Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/react-blog.jpg)
-
 ## Countdown: Letters Game
 
 Take on Susie Dent in this simulation of the letters game from Countdown.
@@ -39,7 +31,7 @@ Take on Susie Dent in this simulation of the letters game from Countdown.
 - [Countdown: Letters Game](https://www.waynelambert.dev/countdown-letters/selection/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_letters)
 
-![Countdown Letters](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg)
+![Countdown Letters](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown-letters.jpg)
 
 ## Countdown: Numbers Game
 
@@ -48,7 +40,7 @@ Take on Rachel Riley in this simulation of the numbers game from Countdown.
 - [Countdown: Numbers Game](https://www.waynelambert.dev/countdown-numbers/selection/)
 - [README](https://github.com/WayneLambert/portfolio/tree/master/countdown_numbers)
 
-![Countdown Numbers](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_numbers.png)
+![Countdown Numbers](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown-numbers.jpg)
 
 ## Text Analysis
 
