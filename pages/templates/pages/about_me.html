@@ -1,0 +1,443 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | About Me{% endblock title %}
+
+{% block content %}
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">About Me</h2>
+    </div>
+  </section>
+
+  <!--- Professional Journey -->
+  <section class="project px-3 mb-3 mt-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="260px"
+          src="{% static 'assets/images/static_pages/data-analysis.png' %}" alt="Data Analysis">
+        <div class="media-body">
+          <div>
+            <legend class="h6 border-bottom mb-3">My Professional Journey</legend>
+          </div>
+          <div class="client-bio site-article">
+            <div class="client-info">
+              <p>
+                My story of falling in love with programming comes a long time after my story of
+                falling in love with data analysis. During my school years, I was very good at
+                maths and solving problems with logic. I was using computers from an early age having
+                an Atari 820ST. Yeah, you know the ones, the top-loader cassettes that take a noisy forever 
+                to load a primitive game. Later, I had a Pentium 75 which got me through my sixth form years
+                when I wasn't playing Super Mario Kart on the Super Nintendo.
+              </p>
+              <p>
+                Fortunately for me, my mum had secretarial skills and thought it would be a good
+                idea for me to learn to type, which is of course a skill that has naturally stood me in good
+                stead for a career in using computers. To this day, I cannot touch type in the tradional way
+                and typing with my little fingers just seems totally alien. We can all be thankful for
+                Intellisense! I can type at a fair pace without looking at the keyboard though.
+              </p>
+              <p>
+                Following using a few spreadsheets and extensive use of Microsoft Word to produce
+                assignments within my sixth form years, I thought that it would be very useful to me
+                if I were able to predict just how much money I would have at a given point in the
+                future given certain assumptions around income and expenditure. I proceeded to lay out
+                what I would later discover was called a Cash Flow Forecast. Week-on-week, it would have my
+                earnings given the hours I was working as a Team Leader at a Stir Fry production company
+                in addition to my expenses.
+              </p>
+              <p>
+                It was a spreadsheet with many COUNTIFs, SUMIFs, VLOOKUPs which I had taught myself in order
+                to be able to make the spreadsheet. With my background in computing and maths, I
+                noticed that I was finding this extremely easy and just felt at ease and in flow with it.
+              </p>
+              <p>
+                I was able to see the power of spreadsheets for "what-if" analysis and I was hooked. If I were
+                to work an extra 5 hours per week, then in 3 months I would have x number of pounds in savings!
+                Wow! Mind blown!
+              </p>
+              <p>
+                Of course, such analysis has become run of the mill having done it for so many years now.
+                After a particularly hard working summer, I had saved enough to buy myself a £450 Saracen Sahara
+                bike which I was absolutely delighted with only for it be stolen with the use of bolt croppers
+                after finishing a long shift at the local salads factory. Gutted! Hey-ho!
+              </p>
+              <div class="mt-5">
+                <legend class="h6 border-bottom mb-3">My Introduction to Programming</legend>
+              </div>
+              <p>
+                After working for many years delivering Management Information and Business Intelligence dashboards
+                to senior managers and executive committees, I was tasked with building a database that could automatically
+                take input from users to be able to monitor KPI performance of an HR administration team. I developed a
+                Microsoft Access database with a lot of VBA code to accomplish this.
+              </p>
+              <p>
+                The database was a massive success in fulfilling the manager's objectives and they were extremely happy
+                with it, although I now look back on it and view the code in there as rather primitive. When they looked
+                at the code, they thought it was complete double-dutch.
+              </p>
+              <p>
+                It was this blend of creating an intuitive user interface and a robust and efficient application that
+                that had me completely hooked! I studied several books and courses on VBA development and had used it
+                to build a lot of applications across the department.
+              </p>
+              <p>
+                My VBA code went from strength to strength until, before I knew it, I was building robust dashboards and
+                applications that was saving users across the business time previously taking hundreds of man-hours worth
+                of laborious manual effort to accomplish.
+              </p>
+              <p>
+                From then, I read a book called <a href="https://www.amazon.co.uk/Self-Taught-Programmer-Definitive-Programming-Professionally/dp/0999685902/ref=sr_1_1?crid=2LPBO7L24FEJO&dchild=1&keywords=the+self-taught+programmer&qid=1592840790&sprefix=the+self-%2Caps%2C161&sr=8-1" target="_blank"><em>'The Self-Taught Programmer'</em> by Cory Althoff</a>
+                which advocated the use of Python. I noticed that the language was written in an expressive and
+                intuitive way that I considered would be the way that I would write a programming language. It was around May 2018
+                when I encountered Python and have studied it avidly ever since.
+              </p>
+              <p>
+                A bit of further research led me to realise its popularity as a scripting language, a web development
+                language and a data analysis tool. I started learning the Data Science libraries first which seemed incredibly
+                intuitive to me because of my background in Excel and all of Pandas' similarities with Excel.
+              </p>
+              <p>
+                I continued my learning journey by studying more courses on Udemy, reading books and writing scripts on Pythonista on the iPad and VS Code.
+                When GitHub introduced free private repositories, I started to create more projects and push them to my remote repo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="col-8 mt-5 mb-5">
+
+  <section class="faq-section mb-5">
+    <div class="container single-col-max-width">
+      <h3 class="text-center mb-4">10 Questions to Learn More About Me</h3>
+      <div class="text-center mb-5">
+        Here are a few answers to questions to give you more of a picture about me as a person.
+        They start with professional questions and then move onto more personal ones.
+      </div>
+      <div id="faq-accordion" class="faq-accordion mx-auto">
+
+        <!-- PROFESSIONAL QUESTIONS -->
+        <!-- Question 1 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq1" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Other than Python, what other programming skills do you have?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq1">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                Naturally, having built a portfolio, I have some skills in other languages and/or
+                programming constructs/disciplines. Throughout the portfolio, there is evidence of using Sass,
+                HTML, etc. In terms of languages, I also know some JavaScript and React but I cannot say
+                that it is at the same level as my Python/Django.
+              </p>
+              <p>
+                I can add sprinklings of JavaScript to my project to augment its functionality. This is
+                evidenced with some of the features across my portfolio.
+              </p>
+              <p>
+                I have extensive experience of building complex projects using VBA in Excel, Access,
+                and Outlook. Following my experience in building in VBA, I also know how to build some projects
+                using vb.NET, however I do not wish to use these skills going forward because it's a dying language.
+              </p>
+              <p>
+                Naturally, having worked with various database technologies, I can free-hand write relatively complex
+                queries retrieving data from relational databases.
+              </p>
+              <p>
+                I have only touched on noSQL databases as an introduction with MongoDB.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq2" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Besides programming and Data Science, do you have any other computer skills?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq2">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                Yes, my Excel skills are very advanced having used it since being a teenager. In
+                addition to the VBA I just mentioned, I know over 200 different Excel formulas and
+                pretty much all of the advanced features it has.
+              </p>
+              <p>
+                I have taught Excel classes at two of my previous employers as management thought that if
+                everyone had my level of Excel skills, their job would be much easier. I also enjoy
+                training other people as I can communicate complex ideas and processes in plain language.
+              </p>
+              <p>
+                I have learned many Business Intelligence tools over my career to various degrees. Since I
+                have not used these tools for a long time, I would need a little time to be reacquainted to
+                become effective/efficient in them again. In 2014, I had written over 100 different SAP BusinessObjects
+                reports during and following a large data migration programme which fed multiple downstream systems
+                at Admin Re UK.
+              </p>
+              <p>
+                Since then, I have learned both Tableau and, to a lesser degree, Microsoft Power BI.
+              </p>
+              <p>
+                Many years ago, I learned to use AutoCAD and to this day have a portfolio of A0 sized drawings
+                printed on one of the old AutoCad plotting machines.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq3" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                What first got you interested in web development?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq3">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                I first tinkered with simple static web pages using Microsoft FrontPage in the late 90s
+                and eventually started using Adobe DreamWeaver. I never really deployed any of these
+                projects because I didn't have anything that was really going to help the world.
+                It was purely my fascination with being able to use my logical mind to be creative.
+                It was my avenue for creative expression since I am so bad at art. I mean that I'm
+                so bad that I struggle to draw a stickman!
+              </p>
+              <p>
+                In 2008, I designed a few WordPress websites which was hosted on Linux servers for the
+                purpose of online marketing so that I could sell affiliate products. In the context of
+                an individual's website, it generated quite a lot of traffic sometimes achieving almost a
+                thousand visits in a day. If you've ever put your own website online, you'll know just how
+                difficult it is to achieve that. For over a year, it was tracking in the top 60,000 Alexa
+                ranked websites.
+              </p>
+              <p>
+                The problem was that the website was built with the objective of making some sideline money,
+                however what I ended up finding is that I enjoyed the creation of the website tinkering with
+                the HTML, PHP code and MySQL database on Bluehost more than I actually did the marketing.
+                I was supposed to be focused on the marketing but I was getting pulled into the coding.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq4" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Do you take the time to work on your personal and professional development?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq4">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                Since the age of about 25, I have focused on perpetual growth and learning, especially
+                with the emergence of online tools that make this easily accessible.
+              </p>
+              <p>
+                I started learning about many things by going to seminars up and down the country, listening to
+                audio books on my daily commute and avidly reading personal development books. I read and listened
+                 to hundreds of books in the field of personal development. Tony Robbins would be the most household name.
+                I learned about sales, marketing, online marketing, finance, politics and pretty much anything
+                that could help me to understand the world that bit better.
+              </p>
+              <p>
+                Most of this was produced by Americans since the personal development market is more mature over there.
+                I studied authors such as Brian Tracy, Zig Ziglar, Dan Kennedy, Robert Kiyosaki and others.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq5" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                What developer skills do you want to learn next?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq5">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                I'd like to continue my journey of learning to build React applications as I believe
+                with my current level of Django skills together with building a responsive front-end
+                application with React, some very powerful modern web applications could be built.
+              </p>
+              <p>
+                I wouldn't really called myself a DevOps kind of a guy, although I can manage a Linux
+                server and know my around Docker. I think GitHub Actions is going to be a very powerful
+                player in DevOps in the future since GitHub has such a mindshare of the developer market and
+                integrates brilliantly with the rest of the platform.
+              </p>
+              <p>
+                With the imminent advent of VS Code being built into GitHub itself, it will make it easier than
+                ever to contribute to open source projects and deliver them using a CI/CD workstream.
+                I'm starting to learn GitHub actions and have some experience with Tox and Travis CI
+                from my open source contributions to a couple of Python packages.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="col-8 mt-5 mb-5">
+
+        <!-- PERSONAL QUESTIONS -->
+        <!-- Question 6 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq6" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Outside of programming and other professional interests, what else do you like to do?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq6">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                If there's anything that I love more than programming, then its travel. I am fortunate
+                to have travelled to many different countries and have never considered money spent on
+                travelling as a waste.
+              </p>
+              <p>
+                Each time that I have travelled, I feel as though my mind has almost tangibly been stretched.
+                I am fascinated by other cultures and geography.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq7" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Could you name someone you admire? And why?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq7">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                Nelson Mandela was a great person as his achievements in my formative years were
+                incredible. I remember my parents recording the Nelson Mandela concerts on video
+                tapes and them telling me about why the concerts existed and why he was serving time
+                in prison for his beliefs. I found it incredible that one person could mobilise
+                such a huge change in society. He could be considered as a modern day Gandhi.
+              </p>
+              <p>
+                In this regard, I respect people that achieve again and again often in different
+                disciplines. Arnold Schwarznegger is another example of this. Not content with being
+                Mr. Universe in his younger years, he also went on to become a successful Hollywood
+                actor and then the governor of California.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq8" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                Do you like sports?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq8">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                Absolutely! Actually playing the sports belongs in my past now. I watch sports
+                occasionally, however I usually find myself too busy to watch sport all of the time.
+                Although football is my favourite sport, I can happily watch One Day or T20 Cricket,
+                Tennis, Rugby Union, Formula 1, Golf or Snooker. I love the Olympics and Commonwealth
+                Games when they're on and definitely look forward to Birmingham hosting the Commonwealth Games in 2022.
+              </p>
+              <p>As with any football team, it's a contentious choice invoking lively debate and tribal banter
+              but I support Chelsea FC and England.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq9" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                What is your favourite film?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq9">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                I mainly like action, drama, and comedy films. I think films like The Shawshank
+                Redemption, Seven, Point Break, Man on Fire, Enemy of the State, The Negotiator,
+                Shooter, Taken, and the Bourne films are all fantastic. I think that Top
+                Gun may well be my favourite film of all time though as it had everything in the movie.
+                I had a massive interest in airplanes when I was younger.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="card border-0 mb-3">
+          <div class="card-header border-0 p-3 theme-bg-light">
+            <h4 class="card-title mb-0">
+              <a data-parent="#faq-accordion" data-toggle="collapse" class="card-toggle collapsed" 
+                href="#faq10" aria-expanded="false"><i class="fas fa-chevron-down mr-2"></i>
+                OK, what about music? What music do you enjoy?
+              </a>
+            </h4>
+          </div>
+          <div class="card-collapse collapse" id="faq10">
+            <div class="card-body pt-0 theme-bg-light">
+              <p>
+                I often listen to Ibiza sunset/lounge music when programming as it helps my mind
+                to flow. Having no words or even foreign language words means I don't engage with
+                the music and sing. Instead I can concentrate on the programming tasks at hand.
+              </p>
+              <p>
+                In my early years, I loved Dire Straits and still do to this day. They have had a
+                lasting impression on the sort of music that I like. My teenage years was captured
+                with the many great Oasis hits so I love them too and have been fortunate enough to
+                see them twice in concert.
+              </p>
+              <p>
+                Although I wouldn't consider myself an avid concert-goer, I have been to fair
+                few watching the likes of Oasis, Bon Jovi, Rod Stewart, Coldplay, and Ed Sheeran.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}
