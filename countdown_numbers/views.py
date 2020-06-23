@@ -30,7 +30,7 @@ def get_numbers_chosen(num_from_top: int) -> list:
         NUMS_FROM_TOP.remove(num_from_top_picked)
         numbers_chosen.append(num_from_top_picked)
 
-    for _num in range(num_from_bottom):
+    for _ in range(num_from_bottom):
         num_from_bottom_picked = choices(NUMS_FROM_BOTTOM)[0]
         NUMS_FROM_BOTTOM.remove(num_from_bottom_picked)
         numbers_chosen.append(num_from_bottom_picked)
@@ -48,8 +48,7 @@ def build_game_url(form):
     target_number_url = urlencode({'target_number': get_target_number()})
     numbers_chosen_url = urlencode(
         {'numbers_chosen': get_numbers_chosen(num_from_top=num_from_top)})
-    full_url = f"{base_url}?{target_number_url}&{numbers_chosen_url}"
-    return full_url
+    return f"{base_url}?{target_number_url}&{numbers_chosen_url}"
 
 
 def selection_screen(request):
@@ -158,10 +157,9 @@ def is_calc_valid(request)-> bool:
     return True
 
 
-def get_player_num_achieved(request)-> int:
+def get_player_num_achieved(request) -> int:
     players_calc = request.GET.get('players_calculation')
-    player_num_achieved = int(eval(players_calc))
-    return player_num_achieved
+    return int(eval(players_calc))
 
 operator_symbols = {
     '+': operator.add,

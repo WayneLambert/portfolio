@@ -46,9 +46,8 @@ def get_letters_chosen(num_vowels: int) -> str:
         letters_chosen.append(consonant_picked)
 
     letters_chosen = sorted(letters_chosen, key=lambda k: random())
-    letters_param = ''.join([
+    return ''.join([
         item for ind_letter_list in letters_chosen for item in ind_letter_list])
-    return letters_param
 
 
 def selection_screen(request):
@@ -92,15 +91,14 @@ def game_screen(request):
     return render(request, 'countdown_letters/game.html', context)
 
 
-def get_words() ->tuple:
+def get_words() -> tuple:
     words_list = []
     words_filename = os.path.join(settings.BASE_DIR, 'countdown_letters/words.txt')
     with open(words_filename, 'r') as words_file:
         for word in words_file:
             words_list.append(word.strip('\n'))
 
-    words = tuple(words_list)
-    return words
+    return tuple(words_list)
 
 
 def get_shortlisted_words(words: tuple, letters: str) -> dict:
@@ -117,20 +115,18 @@ def get_shortlisted_words(words: tuple, letters: str) -> dict:
             common_letters = set(letters_in_selection).intersection(
                 letters_in_tested_word)
             letter_count = len(common_letters)
-            if letter_count >= cumulative_max_letter_count:
-                if len(tested_word) == len(common_letters):
-                    cumulative_max_letter_count = letter_count
-                    shortlisted_words[tested_word] = cumulative_max_letter_count
+            if letter_count >= cumulative_max_letter_count and len(
+                tested_word
+            ) == len(common_letters):
+                cumulative_max_letter_count = letter_count
+                shortlisted_words[tested_word] = cumulative_max_letter_count
     return shortlisted_words
 
 
-def is_in_oxford_api(word: str) ->bool:
+def is_in_oxford_api(word: str) -> bool:
     url = f'{OD_API_BASE_URL}{"lemmas/"}{LANGUAGE}{"/"}{word.lower()}'
     response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return True
-    else:
-        return False
+    return response.status_code == 200
 
 
 def get_longest_possible_word(shortlisted_words: dict) -> str:
@@ -161,11 +157,10 @@ def get_game_score(word_len: int) -> int:
         return word_len
 
 
-def get_lemmas_response_json(word: str) ->dict:
+def get_lemmas_response_json(word: str) -> dict:
     lemmas_url = f"{OD_API_BASE_URL}{'lemmas/'}{LANGUAGE}{'/'}{word.lower()}"
     lemmas_response = requests.get(lemmas_url, headers=headers)
-    lemmas_response_json = lemmas_response.json()
-    return lemmas_response_json
+    return lemmas_response.json()
 
 
 def get_alt_word(word: str) -> str:
@@ -204,13 +199,11 @@ def lookup_definition(word: str) -> dict:
         lemmas_json = get_lemmas_response_json(word)
         word_class = lemmas_json['results'][0]['lexicalEntries'][0]['lexicalCategory']['text']
 
-    definition_result = {
+    return {
         'alt_word_lookup': alt_word_lookup,
         'definition': definition,
         'word_class': word_class,
     }
-
-    return definition_result
 
 
 def present_definition(definition_result):

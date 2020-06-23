@@ -27,12 +27,8 @@ def analysis(request):
 
     sorted_words = sorted(word_dict.items(), key=operator.itemgetter(1), reverse=True)
 
-    def count_char(original_full_text: str, test_char: str) ->int:
-        num_chars = 0
-        for char in original_full_text:
-            if char == test_char:
-                num_chars += 1
-        return num_chars
+    def count_char(original_full_text: str, test_char: str) -> int:
+        return original_full_text.count(test_char)
 
     letter_count = []
     if len(letter_count) <= len(cleaned_full_text):

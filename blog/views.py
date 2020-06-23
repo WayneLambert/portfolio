@@ -67,8 +67,7 @@ class UserPostListView(PostView):
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
-        qs = self.queryset.filter(author=user, status=1)
-        return qs
+        return self.queryset.filter(author=user, status=1)
 
 
 class CategoryPostListView(PostView):
@@ -79,8 +78,7 @@ class CategoryPostListView(PostView):
 
     def get_queryset(self):
         self.categories = get_list_or_404(Category, slug=self.kwargs['slug'])
-        qs = self.queryset.filter(categories=self.categories[0].id)
-        return qs
+        return self.queryset.filter(categories=self.categories[0].id)
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
@@ -121,14 +119,8 @@ class PostDetailView(DetailView):
         posts = Post.objects.prefetch_related('categories').select_related('author__user')
         for idx, post in enumerate(posts):
             if post.slug == self.kwargs['slug']:
-                if idx == 0:
-                    context['prev_post'] = posts[posts.count() - 1]
-                else:
-                    context['prev_post'] = posts[idx - 1]
-                if idx == posts.count() - 1:
-                    context['next_post'] = posts[0]
-                else:
-                    context['next_post'] = posts[idx + 1]
+                context['prev_post'] = posts[posts.count() - 1] if idx == 0 else posts[idx - 1]
+                context['next_post'] = posts[0] if idx == posts.count() - 1 else posts[idx + 1]
                 return context
 
 
@@ -144,9 +136,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user.id == post.author.id:
-            return True
-        return False
+        return self.request.user.id == post.author.id
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -157,6 +147,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         post = self.get_object()
-        if self.request.user == post.author:
-            return True
-        return False
+        return self.request.user == post.author

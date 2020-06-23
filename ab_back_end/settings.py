@@ -110,9 +110,7 @@ if DEBUG:
 
     # Do not log static request files to the console
     def skip_static_requests(record):
-        if record.args[0].startswith('GET /static/'):
-            return False
-        return True
+        return not record.args[0].startswith('GET /static/')
 
     LOGGING = {
         'version': 1,
