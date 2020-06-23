@@ -32,11 +32,11 @@ class Post(models.Model):
         (1, 'Publish')
     )
     title = models.CharField(
-        max_length=60,
+        max_length=250,
         validators=[MinLengthValidator(40)],
         help_text='The length of the post must be between 40 and 60 characters'
     )
-    slug = models.SlugField(max_length=60, unique=True)
+    slug = models.SlugField(max_length=250, unique=True)
     content = RichTextUploadingField()
     reference_url = models.URLField(blank=True)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
