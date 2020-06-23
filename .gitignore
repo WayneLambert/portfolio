@@ -207,3 +207,4 @@ postgres/data/
 
 static/assets/*
 node_modules/*
+staticfiles/*
