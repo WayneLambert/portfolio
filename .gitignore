@@ -60,7 +60,6 @@ setup.sh
 *.pyc
 __pycache__/
 local_settings.py
-migrations
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
