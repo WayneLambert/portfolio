@@ -1,0 +1,35 @@
+<ul class="pagination justify-content-center my-5">
+  {% if current_page.has_previous %}
+  <!-- 'First' and 'Previous' Buttons -->
+    <li class="page-item">
+      <a class="page-link" href="?page=1">|&lt; First</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ current_page.previous_page_number }}">&lt; Previous</a>
+    </li>
+  {% endif %}
+
+  <!-- Numbered Buttons -->
+  {% for page in paginator.page_range %}
+    {% if current_page.number == page %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page }}"><strong><u>{{ page }}</u></strong></a>
+      </li>
+    {% elif page > current_page.number|add:'-3' and page < current_page.number|add:'3' %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page }}">{{ page }}</a>
+      </li>
+    {% endif %}
+  {% endfor %}
+
+  <!-- 'Next' and 'Last' Buttons -->
+  {% if current_page.has_next %}
+    <li class="page-item">
+      <a class="page-link" 
+        href="?page={{ current_page.next_page_number }}">Next &gt;</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" href="?page={{ current_page.paginator.num_pages }}">Last &gt;|</a>
+    </li>
+  {% endif %}
+</ul>

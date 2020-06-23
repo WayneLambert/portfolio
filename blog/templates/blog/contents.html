@@ -1,15 +1,29 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} | Blog Contents{% endblock title %}
+
 {% block content %}
-  <h3>Contents Page</h3><br>
-  {% for category in categories %}   
-    <h6><a class="category-name"
-        href="{% url "blog-django" %}category/{{ category.slug }}">{{ category.name }}</a>
-    </h6><br>
-    {% for item in category.posts.all %}
-      <a class="article-title"
-          href="{% url 'post-detail' item.slug %}">- {{ item.title }}
-      </a><br>
-    {% endfor %}
-    <hr>
+  {% include 'components/search.html' %}
+  <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} Posts)</h6>
+  {% for post in posts %}
+    <article class="blog-post">
+      <div class="container single-col-max-width alert">
+        <table>
+          <tr>
+            <td width="75%">
+              <h6 class="card-title">
+                <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+                  {{ post.title }}
+                </a>
+              </h6>
+              <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
+            </td>
+            <td width="25%"><img src="{{ post.image.url }}" alt="{{ post.title }}" width="100%" height="100%"></td>
+          </tr>
+        </table>
+        {% include "components/meta_data.html" %}
+      </div>
+    </article>
+    {% if not forloop.last %}<hr class="theme-link col-8">{% endif %}
   {% endfor %}
 {% endblock content %}

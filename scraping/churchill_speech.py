@@ -13,8 +13,8 @@ def get_churchill_speech(request):
     URL = "https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
     page_response = requests.get(URL, timeout=5)
     page_content = BeautifulSoup(page_response.content, "html.parser")
-    speech_text = str(page_content.findChildren
-                      ('h1')).split('\n')[1].split(';<br/>')[0].strip() + '."'
+    speech_text = str(
+        page_content.findChildren('h1')).split('\n')[1].split(';<br/>')[0].strip() + '."'
 
     return render(
         request,

@@ -1,0 +1,120 @@
+.footer {
+  font-family: 'Lato', arial, sans-serif;
+  background: $theme-color-footer;
+  color: #fff;
+  padding: 15px 0;
+  font-size: 16px;
+
+  .footer-col {
+
+    padding-top: 15px;
+
+    &.about {
+      .more {
+        .svg-inline--fa {
+          margin-left: 5px;
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+
+    &.links {
+      margin-right: 5px;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+
+    &.contact {
+      font-size: 16px;
+      margin-right: 10px;
+
+      p {
+        color: $theme-color-bottom-bar;
+      }
+
+    }
+
+    .title {
+      color: darken($theme-color-footer, 30%);
+      font-weight: normal;
+      font-size: 18px;
+      padding-bottom: 10px;
+    }
+
+    p {
+      color: #fff;
+    }
+
+    a {
+      color:darken($theme-color-footer, 20%);
+
+      &:hover {
+        color: darken($theme-color-bottom-bar, 40%);
+      }
+    }
+  }
+
+
+  .bottom-bar {
+    background: $theme-color-bottom-bar;
+    color: lighten($grey, 10%);
+    font-size: 16px;
+    width: 100%;
+
+    .social-container {
+      display: table;
+    }
+      .copyright {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+    .social {
+      margin-bottom: 0;
+      text-align: right;
+
+      li {
+        margin-left: 20px;
+        margin-right: 0;
+        float: right;
+        text-align: right;
+
+        a {
+          color: $grey;
+          font-size: 20px;
+
+          &:hover {
+            color: darken($grey, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Top Control
+#topcontrol {
+  background: $theme-color-primary;
+  color: #fff;
+  text-align: center;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  border: none;
+  @include border-radius(2px);
+  @include transition (all 0.4s ease-in-out);
+  z-index: 2;
+
+  &:hover {
+    background: $theme-color-primary;
+  }
+
+  .svg-inline--fa {
+    position: relative;
+    top: 3px;
+    font-size: 25px;
+  }
+}

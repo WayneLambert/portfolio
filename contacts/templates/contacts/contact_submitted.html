@@ -1,18 +1,25 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} | Contact Submitted{% endblock title %}
 
 {% block content %}
-  <div class="alert alert-light col-md-4 mb-0" role="alert">
-    <h6>Thanks for getting in touch. I will get back to you shortly.</h6>
-    <div class="border-top" pt-10>
-      <small class="text-muted">
-        - <a href="{% url 'home' %}">Return to home page</a>
-      </small><br>
-      <small class="text-muted">
-        - <a href="https://wl-portfolio.s3.eu-west-2.amazonaws.com/documents/cv_wayne_lambert.pdf">View CV</a>
-      </small><br>
-      <small class="text-muted">
-        - <a href="https://github.com/WayneLambert/portfolio">View Portfolio Source Code on GitHub</a>
-      </small>
+  <article class="blog-post px-3 py-3 p-md-5">
+    <div class="container theme-bg-light single-col-max-width mt-3">
+      <section class="cta-section py-5">
+        <div class="container text-center single-col-max-width">
+        <h6>Thanks for getting in touch. I will get back to you shortly.</h6>
+        <div class="border-top pt-10">
+          <small class="text-muted">
+            <a class="theme-link" href="{% url 'pages:home' %}">Home Page</a> | 
+          </small>
+          <small class="text-muted">
+            <a class="theme-link" href="{% url 'pages:portfolio' %}">Portfolio</a> | 
+          </small>
+          <small class="text-muted">
+            <a class="theme-link" href="{% url 'blog:home' %}">Blog</a>
+          </small>
+        </div>
+      </section>
     </div>
-  </div>
+  </article>
 {% endblock content %}

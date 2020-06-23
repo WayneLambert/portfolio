@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="isotope-item col-md-6 mb-5 pythonapp">
+  <div class="card project-card">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-img-holder">
+        <img src="{% static 'assets/images/project/countdown-numbers.jpg' %}" class="card-img" alt="image">
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body">
+          <h5 class="card-title">Countdown Numbers</h5>
+          <p class="card-text">Take on Rachel Riley in this simulation of the numbers game from Countdown.</p>
+        </div>
+      </div>
+    </div>
+    <div class="link-mask">
+      <a class="link-mask-link" href="{% url 'countdown_numbers:selection' %}"></a>
+      <div class="link-mask-text">
+        <a class="btn btn-secondary" href="{% url 'countdown_numbers:selection' %}">
+          <i class="fas fa-arrow-circle-right mr-2"></i>
+          Play Countdown Numbers Game
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

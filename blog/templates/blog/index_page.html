@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} | Blog Contents (Short){% endblock title %}
+
+{% block content %}
+  {% include 'components/search.html' %}
+  <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} unique post{{ posts.count|pluralize }})</h6>
+  {% for category in categories_list %}
+    <div class="container single-col-max-width alert">
+      <h6 class="mb-4">
+        {{ category.posts.count }} post{{ category.posts.count|pluralize }} about 
+        <a class="theme-link" href="{% url "blog:home" %}category/{{ category.slug }}/posts">{{ category.name }}</a>
+      </h6>
+      {% for post in category.posts.all %}
+        <article class="blog-post">
+            <h6 class="card-title">
+              <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+                <i class="fas fa-caret-right mr-2"></i>{{ post.title }}
+              </a>
+            </h6>
+        </article>
+      {% endfor %}
+    </div>
+  {% endfor %}
+{% endblock content %}

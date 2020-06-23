@@ -1,25 +1,43 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% block title %}{{ block.super }} | Countdown Letters | Game{% endblock title %}
+
 {% block content %}
-  <div class="countdown-photo">
-    <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png"
-    alt="countdown">
-  </div>
-  <div class="countdown-text">
-    <h6>The letters selected at random for you are...</h6><br>
-    <div class="letters-selected">
-      {{ request.GET.letters_chosen }}
-    </div><br>
-    <form id="selected-letters-form" action="{% url 'countdown-letters:game' %}"
-      method="POST" class="form-horizontal">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="btn btn-sm btn-success mr-10" type="submit">
-        <i class="fa fa-sign-in"></i>
-        Submit
-      </button><br><br>
-    </form>
-  </div>
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'countdown_letters/components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <h6 class="font-weight-bold mb-0 lead mt-3">The letters selected at random for you are...</h6>
+          <div class="client-quote d-flex flex-column col-5 mb-1 offset-lg-4 mt-3" style="font-size: xxx-large;">
+            <blockquote class="quote-content">
+              <table>
+                <tr>
+                  {% for letter in request.GET.letters_chosen %}
+                    <td>
+                      <strong class="text-dark text-capitalize text-justify">{{ letter }}</strong>
+                    </td>
+                  {% endfor %}
+                </tr>
+              </table>
+            </blockquote>
+          </div>
+          <form method="POST" action="{% url 'countdown_letters:game' %}"
+            class="form-horizontal col-lg-5 offset-lg-4 div-wrapper d-flex">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-sm btn-success mr-10" type="submit">
+              <i class="fa fa-sign-in"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 {% endblock content %}

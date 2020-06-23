@@ -1,20 +1,15 @@
 from django.urls import path
-from scraping import (
-    churchill_speech,
-    gettysburg_speech,
-    jokes,
-    referendum,
-)
-from scraping import views as scraping_views
+
+from .churchill_speech import get_churchill_speech
+from .gettysburg_speech import get_gettysburg_speech
+from .referendum import get_referendum_results
+from .views import ScrapingOptionsView
+
+app_name = 'scraping'
 
 urlpatterns = [
-    path('scraping-options/', scraping_views.scraping_options_list,
-         name='scraping-options'),
-    path('churchill-speech/', churchill_speech.get_churchill_speech,
-         name='churchill-speech'),
-    path('gettysburg-speech/', gettysburg_speech.get_gettysburg_speech,
-         name='gettysburg-speech'),
-    path('jokes/', jokes.get_joke, name='jokes'),
-    path('referendum/', referendum.get_referendum_results,
-         name='referendum'),
+    path('scraping-options/', ScrapingOptionsView.as_view(), name='scraping_options'),
+    path('churchill-speech/', get_churchill_speech, name='churchill_speech'),
+    path('gettysburg-speech/', get_gettysburg_speech, name='gettysburg_speech'),
+    path('eu-referendum-results/', get_referendum_results, name='referendum'),
 ]

@@ -1,0 +1,11 @@
+<article class="blog-post mt-3 mb-3">
+  <div class="container single-col-max-width">
+    <div class="container single-col-max-width">
+      {% if 'contents' in request.path %}
+        <h6 class="mt-1">{{ num_posts }} post{{ num_posts|pluralize }} found in total</h6>
+      {% else %}
+        <h6 class="mt-1">{{ num_posts }} post{{ num_posts|pluralize }} found related to "{{ request.GET.q }}"</h6>
+      {% endif %}
+    </div>
+  </div>
+</article>

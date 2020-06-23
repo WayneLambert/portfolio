@@ -1,0 +1,61 @@
+{% load static %}
+
+<section class="project px-3 py-5 p-md-5">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/django.png' %}" alt="Django">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2">
+              <span class="iconify mr-2" data-icon="cib:django" data-inline="false"></span>
+              <strong>Django:</strong>Web Development
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              Having developed several projects in Django including the whole of the portfolio that
+              you're currently reviewing, I have developed significant skills with Django.
+            </p>
+            <p>
+              I can quickly build a site from scratch using Django and overcome many of the things in
+              Django that is considered to be advanced usage. Examples include:
+              <ul class="mb-0 no-bullets">
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Creation of a custom authentication system subclassing from AbstractBaseUser
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Predominantly using Class-Based Views, therefore writing a code base that is, 
+                  in my opinion, easier to maintain and build upon going forwards.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Use an external API or scrape content from the web and store that data within the database.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Integrate advanced form controls with Bootstrap and JavaScript.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Build a highly customised admin interface that could essentially be a fast 
+                  prototype of an application.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Build forms using ordinary Django forms, Crispy Forms, Django Widget Tweaks, or 
+                  integrating raw Boostrap HTML.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Test the project with PyTest and its extended library of plugins for Django.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block additional_js %}
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+{% endblock additional_js %}

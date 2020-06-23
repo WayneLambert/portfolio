@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="isotope-item col-md-6 mb-5 djangoapp">
+  <div class="card project-card">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-img-holder">
+        <img src="{% static 'assets/images/project/django-rest-framework.png' %}" class="card-img" alt="image">
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body">
+          <h5 class="card-title">Blog API Endpoints</h5>
+          <p class="card-text">API endpoints for the Django blog enabling interface development.</p>
+        </div>
+      </div>
+    </div>
+    <div class="link-mask">
+      <a class="link-mask-link" href="{% url 'api:posts' %}"></a>
+      <div class="link-mask-text">
+        <a class="btn btn-secondary" href="{% url 'api:posts' %}">
+          <i class="fas fa-arrow-circle-right mr-2"></i>
+          View API Endpoints
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

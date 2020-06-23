@@ -1,0 +1,12 @@
+<!-- Buttons -->
+<div class="form-group mt-2">
+  <button type="submit" class="btn btn-success mr-2">
+    <i class="fa fa-upload"></i>
+      Update
+  </button>
+  <button type="cancel" class="btn btn-secondary mr-2" 
+    onclick="window.location='{% url 'blog:users:profile' user.user.slug %}';return false;">
+    <i class="fa fa-close"></i>
+    Cancel
+  </button>
+</div>

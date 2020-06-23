@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | CV{% endblock title %}
+
+{% block content %}
+  <div class="container px-3 px-lg-5">
+    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+      {% include 'components/header.html' %}
+      <hr>
+      {% include 'components/statement.html' %}
+      <hr>
+      <div class="cv-body">
+        <div class="row">
+          <div class="cv-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
+            {% include 'components/career_history.html' %}
+          </div>
+          <aside class="cv-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
+            <section class="skills-section py-3">
+            {% include 'components/skills.html' %}
+            {% include 'components/education.html' %}
+            {% include 'components/interests.html' %}
+            {% include 'components/other.html' %}
+          </aside>
+        </div>
+      </div>
+      <hr>
+      {% include 'components/footer.html' %}
+    </article>
+  </div>
+{% endblock content %}

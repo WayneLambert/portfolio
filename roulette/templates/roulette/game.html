@@ -1,33 +1,30 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}{{ block.super }} | Roulette | Game{% endblock title %}
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Find Your Next Holiday Destination</title>
-  </head>
-
-  <body>
-    {% block content %}
-      <div class="countdown-photo">
-        <img style="border:2px solid red"
-        src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/holiday-roulette/holiday-roulette.png"
-        alt="holiday-roulette">
-      </div>
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        <h6>Click the button below to find out where you're going on holiday next!</h6>
-        <form name="frm" action="{% url 'holiday-destination' %}" method="GET">
-          <button type="submit" class="btn btn-sm btn-success mr-2"
-            id="btn-count-words">
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'roulette/components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <!-- Instructions -->
+          <div class="d-flex flex-column col-12 mb-3 mt-3">
+            <div>Click the button below to find out where you're going on holiday next!</div>
+          </div>
+          <!-- Button -->
+          <button class="btn btn-sm btn-success mt-3" 
+            onclick="window.location='{% url 'roulette:holiday_destination' %}';return false;">
             <i class="fa fa-plane"></i>
-            Spin Wheel
+            Find Destination
           </button>
-        </form><br><br>
+        </div>
       </div>
-    {% endblock content %}
-  </body>
-</html>
+    </div>
+  </section>
+{% endblock content %}

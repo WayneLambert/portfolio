@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="isotope-item col-md-6 mb-5 pythonapp datasciencework">
+  <div class="card project-card">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-img-holder">
+        <img src="{% static 'assets/images/project/scraping.png' %}" class="card-img" alt="image">
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body">
+          <h5 class="card-title">Scraping</h5>
+          <p class="card-text">Scrape EU Referendum results or famous speeches from around the web.</p>
+        </div>
+      </div>
+    </div>
+    <div class="link-mask">
+      <a class="link-mask-link" href="{% url 'scraping:scraping_options' %}"></a>
+      <div class="link-mask-text">
+        <a class="btn btn-secondary" href="{% url 'scraping:scraping_options' %}">
+          <i class="fas fa-arrow-circle-right mr-2"></i>
+          Scrape Content
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

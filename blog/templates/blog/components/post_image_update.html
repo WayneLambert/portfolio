@@ -1,0 +1,10 @@
+<!-- Post Image -->
+<div class="custom-file mt-2">
+  <input type="file" class="custom-file-input" name="image" accept="image/*" 
+    id="{{ form.image.id_for_label }}">
+  <label class="custom-file-label" for="{{ form.image.id_for_label }}">
+    {% if post.image %}{{ post.image.name }}{% else %}Select Post Image...{% endif %}
+  </label>
+  <div class="small text-muted">{{ form.image.help_text }}</div>
+  <span class="text-danger small">{{ form.image.errors }}</span>
+</div>

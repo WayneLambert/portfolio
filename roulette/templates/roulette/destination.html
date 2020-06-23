@@ -1,38 +1,49 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}{{ block.super }} | Roulette | Destination{% endblock title %}
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Next Holiday Destination</title>
-  </head>
-
-  <body>
-    {% block content %}
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        <h5>Congratulations! You are going to {{ most_selected_place }}!</h5><br>
-          <img style="border:2px solid red" src={{ destination_image_url }}><br><br>
-        <h6>The results of the selections were:</h6><br>
-        {% for key, value in places_to_go.items %}
-          {% if key == most_selected_place %}
-            <span style="background-color: #FFFF00">
-              <b>{{ key }} : {{ value }}</b><br>
-            </span>
-          {% else %}
-            {{ key }} : {{ value }}<br>
-          {% endif %}
-        {% endfor %}<br>
-        <h6>The logging of the choices can be viewed here:</h6>
-        <a href="{% url 'destination-log-file' %}">Log File</a><br><br>
-        <h6>The detailed list of choices were:</h6><br>
-        {% for detailed_choice in detailed_choices %}
-          {{ detailed_choice }}<br>
-        {% endfor %}
-      </div><br><br>
-    {% endblock content %}
-  </body>
-</html>
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'roulette/components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <!-- Destinations Generated -->
+          <h5>Congratulations! You are going to {{ most_selected_place }}!</h5>
+            <img src={{ destination_image_url }}>
+          <h6 class="mt-3">The results of the selections were:</h6>
+          {% for key, value in places_to_go.items %}
+            <ul class="no-bullets">
+              <li>
+                {% if key == most_selected_place %}
+                  <span style="background-color: yellow">
+                    <strong>{{ key }} : {{ value }}</strong>
+                  </span>
+                {% else %}
+                  {{ key }} : {{ value }}
+                {% endif %}
+              </li>
+            </ul>
+          {% endfor %}
+          <hr class="col-8 mt-2 mb-3">
+          <h6>The logging of the choices can be viewed here:</h6>
+          <a class="theme-link" href="{% url 'roulette:destination_log_file' %}">Log File</a>
+          <hr class="col-8 mt-2 mb-3">
+        </div>
+        <div class="media-body text-left">
+          <h6>The detailed list of choices were:</h6>
+          <ul class="no-bullets text-left">
+            {% for detailed_choice in detailed_choices %}
+              <li>{{ detailed_choice }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -2,7 +2,7 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
-from contacts.forms import ContactForm
+from .forms import ContactForm
 
 
 def contact(request):
@@ -13,16 +13,18 @@ def contact(request):
 
         if form.is_valid():
             form.save()
-            full_name = f"{request.POST['first_name'].strip()} {request.POST['last_name'].strip()}"
+            first_name = request.POST['first_name'].title().strip()
+            last_name = request.POST['last_name'].title().strip()
+            full_name = f"{first_name} {last_name}"
             sender_email = request.POST['email'].strip()
             send_mail(
-                subject=f'Contact Form - from {full_name}',
+                subject=f"Contact Form - from {full_name}",
                 message=request.POST['message'],
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=['contact@waynelambert.dev', sender_email],
                 fail_silently=False
             )
-            return redirect('contact-submitted')
+            return redirect('contacts:submitted')
     else:
         form = ContactForm()
 
@@ -33,4 +35,4 @@ def contact(request):
 
 
 def contact_submitted(request):
-    return render(request, 'contact_submitted.html')
+    return render(request, 'contacts/contact_submitted.html')

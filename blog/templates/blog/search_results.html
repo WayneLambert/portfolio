@@ -1,19 +1,30 @@
-{% extends "blog/base.html" %}
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}{{ block.super }} | Blog Posts{% endblock title %}
+
 {% block content %}
-  {% include "blog/search_box.html" %}
-  <h6 class="mb-3">Posts relevant to "{{ request.GET.q }}": {{ object_list.count }}</h6>
-  {% for post in post_list %}
-    <article class="media content-section">
-      <img class="rounded article-img" src="{{ post.author.profile.profile_picture.url }}">
-      <div class="media-body">
-        {% include "blog/author_view.html" %}
-        <h4><a class="article-title" href="{% url 'post-detail' post.slug %}">{{ post.title }}</a></h4>
-        <img class="article-image-small" id="article-image-small" src="{{ post.image.url }}" }}>
-        <p class="article-content">{{ post.content|safe|truncatewords:20 }}</p>
-        <a href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a><br><br>
-        <a href="{% url 'post-detail' post.slug  %}" class="btn btn-info">Read More &rarr;</a>
+  {% include 'components/search.html' %}
+  {% include 'blog/posts_list_count.html' %}
+  {% for post in posts %}
+    <article class="blog-post">
+      <div class="alert alert-light container single-col-max-width">
+        <table>
+          <tr>
+            <td width="75%">
+              <h6 class="card-title">
+                <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+                  {{ post.title }}
+                </a>
+              </h6>
+              <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
+            </td>
+            <td width="25%"><img src="{{ post.image.url }}" alt="{{ post.title }}" width="100%" height="100%"></td>
+          </tr>
+        </table>
+        {% include "components/meta_data.html" %}
       </div>
     </article>
   {% endfor %}
-  {% include "blog/pagination_links.html" %}
+  {% if is_paginated %}{% include 'components/search_pagination_nav.html' %}{% endif %}
 {% endblock content %}

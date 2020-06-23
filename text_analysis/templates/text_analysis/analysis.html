@@ -1,50 +1,72 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Text Analysis</title>
-  </head>
 
-  <body>
-    {% block content %}
-      <div class="counting-content-block col-md-10 mb-0">
-        &nbsp;
-        <div class="alert alert-info col-md-10 mb-0" role="alert">
-          <div class="count-words">
-            <p>No. of words being analysed: {{ word_count }}</p>
-            <p>The entire text string analysed was:<br></p>
-            <em class="small"><p>"{{ orig_full_text }}"</p></em>
-            <hr>
-            The individual words along with their count of occurences is:<br>
-            {% for word, count_total in sorted_words %}
-              <br>{{ word }}: {{ count_total }}
-            {% endfor %}
-          </div>
-          &nbsp;<br>
-          <hr>
-          <div class="count-letters">
-            The individual count of occurences and appearance rate for each letter is:<br>
-            {% for letter in letter_count %}
-              <br>{{ letter }}
-            {% endfor %}
-          </div>
-        </div><br><br>
-        <div>
-          <a href="{% url 'analyse' %}" class="btn btn-sm btn-success mr-10"
-            id="btn-analyse">
-            <i class="fa fa-repeat"></i>
-            Start Again
-          </a><br><br>
-          <h6>The code for this text analysis utility can be reviewed
-            <a href="https://github.com/WayneLambert/portfolio/blob/master/text_analysis/views.py"
-            target="_blank">here</a>.
-          </h6><br><br>
+{% block title %}{{ block.super }} | Text Analysis{% endblock title %}
+
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'text_analysis/components/game_title.html' %}
+    </div>
+  </section>
+  <article class="blog-post px-3 py-5 p-md-5">
+    <div class="container single-col-max-width">
+      <div class="count-words">
+        <p>Number of words analysed: {{ word_count }}</p>
+        <p>The entire text string analysed was:<br></p>
+        <div class="alert alert-info" role="alert">
+          <em><p>"{{ orig_full_text }}"</p></em>
         </div>
+        <hr class="col-8">
+        <p>The individual words along with their count of occurences is:</p>
+          <table class="table table-striped table-sm col-4">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Word</th>
+                <th scope="col">Count</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for word, count_total in sorted_words %}
+              <tr>
+                <th scope="row">{{ word }}</th>
+                <td>{{ count_total }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
       </div>
-    {% endblock content %}
-  </body>
-</html>
+      <hr class="col-8">
+      <div class="count-letters mb-4">
+        <p>The individual count of occurences and appearance rate for each letter is:</p>
+        <table class="table table-striped table-sm col-4">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Letter</th>
+              <th scope="col">Count & %</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for letter in letter_count %}
+              <tr>
+                <th scope="row">{{ letter.0|upper }}</th>
+                <td>{{ letter|slice:"3:" }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <!--- Start Again Button -->
+      <a href="{% url 'text_analysis:analyse' %}" class="btn btn-sm btn-success mr-10">
+        <i class="fa fa-repeat"></i>
+        Start Again
+      </a>
+      <!--- View Code on GitHub Button -->
+      <a href="https://github.com/WayneLambert/portfolio/blob/master/text_analysis/views.py" target="_blank"
+        class="btn btn-link btn-github mr-2 ml-2">
+        <i class="fa fa-github"></i>
+        View Code
+      </a>
+    </div>
+  </article>
+{% endblock content %}

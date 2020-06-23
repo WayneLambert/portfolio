@@ -1,0 +1,124 @@
+.filters {
+  list-style: none;
+  font-size: 0.875rem;
+  .type {
+    display: inline-block;
+    padding: 0.275rem 0.25rem;
+    cursor: pointer;
+    margin-right: 2rem;
+    color: $theme-text-color-light;
+    font-weight: bold;
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    &.active {
+      border-top: 2px solid $theme-color-primary;
+      color: $theme-color-primary;
+      font-weight:bold;
+      //font-weight: bold;
+      &:hover {
+        border-top: 2px solid $theme-color-primary;
+          
+      }
+    }
+    &:hover {
+      color: $theme-text-color-primary;
+    }
+  }
+}
+
+.project-meta {
+  border: 1px solid rgba(0, 0, 0, 0.025);
+  font-size: 0.875rem;
+  .client-name {
+    font-size: 1.5rem;
+  }
+  .subheading {
+    font-size: 1rem;
+  }
+  .client-meta {
+    font-size: 1rem;
+    .svg-inline--fa {
+      color: $theme-text-color-secondary;
+    }
+  }
+}
+
+.metric {
+  .inner {
+    border: 1px solid rgba(0, 0, 0, 0.025);
+    height: 100%;
+  }
+  
+}
+.metric-desc {
+  font-size: 0.875rem;
+  color: $theme-text-color-light;
+}
+.metric-name {
+  color: $theme-color-primary;
+  font-weight: bold;
+  
+}
+.metric-data {
+  font-weight: bold;
+  font-size: 2rem;
+  .unit {
+    font-size: 1rem;
+    color: $theme-text-color-light;
+  }
+}
+
+.client-quote {
+  padding: 1.5rem;
+  padding-left: 3rem;
+  border: 1px solid rgba(0, 0, 0, 0.025);
+  background: $smoky-white;
+  height: 100%;
+  position: relative;
+  &:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left:0;
+    top: 0;
+    
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 40px 0 0;
+    border-color: $theme-color-primary transparent transparent transparent;
+    -webkit-transform: rotate(360deg);
+  }
+  
+  .source-profile {
+    img {
+      max-width: 60px;
+    }
+  }
+
+  
+  .fa-quote-left {
+    position: absolute;
+    left: 0.35rem;
+    top: 0.3rem;
+    color: #fff;
+    font-size: 0.75rem;
+  }
+  
+  .source-holder {
+    position: relative;
+    padding-left: 76px;
+    height: 60px;
+    .source-profile {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .meta {
+      padding-top: .5rem;
+    }
+  }
+
+}

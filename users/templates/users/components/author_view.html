@@ -1,0 +1,8 @@
+<!-- Radio buttons to display user posts with either username or full name -->
+<span> Display posts using my: </span>
+{% for radio in profile_form.author_view %}
+  <label for="{{ radio.id_for_label }}">
+    {{ radio.choice_label }}
+    <span class="radio">{{ radio.tag }}</span>
+  </label>
+{% endfor %}

@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="isotope-item col-md-6 mb-5 pythonapp">
+  <div class="card project-card">
+    <div class="row no-gutters">
+      <div class="col-lg-4 card-img-holder">
+        <img src="{% static 'assets/images/project/holiday-roulette.jpg' %}" class="card-img" alt="image">
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body">
+          <h5 class="card-title">Holiday Roulette</h5>
+          <p class="card-text">Leave it to fate to decide your next luxurious holiday destination.</p>
+        </div>
+      </div>
+    </div>
+    <div class="link-mask">
+      <a class="link-mask-link" href="{% url 'roulette:holiday_roulette' %}"></a>
+      <div class="link-mask-text">
+        <a class="btn btn-secondary" href="{% url 'roulette:holiday_roulette' %}">
+          <i class="fas fa-arrow-circle-right mr-2"></i>
+          Play Holiday Roulette
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

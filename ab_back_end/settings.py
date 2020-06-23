@@ -1,6 +1,5 @@
 import os
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
@@ -48,11 +47,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'google_analytics',
+    'widget_tweaks',
 
     # Project Apps
     'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
+    'cv.apps.CvConfig',
     'contacts.apps.ContactsConfig',
     'countdown_letters.apps.CountdownLettersConfig',
     'countdown_numbers.apps.CountdownNumbersConfig',
@@ -157,6 +159,7 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_REFERRER_POLICY = 'same-origin'
 
 TEMPLATES = [
     {
@@ -166,7 +169,9 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
+            'pages/templates/pages/',
             'blog/templates/blog/',
+            'cv/templates/cv/',
             'users/templates/users/',
             'users/templates/registration/',
             'contacts/templates/contacts/',
@@ -240,8 +245,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-    os.path.join(BASE_DIR, 'blog/static'),
-    os.path.join(BASE_DIR, 'text_analysis/static'),
 ]
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -251,6 +254,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 # Media Files
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
 
 # CK Editor Settings
@@ -258,6 +262,8 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
+        'width': '100%',
+        'height': '400',
         'toolbar_Custom': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
              'SpellChecker', 'Undo', 'Redo'],
@@ -276,8 +282,6 @@ CKEDITOR_CONFIGS = {
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
@@ -285,16 +289,10 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 5,
 }
 
-# Cors Headers Settings
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
-
-# Django-allauth Config
 SITE_ID = 1
-LOGIN_REDIRECT_URL = 'blog-django'
-LOGOUT_REDIRECT_URL = 'blog-django'
-LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/blog/'
+LOGOUT_REDIRECT_URL = '/blog/'
+LOGIN_URL = 'users:login'
 
 # Heroku Deployment Settings
 if not DEBUG:
@@ -302,27 +300,16 @@ if not DEBUG:
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
-if not DEBUG:
-    # Django SES Email Backend Settings
-    EMAIL_BACKEND = 'django_ses.SESBackend'
-    AWS_SES_REGION_NAME = 'eu-west-1'
-    AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
-    EMAIL_HOST = os.environ['EMAIL_HOST_SES']
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
-else:
-    # Gmail Backend Settings
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_GMAIL']
-    EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_GMAIL']
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_GMAIL']
-
+# Django SES Email Backend Settings
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_REGION_NAME = 'eu-west-1'
+AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
+EMAIL_HOST = os.environ['EMAIL_HOST_SES']
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -333,14 +320,14 @@ AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_DEFAULT_ACL = None
-
-# React S3 Settings
-AWS_REACT_BUCKET_NAME = os.environ['AWS_REACT_BUCKET_NAME']
-AWS_REACT_BUCKET_LOCATION = os.environ['AWS_REACT_BUCKET_LOCATION']
+AWS_BASE_BUCKET_ADDRESS = os.environ['AWS_BASE_BUCKET_ADDRESS']
 
 # Simple Captcha Settings
-RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+if DEBUG:
+    SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+else:
+    RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
+    RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Google Analytics
 GOOGLE_ANALYTICS = {

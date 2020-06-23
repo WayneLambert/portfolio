@@ -495,7 +495,6 @@ input[type=button][disabled].default {
 
 .module {
     border: none;
-    margin-bottom: 30px;
     background: #FFF;
 }
 
@@ -522,7 +521,7 @@ input[type=button][disabled].default {
     font-weight: 400;
     font-size: 13px;
     text-align: left;
-    background: #563C7C;
+    background: #223142;
     color: #fff;
 }
 
@@ -834,7 +833,7 @@ table#change-history tbody th {
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
-    background: #02244D;
+    background: #223142;
     color: #FFFFFF;
     overflow: hidden;
 }

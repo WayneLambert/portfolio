@@ -9,7 +9,7 @@ class Contact(models.Model):
     submit_date = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"
 
     def __repr__(self):
-        return f'{self.first_name} {self.last_name}'
+        return f"{self.first_name} {self.last_name}"

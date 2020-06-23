@@ -1,0 +1,95 @@
+.cv-wrapper {
+  border: 1px solid rgba(0, 0, 0, 0.025);
+}
+
+.cv-section-heading {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 1.125rem;
+  letter-spacing: 0.15rem;
+  color: $theme-color-primary;
+   &:before {
+     content: "";
+      display: inline-block;
+      width: 5px;
+      height: 100%;
+      background: $theme-color-primary;
+      position: absolute;
+      left: 0;
+      top: 0;
+   }
+}
+
+.cv-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+  color: $theme-color-primary;
+  
+}
+
+.cv-tagline {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.cv-contact {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  font-size: 0.75rem;
+}
+
+a.cv-link {
+  color: $theme-text-color-secondary;
+  &:hover {
+    color: $theme-color-primary;
+  }
+}
+
+.cv-profile-image {
+  max-width: 120px;
+}
+
+.cv-intro {
+  font-size: 0.875rem;
+}
+.cv-main {
+  .item-title {
+    font-size: 1rem;
+  }
+  
+   .item-meta {
+     font-size: 0.75rem;
+   }
+   .item-content {
+    font-size: 0.875rem;
+  }
+}
+
+.cv-aside {
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  .item {
+    font-size: 0.875rem;
+  }
+  .item-title {
+    font-size: 1rem;
+  }
+  
+}
+
+
+.cv-education-list, .cv-awards-list {
+    font-size: 0.875rem;
+}
+
+
+.cv-degree-time-org, .cv-degree-time {
+  font-size: 0.75rem;
+}
+
+.cv-lang-list, .cv-interests-list {
+  font-size: 0.875rem;
+}
+
+.cv-social-list {
+  font-size: 0.75rem;
+}

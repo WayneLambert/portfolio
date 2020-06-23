@@ -1,33 +1,41 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}{{ block.super }} | Roulette | Log File{% endblock title %}
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Holiday Roulette Game Log File</title>
-  </head>
-
-  <body>
-    {% block content %}
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
-        <div class="small"><b>Note:</b> The process was purposefully slowed down with
-        the 'sleep' function to build suspense for the purposes of the game.</div>
-        <div class="small"><b>Note:</b> Times are in UTC time zone.</div><br>
-        <h6>The code for this holiday roulette simulation can be seen at
-          <a href="https://github.com/WayneLambert/portfolio/blob/master/roulette/views.py"
-          target="_blank">here</a>.<br><br>
-        </h6>
-        <h6>The contents of the log file were:</h6>
-        <div class="log-file-contents">
-          {% for line in log_file_contents %}
-            {{ line }}<br>
-          {% endfor %}
+{% block content %}
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      {% include 'roulette/components/game_title.html' %}
+    </div>
+  </section>
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <div class="media-body text-center">
+          <div class="text-small"><strong>Note:</strong> The process was purposefully slowed down with
+          the 'sleep' function to build suspense for the purposes of the game.</div>
+          <div class="text-small mb-2"><strong>Note:</strong> Times are in UTC time zone.</div>
+          <!--- View Code on GitHub Button -->
+          <button type="submit" class="btn btn-sm btn-link btn-github mt-2" 
+            onclick="window.open('https://github.com/WayneLambert/portfolio/blob/master/roulette/views.py', '_blank')">
+            <i class="fa fa-github"></i>
+            View Code
+          </button>
         </div>
-      </div><br>
-    {% endblock content %}<br><br><br><br><br>
-  </body>
-</html>
+      </div>
+    </div>
+  </section>
+
+  <h6 class="text-center">The contents of the log file were:</h6>
+  <!--- Log File -->
+  <div class="container px-lg-5">
+    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+      <div class="log-file-contents">
+        {% for line in log_file_contents %}
+          {{ line }}
+        {% endfor %}
+      </div>
+    </article>
+  </div>
+{% endblock content %}

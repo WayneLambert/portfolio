@@ -1,0 +1,10 @@
+<!-- Profile Picture -->
+<div class="custom-file mb-4">
+  <input type="file" class="custom-file-input" name="profile_picture" accept="image/*" 
+  id="{{ profile_form.profile_picture.id_for_label }}">
+  <label class="custom-file-label" for="{{ profile_form.profile_picture.id_for_label }}">
+    {{ user.user.profile_picture.name}}
+  </label>
+  <div class="small text-muted">{{ profile_form.profile_picture.help_text }}</div>
+  <span class="text-danger small">{{ profile_form.profile_picture.errors }}</span>
+</div>

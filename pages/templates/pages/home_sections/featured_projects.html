@@ -1,0 +1,113 @@
+{% load static %}
+
+<section class="featured-section p-3 p-lg-5">
+  <div class="container">
+    <h2 class="section-title font-weight-bold mb-5">Featured Projects</h2>
+    <div class="row">
+
+      <!-- Blog App -->
+      <div class="col-md-6 mb-5">
+        <div class="card project-card">
+          <div class="row no-gutters">
+            <div class="col-lg-4 card-img-holder">
+              <img src="{% static 'assets/images/project/blog.jpg' %}" class="card-img" alt="image">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h5 class="card-title">Blog</h5>
+                <p class="card-text">A fully featured CRUD application with authentication and its content about various programming topics.</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-mask">
+            <a class="link-mask-link" href="{% url 'blog:home' %}"></a>
+            <div class="link-mask-text">
+              <a class="btn btn-secondary" href="{% url 'blog:home' %}">
+                <i class="fas fa-arrow-circle-right mr-2"></i>View Blog
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog App's API Endpoints -->
+      <div class="col-md-6 mb-5">
+        <div class="card project-card">
+          <div class="row no-gutters">
+            <div class="col-lg-4 card-img-holder">
+              <img src="{% static 'assets/images/project/django-rest-framework.png' %}" class="card-img" alt="image">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h5 class="card-title">Blog App's API</h5>
+                <p class="card-text">View the browsable API endpoints for the Blog application.</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-mask">
+            <a class="link-mask-link" href="{% url 'api:posts' %}"></a>
+            <div class="link-mask-text">
+              <a class="btn btn-secondary" href="{% url 'api:posts' %}">
+                <i class="fas fa-arrow-circle-right mr-2"></i>View API Endpoints
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown Letters Game App -->
+      <div class="col-md-6 mb-5">	
+        <div class="card project-card">
+          <div class="row no-gutters">
+            <div class="col-lg-4 card-img-holder">
+              <img src="{% static 'assets/images/project/countdown-letters.jpg' %}" class="card-img" alt="image">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h5 class="card-title">Countdown: Letters Game</h5>
+                <p class="card-text">Take on Susie Dent at Countdown's Letters Game. 
+                Fair warning though... Susie has been studying dictionaries like Johnny 5.</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-mask">
+            <a class="link-mask-link" href="{% url 'countdown_letters:selection' %}"></a>
+            <div class="link-mask-text">
+              <a class="btn btn-secondary" href="{% url 'countdown_letters:selection' %}">
+                <i class="fas fa-arrow-circle-right mr-2"></i>Play Countdown Letters Game
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Countdown Numbers Game App -->
+      <div class="col-md-6 mb-5">
+        <div class="card project-card">
+          <div class="row no-gutters">
+            <div class="col-lg-4 card-img-holder">
+              <img src="{% static 'assets/images/project/countdown-numbers.jpg' %}" class="card-img" alt="image">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body">
+                <h5 class="card-title">Countdown: Numbers Game</h5>
+                <p class="card-text">Take on Rachel Riley at Countdown's Numbers Game. 
+                Fair warning though... Rachel has been racing against Pandas and NumPy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="link-mask">
+            <a class="link-mask-link" href="{% url 'countdown_numbers:selection' %}"></a>
+            <div class="link-mask-text">
+              <a class="btn btn-secondary" href="{% url 'countdown_numbers:selection' %}">
+                <i class="fas fa-arrow-circle-right mr-2"></i>Play Countdown Numbers Game
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="text-center py-3"><a href="{% url 'pages:portfolio' %}" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right mr-2"></i>View Portfolio</a></div>
+  </div>
+</section>

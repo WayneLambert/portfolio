@@ -6,11 +6,12 @@ from collections import defaultdict, deque
 from random import choices, randint
 from urllib.parse import urlencode
 
+from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from django.contrib import messages
 
 from countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
+
 # pylint: disable=eval-used
 
 
@@ -43,11 +44,11 @@ def get_target_number():
 
 def build_game_url(form):
     num_from_top = form.cleaned_data.get('num_from_top')
-    base_url = reverse('countdown-numbers:game')
+    base_url = reverse('countdown_numbers:game')
     target_number_url = urlencode({'target_number': get_target_number()})
     numbers_chosen_url = urlencode(
         {'numbers_chosen': get_numbers_chosen(num_from_top=num_from_top)})
-    full_url = f'{base_url}?{target_number_url}&{numbers_chosen_url}'
+    full_url = f"{base_url}?{target_number_url}&{numbers_chosen_url}"
     return full_url
 
 
@@ -67,8 +68,11 @@ def check_chars(request, players_calc: str):
     pattern = r'^[0-9()\+\-\*\/]*$'
     match_set = re.search(pattern, players_calc)
     if match_set is None:
-        messages.add_message(request, messages.INFO, f"""Only arithmetic operators,
-            numbers, and rounded brackets permitted.""")
+        messages.add_message(
+            request,
+            messages.INFO,
+            "Only arithmetic operators, numbers, and rounded brackets permitted."
+        )
         return False
     else:
         return True
@@ -76,8 +80,11 @@ def check_chars(request, players_calc: str):
 
 def check_brackets(request, players_calc: str) ->bool:
     if players_calc.count('(') != players_calc.count(')'):
-        messages.add_message(request, messages.INFO, f"""Mismatch in the number
-            of opening/closing brackets used.""")
+        messages.add_message(
+            request,
+            messages.INFO,
+            "Mismatch in the number of opening/closing brackets used."
+        )
         return False
     else:
         return True
@@ -85,8 +92,10 @@ def check_brackets(request, players_calc: str) ->bool:
 
 def check_spaces(request, players_calc: str) ->bool:
     if ' ' in players_calc:
-        messages.add_message(request, messages.INFO, f"""There are spaces used
-            within your calculation.""")
+        messages.add_message(
+            request,
+            messages.INFO, "There are spaces used within your calculation."
+        )
         return False
     else:
         return True
@@ -99,8 +108,8 @@ def calc_entered_is_valid(request, players_calc) -> bool:
     if all([has_valid_chars, has_valid_brackets, has_no_spaces]):
         return True
     else:
-        messages.add_message(request, messages.INFO, message=f'\n{players_calc}',
-                             extra_tags=f'Your Calculation Entered: {players_calc}')
+        messages.add_message(request, messages.INFO, message=f"\n{players_calc}",
+                             extra_tags=f"Your Calculation Entered: {players_calc}")
         return False
 
 
@@ -112,13 +121,13 @@ def game_screen(request):
         if not is_valid_calc:
             return redirect(request.META['HTTP_REFERER'])
         if form.is_valid():
-            base_url = reverse('countdown-numbers:results')
+            base_url = reverse('countdown_numbers:results')
             referer_url = request.META['HTTP_REFERER'].split('?')[-1]
 
             players_calc_url = urlencode(
                 {'players_calculation': form.cleaned_data.get('players_calculation')})
 
-            results_screen_url = f'{base_url}?{referer_url}&{players_calc_url}'
+            results_screen_url = f"{base_url}?{referer_url}&{players_calc_url}"
             return redirect(results_screen_url)
     else:
         form = SelectedNumbersForm()
@@ -132,7 +141,7 @@ def get_permissible_nums(request)-> list:
     return game_nums
 
 
-def get_nums_used(request, players_calc)-> list:
+def get_nums_used(request, players_calc: str)-> list:
     nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
     nums_used[:] = (int(item) for item in nums_used if item != '')
     return nums_used
@@ -191,7 +200,7 @@ def get_game_calcs(request, game_nums, stop_on=None):
     return game_calcs
 
 
-def get_best_solution(request, game_nums, target):
+def get_best_solution(request, game_nums, target)-> str:
     game_calcs = get_game_calcs(request, game_nums, stop_on=target)
 
     if int(target) in game_calcs:
@@ -202,7 +211,7 @@ def get_best_solution(request, game_nums, target):
                 return game_calcs[int(target) + num][0]
             elif int(target) - num in game_calcs:
                 return game_calcs[int(target) - num][0]
-        return f'No solution could be found'
+        return "No solution could be found"
 
 
 def get_score_awarded(request, target_number: int, num_achieved: int)-> int:
@@ -217,7 +226,7 @@ def get_score_awarded(request, target_number: int, num_achieved: int)-> int:
     return points_awarded
 
 
-def get_game_result(target: int, answers: dict):
+def get_game_result(target: int, answers: dict)-> str:
     if answers['comp_num_achieved'] == answers['player_num_achieved']:
         result = 'Draw'
     else:
@@ -229,10 +238,9 @@ def results_screen(request):
     valid_calc = is_calc_valid(request)
     player_num_achieved = get_player_num_achieved(request)
     target_number = int(request.GET.get('target_number'))
+    player_score, comp_score = 0, 0
     if valid_calc:
         player_score = get_score_awarded(request, target_number, player_num_achieved)
-    else:
-        player_score = 0
 
     game_nums = get_permissible_nums(request)
     best_solution = get_best_solution(request, game_nums, target_number)
@@ -248,12 +256,8 @@ def results_screen(request):
 
     if valid_calc and game_result != 'comp_num_achieved':
         player_score = get_score_awarded(request, target_number, player_num_achieved)
-    else:
-        player_score = 0
     if game_result != 'player_num_achieved':
         comp_score = get_score_awarded(request, target_number, comp_num_achieved)
-    else:
-        comp_score = 0
 
     context = {
         'game_nums': game_nums,

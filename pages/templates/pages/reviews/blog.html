@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Blog Review{% endblock title %}
+
+{% block content %}
+
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Django Blog</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">A full CRUD application using Django's full MVT architecture 
+        including authenticated views</p>
+      </div>
+    </div>
+  </section>
+
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="{% static 'assets/images/project/blog.jpg' %}" alt="">
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong>Type:</strong> CRUD Application with Authentication</li>
+              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/blog" target="_blank">
+                  Blog's Source Code
+                </a>
+              </li>
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+blog%22+" target="_blank">
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Blog Home:</strong>
+                <a class="theme-link" href="{% url 'blog:home' %}" target="_blank">waynelambert.dev{% url 'blog:home' %}</a>
+              </li>
+            </ul>
+            <hr>
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                A blog was selected as a good application to build as it illustrates well-known web development
+                patterns using CRUD views, retrieval and rendering of database data and a sprinkling of 
+                JavaScript functionality to improve the user experience.
+              </p>
+              <p>
+                The blog itself contains articles that document some of the challenges, processes 
+                and design decisions for the portfolio website in addition to more general programming, 
+                web development and data science topics.</p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="project px-3 py-5">
+    <div class="container">
+      <h4 class="subheading mb-3">Features</h4>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Authentication and authorisation implemented for post creation, updating and deletion
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Predominantly built using Class-Based Views, therefore easier to maintain
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Efficient Retrieval of data from PostgreSQL database
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Tests are written using the PyTest framework
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            List view pagination on index, contents, author, category, and search results pages
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Detail view pagination
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Conditionally visible category sidebar including the number of posts in each category
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Search engine functionality
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Media storage integrated with Amazon S3
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Site emails implemented with Amazon's Simple Email Service (SES)
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            RSS Feed
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Write-Up Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-sections">
+        <div class="project-section mb-5">
+          <h3 class="project-section-title mb-3">Project Overview</h3>
+          <p>
+            A blog was chosen to be built because it illustrates a well-known application for
+            the use of CRUD views and provides a framework to document some of those learnings.
+          </p>
+          <p>
+            The blog itself contains articles that document some of the processes and design 
+            decisions for the portfolio website in addition to more general programming, 
+            web development and data science topics.</p>
+          </p>
+        </div>
+
+        <div class="project-section mb-5">
+          <h3 class="project-section-title mb-3">Objectives</h3>
+          <p>
+            I desired to build a blog that included the way that I would like to view and
+            navigate content. Features such as a category sidebar with the number of posts 
+            included within each category.
+          </p>
+          <p>
+            The blog should include a detailed amount of meta data which informs the reader
+            on how useful the blog article is. One of my own dislikes is when I am reading a 
+            blog post on the web and there is no creation or updated date on the post leading
+            me to wonder if the solution provided is in sync with my own challenge.
+          </p>
+        </div>
+
+        <div class="project-section">
+          <h3 class="project-section-title mb-3">The Approach &amp; Solution</h3>
+          <p>Insert blurb here...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project px-3 py-5">
+    <div class="container">
+      <h4 class="subheading mb-3">Languages, Technologies & Skills Used</h4>
+      <div class="text-small mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light col-5">
+        <table>
+          <tr>
+            <td class="text-right">Frameworks: </td>
+            <td>
+              <ul class="mb-0 no-bullets">
+                <li class="ml-2"><span class="iconify" data-icon="cib:django" data-inline="false"></span></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">Languages: </td>
+            <td>
+              <ul class="mb-0 no-bullets">
+                <li class="ml-2"><i class="fab fa-python mr-2"></i><i class="fab fa-js mr-2"></i></li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">Front End: </td>
+            <td>
+              <ul class="mb-0 no-bullets">
+                <li class="ml-2">
+                  <i class="fab fa-html5 mr-2"></i>
+                  <i class="fab fa-sass mr-2"></i>
+                  <i class="fab fa-bootstrap mr-2"></i>
+                  <i class="fab fa-font-awesome mr-2"></i>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">Infrastructure: </td>
+            <td>
+              <ul class="mb-0 no-bullets">
+                <li class="ml-2">
+                  <i class="fab fa-docker mr-2"></i>
+                  <i class="fab fa-github-square mr-2"></i>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+{% endblock additional_js %}

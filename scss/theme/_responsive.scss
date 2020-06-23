@@ -1,0 +1,196 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+  .footer {
+    height: auto;
+    padding-bottom: 0;
+  }
+  
+  .footer-col {
+    margin-bottom: 30px;
+  }
+  
+  .footer .bottom-bar .copyright {
+    margin-bottom: 15px;
+  }
+  
+  .footer .bottom-bar .social li {
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .theme-btn-cta {
+    width: inherit;
+    display: inline-block;
+  }
+  .cta-section .form-inline .form-control {
+      width: 360px;
+    }
+    
+    .project-thumb {
+      max-width: 200px;
+    }
+    .pricing-table td, .pricing-table th {
+      display: table-cell !important;
+    }
+
+    .footer {
+      height: auto;
+      padding-bottom: 0;
+    }
+
+    .footer .bottom-bar .social li {
+      float: right;
+    }
+
+    .footer-col-inner {
+      margin-bottom: 15px;
+    }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .profile-teaser .profile-image {
+      max-width: 250px;
+    } 
+    .project-thumb {
+      max-width: 200px;
+    }
+    .footer{
+      margin-left: $sidebar-width;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .profile-teaser .profile-image {
+      max-width: 400px;
+    } 
+    
+    .project-thumb {
+      max-width: 300px;
+    }
+
+    .footer {
+      margin-left: $sidebar-width;
+    }
+
+}
+
+
+// We occasionally use media queries that go in the other direction (the given screen size or smaller):
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  
+  .header {
+    position: static;
+    width: inherit;
+    height: auto;
+    
+    .blog-name {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 1.2rem;
+      
+    }
+    .btn-primary {
+      width: 100%;
+    }
+
+  }
+  
+  
+    .header .navbar {
+      padding: 1rem;
+    }
+    
+    .main-wrapper {
+      margin-left: 0;
+    }
+
+    .cv-aside {
+      border-left: 0;
+    }
+    
+  
+}
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+
+  .signup-form {
+    .form-group {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    .form-control {
+      width: 100%;
+    }
+    .btn-primary {
+      width: 100%;
+    }
+  }
+  
+  .profile-teaser .profile-image {
+      max-width: 100%;
+    }
+    
+    .header .nav-item .dropdown-menu .dropdown-item {
+      padding-left: 1.875rem;
+    }
+    
+    .cv-contact {
+      border-left: 0;
+    }
+
+    .mobile-is-hidden {
+      display: none;
+    }
+
+    .footer {
+      height: auto;
+      padding-bottom: 0;
+    }
+
+    .footer-col {
+      margin-bottom: 30px;
+    }
+
+    .footer .bottom-bar .copyright {
+      margin-bottom: 15px;
+    }
+
+    .footer .bottom-bar .social li {
+      float: left;
+      margin-left: 0;
+      margin-right: 10px;
+    }
+
+}
+
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  
+  .header .nav-item .dropdown-menu .dropdown-item {
+      padding-left: 1.875rem;
+    }
+    
+    .link-mask {
+      display: none !important;
+    }
+    
+    .mobile-is-hidden {
+      display: none;
+    }
+    
+}

@@ -1,18 +1,23 @@
-from django.urls import path
-from blog.views import (CategoryPostListView, PostCreateView, PostDeleteView,
-                        PostDetailView, PostListView, PostUpdateView,
-                        UserPostListView, SearchResultsView, ContentsListView)
+from django.urls import include, path
 
+from .feeds import LatestPostsFeed
+from .views import (CategoryPostListView, ContentsListView, HomeView, IndexListView,
+                    PostCreateView, PostDeleteView, PostDetailView, PostUpdateView,
+                    SearchResultsView, UserPostListView)
+
+app_name = 'blog'
 
 urlpatterns = [
-    path('', PostListView.as_view(), name='blog-django'),
-    path('user/<str:username>/', UserPostListView.as_view(), name='user-posts'),
-    path('category/<slug:slug>/',
-         CategoryPostListView.as_view(), name='category-posts'),
-    path('post/new/', PostCreateView.as_view(), name='post-create'),
-    path('post/<slug:slug>/', PostDetailView.as_view(), name='post-detail'),
-    path('post/<slug:slug>/update/', PostUpdateView.as_view(), name='post-update'),
-    path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post-delete'),
-    path('search/', SearchResultsView.as_view(), name='search-results'),
+    path('', HomeView.as_view(), name='home'),
+    path('user/<str:username>/posts', UserPostListView.as_view(), name='user_posts'),
+    path('category/<slug:slug>/posts', CategoryPostListView.as_view(), name='category_posts'),
+    path('post/new/', PostCreateView.as_view(), name='post_create'),
+    path('post/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),
+    path('post/<slug:slug>/update/', PostUpdateView.as_view(), name='post_update'),
+    path('post/<slug:slug>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
+    path('index/', IndexListView.as_view(), name='index'),
     path('contents/', ContentsListView.as_view(), name='contents'),
+    path('feed/latest/rss', LatestPostsFeed(), name='post_feed'),
+    path('users/', include('users.urls', namespace='users')),
 ]

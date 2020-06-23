@@ -204,3 +204,7 @@ dmypy.json
 # Docker Mounted Directories
 postgres/data/
 .coverage
+
+static/assets/*
+node_modules/*
+staticfiles/*
