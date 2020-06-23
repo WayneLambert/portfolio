@@ -51,19 +51,6 @@ setup.sh
 # SOPs and Dev Help Files #
 ################################
 
-
-# React Package Folders
-# dependencies
-aa-front-end/node_modules/*
-aa-front-end/.pnp
-aa-front-end/.pnp.js
-
-# testing
-aa-front-end/coverage
-
-# production
-aa-front-end/build
-
 # Created by https://www.gitignore.io/api/django
 # Edit at https://www.gitignore.io/?templates=django
 
@@ -74,11 +61,6 @@ aa-front-end/build
 __pycache__/
 local_settings.py
 migrations
-
-
-# If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
-# in your Git repository. Update and uncomment the following line accordingly.
-# <django-project-name>/staticfiles/
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -207,4 +189,3 @@ postgres/data/
 
 static/assets/*
 node_modules/*
-staticfiles/*
