@@ -15,17 +15,19 @@
       {% include "components/meta_data.html" %}
       <!-- Post Author and Meta Data -->
 
-      <!-- Post Image and Caption -->
-      {% include 'components/image.html' %}
+      <div class="blog-post-body">
+        <!-- Post Image and Caption -->
+        {% include 'components/image.html' %}
 
-      <!-- Post Content -->
-      <p class="article-content">{{ post.content|safe }}</p>
+        <!-- Post Content -->
+        <p class="article-content">{{ post.content|safe }}</p>
 
-      {% if post.reference_url %}
-        <div class="alert alert-info" role="alert">
-          <a class="theme-link" href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
-        </div>
-      {% endif %}
+        {% if post.reference_url %}
+          <div class="alert alert-info" role="alert">
+            <a class="theme-link" href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+          </div>
+        {% endif %}
+      </div>
 
       <!-- Nav Links -->
       {% include 'components/post_detail_nav.html' %}
