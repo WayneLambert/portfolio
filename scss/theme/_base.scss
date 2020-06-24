@@ -123,7 +123,6 @@ hr {
   background: $theme-color-primary;
   color: #fff;
   overflow-y: scroll;
-  overflow-x: auto;
 
   /* Forefox scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.2) $theme-color-primary;
@@ -144,7 +143,7 @@ hr {
 
   .blog-name {
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     padding-bottom: 0.1rem;
     color: #000;
     a {
