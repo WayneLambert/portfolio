@@ -44,8 +44,6 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'storages',
     'captcha',
-    'allauth',
-    'allauth.account',
     'google_analytics',
     'widget_tweaks',
 
@@ -227,7 +225,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Authentication backends setup for Django Guardian
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
     'guardian.backends.ObjectPermissionBackend',
 )
 
