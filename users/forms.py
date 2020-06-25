@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
 from django.forms.widgets import RadioSelect
+
+from .models import Profile
 
 
 class InactiveUserFound(Exception):
@@ -17,12 +18,10 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
     def clean_username(self):
-        username = self.cleaned_data['username'].lower().strip()
-        return username
+        return self.cleaned_data['username'].lower().strip()
 
     def clean_email(self):
-        email = self.cleaned_data['email'].casefold().strip()
-        return email
+        return self.cleaned_data['email'].casefold().strip()
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -43,20 +42,16 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['username', 'email', 'first_name', 'last_name']
 
     def clean_username(self):
-        username = self.cleaned_data['username'].casefold().strip()
-        return username
+        return self.cleaned_data['username'].casefold().strip()
 
     def clean_email(self):
-        email = self.cleaned_data['email'].casefold().strip()
-        return email
+        return self.cleaned_data['email'].casefold().strip()
 
     def clean_first_name(self):
-        first_name = self.cleaned_data['first_name'].title().strip()
-        return first_name
+        return self.cleaned_data['first_name'].title().strip()
 
     def clean_last_name(self):
-        last_name = self.cleaned_data['last_name'].title().strip()
-        return last_name
+        return self.cleaned_data['last_name'].title().strip()
 
 
 class ProfileUpdateForm(forms.ModelForm):
