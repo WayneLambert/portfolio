@@ -287,9 +287,9 @@ REST_FRAMEWORK = {
 }
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/blog/'
-LOGOUT_REDIRECT_URL = '/blog/'
-LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'blog:home'
+LOGOUT_REDIRECT_URL = 'blog:home'
+LOGIN_URL = 'blog:users:login'
 
 # Heroku Deployment Settings
 if not DEBUG:
