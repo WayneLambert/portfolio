@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block title %}{{ block.super }} | Register{% endblock title %}
 
@@ -11,7 +11,24 @@
         <form method="POST">
           {% csrf_token %}
           <fieldset class="form-group">
-            {{ form|crispy }}
+            <div class="mb-3">
+              {% render_field form.username class+="form-control" placeholder="Username" %}
+            </div>
+            <div class="mb-3">
+              {% render_field form.email class+="form-control" placeholder="Email" %}
+            </div>
+            <div class="mb-3">
+              {% render_field form.first_name|attr:"required:true" class+="form-control" placeholder="First Name" %}
+            </div>
+            <div class="mb-3">
+              {% render_field form.last_name|attr:"required:true" class+="form-control" placeholder="Last Name" %}
+            </div>
+            <div class="mb-3">
+              {% render_field form.password1 class+="form-control" placeholder="Password" %}
+            </div>
+            <div>
+              {% render_field form.password2 class+="form-control" placeholder="Re-enter Password" %}
+            </div>
           </fieldset>
           <div class="extra mb-4 text-center text-muted">
             By signing up, you agree to our <a href="{% url 'pages:privacy' %}" class="theme-link">privacy policy</a>.

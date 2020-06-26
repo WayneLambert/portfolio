@@ -7,7 +7,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # Login URL for the Admin panel
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
-DEBUG = bool(int(os.getenv('DEBUG', True)))
+DEBUG = bool(int(os.environ['DEBUG']))
 
 ALLOWED_HOSTS = [
     # Heroku

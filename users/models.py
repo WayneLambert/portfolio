@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
-from django.db import models
-from django.template.defaultfilters import slugify
 from django.core.exceptions import MultipleObjectsReturned
+from django.db import models
 from django.db.models import ObjectDoesNotExist
+from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 

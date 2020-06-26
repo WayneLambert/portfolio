@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load widget_tweaks %}
 
 {% block title %}{{ block.super }} | Login{% endblock title %}
 
@@ -11,7 +11,12 @@
         <form class="auth-form login-form" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset class="form-group">
-            {{ form|crispy }}
+            <div class="mb-3">
+              {% render_field form.username class+="form-control" placeholder="Username" %}
+            </div>
+            <div>
+              {% render_field form.password class+="form-control" placeholder="Password" %}
+            </div>
           </fieldset>
           <div class="form-group">
             <div class="text-center">
