@@ -11,19 +11,20 @@
   </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
-      <div class="alert alert-light col-md-10 mb-0" role="alert">
+      <div class="inner p-3 theme-bg-light mt-2 mb-3">
         <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
         {% include 'scraping/content_components/desc.txt' %}
         <hr class="col-8">
         <form action="{% url 'scraping:referendum' %}" method="GET">
-          <div class="alert alert-info mt-2"><strong>EU Referendum: </strong>
+          <div class="inner p-3 theme-bg-light mt-2 mb-1">
+            <strong>EU Referendum: </strong>
             Results on the British vote on membership of the EU
           </div>
-          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success mr-10">
-            <i class="fa fa-bar-chart"></i>
+          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success">
+            <i class="fa fa-bar-chart mr-1"></i>
             View Referendum Results
           </a>
-          <p>
+          <p class="mt-2">
             <em class="small">Please be patient waiting for the results page to load as the process is
             scraping from a page for each letter of the alphabet from the BBC website.</em>
           </p>
@@ -31,10 +32,12 @@
         <hr class="col-8">
         <span class="churchill">
           <form action="{% url 'scraping:churchill_speech' %}" method="GET">
-            <div class="alert alert-info"><strong>Speech 1: </strong>Sir Winston Churchill as he took power on
-              13th May, 1940 @ House of Commons, London, UK.</div>
-            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success mr-10">
-              <i class="fa fa-comment"></i>
+            <div class="inner p-3 theme-bg-light mt-2 mb-1">
+              <strong>Speech 1: </strong>Sir Winston Churchill as he took power on
+                13th May, 1940 @ House of Commons, London, UK.
+            </div>
+            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success">
+              <i class="fa fa-comment mr-1"></i>
               View Churchill Speech
             </a>
           </form>
@@ -42,10 +45,12 @@
         <hr class="col-8">
         <span class="gettysburg">
           <form action="{% url 'scraping:gettysburg_speech' %}" method="GET">
-            <div class="alert alert-info"><b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on
-              19th November, 1863 by clicking the button below.</div>
-            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success mr-10">
-              <i class="fa fa-comment"></i>
+            <div class="inner p-3 theme-bg-light mt-3 mb-1">
+              <b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on
+              19th November, 1863 by clicking the button below.
+            </div>
+            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success">
+              <i class="fa fa-comment mr-1"></i>
               View Gettysburg Address
             </a>
           </form>

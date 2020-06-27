@@ -15,7 +15,9 @@
       <div class="mt-3">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
         party library, Beautiful Soup and then rendered to a Django template page.
       </div>
-      <div class="alert alert-info mt-3" role="alert">{{ churchill_speech }}</div>
+      <div class="inner p-3 theme-bg-light mt-3 mb-3">
+        {{ churchill_speech }}
+      </div>
       <div class="mb-3">
         <em class="small">
           Source: 
@@ -24,15 +26,15 @@
           </a>
         </em>
       </div>
-      <!--- Start Again Button -->
+      <!--- Back to Menu Button -->
       <a href="{% url 'scraping:scraping_options' %}" class="btn btn-sm btn-success mr-10">
-        <i class="fa fa-repeat"></i>
-        Start Again
+        <i class="fa fa-repeat mr-1"></i>
+        Back to Menu
       </a>
       <!--- View Code on GitHub Button -->
       <a href="https://github.com/WayneLambert/portfolio/blob/master/scraping/churchill_speech.py" target="_blank"
         class="btn btn-link btn-github mr-2 ml-2">
-        <i class="fa fa-github"></i>
+        <i class="fa fa-github mr-1"></i>
         View Code
       </a>
     </div>
