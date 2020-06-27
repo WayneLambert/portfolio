@@ -28,9 +28,8 @@ def contact(request):
     else:
         form = ContactForm()
 
-    context = {
-        'form': form,
-    }
+    context = {'form': form}
+
     return render(request, contact_form_template, context)
 
 
