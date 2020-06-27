@@ -13,6 +13,8 @@ $theme-bg-dark: #223142;
 $theme-border-color:  lighten($theme-text-color-primary, 60%);
 $smoky-white: #fafafa;
 $theme-error: #d9603c;
+$countdown-game-color: #1c3297;
+$countdown-letter-number-divider-color: #70a1d8;
 
 // Footer Colours
 $theme-color-footer: #0e83cd;
@@ -50,7 +52,8 @@ $theme-colors: (
 @import "theme/blog";
 @import "theme/footer";
 @import "theme/tables";
-@import "theme/responsive";
 @import "theme/text-analysis";
 @import "theme/roulette";
+@import "theme/countdown";
+@import "theme/responsive";
 @import "theme/darkmode";
