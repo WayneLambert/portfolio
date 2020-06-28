@@ -14,5 +14,5 @@ class SelectedNumbersForm(forms.Form):
         max_length=29,
         strip=True,
         widget=forms.TextInput(attrs={
-            'placeholder': 'Enter your calculation closest to the target number...'})
+            'placeholder': 'Enter your calculation closest to the target number...'}),
     )

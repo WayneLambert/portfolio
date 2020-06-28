@@ -17,76 +17,97 @@
         <div class="media-body text-center">
           <!-- Target Number -->
           <h6 class="font-weight-bold mb-0 lead mt-3">The target number is...</h6>
-          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3" style="font-size: xxx-large;">
-            <blockquote class="quote-content">
-              <table>
-                <tr>
-                  <div class="alert alert-primary" role="alert">
-                    {{ request.GET.target_number }}
+          <div class="container text-center">
+            <div class="game-numbers-row">
+              <div class="row mt-3 mb-3">
+                <div class="number">
+                  <div class="target-number-inner text-center">
+                    <div class="target-number-text number-text">{{ request.GET.target_number }}</div>
                   </div>
-                </tr>
-              </table>
-            </blockquote>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- Chosen Numbers -->
           <h6 class="font-weight-bold mb-0 lead mt-1">The numbers selected at random for you are...</h6>
-          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3" style="font-size: xx-large;">
-            <blockquote class="quote-content">
-              <table>
-                <tr>
-                  <div class="alert alert-primary" role="alert">
-                    {{ request.GET.numbers_chosen|remove_brackets }}
+          <div class="container text-center">
+            <div class="game-numbers-row">
+              <div class="row mt-3 mb-3">
+                {% for item in game_nums %}
+                  <div class="number">
+                    <div class="number-inner text-center">
+                      <div class="number-text">{{ item }}</div>
+                    </div>
                   </div>
-                </tr>
-              </table>
-            </blockquote>
+                {% endfor %}
+              </div>
+            </div>
           </div>
           <!-- Form -->
           <div class="d-flex flex-column col-10 offset-lg-1">
-            <form method="POST" action="{% url 'countdown_numbers:game' %}">
+            <form method="POST" action="{% url 'countdown_numbers:game' %}" novalidate>
               {% csrf_token %}
               {{ form|crispy }}
               <button class="btn btn-sm btn-success mr-5" type="submit">
                 Submit Calculation
-                <i class="fa fa-calculator"></i>
+                <i class="fa fa-calculator mr-1"></i>
               </button>
             </form>
           </div>
           <!--- Help Text -->
           <hr>
-          <div class="d-flex flex-column col-5 mb-1 offset-lg-4 mt-3">
-            <blockquote class="quote-content text-center ml-3">
-              <p class="small mb-3">Use matching sets of rounded brackets, digits and arithmetic operators.<br>
-                No spaces, equals sign or answer permitted.*</p>
+          <div class="d-flex flex-column col-5 mb-1 container text-center mt-3">
+            <blockquote class="quote-content container text-left ml-3">
+              <p class="mb-3">Completion Guidance:
+                <ul class="no-bullets">
+                  <li><i class="fa fa-chevron-right mr-1"></i>Use a matching number of rounded brackets</li>
+                  <li><i class="fa fa-chevron-right mr-1"></i>Use only digits</li>
+                  <li><i class="fa fa-chevron-right mr-1"></i>Use only the +, -, *, and / arithmetic operators</li>
+                  <li><i class="fa fa-chevron-right mr-1"></i>Do not use an equals (=) sign</li>
+                  <li><i class="fa fa-chevron-right mr-1"></i>Do not specify the calculation's answer</li>
+                </ul>
+              </p>
               <p class="small ml-5">
-                Valid calc example:   (((25+75)*4)/4)+1<br>
-                Invalid calc example: (((25+75* 4)/ 4)+1z
+                <ul class="no-bullets">
+                  <li>
+                    <i class="fa fa-info-circle mr-2"></i>
+                    <span class="mr-3">Valid calc example:</span>   (((25+75)*4)/4)+1
+                  </li>
+                  <li>
+                    <i class="fa fa-info-circle mr-2"></i>
+                    <span class="mr-1">Invalid calc example: (((25+75* 4)/ 4)+1z</span>
+                  </li>
+                </ul>
               </p>
             </blockquote>
           </div>
           <!--- Messages -->
-          <div class="d-flex flex-column col-12 offset-lg-3">
+          <div class="d-flex flex-column col-12 container text-center">
             <blockquote class="quote-content text-left ml-3">
               {% if messages %}
-                <div class="alert alert-warning col-8 mb-0" role="alert">
+                <div class="alert alert-warning col-8 mb-0 container" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                   <strong>
                     <font color="red mb-2">
-                      There are problems in your calculation requiring attention
+                      There are problems in your calculation requiring attention:
                     </font>
                   </strong>
-                  <div class="messages">
-                    {% for message in messages %}
-                      {% if 'Your Calculation Entered:' in message.tags %}
-                        <strong>{{ message.extra_tags }}</strong>
-                      {% else %}
-                        <i class="fa fa-chevron-right"></i> {{ message }}
-                      {% endif %}
-                    {% endfor %}
+                  <div class="messages text-left">
+                    <ul class="no-bullets">
+                      {% for message in messages %}
+                        <li>
+                          {% if 'Your Calculation Entered:' in message.tags %}
+                            <strong>{{ message.extra_tags }}</strong>
+                          {% else %}
+                            <i class="fa fa-chevron-right mb-1"></i> {{ message }}
+                          {% endif %}
+                        </li>
+                      {% endfor %}
+                    </ul>
                   </div>
-                  <strong class="small">Please resubmit your calculation in accordance with the guidelines</strong>
+                  <strong>Please resubmit your calculation in accordance with the completion guidance</strong>
                 </div>
               {% endif %}
             </blockquote>
