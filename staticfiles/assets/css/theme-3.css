@@ -8124,7 +8124,7 @@ a.cv-link {
 .letter .letter-inner, .letter .number-inner, .number .letter-inner, .number .number-inner {
   border: 2px solid rgba(0, 0, 0, 0.025);
   height: 100%;
-  width: 60px;
+  width: 58px;
   background-color: #70a1d8; }
 
 .letter-text, .number-text {
@@ -8139,7 +8139,7 @@ a.cv-link {
   font-size: 2.4rem; }
 
 .number-text {
-  font-size: 1.6rem; }
+  font-size: 1.5rem; }
 
 .target-number-inner {
   border: 2px solid rgba(0, 0, 0, 0.025);
