@@ -17,14 +17,14 @@
           <h6 class="font-weight-bold mb-0 lead mt-3">Take on Susie Dent at the Letters Game</h6>
           <img class="mt-3 mb-3" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg" 
             alt="countdown">
-          <div class="client-quote d-flex flex-column col-6 mb-4 offset-lg-3">
+          <div class="client-quote d-flex flex-column container text-center col-6 mb-1">
             <blockquote class="font-italic quote-content">
               I've been studying the dictionary like crazy recently. Good luck!
             </blockquote>
             <i class="fas fa-quote-left"></i>
           </div>
           <form method="POST" action="{% url 'countdown_letters:selection' %}"
-            class="col-lg-2 offset-lg-5 div-wrapper d-flex">
+            class="col-lg-2 div-wrapper d-flex container text-center">
             {% csrf_token %}
             <table>
               <row>

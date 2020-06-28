@@ -8108,6 +8108,58 @@ a.cv-link {
   height: 2rem;
   vertical-align: middle; }
 
+#text-analysis-box {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #4B4C4C;
+  vertical-align: text-top; }
+
+/* Holiday Roulette Game */
+.log-file-contents {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 20px 0px 20px 0px; }
+
+.letter .letter-inner, .letter .number-inner, .number .letter-inner, .number .number-inner {
+  border: 2px solid rgba(0, 0, 0, 0.025);
+  height: 100%;
+  width: 60px;
+  background-color: #70a1d8; }
+
+.letter-text, .number-text {
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  background-color: #1c3297;
+  border: medium; }
+
+.letter-text {
+  font-size: 2.4rem; }
+
+.number-text {
+  font-size: 1.6rem; }
+
+.target-number-inner {
+  border: 2px solid rgba(0, 0, 0, 0.025);
+  height: 100%;
+  width: 105px;
+  background-color: #70a1d8; }
+
+.target-number-text {
+  font-size: 2.8rem; }
+
+.game-letters-row, .game-numbers-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.results-card {
+  display: flex;
+  flex-direction: column; }
+
 @media (min-width: 576px) {
   .footer {
     height: auto;
@@ -8209,19 +8261,6 @@ a.cv-link {
     display: none !important; }
   .mobile-is-hidden {
     display: none; } }
-
-#text-analysis-box {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #4B4C4C;
-  vertical-align: text-top; }
-
-/* Holiday Roulette Game */
-.log-file-contents {
-  font-family: 'Courier New', Courier, monospace;
-  padding: 20px 0px 20px 0px; }
 
 body.dark-mode {
   background: #151e29; }
