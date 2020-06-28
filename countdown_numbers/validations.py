@@ -60,6 +60,7 @@ def get_nums_used(request, players_calc: str) -> list:
 
 def is_calc_valid(request)-> bool:
     players_calc = request.GET.get('players_calculation')
+    players_calc = strip_spaces(request, players_calc)
     nums_used = get_nums_used(request, players_calc)
     permissible_nums = get_permissible_nums(request)
     for test_num in nums_used:
