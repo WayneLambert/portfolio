@@ -12,7 +12,6 @@ def test_register(client):
     response = client.get(path)
     assert response.status_code == 200
 
-# FIXME: Needs resolving
 class TestLogin:
     def test_login(self, client):
         """ Verify that the login view is publicly accessible """

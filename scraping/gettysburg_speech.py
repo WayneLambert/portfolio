@@ -15,7 +15,7 @@ def get_gettysburg_speech(request):
     page_response = requests.get(URL, timeout=5)
     page_content = BeautifulSoup(page_response.content, "html.parser")
     text_content, split_string = [], []
-    for num in range(0, 2):
+    for num in range(2):
         paragraphs = page_content.find_all('div', attrs={"class": "quoteText"})[num].text
         text_content.append(paragraphs)
     split_string = text_content[1].strip('\n').strip().split('\n')

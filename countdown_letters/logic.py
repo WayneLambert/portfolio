@@ -104,10 +104,10 @@ def get_shortlisted_words(words: tuple, letters: str) -> dict:
             common_letters = set(letters_in_selection).intersection(
                 letters_in_tested_word)
             letter_count = len(common_letters)
-            if letter_count >= cumulative_max_letter_count:
-                if len(tested_word) == len(common_letters):
-                    cumulative_max_letter_count = letter_count
-                    shortlisted_words[tested_word] = cumulative_max_letter_count
+            if letter_count >= cumulative_max_letter_count and len(
+                    tested_word) == len(common_letters):
+                cumulative_max_letter_count = letter_count
+                shortlisted_words[tested_word] = cumulative_max_letter_count
     return shortlisted_words
 
 
