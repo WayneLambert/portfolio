@@ -3,10 +3,13 @@
 <section class="overview-section p-3 p-lg-5">
   <div class="container">
     <h2 class="section-title font-weight-bold mb-3">Skills</h2>
-    <div class="section-intro mb-5">
-      I have a variety of skills in web development. You can read more about the details 
-      and the context of these skills by clicking any of the links below.
+    <div class="section-intro mb-2">
+      <p>
+        This section provides additional context relating to my skills.
+        Click the links below to read more in a particular domain of expertise.
+      </p>
     </div>
+
     <div class="row">
       <!-- Web Development - Back End -->
       <div class="item col-6 col-lg-3">
@@ -28,7 +31,7 @@
             <i class="fab fa-sass mr-2"></i>
             <i class="fab fa-bootstrap mr-2"></i>
           </div>
-          <h3 class="item-title">Front End</h3>
+          <a class="theme-link" href="{% url 'pages:front_end_skills' %}"><h3 class="item-title">Front End</h3></a>
         </div>
       </div>
       <!-- Infrastructure-->
@@ -40,17 +43,19 @@
             <i class="fab fa-git mr-2"></i>
             <i class="fab fa-github-square mr-2"></i>
           </div>
-          <h3 class="item-title">Infrastructure</h3>
+          <a class="theme-link" href="{% url 'pages:infrastructure_skills' %}"><h3 class="item-title">Infrastructure</h3></a>
         </div>
       </div>
       <!-- Software-->
       <div class="item col-6 col-lg-3">
         <div class="item-inner">
           <div class="item-icon">
-            <img class="mb-2" src="{% static 'assets/icons/custom/vscode.svg' %}">
+            <img class="mb-2 mr-2" src="{% static 'assets/icons/custom/vscode.svg' %}">
+            <img class="mb-2 mr-2" src="{% static 'assets/icons/custom/datagrip.svg' %}">
             <i class="fab fa-firefox mr-2"></i>
+            <img class="mb-2 mr-2" src="{% static 'assets/icons/custom/jupyter.svg' %}">
           </div>
-          <h3 class="item-title">Software</h3>
+          <a class="theme-link" href="{% url 'pages:software_skills' %}"><h3 class="item-title">Software</h3></a>
         </div>
       </div>
     </div>

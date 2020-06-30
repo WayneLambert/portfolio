@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ block.super }} | Back End Web Development Skills{% endblock title %}
+{% block title %}{{ block.super }} | Front End Web Development Skills{% endblock title %}
 
 {% block content %}
   <!--- Title and Subtitle Section -->
   <section class="cta-section theme-bg-light py-3">
     <div class="container single-col-max-width pt-1">
-      <h2 class="heading text-center">Back End Web Developer Skills</h2>
+      <h2 class="heading text-center">Front End Web Developer Skills</h2>
     </div>
   </section>
 
@@ -14,13 +14,14 @@
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       The objective of this page is to give additional context relating to the skills I have 
-      within the domain of back-end development.
+      within the domain of front-end development.
     </div>
   </section>
 
   <!-- Skills -->
-  {% include 'skills/skill/python.html' %}
-  {% include 'skills/skill/django.html' %}
-  {% include 'skills/skill/postgres.html' %}
+  {% include 'skills/skill/javascript.html' %}
+  {% include 'skills/skill/html5.html' %}
+  {% include 'skills/skill/sass.html' %}
+  {% include 'skills/skill/bootstrap.html' %}
   {% include 'components/skills_nav.html' %}
 {% endblock content %}

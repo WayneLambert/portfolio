@@ -1,0 +1,46 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/git_github.jpg' %}" alt="Git and GitHub">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>Git / GitHub</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Source Control & Project Management
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              I am proficient in the command line for most of the basic Git commands required to manage
+              a project such as add, remove, commit, push, pull, branch, merge, status, diff, log.
+              I would need to research some of the lesser used commands but thankfully I have created a
+              list of <a href="https://github.com/WayneLambert/library-python/tree/master/commands/git" target="_blank">useful Git commands</a>
+              which I keep in my source code library for reference.
+            </p>
+            <p>
+              I have a good knowledge of managing a project using GitHub issues and projects.
+              You can <a href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue" target="_blank">review the issues</a> (open and closed) for this project by clicking the link.
+            </p>
+            <p>
+              I have made a few contributions to open source projects. These have mainly been in
+              improving the documentation and testing coverage (tox/travis).
+            </p>
+            <p>
+              I would like to learn more about GitHub actions as this seems like the next
+              progression in CI/CD since it is so closely coupled with GitHub. I haven't found
+              a need to use this yet as my deployment strategy is using Heroku which, after
+              the first deployment, is relatively simple when compared to deploying to a
+              Linux server such as Linode or Digital Ocean.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/datagrip.jpg' %}" alt="DataGrip">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>DataGrip</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Database Management
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              Although I have used other database management tools, I have settled on JetBrains’
+              DataGrip as the tool of choice as it enables me to many things that most database
+              management software does not allow.
+            </p>
+            <ul class="mb-0 no-bullets">
+              <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                Write SQL queries to retrieve a desired dataset from the database when I'm thinking
+                about the equivalent Django ORM code required to retrieve my desired dataset.
+                DataGrip gives syntax highlighting and autocomplete making this easier.
+              </li>
+              <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                Visualise the database schema and check that my models have the desired relationships
+                between one another.
+              </li>
+              <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                Browse the datatypes and properties of fields and tables within the database and
+                reconcile them with the model fields.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

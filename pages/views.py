@@ -11,12 +11,9 @@ class HomeView(ListView):
     context_object_name = 'posts'
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')[:3]
 
+
 class PortfolioView(TemplateView):
     template_name = 'portfolio.html'
-
-
-class DevSkillsView(TemplateView):
-    template_name = 'skills/back_end.html'
 
 
 class ReadingListView(TemplateView):
@@ -29,6 +26,23 @@ class AboutMeView(TemplateView):
 
 class PrivacyPolicyView(TemplateView):
     template_name = 'privacy.html'
+
+
+# Skills
+class BackEndSkillsView(TemplateView):
+    template_name = 'skills/back_end.html'
+
+
+class FrontEndSkillsView(TemplateView):
+    template_name = 'skills/front_end.html'
+
+
+class InfrastructureSkillsView(TemplateView):
+    template_name = 'skills/infrastructure.html'
+
+
+class SoftwareSkillsView(TemplateView):
+    template_name = 'skills/software.html'
 
 
 # Reviews

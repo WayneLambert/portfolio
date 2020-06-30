@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ block.super }} | Infrastructure Skills{% endblock title %}
+
+{% block content %}
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-3">
+    <div class="container single-col-max-width pt-1">
+      <h2 class="heading text-center">Infrastructure Skills</h2>
+    </div>
+  </section>
+
+  <!--- Opening Statement -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      The objective of this page is to give additional context relating to the skills I have
+      with respect to managing the infrastructure of a project such as packages and dependencies
+      management, containerisation, source control, project management, etc.
+    </div>
+  </section>
+
+  <!-- Skills -->
+  {% include 'skills/skill/terminal.html' %}
+  {% include 'skills/skill/docker.html' %}
+  {% include 'skills/skill/git_github.html' %}
+  {% include 'components/skills_nav.html' %}
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/postgresql.png' %}" alt="PostgreSQL">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>PostgreSQL</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Database Design, Management & Data Retrieval 
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              I use PostgreSQL as the database of choice with all of my Django projects.
+            </p>
+            <p>
+              Some of the tasks that I can complete with PostgreSQL or Django/PostgreSQL:
+              <ul class="mb-0 no-bullets">
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Kickstart a project using PostgreSQL rather than using SQLite3. This is achieved
+                  using an automated shell script built into a docker-compose routine that automates
+                  the process of setting up and securing a new database with securely stored
+                  environment variables.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Check data migrations or inspect the DB when migrations go awry using a combination
+                  of Django admin commands and Postgres' CLI.
+                </li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% block additional_js %}
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+{% endblock additional_js %}

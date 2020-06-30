@@ -1,6 +1,6 @@
 {% load static %}
 
-<section class="project px-3 py-5 p-md-5">
+<section class="project px-3 mb-3">
   <div class="container">
     <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
       <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
@@ -8,33 +8,45 @@
       <div class="media-body">
         <div class="client-info">
           <ul class="client-meta list-unstyled">
-            <li class="mb-2">
-              <i class="fab fa-python mr-2"></i>
-              <strong>Python:</strong> Back End Web Development, Data Science, Scripting
+            <li class="mb-2"><strong><h5>Python</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Back End Web Development, Data Science, Scripting
             </li>
           </ul>
           <hr>
           <div class="client-bio mb-4">
             <p>
-              I have been learning Python since May 2018. Having studied many books and video courses 
-              and built a variety of projects using the skills learned, I have used Python as a scripting language, developing on the web and analysing datasets.
+              I have been learning Python since May 2018. Having studied many
+              <a href="{% url 'pages:reading_list' %}" target="_blank">books</a> and video courses
+              and built a variety of projects using the skills learned, I have used Python
+              for OS scripting, web development and data analysis/visualisation tool.
             </p>
             <p>
-              I have used a variety of libraries within the Python Eco-system and have an extensive knowledge of the extended standard library.
-              Amongst many others, I have a good working knowledge of libraries such as 
-              <a href="https://docs.python.org/3.8/library/itertools.html#module-itertools">itertools</a>, 
-              <a href="https://docs.python.org/3.8/library/functools.html#module-functools">functools</a> 
-              and 
-              <a href="https://docs.python.org/3.8/library/collections.html#module-collections">collections</a>.
+              I have used a variety of libraries within the Python and Anaconda ecosystem and have an extensive knowledge of
+              the extended standard library. Amongst many others, I have a good working knowledge of libraries such as 
+              <a href="https://docs.python.org/3.8/library/itertools.html#module-itertools" target="_blank">itertools</a>,
+              <a href="https://docs.python.org/3.8/library/functools.html#module-functools" target="_blank">functools</a>,
+              and
+              <a href="https://docs.python.org/3.8/library/collections.html#module-collections" target="_blank">collections</a>.
             </p>
             <p>
-              Although the need for some of the tools within these libraries are not always 
-              required, it is useful to know them for when you would like to build more efficient code 
+              Although the need for some of the tools within these libraries is not always 
+              required, it's useful to know for when you would like to build more efficient code 
               or a standard data structure just doesn't give you the required functionality.
+            </p>
+            <p>
               You can see examples of me using Python for various scripts within 
-              <a href="https://github.com/WayneLambert/library-python">my code library</a>. 
-              A lot of the examples within the library are highly contrived academic examples 
-              so to illustrate their usage.
+              <a href="https://github.com/WayneLambert/library-python" target="_blank">my code library</a>. 
+              A lot of the examples within the library are highly contrived examples
+              so to illustrate their usage. There are also examples of using these non-standard
+              data structures within the <a href="{% url 'countdown_letters:selection' %}" target="_blank">Countdown Letters</a>
+              and <a href="{% url 'countdown_numbers:selection' %}" target="_blank">Countdown Numbers</a> apps.
+            </p>
+            <p>
+              I also have a good working knowledge of some of Python's common libraries such as
+              <a href="https://pypi.org/project/requests/" target="_blank">Requests</a> and
+              <a href="https://pypi.org/project/beautifulsoup4/" target="_blank">Beautiful Soup</a>.
             </p>
           </div>
         </div>

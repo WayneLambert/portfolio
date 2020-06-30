@@ -1,0 +1,42 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/docker.png' %}" alt="Docker">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>Docker</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+              Containerised Development & Deployment 
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              I build all of my project's development environments using Docker within the terminal.
+              Other than 'build', 'up', and 'down', the majority of
+              <a href="https://github.com/WayneLambert/library-python/blob/master/commands/docker/commands.md" target="_blank">
+              commands you're likely to need to manage a project in Docker</a> can be found here.
+            </p>
+            <p>
+              I can build 'docker-compose' files to automate the build and setup process
+              for my Django projects. This includes services for Django itself, Postgres,
+              Celery, CeleryBeat, and Redis.
+            </p>
+            <p>
+              I have tested a lot of Python images and eventually found that
+              some of the recommended lighter packages such as 'alpine' is actually
+              more hassle than its worth. This is because you need to add/remove dependencies
+              to get the images to build all for the sake of the overall build being that bit smaller.
+              I have settled on the 'Buster' version which works for my projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

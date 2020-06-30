@@ -1,0 +1,44 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/jupyter.png' %}" alt="Jupyter Notebooks">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>Jupyter</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Python Notebook
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              This one perhaps comes as a bit of a surprise for web developers but I find
+              that this one is perhaps overlooked. It is especially useful when
+              you're working with an external API.
+            </p>
+            <p>
+              If you're using a standard Python Interpreter to inspect the json from an
+              external API, you may be presented with one continuous block of code with no spacing,
+              line breaks or formattimng, then it makes it very difficult to see the matching
+              bracket sets. Doing this inside a Jupyter notebook formats the code beautifully
+              which makes this a breeze.
+            </p>
+            <p>
+              Coupled with Jupyter's ability for documentation and to replay the code again
+              quickly, iterative development using an API is a pleasure with Jupyter notebooks.
+            </p>
+            <p>
+              This is likely to be enhanced even further soon as the Python extension team at
+              Microsoft are working on providing in-cell debugging and live variable inspection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

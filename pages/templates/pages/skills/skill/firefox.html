@@ -1,0 +1,51 @@
+{% load static %}
+
+<section class="project px-3 mb-3">
+  <div class="container">
+    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+      <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="400px" height="300px"
+        src="{% static 'assets/images/skills/firefox.jpg' %}" alt="Firefox">
+      <div class="media-body">
+        <div class="client-info">
+          <ul class="client-meta list-unstyled">
+            <li class="mb-2"><strong><h5>Firefox</h5></strong></li>
+            <li>
+              <i class="fa fa-tags mr-1"></i>
+                Development Tools
+            </li>
+          </ul>
+          <hr>
+          <div class="client-bio mb-4">
+            <p>
+              Firefox Developer Tools help me to diagnose many issues relating to web development
+              including the loading of pages and assets, divs and CSS styling of web components,
+              flexible layout across devices. Chrome Dev Tools seems to get all the plaudits,
+              however I prefer Firefox's Dev Tools.
+            </p>
+            <p>
+              I have learned a lot about web development through Dev Tools alone by the
+              inspection of websites that achieve a desired outcome. It is usually possible to
+              reverse engineer the front-end build of a website through inspection and analysis.
+            </p>
+            <p>
+              Due to its instant feedback, I often find myself making small HTML and CSS
+              adjustments within the Dev Tools to achieve the outcome I desire and then
+              cement that into my HTML or Sass file afterwards. The Django development browser
+              doesn't have hot module reloading like React due to React's Virtual DOM feature.
+            </p>
+            <p>
+              One Firefox extension that I would give a shout out to is 'Fake Filler'.
+              It makes filling out forms a "one-click" process which is very
+              useful for testing forms with many inputs. It can be programmed with regex
+              to control how the forms are filled in. During the development process,
+              you may need to fill out forms dozens of times to test it in different ways
+              and typing in example input over and over again becomes tedious. Yes, writing
+              unit tests is another way to accomplish this but sometimes seeing forms working
+              trumps a unit test.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
