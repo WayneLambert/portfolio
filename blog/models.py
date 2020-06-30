@@ -62,12 +62,12 @@ class Post(models.Model):
         return self.title
 
     @property
-    def word_count(self):
+    def word_count(self) -> int:
         return len(self.content.split())
 
     @property
-    def reading_time(self):
-        return math.ceil(self.word_count / 75)
+    def reading_time(self) -> int:
+        return int(math.ceil(self.word_count / 75))
 
     def save(self):
         if not self.slug.strip():

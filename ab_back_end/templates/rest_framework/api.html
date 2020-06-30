@@ -1,19 +1,60 @@
 {% extends 'rest_framework/base.html' %}
-{% load static %}
 {% load rest_framework %}
+{% load static %}
 
-{% block title %}WayneLambert.dev Blog{% endblock title %}
+<head>
+  {% block head %}
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-touch-icon.png' %}">
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png' %}">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'assets/favicon/site.webmanifest' %}">
 
-<!-- Icon Library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block meta %}
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <meta name="robots" content="NONE,NOARCHIVE" />
+    {% endblock %}
+
+    <title>{% block title %}WayneLambert.dev | Blog API Endpoints{% endblock %}</title>
+
+    {% block style %}
+      {% block bootstrap_theme %}
+        <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap.min.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/bootstrap-tweaks.css" %}"/>
+      {% endblock %}
+
+      <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/prettify.css" %}"/>
+      <link rel="stylesheet" type="text/css" href="{% static "rest_framework/css/default.css" %}"/>
+      <!-- FontAwesome CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      {% if code_style %}<style>{{ code_style }}</style>{% endif %}
+    {% endblock %}
+
+  {% endblock %}
+</head>
 
 {% block branding %}
   <span>
-    <a href="{% url 'blog:home' %}" class="navbar-brand">
-      Home
+    <a href="{% url 'pages:home' %}" target="_blank" class="navbar-brand" title="WayneLambert.dev Home Page">
+      <i class="fa fa-home mr-2"></i>
     </a>
-    <a href="{% url 'api:posts' %}" rel="nofollow" class="navbar-brand">
-      WayneLambert.dev Blog API <span class="version">1</span>
+    <a href="{% url 'blog:home' %}" target="_blank" class="navbar-brand" title="Blog Home Page">
+      <i class="fa fa-rss-square"></i>
+    </a>
+    <a href="{% url 'api:posts' %}" rel="nofollow" class="navbar-brand" title="Blog API Endpoints Home Page">
+      <i class="fa fa-arrows-v"></i>
+    </a>
+    <a href="{% url 'pages:api_review' %}" target="_blank" class="navbar-brand" title="Blog API Endpoints Project Review Page">
+      <i class="fa fa-info-circle"></i>
     </a>
   </span>
 {% endblock branding %}
+
+{% block script %}
+  <!-- Dark Mode -->
+  <script src="{% static 'assets/plugins/js-cookie.min.js' %}"></script>
+  <script src="{% static 'assets/js/dark-mode.js' %}"></script>
+
+  <!-- Font Awesome JS -->
+  <script src="https://kit.fontawesome.com/8651153301.js" crossorigin="anonymous"></script>
+{% endblock script %}
