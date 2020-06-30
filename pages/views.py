@@ -48,3 +48,7 @@ class SoftwareSkillsView(TemplateView):
 # Reviews
 class BlogReviewView(TemplateView):
     template_name = 'reviews/blog.html'
+
+
+class APIReviewView(TemplateView):
+    template_name = 'reviews/api.html'

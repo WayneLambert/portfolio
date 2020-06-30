@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Django API Endpoints Review{% endblock title %}
+
+{% block content %}
+
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Django API Endpoints</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">API endpoints for the Django Blog Project</p>
+      </div>
+    </div>
+  </section>
+
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="{% static 'assets/images/project/api.jpg' %}" alt="">
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong>Type:</strong> CRUD Application with Authentication</li>
+              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+                <a class="theme-link" href="{% url 'api:posts' %}" target="_blank">API Endpoints</a>
+              </li>
+              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/api" target="_blank">
+                  Blog's Source Code
+                </a>
+              </li>
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+api%22+" target="_blank">
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                Naturally, the implementation of these endpoints is a highly contrived
+                example for portfolio demonstration purposes.
+              </p>
+              <p>
+
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Write-Up Section -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+
+        <!-- Project Objectives -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
+          <p>
+          </p>
+          <p>
+          </p>
+        </div>
+
+        <!-- Project Approach / Solution -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+        </div>
+
+        <!-- Project Evaluation -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
+          <p>
+          </p>
+          <p>
+          </p>
+          <p>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
+      <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <table>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Django, Django Rest Framework</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python, HTML</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Software:</td>
+            <td>VS Code</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, Docker, PipEnv</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
+            <td>Django Rest Framework</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block additional_js %}
+  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+{% endblock additional_js %}
