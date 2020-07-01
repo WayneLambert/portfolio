@@ -12,6 +12,7 @@ class HomeView(ListView):
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')[:3]
 
 
+# Static Pages
 class PortfolioView(TemplateView):
     template_name = 'portfolio.html'
 
@@ -52,3 +53,27 @@ class BlogReviewView(TemplateView):
 
 class APIReviewView(TemplateView):
     template_name = 'reviews/api.html'
+
+
+class CountdownLettersReviewView(TemplateView):
+    template_name = 'reviews/countdown_letters.html'
+
+
+class CountdownNumbersReviewView(TemplateView):
+    template_name = 'reviews/countdown_numbers.html'
+
+
+class RouletteReviewView(TemplateView):
+    template_name = 'reviews/roulette.html'
+
+
+class ScrapingReviewView(TemplateView):
+    template_name = 'reviews/scraping.html'
+
+
+class TextAnalysisReviewView(TemplateView):
+    template_name = 'reviews/text_analysis.html'
+
+
+class DataScienceReviewView(TemplateView):
+    template_name = 'reviews/data_science.html'

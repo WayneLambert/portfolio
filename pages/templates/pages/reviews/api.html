@@ -24,13 +24,13 @@
           <div class="client-info">
             <h5 class="font-weight-bold mb-4">Summary</h5>
             <ul class="client-meta list-unstyled">
-              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong>Type:</strong> CRUD Application with Authentication</li>
-              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>API Endpoints created with Django REST Framework</li>
+              <li class="mb-2"><i class="fas fa-link fa-fw mr-2"></i><strong>Web:</strong>
                 <a class="theme-link" href="{% url 'api:posts' %}" target="_blank">API Endpoints</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
                 <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/api" target="_blank">
-                  Blog's Source Code
+                  Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
@@ -43,11 +43,12 @@
             <h5 class="font-weight-bold mb-4">Introduction</h5>
             <div class="client-bio mb-4">
               <p>
-                Naturally, the implementation of these endpoints is a highly contrived
-                example for portfolio demonstration purposes.
+                The Django blog also has some REST API endpoints that can be used by a front-end developer
+                to render the fields with a framework such as React, Vue, Angular, or Ember.
               </p>
               <p>
-
+                Naturally, the implementation of these endpoints is a highly contrived
+                example for portfolio demonstration purposes.
               </p>
             </div>
           </div>
@@ -63,7 +64,32 @@
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <ul class="mb-0 no-bullets">
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-
+            Browsable API list page for all of the posts (paginated by 3 posts per page)
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Browsable API detail page for an individual post
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            The standard template supplied by Django Rest Framework has been overridden so the colours
+            are consistent with portfolio's theme colours
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Navigation icons from Font Awesome have been added
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Time is purposefully left in its database storage format so that a front-end developer
+            can use a JavaScript library such as <a href="https://momentjs.com/" target="_blank">Moment.js</a>
+            which can format the time according to each user's locale
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Fields from downstream models included
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Properties from models are included as fields
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            I purposefully have not provided a POST form within the browsable API as I do not want
+            people or bots to post to the database
           </li>
         </ul>
       </div>
@@ -79,8 +105,9 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
           <p>
-          </p>
-          <p>
+            I set out to build a browsable API endpoint that would enable front-end developers
+            to render the fields from the application using their chosen front-end framework
+            such as React, Vie, Angular or Ember.
           </p>
         </div>
 
@@ -88,14 +115,17 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
           <p>
+            My starting point was to research the setting of the endpoints using serializers.
           </p>
           <p>
+            Additional research was required for some of the less frequently used aspects of creating an API such
+            as rendering properties that have been defined against a model, or fields that have been defined in
+            a downstream model.
           </p>
           <p>
-          </p>
-          <p>
-          </p>
-          <p>
+            The implementation differs for the various relationships between database tables. Within the blog
+            project, there are examples of all of the main database join types: one-to-one, one-to-many,
+            and many-to-many.
           </p>
         </div>
 
@@ -103,10 +133,9 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
           <p>
-          </p>
-          <p>
-          </p>
-          <p>
+            I would like investigate documenting the API using something like Swagger. There are
+            also some small customisations that I would like to make to the base template with
+            regards to titling and descriptions.
           </p>
         </div>
 
@@ -115,38 +144,38 @@
   </section>
 
   <!-- Languages, Technologies & Skills Used Section -->
-  <section class="project pb-5">
+  <section class="project px-3 pb-5">
     <div class="container">
       <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
       <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <table>
           <tr>
-            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
-            <td>Django, Django Rest Framework</td>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python, HTML / CSS, Bootstrap, Font Awesome</td>
           </tr>
           <tr>
-            <td class="text-right font-weight-bold pr-2">Languages:</td>
-            <td>Python, HTML</td>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Django, Django REST Framework</td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Software:</td>
             <td>VS Code</td>
           </tr>
           <tr>
-            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
-            <td>GitHub, Docker, PipEnv</td>
+            <td class="text-right font-weight-bold pr-2">Libraries:</td>
+            <td>N/A</td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
-            <td>Django Rest Framework</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, Docker, PipEnv</td>
           </tr>
         </table>
       </div>
     </div>
   </section>
 {% endblock %}
-
-{% block additional_js %}
-  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-{% endblock additional_js %}

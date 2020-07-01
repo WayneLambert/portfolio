@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Countdown Letters Review{% endblock title %}
+
+{% block content %}
+
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Countdown Letters</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">A simulation of the letters game on the TV show, Countdown</p>
+      </div>
+    </div>
+  </section>
+
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="{% static 'assets/images/project/countdown-letters.jpg' %}">
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Game with External API</li>
+              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+                <a class="theme-link" href="{% url 'countdown_letters:selection' %}" target="_blank">Countdown Letters Game</a>
+              </li>
+              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/countdown_letters" target="_blank">
+                  Source Code
+                </a>
+              </li>
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+countdown_letters%22+" target="_blank">
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                The Countdown Letters project uses the logic from the letters game on Countdown to enable a player
+                to play against the computer (which I call Susie) attempting to get the longest word that they can.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Generates a list of random vowels and consonants based upon the number of vowels
+            that the player chooses to use
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Validates that the word chosen by the player is one within the 'words.txt' file
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Validates that the word chosen by the player uses only letters from the randomly
+            generated selection of letters
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Validates that the word chosen by the user exists as an entry in the Oxford English
+            Dictionary's API (British English)
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Returns a game result and score displaying the winner
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Looks up the dictionary definition of the word using the Oxford English Dictionary's
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Looks up the dictionary definition of the word using the Oxford English Dictionary's
+            API (British English). Sometimes this means looking up the associated lemma version of the word.
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Unlike the TV game show, there is no 30 second clock. This is intended so that recruiters
+            and hiring managers don't have to wait for a countdown timer to expire. I could build in
+            a JavaScript countdown timer if I wanted to have this functionality.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Write-Up Section -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+
+        <!-- Project Objectives -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
+          <p>
+            The idea for simulating this game came when I had previously used a dataset that I
+            obtained from Kaggle.com when I was doing some data science analysis when learning
+            Pandas. It was a list of 113,809 English words, so I wondered if I could build a
+            simulation of the Countdown Letters game using the word list.
+          </p>
+        </div>
+
+        <!-- Project Approach / Solution -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
+          <p>
+            My opening goal was to build something that was far simpler than the final product turned out. It was originally designed with the intention of just having a player's word and a computer's answer, however as I thought about the game show's format, I wondered if I could somehow integrate a definition for the game's word when the results of the game are displayed.
+          </p>
+          <p>
+            This led me to research an API for a dictionary and discover the Oxford Dictionary API which
+            allows me to have 1,000 requests per month.
+          </p>
+          <p>
+            I inspected the API using a Jupyter Notebook (the best method I have found yet) and discovered
+            that I would need to perform additional game validation such as confirming that the word chosen
+            by the player appears in the dictionary.
+          </p>
+          <p>
+            I would also need to retrieve the dictionary definition within the results page.
+          </p>
+          <p>
+            I wrote out all of the validations that would be required in English and then proceeded
+            to write individual functions that would fulfil each individual validation.
+          </p>
+          <p>
+            At a later stage, following redevelopment of my portfolio, I refactored the project
+            extracting the functions and classes into separate files depending upon whether they
+            were genuine Django views, game logic functions, or validations. This seemed like a
+            sensible approach to refactor the game's code making it more maintainable in the future.
+          </p>
+        </div>
+
+        <!-- Project Evaluation -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
+          <p>
+            I have an idea whereby I will capture the results of the game and post that data back
+            to the database to record the details about each of the games that are played.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
+      <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <table>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python, HTML, Sass</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Django, Bootstrap, Font Awesome</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Software:</td>
+            <td>VS Code</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Libraries:</td>
+            <td>os, random, urllib, requests</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">API:</td>
+            <td>Oxford Dictionary</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, Docker, PipEnv</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="sources">Sources</h3>
+          <p>
+            Information and rules of the game was sourced from
+            <a href="http://wiki.apterous.org/Letters_game" target="_blank">http://wiki.apterous.org/Letters_game</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
