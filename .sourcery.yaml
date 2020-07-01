@@ -1,0 +1,19 @@
+ignore:
+  - .venv/*
+  - .pytest_cache/*
+  - htmlcov/*
+  - logs/*
+  - media/*
+  - node_modules/*
+  - scss/*
+  - static/*
+  - staticfiles/*
+
+refactor:
+  skip: []
+
+github:
+  labels: []
+  ignore_labels:
+    - sourcery-ignore
+  sourcery_branch: sourcery/{base_branch}
