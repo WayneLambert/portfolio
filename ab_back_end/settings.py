@@ -266,7 +266,7 @@ CKEDITOR_CONFIGS = {
         'toolbar_Custom': [
             ['Styles', 'Format', 'Font', 'Size', 'Bold', 'Italic', 'Underline', 'Strike',
              'Undo', 'Redo'],
-            ['Find', 'Replace', 'SpellCheck'],
+            ['Find', 'Replace'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
@@ -275,7 +275,7 @@ CKEDITOR_CONFIGS = {
             ['Smiley', 'SpecialChar'],
             ['RemoveFormat', 'CodeSnippet', 'Maximize', 'Preview'],
         ],
-        'extraPlugins': ['codesnippet', 'maximize', 'scayt']
+        'extraPlugins': ['codesnippet', 'maximize'],
     }
 }
 
