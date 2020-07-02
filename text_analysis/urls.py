@@ -1,10 +1,10 @@
 from django.urls import path
-from text_analysis import views as text_analysis_views
 
+from .views import analyse_screen, analysis_screen
 
 app_name = 'text_analysis'
 
 urlpatterns = [
-    path('analyse/', text_analysis_views.analyse, name='analyse'),
-    path('analysis/', text_analysis_views.analysis, name='analysis'),
+    path('analyse/', analyse_screen, name='analyse'),
+    path('analysis/', analysis_screen, name='analysis'),
 ]

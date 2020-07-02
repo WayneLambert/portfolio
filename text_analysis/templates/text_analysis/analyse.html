@@ -25,16 +25,16 @@
         </p>
         <button type="submit" onclick="return IsEmpty();" class="btn btn-sm btn-success mr-2"
           id="btn-analyse-text">
-          <i class="fa fa-book"></i>
+          <i class="fa fa-book mr-1"></i>
           Calculate
         </button>
         <button type="button" onclick="useLoremIpsum();" class="btn btn-sm btn-info mr-2"
-          id="no-words-msgbox">
-          <i class="fa fa-font"></i>
+          id="btn-use-lorem-ipsum">
+          <i class="fa fa-font mr-1"></i>
           Use Lorem Ipsum
         </button>
-        <em><div id="no-words-msgbox"></div></em>
       </form>
+      <p><em><div class="no-words-msgbox" id="no-words-msgbox"></div></em></p>
     </div>
   </article>
 {% endblock content %}

@@ -1,23 +1,9 @@
-# Text Analysis
+# Text Analysis Project
 
-![Text Analysis](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/matrix_numbers.jpg)
+Counting Words and Letters Found Within a Text String
 
-The text analysis app is a demonstration of using Python to calculate the number of occurrences of each of the words and letters used within the string input/pasted by the user. No models are required for this app, however Django's views handles the request/response cycle and the rendering of the applicable context is handled using a Django template.
+### Links
 
-There are also some mathematical calculations for the rate of any given letter appearing within the text being evaluated.
-
-To save time, you can import some _'lorem ipsum'_ text instead of typing or copying/pasting.
-
-## Features
-
-- Uses Python lists to store results from logic
-- Uses Pythonic for [each] loop to iterate over every letter of the alphabet to test for presence
-- Creates a context dictionary with several elements used within the Django template to give the user rich information about the text they would like to examine
-
-## Technologies Used
-
-- Languages: Python, HTML / CSS
-- Frameworks: Django, Bootstrap, FontAwesome
-- Other: GitHub, Docker
-
-**<u>Data Protection Notice</u>:** No data is recorded within the application and the text used does not appear in any analytics.
+- [Text Analysis Project](https://waynelambert.dev/text_analysis/analyse/)
+- [Text Analysis: Project Review](https://waynelambert.dev/portfolio/reviews/text-analysis/)
+- [Project Issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+text_analysis%22+)

@@ -8108,13 +8108,16 @@ a.cv-link {
   height: 2rem;
   vertical-align: middle; }
 
-#text-analysis-box {
+.text-analysis-box {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   color: #4B4C4C;
   vertical-align: text-top; }
+
+.no-words-msgbox {
+  color: red; }
 
 /* Holiday Roulette Game */
 .log-file-contents {
