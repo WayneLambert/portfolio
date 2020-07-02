@@ -31,7 +31,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-blog fa-fw mr-2"></i>Blog
+              <i class="fas fa-blog fa-fw mr-1"></i>Blog
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'blog:home' %}"><i class="fas fa-home fa-fw mr-2"></i>Home</a>
@@ -47,7 +47,7 @@
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user fa-fw mr-2"></i>Profile
+                <i class="fas fa-user fa-fw mr-1"></i>Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'blog:users:profile' user.user.slug %}"><i class="fa fa-user-circle mr-2"></i>View Profile</a>
@@ -69,9 +69,12 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fa fa-envelope mr-2"></i>Contact</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:about_me' %}"><i class="fa fa-info-circle mr-2"></i>About Me</a>
+          </li>
         </ul>
         <hr class="col-8">
-        {% if 'blog' in request.path and 'users' not in request.path and 'post/new' not in request.path %}
+        {% if 'blog' in request.path and 'users' not in request.path and 'post/new' not in request.path and '/update/' not in request.path %}
           {% include 'blog/category_sidebar.html' %}
         {% endif %}
         <!-- Dark Mode Toggle -->
