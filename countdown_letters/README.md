@@ -1,28 +1,9 @@
 # Countdown Letters Game
 
-![Countdown Letters](https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg)
+A simulation of the letters game on the TV show, Countdown
 
-The countdown project uses the logic from the letters game on Countdown to enable a player to play against the computer attempting to get the longest word that they can.
+### Links
 
-## Features
-
-- Uses a functional programming style to implement the game's rules logic into the program
-- A list of weighted consonants and vowels are built into the program according to the rules of the game so that the choices made have the same probability of being drawn as they would on the actual TV show game.
-- The list of 113,809 english words is stored in a text file on the server. This was sourced from kaggle.com
-- Validates that the word chosen by the player is one within the list of words text file
-- Validates that the word chosen by the player uses only the randomly generated selection of letters
-- Validates that the word chosen by the user exists as an entry in the Oxford English Dictionary's API (British English)
-- Returns a game result and score displaying the winner
-- Looks up the dictionary definition of the word using the Oxford English Dictionary's API (British English). Sometimes this means looking up the associated lemma version of the word.
-- Unlike the TV game show, there is no 30 second clock. This is intended so that recruiters and hiring managers don't have to wait for a countdown timer to expire.
-
-## Technologies Used
-
-- Languages: Python, HTML / CSS
-- Frameworks: Django, Bootstrap, FontAwesome
-- Libraries: os, random, urllib, requests
-- Other: GitHub, Docker, Oxford Dictionary API
-
-## Sources
-
-Information and rules of the game was sourced from <http://wiki.apterous.org/Letters_game>
+- [Countdown Letters Game](https://waynelambert.dev/countdown-letters/selection/)
+- [Countdown Letters: Project Review](https://waynelambert.dev/portfolio/reviews/countdown-letters/)
+- [Project Issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+countdown_letters%22+)
