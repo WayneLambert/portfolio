@@ -253,24 +253,29 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
 
 # CK Editor Settings
+AWS_QUERYSTRING_AUTH = False
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
+CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 CKEDITOR_CONFIGS = {
     'default': {
+        'skin': 'moono-lisa',
         'toolbar': 'Custom',
         'width': '100%',
         'height': '400',
         'toolbar_Custom': [
-            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
-             'SpellChecker', 'Undo', 'Redo'],
+            ['Styles', 'Format', 'Font', 'Size', 'Bold', 'Italic', 'Underline', 'Strike',
+             'Undo', 'Redo'],
+            ['Find', 'Replace', 'SpellCheck'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
              'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'],
-            ['RemoveFormat', 'CodeSnippet'],
+            ['RemoveFormat', 'CodeSnippet', 'Maximize', 'Preview'],
         ],
-        'extraPlugins': 'codesnippet',
+        'extraPlugins': ['codesnippet', 'maximize', 'scayt']
     }
 }
 
