@@ -1,0 +1,218 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Scraping Project Review{% endblock title %}
+
+{% block content %}
+
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Scraping</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">
+          Examples of scraping content from external websites
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="{% static 'assets/images/project/scraping.png' %}">
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Scraping content with Python</li>
+              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+                <a class="theme-link" href="{% url 'scraping:scraping_options' %}" target="_blank">Scraping</a>
+              </li>
+              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/scraping" target="_blank">
+                  Source Code
+                </a>
+              </li>
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+scraping%22+" target="_blank">
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                The Scraping project demonstrates the use of the Requests library to handle the request/response
+                cycle for the GET requests that are required to retrieve data from another website.
+              </p>
+              <p>
+                Python's third party library, Beautiful Soup, is used to parse the required HTML from the
+                response object. Python text functions are used to target, strip and split any required text
+                so that it's in a suitable format to render for human readability.
+              </p>
+              <p>
+                Finally, the Django component of the application is the handling of the URLs to target a
+                view which returns the required response to the Django template. In other words, there is
+                no 'M' component used within this app, it just uses the 'V' and the 'T' components of the
+                MVT architectural paradigm that Django uses.
+              </p>
+              <p>
+                The examples give scraping examples using string manipulation of DOM elements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            The most comprehensive scraping example is from the BBC website for the results of
+            the EU Referendum. The BBC presents this data as one page for each letter of the alphabet.
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Renders a formatted Bootstrap table with the results
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            The table uses jQuery to enable fast pagination, sorting, and filtering of results
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Calculations for percentages amd totals are performed within the Python script which
+            reconcile back to the values on the BBC website
+          </li>
+          <li>
+            Django is used to handle the URL routing and the generation of the views. There are no
+            models within the app
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Write-Up Section -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+
+        <!-- Project Objectives -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
+          <p>
+            I set out to scrape interesting content from the web in order to learn skills
+            with the Requests and Beautiful Soup libraries. I started out by going for a
+            couple of famous speeches which I selected as I was browsing through goodreads.com
+          </p>
+        </div>
+
+        <!-- Project Approach / Solution -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
+          <p>
+            The main tool to use for this activity is Firefox Developer tools. This is required to
+            inspect the DOM elements that are required for targeting.
+          </p>
+          <p>
+            It is also useful to use Jupyter Notebooks for this type of activity as their ability to
+            present data like this is often superior to that of Python's interpreter, even if you use bPython.
+          </p>
+        </div>
+
+        <!-- Project Evaluation -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
+          <p>
+            There are a couple of enhancements that I would like to add to this project in order to
+            improve its utility and to demonstrate further skills.
+          </p>
+          <p>
+            The scraping process takes about 15 seconds or so because it needs to extract that data
+            from an external website and inspect the DOM elements of the web pages to do so. In any
+            case, these processes should be respectful of a website as each page is a request to the
+            website which could result in my site being viewed negatively.
+          </p>
+          <p>
+            To inform the user of progress, I would like to add a progress bar using Celery and Django.
+          </p>
+          <p>
+            I would also like to scrape the content using multi-processing to speed it up a little.
+            It also gives me an opportunity to delve further into the multiprocessing library.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
+      <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <table>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python, jQuery, HTML, Sass</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Django, Bootstrap, Font Awesome</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Software:</td>
+            <td>VS Code,Firefox Dev Tools, Jupyter Notebooks</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Libraries:</td>
+            <td>decimal, collections, string</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
+            <td>Requests, Beautiful Soup</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, Docker, PipEnv</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="sources">Sources</h3>
+          <p>
+            <a href="https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a" target="_blank">https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Disclaimer Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="disclaimer">Disclaimer</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <p>
+          The choices of topics/items to scrape does not in any way reflect political thoughts
+          or affiliations. They are merely chosen as interesting items to produce as part of the project.
+        </p>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

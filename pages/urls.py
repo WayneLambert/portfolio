@@ -4,8 +4,8 @@ from .views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewVie
                     CountdownLettersReviewView, CountdownNumbersReviewView,
                     DataScienceReviewView, FrontEndSkillsView, HomeView,
                     InfrastructureSkillsView, PortfolioView, PrivacyPolicyView,
-                    ReadingListView, RouletteReviewView, SoftwareSkillsView,
-                    TextAnalysisReviewView)
+                    ReadingListView, RouletteReviewView, ScrapingReviewView,
+                    SoftwareSkillsView, TextAnalysisReviewView)
 
 app_name = 'pages'
 
@@ -19,6 +19,7 @@ urlpatterns = [
     path('portfolio/reviews/countdown-numbers/',
          CountdownNumbersReviewView.as_view(), name='countdown_numbers_review'),
     path('portfolio/reviews/roulette/', RouletteReviewView.as_view(), name='roulette_review'),
+    path('portfolio/reviews/scraping/', ScrapingReviewView.as_view(), name='scraping_review'),
     path('portfolio/reviews/text-analysis/',
          TextAnalysisReviewView.as_view(), name='text_analysis_review'),
     path('portfolio/reviews/data-science/',
