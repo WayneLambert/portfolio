@@ -1,7 +1,7 @@
 from django.urls import path
 
-from .churchill_speech import get_churchill_speech
-from .gettysburg_speech import get_gettysburg_speech
+from .churchill import get_churchill_speech
+from .gettysburg import get_gettysburg_speech
 from .referendum import get_referendum_results
 from .views import ScrapingOptionsView
 

@@ -6,8 +6,6 @@ import requests
 from bs4 import BeautifulSoup
 from django.shortcuts import render
 
-ALPHABET = string.ascii_lowercase
-BASE_URL = 'https://www.bbc.co.uk/news/politics/eu_referendum/results/local/'
 
 def get_area_results(results: dict) ->list:
     area_results = zip(
@@ -29,6 +27,8 @@ def get_referendum_results(request):
     """
     Retrieves the 2016 Brexit Referendum results from the BBC website.
     """
+    ALPHABET = string.ascii_lowercase
+    BASE_URL = 'https://www.bbc.co.uk/news/politics/eu_referendum/results/local/'
     results = defaultdict(list)
     leave_votes, remain_votes = 0, 0
     for letter in ALPHABET:

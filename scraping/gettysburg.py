@@ -20,5 +20,7 @@ def get_gettysburg_speech(request):
         text_content.append(paragraphs)
     split_string = text_content[1].strip('\n').strip().split('\n')
     gettysburg_speech = split_string[0]
+
     context = {'gettysburg': gettysburg_speech}
+
     return render(request, 'gettysburg_speech.html', context)
