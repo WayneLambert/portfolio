@@ -6,7 +6,7 @@ This site is hosted at <https://waynelambert.dev> and illustrates the use of Dja
 
 A full CRUD application using Django's models, views, and templates.
 
-- [Home Page](https://waynelambert.dev/blog)
+- [Blog Home Page](https://waynelambert.dev/blog)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/blog/)
 
 ## Django Rest API Endpoints
@@ -60,6 +60,8 @@ Explore fascinating datasets using Python's Data Science libraries.
 ## Contact Me
 
 You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the [contact form](https://www.waynelambert.dev/contact/) on the site.
+
+If you'd like to find out more about me, you can also [read my 'About Me' page](https://www.waynelambert.dev/about-me/).
 
 ## License
 
