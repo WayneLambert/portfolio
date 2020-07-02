@@ -43,7 +43,6 @@ def get_roulette_result(request) -> tuple:
         places_to_go[choice] += 1
         choice_item = f"Choice #{place_selected} was {choice}"
         logging.info(choice_item)
-        print(choice_item)
         detailed_choices.append(choice_item)
     most_selected_place = max(places_to_go.items(), key=operator.itemgetter(1))[0]
     number_of_times_selected = max(places_to_go.items(), key=operator.itemgetter(1))[1]
