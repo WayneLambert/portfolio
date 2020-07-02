@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Text Analysis Review{% endblock title %}
+
+{% block content %}
+
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Text Analysis</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">
+          Counting Words and Letters Found Within a Text String
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="{% static 'assets/images/project/text-analysis.jpg' %}">
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Script to Analyse Text</li>
+              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+                <a class="theme-link" href="{% url 'text_analysis:analyse' %}" target="_blank">Text Analysis</a>
+              </li>
+              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/text_analysis" target="_blank">
+                  Source Code
+                </a>
+              </li>
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+text_analysis%22+" target="_blank">
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                The text analysis app is a demonstration of using Python to calculate the number of
+                occurrences of each of the words and letters used within the string input/pasted by
+                the user. No models are required for this app, however Django's views handles the
+                request/response cycle and the rendering of the applicable context is handled using
+                a Django template.
+              </p>
+              <p>
+                There are also some mathematical calculations for the rate of any given letter appearing
+                within the text being evaluated.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Uses Python lists to store results from the various utility functions
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Uses Pythonic for [each] loop to iterate over every letter of the alphabet to test for presence
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Creates a context dictionary with several elements used within the Django template to give
+            the user information about the text they have chosen to analyse
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Provides a button to use standard 'lorem ipsum' text to save the user from typing or
+            pasting their own. Gives users feedback if they don't use any text.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Write-Up Section -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+
+        <!-- Project Objectives -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
+          <p>
+            To use Python to calculate the number of instances of a given word and letter within a text string.
+          </p>
+          <p>
+            This was one of my earlier scripting projects that I completed before I ever started to build a
+            Django portfolio in earnest. I added it to my Django portfolio at a later date and built upon it with additional
+            polish features both from a refactoring of back end code perspective and improved presentation of the tables on
+            the front-end.
+          </p>
+        </div>
+
+        <!-- Project Approach / Solution -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
+          <p>
+            I started by thinking about the algorithm and approach to calculate the frequency of words and letters within
+            the text block. It seemed reasonable to me that I would need to split the string into two operational lists.
+          </p>
+          <p>
+            The first would be a list of words that could be looped over and counted for their frequency of occurrence.
+          </p>
+          <p>
+            The second would be a list of letters that could be looped over and counted for their frequency of occurrence.
+          </p>
+          <p>
+            The next part would be to sort the lists in a logical order so that they could be rendered usefully to the user.
+          </p>
+          <p>
+            For words, it made sense that the list should be sorted by frequency of occurrence. For letters, it made sense
+            that the list should be sorted alphabetically.
+          </p>
+        </div>
+
+        <!-- Project Evaluation -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
+          <p>
+            Following a refactor of the project, the code is now easier to understand and maintain.
+          </p>
+          <p>
+            The code has been extracted into a 'views.py' file where functions relating to the rendering of Django views lives.
+          </p>
+          <p>
+            The remainder of the code are utility functions that have been moved into a separate module called 'utils.py'.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
+      <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <table>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python, HTML, JavaScript, Sass</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Django, Bootstrap, Font Awesome</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Software:</td>
+            <td>VS Code, Pythonista</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Libraries:</td>
+            <td>re, string, typing</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, Docker, PipEnv</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
