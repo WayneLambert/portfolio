@@ -16,6 +16,7 @@ class PostView(ListView):
     category_list = Category.objects.all().prefetch_related('posts')
     extra_context = {'categories_list': category_list}
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')
+    queryset = queryset.filter(status=1)
 
     def get_context_data(self, **kwargs):
         context = super(PostView, self).get_context_data(**kwargs)
