@@ -1,3 +1,2 @@
-static/* export-ignore
-staticfiles/* export-ignore
-scss/bootstrap/* export-ignore
+* linguist-vendored
+*.py linguist-vendored=false
