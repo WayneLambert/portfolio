@@ -8,15 +8,18 @@
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
       <h2 class="heading text-center">About Me</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">
+          An informal page to discover more about my professional journey and me as a person.
+        </p>
+      </div>
     </div>
   </section>
 
   <!--- Professional Journey -->
   <section class="project px-3 mb-3 mt-5">
-    <div class="container">
+    <div class="container single-col-max-width">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-        <img class="mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" width="260px"
-          src="{% static 'assets/images/static_pages/data-analysis.png' %}" alt="Data Analysis">
         <div class="media-body">
           <div>
             <h5 class="font-weight-bold mb-4">My Professional Journey</h5>
@@ -28,11 +31,12 @@
                 falling in love with data analysis. During my school years, I was very good at
                 maths and solving problems with logic. I was using computers from an early age having
                 an Atari 820ST. Yeah, you know the ones, the top-loader cassettes that take a noisy forever 
-                to load a primitive game. Later, I had a Pentium 75 which got me through my sixth form years
-                when I wasn't playing Super Mario Kart on the Super Nintendo.
+                to load a primitive game. Later, I had a Pentium 75 which got me through my sixth form years.
                 <img class="mb-3 mb-md-0 mr-md-5 mt-3 rounded d-none d-md-inline-block" width="100%"
-                src="{% static 'assets/images/static_pages/super-mario-kart.png' %}" alt="Super Mario Kart">
+                src="{% static 'assets/images/static_pages/atari-820.jpg' %}" alt="Excel">
+                <figcaption class="mt-2 text-center image-caption">The closest picture I could find online for my old computer | Image Credit: <a href="http://atariprojects.org/wp-content/uploads/2018/12/Atari-800-810-820-768x648.jpg" target="_blank">AtariProjects.org</a></figcaption>
               </p>
+
               <p>
                 Fortunately for me, my mum had secretarial skills and thought it would be a good
                 idea for me to learn to type, which is of course a skill that has naturally stood me in good
@@ -59,7 +63,7 @@
                 to work an extra 5 hours per week, then in 3 months I would have x number of pounds in savings!
                 Wow! Mind blown!
                 <img class="mb-3 mb-md-0 mr-md-5 mt-3 rounded d-none d-md-inline-block" width="100%"
-                src="{% static 'assets/images/static_pages/excel-2000.png' %}" alt="Excel 2000">
+                src="{% static 'assets/images/static_pages/excel.png' %}" alt="Excel">
               </p>
               <p>
                 Of course, such analysis has become run of the mill having done it for so many years now.
@@ -136,7 +140,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq1">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 Naturally, having built a portfolio, I have some skills in other languages and/or
                 programming constructs/disciplines. Throughout the portfolio, there is evidence of using Sass,
@@ -174,7 +178,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq2">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 Yes, my Excel skills are very advanced having used it since being a teenager. In
                 addition to the VBA I just mentioned, I know over 200 different Excel formulas and
@@ -214,7 +218,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq3">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 I first tinkered with simple static web pages using Microsoft FrontPage in the late 90s
                 and eventually started using Adobe DreamWeaver. I never really deployed any of these
@@ -252,7 +256,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq4">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 Since the age of about 25, I have focused on perpetual growth and learning, especially
                 with the emergence of online tools that make this easily accessible.
@@ -283,7 +287,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq5">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 I'd like to continue my journey of learning to build React applications as I believe
                 with my current level of Django skills together with building a responsive front-end
@@ -319,7 +323,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq6">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 If there's anything that I love more than programming, then its travel. I am fortunate
                 to have travelled to many different countries and have never considered money spent on
@@ -344,7 +348,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq7">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 Nelson Mandela was a great person as his achievements in my formative years were
                 incredible. I remember my parents recording the Nelson Mandela concerts on video
@@ -373,7 +377,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq8">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 Absolutely! Actually playing the sports belongs in my past now. I watch sports
                 occasionally, however I usually find myself too busy to watch sport all of the time.
@@ -398,9 +402,9 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq9">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
-                I mainly like action, drama, and comedy films. I think films like The Shawshank
+                I mainly like action, drama, and comedy films. Amongst others, I think films like The Shawshank
                 Redemption, Seven, Point Break, Man on Fire, Enemy of the State, The Negotiator,
                 Shooter, Taken, and the Bourne films are all fantastic. I think that Top
                 Gun may well be my favourite film of all time though as it had everything in the movie.
@@ -421,7 +425,7 @@
             </h4>
           </div>
           <div class="card-collapse collapse" id="faq10">
-            <div class="card-body pt-0 theme-bg-light">
+            <div class="site-article p-3 pt-0 theme-bg-light">
               <p>
                 I often listen to Ibiza sunset/lounge music when programming as it helps my mind
                 to flow. Having no words or even foreign language words means I don't engage with
