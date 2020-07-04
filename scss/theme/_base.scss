@@ -113,6 +113,8 @@ hr {
 .table-bordered th, .table-bordered td {
   border-color: rgba(0, 0, 0, 0.08);
 }
+
+
 /* Header */
 .header {
   position: fixed;
@@ -122,7 +124,6 @@ hr {
   width: $sidebar-width;
   background: $theme-color-primary;
   color: #fff;
-  overflow-y: scroll;
 
   /* Forefox scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.2) $theme-color-primary;

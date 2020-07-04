@@ -3,6 +3,9 @@
 <header class="header text-center">
   <div class="force-overflow">
     <nav class="navbar navbar-expand-lg navbar-dark" >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div id="navigation" class="collapse navbar-collapse flex-column" >
         <div class="profile-section pt-3 pt-lg-0">
           <div class="profile-avatar rounded-circle mx-auto mt-2 mb-1">
@@ -58,7 +61,7 @@
           {% else %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user fa-fw mr-2"></i>Account
+                <i class="fas fa-user fa-fw mr-1"></i>Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'blog:users:login' %}"><i class="fa fa-sign-in mr-2"></i>Login</a>
@@ -79,6 +82,7 @@
         {% endif %}
         <!-- Dark Mode Toggle -->
         {% include 'components/dark_mode_toggle.html' %}
+      </div>
     </nav>
   </div>
 </header>
