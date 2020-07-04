@@ -3,7 +3,7 @@
 <div class="col-md-4 mb-3">
   <div class="card blog-post-card">
     <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
-      <img class="card-img-top" width="348px" height="244px" src="{{ post.image.url }}">
+      <img class="card-img-top img-fluid" src="{{ post.image.url }}">
     </a>
     <div class="card-body">
       <h6 class="card-title">
