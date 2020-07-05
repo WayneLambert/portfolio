@@ -1,5 +1,6 @@
 [run]
 omit =
+  .venv/*
   *apps.py,
   *migrations/*,
   *settings*,
