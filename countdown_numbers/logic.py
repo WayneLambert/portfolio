@@ -10,7 +10,7 @@ from django.utils.http import urlencode
 
 
 def get_numbers_chosen(num_from_top: int) -> list:
-    MAX_GAME_NUMBERS = 6
+    MAX_GAME_NUMBERS: int = 6
     NUMS_FROM_TOP = [25, 50, 75, 100]
     NUMS_FROM_BOTTOM = list(range(1, 11)) * 2
 
@@ -90,18 +90,17 @@ def get_game_calcs(request, game_nums: list, stop_on=None) -> defaultdict:
     return game_calcs
 
 
-def get_best_solution(request, game_nums, target) -> str:
+def get_best_solution(request, game_nums: list, target: int) -> str:
     game_calcs = get_game_calcs(request, game_nums, stop_on=target)
 
     if int(target) in game_calcs:
         return game_calcs[int(target)][0]
-    else:
-        for num in range(1, 11):
-            if int(target) + num in game_calcs:
-                return game_calcs[int(target) + num][0]
-            elif int(target) - num in game_calcs:
-                return game_calcs[int(target) - num][0]
-        return "No solution could be found"
+    for num in range(1, 11):
+        if int(target) + num in game_calcs:
+            return game_calcs[int(target) + num][0]
+        elif int(target) - num in game_calcs:
+            return game_calcs[int(target) - num][0]
+    return "No solution could be found"
 
 
 def get_score_awarded(request, target_number: int, num_achieved: int) -> int:
@@ -116,7 +115,7 @@ def get_score_awarded(request, target_number: int, num_achieved: int) -> int:
     return points_awarded
 
 
-def get_game_result(target: int, answers: dict)-> str:
+def get_game_result(target: int, answers: dict) -> str:
     if answers['comp_num_achieved'] == answers['player_num_achieved']:
         result = 'Draw'
     else:
