@@ -38,7 +38,7 @@ def game_screen(request):
             letters_chosen = request.META['HTTP_REFERER'][-GameSetup.MAX_GAME_LETTERS:]
             letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
 
-            players_word = form.cleaned_data.get('players_word')
+            players_word = form.cleaned_data.get('players_word').upper()
             players_word_url = urlencode({'players_word': players_word})
 
             full_url = f"{base_url}?{letters_chosen_url}&{players_word_url}"

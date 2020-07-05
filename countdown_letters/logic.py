@@ -1,5 +1,6 @@
 import os
 from random import choices, random
+from typing import Dict
 
 import requests
 from django.conf import settings
@@ -9,25 +10,25 @@ from .validations import is_in_oxford_api
 
 
 class GameSetup:
-    MAX_GAME_LETTERS = 9
+    MAX_GAME_LETTERS: int = 9
 
     @staticmethod
     def get_weighted_vowels():
-        vowel_freq = {
+        vowel_freq: Dict[str, int] = {
             'A': 15,
             'E': 21,
             'I': 13,
             'O': 13,
             'U': 5,
         }
-        s = ''
+        s: str = ''
         for key, value in vowel_freq.items():
-            s = s + (key * value)
+            s += key * value
         return list(s)
 
     @staticmethod
     def get_weighted_consonants():
-        consonant_freq = {
+        consonant_freq: Dict[str, int] = {
             'B': 2,
             'C': 3,
             'D': 6,
@@ -50,9 +51,9 @@ class GameSetup:
             'Y': 1,
             'Z': 1,
         }
-        s = ''
+        s: str = ''
         for key, value in consonant_freq.items():
-            s = s + (key * value)
+            s += key * value
         return list(s)
 
 
@@ -156,8 +157,8 @@ def lookup_definition(word: str) -> dict:
         try:
             definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
         except KeyError:
-            definition = f""" The definition for '{word}' cannot be found
-                              in the Oxford Dictionary API. """
+            definition = f"""The definition for '{word}' cannot be found
+                             in the Oxford Dictionary API."""
         alt_word_lookup = word
     else:
         alt_word_lookup = get_alt_word(word)
@@ -185,5 +186,4 @@ def get_result(player_word: str, comp_word: str) -> str:
         return 'You win'
     if len(player_word) < len(comp_word):
         return 'Susie wins'
-    else:
-        return 'Draw'
+    return 'Draw'
