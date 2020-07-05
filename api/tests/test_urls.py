@@ -1,15 +1,20 @@
-from django.urls import resolve, reverse
+from django.urls import reverse
+
+from api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 
-class TestUrls:
-    def test_blog_api(self):
-        path = reverse('posts')
-        assert resolve(path).view_name == 'posts'
+class TestURLs:
+    def test_category_list_api_url(self):
+        """ Verify that the `/api/blog/categories/` url invokes intended view """
+        path = reverse('api:blog_categories')
+        assert path, CategoryListAPIView.as_view().__name__
 
-    def test_blog_posts_api(self):
-        path = reverse('post_detail', kwargs={'pk': 1})
-        assert resolve(path).view_name == 'post_detail'
+    def test_post_list_api_url(self):
+        """ Verify that the `/api/blog/posts/` url invokes intended view """
+        path = reverse('api:posts')
+        assert path, PostListAPIView.as_view().__name__
 
-    def test_blog_categories_api(self):
-        path = reverse('blog_categories')
-        assert resolve(path).view_name == 'blog_categories'
+    def test_post_detail_api_url(self):
+        """ Verify that the `/api/blog/posts/3/` url invokes intended view """
+        path = reverse('api:post_detail', kwargs={'pk': 3})
+        assert path, PostDetailAPIView.as_view().__name__
