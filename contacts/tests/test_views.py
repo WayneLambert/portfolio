@@ -13,9 +13,8 @@ class TestContactView:
 
 
     def test_contact_submitted(self, request, factory):
-        """ Asserts any user can access the `contact submitted`
-            page upon form submission """
-        path = reverse('contacts:contact_submitted')
+        """ Asserts any user can access the `submitted` page upon form submission """
+        path = reverse('contacts:submitted')
         request = factory.get(path)
         response = contacts_views.contact_submitted(request)
         assert response.status_code == 200, 'Should be callable by anyone'

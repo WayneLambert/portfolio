@@ -13,15 +13,16 @@ def contact(request):
 
         if form.is_valid():
             form.save()
-            first_name = request.POST['first_name'].title().strip()
-            last_name = request.POST['last_name'].title().strip()
-            full_name = f"{first_name} {last_name}"
-            sender_email = request.POST['email'].strip()
+            cleaned_first_name = form.cleaned_data['first_name'].title()
+            cleaned_last_name = form.cleaned_data['last_name'].title()
+            full_name = f"{cleaned_first_name} {cleaned_last_name}"
+            cleaned_email = form.cleaned_data['email'].casefold()
+            cleaned_message = form.cleaned_data['message']
             send_mail(
                 subject=f"Contact Form - from {full_name}",
-                message=request.POST['message'],
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=['contact@waynelambert.dev', sender_email],
+                message=cleaned_message,
+                from_email=settings.DEFAULT_FROM_EMAIL_SES,
+                recipient_list=['contact@waynelambert.dev', cleaned_email],
                 fail_silently=False
             )
             return redirect('contacts:submitted')

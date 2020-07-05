@@ -1,5 +1,6 @@
 from django.contrib import admin
-from contacts.models import Contact
+
+from .models import Contact
 
 
 class ContactAdmin(admin.ModelAdmin):
@@ -9,7 +10,7 @@ class ContactAdmin(admin.ModelAdmin):
     readonly_fields = ('submit_date',)
 
     def full_name(self, obj):
-        return f'{obj.first_name} {obj.last_name}'
+        return f"{obj.first_name} {obj.last_name}"
 
     full_name.admin_order_field = 'first_name'
     full_name.short_description = 'Full Name'

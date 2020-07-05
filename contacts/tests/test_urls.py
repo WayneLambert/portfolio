@@ -8,5 +8,5 @@ class TestURLs:
         assert resolve(path).view_name == 'contacts:contact'
 
     def test_contact_submitted(self):
-        path = reverse('contacts:contact_submitted')
-        assert resolve(path).view_name == 'contacts:contact_submitted'
+        path = reverse('contacts:submitted')
+        assert resolve(path).view_name == 'contacts:submitted'
