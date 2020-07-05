@@ -7258,7 +7258,6 @@ hr {
   width: 280px;
   background: #1762dd;
   color: #fff;
-  overflow-y: scroll;
   /* Forefox scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.2) #1762dd;
   scrollbar-width: thin;
