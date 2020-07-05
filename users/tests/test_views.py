@@ -1,20 +1,18 @@
 import pytest
-from django.contrib.auth import views as auth_views
 from django.urls import reverse
-from users import views as user_views
 
-pytestmark = pytest.mark.django_db  # Request database access
+pytestmark = pytest.mark.django_db
 
 
-def test_register(client):
-    """ Verify that the registration view is publicly accessible """
-    path = reverse('register')
-    response = client.get(path)
-    assert response.status_code == 200
+class TestUser:
+    def test_register(self, client):
+        """ Verify that the registration view is publicly accessible """
+        path = reverse('blog:users:register')
+        response = client.get(path)
+        assert response.status_code == 200
 
-class TestLogin:
     def test_login(self, client):
         """ Verify that the login view is publicly accessible """
-        path = reverse('login')
+        path = reverse('blog:users:login')
         response = client.get(path)
         assert response.status_code == 200

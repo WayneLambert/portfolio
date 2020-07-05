@@ -1,6 +1,6 @@
 # pylint: disable=unused-import
 from .settings import (BASE_DIR, CKEDITOR_UPLOAD_PATH, INSTALLED_APPS, ROOT_URLCONF,
-                       SECRET_KEY, STATIC_URL, TEMPLATES)
+                       SECRET_KEY, STATIC_URL, TEMPLATES, SITE_ID)
 
 # IN-MEMORY TEST DATABASE
 DATABASES = {
