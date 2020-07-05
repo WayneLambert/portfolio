@@ -77,7 +77,11 @@ ROOT_URLCONF = 'ab_back_end.urls'
 
 if DEBUG:
     # For Django Debug Toolbar and Django Extensions to be used in development
-    INSTALLED_APPS += ('debug_toolbar', 'django_extensions',)
+    INSTALLED_APPS += (
+        'debug_toolbar',
+        'template_profiler_panel',
+        'django_extensions',
+    )
 
     # Django Debug Toolbar Settings
     INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
@@ -99,6 +103,7 @@ if DEBUG:
         'debug_toolbar.panels.sql.SQLPanel',
         'debug_toolbar.panels.staticfiles.StaticFilesPanel',
         'debug_toolbar.panels.templates.TemplatesPanel',
+        'template_profiler_panel.panels.template.TemplateProfilerPanel',
         'debug_toolbar.panels.cache.CachePanel',
         'debug_toolbar.panels.signals.SignalsPanel',
         'debug_toolbar.panels.logging.LoggingPanel',
@@ -290,9 +295,9 @@ REST_FRAMEWORK = {
 }
 
 SITE_ID = 1
+LOGIN_URL = 'blog:users:login'
 LOGIN_REDIRECT_URL = 'blog:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
-LOGIN_URL = 'blog:users:login'
 
 # Heroku Deployment Settings
 if not DEBUG:
@@ -304,12 +309,12 @@ if not DEBUG:
 EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_SES_REGION_NAME = 'eu-west-1'
 AWS_SES_REGION_ENDPOINT = 'email.eu-west-1.amazonaws.com'
-EMAIL_HOST = os.environ['EMAIL_HOST_SES']
-EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER_SES']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD_SES']
+EMAIL_HOST_SES = os.environ['EMAIL_HOST_SES']
+EMAIL_HOST_USER_SES = os.environ['EMAIL_HOST_USER_SES']
+EMAIL_HOST_PASSWORD_SES = os.environ['EMAIL_HOST_PASSWORD_SES']
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = os.environ['DEFAULT_FROM_EMAIL_SES']
+DEFAULT_FROM_EMAIL_SES = os.environ['DEFAULT_FROM_EMAIL_SES']
 
 # Django Storages Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -333,3 +338,6 @@ else:
 GOOGLE_ANALYTICS = {
     'google_analytics_id': os.environ['GA_TRACKING_ID'],
 }
+
+# For PyTest
+PYTEST_TEST_PASSWORD = os.environ['PYTEST_TEST_PASSWORD']
