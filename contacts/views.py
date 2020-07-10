@@ -1,33 +1,28 @@
 from django.conf import settings
 from django.core.mail import send_mail
-from django.shortcuts import redirect, render
+from django.views.generic import FormView, TemplateView
 
 from .forms import ContactForm
 
 
-def contact(request):
-    contact_form_template = 'contacts/contact.html'
+class ContactFormView(FormView):
+    form_class = ContactForm
+    template_name = 'contacts/contact.html'
 
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            send_mail(
-                subject=f"Contact Form - from {ContactForm.full_name}",
-                message=ContactForm.clean_message,
-                from_email=settings.DEFAULT_FROM_EMAIL_SES,
-                recipient_list=['contact@waynelambert.dev', ContactForm.clean_email],
-                fail_silently=False
-            )
-            return redirect('contacts:submitted')
-    else:
-        form = ContactForm()
-
-    context = {'form': form}
-
-    return render(request, contact_form_template, context)
+    def form_valid(self, form):
+        first_name = form.cleaned_data.get('first_name')
+        last_name = form.cleaned_data.get('last_name')
+        email = form.cleaned_data.get('email')
+        message = form.cleaned_data.get('message')
+        send_mail(
+            subject=f"Contact Form - from {first_name} {last_name}",
+            message=message,
+            from_email=settings.DEFAULT_FROM_EMAIL_SES,
+            recipient_list=['contact@waynelambert.dev', email],
+            fail_silently=False,
+        )
+        return super(ContactFormView, self).form_valid(form)
 
 
-def contact_submitted(request):
-    return render(request, 'contacts/contact_submitted.html')
+class ContactSubmittedView(TemplateView):
+    template_name = 'contact_submitted.html'
