@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import send_mail
+from django.urls import reverse_lazy
 from django.views.generic import FormView, TemplateView
 
 from .forms import ContactForm
@@ -7,12 +8,13 @@ from .forms import ContactForm
 
 class ContactFormView(FormView):
     form_class = ContactForm
-    template_name = 'contacts/contact.html'
+    template_name = 'contact.html'
+    success_url = reverse_lazy('contacts:submitted')
 
     def form_valid(self, form):
-        first_name = form.cleaned_data.get('first_name')
-        last_name = form.cleaned_data.get('last_name')
-        email = form.cleaned_data.get('email')
+        first_name = form.cleaned_data.get('first_name').capitalize()
+        last_name = form.cleaned_data.get('last_name').capitalize()
+        email = form.cleaned_data.get('email').casefold()
         message = form.cleaned_data.get('message')
         send_mail(
             subject=f"Contact Form - from {first_name} {last_name}",

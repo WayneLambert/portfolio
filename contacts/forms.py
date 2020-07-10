@@ -6,6 +6,11 @@ from .models import Contact
 
 
 class ContactForm(forms.ModelForm):
+
+    class Meta:
+        model = Contact
+        fields = ('first_name', 'last_name', 'email', 'message')
+
     captcha = ReCaptchaField(
         widget=ReCaptchaV3(
             attrs={
@@ -14,10 +19,6 @@ class ContactForm(forms.ModelForm):
             }
         )
     )
-
-    class Meta:
-        model = Contact
-        fields = ('first_name', 'last_name', 'email', 'message')
 
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
