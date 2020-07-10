@@ -8,12 +8,6 @@ class ContactAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'email', 'submit_date',)
     search_fields = ('first_name', 'last_name', 'email',)
     readonly_fields = ('submit_date',)
-
-    def full_name(self, obj):
-        return f"{obj.first_name} {obj.last_name}"
-
-    full_name.admin_order_field = 'first_name'
-    full_name.short_description = 'Full Name'
-
+    ordering = ('first_name',)
 
 admin.site.register(Contact, ContactAdmin)
