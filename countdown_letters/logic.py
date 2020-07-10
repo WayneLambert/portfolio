@@ -103,13 +103,12 @@ def get_letters_chosen(num_vowels: int) -> str:
     return ''.join([item for list_item in letters_chosen for item in list_item])
 
 
-def get_words() -> tuple:
-    """ Retrieves all words from the `words.txt` file """
-    words_array = array.array
+def get_words() -> set:
+    """ Returns all words from the `words.txt` file as a set """
     words_filename = os.path.join(settings.BASE_DIR, 'countdown_letters/words.txt')
     with open(words_filename, 'r') as words_file:
-        words_array = [word.strip('\n') for word in words_file]
-    return tuple(words_array)
+        words_set = {word.strip('\n') for word in words_file}
+    return words_set
 
 
 def get_shortlisted_words(words: tuple, letters: str) -> dict:
