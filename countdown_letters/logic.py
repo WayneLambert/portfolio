@@ -1,6 +1,14 @@
+"""Countdown Letters Logic
+
+A collection of classes and functions that are required to implement
+the core logic for the Countdown Letters Game.
+
+"""
+
+import array
 import os
 from random import choices, random
-from typing import Dict
+from typing import Dict, Union
 
 import requests
 from django.conf import settings
@@ -10,10 +18,19 @@ from .validations import is_in_oxford_api
 
 
 class GameSetup:
+    """
+    Sets up a game with the standard attributes of a game as at the
+    game's starting point.
+    """
     MAX_GAME_LETTERS: int = 9
 
     @staticmethod
     def get_weighted_vowels():
+        """
+        Creates a list of vowel letters with the number of vowels
+        required to produce the weighted distribution of the various
+        vowels for the game.
+        """
         vowel_freq: Dict[str, int] = {
             'A': 15,
             'E': 21,
@@ -28,6 +45,11 @@ class GameSetup:
 
     @staticmethod
     def get_weighted_consonants():
+        """
+        Creates a list of consonant letters with the number of consonants
+        required to produce the weighted distribution of the various
+        consonants for the game.
+        """
         consonant_freq: Dict[str, int] = {
             'B': 2,
             'C': 3,
@@ -83,18 +105,18 @@ def get_letters_chosen(num_vowels: int) -> str:
 
 def get_words() -> tuple:
     """ Retrieves all words from the `words.txt` file """
-    words_list = []
+    words_array = array.array
     words_filename = os.path.join(settings.BASE_DIR, 'countdown_letters/words.txt')
     with open(words_filename, 'r') as words_file:
-        for word in words_file:
-            words_list.append(word.strip('\n'))
-    return tuple(words_list)
+        words_array = [word.strip('\n') for word in words_file]
+    return tuple(words_array)
 
 
 def get_shortlisted_words(words: tuple, letters: str) -> dict:
     """
-    Returns a shortlist of the accumulatively gathered longest words
-    in the running order of cycling through `words.txt`
+    Given a tuple of words and a string of the game's letters, returns
+    a shortlist of the accumulatively gathered longest words in the
+    running order of cycling through `words.txt`
     """
     shortlisted_words = {}
     cumulative_max_letter_count = 0
@@ -113,6 +135,10 @@ def get_shortlisted_words(words: tuple, letters: str) -> dict:
 
 
 def get_longest_possible_word(shortlisted_words: dict) -> str:
+    """
+    Given a shortlisted dict of words, returns the word at the
+    first indexed position
+    """
     sorted_list = sorted(shortlisted_words.items(), reverse=True)
     for item in sorted_list:
         if is_in_oxford_api(item[0]):
@@ -121,10 +147,12 @@ def get_longest_possible_word(shortlisted_words: dict) -> str:
 
 
 def get_game_score(word_len: int) -> int:
+    """ Retrieves the game score based on the achieved word length """
     return word_len ** 2 if word_len == 9 else word_len
 
 
 def get_lemmas_response_json(word: str) -> dict:
+    """ Returns lemmas data component of input word from Oxford Online API """
     lemmas_url = f"{API.OD_API_BASE_URL}{'lemmas/'}{API.LANGUAGE}{'/'}{word.lower()}"
     lemmas_response = requests.get(lemmas_url, headers=API.headers)
     return lemmas_response.json()
@@ -132,7 +160,7 @@ def get_lemmas_response_json(word: str) -> dict:
 
 def get_alt_word(word: str) -> str:
     """
-    Retrieve alternative word to the exact winning word since its singular
+    Retrieves alternative word to the exact winning word since its singular
     form may be the actual referenced word in the Oxford definitions' API.
     """
     lemmas_json = get_lemmas_response_json(word)
@@ -175,13 +203,18 @@ def lookup_definition(word: str) -> dict:
     return definition_result
 
 
-def present_definition(definition_result):
+def present_definition(definition_result: dict) -> Union[dict, str]:
+    """
+    Given a definition from the Oxford Online API, returns a presentable
+    format of the definition that can be rendered within a template
+    """
     if isinstance(definition_result['definition'], dict):
         return definition_result['definition']['definition']
     return definition_result['definition']
 
 
 def get_result(player_word: str, comp_word: str) -> str:
+    """ Returns the winning player for the game """
     if len(player_word) > len(comp_word):
         return 'You win'
     if len(player_word) < len(comp_word):
