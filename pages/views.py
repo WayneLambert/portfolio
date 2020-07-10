@@ -9,7 +9,8 @@ class HomeView(ListView):
     model = Post
     template_name = 'home.html'
     context_object_name = 'posts'
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')[:3]
+    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
+    queryset = queryset.filter(status=1)[:3]
 
 
 # Static Pages

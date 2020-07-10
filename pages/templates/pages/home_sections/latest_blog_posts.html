@@ -8,7 +8,7 @@
       {% for post in posts %}
         <div class="col-md-4 mb-5">
           <div class="card blog-post-card">
-            <img class="card-img-top" src="{{ post.image.url }}" width="300px" height="210px">
+            <img class="card-img-top img-fluid" src="{{ post.image.url }}">
             <div class="card-body">
               <h6 class="card-title">
                 <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a>
@@ -16,7 +16,7 @@
               <small class="text-muted">
                 <ul class="no-bullets">
                   <li>
-                    <strong>Published:</strong> 
+                    <strong>Published:</strong>
                     {{ post.publish_date|date:"D d-M-y" }}
                   </li>
                   <li>
