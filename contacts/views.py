@@ -23,6 +23,7 @@ class ContactFormView(FormView):
             recipient_list=['contact@waynelambert.dev', email],
             fail_silently=False,
         )
+        form.save()
         return super(ContactFormView, self).form_valid(form)
 
 
