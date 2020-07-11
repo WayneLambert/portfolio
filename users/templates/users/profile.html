@@ -4,11 +4,11 @@
 {% block title %}{{ block.super }} | {{ user.user.full_name }} | Profile{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
+  <section class="cta-section theme-bg-light col-12 py-5">
     <div class="container single-col-max-width">
       <legend class="border-bottom mb-4">{{ user.user.full_name }}</legend>
       <div class="media">
-        <img class="profile-avatar rounded-circle mx-auto mt-2 mb-1" src="{{ user.user.profile_picture.url }}">
+        <img class="profile-avatar rounded-circle mx-auto mt-2 mb-1 img-fluid" src="{{ user.user.profile_picture.url }}">
         <div class="media-body">
           <p class="ml-5">Username: {{ user.username }}</p>
           <p><a class="ml-5" href="mailto:{{ user.email }}">{{ user.email }}</a></p>

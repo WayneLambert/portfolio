@@ -5,13 +5,13 @@
 {% block title %}{{ block.super }} | {{ user.user.full_name }} | Profile Update{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
+  <section class="cta-section theme-bg-light col-12 py-5">
     <div class="container single-col-max-width">
       <div class="row">
         <section class="module">
           <div class="module-inner">
             <div class="content-panel">
-              <img class="rounded-circle account-img mb-5" src="{{ user.user.profile_picture.url }}">
+              <img class="rounded-circle account-img img-fluid mb-5" src="{{ user.user.profile_picture.url }}">
               <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <legend class="border-bottom mb-4">
