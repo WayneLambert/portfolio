@@ -5,7 +5,6 @@ the core logic for the Countdown Letters Game.
 
 """
 
-import array
 import os
 from random import choices, random
 from typing import Dict, Union
