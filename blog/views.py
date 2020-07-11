@@ -9,8 +9,10 @@ from .models import Category, Post
 
 
 class PostView(ListView):
-    """ Custom view sets default behaviour for all list views to subclass
-        and inherit for their own implementation """
+    """
+    Custom view sets default behaviour for all list views to subclass
+    and inherit for their own implementation
+    """
     model = Post
     context_object_name = 'posts'
     category_list = Category.objects.all().prefetch_related('posts')
@@ -117,6 +119,7 @@ class PostDetailView(DetailView):
         """ Facilitates detail page's pagination buttons """
         context = super(PostDetailView, self).get_context_data(**kwargs)
         posts = Post.objects.prefetch_related('categories').select_related('author__user')
+        posts = posts.filter(status=1)
         for idx, post in enumerate(posts):
             if post.slug == self.kwargs['slug']:
                 context['prev_post'] = posts[posts.count() - 1] if idx == 0 else posts[idx - 1]

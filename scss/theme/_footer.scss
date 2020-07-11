@@ -60,27 +60,39 @@
 
   .bottom-bar {
     background: $theme-color-bottom-bar;
-    color: lighten($grey, 10%);
-    font-size: 16px;
+    color: $grey;
+    font-size: 18px;
     width: 100%;
 
     .social-container {
       display: table;
     }
-      .copyright {
-        display: table-cell;
-        vertical-align: middle;
-      }
 
-    .social {
+    .social-left {
+      margin-bottom: 0;
+
+      li {
+        margin-left: 0px;
+        text-align: left;
+        vertical-align: middle;
+
+        a {
+          color: $grey;
+          font-size: 20px;
+        }
+      }
+    }
+
+    .social-right {
       margin-bottom: 0;
       text-align: right;
 
       li {
-        margin-left: 20px;
+        margin-left: 10px;
         margin-right: 0;
         float: right;
         text-align: right;
+        vertical-align: middle;
 
         a {
           color: $grey;

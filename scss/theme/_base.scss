@@ -1,21 +1,26 @@
 /* ============= Base ============= */
 
 /*********** Theme Generic **********/
-
-html, body {
+html {
+  max-height: calc(100vh + 72px);
   height: 100%;
 }
 
-body { 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: $theme-text-color-secondary;
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $theme-text-color-secondary;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $theme-text-color-primary;
   font-weight: bold;
 }
@@ -23,14 +28,15 @@ h1, h2, h3, h4, h5, h6 {
 a.theme-link {
   color: darken($theme-color-primary, 10%);
   text-decoration: normal;
-    -webkit-text-decoration-color: darken($theme-color-primary, 10%);
-    text-decoration-color: darken($theme-color-primary, 10%);
-    &:hover {
-      color: darken($theme-color-primary, 20%);
-      text-decoration: underline;
-      -webkit-text-decoration-color: darken($theme-color-primary, 20%);
-          text-decoration-color: darken($theme-color-primary, 20%);
-    }
+  -webkit-text-decoration-color: rgba($theme-text-color-primary, 10%);
+  text-decoration-color: rgba($theme-text-color-primary, 10%);
+
+  &:hover {
+    color: darken($theme-color-primary, 20%);
+    text-decoration: underline;
+    -webkit-text-decoration-color: rgba($theme-color-primary, 20%);
+    text-decoration-color: rgba($theme-color-primary, 20%);
+  }
 }
 
 ul.no-bullets {
@@ -38,7 +44,6 @@ ul.no-bullets {
   margin: 0;
   padding: 0;
 }
-
 
 .single-col-max-width {
   max-width: $single-col-max-width;
@@ -57,7 +62,8 @@ hr {
   font-size: 1rem;
 }
 
-.btn:focus, .btn.focus {
+.btn:focus,
+.btn.focus {
   box-shadow: none !important;
 }
 
@@ -68,11 +74,12 @@ hr {
 .btn-github {
   background-color: $github-primary-color;
   color: white;
-    &:hover {
-      text-decoration: none;
-      background-color: darken($github-primary-color, 10%);
-      color: white;
-    }
+
+  &:hover {
+    text-decoration: none;
+    background-color: darken($github-primary-color, 10%);
+    color: white;
+  }
 }
 
 .form-control {
@@ -92,12 +99,14 @@ hr {
     font-size: 0.875rem;
     padding: 0.5rem 0;
   }
+
   .btn {
     line-height: 1;
   }
 
 }
-.custom-select  {
+
+.custom-select {
   border-color: $theme-border-color;
   height: 2.5rem;
   color: $theme-text-color-light;
@@ -107,13 +116,15 @@ hr {
 .theme-bg-light {
   background: $theme-bg-light !important;
 }
+
 .theme-bg-dark {
   background: $theme-bg-dark !important;
 }
-.table-bordered th, .table-bordered td {
+
+.table-bordered th,
+.table-bordered td {
   border-color: rgba(0, 0, 0, 0.08);
 }
-
 
 /* Header */
 .header {
@@ -126,121 +137,139 @@ hr {
   color: #fff;
   overflow-y: auto;
 
-  /* Forefox scrollbar */
+  /* Firefox scrollbar */
   scrollbar-color: rgba(0, 0, 0, 0.2) $theme-color-primary;
-    scrollbar-width: thin;
-    
-    /* Chrome webkit scrollbar */
-  
+  scrollbar-width: thin;
+
+  /* Chrome webkit scrollbar */
+
   &::-webkit-scrollbar {
-      width: 6px;
-      background-color: $theme-color-primary;
-  } 
-  
-  &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.2);
-      @include border-radius(0.5rem);
+    width: 6px;
+    background-color: $theme-color-primary;
   }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    @include border-radius(0.5rem);
+  }
+
 
 
   .blog-name {
     font-weight: 500;
     font-size: 1.5rem;
-    padding-bottom: 0.1rem;
-    color: #000;
+    margin-top: 0.6rem;
+    color: #fff;
+
     a {
       color: #fff;
+
       &:hover {
-        text-decoration: none;
+        text-decoration: underline;
       }
     }
   }
-  
+
+  .blog-categories-label {
+    font-weight: 500;
+    font-size: 1.0rem;
+    padding-bottom: 0.1rem;
+    color: #fff;
+  }
+
   .btn-primary {
     background: rgba(0, 0, 0, 0.3);
     border-color: transparent;
     font-size: 1rem;
+
     &:hover {
       background: rgba(0, 0, 0, 0.4);
       border-color: transparent;
     }
   }
-  
-  
+
+
   .navbar {
-      padding: 1.5rem 1rem;
-    }
-    
-    .navbar-dark {
-      
-      .navbar-toggler {
-        @include border-radius(2px);
-        @include opacity(0.8);
-        border: 1px solid rgba(256, 256, 256, 0.8);
-        padding: .25rem .6rem;
-        
-        &:hover {
-          @include opacity(1);
-          
-        }
-      }
-      
-      
-      .navbar-toggler-icon {
-       background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(256,256,256, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    padding: 1.5rem 1rem;
+  }
+
+  .navbar-dark {
+
+    .navbar-toggler {
+      @include border-radius(2px);
+      @include opacity(0.8);
+      border: 1px solid rgba(256, 256, 256, 0.8);
+      padding: .25rem .6rem;
+
+      &:hover {
+        @include opacity(1);
+
       }
     }
-    
-    .nav-item {
-      font-weight: bold;
-      &.active {
-        .nav-link {
-         
-           color: rgba(0, 0, 0, 0.5); 
-           &:hover {
-            text-decoration: none;
-          }
-        }
-        
-        
-      }
+
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(256,256,256, 1)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+  }
+
+  .nav-item {
+    font-weight: bold;
+
+    &.active {
       .nav-link {
-        color: rgba(256, 256, 256, 0.8);
-        &:hover {
-          //text-decoration: underline;
-          color: rgba(0, 0, 0, 0.6); 
-        }
-      }
-      
-      .nav-link[aria-expanded="true"] {
+
         color: rgba(0, 0, 0, 0.5);
-      }
-      
-      .dropdown-menu {
-          position: static;
-          background: darken($theme-color-primary, 5%);
-          border: none;
-          @include border-radius(0);
-          padding: 0;
-          margin: 0;
-          .dropdown-item {
-            color: #fff;
-            padding: 0.5rem;
-            font-size: 0.875rem;
-            padding-left: 2.25rem;
-            font-weight: bold;
-            &:hover, &:active, &:focus, &.active {
-              background: darken($theme-color-primary, 10%);
-            }
-            
-          }
+
+        &:hover {
+          text-decoration: none;
         }
-      
-      
+      }
+
+
     }
-    
-    
-    
+
+    .nav-link {
+      color: rgba(256, 256, 256, 0.8);
+
+      &:hover {
+        text-decoration: underline;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    .nav-link[aria-expanded="true"] {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-menu {
+      position: static;
+      background: darken($theme-color-primary, 5%);
+      border: none;
+      @include border-radius(0);
+      padding: 0;
+      margin: 0;
+
+      .dropdown-item {
+        color: #fff;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        padding-left: 2.25rem;
+        font-weight: bold;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &.active {
+          background: darken($theme-color-primary, 10%);
+        }
+
+      }
+    }
+
+
+  }
+
 }
 
 
@@ -250,10 +279,11 @@ hr {
     border: 2px solid #e1e1e1;
     background-color: #fff;
     display: inline-block;
-      .inner{
-        max-width: 160px;
-        margin: 4px;
-      }
+
+    .inner {
+      max-width: 170px;
+      margin: 2px;
+    }
   }
 
   .profile-image {
@@ -262,19 +292,20 @@ hr {
 
   .bio {
     font-size: 0.875rem;
+
     a {
       color: #fff;
       text-decoration: underline;
-      
+
       &:hover {
         color: rgba(0, 0, 0, 0.6);
-        
+
       }
     }
   }
-  
-  
+
 }
+
 .social-list {
 
   a {
@@ -286,11 +317,12 @@ hr {
     @include border-radius(50%);
     @include transition(all 0.4s ease-in-out);
     background-color: #fff;
+
     &:hover {
       color: darken($theme-color-primary, 10%);
       background-color: rgba(256, 256, 256, 0.8);
     }
-    
+
   }
 }
 
@@ -298,7 +330,7 @@ hr {
 .main-wrapper {
   margin-left: $sidebar-width;
   background: #fff;
-  
+
   .container-single-col {
     max-width: $single-col-max-width;
   }
@@ -314,18 +346,45 @@ hr {
 
 .promo-section {
   margin-bottom: 40px;
+
   .promo-image {
     max-width: 320px;
   }
+
   .promo-section-inner {
     background: $theme-color-primary;
   }
 }
 
-.site-article {
-  font-size: 16px;
-}
+/* Footer */
+.footer {
 
+  &.theme-bg-light {
+    color: lighten($theme-text-color-secondary, 20%);
+
+    a {
+      color: lighten($theme-text-color-secondary, 20%);
+
+      &:hover {
+        color: lighten($theme-text-color-secondary, 15%);
+      }
+    }
+  }
+
+  &.theme-bg-dark {
+    color: rgba(256, 256, 256, 0.7);
+
+    a {
+      color: rgba(256, 256, 256, 0.7);
+
+      &:hover {
+        color: rgba(256, 256, 256, 0.8);
+      }
+
+    }
+  }
+
+}
 
 /* Dark Mode Toggle */
 .dark-mode-toggle {
@@ -333,10 +392,11 @@ hr {
     color: #fff;
     font-size: 0.875rem;
   }
+
   .toggle {
-      display: none;
-    
-    + .toggle-btn {
+    display: none;
+
+    +.toggle-btn {
       outline: 0;
       display: block;
       width: 70px;
@@ -349,11 +409,12 @@ hr {
       //background: rgba(0, 0, 0, 0.05);
       border: 3px solid rgba(256, 256, 256, 0.4);
       @include border-radius(16px);
-      
-      
-           &::selection {
+
+
+      &::selection {
         background: none;
       }
+
       &:after,
       &:before {
         position: relative;
@@ -362,31 +423,32 @@ hr {
         width: 50%;
         height: 100%;
       }
-      
+
       &:after {
         left: 0;
         @include transition(all 0.2s ease-in-out);
-      background: rgba(256, 256, 256, 0.4);
+        background: rgba(256, 256, 256, 0.4);
         content: "";
         @include border-radius(16px);
       }
-      
+
       &:before {
         display: none;
       }
     }
-    
-    &:checked + .toggle-btn {
+
+    &:checked+.toggle-btn {
       border: 4px solid rgba(256, 256, 256, 0.9);
       border: 3px solid $theme-color-primary;
       background: rgba(0, 0, 0, 0.2);
+
       &:after {
         left: 50%;
-               background: rgba(256, 256, 256, 0.9);
-               background: $theme-color-primary;
+        background: rgba(256, 256, 256, 0.9);
+        background: $theme-color-primary;
       }
     }
 
   }
-  
+
 }
