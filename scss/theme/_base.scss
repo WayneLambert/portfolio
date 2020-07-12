@@ -106,6 +106,10 @@ hr {
 
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 .custom-select {
   border-color: $theme-border-color;
   height: 2.5rem;

@@ -7235,6 +7235,9 @@ hr {
 .form-group .btn {
   line-height: 1; }
 
+.grecaptcha-badge {
+  visibility: hidden; }
+
 .custom-select {
   border-color: #c2c2c2;
   height: 2.5rem;
