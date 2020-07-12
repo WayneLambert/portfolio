@@ -7355,6 +7355,15 @@ hr {
     .profile-section .bio a:hover {
       color: rgba(0, 0, 0, 0.6); }
 
+.profile-avatar {
+  max-width: 174px;
+  border: 2px solid #0e83cd;
+  background-color: #0e83cd;
+  display: inline-block; }
+  .profile-avatar .inner {
+    max-width: 170px;
+    margin: 2px; }
+
 .social-list a {
   width: 32px;
   height: 32px;

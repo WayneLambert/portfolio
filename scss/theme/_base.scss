@@ -306,6 +306,19 @@ hr {
 
 }
 
+.profile-avatar {
+  max-width: 174px;
+  border: 2px solid $theme-color-footer;
+  background-color: $theme-color-footer;
+  display: inline-block;
+
+  .inner {
+    max-width: 170px;
+    margin: 2px;
+  }
+
+}
+
 .social-list {
 
   a {
