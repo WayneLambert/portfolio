@@ -188,4 +188,4 @@ postgres/data/
 
 static/assets/*
 node_modules/*
-temp_docs/*
+logs/pytest/*
