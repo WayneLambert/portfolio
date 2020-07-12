@@ -149,7 +149,7 @@ if DEBUG:
 
 # Production Settings
 if not DEBUG:
-    # Changes suggested from $ python3 manage.py check --deploy
+    # Changes suggested from $ manage.py check --deploy
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_SSL_REDIRECT = True

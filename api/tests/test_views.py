@@ -2,7 +2,7 @@ import pytest
 from django.contrib.auth.models import AnonymousUser
 from django.urls import reverse
 
-from api.tests.factories import UserFactory
+from ab_back_end.tests.factories import UserFactory
 from api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 pytestmark = pytest.mark.django_db
