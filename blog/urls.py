@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from .feeds import LatestPostsFeed
+from .feeds import AtomLatestPostsFeed, LatestPostsFeed
 from .views import (CategoryPostListView, ContentsListView, HomeView, IndexListView,
                     PostCreateView, PostDeleteView, PostDetailView, PostUpdateView,
                     SearchResultsView, UserPostListView)
@@ -18,6 +18,7 @@ urlpatterns = [
     path('search/', SearchResultsView.as_view(), name='search_results'),
     path('index/', IndexListView.as_view(), name='index'),
     path('contents/', ContentsListView.as_view(), name='contents'),
-    path('feed/latest/rss', LatestPostsFeed(), name='post_feed'),
+    path('sitenews/rss/', LatestPostsFeed(), name='post_feed'),
+    path('sitenews/atom/', AtomLatestPostsFeed(), name='post_feed'),
     path('users/', include('users.urls', namespace='users')),
 ]
