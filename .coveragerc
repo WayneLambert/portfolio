@@ -1,20 +1,31 @@
 [run]
+source = .
+
 omit =
   .venv/*
   *apps.py,
   *migrations/*,
-  *settings*,
+  *ab_back_end/pytest.py,
+  */node_modules/*,
+  */static/*,
+  */staticfiles/*,
   *tests/*,
   *wsgi.py,
+  *asgi.py,
   manage.py,
   *__init__.py,
   *__pycache__,
+  */site-packages/*,
+  */distutils/*,
   *sitemap.py,
   *tests*.py,
 
 branch = True
 
 [report]
+
+show_missing = True
+
 exclude_lines =
     pragma: no cover
     def __repr__

@@ -100,13 +100,15 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit test / Coverage reports
 htmlcov/
 .tox/
 .nox/
 .cache
-nosetests.xml
+.coverage
+.coverage.*
 coverage.xml
+nosetests.xml
 *.cover
 .hypothesis/
 .pytest_cache/
@@ -184,8 +186,8 @@ dmypy.json
 
 # Docker Mounted Directories
 postgres/data/
-.coverage
 
+# Project Directories
 static/assets/*
 node_modules/*
 logs/pytest/*

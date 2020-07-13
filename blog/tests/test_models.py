@@ -1,8 +1,10 @@
 import datetime
+
 import pytest
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.shortcuts import reverse
 from django.utils.text import slugify
 from mixer.backend.django import mixer
 
@@ -42,6 +44,11 @@ class TestCategory:
         category = mixer.blend(Category)
         field = category._meta.get_field("created_date")
         assert isinstance(field, models.DateField), 'Should be a date field'
+
+    def test_category_str(self):
+        category = mixer.blend(Category, name='Python')
+        assert str(category) == 'Python', 'Should be the same as the category name'
+
 
 class TestPost:
     def test_single_post_save(self):
@@ -96,7 +103,8 @@ class TestPost:
 
     def test_publish_date_generates(self):
         post = mixer.blend(Post)
-        assert post.publish_date.day == datetime.date.today().day
+        assert post.publish_date.day == datetime.date.today().day, \
+            'Should generate the day of the week for today'
 
     def test_updated_date_is_datetimefield(self):
         post = mixer.blend(Post)
@@ -105,7 +113,8 @@ class TestPost:
 
     def test_updated_date_generates(self):
         post = mixer.blend(Post)
-        assert post.updated_date.day == datetime.date.today().day
+        assert post.updated_date.day == datetime.date.today().day, \
+            'Should generate the day of the week for today'
 
     def test_image_is_imagefield(self):
         post = mixer.blend(Post)
@@ -131,7 +140,34 @@ class TestPost:
         field = post._meta.get_field("categories")
         assert isinstance(field, models.ManyToManyField), 'Should be a many-to-many field'
 
+    def test_word_count(self):
+        post = mixer.blend(Post, content='Beautiful is better than ugly.')
+        word_count = post.word_count
+        assert word_count == 5, \
+            'Calculated word count should be the number of words in the content string'
+
+    def test_reading_time(self):
+        test_text = 'lorem ipsum ' * 50
+        post = mixer.blend(Post, content=test_text)
+        assert post.reading_time == 2, \
+            'The duplicated lorem ipsum text of 100 words should be a 2 minute read'
+
     def test_get_excerpt(self):
         post = mixer.blend(Post, content='Test content ...')
         result = post.get_excerpt(16)
         assert result == 'Test content ...', 'Should return first 16 characters'
+
+    def test_post_str(self):
+        post = mixer.blend(Post, title='Example Post')
+        assert str(post) == 'Example Post', 'Should be the same as the post name'
+
+    def test_get_absolute_url(self):
+        post = mixer.blend(Post, title='Example Post', slug='example-post')
+        assert post.get_absolute_url() == reverse('blog:post_detail', kwargs={'slug': post.slug})
+
+    def test_multiple_post_slugs_appends_instance_id(self):
+        posts = mixer.cycle(10).blend(Post, title='Example Post', slug='example-post')
+        assert posts[9].pk == 10, '10th instance should have a PK of 10'
+        assert Post.objects.count() == 10, 'Should have 10 objects in the database'
+        assert posts[9].slug == 'example-post9', \
+            'Tenth instance of DB save appends next available counter variable (i.e. 9)'
