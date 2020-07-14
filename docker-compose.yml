@@ -38,7 +38,7 @@ services:
         consistency: consistent
     ports:
       - "8001:8001"
-      - "8888:8888"
+      - "8890:8890"
     networks:
       - backend
 

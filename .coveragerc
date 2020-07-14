@@ -13,6 +13,7 @@ omit =
   *wsgi.py,
   *asgi.py,
   manage.py,
+  *feeds.py,
   *__init__.py,
   *__pycache__,
   */site-packages/*,
