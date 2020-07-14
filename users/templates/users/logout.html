@@ -3,10 +3,14 @@
 {% block title %}{{ block.super }} | Logout{% endblock title %}
 
 {% block content %}
-  <h6>You have been logged out.</h6>
-    <div class="border-top" pt-3>
-      <small class="text-muted">
-        <a class="theme-link" href="{% url 'blog:users:login' %}">Log In Again</a>
-      </small>
+  <div class="container col-6 py-5">
+    <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
+      <h5 class="auth-heading text-center mb-2">You have been logged out</h5>
+      <div class="border-top" pt-3>
+        <small class="text-muted">
+          <a class="theme-link" href="{% url 'blog:users:login' %}">Log In Again</a>
+        </small>
+      </div>
     </div>
+  </div>
 {% endblock content %}
