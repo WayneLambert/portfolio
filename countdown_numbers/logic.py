@@ -1,8 +1,7 @@
-"""Countdown Numbers Logic
+""" Countdown Numbers Logic
 
 A collection of classes and functions that are required to implement
 the core logic for the Countdown Numbers Game.
-
 """
 
 # pylint: disable=eval-used
@@ -74,9 +73,7 @@ def get_player_num_achieved(request) -> int:
 
 
 def get_game_calcs(request, game_nums: list, stop_on=None) -> defaultdict:
-    """
-    Calculates the possible calculations to the game
-    """
+    """ Calculates the possible calculations to the game """
     operator_symbols = {
         '+': operator.add,
         '-': operator.sub,
@@ -112,9 +109,7 @@ def get_game_calcs(request, game_nums: list, stop_on=None) -> defaultdict:
 
 
 def get_best_solution(request, game_nums: list, target: int) -> str:
-    """
-    Calculates a solution that is the closest to the game's target number
-    """
+    """ Calculates a solution that is the closest to the game's target number """
     game_calcs = get_game_calcs(request, game_nums, stop_on=target)
 
     if int(target) in game_calcs:
@@ -143,9 +138,7 @@ def get_score_awarded(request, target_number: int, num_achieved: int) -> int:
 
 
 def get_game_result(target: int, answers: dict) -> str:
-    """
-    Returns the game's result as a string for template rendering
-    """
+    """ Returns the game's result as a string for template rendering """
     if answers['comp_num_achieved'] == answers['player_num_achieved']:
         result = 'Draw'
     else:
