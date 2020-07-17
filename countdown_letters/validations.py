@@ -2,7 +2,6 @@
 
 A collection of functions that are required to validate
 given answers within a game.
-
 """
 
 import requests
@@ -11,13 +10,8 @@ from .oxford_api import API
 
 
 def is_in_oxford_api(word: str) -> bool:
-    """
-    Given a word, validates that the word exists in the Oxford API.
-
-    If word is valid, returns `True` else `False`
-    """
-
-    url = f"{API.OD_API_BASE_URL}{'lemmas/'}{API.LANGUAGE}{'/'}{word.lower()}"
+    """ Given a word, validates that the word exists in the Oxford API. """
+    url = f"{API.LEMMAS_URL}{word.lower()}"
     response = requests.get(url, headers=API.headers)
     return response.status_code == 200
 

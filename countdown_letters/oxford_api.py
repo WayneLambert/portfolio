@@ -8,16 +8,10 @@ import os
 
 
 class API:
-    """
-    Handles the API settings configuration for the
-    Online Oxford Dictionary API.
-    """
-
-    OD_API_BASE_URL = os.environ['OD_API_BASE_URL']
-    OD_APPLICATION_ID = os.environ['OD_APPLICATION_ID']
-    OD_APPLICATION_KEY_1 = os.environ['OD_APPLICATION_KEY_1']
-    LANGUAGE = 'en-gb'
+    """ Handles the API configuration for the Online Oxford Dictionary API. """
     headers = {
-        "app_id": OD_APPLICATION_ID,
-        "app_key": OD_APPLICATION_KEY_1,
+        "app_id": os.environ['OD_APPLICATION_ID'],
+        "app_key": os.environ['OD_APPLICATION_KEY_1'],
     }
+    ENTRIES_URL = f"{os.environ['OD_API_BASE_URL']}{'entries/en-gb/'}"
+    LEMMAS_URL = f"{os.environ['OD_API_BASE_URL']}{'lemmas/en-gb/'}"

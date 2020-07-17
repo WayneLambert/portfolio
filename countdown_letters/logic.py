@@ -1,8 +1,7 @@
-"""Countdown Letters Logic
+""" Countdown Letters Logic
 
 A collection of classes and functions that are required to implement
 the core logic for the Countdown Letters Game.
-
 """
 
 import os
@@ -110,13 +109,12 @@ def get_words() -> set:
     return words_set
 
 
-def get_shortlisted_words(words: tuple, letters: str) -> dict:
+def get_shortlisted_words(words: set, letters: str) -> list:
     """
-    Given a tuple of words and a string of the game's letters, returns
-    a shortlist of the accumulatively gathered longest words in the
-    running order of cycling through `words.txt`
+    Given a set of words and a string of the game's letters, returns a
+    list of accumulatively gathered longest words sorted by word length
     """
-    shortlisted_words = {}
+    d = {}
     cumulative_max_letter_count = 0
     letters_in_selection = list(letters)
     for tested_word in words:
@@ -128,17 +126,16 @@ def get_shortlisted_words(words: tuple, letters: str) -> dict:
             if letter_count >= cumulative_max_letter_count and len(
                     tested_word) == len(common_letters):
                 cumulative_max_letter_count = letter_count
-                shortlisted_words[tested_word] = cumulative_max_letter_count
-    return shortlisted_words
+                d[tested_word] = cumulative_max_letter_count
+    return sorted(d.items(), key=lambda x: x[1], reverse=True)
 
 
-def get_longest_possible_word(shortlisted_words: dict) -> str:
+def get_longest_possible_word(shortlisted_words: list) -> str:
     """
-    Given a shortlisted dict of words, returns the word at the
+    Given a shortlisted list of tuples, returns the word at the
     first indexed position
     """
-    sorted_list = sorted(shortlisted_words.items(), reverse=True)
-    for item in sorted_list:
+    for item in shortlisted_words:
         if is_in_oxford_api(item[0]):
             longest_possible_word = item[0]
             return longest_possible_word.upper()
@@ -146,25 +143,25 @@ def get_longest_possible_word(shortlisted_words: dict) -> str:
 
 def get_game_score(word_len: int) -> int:
     """ Retrieves the game score based on the achieved word length """
-    return word_len ** 2 if word_len == 9 else word_len
+    return word_len * 2 if word_len == 9 else word_len
 
 
 def get_lemmas_response_json(word: str) -> dict:
     """ Returns lemmas data component of input word from Oxford Online API """
-    lemmas_url = f"{API.OD_API_BASE_URL}{'lemmas/'}{API.LANGUAGE}{'/'}{word.lower()}"
+    lemmas_url = f"{API.LEMMAS_URL}{word.lower()}"
     lemmas_response = requests.get(lemmas_url, headers=API.headers)
     return lemmas_response.json()
 
 
 def get_alt_word(word: str) -> str:
     """
-    Retrieves alternative word to the exact winning word since its singular
-    form may be the actual referenced word in the Oxford definitions' API.
+    Retrieves alternative word to the exact winning word since its
+    singular form or its present tense form may be the actual
+    referenced word in the Oxford Online definitions' API.
     """
     lemmas_json = get_lemmas_response_json(word)
     alt_word_lookup = lemmas_json['results'][0]['lexicalEntries'][0]
-    alt_word_lookup = alt_word_lookup['inflectionOf'][0]['id']
-    return alt_word_lookup
+    return alt_word_lookup['inflectionOf'][0]['id']
 
 
 def lookup_definition(word: str) -> dict:
@@ -174,7 +171,7 @@ def lookup_definition(word: str) -> dict:
     definition for the exact match of the winning form. In this case, it returns a
     result from the lemmas query.
     """
-    definitions_url = f"{API.OD_API_BASE_URL}{'entries/'}{API.LANGUAGE}{'/'}{word.lower()}"
+    definitions_url = f"{API.ENTRIES_URL}{word.lower()}"
     definitions_response = requests.get(definitions_url, headers=API.headers)
     if definitions_response.status_code == 200:
         definitions_response_json = definitions_response.json()
@@ -192,13 +189,11 @@ def lookup_definition(word: str) -> dict:
         lemmas_json = get_lemmas_response_json(word)
         word_class = lemmas_json['results'][0]['lexicalEntries'][0]['lexicalCategory']['text']
 
-    definition_result = {
+    return {
         'alt_word_lookup': alt_word_lookup,
         'definition': definition,
         'word_class': word_class,
     }
-
-    return definition_result
 
 
 def present_definition(definition_result: dict) -> Union[dict, str]:
