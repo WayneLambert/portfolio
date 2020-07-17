@@ -39,7 +39,7 @@ Leave it to fate to decide your next luxurious holiday destination in this suspe
 
 ## Web Scraping
 
-Scrape EU Referendum results, famous speeches or dad jokes from the web.
+Scrape EU Referendum results and famous speeches from the web.
 
 - [Web Scraping](https://www.waynelambert.dev/scraping/scraping-options/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/scraping/)
