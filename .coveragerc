@@ -9,7 +9,8 @@ omit =
   */node_modules/*,
   */static/*,
   */staticfiles/*,
-  *tests/*,
+  */tests/test*.py,
+  *admin.py*,
   *wsgi.py,
   *asgi.py,
   manage.py,
@@ -19,7 +20,6 @@ omit =
   */site-packages/*,
   */distutils/*,
   *sitemap.py,
-  *tests*.py,
 
 branch = True
 
