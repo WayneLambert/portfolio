@@ -53,11 +53,11 @@ def test_get_words():
     """
     Asserts the set is populated with all 113,809 words.
     This should be the case because the `words.txt` file is a file
-    of unique words by default, therefore the set operation is O(1)
+    of unique words by default.
     """
     words = logic.get_words()
     assert isinstance(words, set), 'Should be a set'
-    assert len(words) == 113_809, 'Should have 113,809 words'
+    assert len(words) == 40_424, 'Should have 40,424 words'
 
 
 def test_get_shortlisted_words():
@@ -102,23 +102,11 @@ def test_get_lemmas_response_json(word: str):
     assert len(lemmas_json.keys()) == 2, 'Should be 2 keys in dict'
 
 
-@pytest.mark.slow(reason='Processing makes a call to the Oxford Online API')
-def test_get_alt_word(word: str = 'strove'):
-    """
-    Asserts an alternative form of the word is retrieved from the Oxford Online
-    API where its original word form passed into the function does not exist.
-    """
-    assert isinstance(word, str)
-    alt_word = logic.get_alt_word(word)
-    assert isinstance(alt_word, str)
-    assert word != alt_word
-
-
-@pytest.mark.slow(reason='Processing makes a call to the Oxford Online API')
-def test_lookup_definition(word: str = 'strove'):
+@pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
+def test_lookup_definition_data(word: str = 'strove'):
     """
     Asserts that given an example of a word in its alternative form (i.e. past tense
-    form or plural verbs form), tests the definitions component of the Oxford Online
+    form or plural verbs form), tests the definitions component of the Oxford Dictionaries
     API to ensure it retrieves its main form's definition and word classification.
 
     In this example, 'strove' is given as its past tense form, however 'strive' is
@@ -128,10 +116,9 @@ def test_lookup_definition(word: str = 'strove'):
     is looked up as its main form.
     """
     assert isinstance(word, str)
-    definition = logic.lookup_definition(word)
+    definition = logic.lookup_definition_data(word)
     assert isinstance(definition, dict)
-    assert len(definition.keys()) == 3, 'Set up to return 3 key/value pairs'
-    assert definition['alt_word_lookup'] == 'strive'
+    assert len(definition.keys()) == 2, 'Set up to return 2 key/value pairs'
     assert definition['definition'] == 'Make great efforts to achieve or obtain something'
     assert definition['word_class'] == 'Verb'
 

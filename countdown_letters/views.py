@@ -1,5 +1,4 @@
 from urllib.parse import urlencode
-import pytest
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
@@ -47,7 +46,6 @@ def game_screen(request):
     return render(request, 'countdown_letters/game.html', context)
 
 
-@pytest.mark.slow(reason='Processing makes 2 calls to the Oxford Online API')
 def results_screen(request):
     letters_chosen: str = request.GET['letters_chosen']
     file_words = logic.get_words()
@@ -65,10 +63,9 @@ def results_screen(request):
     comp_word = logic.get_longest_possible_word(shortlisted_words)
     if comp_word:
         winning_word = comp_word if len(comp_word) > player_word_len else players_word
-        definition_result = logic.lookup_definition(winning_word)
-        definition = logic.present_definition(definition_result)
+        definition_data = logic.lookup_definition_data(winning_word)
     else:
-        winning_word, definition_result, definition = 'N/A', 'N/A', 'N/A'
+        winning_word, definition_data = 'N/A', 'N/A'
 
     context = {
         'letters_chosen': letters_chosen,
@@ -80,8 +77,7 @@ def results_screen(request):
         'comp_word_len': len(comp_word) if comp_word else 0,
         'comp_score': logic.get_game_score(len(comp_word)) if comp_word else 0,
         'winning_word': comp_word if len(comp_word) > player_word_len else players_word,
-        'definition_result': logic.lookup_definition(winning_word) if comp_word else 'N/A',
-        'definition': definition,
+        'definition_data': definition_data,
         'result': logic.get_result(players_word, comp_word),
     }
 

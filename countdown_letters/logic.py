@@ -2,17 +2,20 @@
 
 A collection of classes and functions that are required to implement
 the core logic for the Countdown Letters Game.
+
+Dev Guide: https://developer.oxforddictionaries.com/documentation
 """
 
 import os
 from random import choices, random
-from typing import Dict, Union
+from typing import Dict
+from collections import Counter
 
 import requests
 from django.conf import settings
 
 from .oxford_api import API
-from .validations import is_in_oxford_api
+from . import validations
 
 
 class GameSetup:
@@ -102,7 +105,11 @@ def get_letters_chosen(num_vowels: int) -> str:
 
 
 def get_words() -> set:
-    """ Returns all words from the `words.txt` file as a set """
+    """
+    Returns all words from the `words.txt` file as a set
+    Source: http://www.mieliestronk.com/corncob_lowercase.txt
+    Words > 9 chars in length removed
+    """
     words_filename = os.path.join(settings.BASE_DIR, 'countdown_letters/words.txt')
     with open(words_filename, 'r') as words_file:
         words_set = {word.strip('\n') for word in words_file}
@@ -120,8 +127,9 @@ def get_shortlisted_words(words: set, letters: str) -> list:
     for tested_word in words:
         letters_in_tested_word = list(tested_word.upper())
         if len(letters_in_tested_word) < len(letters_in_selection):
-            common_letters = set(letters_in_selection).intersection(
-                letters_in_tested_word)
+            common_letters = list(
+                (Counter(letters_in_selection) & \
+                    Counter(letters_in_tested_word)).elements())
             letter_count = len(common_letters)
             if letter_count >= cumulative_max_letter_count and len(
                     tested_word) == len(common_letters):
@@ -136,7 +144,7 @@ def get_longest_possible_word(shortlisted_words: list) -> str:
     first indexed position
     """
     for item in shortlisted_words:
-        if is_in_oxford_api(item[0]):
+        if validations.is_in_oxford_api(item[0]):
             longest_possible_word = item[0]
             return longest_possible_word.upper()
 
@@ -147,63 +155,34 @@ def get_game_score(word_len: int) -> int:
 
 
 def get_lemmas_response_json(word: str) -> dict:
-    """ Returns lemmas data component of input word from Oxford Online API """
+    """
+    Returns lemmas data component of given `word` from Oxford Online API
+    The `lemmas` endpoint is used to determine presence in the dictionary.
+    """
     lemmas_url = f"{API.LEMMAS_URL}{word.lower()}"
     lemmas_response = requests.get(lemmas_url, headers=API.headers)
     return lemmas_response.json()
 
 
-def get_alt_word(word: str) -> str:
-    """
-    Retrieves alternative word to the exact winning word since its
-    singular form or its present tense form may be the actual
-    referenced word in the Oxford Online definitions' API.
-    """
-    lemmas_json = get_lemmas_response_json(word)
-    alt_word_lookup = lemmas_json['results'][0]['lexicalEntries'][0]
-    return alt_word_lookup['inflectionOf'][0]['id']
-
-
-def lookup_definition(word: str) -> dict:
-    """
-    Retrieve dictionary definition of winning word using 'Oxford Dictionaries API'.
-    An alternative form of the word is used if the Oxford API does not return a
-    definition for the exact match of the winning form. In this case, it returns a
-    result from the lemmas query.
-    """
-    definitions_url = f"{API.ENTRIES_URL}{word.lower()}"
-    definitions_response = requests.get(definitions_url, headers=API.headers)
-    if definitions_response.status_code == 200:
-        definitions_response_json = definitions_response.json()
-        definition = definitions_response_json['results'][0]['lexicalEntries'][0]
-        word_class = definition['lexicalCategory']['text']
+def lookup_definition_data(word: str) -> dict:
+    """ Retrieve dictionary definition of winning word using 'Oxford Dictionaries API'. """
+    response = requests.get(url=API.WORDS_URL, params={'q': word}, headers=API.headers)
+    if response.status_code == 200:
         try:
-            definition = definition['entries'][0]['senses'][0]['definitions'][0].capitalize()
+            json = response.json()
+            idx = 0 if json['results'][0]['type'] == 'headword' else 1
+            d = json['results'][idx]['lexicalEntries'][0]['entries'][0]['senses'][0]
+            definition = d['definitions'][0].capitalize()
+            word_class = json['results'][0]['lexicalEntries'][idx]['lexicalCategory']['text']
         except KeyError:
             definition = f"""The definition for '{word}' cannot be found
-                             in the Oxford Dictionary API."""
-        alt_word_lookup = word
-    else:
-        alt_word_lookup = get_alt_word(word)
-        definition = lookup_definition(alt_word_lookup)
-        lemmas_json = get_lemmas_response_json(word)
-        word_class = lemmas_json['results'][0]['lexicalEntries'][0]['lexicalCategory']['text']
+                             in the Oxford Dictionaries API."""
+            word_class = 'N/A'
 
-    return {
-        'alt_word_lookup': alt_word_lookup,
-        'definition': definition,
-        'word_class': word_class,
-    }
-
-
-def present_definition(definition_result: dict) -> Union[dict, str]:
-    """
-    Given a definition from the Oxford Online API, returns a presentable
-    format of the definition that can be rendered within a template
-    """
-    if isinstance(definition_result['definition'], dict):
-        return definition_result['definition']['definition']
-    return definition_result['definition']
+        return {
+            'definition': definition,
+            'word_class': word_class,
+        }
 
 
 def get_result(player_word: str, comp_word: str) -> str:

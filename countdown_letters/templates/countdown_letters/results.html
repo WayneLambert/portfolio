@@ -74,13 +74,13 @@
         <table>
           <tr>
             <h6 class="text-uppercase">
-              <strong>{{ definition_result.alt_word_lookup|lower|capfirst }}</strong>
+              <strong>{{ winning_word|lower|capfirst }}</strong>
             </h6>
           </tr>
           <tr>
             <div class="inner theme-bg-light">
-              <p class="text-small text-muted">{{ definition_result.word_class }}</p>
-              <p class="word-definition">{{ definition }}</p>
+              <p class="text-small text-muted">{{ definition_data.word_class }}</p>
+              <p class="word-definition">{{ definition_data.definition }}</p>
               <em class="small">(British - English)</em>
             </div>
           </tr>
