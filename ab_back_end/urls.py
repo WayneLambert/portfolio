@@ -6,8 +6,14 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 
 from blog.sitemap import CategorySitemap, PostSitemap
+from pages.views import SitePageNotFoundView, SitePermissionDeniedView
 
 from .settings import ADMIN_ALIAS
+
+
+handler403 = SitePermissionDeniedView.as_view()
+handler404 = SitePageNotFoundView.as_view()
+
 
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),

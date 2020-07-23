@@ -80,3 +80,12 @@ class TextAnalysisReviewView(TemplateView):
 
 class DataScienceReviewView(TemplateView):
     template_name = 'reviews/data_science.html'
+
+
+# Custom Error Templates
+class SitePermissionDeniedView(TemplateView):
+    template_name = 'errors/403.html'
+
+
+class SitePageNotFoundView(TemplateView):
+    template_name = 'errors/404.html'

@@ -75,6 +75,11 @@ def li_sec_user(db, request, client, **kwargs):
 
 
 @pytest.fixture(scope='function')
+def post(db, request):
+    return mixer.blend('blog.Post')
+
+
+@pytest.fixture(scope='function')
 def test_image():
     """ Builds a sample in-memory image for unit tests involving images """
     image = Image.new(mode='RGB', size=(200, 200)) # Create new image using PIL

@@ -1,14 +1,20 @@
 # pylint: disable=redefined-outer-name
 import pytest
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
+import blog.views as blog_views
 from ab_back_end.tests.helpers import lilo_users, user_types
-from pages.views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewView,
-                         CountdownLettersReviewView, CountdownNumbersReviewView,
-                         DataScienceReviewView, FrontEndSkillsView, HomeView,
-                         InfrastructureSkillsView, PortfolioView, PrivacyPolicyView,
-                         ReadingListView, RouletteReviewView, ScrapingReviewView,
+from pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
+                         BlogReviewView, CountdownLettersReviewView,
+                         CountdownNumbersReviewView, DataScienceReviewView,
+                         FrontEndSkillsView, HomeView,
+                         InfrastructureSkillsView, PortfolioView,
+                         PrivacyPolicyView, ReadingListView,
+                         RouletteReviewView, ScrapingReviewView,
+                         SitePageNotFoundView, SitePermissionDeniedView,
                          SoftwareSkillsView, TextAnalysisReviewView)
+
 
 pytestmark = pytest.mark.django_db
 
@@ -155,3 +161,26 @@ class TestReviewsPagesViews:
         request.user = lilo_users
         response = DataScienceReviewView.as_view()(request)
         assert response.status_code == 200, 'Should be callable by anyone'
+
+
+@pytest.mark.parametrize(argnames='lilo_users', argvalues=lilo_users, ids=user_types)
+class TestCustomErrorPages:
+    def test_403_page(self, request, factory, post, lilo_users):
+        """ Asserts a user GETs a 403 page following a forbidden response """
+        kwargs = {'slug': post.slug}
+        path = reverse('blog:post_update', kwargs=kwargs)
+        request = factory.get(path)
+        request.user = lilo_users
+        with pytest.raises(PermissionDenied) as exc_info:
+            response = blog_views.PostUpdateView.as_view()(request, **kwargs)
+        response = SitePermissionDeniedView.as_view()(request)
+        assert response.status_code == 200, 'the custom 403 template should GET `OK` response'
+
+    def test_404_page(self, request, factory, lilo_users):
+        """ Asserts a user GETs a 404 page when resource is not found on the server """
+        kwargs = {'slug': 'post-slug-that-does-not-exist'}
+        path = reverse('blog:post_update', kwargs=kwargs)
+        request = factory.get(path)
+        request.user = lilo_users
+        response = SitePageNotFoundView.as_view()(request)
+        assert response.status_code == 200, 'the custom 404 template should GET `OK` response'
