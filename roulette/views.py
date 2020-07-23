@@ -1,19 +1,18 @@
 from django.shortcuts import render
 
-from .logic import (clear_down_log_file, get_picture_url, get_roulette_result,
-                    read_log_file, reset_places_to_go)
+from . import logic
 
 
 def game_screen(request):
-    clear_down_log_file(request)
+    logic.clear_down_log_file()
     return render(request, 'roulette/game.html')
 
 
 def destination_screen(request):
-    reset_places_to_go(request)
-    clear_down_log_file(request)
-    roulette_result = get_roulette_result(request)
-    destination_image_url = get_picture_url(roulette_result[1])
+    logic.reset_places_to_go()
+    logic.clear_down_log_file()
+    roulette_result = logic.get_roulette_result()
+    destination_image_url = logic.get_picture_url(roulette_result[1])
     context = {
         'places_to_go': roulette_result[0],
         'most_selected_place': roulette_result[1],
@@ -26,5 +25,5 @@ def destination_screen(request):
 
 
 def view_log_file_contents(request):
-    context = {'log_file_contents': read_log_file(request)}
+    context = {'log_file_contents': logic.read_log_file()}
     return render(request, 'roulette/log_file_contents.html', context)
