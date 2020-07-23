@@ -79,9 +79,6 @@
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Looks up the dictionary definition of the word using the Oxford English Dictionary's
-          </li>
-          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Looks up the dictionary definition of the word using the Oxford English Dictionary's
             API (British English). Sometimes this means looking up the associated lemma version of the word.
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
@@ -108,6 +105,12 @@
             Pandas. It was a list of 113,809 English words, so I wondered if I could build a
             simulation of the Countdown Letters game using the word list.
           </p>
+          <p>
+            Since then, I have replaced the list with a more suitable one that contains
+            40,424 words. The new list reduces the number of requests to the API since
+            there are less words in the list that the API considers an invalid word due
+            to the word being an American spelling variant of a word.
+          </p>
         </div>
 
         <!-- Project Approach / Solution -->
@@ -118,7 +121,7 @@
           </p>
           <p>
             This led me to research an API for a dictionary and discover the Oxford Dictionary API which
-            allows me to have 1,000 requests per month.
+            allows me to have 1,000 requests per month using a free 'prototype' account.
           </p>
           <p>
             I inspected the API using a Jupyter Notebook (the best method I have found yet) and discovered
@@ -129,8 +132,9 @@
             I would also need to retrieve the dictionary definition within the results page.
           </p>
           <p>
-            I wrote out all of the validations that would be required in English and then proceeded
-            to write individual functions that would fulfil each individual validation.
+            I wrote out all of the logic and validations that would be required in English and then
+            proceeded to write individual functions that would fulfil each individual part of the game's
+            logic and validation.
           </p>
           <p>
             At a later stage, following redevelopment of my portfolio, I refactored the project
