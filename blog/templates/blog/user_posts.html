@@ -4,7 +4,7 @@
 
 {% block content %}
   {% include 'components/search.html' %}
-  <h6 class="text-center mt-5">{{ num_posts }} posts written by {{ user.user.full_name }}</h6>
+  <h6 class="text-center mt-5">{{ num_posts }} post{{ num_posts|pluralize }} written by {{ user.user.full_name }}</h6>
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">
