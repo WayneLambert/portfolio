@@ -1,16 +1,16 @@
+"""
+Retrieves the Gettysburg address from the goodreads.com website removing
+any new line escape and other extraneous characters returned from the
+parsed HTML.
+"""
+
+# pylint: disable=invalid-name
 import requests
 from bs4 import BeautifulSoup
 from django.shortcuts import render
 
-# pylint: disable=invalid-name
-
 
 def get_gettysburg_speech(request):
-    """
-    Retrieves the Gettysburg address from the goodreads.com website removing
-    any new line escape characters returned from the parsed HTML.
-    """
-
     URL = "https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address"
     page_response = requests.get(URL, timeout=5)
     page_content = BeautifulSoup(page_response.content, "html.parser")
