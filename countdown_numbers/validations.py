@@ -1,4 +1,4 @@
-"""Countdown Numbers Validations
+""" Countdown Numbers Validations
 
 A collection of functions that are required to validate
 given answers within a game.
@@ -31,8 +31,8 @@ def check_chars(request, players_calc: str) -> bool:
 
 def check_brackets(request, players_calc: str) -> bool:
     """
-    Checks that there is a matching amount of opening and
-    closing brackets within the player's calculation
+    Checks that there is a matching amount of opening and closing
+    brackets within the player's calculation.
     """
     if players_calc.count('(') != players_calc.count(')'):
         messages.add_message(
@@ -46,15 +46,14 @@ def check_brackets(request, players_calc: str) -> bool:
 
 def strip_spaces(request, players_calc: str) -> str:
     """
-    Removes any unncessary spaces within the answer provided by the player
+    Removes unncessary spaces within the answer provided by the player.
     """
     return players_calc.replace(' ', '')
 
 
 def calc_entered_is_valid(request, players_calc) -> bool:
-    """
-    Validates that the calculation entered by the player
-    is in a valid format
+    """ Validates that the calculation entered by the player is in a
+    valid format.
     """
     players_calc = strip_spaces(request, players_calc)
     has_valid_chars = check_chars(request, players_calc)
@@ -69,7 +68,7 @@ def calc_entered_is_valid(request, players_calc) -> bool:
 def get_permissible_nums(request) -> list:
     """
     Returns a list of numbers that can be used to form a valid
-    calculation for the game
+    calculation for the game.
     """
     game_nums = request.GET.get('numbers_chosen')
     game_nums = ast.literal_eval(game_nums)
@@ -79,17 +78,17 @@ def get_permissible_nums(request) -> list:
 def get_nums_used(request, players_calc: str) -> list:
     """
     Returns a list of numbers that have been used to form
-    the player's calculation for the game
+    the player's calculation for the game.
     """
     nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
     nums_used[:] = (int(item) for item in nums_used if item != '')
     return nums_used
 
 
-def is_calc_valid(request)-> bool:
+def is_calc_valid(request) -> bool:
     """
-    Validates that the numbers used to form the player's
-    calculation are permissible numbers for the game
+    Validates that the numbers used to form the player's calculation are
+    permissible numbers for the game.
     """
     players_calc = request.GET.get('players_calculation')
     players_calc = strip_spaces(request, players_calc)

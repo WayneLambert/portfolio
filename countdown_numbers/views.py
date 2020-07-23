@@ -5,9 +5,8 @@ from urllib.parse import urlencode
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from . import logic
 from .forms import NumberSelectionForm, SelectedNumbersForm
-from .logic import (build_game_url, get_best_solution, get_game_nums, get_game_result,
-                    get_player_num_achieved, get_score_awarded)
 from .validations import calc_entered_is_valid, get_permissible_nums, is_calc_valid
 
 
@@ -15,7 +14,7 @@ def selection_screen(request):
     if request.method == 'POST':
         form = NumberSelectionForm(request.POST)
         if form.is_valid():
-            game_screen_url = build_game_url(form)
+            game_screen_url = logic.build_game_url(form)
             return redirect(game_screen_url)
     else:
         form = NumberSelectionForm()
@@ -42,22 +41,22 @@ def game_screen(request):
     else:
         context = {
             'form': SelectedNumbersForm(),
-            'game_nums': get_game_nums(request)
+            'game_nums': logic.get_game_nums(request)
         }
 
-    return render(request, 'countdown_numbers/game.html', context)
+        return render(request, 'countdown_numbers/game.html', context)
 
 
 def results_screen(request):
     valid_calc = is_calc_valid(request)
-    player_num_achieved = get_player_num_achieved(request)
+    player_num_achieved = logic.get_player_num_achieved(request)
     target_number = int(request.GET.get('target_number'))
     player_score, comp_score = 0, 0
     if valid_calc:
-        player_score = get_score_awarded(request, target_number, player_num_achieved)
+        player_score = logic.get_score_awarded(request, target_number, player_num_achieved)
 
     game_nums = get_permissible_nums(request)
-    best_solution = get_best_solution(request, game_nums, target_number)
+    best_solution = logic.get_best_solution(request, game_nums, target_number)
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
     comp_num_achieved = int(eval(best_solution))
     solution_str = f"""
@@ -66,12 +65,12 @@ def results_screen(request):
         'player_num_achieved': player_num_achieved,
         'comp_num_achieved': comp_num_achieved,
     }
-    game_result = get_game_result(target_number, answers)
+    game_result = logic.get_game_result(target_number, answers)
 
     if valid_calc and game_result != 'comp_num_achieved':
-        player_score = get_score_awarded(request, target_number, player_num_achieved)
+        player_score = logic.get_score_awarded(request, target_number, player_num_achieved)
     if game_result != 'player_num_achieved':
-        comp_score = get_score_awarded(request, target_number, comp_num_achieved)
+        comp_score = logic.get_score_awarded(request, target_number, comp_num_achieved)
 
     context = {
         'game_nums': game_nums,
