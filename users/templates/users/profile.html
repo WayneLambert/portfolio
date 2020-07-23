@@ -13,9 +13,11 @@
         <table>
           <td>
             <img class="rounded-circle profile-avatar img-fluid" src="{{ user.user.profile_picture.url }}">
-            <p class="text-center mt-3">
-              <a class="theme-link" href="{% url 'blog:users:profile_update' user.user.slug %}"><i class="fa fa-pencil mr-2"></i>Update Profile</a>
-            </p>
+            {% if user.is_authenticated and user.username == request.user.username %}
+              <p class="text-center mt-3">
+                <a class="theme-link" href="{% url 'blog:users:profile_update' user.user.slug %}"><i class="fa fa-pencil mr-2"></i>Update Profile</a>
+              </p>
+            {% endif %}
           </td>
           <td>
             <div class="ml-4 pb-5">

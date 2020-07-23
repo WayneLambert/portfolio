@@ -26,7 +26,7 @@ class Profile(models.Model):
         return f"{self.user.first_name} {self.user.last_name} ({self.user.username})"
 
     def get_absolute_url(self):
-        return reverse('blog:users:profile', kwargs={'slug': self.slug})
+        return reverse('blog:users:profile', kwargs={'username': self.slug})
 
     def save(self, *args, **kwargs):
         if not self.slug.strip():

@@ -1,14 +1,14 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path, reverse_lazy
 
-from .views import ProfileView, UserRegisterView, profile
+from .views import ProfileView, UserRegisterView, profile_update
 
 app_name = 'users'
 
 urlpatterns = [
     path('register/', UserRegisterView.as_view(), name='register'),
-    path('<slug:slug>/profile/', ProfileView.as_view(), name='profile'),
-    path('<slug:slug>/profile/update/', profile, name='profile_update'),
+    path('<slug:username>/profile/', ProfileView.as_view(), name='profile'),
+    path('<slug:username>/profile/update/', profile_update, name='profile_update'),
 ]
 
 # Custom Login and Password Reset Process
