@@ -191,3 +191,4 @@ postgres/data/
 static/assets/*
 node_modules/*
 logs/pytest/*
+logs/code_sample.md
