@@ -1,14 +1,18 @@
-"""Countdown Letters: Oxford API
+""" Countdown Letters: Oxford API
 
-A collection of objects that handles the external interface with
-the Oxford Dictionary API.
+A collection of objects that handles the external interface with the
+Oxford Dictionary API.
+
+Dev Guide: https://developer.oxforddictionaries.com/documentation
 """
 
 import os
 
 
 class API:
-    """ Handles the API configuration for the Online Oxford Dictionary API. """
+    """
+    Handles the API configuration for the Online Oxford Dictionary API.
+    """
     headers = {
         "Accept": "application/json",
         "app_id": os.environ['OD_APPLICATION_ID'],

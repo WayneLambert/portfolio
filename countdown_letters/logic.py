@@ -2,20 +2,18 @@
 
 A collection of classes and functions that are required to implement
 the core logic for the Countdown Letters Game.
-
-Dev Guide: https://developer.oxforddictionaries.com/documentation
 """
 
 import os
+from collections import Counter
 from random import choices, random
 from typing import Dict
-from collections import Counter
 
 import requests
 from django.conf import settings
 
-from .oxford_api import API
 from . import validations
+from .oxford_api import API
 
 
 class GameSetup:
@@ -26,7 +24,7 @@ class GameSetup:
     MAX_GAME_LETTERS: int = 9
 
     @staticmethod
-    def get_weighted_vowels():
+    def get_weighted_vowels() -> list:
         """
         Creates a list of vowel letters with the number of vowels
         required to produce the weighted distribution of the various
@@ -45,11 +43,11 @@ class GameSetup:
         return list(s)
 
     @staticmethod
-    def get_weighted_consonants():
+    def get_weighted_consonants() -> list:
         """
-        Creates a list of consonant letters with the number of consonants
-        required to produce the weighted distribution of the various
-        consonants for the game.
+        Creates a list of consonant letters with the number of
+        consonants required to produce the weighted distribution of the
+        various consonants for the game.
         """
         consonant_freq: Dict[str, int] = {
             'B': 2,
@@ -82,8 +80,9 @@ class GameSetup:
 
 def get_letters_chosen(num_vowels: int) -> str:
     """
-    Returns an appropriate proportion of vowels and consonants within the randomised
-    game selection according to their frequency of existence
+    Returns an appropriate proportion of vowels and consonants within
+    the randomised game selection according to their frequency of
+    existence
     """
     letters_chosen = []
 
@@ -140,8 +139,8 @@ def get_shortlisted_words(words: set, letters: str) -> list:
 
 def get_longest_possible_word(shortlisted_words: list) -> str:
     """
-    Given a shortlisted list of tuples, returns the word at the
-    first indexed position
+    Given a shortlisted list of tuples, returns the word at the first
+    indexed position
     """
     for item in shortlisted_words:
         if validations.is_in_oxford_api(item[0]):
@@ -150,7 +149,9 @@ def get_longest_possible_word(shortlisted_words: list) -> str:
 
 
 def get_game_score(word_len: int) -> int:
-    """ Retrieves the game score based on the achieved word length """
+    """
+    Retrieves the game score based on the achieved word length
+    """
     return word_len * 2 if word_len == 9 else word_len
 
 
@@ -165,7 +166,10 @@ def get_lemmas_response_json(word: str) -> dict:
 
 
 def lookup_definition_data(word: str) -> dict:
-    """ Retrieve dictionary definition of winning word using 'Oxford Dictionaries API'. """
+    """
+    Retrieve dictionary definition of winning word using 'Oxford
+    Dictionaries API'.
+    """
     response = requests.get(url=API.WORDS_URL, params={'q': word}, headers=API.headers)
     if response.status_code == 200:
         try:
@@ -186,9 +190,11 @@ def lookup_definition_data(word: str) -> dict:
 
 
 def get_result(player_word: str, comp_word: str) -> str:
-    """ Returns the winning player for the game """
+    """
+    Returns the winning player for the game.
+    """
     if len(player_word) > len(comp_word):
         return 'You win'
-    if len(player_word) < len(comp_word):
+    elif len(player_word) < len(comp_word):
         return 'Susie wins'
     return 'Draw'

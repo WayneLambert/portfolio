@@ -1,10 +1,10 @@
 from urllib.parse import urlencode
+
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from . import logic, validations
 from .forms import LetterSelectionForm, SelectedLettersForm
-from . import logic
-from . import validations
 
 
 def selection_screen(request):
