@@ -1,6 +1,12 @@
 ![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio-github.png)
 
-This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
+> This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to showcase Django, Python and other programming and web framework skills and technologies.
+
+> The code is not intended to be cloned for reproduction as it is a representation of my personal portfolio of work, therefore instructions have not been provided to clone and set up.
+>
+> Please take a look at both the open and closed issues as they are important representations of issues encountered and solutions used, etc which reflect the ongoing nature of software projects.
+>
+> A quick note on PEP8. The code in this portfolio does not adhere to the guidelines of 79 characters. My personal thoughts on this is that for personal projects, I use a flexible limit of 89 and a hard limit of 99 characters.
 
 ## Django Blog
 
