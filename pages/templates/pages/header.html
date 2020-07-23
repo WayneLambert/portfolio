@@ -54,7 +54,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'blog:users:profile' user.user.slug %}"><i class="fa fa-user-circle mr-2"></i>View Profile</a>
-                <a class="dropdown-item" href="{% url 'blog:users:profile_update' user.user.slug %}"><i class="fa fa-pencil mr-2"></i>Update Profile</a>
+                <a class="dropdown-item" href="{% url 'blog:users:profile_update' user.username %}"><i class="fa fa-pencil mr-2"></i>Update Profile</a>
                 <a class="dropdown-item" href="{% url 'blog:users:logout' %}"><i class="fa fa-sign-out mr-2"></i>Logout</a>
               </div>
             </li>

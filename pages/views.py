@@ -4,8 +4,10 @@ from blog.models import Post
 
 
 class HomeView(ListView):
-    """ Custom view sets default behaviour for all list views to subclass
-        and inherit for their own implementation """
+    """
+    Custom view sets default behaviour for all list views to subclass
+    and inherit for their own implementation
+    """
     model = Post
     template_name = 'home.html'
     context_object_name = 'posts'

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Access Not Permitted{% endblock title %}
+
+{% block content %}
+  <article class="blog-post px-3 py-3 p-md-5">
+    <div class="container theme-bg-light single-col-max-width mt-3">
+      <section class="cta-section py-5">
+        <div class="container text-center single-col-max-width">
+          <h4 class="error-text">
+            <b><u>Access Forbidden</u>:</b> You are not able to access this content.
+            Please navigate to another page.
+          </h4>
+          <a class="nav-link" href="{% url 'blog:users:profile' request.user.username %}">Go to your profile</a>
+          <div class="error-img">
+            <img class="img-fluid" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/403.png" width="100%"
+            alt="403 Image">
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+{% endblock content %}

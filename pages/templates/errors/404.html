@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Page Not Found{% endblock title %}
+
+{% block content %}
+  <article class="blog-post px-3 py-3 p-md-5">
+    <div class="container theme-bg-light single-col-max-width mt-3">
+      <section class="cta-section py-5">
+        <div class="container text-center single-col-max-width">
+          <h2>HTTP: <span>404</span></h2>
+          <div class="error-img mt-3">
+            <img class="img-fluid" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/404.png"
+            alt="404 Image">
+          </div>
+          <a class="nav-link mt-5" href="{% url 'blog:users:profile' request.user.username %}">Go to your profile</a>
+        </div>
+      </section>
+    </div>
+  </article>
+{% endblock content %}
