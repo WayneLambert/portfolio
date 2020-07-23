@@ -1,6 +1,7 @@
 ignore:
   - .venv/*
   - .pytest_cache/*
+  - .hypothesis/*
   - .vscode/*
   - htmlcov/*
   - logs/*
