@@ -3,6 +3,8 @@ source = .
 
 omit =
   .venv/*
+  .pytest_cache/*,
+  .hypothesis/*,
   *apps.py,
   *migrations/*,
   *ab_back_end/pytest.py,
@@ -10,6 +12,7 @@ omit =
   */static/*,
   */staticfiles/*,
   */tests/test*.py,
+  */users/signals.py,
   *admin.py*,
   *wsgi.py,
   *asgi.py,

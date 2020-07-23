@@ -10,9 +10,10 @@ class UserFactory(factory.DjangoModelFactory):
     class Meta:
         model = User
 
-    email = factory.sequence(lambda n: f'test_user{n}@waynelambert.dev')
+    email = 'test_email@example.com'
     first_name = 'Wayne'
     last_name = 'Lambert'
+    username = 'wayne-lambert'
     password = factory.PostGenerationMethodCall(
         'set_password', os.environ['PYTEST_TEST_PASSWORD']
     )
@@ -24,5 +25,5 @@ class ContactFactory(factory.DjangoModelFactory):
 
     first_name = 'Wayne'
     last_name = 'Lambert'
-    email = factory.sequence(lambda n: f'test_user{n}@waynelambert.dev')
+    email = 'test_email@example.com'
     message = 'Test Message'

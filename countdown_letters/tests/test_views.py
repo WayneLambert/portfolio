@@ -31,5 +31,4 @@ def test_get_results_screen_view(client, request):
     }
     response = client.get(path, params)
     assert response.status_code == 200, 'Should return with an `OK` status code'
-    assert 'You found a' in response.content.decode('utf-8'), \
-        'Should contain specified text'
+    assert 'You found a' in response.content.decode('utf-8'), 'Should contain specified text'

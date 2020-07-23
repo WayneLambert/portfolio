@@ -8,10 +8,10 @@ from countdown_letters import logic
 class TestGameSetup:
     def test_get_weighted_vowels(self, expected_vowels_list: list):
         """
-        Tests the vowels returned from the function matches the actual allocation
-        of each vowel according to the rules of the game.
+        Tests the vowels returned from the function matches the actual
+        allocation of each vowel according to the rules of the game.
         """
-        assert isinstance(expected_vowels_list, list), 'Fixture should be set up as a list'
+        assert isinstance(expected_vowels_list, list), 'Fixture should be a list'
         function_vowels_list = logic.GameSetup.get_weighted_vowels()
         assert isinstance(function_vowels_list, list), 'Should be a list instance'
         assert expected_vowels_list == function_vowels_list, \
@@ -19,20 +19,22 @@ class TestGameSetup:
 
     def test_get_weighted_consonants(self, expected_consonants_list: list):
         """
-        Tests the consonants returned from the function matches the actual allocation
-        of each consonant according to the rules of the game.
+        Tests the consonants returned from the function matches the
+        actual allocation of each consonant according to the rules
+        of the game.
         """
-        assert isinstance(expected_consonants_list, list), 'Fixture should be set up as a list'
+        assert isinstance(expected_consonants_list, list), 'Fixture should be a list'
         function_consonants_list = logic.GameSetup.get_weighted_consonants()
         assert isinstance(function_consonants_list, list)
-        assert expected_consonants_list == function_consonants_list
+        assert expected_consonants_list == function_consonants_list, \
+            "Consonants list should meet game's rules"
 
 
 @pytest.mark.parametrize(argnames='num_vowels', argvalues=[3, 4, 5])
 def test_get_letters_chosen(num_vowels):
     """
-    Test that the letter chosen function returns an appropriate string of
-    letters based upon the player's chosen number of vowels
+    Test that the letter chosen function returns an appropriate string
+    of letters based upon the player's chosen number of vowels.
     """
     letters_chosen = logic.get_letters_chosen(num_vowels)
     vowels = ['A', 'E', 'O', 'I', 'U']
@@ -52,8 +54,8 @@ def test_get_letters_chosen(num_vowels):
 def test_get_words():
     """
     Asserts the set is populated with all 113,809 words.
-    This should be the case because the `words.txt` file is a file
-    of unique words by default.
+    This should be the case because the `words.txt` file is a file of
+    unique words by default.
     """
     words = logic.get_words()
     assert isinstance(words, set), 'Should be a set'
@@ -61,7 +63,10 @@ def test_get_words():
 
 
 def test_get_shortlisted_words():
-    """ Assert that the shortlisted words dict is a dictionary with at least one key """
+    """
+    Assert that the shortlisted words dict is a dictionary with at
+    least one key
+    """
     words = logic.get_words()
     assert isinstance(words, set), 'First input to get_shortlisted_words() should be a set'
     shortlisted_words = logic.get_shortlisted_words(words, 'AEIBCDFGH')
@@ -70,7 +75,9 @@ def test_get_shortlisted_words():
 
 
 def test_get_longest_possible_word(shortlisted_words: list):
-    """ Assert that one of the longest possible words is a string """
+    """
+    Assert that one of the longest possible words is a string
+    """
     longest_possible_word = logic.get_longest_possible_word(shortlisted_words)
     assert isinstance(shortlisted_words, list), 'Fixture should be set up correctly as a list'
     assert longest_possible_word, 'Should exist'
@@ -81,7 +88,9 @@ def test_get_longest_possible_word(shortlisted_words: list):
 
 @given(word_len=st.integers(min_value=1, max_value=9))
 def test_get_game_score(word_len: int):
-    """ Asserts the correct game score is returned """
+    """
+    Asserts the correct game score is returned
+    """
     game_score = logic.get_game_score(word_len)
     if word_len == 9:
         assert game_score == 18
@@ -105,15 +114,16 @@ def test_get_lemmas_response_json(word: str):
 @pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
 def test_lookup_definition_data(word: str = 'strove'):
     """
-    Asserts that given an example of a word in its alternative form (i.e. past tense
-    form or plural verbs form), tests the definitions component of the Oxford Dictionaries
-    API to ensure it retrieves its main form's definition and word classification.
+    Asserts that given an example of a word in its alternative form
+    (i.e. past tense form or plural verbs form), tests the definitions
+    component of the Oxford Dictionaries API to ensure it retrieves
+    its main form's definition and word classification.
 
-    In this example, 'strove' is given as its past tense form, however 'strive' is
-    looked up as its main form.
+    In this example, 'strove' is given as its past tense form, however
+    'strive' is looked up as its main form.
 
-    Another case, could be 'strives' is given as its plural verb form, however 'strive'
-    is looked up as its main form.
+    Another case, could be 'strives' is given as its plural verb form,
+    however 'strive' is looked up as its main form.
     """
     assert isinstance(word, str)
     definition = logic.lookup_definition_data(word)
@@ -125,9 +135,9 @@ def test_lookup_definition_data(word: str = 'strove'):
 
 def test_get_result():
     """
-    Asserts the correct string is returned based upon the possibilities of the
-    achieved word lengths for the player and the computer. At this stage, the words
-    have been validated for eligibility.
+    Asserts the correct string is returned based upon the possibilities
+    of the achieved word lengths for the player and the computer. At
+    this stage, the words have been validated for eligibility.
     """
     result = logic.get_result(player_word='this', comp_word='the')
     assert result == 'You win'

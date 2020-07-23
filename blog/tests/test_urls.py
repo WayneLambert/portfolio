@@ -1,12 +1,12 @@
 from django.urls import reverse
 
-from blog.views import (CategoryPostListView, ContentsListView, HomeView, IndexListView,
-                        PostCreateView, PostDeleteView, PostDetailView, PostUpdateView,
-                        SearchResultsView, UserPostListView)
+from blog.views import (CategoryPostListView, ContentsListView, HomeView,
+                        IndexListView, PostCreateView, PostDeleteView,
+                        PostDetailView, PostUpdateView, SearchResultsView,
+                        UserPostListView)
 
 
 class TestUrls:
-
     def test_blog_home(self):
         """ Verify that the `home` url invokes intended view """
         path = reverse('blog:home')
