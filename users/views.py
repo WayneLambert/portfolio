@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render
 from django.template.response import TemplateResponse
 from django.urls import reverse
@@ -42,6 +41,14 @@ class ProfileView(DetailView):
 
 @login_required
 def profile_update(request, **kwargs):
+    """
+    A successful post request of the updates the DB and redirects the
+    user to their profile page.
+
+    Any user attempting to GET the profile update page of another user,
+    whether present in the DB or not, will receive a 404 error. They
+    should have no knowledge of whether a username exists in the DB.
+    """
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(
@@ -56,9 +63,9 @@ def profile_update(request, **kwargs):
                 user_form = UserUpdateForm(instance=request.user)
                 profile_form = ProfileUpdateForm(instance=request.user.user)
             else:
-                raise PermissionDenied()
+                user_form, profile_form = None
         except:
-            return TemplateResponse(request, template='errors/403.html', status=403)
+            return TemplateResponse(request, template='errors/404.html', status=404)
 
     context = {
         'user_form': user_form,
