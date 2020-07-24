@@ -13,8 +13,8 @@ from pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
                          PrivacyPolicyView, ReadingListView,
                          RouletteReviewView, ScrapingReviewView,
                          SitePageNotFoundView, SitePermissionDeniedView,
-                         SoftwareSkillsView, TextAnalysisReviewView)
-
+                         SoftwareSkillsView, TextAnalysisReviewView,
+                         handler500)
 
 pytestmark = pytest.mark.django_db
 

@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
 from blog.models import Post
@@ -89,3 +90,8 @@ class SitePermissionDeniedView(TemplateView):
 
 class SitePageNotFoundView(TemplateView):
     template_name = 'errors/404.html'
+
+def handler500(request):
+    response = render(request, template_name='errors/500.html', context={})
+    response.status_code = 500
+    return response

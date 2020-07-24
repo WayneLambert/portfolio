@@ -13,6 +13,7 @@ from .settings import ADMIN_ALIAS
 
 handler403 = SitePermissionDeniedView.as_view()
 handler404 = SitePageNotFoundView.as_view()
+handler500 = 'pages.views.handler500'
 
 
 urlpatterns = [

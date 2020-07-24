@@ -7,31 +7,25 @@ assignees: WayneLambert
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
-
+**Please give a clear and concise description of what the bug is.**
 
 **What steps did you take for the bug to happen?**
 
+**What behaviour did you expect to happen?**
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**If applicable, add screenshots to help explain your problem.**
 
+**Desktop (especially, if it is a front-end bug, please complete the following information):**
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
-
-
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+- OS: [e.g. Mac OS, Windows, Ubuntu]
+- Browser [e.g. Firefox, Chrome, Safari, Edge]
+- Version [e.g. 75]
 
 **Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
 
-**Additional context**
-Add any other context about the problem here.
+- Device: [e.g. iPhoneX]
+- OS: [e.g. iOS13.6]
+- Browser [e.g. Firefox, Chrome, Safari, Edge]
+- Version [e.g. 75]
+
+**Please add any other context you think might be useful about the problem here.**

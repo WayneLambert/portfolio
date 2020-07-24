@@ -8201,7 +8201,7 @@ a.cv-link {
   display: flex;
   flex-direction: column; }
 
-h1 {
+.error-code {
   text-transform: uppercase;
   background: repeating-linear-gradient(45deg, #f6d200, #f6d200 10px, #181617 10px, #181617 20px);
   -webkit-background-clip: text;
@@ -8209,9 +8209,9 @@ h1 {
   /*animation: move 5s ease infinite;*/
   font-size: 300px;
   margin: 0;
-  line-height: .7;
+  line-height: .8;
   position: relative; }
-  h1:before, h1:after {
+  .error-code:before, .error-code:after {
     content: "Caution";
     background-color: #f6d200;
     color: #181617;
@@ -8225,13 +8225,13 @@ h1 {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) rotate(20deg); }
-  h1:before {
+  .error-code:before {
     content: "";
     padding: 70px 130px;
     background: repeating-linear-gradient(45deg, #f6d200, #f6d200 10px, #181617 10px, #181617 20px);
     box-shadow: 0px 0px 10px #181617; }
-  h1 span:before,
-  h1 span:after {
+  .error-code span:before,
+  .error-code span:after {
     content: "";
     width: 8px;
     height: 8px;
@@ -8244,14 +8244,46 @@ h1 {
     top: 20%;
     z-index: 3;
     box-shadow: 0px 60px 0 0px; }
-  h1 span:before {
+  .error-code span:before {
     left: 37%;
     transform: rotate(22deg);
     top: -44%; }
-  h1 span:after {
+  .error-code span:after {
     right: 34%;
     transform: rotate(22deg);
     top: 3%; }
+
+.error-screen-500 {
+  background-color: #1762dd;
+  color: white;
+  font-family: 'Arial Black';
+  text-align: center; }
+
+.error-screen-container {
+  padding-top: 4em;
+  width: 100%;
+  display: block;
+  margin: 0 auto; }
+
+.error-num {
+  font-size: 8em; }
+
+.eye {
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  width: 100px; }
+  .eye::after {
+    background: #000;
+    border-radius: 50%;
+    bottom: 56.1px;
+    content: ' ';
+    height: 33px;
+    position: absolute;
+    right: 33px;
+    width: 33px; }
 
 @media (min-width: 576px) {
   .footer {
@@ -8495,5 +8527,7 @@ body.dark-mode {
     background: #1e2a3a; }
   body.dark-mode .bottom-bar {
     background: #1a2533; }
+  body.dark-mode .error-screen-container {
+    background: #1e2a3a; }
 
 /*# sourceMappingURL=theme-3.css.map */

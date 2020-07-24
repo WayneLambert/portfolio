@@ -2,7 +2,7 @@ $font: 'Poppins',
 sans-serif;
 
 
-h1 {
+.error-code {
   text-transform: uppercase;
   background: repeating-linear-gradient(45deg,
       #f6d200,
@@ -14,7 +14,7 @@ h1 {
   /*animation: move 5s ease infinite;*/
   font-size: 300px;
   margin: 0;
-  line-height: .7;
+  line-height: .8;
   position: relative;
 
   &:before,
@@ -67,5 +67,45 @@ h1 {
     right: 34%;
     transform: rotate(22deg);
     top: 3%;
+  }
+}
+
+
+// 500 Error Page
+.error-screen-500 {
+  background-color: $theme-color-primary;
+  color: white;
+  font-family: 'Arial Black';
+  text-align: center;
+}
+
+.error-screen-container {
+  padding-top: 4em;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.error-num {
+  font-size: 8em;
+}
+
+.eye {
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  width: 100px;
+
+  &::after {
+    background: #000;
+    border-radius: 50%;
+    bottom: 56.1px;
+    content: ' ';
+    height: 33px;
+    position: absolute;
+    right: 33px;
+    width: 33px;
   }
 }

@@ -258,9 +258,13 @@ body.dark-mode {
   .footer {
     background: $dark-mode-bg-secondary;
   }
-
+  
   .bottom-bar {
     background: darken($dark-mode-bg-secondary, 2%);
+  }
+  
+  .error-screen-container {
+    background: $dark-mode-bg-secondary;
   }
 
 }
