@@ -14,8 +14,8 @@ from django.contrib import messages
 def check_chars(request, players_calc: str) -> bool:
     """
     Checks that the characters entered by the player are valid.
-    If valid, game progresses. If invalid, help message is displayed
-    to the player.
+    - If valid, the game's processing logic continues.
+    - If invalid, help message is displayed to the player.
     """
     pattern = r'^[0-9()\+\-\*\/]*$'
     match_set = re.search(pattern, players_calc)
@@ -26,6 +26,25 @@ def check_chars(request, players_calc: str) -> bool:
             "Only arithmetic operators, digits, and rounded brackets are permitted characters."
         )
         return False
+    return True
+
+
+def check_legal_chars_seq(request, players_calc: str) -> bool:
+    """
+    Checks for known illegal character sequences entered by the player.
+    - If valid, the game's processing logic continues.
+    - If invalid, help message is displayed to the player.
+    """
+    patterns = ['+)', '-)', '*)', '/)']
+    for pattern in patterns:
+        if pattern in players_calc:
+            messages.add_message(
+                request,
+                messages.INFO,
+                f"The string sequence of {pattern} is an invalid one. " +
+                "Please check the calculation string and resubmit."
+            )
+            return False
     return True
 
 
@@ -58,7 +77,8 @@ def calc_entered_is_valid(request, players_calc) -> bool:
     players_calc = strip_spaces(request, players_calc)
     has_valid_chars = check_chars(request, players_calc)
     has_valid_brackets = check_brackets(request, players_calc)
-    if all([has_valid_chars, has_valid_brackets]):
+    has_valid_sequences = check_legal_chars_seq(request, players_calc)
+    if all([has_valid_chars, has_valid_brackets, has_valid_sequences]):
         return True
     messages.add_message(request, messages.INFO, message=f"\n{players_calc}",
                          extra_tags=f"Your Calculation Entered: {players_calc}")
