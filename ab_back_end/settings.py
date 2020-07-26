@@ -16,8 +16,6 @@ ALLOWED_HOSTS = [
     'waynelambert.dev',
     'www.waynelambert.dev',
     # Local development
-    '172.31.0.4',
-    '127.0.0.1',
     'localhost',
     '0.0.0.0',
 ]

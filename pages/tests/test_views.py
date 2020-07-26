@@ -5,16 +5,14 @@ from django.urls import reverse
 
 import blog.views as blog_views
 from ab_back_end.tests.helpers import lilo_users, user_types
-from pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
-                         BlogReviewView, CountdownLettersReviewView,
-                         CountdownNumbersReviewView, DataScienceReviewView,
-                         FrontEndSkillsView, HomeView,
-                         InfrastructureSkillsView, PortfolioView,
-                         PrivacyPolicyView, ReadingListView,
-                         RouletteReviewView, ScrapingReviewView,
-                         SitePageNotFoundView, SitePermissionDeniedView,
-                         SoftwareSkillsView, TextAnalysisReviewView,
-                         handler500)
+from pages.views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewView,
+                         CountdownLettersReviewView, CountdownNumbersReviewView,
+                         DataScienceReviewView, FrontEndSkillsView, HomeView,
+                         InfrastructureSkillsView, PortfolioView, PrivacyPolicyView,
+                         ReadingListView, RouletteReviewView, ScrapingReviewView,
+                         SiteBadRequestView, SitePageNotFoundView,
+                         SitePermissionDeniedView, SoftwareSkillsView,
+                         TextAnalysisReviewView)
 
 pytestmark = pytest.mark.django_db
 
@@ -165,6 +163,14 @@ class TestReviewsPagesViews:
 
 @pytest.mark.parametrize(argnames='lilo_users', argvalues=lilo_users, ids=user_types)
 class TestCustomErrorPages:
+    def test_400_page(self, request, factory, lilo_users):
+        """ Asserts a user GETs a 400 page when resource is not found on the server """
+        path = reverse('pages:home')
+        request = factory.get(path)
+        request.user = lilo_users
+        response = SiteBadRequestView.as_view()(request)
+        assert response.status_code == 200, 'the custom 400 template should GET `OK` response'
+
     def test_403_page(self, request, factory, post, lilo_users):
         """ Asserts a user GETs a 403 page following a forbidden response """
         kwargs = {'slug': post.slug}

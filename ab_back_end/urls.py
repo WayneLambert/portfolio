@@ -6,11 +6,11 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 
 from blog.sitemap import CategorySitemap, PostSitemap
-from pages.views import SitePageNotFoundView, SitePermissionDeniedView
+from pages.views import SiteBadRequestView, SitePageNotFoundView, SitePermissionDeniedView
 
 from .settings import ADMIN_ALIAS
 
-
+handler400 = SiteBadRequestView.as_view()
 handler403 = SitePermissionDeniedView.as_view()
 handler404 = SitePageNotFoundView.as_view()
 handler500 = 'pages.views.handler500'

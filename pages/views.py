@@ -84,6 +84,10 @@ class DataScienceReviewView(TemplateView):
 
 
 # Custom Error Templates
+class SiteBadRequestView(TemplateView):
+    template_name = 'errors/400.html'
+
+
 class SitePermissionDeniedView(TemplateView):
     template_name = 'errors/403.html'
 

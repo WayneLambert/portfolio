@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} | Bad Request{% endblock title %}
+
+{% block content %}
+  <article class="blog-post px-3 py-3 p-md-5">
+    <div class="container theme-bg-light single-col-max-width mt-3">
+      <section class="cta-section py-5">
+        <div class="container text-center single-col-max-width">
+          <h5><b><u>HTTP 400: Bad Request</u>:</b></h5>
+          <p>Please go back on your browser or navigate to another page.</p>
+          <div class="error-img mt-3 mb-5">
+            <img class="img-fluid" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/400.png"
+            alt="400 Image">
+          </div>
+          <h6>Here are a few places you might want to go...</h6>
+          <div class="mb-2 py-2">
+            <a class="btn btn-primary mr-2 mb-3" href="{% url 'pages:portfolio' %}">
+              <i class="fas fa-briefcase mr-1"></i>
+              <span class="d-none d-md-inline">Portfolio</span>
+            </a>
+            <a class="btn btn-success mr-2 mb-3" href="{% url 'blog:home' %}">
+              <i class="fas fa-blog mr-1"></i>
+              <span class="d-none d-md-inline">Blog</span>
+            </a>
+            <a class="btn btn-link btn-github mr-2 mb-3" href="https://github.com/WayneLambert/portfolio" target="_blank">
+              <i class="fa fa-github mr-1"></i>
+              <span class="d-none d-md-inline">Code</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </article>
+{% endblock content %}
