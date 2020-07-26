@@ -7,6 +7,7 @@ from django.urls import reverse
 
 from . import logic
 from .forms import NumberSelectionForm, SelectedNumbersForm
+from .models import NumbersGame
 from .validations import calc_entered_is_valid, get_permissible_nums, is_calc_valid
 
 
@@ -60,7 +61,8 @@ def results_screen(request):
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
     comp_num_achieved = int(eval(best_solution))
     solution_str = f"""
-        {best_solution.replace('*', chr(215)).replace('/', chr(247))} = {comp_num_achieved}"""
+        {best_solution.replace(
+            '*', chr(215)).replace('/', chr(247))} = {comp_num_achieved}""".strip()
     answers = {
         'player_num_achieved': player_num_achieved,
         'comp_num_achieved': comp_num_achieved,
@@ -83,5 +85,7 @@ def results_screen(request):
         'comp_score': comp_score,
         'game_result': game_result,
     }
+
+    NumbersGame.create_record(context)
 
     return render(request, 'countdown_numbers/results.html', context)
