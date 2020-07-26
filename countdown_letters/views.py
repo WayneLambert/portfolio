@@ -1,10 +1,8 @@
-from urllib.parse import urlencode
-
 from django.shortcuts import redirect, render
-from django.urls import reverse
 
-from . import logic, validations
+from . import logic, utils, validations
 from .forms import LetterSelectionForm, SelectedLettersForm
+from .models import LettersGame
 
 
 def selection_screen(request):
@@ -12,11 +10,7 @@ def selection_screen(request):
     if request.method == 'POST':
         form = LetterSelectionForm(request.POST)
         if form.is_valid():
-            num_vowels_selected = form.cleaned_data.get('num_vowels_selected')
-            letters_chosen = logic.get_letters_chosen(num_vowels=num_vowels_selected)
-            base_url = reverse('countdown_letters:game')
-            letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
-            full_url = f"{base_url}?{letters_chosen_url}"
+            full_url = utils.build_game_screen_url(form)
             return redirect(full_url)
     else:
         form = LetterSelectionForm()
@@ -30,15 +24,7 @@ def game_screen(request):
     if request.method == 'POST':
         form = SelectedLettersForm(request.POST)
         if form.is_valid():
-            base_url = reverse('countdown_letters:results')
-
-            letters_chosen = request.META['HTTP_REFERER'][-logic.GameSetup.MAX_GAME_LETTERS:]
-            letters_chosen_url = urlencode({'letters_chosen': letters_chosen})
-
-            players_word = form.cleaned_data.get('players_word').upper()
-            players_word_url = urlencode({'players_word': players_word})
-
-            full_url = f"{base_url}?{letters_chosen_url}&{players_word_url}"
+            full_url = utils.build_results_screen_url(request, form)
             return redirect(full_url)
 
     context = {'form': form}
@@ -48,7 +34,6 @@ def game_screen(request):
 
 def results_screen(request):
     letters_chosen: str = request.GET['letters_chosen']
-    file_words = logic.get_words()
 
     players_word: str = request.GET['players_word']
     valid_word = validations.is_in_oxford_api(players_word)
@@ -59,7 +44,7 @@ def results_screen(request):
     else:
         player_word_len, player_score = 0, 0
 
-    shortlisted_words = logic.get_shortlisted_words(file_words, letters_chosen)
+    shortlisted_words = logic.get_shortlisted_words(logic.get_words(), letters_chosen)
     comp_word = logic.get_longest_possible_word(shortlisted_words)
     if comp_word:
         winning_word = comp_word if len(comp_word) > player_word_len else players_word
@@ -80,5 +65,7 @@ def results_screen(request):
         'definition_data': definition_data,
         'result': logic.get_result(players_word, comp_word),
     }
+
+    LettersGame.create_record(context)
 
     return render(request, 'countdown_letters/results.html', context)
