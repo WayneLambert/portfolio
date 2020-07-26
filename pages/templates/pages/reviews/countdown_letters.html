@@ -82,6 +82,9 @@
             API (British English). Sometimes this means looking up the associated lemma version of the word.
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Creates a database entry recording the details of the game.
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Unlike the TV game show, there is no 30 second clock. This is intended so that recruiters
             and hiring managers don't have to wait for a countdown timer to expire. I could build in
             a JavaScript countdown timer if I wanted to have this functionality.
@@ -142,14 +145,20 @@
             were genuine Django views, game logic functions, or validations. This seemed like a
             sensible approach to refactor the game's code making it more maintainable in the future.
           </p>
+          <p>
+            A further development led me to create a database model to store the results of each
+            of the games for reference and later retrieval. This is an example of using a database
+            table to store a program's logic rather than to capture user-defined input from forms.
+          </p>
         </div>
 
         <!-- Project Evaluation -->
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
           <p>
-            I have an idea whereby I will capture the results of the game and post that data back
-            to the database to record the details about each of the games that are played.
+            I am largely happy with the game. I would like to get a definitive list of permissible
+            words from the Oxford Dictionaries API as that could reduce the number of API calls
+            to check for a word's presence in the dictionary.
           </p>
         </div>
 
@@ -186,7 +195,7 @@
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">API:</td>
-            <td>Oxford Dictionary</td>
+            <td>Oxford Dictionaries</td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Infrastructure:</td>

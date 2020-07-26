@@ -103,6 +103,9 @@
             Each numbered tile can only be used once in the calculation
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Creates a database entry recording the details of the game.
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             The scoring is as follows:
             <ul class="mb-0 no-bullets ml-2">
               <li><i class="fas fa-caret-right fa-fw mr-2"></i>
@@ -179,14 +182,22 @@
             It involves using some of Python's non-standard data structures to efficiently
             perform the calculations.
           </p>
+          <p>
+            A further development led me to create a database model to store the results of each
+            of the games for reference and later retrieval. This is an example of using a database
+            table to store a program's logic rather than to capture user-defined input from forms.
+          </p>
         </div>
 
         <!-- Project Evaluation -->
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
           <p>
-            I have an idea whereby I will capture the results of the game and post that data
-            back to the database to record the details about each of the games that are played.
+            I am largely happy with the project, however, I would like to use hypothesis to test
+            against some possible edge cases for a player's calculation input. Since there's a
+            large combination of operators, brackets, and numbers that can be applied to a game's
+            calculation, there's likely to be some sequence of characters that I haven't thought
+            about testing.
           </p>
         </div>
 
