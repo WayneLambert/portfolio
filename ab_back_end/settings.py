@@ -264,13 +264,11 @@ CKEDITOR_IMAGE_BACKEND = 'pillow'
 CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 CKEDITOR_CONFIGS = {
     'default': {
-        'skin': 'moono-lisa',
         'toolbar': 'Custom',
         'width': '100%',
         'height': '400',
         'toolbar_Custom': [
-            ['Styles', 'Format', 'Font', 'Size', 'Bold', 'Italic', 'Underline', 'Strike',
-             'Undo', 'Redo'],
+            ['Styles', 'Format', 'Font', 'Bold', 'Italic', 'Underline', 'Strike', 'Undo', 'Redo'],
             ['Find', 'Replace'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
