@@ -22,25 +22,3 @@ class LettersGame(models.Model):
     @property
     def entry_year(self) -> int:
         return self.entry_date.year
-
-    @staticmethod
-    def create_record(context: dict):
-        """
-        Following context dictionary validations within the view
-        process, posts the results to the database for reference and
-        later retrieval.
-        """
-        LettersGame.objects.create(
-            letters_chosen=context['letters_chosen'],
-            players_word=context['players_word'],
-            comp_word=context['comp_word'],
-            eligible_answer=context['eligible_answer'],
-            winning_word=context['winning_word'],
-            player_word_len=context['player_word_len'],
-            comp_word_len=context['comp_word_len'],
-            player_score=context['player_score'],
-            comp_score=context['comp_score'],
-            definition=context['definition_data']['definition'],
-            word_class=context['definition_data']['word_class'],
-            result=context['result'],
-        )

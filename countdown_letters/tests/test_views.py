@@ -3,6 +3,8 @@ import pytest
 from django.urls import reverse
 
 
+pytestmark = pytest.mark.django_db
+
 def test_get_selection_screen_view(client, request):
     """ Asserts a site visitor can GET the `selection` screen """
     path = reverse('countdown_letters:selection')
@@ -22,6 +24,7 @@ def test_get_game_screen_view(client, request):
 
 
 @pytest.mark.slow(reason='Processing the view retrieves word defintions from Oxford API')
+@pytest.mark.django_db
 def test_get_results_screen_view(client, request):
     """ Asserts a site visitor can GET the `results` screen """
     path = reverse('countdown_letters:results')

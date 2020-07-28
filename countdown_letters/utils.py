@@ -3,6 +3,7 @@ from urllib.parse import urlencode
 from django.urls import reverse
 
 from . import logic
+from .models import LettersGame
 
 
 def build_game_screen_url(form) -> str:
@@ -32,3 +33,25 @@ def build_results_screen_url(request, form) -> str:
     players_word_url = urlencode({'players_word': players_word})
 
     return f"{base_url}?{letters_chosen_url}&{players_word_url}"
+
+
+def create_record(context: dict):
+    """
+    Following context dictionary validations within the view
+    process, posts the results to the database for reference and
+    later retrieval.
+    """
+    LettersGame.objects.create(
+        letters_chosen=context['letters_chosen'],
+        players_word=context['players_word'],
+        comp_word=context['comp_word'],
+        eligible_answer=context['eligible_answer'],
+        winning_word=context['winning_word'],
+        player_word_len=context['player_word_len'],
+        comp_word_len=context['comp_word_len'],
+        player_score=context['player_score'],
+        comp_score=context['comp_score'],
+        definition=context['definition_data']['definition'],
+        word_class=context['definition_data']['word_class'],
+        result=context['result'],
+    )

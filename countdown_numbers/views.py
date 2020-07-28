@@ -5,7 +5,7 @@ from urllib.parse import urlencode
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from . import logic
+from . import logic, utils
 from .forms import NumberSelectionForm, SelectedNumbersForm
 from .models import NumbersGame
 from .validations import calc_entered_is_valid, get_permissible_nums, is_calc_valid
@@ -86,6 +86,6 @@ def results_screen(request):
         'game_result': game_result,
     }
 
-    NumbersGame.create_record(context)
+    utils.create_record(context)
 
     return render(request, 'countdown_numbers/results.html', context)

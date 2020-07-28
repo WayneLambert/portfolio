@@ -2,7 +2,6 @@ from django.shortcuts import redirect, render
 
 from . import logic, utils, validations
 from .forms import LetterSelectionForm, SelectedLettersForm
-from .models import LettersGame
 
 
 def selection_screen(request):
@@ -66,6 +65,6 @@ def results_screen(request):
         'result': logic.get_result(players_word, comp_word),
     }
 
-    LettersGame.create_record(context)
+    utils.create_record(context)
 
     return render(request, 'countdown_letters/results.html', context)
