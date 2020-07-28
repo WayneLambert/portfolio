@@ -53,7 +53,7 @@ def test_profile_update_view_inaccessible_another_user(request, factory, li_prim
     request = factory.get(path)
     request.user = li_sec_user
     response = profile_update(request, kwargs=li_prim_user.username)
-    assert response.status_code == 403, 'Should return with an `forbidden` status code'
+    assert response.status_code == 404, 'Should return with a `page not found` status code'
 
 
 @pytest.mark.django_db
