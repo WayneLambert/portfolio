@@ -4,7 +4,6 @@ about: Create a bug report to help me improve my portfolio
 title: ''
 labels: bug
 assignees: WayneLambert
-
 ---
 
 **Please give a clear and concise description of what the bug is.**
