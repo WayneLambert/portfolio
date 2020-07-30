@@ -276,7 +276,7 @@ CKEDITOR_CONFIGS = {
              'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'],
-            ['RemoveFormat', 'CodeSnippet', 'Maximize', 'Preview'],
+            ['RemoveFormat', 'CodeSnippet', 'Maximize'],
         ],
         'extraPlugins': ['codesnippet', 'maximize'],
     }
