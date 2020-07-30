@@ -260,8 +260,6 @@ DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_i
 # CK Editor Settings
 AWS_QUERYSTRING_AUTH = False
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_IMAGE_BACKEND = 'pillow'
-CKEDITOR_THUMBNAIL_SIZE = (300, 300)
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
