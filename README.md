@@ -72,5 +72,3 @@ If you'd like to find out more about me, you can also [read my 'About Me' page](
 ## License
 
 Copyright (c) Wayne Lambert. All rights reserved.
-
-Licensed under the [MIT](/LICENSE) License.
