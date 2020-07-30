@@ -1,10 +1,12 @@
+# pylint: disable=redefined-outer-name
 import pytest
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.models import AnonymousUser
+from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
 from ab_back_end.tests.helpers import lilo_users, user_types
-from users.views import ProfileView, UserRegisterView, profile_update
+from users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 pytestmark = pytest.mark.django_db
 
@@ -29,7 +31,7 @@ class TestUserRegisterView:
 class TestProfileView:
     def test_profile(self, request, factory, li_prim_user):
         """ Verify that the `profile` view is publicly accessible """
-        kwargs={'username': li_prim_user.username}
+        kwargs = {'username': li_prim_user.username}
         path = reverse('blog:users:profile', kwargs=kwargs)
         request = factory.get(path)
         request.username = lilo_users
@@ -37,23 +39,36 @@ class TestProfileView:
         assert response.status_code == 200, 'Should return with an `OK` status code'
 
 
-def test_profile_update_view_inaccessible_unauth_user(request, factory, li_prim_user):
-    """ Verify that the `profile update` view is inaccessible by an unauthenticated user """
-    path = reverse('blog:users:profile_update', kwargs={'username': li_prim_user.username})
-    request = factory.get(path)
-    request.user = AnonymousUser()
-    response = profile_update(request, kwargs=li_prim_user.username)
-    assert response.status_code == 302, 'Should return with an `redirect` status code'
-    assert '/login/' in response.url, 'Should redirect to login page'
+class TestProfileUpdateView:
+    def test_profile_update_view_accessible_auth(self, request, factory, li_prim_user):
+        """ Verify that the `profile update` view is accessible by an authenticated user """
+        kwargs = {'username': li_prim_user.username}
+        path = reverse('blog:users:profile_update', kwargs=kwargs)
+        request = factory.get(path)
+        request.user = li_prim_user
+        response = ProfileUpdateView.as_view()(request, **kwargs)
+        assert response.status_code == 200, 'Should return an `OK` status code'
 
+    def test_profile_update_view_inaccessible_unauth(self, request, factory, li_prim_user):
+        """ Verify that the `profile update` view is inaccessible by an unauthenticated user """
+        kwargs = {'username': li_prim_user.username}
+        path = reverse('blog:users:profile_update', kwargs=kwargs)
+        request = factory.get(path)
+        request.user = AnonymousUser()
+        response = ProfileUpdateView.as_view()(request, **kwargs)
+        assert response.status_code == 302, 'Should return with an `redirect` status code'
+        assert '/login/' in response.url, 'Should redirect to login page'
 
-def test_profile_update_view_inaccessible_another_user(request, factory, li_prim_user, li_sec_user):
-    """ Verify that the `profile update` view is inaccessible by an unauthenticated user """
-    path = reverse('blog:users:profile_update', kwargs={'username': li_prim_user.username})
-    request = factory.get(path)
-    request.user = li_sec_user
-    response = profile_update(request, kwargs=li_prim_user.username)
-    assert response.status_code == 404, 'Should return with a `page not found` status code'
+    def test_profile_update_view_inaccessible_another(
+            self, request, factory, li_prim_user, li_sec_user):
+        """ Verify that the `profile update` view is inaccessible by an unauthenticated user """
+        kwargs = {'username': li_prim_user.username}
+        path = reverse('blog:users:profile_update', kwargs=kwargs)
+        request = factory.get(path)
+        request.user = li_sec_user
+        with pytest.raises(PermissionDenied):
+            response = ProfileUpdateView.as_view()(request, **kwargs)
+            assert response.status_code == 403, 'Should return a `Permission Denied` status code'
 
 
 @pytest.mark.django_db

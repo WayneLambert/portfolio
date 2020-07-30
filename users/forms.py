@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from .models import Profile
 
@@ -13,7 +13,7 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
 
     def clean_username(self):
@@ -31,7 +31,7 @@ class UserRegisterForm(UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         data = self.cleaned_data
-        user = User(
+        user = get_user_model()(
             username=data['username'],
             email=data['email'],
             first_name=data['first_name'],
@@ -48,7 +48,7 @@ class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ['username', 'email', 'first_name', 'last_name']
 
     def clean_username(self):

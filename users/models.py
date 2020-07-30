@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
 from django.db.models import ObjectDoesNotExist
@@ -12,7 +12,7 @@ class Profile(models.Model):
         USERNAME = 0
         FULL_NAME = 1
 
-    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), related_name='user', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True)
     author_view = models.IntegerField(choices=AuthorView.choices, default=0)
     profile_picture = models.ImageField(

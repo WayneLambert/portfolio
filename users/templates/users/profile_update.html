@@ -25,18 +25,18 @@
           <fieldset class="form-group">
             <div class="form-row">
               <div class="form-group col-md-12 mb-0">
-                {{ user_form.email|as_crispy_field }}
+                {{ userupdateform.email|as_crispy_field }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-4 mb-0">
-                {{ user_form.username|as_crispy_field }}
+                {{ userupdateform.username|as_crispy_field }}
               </div>
               <div class="form-group col-md-4 mb-0">
-                {{ user_form.first_name|as_crispy_field }}
+                {{ userupdateform.first_name|as_crispy_field }}
               </div>
               <div class="form-group col-md-4 mb-0">
-                {{ user_form.last_name|as_crispy_field }}
+                {{ userupdateform.last_name|as_crispy_field }}
               </div>
             </div>
             {% include 'components/profile_picture.html' %}
