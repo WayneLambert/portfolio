@@ -16,9 +16,9 @@ from django.utils.http import urlencode
 
 def get_numbers_chosen(num_from_top: int) -> list:
     """
-    Returns an appropriate proportion of numbers from the top and
-    bottom row within the randomised game selection according to
-    their frequency of existence
+    Returns an appropriate proportion of numbers from the top and bottom
+    row within the randomised game selection according to their
+    frequency of existence
     """
 
     MAX_GAME_NUMBERS: int = 6
@@ -70,8 +70,8 @@ def get_game_nums(request) -> list:
 
 def get_player_num_achieved(request) -> int:
     """
-    Calculates the number calculated by the player according to
-    their game's input answer
+    Calculates the number calculated by the player according to their
+    game's input answer
     """
     players_calc = request.GET.get('players_calculation')
     return int(eval(players_calc))

@@ -1,7 +1,7 @@
 import math
 
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.core.validators import MinLengthValidator
 from django.db import models
@@ -20,7 +20,7 @@ class Category(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Post(models.Model):
@@ -45,7 +45,8 @@ class Post(models.Model):
         help_text='For bests results, use an image that is 1,200px wide x 600px high',
     )
     status = models.IntegerField(choices=STATUS, default=0)
-    author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        get_user_model(), related_name='author', on_delete=models.CASCADE)
     categories = models.ManyToManyField(
         Category,
         related_name='posts',
@@ -56,7 +57,7 @@ class Post(models.Model):
         ordering = ['-updated_date', '-publish_date']
 
     def __str__(self):
-        return self.title
+        return str(self.title)
 
     @property
     def word_count(self) -> int:

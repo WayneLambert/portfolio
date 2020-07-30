@@ -127,8 +127,7 @@ def get_shortlisted_words(words: set, letters: str) -> list:
         letters_in_tested_word = list(tested_word.upper())
         if len(letters_in_tested_word) < len(letters_in_selection):
             common_letters = list(
-                (Counter(letters_in_selection) & \
-                    Counter(letters_in_tested_word)).elements())
+                (Counter(letters_in_selection) & Counter(letters_in_tested_word)).elements())
             letter_count = len(common_letters)
             if letter_count >= cumulative_max_letter_count and len(
                     tested_word) == len(common_letters):

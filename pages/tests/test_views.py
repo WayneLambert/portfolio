@@ -177,7 +177,7 @@ class TestCustomErrorPages:
         path = reverse('blog:post_update', kwargs=kwargs)
         request = factory.get(path)
         request.user = lilo_users
-        with pytest.raises(PermissionDenied) as exc_info:
+        with pytest.raises(PermissionDenied):
             response = blog_views.PostUpdateView.as_view()(request, **kwargs)
         response = SitePermissionDeniedView.as_view()(request)
         assert response.status_code == 200, 'the custom 403 template should GET `OK` response'

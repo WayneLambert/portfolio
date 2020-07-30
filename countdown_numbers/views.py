@@ -7,7 +7,6 @@ from django.urls import reverse
 
 from . import logic, utils
 from .forms import NumberSelectionForm, SelectedNumbersForm
-from .models import NumbersGame
 from .validations import calc_entered_is_valid, get_permissible_nums, is_calc_valid
 
 

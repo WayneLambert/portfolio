@@ -37,9 +37,8 @@ def build_results_screen_url(request, form) -> str:
 
 def create_record(context: dict):
     """
-    Following context dictionary validations within the view
-    process, posts the results to the database for reference and
-    later retrieval.
+    Following context dictionary validations within the view process,
+    posts the results to the database for reference and later retrieval.
     """
     LettersGame.objects.create(
         letters_chosen=context['letters_chosen'],

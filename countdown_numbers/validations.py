@@ -1,8 +1,7 @@
 """ Countdown Numbers Validations
 
-A collection of functions that are required to validate
-given answers within a game.
-
+A collection of functions that are required to validate given answers
+within a game.
 """
 
 import ast
@@ -97,8 +96,8 @@ def get_permissible_nums(request) -> list:
 
 def get_nums_used(request, players_calc: str) -> list:
     """
-    Returns a list of numbers that have been used to form
-    the player's calculation for the game.
+    Returns a list of numbers that have been used to form the player's
+    calculation for the game.
     """
     nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
     nums_used[:] = (int(item) for item in nums_used if item != '')

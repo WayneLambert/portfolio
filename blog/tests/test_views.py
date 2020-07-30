@@ -23,9 +23,9 @@ class TestHomeView:
 
 @pytest.mark.parametrize(argnames='lilo_users', argvalues=lilo_users, ids=user_types)
 class TestUserPostListView:
-    def test_user_post_list_view(self, request, factory, user, lilo_users):
+    def test_user_post_list_view(self, request, factory, random_user, lilo_users):
         """ Asserts any user can access list of posts authored by username """
-        kwargs = {'username': user.username}
+        kwargs = {'username': random_user.username}
         path = reverse('blog:user_posts', kwargs=kwargs)
         request = factory.get(path)
         request.user = lilo_users

@@ -12,7 +12,7 @@ class NumbersGameAdmin(admin.ModelAdmin):
         'comp_num_achieved', 'game_result', 'entry_date'
     )
     ordering = ('-entry_date',)
-    readonly_fields= [field.name for field in NumbersGame._meta.get_fields()]
+    readonly_fields = [field.name for field in NumbersGame._meta.get_fields()]
 
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '20'})},

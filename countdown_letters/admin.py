@@ -10,7 +10,7 @@ class LettersGameAdmin(admin.ModelAdmin):
     list_display = (
         'letters_chosen', 'players_word', 'comp_word', 'winning_word', 'entry_date')
     ordering = ('-entry_date',)
-    readonly_fields= [field.name for field in LettersGame._meta.get_fields()]
+    readonly_fields = [field.name for field in LettersGame._meta.get_fields()]
 
     formfield_overrides = {
         models.CharField: {'widget': TextInput(attrs={'size': '20'})},
@@ -38,5 +38,6 @@ class LettersGameAdmin(admin.ModelAdmin):
             'fields': ('entry_date', )
         }),
     )
+
 
 admin.site.register(LettersGame, LettersGameAdmin)

@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -69,7 +69,7 @@ class UserPostListView(PostView):
     paginate_orphans = 3
 
     def get_queryset(self):
-        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        user = get_object_or_404(get_user_model(), username=self.kwargs.get('username'))
         return self.queryset.filter(author=user, status=1)
 
 
@@ -100,8 +100,7 @@ class SearchResultsView(PostView):
         if query:
             return self.queryset.filter(
                 Q(title__icontains=query) | Q(content__icontains=query))
-        else:
-            return self.queryset
+        return self.queryset
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)

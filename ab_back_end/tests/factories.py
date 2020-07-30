@@ -1,14 +1,14 @@
 import os
 
 import factory
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
 from contacts.models import Contact
 
 
 class UserFactory(factory.DjangoModelFactory):
     class Meta:
-        model = User
+        model = get_user_model()
 
     email = 'test_email@example.com'
     first_name = 'Wayne'

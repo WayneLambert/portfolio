@@ -3,9 +3,8 @@ from .models import NumbersGame
 
 def create_record(context: dict):
     """
-    Following context dictionary validations within the view
-    process, posts the results to the database for reference and
-    later retrieval.
+    Following context dictionary validations within the view process,
+    posts the results to the database for reference and later retrieval.
     """
     NumbersGame.objects.create(
         game_nums=context['game_nums'],

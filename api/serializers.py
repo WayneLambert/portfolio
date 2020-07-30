@@ -4,19 +4,18 @@ from rest_framework import serializers
 from blog.models import Category, Post
 from users.models import Profile
 
-User = get_user_model()
-
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False, allow_blank=True, read_only=True)
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = (
             'username',
             'first_name',
             'last_name',
         )
+
 
 class ProfileSerializer(serializers.ModelSerializer):
 
@@ -81,7 +80,7 @@ class PostSerializer(serializers.ModelSerializer):
             'categories',
         )
 
-        def get_status(self, obj):
-            return obj.get_status_display()
+    def get_status(self, obj):
+        return obj.get_status_display()
 
-        ordering = ['-updated_date', '-publish_date']
+    ordering = ['-updated_date', '-publish_date']
