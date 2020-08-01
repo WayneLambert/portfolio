@@ -71,3 +71,8 @@ class TestNumbersGame:
         game = mixer.blend(NumbersGame)
         field = game._meta.get_field("entry_date")
         assert isinstance(field, models.DateField), 'Should be a date field'
+
+    def test_entry_year(self):
+        game = mixer.blend(NumbersGame)
+        assert game.entry_year == game.entry_date.year, \
+            "Year should be the same as the entry date's year property"
