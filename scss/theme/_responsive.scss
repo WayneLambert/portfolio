@@ -121,8 +121,14 @@
     .cv-aside {
       border-left: 0;
     }
-    
-  
+
+    .cv-header {
+      .picture {
+        width: 0;
+        visibility: hidden;
+      }
+    }
+
 }
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) {
@@ -139,7 +145,21 @@
       width: 100%;
     }
   }
-  
+
+  .cv-wrapper {
+    padding-top: 0;
+  }
+
+  .cv-header {
+    height: auto;
+  }
+
+  .cv-header .picture {
+    width: 120px;
+    visibility: visible;
+    @include border-radius(4px);
+  }
+
   .profile-teaser .profile-image {
       max-width: 100%;
     }
@@ -181,12 +201,12 @@
       padding-left: 1.875rem;
     }
     
-    .link-mask {
-      display: none !important;
-    }
-    
-    .mobile-is-hidden {
-      display: none;
-    }
-    
+  .link-mask {
+    display: none !important;
+  }
+  
+  .mobile-is-hidden {
+    display: none;
+  }
+
 }

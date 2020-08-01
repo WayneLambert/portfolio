@@ -7840,8 +7840,7 @@ hr {
   .cv-header .picture {
     width: 180px; }
   .cv-header .name {
-    font-size: 2.25rem;
-    letter-spacing: 0.175rem;
+    font-size: 1.75rem;
     font-weight: 700; }
   .cv-header .title {
     font-size: 1.5rem; }
@@ -8357,7 +8356,10 @@ a.cv-link {
   .main-wrapper {
     margin-left: 0; }
   .cv-aside {
-    border-left: 0; } }
+    border-left: 0; }
+  .cv-header .picture {
+    width: 0;
+    visibility: hidden; } }
 
 @media (max-width: 767.98px) {
   .signup-form .form-group {
@@ -8367,6 +8369,14 @@ a.cv-link {
     width: 100%; }
   .signup-form .btn-primary {
     width: 100%; }
+  .cv-wrapper {
+    padding-top: 0; }
+  .cv-header {
+    height: auto; }
+  .cv-header .picture {
+    width: 120px;
+    visibility: visible;
+    border-radius: 4px; }
   .profile-teaser .profile-image {
     max-width: 100%; }
   .header .nav-item .dropdown-menu .dropdown-item {
