@@ -212,6 +212,9 @@ body.dark-mode {
     }
   }
 
+  .cv-header {
+    background: $dark-mode-bg-secondary;
+  }
   
   a.cv-link {
     color: $dark-mode-text-secondary;

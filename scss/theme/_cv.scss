@@ -2,6 +2,50 @@
   border: 1px solid rgba(0, 0, 0, 0.025);
 }
 
+.cv-header {
+  background: $theme-color-primary;
+  color: rgba(256, 256, 256, 0.9);
+  height: 180px;
+
+  .picture {
+    width: 180px;
+  }
+
+  .name {
+    font-size: 2.25rem;
+    letter-spacing: 0.175rem;
+    font-weight: 700;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  a {
+    color: rgba(256, 256, 256, 0.6);
+
+    &:hover {
+      color: white;
+    }
+
+  }
+}
+
+.cv-social {
+  font-size: 0.875rem;
+
+  .fa-container {
+    font-size: 1rem;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    @include border-radius(0.125rem);
+    background: white;
+    color: $theme-color-primary;
+  }
+
+}
+
 .cv-section-heading {
   position: relative;
   padding-left: 1rem;
@@ -20,33 +64,11 @@
    }
 }
 
-.cv-name {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
-  color: $theme-color-primary;
-  
-}
-
-.cv-tagline {
-  font-size: 1.25rem;
-  font-weight: 300;
-}
-
-.cv-contact {
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 0.75rem;
-}
-
 a.cv-link {
   color: $theme-text-color-secondary;
   &:hover {
     color: $theme-color-primary;
   }
-}
-
-.cv-profile-image {
-  max-width: 120px;
 }
 
 .cv-intro {
@@ -76,11 +98,9 @@ a.cv-link {
   
 }
 
-
-.cv-education-list, .cv-awards-list {
+.cv-education-list {
     font-size: 0.875rem;
 }
-
 
 .cv-degree-time-org, .cv-degree-time {
   font-size: 0.75rem;
@@ -88,8 +108,4 @@ a.cv-link {
 
 .cv-lang-list, .cv-interests-list {
   font-size: 0.875rem;
-}
-
-.cv-social-list {
-  font-size: 0.75rem;
 }

@@ -7833,6 +7833,34 @@ hr {
 .cv-wrapper {
   border: 1px solid rgba(0, 0, 0, 0.025); }
 
+.cv-header {
+  background: #1762dd;
+  color: rgba(255, 255, 255, 0.9);
+  height: 180px; }
+  .cv-header .picture {
+    width: 180px; }
+  .cv-header .name {
+    font-size: 2.25rem;
+    letter-spacing: 0.175rem;
+    font-weight: 700; }
+  .cv-header .title {
+    font-size: 1.5rem; }
+  .cv-header a {
+    color: rgba(255, 255, 255, 0.6); }
+    .cv-header a:hover {
+      color: white; }
+
+.cv-social {
+  font-size: 0.875rem; }
+  .cv-social .fa-container {
+    font-size: 1rem;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 0.125rem;
+    background: white;
+    color: #1762dd; }
+
 .cv-section-heading {
   position: relative;
   padding-left: 1rem;
@@ -7849,27 +7877,10 @@ hr {
     left: 0;
     top: 0; }
 
-.cv-name {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 0.1rem;
-  color: #1762dd; }
-
-.cv-tagline {
-  font-size: 1.25rem;
-  font-weight: 300; }
-
-.cv-contact {
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 0.75rem; }
-
 a.cv-link {
   color: #4f4f4f; }
   a.cv-link:hover {
     color: #1762dd; }
-
-.cv-profile-image {
-  max-width: 120px; }
 
 .cv-intro {
   font-size: 0.875rem; }
@@ -7890,7 +7901,7 @@ a.cv-link {
   .cv-aside .item-title {
     font-size: 1rem; }
 
-.cv-education-list, .cv-awards-list {
+.cv-education-list {
   font-size: 0.875rem; }
 
 .cv-degree-time-org, .cv-degree-time {
@@ -7898,9 +7909,6 @@ a.cv-link {
 
 .cv-lang-list, .cv-interests-list {
   font-size: 0.875rem; }
-
-.cv-social-list {
-  font-size: 0.75rem; }
 
 .blog-list .item .title {
   font-size: 1.275rem; }
@@ -8363,8 +8371,6 @@ a.cv-link {
     max-width: 100%; }
   .header .nav-item .dropdown-menu .dropdown-item {
     padding-left: 1.875rem; }
-  .cv-contact {
-    border-left: 0; }
   .mobile-is-hidden {
     display: none; }
   .footer {
@@ -8501,6 +8507,8 @@ body.dark-mode {
       color: rgba(255, 255, 255, 0.95); }
     body.dark-mode .faq-accordion .card-toggle[aria-expanded="true"] {
       color: rgba(255, 255, 255, 0.95); }
+  body.dark-mode .cv-header {
+    background: #1e2a3a; }
   body.dark-mode a.cv-link {
     color: rgba(255, 255, 255, 0.7); }
   body.dark-mode .project-meta .client-meta .svg-inline--fa {
