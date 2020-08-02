@@ -7837,8 +7837,6 @@ hr {
   background: #1762dd;
   color: rgba(255, 255, 255, 0.9);
   height: 180px; }
-  .cv-header .picture {
-    width: 180px; }
   .cv-header .name {
     font-size: 1.75rem;
     font-weight: 700; }
@@ -8329,10 +8327,7 @@ a.cv-link {
   .project-thumb {
     max-width: 200px; }
   .footer {
-    margin-left: 280px; }
-  .cv-header .picture {
-    width: 0;
-    visibility: hidden; } }
+    margin-left: 280px; } }
 
 @media (min-width: 1200px) {
   .profile-teaser .profile-image {
@@ -8359,10 +8354,7 @@ a.cv-link {
   .main-wrapper {
     margin-left: 0; }
   .cv-aside {
-    border-left: 0; }
-  .cv-header .picture {
-    width: 0;
-    visibility: hidden; } }
+    border-left: 0; } }
 
 @media (max-width: 767.98px) {
   .signup-form .form-group {

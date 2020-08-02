@@ -68,12 +68,6 @@
     .footer{
       margin-left: $sidebar-width;
     }
-    .cv-header {
-      .picture {
-        width: 0;
-        visibility: hidden;
-      }
-    }
 
 }
 
@@ -116,7 +110,6 @@
 
   }
   
-  
     .header .navbar {
       padding: 1rem;
     }
@@ -127,13 +120,6 @@
 
     .cv-aside {
       border-left: 0;
-    }
-
-    .cv-header {
-      .picture {
-        width: 0;
-        visibility: hidden;
-      }
     }
 
 }
