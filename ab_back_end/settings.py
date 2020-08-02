@@ -266,7 +266,8 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
         'height': '400',
         'toolbar_Custom': [
-            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Undo', 'Redo'],
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline',
+             'Strike', 'SpellChecker', 'Undo', 'Redo'],
             ['Find', 'Replace'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
