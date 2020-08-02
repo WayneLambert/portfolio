@@ -68,6 +68,13 @@
     .footer{
       margin-left: $sidebar-width;
     }
+    .cv-header {
+      .picture {
+        width: 0;
+        visibility: hidden;
+      }
+    }
+
 }
 
 // Extra large devices (large desktops, 1200px and up)

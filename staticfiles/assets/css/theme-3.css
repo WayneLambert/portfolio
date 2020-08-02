@@ -8329,7 +8329,10 @@ a.cv-link {
   .project-thumb {
     max-width: 200px; }
   .footer {
-    margin-left: 280px; } }
+    margin-left: 280px; }
+  .cv-header .picture {
+    width: 0;
+    visibility: hidden; } }
 
 @media (min-width: 1200px) {
   .profile-teaser .profile-image {

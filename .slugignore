@@ -174,4 +174,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Static Files
+*/static/*
+
 # Temporary directory/file ignore
