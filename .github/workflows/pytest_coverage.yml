@@ -29,6 +29,10 @@ jobs:
           python -m pip install pipenv
           pipenv install --system --ignore-pipfile --deploy --dev
 
+      - name: Set ENV variables
+        run: |
+          for v in `cat env` ; do echo "::set-env name=${v%%=*}::${v##*=}" ; done
+
       - name: Run Tests and Generate Coverage Report
         run: |
           pytest --runslow --cov=./ --cov-report=xml
