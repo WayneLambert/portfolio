@@ -14,6 +14,7 @@
 > 89 and a hard limit of 99 characters.
 
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
+![PyTest](https://github.com/WayneLambert/portfolio/workflows/PyTest%20and%20Coverage/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/WayneLambert/portfolio)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
