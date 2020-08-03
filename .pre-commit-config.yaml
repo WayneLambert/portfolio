@@ -3,6 +3,8 @@ repos:
     rev: v3.1.0
     hooks:
       - id: check-added-large-files
+        args:
+          - --maxkb=256
       - id: check-builtin-literals
       - id: check-byte-order-marker
       - id: check-case-conflict
@@ -12,7 +14,9 @@ repos:
       - id: check-json
       - id: check-toml
       - id: check-yaml
+      - id: check-xml
       - id: debug-statements
+      - id: detect-private-key
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
@@ -21,6 +25,25 @@ repos:
     rev: 19.10b0
     hooks:
       - id: black
+        args: [--line-length=99, -- skip-string-normalization=true]
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.6.2
+    hooks:
+      - id: bandit
+        args: [--configfile=.bandit, --verbose]
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.2.0
+    hooks:
+      - id: interrogate
+        args: [--config=pyproject.toml, -vv]
+
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.2.2
+    hooks:
+      - id: isort
+        additional_dependencies: [toml]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.782
