@@ -2,7 +2,7 @@
 
 > This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to
 > showcase Django, Python and other programming and web framework skills and technologies.
-
+>
 > The code is not intended to be cloned for reproduction as it is a representation of my personal
 > portfolio of work, therefore instructions have not been provided to clone and set up.
 >
@@ -14,6 +14,7 @@
 > 89 and a hard limit of 99 characters.
 
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
+[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/WayneLambert/portfolio)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Django Blog
