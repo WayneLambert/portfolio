@@ -1,5 +1,5 @@
 # Base image fpr Python
-FROM python:3.8.3-buster
+FROM python:3.8.5-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
