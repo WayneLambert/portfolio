@@ -1,12 +1,13 @@
 import os
 
 import factory
+
 from django.contrib.auth import get_user_model
 
 from contacts.models import Contact
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = get_user_model()
 
@@ -19,7 +20,7 @@ class UserFactory(factory.DjangoModelFactory):
     )
 
 
-class ContactFactory(factory.DjangoModelFactory):
+class ContactFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Contact
 
