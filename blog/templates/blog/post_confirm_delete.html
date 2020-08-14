@@ -17,7 +17,7 @@
           <legend class="border-bottom mb-4" id="warning-text">
             Delete <em>"{{ post.title }}"</em>?
           </legend>
-            {{ object.content|safe|truncatewords:100 }}
+            {{ object.content|truncatewords_html|safe:100 }}
             <a class="theme-link" href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
         </fieldset>
         <!-- Buttons -->

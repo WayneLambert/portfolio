@@ -16,7 +16,7 @@
                   {{ post.title }}
                 </a>
               </h6>
-              <p class="article-content">{{ post.content|truncatewords:15|safe }}</p>
+              <p class="article-content">{{ post.content|truncatewords_html:15|safe }}</p>
             </td>
             <td><img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}"></td>
           </tr>

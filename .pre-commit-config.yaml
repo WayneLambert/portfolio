@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+    rev: v3.2.0
     hooks:
       - id: check-added-large-files
         args:
@@ -9,6 +9,7 @@ repos:
       - id: check-byte-order-marker
       - id: check-case-conflict
       - id: check-docstring-first
+      - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-json
@@ -20,6 +21,22 @@ repos:
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
+      - id: name-tests-test
+        args: ["--django"]
+
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        exclude: "[a-zA-Z]*/(migrations|tests)/(.)*"
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.3
+    hooks:
+      - id: flake8
 
   - repo: https://github.com/psf/black
     rev: 19.10b0
@@ -31,6 +48,7 @@ repos:
     rev: 1.6.2
     hooks:
       - id: bandit
+        args: ["-iii", "-ll"]
 
   - repo: https://github.com/econchick/interrogate
     rev: 1.2.0
@@ -39,7 +57,7 @@ repos:
         args: [--config=pyproject.toml, -vv]
 
   - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.2.2
+    rev: v5.4.1
     hooks:
       - id: isort
         additional_dependencies: [toml]
