@@ -1,12 +1,14 @@
 import math
 
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth import get_user_model
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.core.exceptions import MultipleObjectsReturned
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):

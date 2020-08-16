@@ -175,6 +175,3 @@ dmypy.json
 .pyre/
 
 # Static Files
-*/static/*
-
-# Temporary directory/file ignore

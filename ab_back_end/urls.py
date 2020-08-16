@@ -1,14 +1,34 @@
+""" Project level URLs
+
+Includes config for the following:
+
+- Custom error pages
+- Through route URLs to third party packages
+- Through route URLs to the project's app's repspective URL
+  configurations
+- Customised path to the Django admin area and admin password reset
+  functionality
+- Sitemap configuration
+- Django Debug Toolbar configuration
+"""
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
-from django.urls import include, path, re_path
+from django.urls import include
+from django.urls import path
+from django.urls import re_path
 
-from blog.sitemap import CategorySitemap, PostSitemap
-from pages.views import SiteBadRequestView, SitePageNotFoundView, SitePermissionDeniedView
+from blog.sitemap import CategorySitemap
+from blog.sitemap import PostSitemap
+from pages.views import SiteBadRequestView
+from pages.views import SitePageNotFoundView
+from pages.views import SitePermissionDeniedView
 
 from .settings import ADMIN_ALIAS
+
 
 handler400 = SiteBadRequestView.as_view()
 handler403 = SitePermissionDeniedView.as_view()
@@ -71,6 +91,7 @@ urlpatterns += [
          name='django.contrib.sitemaps.views.sitemap'),
 ]
 
+# Django Debug Toolbar Config
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += [

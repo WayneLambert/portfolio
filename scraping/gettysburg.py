@@ -4,10 +4,12 @@ any new line escape and other extraneous characters returned from the
 parsed HTML.
 """
 
+from django.shortcuts import render
+
 # pylint: disable=invalid-name
 import requests
+
 from bs4 import BeautifulSoup
-from django.shortcuts import render
 
 
 def get_gettysburg_speech(request):

@@ -1,5 +1,7 @@
 import os
+
 from pathlib import Path
+
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -11,7 +13,6 @@ ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 DEBUG = bool(int(os.environ['DEBUG']))
 
 ALLOWED_HOSTS = [
-    # Heroku
     'wl-portfolio.herokuapp.com',
     'waynelambert.dev',
     'www.waynelambert.dev',
@@ -250,7 +251,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media Files
 MEDIA_URL = '/media/'

@@ -1,10 +1,13 @@
 import string
+
 from collections import defaultdict
 from typing import Any, List, Tuple
 
-import requests
-from bs4 import BeautifulSoup
 from django.shortcuts import render
+
+import requests
+
+from bs4 import BeautifulSoup
 
 
 def get_area_results(results: dict) -> List[Tuple[Any]]:
@@ -35,7 +38,6 @@ def scrape_content() -> List[List[int]]:
     ALPHABET = string.ascii_lowercase
     BASE_URL = 'https://www.bbc.co.uk/news/politics/eu_referendum/results/local/'
     results = defaultdict(list)
-    leave_votes, remain_votes = 0, 0
     for letter in ALPHABET:
         page_response = requests.get(f"{BASE_URL}{letter}", timeout=5)
         if page_response:
@@ -45,11 +47,11 @@ def scrape_content() -> List[List[int]]:
                 results['area_name'].append(area.find('h3').getText())
                 cleaned_leave_votes = int(area.find_all(
                     'div', {'class': 'eu-ref-result-bar__votes'})
-                    [0].string.strip().split('\n')[0].strip().replace(',', ''))
+                                          [0].string.strip().split('\n')[0].strip().replace(',', ''))
                 results['leave_votes'].append(cleaned_leave_votes)
                 cleaned_remain_votes = int(area.find_all(
                     'div', {'class': 'eu-ref-result-bar__votes'})
-                    [1].string.strip().split('\n')[0].strip().replace(',', ''))
+                                           [1].string.strip().split('\n')[0].strip().replace(',', ''))
                 results['remain_votes'].append(cleaned_remain_votes)
                 area_votes = cleaned_leave_votes + cleaned_remain_votes
                 results['area_votes'].append(area_votes)

@@ -1,11 +1,14 @@
 import os
+
 from io import BytesIO
 
-import pytest
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.test import RequestFactory
+
+import pytest
+
 from mixer.backend.django import mixer
 from PIL import Image
 

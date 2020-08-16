@@ -5,6 +5,7 @@ from .gettysburg import get_gettysburg_speech
 from .referendum import get_referendum_results
 from .views import ScrapingOptionsView
 
+
 app_name = 'scraping'
 
 urlpatterns = [

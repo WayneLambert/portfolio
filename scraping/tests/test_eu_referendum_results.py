@@ -1,5 +1,6 @@
-import pytest
 from django.urls import reverse
+
+import pytest
 
 
 @pytest.mark.slow(reason='Scrapes the EU Referendum Results as part of the view')

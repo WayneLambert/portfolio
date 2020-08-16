@@ -1,11 +1,18 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.db.models import Q
-from django.shortcuts import get_list_or_404, get_object_or_404
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.shortcuts import get_list_or_404
+from django.shortcuts import get_object_or_404
+from django.views.generic import CreateView
+from django.views.generic import DeleteView
+from django.views.generic import DetailView
+from django.views.generic import ListView
+from django.views.generic import UpdateView
 
 from .forms import PostForm
-from .models import Category, Post
+from .models import Category
+from .models import Post
 
 
 class PostView(ListView):
@@ -21,6 +28,7 @@ class PostView(ListView):
     queryset = queryset.filter(status=1)
 
     def get_context_data(self, **kwargs):
+        """ Facilitates pagination and post count summary """
         context = super(PostView, self).get_context_data(**kwargs)
         current_page = context.pop('page_obj', None)
         context['current_page'] = current_page
@@ -70,7 +78,7 @@ class UserPostListView(PostView):
 
     def get_queryset(self):
         user = get_object_or_404(get_user_model(), username=self.kwargs.get('username'))
-        return self.queryset.filter(author=user, status=1)
+        return self.queryset.filter(author=user)
 
 
 class CategoryPostListView(PostView):
