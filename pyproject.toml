@@ -1,6 +1,8 @@
 [tool.pylint.MESSAGE_CONTROL]
 disable = """
   line-too-long,
+  missing-module-docstring,
+  attribute-defined-outside-init,
 """
 
 [tool.pylint.REPORTS]
@@ -37,34 +39,12 @@ exclude = '''
 [tool.isort]
 atomic = true
 line_length = 89
-multi_line_output = 3
 include_trailing_comma = true
 force_single_line = true
 lines_after_imports = 2
 lines_between_types = 1
 use_parentheses = true
 default_section = "THIRDPARTY"
-known_first_party = "interrogate"
 known_third_party = ["attr", "click", "py", "pytest", "setuptools", "tabulate"]
-
-
-[tool.interrogate]
-ignore-init-method = true
-ignore-init-module = true
-ignore-magic = false
-ignore-semiprivate = false
-ignore-private = false
-ignore-module = false
-fail-under = 75
-exclude = [
-  ".git",
-  ".mypy_cache",
-  ".venv",
-  "blog/migrations",
-  "blog/admin.py"
-]
-ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*", ]
-verbose = 2
-quiet = false
-whitelist-regex = []
-color = true
+known_django = "django"
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]

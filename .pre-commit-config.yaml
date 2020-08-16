@@ -22,7 +22,6 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
       - id: name-tests-test
-        args: ["--django"]
 
   - repo: local
     hooks:
@@ -50,14 +49,8 @@ repos:
       - id: bandit
         args: ["-iii", "-ll"]
 
-  - repo: https://github.com/econchick/interrogate
-    rev: 1.2.0
-    hooks:
-      - id: interrogate
-        args: [--config=pyproject.toml, -vv]
-
   - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.4.1
+    rev: v5.4.2
     hooks:
       - id: isort
         additional_dependencies: [toml]
