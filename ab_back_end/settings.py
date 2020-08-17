@@ -25,13 +25,14 @@ ALLOWED_HOSTS = [
 
 # Required Project Applications
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',  # Third party
+
     # Pre-Installed Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',  # Third party
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
