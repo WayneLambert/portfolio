@@ -7,28 +7,31 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-# Login URL for the Admin panel
+# Login path for the Django admin panel
 ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
 
 DEBUG = bool(int(os.environ['DEBUG']))
 
 ALLOWED_HOSTS = [
+    # Production
     'wl-portfolio.herokuapp.com',
     'waynelambert.dev',
     'www.waynelambert.dev',
-    # Local development
+
+    # Development
     'localhost',
     '0.0.0.0',
 ]
 
-# Application definition
+# Required Project Applications
 INSTALLED_APPS = [
+    # Pre-Installed Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',  # Third party
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
@@ -86,7 +89,7 @@ if DEBUG:
     # Django Debug Toolbar Settings
     INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
 
-    # For Django Debug Toolbar to be used in local dockerized development environment
+    # For Django Debug Toolbar to be used in local Dockerized development environment
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
     }
@@ -150,7 +153,7 @@ if DEBUG:
 
 # Production Settings
 if not DEBUG:
-    # Changes suggested from $ manage.py check --deploy
+    # Changes suggested from $ python3 manage.py check --deploy
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_SSL_REDIRECT = True
@@ -198,7 +201,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'ab_back_end.wsgi.application'
 
 
-# Database
+# Database Configuration
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -269,7 +272,6 @@ CKEDITOR_CONFIGS = {
         'toolbar_Custom': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline',
              'Strike', 'SpellChecker', 'Undo', 'Redo'],
-            ['Find', 'Replace'],
             ['Link', 'Unlink', 'Anchor'],
             ['Image', 'Table', 'HorizontalRule'],
             ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
