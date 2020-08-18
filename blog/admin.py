@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.db import models
 from django.db.models import Count
+from django.forms.widgets import TextInput
 from django.utils.safestring import mark_safe
 
-from .models import Category
-from .models import Post
+from .models import Category, Post
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -33,6 +34,15 @@ class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     date_hierarchy = 'updated_date'
     readonly_fields = ['post_image', ]
+
+    radio_fields = {
+        'status': admin.HORIZONTAL,
+    }
+
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size': '50'})},
+        models.URLField: {'widget': TextInput(attrs={'size': '120'})},
+    }
 
     def post_image(self, obj):
         img_width = obj.image.width * 0.25
