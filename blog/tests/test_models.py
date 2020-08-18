@@ -1,14 +1,17 @@
 import datetime
 
-import pytest
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
+
+import pytest
+
 from mixer.backend.django import mixer
+from tinymce.models import HTMLField
 
 from blog.models import Category, Post
+
 
 pytestmark = pytest.mark.django_db
 
@@ -85,11 +88,11 @@ class TestPost:
         if len(post_fragments) > 1:
             assert '-' in post.slug, 'Should contain a hyphen'
 
-    def test_content_is_richtextuploadingfield(self):
+    def test_content_is_htmlield(self):
         post = mixer.blend(Post)
         field = post._meta.get_field("content")
-        assert isinstance(field, RichTextUploadingField), \
-            'Should be a `Rich Text Uploading Field` from third party app, CK Editor'
+        assert isinstance(field, HTMLField), \
+            'Should be a `HTML Field` from third party app, Django Tiny MCE'
 
     def test_reference_url_is_urlfield(self):
         post = mixer.blend(Post)

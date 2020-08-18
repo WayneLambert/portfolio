@@ -42,11 +42,8 @@ class TestThirdPartyAppsAreInstalled:
     def test_storages_in_installed_apps(self):
         assert 'storages' in settings.INSTALLED_APPS
 
-    def test_ckeditor_in_installed_apps(self):
-        assert 'ckeditor' in settings.INSTALLED_APPS
-
-    def test_ckeditor_uploader_in_installed_apps(self):
-        assert 'ckeditor_uploader' in settings.INSTALLED_APPS
+    def test_tinymce_in_installed_apps(self):
+        assert 'tinymce' in settings.INSTALLED_APPS
 
     def test_captcha_in_installed_apps(self):
         assert 'captcha' in settings.INSTALLED_APPS

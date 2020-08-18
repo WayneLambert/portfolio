@@ -2,7 +2,9 @@
 disable = """
   line-too-long,
   missing-module-docstring,
+  missing-function-docstring,
   attribute-defined-outside-init,
+  no-self-use,
 """
 
 [tool.pylint.REPORTS]
