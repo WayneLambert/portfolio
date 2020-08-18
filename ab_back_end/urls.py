@@ -37,7 +37,7 @@ handler500 = 'pages.views.handler500'
 
 
 urlpatterns = [
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('tinymce/', include('tinymce.urls')),
     re_path('djga/', include('google_analytics.urls')),
     path('', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),

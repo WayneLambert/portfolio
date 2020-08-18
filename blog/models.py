@@ -8,7 +8,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
-from ckeditor_uploader.fields import RichTextUploadingField
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -36,7 +36,7 @@ class Post(models.Model):
         help_text='The length of the post must be between 40 and 60 characters'
     )
     slug = models.SlugField(max_length=60, unique=True)
-    content = RichTextUploadingField()
+    content = HTMLField()
     reference_url = models.URLField(blank=True)
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
