@@ -25,8 +25,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
     fields = (
-        'title', 'slug', 'content', 'reference_url', 'status', 'author',
-        'categories', 'image', 'post_image'
+        'title', 'slug', 'content', 'reference_url', 'author',
+        'categories', ('image', 'post_image'), 'status',
     )
     list_display = ('title', 'status', 'publish_date', 'updated_date')
     list_filter = ('status', 'categories', 'author')
