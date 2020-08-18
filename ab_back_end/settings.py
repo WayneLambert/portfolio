@@ -44,12 +44,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'corsheaders',
     'bootstrap4',
-    'ckeditor',
-    'ckeditor_uploader',
     'storages',
     'captcha',
     'google_analytics',
     'widget_tweaks',
+    'tinymce',
 
     # Project Apps
     'blog.apps.BlogConfig',
@@ -261,29 +260,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
-
-# CK Editor Settings
-AWS_QUERYSTRING_AUTH = False
-CKEDITOR_UPLOAD_PATH = 'uploads/'
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'width': '100%',
-        'height': '400',
-        'toolbar_Custom': [
-            ['Styles', 'Format', 'Bold', 'Italic', 'Underline',
-             'Strike', 'SpellChecker', 'Undo', 'Redo'],
-            ['Link', 'Unlink', 'Anchor'],
-            ['Image', 'Table', 'HorizontalRule'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
-             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-            ['TextColor', 'BGColor'],
-            ['Smiley', 'SpecialChar'],
-            ['RemoveFormat', 'CodeSnippet'],
-        ],
-        'extraPlugins': 'codesnippet',
-    }
-}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
