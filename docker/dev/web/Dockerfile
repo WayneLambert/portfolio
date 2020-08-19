@@ -12,6 +12,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Causes all output to stdout to be flushed immediately
 ENV PYTHONUNBUFFERED 1
 
+# Set the COLUMNS variable for the terminal's output width
+ENV COLUMNS 164
+
 # Create and set working directory
 WORKDIR /code
 
@@ -27,4 +30,5 @@ RUN pipenv install --system --ignore-pipfile --deploy --dev
 # Copy local source code directory to container's source code directory
 COPY . .
 
+# Bring up the Django development server
 CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8001" ]
