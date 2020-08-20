@@ -55,9 +55,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
         return self.request.user.username == self.kwargs['username']
 
     def get_instances(self):
-        instances = {
+        return {
             'userupdateform': self.request.user,
             'profileupdateform': self.request.user.user
         }
-
-        return instances
