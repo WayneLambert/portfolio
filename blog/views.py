@@ -80,6 +80,15 @@ class UserPostListView(PostView):
         user = get_object_or_404(get_user_model(), username=self.kwargs.get('username'))
         return self.queryset.filter(author=user)
 
+    def get_context_data(self, **kwargs):
+        """ Get's the author's name/username for presenting in the template """
+        context = super(UserPostListView, self).get_context_data(**kwargs)
+        username = self.kwargs.get('username')
+        display_type = get_user_model().objects.get(username=username).user.author_view
+        profile = get_user_model().objects.get(username=username).user
+        context['display_name'] = profile.full_name if display_type else username
+        return context
+
 
 class CategoryPostListView(PostView):
     """ Drives the list of posts for a given category. """
