@@ -10,11 +10,14 @@ class ProfileAdmin(admin.ModelAdmin):
     readonly_fields = ('profile_picture_image', )
 
     def profile_picture_image(self, obj):
-        img_width = obj.profile_picture.width
-        img_height = obj.profile_picture.height
-        url = obj.profile_picture.url
-        return mark_safe(  # nosec
-            f"<img src='{url}' width='{img_width}' height='{img_height}' />")
+        try:
+            img_width = obj.profile_picture.width
+            img_height = obj.profile_picture.height
+            url = obj.profile_picture.url
+            return mark_safe(  # nosec
+                f"<img src='{url}' width='{img_width}' height='{img_height}' />")
+        except OSError:
+            pass
 
 
 admin.site.register(Profile, ProfileAdmin)
