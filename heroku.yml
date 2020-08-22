@@ -7,4 +7,4 @@ build:
 release:
   image: web
 run:
-  web: gunicorn ab_back_end.wsgi
+  web: gunicorn aa_project.wsgi

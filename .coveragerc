@@ -8,7 +8,7 @@ omit =
   .hypothesis/*,
   *apps.py,
   *migrations/*,
-  *ab_back_end/pytest.py,
+  *aa_project/pytest.py,
   */node_modules/*,
   */static/*,
   */staticfiles/*,

@@ -1,5 +1,38 @@
-[tool.pylint.MESSAGE_CONTROL]
-disable = """
+[tool.pylint.master]
+jobs="0"    # Auto-detect the number of processors
+fail-under="10"
+ignore-patterns='''
+  \.eggs
+  |\.git
+  |\.hg
+  |\.mypy_cache
+  |\.tox
+  |\.venv
+  |_build
+  |buck-out
+  |build
+  |dist
+  |conf.py
+'''
+persistent="no"
+load-plugins= ["pylint_django, pytest_pylint"]
+limit-inference-results="100"
+suggestion-mode="yes"
+unsafe-load-any-extension="no"
+extension-pkg-whitelist=""
+exit-zero="no"
+from-stdin="no"
+
+[tool.pylint.message_control]
+enable = [
+  'F',  # Fatal
+  'E',  # Error
+  'W',  # Warning
+  'R',  # Refactor
+  'C',  # Convention
+  'I',  # Informational
+]
+disable = """,
   line-too-long,
   missing-module-docstring,
   missing-class-docstring,
@@ -8,15 +41,20 @@ disable = """
   no-self-use,
 """
 
-[tool.pylint.REPORTS]
+[tool.pylint.reports]
 reports = "no"
+msg-template = "{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}"
+output-format = "colorized"
+score = "no"
 
-[tool.pylint.FORMAT]
+[tool.pylint.format]
 max-line-length = "99"
 
-[tool.pylint.BASIC]
-good-names = "_,qs,pk"
+[tool.pylint.basic]
+good-names = "_, qs, pk"
 
+[tool.pylint.miscellaneous]
+notes="TODO, FIXME, DEBUG"
 
 [tool.black]
 line-length = 99
@@ -47,7 +85,22 @@ force_single_line = false
 lines_after_imports = 2
 lines_between_types = 1
 use_parentheses = true
-default_section = "THIRDPARTY"
-known_third_party = ["attr", "click", "py", "pytest", "setuptools", "tabulate"]
-known_django = "django"
+skip_glob = "*/.venv/*, */node_modules/*, */.tox/*, */.git/*, */migrations/*"
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+known_django = "django"
+known_third_party = [
+  "beautifulsoup4",
+  "django_recaptcha",
+  "django_crispy_forms",
+  "django_shapeshifter",
+  "django_tinymce",
+  "factory",
+  "hypothesis",
+  "mixer",
+  "pillow",
+  "pytest",
+  "pytest_factoryboy",
+  "requests",
+  "rest_framework",
+  "rich",
+]
