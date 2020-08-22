@@ -4,33 +4,22 @@ import sys
 from pathlib import Path
 
 
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = os.path.join(BASE_DIR, 'apps')
 sys.path.insert(0, APPS_DIR)
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # Login path for the Django admin panel
-ADMIN_ALIAS = os.environ['ADMIN_ALIAS']
+DJANGO_ADMIN_LOGIN_PATH = os.environ['DJANGO_ADMIN_LOGIN_PATH']
 
-DEBUG = bool(int(os.environ['DEBUG']))
-
-ALLOWED_HOSTS = [
-    # Production
-    'wl-portfolio.herokuapp.com',
-    'waynelambert.dev',
-    'www.waynelambert.dev',
-
-    # Development
-    'localhost',
-    '0.0.0.0',
+# Applications supplementing Django's core functionality
+DJANGO_THIRD_PARTY_AUX_APPS = [
+    'whitenoise.runserver_nostatic',
 ]
 
-# Required Project Applications
-INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',  # Third party
-
-    # Pre-Installed Django Apps
+# Applications supplied within Django core
+DEFAULT_DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,8 +29,10 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.humanize',
+]
 
-    # Third Party
+# Additional third party applications
+THIRD_PARTY_APPS = [
     'rest_framework',
     'guardian',
     'crispy_forms',
@@ -52,20 +43,24 @@ INSTALLED_APPS = [
     'google_analytics',
     'widget_tweaks',
     'tinymce',
-
-    # Project Apps
-    'api.apps.ApiConfig',
-    'blog.apps.BlogConfig',
-    'contacts.apps.ContactsConfig',
-    'countdown_letters.apps.CountdownLettersConfig',
-    'countdown_numbers.apps.CountdownNumbersConfig',
-    'cv.apps.CvConfig',
-    'pages.apps.PagesConfig',
-    'roulette.apps.RouletteConfig',
-    'scraping.apps.ScrapingConfig',
-    'text_analysis.apps.TextAnalysisConfig',
-    'users.apps.UsersConfig',
 ]
+
+# Project Apps
+PROJECT_APPS = [
+    'apps.api.apps.ApiConfig',
+    'apps.blog.apps.BlogConfig',
+    'apps.contacts.apps.ContactsConfig',
+    'apps.countdown_letters.apps.CountdownLettersConfig',
+    'apps.countdown_numbers.apps.CountdownNumbersConfig',
+    'apps.cv.apps.CvConfig',
+    'apps.pages.apps.PagesConfig',
+    'apps.roulette.apps.RouletteConfig',
+    'apps.scraping.apps.ScrapingConfig',
+    'apps.text_analysis.apps.TextAnalysisConfig',
+    'apps.users.apps.UsersConfig',
+]
+
+INSTALLED_APPS = DJANGO_THIRD_PARTY_AUX_APPS + DEFAULT_DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Third party
@@ -79,97 +74,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Project's root URL configuration
 ROOT_URLCONF = 'aa_project.urls'
 
-if DEBUG:
-    # For Django Debug Toolbar and Django Extensions to be used in development
-    INSTALLED_APPS += (
-        'debug_toolbar',
-        'template_profiler_panel',
-        'django_extensions',
-    )
-
-    # Django Debug Toolbar Settings
-    INTERNAL_IPS = ['127.0.0.1', '172.24.0.1']
-
-    # For Django Debug Toolbar to be used in local Dockerized development environment
-    DEBUG_TOOLBAR_CONFIG = {
-        'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG
-    }
-
-    # Additional Middleware
-    MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-
-    DEBUG_TOOLBAR_PANELS = [
-        'debug_toolbar.panels.versions.VersionsPanel',
-        'debug_toolbar.panels.timer.TimerPanel',
-        'debug_toolbar.panels.settings.SettingsPanel',
-        'debug_toolbar.panels.headers.HeadersPanel',
-        'debug_toolbar.panels.request.RequestPanel',
-        'debug_toolbar.panels.sql.SQLPanel',
-        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
-        'debug_toolbar.panels.templates.TemplatesPanel',
-        'template_profiler_panel.panels.template.TemplateProfilerPanel',
-        'debug_toolbar.panels.cache.CachePanel',
-        'debug_toolbar.panels.signals.SignalsPanel',
-        'debug_toolbar.panels.logging.LoggingPanel',
-        'debug_toolbar.panels.redirects.RedirectsPanel',
-    ]
-    SHOW_TOOLBAR_CALLBACK = True
-
-    # Do not log static request files to the console
-    def skip_static_requests(record):
-        return not record.args[0].startswith('GET /static/')
-
-    LOGGING = {
-        'version': 1,
-        'disable_existing_loggers': False,
-
-        'filters': {
-            'skip_static_requests': {
-                '()': 'django.utils.log.CallbackFilter',
-                'callback': skip_static_requests,
-            }
-        },
-
-        'formatters': {
-            'rich': {'datefmt': '[%X]'},
-        },
-
-        'handlers': {
-            'console': {
-                'class': 'rich.logging.RichHandler',
-                'formatter': 'rich',
-                'level': 'INFO',
-                'filters': ['skip_static_requests'],
-            }
-        },
-
-        'loggers': {
-            'django': {
-                'handlers': ['console'],
-                'level': 'INFO',
-                'propagate': False,
-            },
-        }
-    }
-
-
-# Production Settings
-if not DEBUG:
-    # Changes suggested from $ python3 manage.py check --deploy
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    X_FRAME_OPTIONS = 'DENY'
-    SECURE_HSTS_SECONDS = 2592000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_REFERRER_POLICY = 'same-origin'
-
+# Django Templates Configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -202,8 +110,8 @@ TEMPLATES = [
     },
 ]
 
+# Location of Project's WSGI application
 WSGI_APPLICATION = 'aa_project.wsgi.application'
-
 
 # Database Configuration
 DATABASES = {
@@ -258,7 +166,7 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 
 # Media Files
 MEDIA_URL = '/media/'
@@ -308,11 +216,6 @@ LOGIN_URL = 'blog:users:login'
 LOGIN_REDIRECT_URL = 'blog:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
-# Heroku Deployment Settings
-if not DEBUG:
-    import dj_database_url
-    db_from_env = dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(db_from_env)
 
 # Django SES Email Backend Settings
 EMAIL_BACKEND = 'django_ses.SESBackend'
@@ -336,18 +239,7 @@ AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_DEFAULT_ACL = None
 AWS_BASE_BUCKET_ADDRESS = os.environ['AWS_BASE_BUCKET_ADDRESS']
 
-# Simple Captcha Settings
-if DEBUG:
-    SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
-else:
-    RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
-    RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
-
 # Google Analytics
 GOOGLE_ANALYTICS = {
     'google_analytics_id': os.environ['GA_TRACKING_ID'],
 }
-
-# For PyTest
-if DEBUG:
-    PYTEST_TEST_PASSWORD = os.environ['PYTEST_TEST_PASSWORD']

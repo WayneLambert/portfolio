@@ -23,7 +23,7 @@ from apps.blog.sitemap import CategorySitemap, PostSitemap
 from apps.pages.views import (SiteBadRequestView, SitePageNotFoundView,
                               SitePermissionDeniedView,)
 
-from .settings import ADMIN_ALIAS
+from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
 
 
 handler400 = SiteBadRequestView.as_view()
@@ -54,12 +54,12 @@ urlpatterns = [
 # Admin Site URLs
 urlpatterns += [
     path(
-        f'{ADMIN_ALIAS}/password_reset/',
+        f'{DJANGO_ADMIN_LOGIN_PATH}/password_reset/',
         auth_views.PasswordResetView.as_view(),
         name='admin_password_reset'
     ),
     path(
-        f'{ADMIN_ALIAS}/password_reset/done/',
+        f'{DJANGO_ADMIN_LOGIN_PATH}/password_reset/done/',
         auth_views.PasswordResetDoneView.as_view(),
         name='password_reset_done'
     ),
@@ -73,7 +73,7 @@ urlpatterns += [
         auth_views.PasswordResetCompleteView.as_view(),
         name='password_reset_complete'
     ),
-    path(f'{ADMIN_ALIAS}/', admin.site.urls),
+    path(f'{DJANGO_ADMIN_LOGIN_PATH}/', admin.site.urls),
 ]
 
 # Sitemap Config

@@ -1,7 +1,7 @@
 import logging
 import os
 
-from aa_project.settings import APPS_DIR
+from aa_project.settings.base import APPS_DIR
 
 log_file = os.path.join(APPS_DIR, 'roulette/holiday_roulette.log')
 

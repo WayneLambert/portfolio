@@ -9,7 +9,6 @@ import pytest
 from mixer.backend.django import mixer
 
 from apps.users.models import Profile
-from conftest import fixed_user
 
 
 @pytest.mark.django_db

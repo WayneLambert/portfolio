@@ -4,7 +4,7 @@ import sys
 
 
 if __name__ == '__main__':
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aa_project.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.environ['DJANGO_SETTINGS_MODULE'])
 
     try:
         from django.conf import settings
