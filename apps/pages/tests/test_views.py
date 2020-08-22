@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
 import apps.blog.views as blog_views
-from ab_back_end.tests.helpers import lilo_users, user_types
+from aa_project.tests.helpers import lilo_users, user_types
 from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewView,
                          CountdownLettersReviewView, CountdownNumbersReviewView,
                          DataScienceReviewView, FrontEndSkillsView, HomeView,

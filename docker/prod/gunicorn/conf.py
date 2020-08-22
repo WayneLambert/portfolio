@@ -1,7 +1,7 @@
 import multiprocessing
 
 
-name = 'ab_back_end'
+name = 'aa_project'
 loglevel = 'debug'
 errorlog = '-'
 accesslog = '%(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'

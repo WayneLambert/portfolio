@@ -1,6 +1,6 @@
 import os
 
-from ab_back_end import settings
+from aa_project import settings
 
 
 class TestAllowedHostsConfigured:
@@ -67,8 +67,8 @@ class TestTemplatesAreConfigured:
     def test_template_directories_are_present(self):
         temp_dirs = settings.TEMPLATES[0]['DIRS']
         assert os.path.join(settings.BASE_DIR, 'templates') in temp_dirs
-        assert os.path.join(settings.BASE_DIR, 'ab_back_end/templates/') in temp_dirs
-        assert os.path.join(settings.BASE_DIR, 'ab_back_end/templates/admin/') in temp_dirs
+        assert os.path.join(settings.BASE_DIR, 'aa_project/templates/') in temp_dirs
+        assert os.path.join(settings.BASE_DIR, 'aa_project/templates/admin/') in temp_dirs
         assert os.path.join(settings.APPS_DIR, 'blog/templates/blog/') in temp_dirs
         assert os.path.join(settings.APPS_DIR, 'cv/templates/cv/') in temp_dirs
         assert os.path.join(settings.APPS_DIR, 'contacts/templates/contacts/') in temp_dirs

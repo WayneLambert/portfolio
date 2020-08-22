@@ -1,6 +1,6 @@
 import os
 
-from ab_back_end import settings
+from aa_project import settings
 from apps.roulette.logging import log_file
 
 

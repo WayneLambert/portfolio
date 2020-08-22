@@ -6,7 +6,7 @@ import pytest
 
 import apps.blog.views as blog_views
 
-from ab_back_end.tests.helpers import lilo_users, user_types
+from aa_project.tests.helpers import lilo_users, user_types
 
 
 pytestmark = pytest.mark.django_db

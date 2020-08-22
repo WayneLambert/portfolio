@@ -3,6 +3,6 @@ import os
 from django.core.wsgi import get_wsgi_application
 
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ab_back_end.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aa_project.settings')
 
 application = get_wsgi_application()

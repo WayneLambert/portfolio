@@ -12,7 +12,7 @@ from typing import Dict
 
 import requests
 
-from ab_back_end.settings import APPS_DIR
+from aa_project.settings import APPS_DIR
 from apps.countdown_letters import validations
 from apps.countdown_letters.oxford_api import API
 

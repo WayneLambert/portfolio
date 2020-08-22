@@ -6,7 +6,7 @@ from django.urls import reverse
 
 import pytest
 
-from ab_back_end.tests.helpers import lilo_users, user_types
+from aa_project.tests.helpers import lilo_users, user_types
 from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 

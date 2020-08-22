@@ -79,7 +79,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'ab_back_end.urls'
+ROOT_URLCONF = 'aa_project.urls'
 
 if DEBUG:
     # For Django Debug Toolbar and Django Extensions to be used in development
@@ -175,9 +175,9 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'ab_back_end/templates/'),
-            os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
-            os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
+            os.path.join(BASE_DIR, 'aa_project/templates/'),
+            os.path.join(BASE_DIR, 'aa_project/templates/admin/'),
+            os.path.join(BASE_DIR, 'aa_project/templates/rest_framework/'),
             os.path.join(APPS_DIR, 'blog/templates/blog/'),
             os.path.join(APPS_DIR, 'contacts/templates/contacts/'),
             os.path.join(APPS_DIR, 'countdown_letters/templates/countdown_letters/'),
@@ -202,7 +202,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'ab_back_end.wsgi.application'
+WSGI_APPLICATION = 'aa_project.wsgi.application'
 
 
 # Database Configuration
@@ -263,7 +263,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Media Files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/ab_back_end/static/default_images')
+DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, 'media/aa_project/static/default_images')
 
 # Tiny MCE Editor Config
 TINYMCE_SPELLCHECKER = True
