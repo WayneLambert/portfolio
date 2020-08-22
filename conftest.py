@@ -95,9 +95,10 @@ def test_image():
                                 charset=None)
 
 
-"""
-Functions to facilitate the marking of `slow` unit tests
-"""
+#########################################################################################
+  ## Functions to facilitate the marking of `slow` unit tests ##
+#########################################################################################
+
 def pytest_addoption(parser):
     """ Sets a command line flag `--runslow` for the CLI """
     parser.addoption(
@@ -124,3 +125,5 @@ def pytest_collection_modifyitems(config, items):
     for item in items:
         if 'slow' in item.keywords:
             item.add_marker(skip_slow)
+
+#########################################################################################

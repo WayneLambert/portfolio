@@ -2,9 +2,9 @@
 fixtures to simulate frequently used testing scenarios.
 """
 
-import pytest
-
 from django.contrib.auth import get_user_model
+
+import pytest
 
 
 # Helper structures to emulate a logged in and logged out user

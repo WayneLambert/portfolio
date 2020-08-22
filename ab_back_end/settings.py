@@ -1,9 +1,12 @@
 import os
+import sys
 
 from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+APPS_DIR = os.path.join(BASE_DIR, 'apps')
+sys.path.insert(0, APPS_DIR)
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
@@ -51,17 +54,17 @@ INSTALLED_APPS = [
     'tinymce',
 
     # Project Apps
-    'blog.apps.BlogConfig',
     'api.apps.ApiConfig',
-    'users.apps.UsersConfig',
-    'pages.apps.PagesConfig',
-    'cv.apps.CvConfig',
+    'blog.apps.BlogConfig',
     'contacts.apps.ContactsConfig',
     'countdown_letters.apps.CountdownLettersConfig',
     'countdown_numbers.apps.CountdownNumbersConfig',
-    'text_analysis.apps.TextAnalysisConfig',
+    'cv.apps.CvConfig',
+    'pages.apps.PagesConfig',
     'roulette.apps.RouletteConfig',
     'scraping.apps.ScrapingConfig',
+    'text_analysis.apps.TextAnalysisConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -175,17 +178,17 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'ab_back_end/templates/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/admin/'),
             os.path.join(BASE_DIR, 'ab_back_end/templates/rest_framework/'),
-            'pages/templates/pages/',
-            'blog/templates/blog/',
-            'cv/templates/cv/',
-            'users/templates/users/',
-            'users/templates/registration/',
-            'contacts/templates/contacts/',
-            'countdown_letters/templates/countdown_letters/',
-            'countdown_numbers/templates/countdown_numbers/',
-            'text_analysis/templates/text_analysis/',
-            'roulette/templates/roulette/',
-            'scraping/templates/scraping/',
+            os.path.join(APPS_DIR, 'blog/templates/blog/'),
+            os.path.join(APPS_DIR, 'contacts/templates/contacts/'),
+            os.path.join(APPS_DIR, 'countdown_letters/templates/countdown_letters/'),
+            os.path.join(APPS_DIR, 'countdown_numbers/templates/countdown_numbers/'),
+            os.path.join(APPS_DIR, 'cv/templates/cv/'),
+            os.path.join(APPS_DIR, 'pages/templates/pages/'),
+            os.path.join(APPS_DIR, 'users/templates/users/'),
+            os.path.join(APPS_DIR, 'users/templates/registration/'),
+            os.path.join(APPS_DIR, 'roulette/templates/roulette/'),
+            os.path.join(APPS_DIR, 'scraping/templates/scraping/'),
+            os.path.join(APPS_DIR, 'text_analysis/templates/text_analysis/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

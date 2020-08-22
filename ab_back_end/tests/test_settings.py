@@ -69,17 +69,17 @@ class TestTemplatesAreConfigured:
         assert os.path.join(settings.BASE_DIR, 'templates') in temp_dirs
         assert os.path.join(settings.BASE_DIR, 'ab_back_end/templates/') in temp_dirs
         assert os.path.join(settings.BASE_DIR, 'ab_back_end/templates/admin/') in temp_dirs
-        assert 'pages/templates/pages/' in temp_dirs
-        assert 'blog/templates/blog/' in temp_dirs
-        assert 'cv/templates/cv/' in temp_dirs
-        assert 'users/templates/users/' in temp_dirs
-        assert 'users/templates/registration/' in temp_dirs
-        assert 'contacts/templates/contacts/' in temp_dirs
-        assert 'countdown_letters/templates/countdown_letters/' in temp_dirs
-        assert 'countdown_numbers/templates/countdown_numbers/' in temp_dirs
-        assert 'text_analysis/templates/text_analysis/' in temp_dirs
-        assert 'roulette/templates/roulette/' in temp_dirs
-        assert 'scraping/templates/scraping/' in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'blog/templates/blog/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'cv/templates/cv/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'contacts/templates/contacts/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'countdown_letters/templates/countdown_letters/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'countdown_numbers/templates/countdown_numbers/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'pages/templates/pages/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'roulette/templates/roulette/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'scraping/templates/scraping/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'text_analysis/templates/text_analysis/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'users/templates/users/') in temp_dirs
+        assert os.path.join(settings.APPS_DIR, 'users/templates/registration/') in temp_dirs
 
 
 class TestDatabaseIsSecurelyConfigured:

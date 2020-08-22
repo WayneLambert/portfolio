@@ -1,10 +1,10 @@
 import os
 
-import factory
-
 from django.contrib.auth import get_user_model
 
-from contacts.models import Contact
+import factory
+
+from apps.contacts.models import Contact
 
 
 class UserFactory(factory.django.DjangoModelFactory):

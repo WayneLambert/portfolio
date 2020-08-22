@@ -14,6 +14,10 @@ ignore:
 refactor:
   skip: []
 
+metrics:
+  enabled: true
+  quality_threshold: 5.0
+
 github:
   labels: []
   ignore_labels:
