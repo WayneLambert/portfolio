@@ -6,18 +6,14 @@
 *.js text
 
 # Remove compiled assets from GitHub statistics
-scss/bootstrap/*
+scss/bootstrap/* linguist-vendored
 
-static/admin/* linguist-vendored
-static/assets/fontawesome/* linguist-vendored
-static/debug_toolbar/* linguist-vendored
-static/guardian/* linguist-vendored
-static/highlight/* linguist-vendored
-static/rest_framework/* linguist-vendored
+static/* linguist-vendored
 
 staticfiles/admin/* linguist-vendored
+staticfiles/assets/css/bootstrap*.css linguist-vendored
 staticfiles/assets/fontawesome/* linguist-vendored
-static/assets/plugins/* linguist-vendored
+staticfiles/assets/icons/* linguist-vendored
 staticfiles/assets/plugins/* linguist-vendored
 staticfiles/debug_toolbar/* linguist-vendored
 staticfiles/django_extensions/* linguist-vendored
