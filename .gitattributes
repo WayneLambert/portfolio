@@ -4,5 +4,3 @@
 *.html text
 *.css text
 *.js text
-* linguist-vendored
-*.py linguist-vendored=false
