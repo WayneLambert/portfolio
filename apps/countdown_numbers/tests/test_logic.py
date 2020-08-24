@@ -1,4 +1,5 @@
 import hypothesis.strategies as st
+
 from hypothesis import given
 
 from apps.countdown_numbers import logic
@@ -29,3 +30,50 @@ def test_get_target_number():
     random_num = logic.get_target_number()
     assert 100 <= random_num <= 999, 'Should be between 100 and 999'
     assert isinstance(random_num, int), 'Should be an `int` object'
+
+
+@given(target_number=st.integers(min_value=100, max_value=999))
+def test_score_awarded_for_achieving_target_number(target_number):
+    """
+    Asserts that given a variation of target numbers, 10 points is
+    awarded for achieving the target number.
+    """
+    num_achieved = target_number
+    score_awarded = logic.get_score_awarded(target_number, num_achieved)
+    assert score_awarded == 10, 'Should be 10 points for achieving the target number'
+
+
+@given(num_achieved_var=st.integers(min_value=-5, max_value=5).filter(lambda x: x != 0))
+def test_score_awarded_for_being_within_5_of_target_number(num_achieved_var):
+    """
+    Asserts that a player is awarded 7 points for being within a
+    variance of 1-5 either side of the target number.
+    """
+    TARGET_NUMBER = 500
+    num_achieved = TARGET_NUMBER + num_achieved_var
+    score_awarded = logic.get_score_awarded(TARGET_NUMBER, num_achieved)
+    assert score_awarded == 7, 'Should score 7 points for being within 1-5 either side'
+
+
+@given(num_achieved_var=st.integers(min_value=-10, max_value=10).filter(lambda x: not -5 <= x <= 5))
+def test_score_awarded_for_being_within_10_of_target_number(num_achieved_var):
+    """
+    Asserts that a player is awarded 5 points for being within a
+    variance of 6-10 either side of the target number.
+    """
+    TARGET_NUMBER = 500
+    num_achieved = TARGET_NUMBER + num_achieved_var
+    score_awarded = logic.get_score_awarded(TARGET_NUMBER, num_achieved)
+    assert score_awarded == 5, 'Should score 5 points for being within 6-10 either side'
+
+
+@given(num_achieved_var=st.integers(min_value=-400, max_value=499).filter(lambda x: not -10 <= x <= 10))
+def test_score_awarded_for_being_more_than_10_away_from_target_number(num_achieved_var):
+    """
+    Asserts that a player is awarded zero points for being more than 10
+    either side of the target number.
+    """
+    TARGET_NUMBER = 500
+    num_achieved = TARGET_NUMBER + num_achieved_var
+    score_awarded = logic.get_score_awarded(TARGET_NUMBER, num_achieved)
+    assert score_awarded == 0, 'Should score 0 points for being more than 10 away either side'

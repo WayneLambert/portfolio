@@ -56,3 +56,7 @@ class TestContact:
         contact.last_name = 'lambert'
         assert contact.full_name == 'Wayne Lambert', \
             'Should return concatenation of first and last name with capitalised first letters'
+
+    def test_contact_str(self):
+        contact = mixer.blend(Contact, first_name='Wayne', last_name='Lambert')
+        assert str(contact) == contact.full_name, 'Str should be set to full_name property'

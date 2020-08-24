@@ -7,7 +7,8 @@ from django.urls import reverse
 
 from apps.countdown_numbers import logic, utils
 from apps.countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
-from apps.countdown_numbers.validations import calc_entered_is_valid, get_permissible_nums, is_calc_valid
+from apps.countdown_numbers.validations import (calc_entered_is_valid,
+                                                get_permissible_nums, is_calc_valid,)
 
 
 def selection_screen(request):
@@ -53,7 +54,7 @@ def results_screen(request):
     target_number = int(request.GET.get('target_number'))
     player_score, comp_score = 0, 0
     if valid_calc:
-        player_score = logic.get_score_awarded(request, target_number, player_num_achieved)
+        player_score = logic.get_score_awarded(target_number, player_num_achieved)
 
     game_nums = get_permissible_nums(request)
     best_solution = logic.get_best_solution(request, game_nums, target_number)
@@ -69,9 +70,9 @@ def results_screen(request):
     game_result = logic.get_game_result(target_number, answers)
 
     if valid_calc and game_result != 'comp_num_achieved':
-        player_score = logic.get_score_awarded(request, target_number, player_num_achieved)
+        player_score = logic.get_score_awarded(target_number, player_num_achieved)
     if game_result != 'player_num_achieved':
-        comp_score = logic.get_score_awarded(request, target_number, comp_num_achieved)
+        comp_score = logic.get_score_awarded(target_number, comp_num_achieved)
 
     context = {
         'game_nums': game_nums,

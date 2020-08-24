@@ -7,6 +7,7 @@ the core logic for the Countdown Numbers Game.
 # pylint: disable=eval-used
 import itertools
 import operator
+
 from collections import defaultdict, deque
 from random import choices, randint
 
@@ -129,7 +130,7 @@ def get_best_solution(request, game_nums: list, target: int) -> str:
     return "No solution could be found"
 
 
-def get_score_awarded(request, target_number: int, num_achieved: int) -> int:
+def get_score_awarded(target_number: int, num_achieved: int) -> int:
     """
     Calculates the game score awarded based on the achieved calculation
     proximity to the target number

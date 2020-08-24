@@ -2,6 +2,7 @@ from django.urls import path
 
 from apps.countdown_numbers.views import game_screen, results_screen, selection_screen
 
+
 app_name = 'countdown_numbers'
 
 urlpatterns = [
