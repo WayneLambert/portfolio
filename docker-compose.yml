@@ -19,6 +19,23 @@ services:
     networks:
       - backend
 
+  redis:
+    container_name: portfolio_redis
+    build:
+      context: ./docker/redis
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "6379:6379"
+    volumes:
+      - type: volume
+        source: redis_volume
+        target: ${WEB_CONTAINER_PATH}
+        consistency: consistent
+    networks:
+      - backend
+
   web:
     container_name: portfolio_web
     build:
@@ -26,6 +43,7 @@ services:
       context: .
     depends_on:
       - postgres
+      - redis
     restart: always
     tty: true
     env_file:
@@ -40,6 +58,8 @@ services:
     ports:
       - "8001:8001"
       - "8890:8890"
+    links:
+      - redis:redis
     networks:
       - backend
 
@@ -49,6 +69,12 @@ networks:
 
 volumes:
   postgres_volume:
+  redis_volume:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/${WEB_HOST_PATH}
+      o: bind
   web_volume:
     driver: local
     driver_opts:

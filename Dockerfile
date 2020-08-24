@@ -22,7 +22,7 @@ RUN pip install --upgrade pip && pip install pipenv
 COPY Pipfile Pipfile.lock /code/
 
 # Install project dependencies using exact versions in Pipfile.lock
-RUN pipenv install --system --ignore-pipfile --deploy --dev
+RUN pipenv install --system --ignore-pipfile --deploy
 
 # Copy local source code directory to container's source code directory
 COPY . .
