@@ -88,6 +88,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': os.environ['REDIS_URL'],
+        'TIMEOUT': None,
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             'PASSWORD': os.environ['REDIS_PASSWORD']
