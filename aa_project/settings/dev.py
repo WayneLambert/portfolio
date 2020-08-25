@@ -47,6 +47,14 @@ SHOW_TOOLBAR_CALLBACK = True
 def skip_static_requests(record):
     return not record.args[0].startswith('GET /static/')
 
+# Django Shell Plus Additional Imports
+SHELL_PLUS_IMPORTS = [
+    'import requests',
+    'from bs4 import BeautifulSoup',
+    'from rich import pretty',
+]
+
+# Logging Configuration (including colorised output from Rich)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
