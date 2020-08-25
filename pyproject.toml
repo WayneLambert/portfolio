@@ -89,18 +89,3 @@ skip_glob = "*/.venv/*, */node_modules/*, */.tox/*, */.git/*, */migrations/*"
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 known_django = "django"
 known_third_party = ["PIL", "bs4", "captcha", "dj_database_url", "django", "factory", "hypothesis", "mixer", "pytest", "requests", "rest_framework", "shapeshifter", "tinymce"]
-  "bs4",
-  "django_recaptcha",
-  "django_crispy_forms",
-  "django_shapeshifter",
-  "django_tinymce",
-  "factory",
-  "hypothesis",
-  "mixer",
-  "pillow",
-  "pytest",
-  "pytest_factoryboy",
-  "requests",
-  "rest_framework",
-  "rich",
-]
