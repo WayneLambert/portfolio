@@ -13,6 +13,8 @@
 > characters. My personal thoughts on this is that for personal projects, I use a flexible limit of
 > 89 and a hard limit of 99 characters.
 
+![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/WayneLambert/portfolio)
+![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/django)
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 ![Test](https://github.com/WayneLambert/portfolio/workflows/Test/badge.svg?branch=ci)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/ci/graph/badge.svg)](https://codecov.io/gh/WayneLambert/portfolio)
