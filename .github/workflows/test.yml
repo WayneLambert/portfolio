@@ -1,0 +1,92 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - ci
+
+jobs:
+
+  test:
+    name: Run Django Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          ref: 'refs/heads/ci'
+
+      - name: Debug Script
+        uses: hmarr/debug-action@v1.0.0
+
+      - name: Set up Python 3.8.5
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8.5
+
+      - name: Add Environment Variables to .env File
+        run: |
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+          echo DJANGO_ADMIN_LOGIN_PATH=${{ secrets.DJANGO_ADMIN_LOGIN_PATH }} >> .env
+          echo SES_ACCESS_KEY=${{ secrets.SES_ACCESS_KEY }} >> .env
+          echo SES_SECRET_KEY=${{ secrets.SES_SECRET_KEY }} >> .env
+          echo EMAIL_HOST=${{ secrets.EMAIL_HOST }} >> .env
+          echo AWS_BUCKET_NAME=${{ secrets.AWS_BUCKET_NAME }} >> .env
+          echo AWS_BASE_BUCKET_ADDRESS=${{ secrets.AWS_BASE_BUCKET_ADDRESS }} >> .env
+          echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
+          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET }} >> .env
+          echo RECAPTCHA_PUBLIC_KEY=${{ secrets.RECAPTCHA_PUBLIC_KEY }} >> .env
+          echo RECAPTCHA_PRIVATE_KEY=${{ secrets.RECAPTCHA_PRIVATE_KEY }} >> .env
+          echo GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} >> .env
+          echo PYTEST_TEST_PASSWORD=${{ secrets.PYTEST_TEST_PASSWORD }} >> .env
+          echo EMAIL_HOST_SES=${{ secrets.EMAIL_HOST_SES }} >> .env
+          echo EMAIL_HOST_USER_SES=${{ secrets.EMAIL_HOST_USER_SES }} >> .env
+          echo EMAIL_HOST_PASSWORD_SES=${{ secrets.EMAIL_HOST_PASSWORD_SES }} >> .env
+          echo DEFAULT_FROM_EMAIL_SES=${{ secrets.DEFAULT_FROM_EMAIL_SES }} >> .env
+          echo OD_API_BASE_URL=${{ secrets.OD_API_BASE_URL }} >> .env
+          echo OD_APPLICATION_ID=${{ secrets.OD_APPLICATION_ID }} >> .env
+          echo OD_APPLICATION_KEY_1=${{ secrets.OD_APPLICATION_KEY_1 }} >> .env
+          echo REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }} >> .env
+
+      - name: Add Environment Variables to dev.env File
+        run: |
+          echo DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }} >> dev.env
+          echo REDIS_URL=${{ secrets.REDIS_URL }} >> dev.env
+
+      - name: Add Environment Variables to postgres.env File
+        run: |
+          echo DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }} >> postgres.env
+          echo DB_NAME=${{ secrets.DB_NAME }} >> postgres.env
+          echo DB_USER=${{ secrets.DB_USER }} >> postgres.env
+          echo DB_EMAIL=${{ secrets.DB_EMAIL }} >> postgres.env
+          echo DB_DOCKER_POSTGRES_SERVICE=${{ secrets.DB_DOCKER_POSTGRES_SERVICE }} >> postgres.env
+          echo DB_PASS=${{ secrets.DB_PASS }} >> postgres.env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> postgres.env
+
+      - name: Set Environment Variables for .env File
+        run: for var in `cat .env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
+
+      - name: Set Environment Variables for dev.env File
+        run: for var in `cat dev.env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
+
+      - name: Set Environment Variables for postgres.env File
+        run: for var in `cat postgres.env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
+
+      - name: Install pipenv
+        run: python -m pip install pipenv
+
+      - name: Install dependencies
+        run: pipenv install --system --ignore-pipfile --deploy --dev
+
+      - name: Run tests
+        run: pytest --runslow --cov=./ --cov-report=xml
+        env:
+          SYSTEM_ENV: GITHUB_WORKFLOW
+
+      - name: Upload Coverage Report to Codecov.io
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          flags: unittests
