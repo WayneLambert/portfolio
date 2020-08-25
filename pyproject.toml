@@ -32,7 +32,7 @@ enable = [
   'C',  # Convention
   'I',  # Informational
 ]
-disable = """,
+disable = """
   line-too-long,
   missing-module-docstring,
   missing-class-docstring,
