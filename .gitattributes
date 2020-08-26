@@ -1,10 +1,5 @@
 * text=auto
 
-*.txt text
-*.html text
-*.css text
-*.js text
-
 # Remove compiled assets from GitHub statistics
 scss/bootstrap/* linguist-vendored
 
