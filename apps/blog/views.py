@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
+from django.urls import reverse
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
 from apps.blog.forms import PostForm
@@ -38,6 +39,14 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def get_success_url(self):
+        """ Return the URL to redirect to after processing a valid form. """
+        if self.object.status == 0:
+            return reverse('blog:home')
+        else:
+            return self.object.get_absolute_url()
+
 
 class HomeView(PostView):
     """ Drives the list of posts returned on the blog's home page """
