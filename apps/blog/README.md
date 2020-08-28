@@ -1,6 +1,6 @@
 # Django Blog
 
-A full CRUD application using Django's full MVT architecture
+A fully featured CRUD application with authentication and its content about various programming topics.
 
 ### Links
 
