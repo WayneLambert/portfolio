@@ -1,5 +1,3 @@
-import os
-
 from aa_project.settings import prod
 
 

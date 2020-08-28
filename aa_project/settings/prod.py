@@ -27,8 +27,8 @@ SECURE_REFERRER_POLICY = 'same-origin'
 # Static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
-# Heroku Deployment Settings
-db_from_env = dj_database_url.config(conn_max_age=500)
+# Heroku Deployment Settings for Postgres
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
 DATABASES['default'].update(db_from_env)
 
 # Simple Captcha Settings
