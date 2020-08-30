@@ -4,7 +4,7 @@ import os
 from aa_project.settings.base import (AWS_BASE_BUCKET_ADDRESS, BASE_DIR,
                                       DEFAULT_FROM_EMAIL_SES, INSTALLED_APPS,
                                       ROOT_URLCONF, SECRET_KEY, SITE_ID, STATIC_URL,
-                                      TEMPLATES,)
+                                      TEMPLATES)
 
 
 # IN-MEMORY TEST DATABASE

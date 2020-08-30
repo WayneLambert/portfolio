@@ -9,4 +9,4 @@ def text_to_analyse():
 
 @pytest.fixture(scope='function')
 def dirty_text():
-    'This is %;some di!ty to @na#.]se'
+    return 'This is %;some di!ty to @na#.]se'

@@ -1,7 +1,7 @@
 from django.urls import reverse
 
 
-def test_get_churchill_speech_view(client, request):
+def test_get_churchill_speech_view(client):
     """ Asserts a site visitor can GET the `Churchill Speech` screen """
     path = reverse('scraping:churchill_speech')
     response = client.get(path)

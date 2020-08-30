@@ -8,7 +8,8 @@ omit =
   .hypothesis/*,
   *apps.py,
   *migrations/*,
-  *aa_project/pytest.py,
+  *aa_project/settings/pytest/pytest.py,
+  *aa_project/tests/factories,
   */node_modules/*,
   */aa_project/settings/dev.py
   */static/*,
@@ -18,7 +19,7 @@ omit =
   *admin.py*,
   *wsgi.py,
   *asgi.py,
-  conftest.py,
+  *conftest.py,
   manage.py,
   *feeds.py,
   *__init__.py,

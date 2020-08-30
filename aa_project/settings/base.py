@@ -36,7 +36,6 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'guardian',
     'crispy_forms',
-    'corsheaders',
     'bootstrap4',
     'storages',
     'captcha',
@@ -63,7 +62,6 @@ PROJECT_APPS = [
 INSTALLED_APPS = DJANGO_THIRD_PARTY_AUX_APPS + DEFAULT_DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Third party
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # Third party
     'django.contrib.sessions.middleware.SessionMiddleware',

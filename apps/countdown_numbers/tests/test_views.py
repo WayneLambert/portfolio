@@ -5,13 +5,13 @@ from django.urls import reverse
 
 pytestmark = pytest.mark.django_db
 
-def test_get_selection_screen_view(client, request):
+def test_get_selection_screen_view(client):
     """ Asserts a site visitor can GET the `selection` screen """
     path = reverse('countdown_numbers:selection')
     response = client.get(path)
     assert response.status_code == 200, 'Should not be callable by an anonymous user'
 
-def test_get_game_screen_view(client, request):
+def test_get_game_screen_view(client):
     """ Asserts a site visitor can GET the `game` screen """
     base_path = reverse('countdown_numbers:game')
     get_params = {
@@ -25,7 +25,7 @@ def test_get_game_screen_view(client, request):
 @pytest.mark.slow(
     reason='Processing the view also encapsulates game logic, validations, and calculations')
 @pytest.mark.django_db
-def test_get_results_screen_view(client, request):
+def test_get_results_screen_view(client):
     """ Asserts a site visitor can GET the `results` screen """
 
     path = reverse('countdown_numbers:results')

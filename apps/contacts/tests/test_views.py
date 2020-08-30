@@ -5,36 +5,37 @@ from django.urls import reverse
 
 import pytest
 
-from aa_project.tests.helpers import add_middleware_to_request, lilo_users, user_types
 from apps.contacts.models import Contact
 from apps.contacts.views import ContactFormView, ContactSubmittedView
+from apps.helpers import add_middleware_to_request
 
 from .helpers import contact_data
 
 
 pytestmark = pytest.mark.django_db
 
-@pytest.mark.parametrize(argnames='lilo_users', argvalues=lilo_users, ids=user_types)
+@pytest.mark.parametrize(argnames='all_users',
+    argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
 class TestGetContactViews:
-    def test_contact_form_view(self, request, factory, lilo_users):
+    def test_contact_form_view(self, factory, all_users):
         """ Asserts any user can GET the `contact` form """
         path = reverse('contacts:contact')
         request = factory.get(path)
-        request.user = lilo_users
+        request.user = all_users
         response = ContactFormView.as_view()(request)
         assert response.status_code == 200, 'Should be callable by anyone'
 
-    def test_contact_submitted_view(self, request, factory, lilo_users):
+    def test_contact_submitted_view(self, factory, all_users):
         """ Asserts any user can GET the `submitted` page upon form submission """
         path = reverse('contacts:submitted')
         request = factory.get(path)
-        request.user = lilo_users
+        request.user = all_users
         response = ContactSubmittedView.as_view()(request)
         assert response.status_code == 200, 'Should be callable by anyone'
 
 @pytest.mark.django_db
 class TestPostContactView:
-    def test_contact_form_post_view(self, request, factory):
+    def test_contact_form_post_view(self, factory):
         """ Asserts a random visitor can POST a contact form """
         path = reverse('contacts:submitted')
         request = factory.post(path, contact_data)

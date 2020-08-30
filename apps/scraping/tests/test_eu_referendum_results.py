@@ -4,7 +4,7 @@ import pytest
 
 
 @pytest.mark.slow(reason='Scrapes the EU Referendum Results as part of the view')
-def test_get_referendum_results(client, request):
+def test_get_referendum_results(client):
     """ Asserts a site visitor can GET the `Referendum Results` screen """
     path = reverse('scraping:referendum')
     response = client.get(path)

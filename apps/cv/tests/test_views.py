@@ -3,7 +3,7 @@ from django.urls import reverse
 from apps.cv.views import CVView
 
 
-def test_cv(request, factory):
+def test_cv(factory):
     """ Asserts any user can access the `cv` page """
     path = reverse('cv:cv')
     request = factory.get(path)

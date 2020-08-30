@@ -4,8 +4,7 @@ from aa_project.settings import base
 
 
 class TestLoginLogoutUTLs:
-    """ Asserts the login, login/logout redirection
-        URLS are set up as intended """
+    """ Asserts redirection URLS are set up as intended """
 
     def test_login_url(self):
         assert base.LOGIN_URL == 'blog:users:login'
@@ -32,9 +31,6 @@ class TestThirdPartyAppsAreInstalled:
 
     def test_crispy_forms_in_installed_apps(self):
         assert 'crispy_forms' in base.INSTALLED_APPS
-
-    def test_cors_headers_in_installed_apps(self):
-        assert 'corsheaders' in base.INSTALLED_APPS
 
     def test_bootstrap4_in_installed_apps(self):
         assert 'bootstrap4' in base.INSTALLED_APPS

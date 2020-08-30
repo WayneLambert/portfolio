@@ -12,84 +12,118 @@ import pytest
 from mixer.backend.django import mixer
 from PIL import Image
 
+from .helpers import get_search_strings
 
-@pytest.fixture(scope='session')
+
+@pytest.fixture(scope='function')
 def factory(request):
     """ Sets up a RequestFactory object """
     return RequestFactory()
 
 
-@pytest.fixture(scope='function')
-def random_user(db, request):
-    """ Sets up a random user from the mixer package """
+@pytest.fixture(name='random_user', scope='function')
+def random_user():
+    """ Sets up a random user using the `mixer` package """
     return mixer.blend(get_user_model())
-
-
-@pytest.fixture(scope='function')
-def fixed_user(db, request):
-    """ Sets up a fixed user object the mixer package """
-    return get_user_model().objects.create(
-        first_name='Wayne',
-        last_name='Lambert',
-        username='wayne-lambert',
-        email='test_email@example.com',
-    )
-
-
-@pytest.fixture(scope='function')
-def li_user(db, request):
-    """ Sets up readable fixture to simulate a logged in user """
-    return mixer.blend(get_user_model())
-
-
-@pytest.fixture(scope='function')
-def lo_user(db, request):
-    """ Sets up readable fixture to simulate a logged out user """
-    return AnonymousUser()
 
 
 @pytest.fixture(scope='function')
 def test_password():
+    """ Sets up a password to be used during the creation of
+        authenticated users """
     return os.environ['PYTEST_TEST_PASSWORD']
 
 
-@pytest.fixture(scope='function')
-def li_prim_user(db, request, client, **kwargs):
-    if 'username' not in kwargs:
-        kwargs['username'] = 'wayne-lambert'
-        kwargs['first_name'] = 'Wayne'
-        kwargs['last_name'] = 'Lambert'
-        kwargs['email'] = 'wayne-lambert@example.com'
-    user = get_user_model().objects.create_user(**kwargs)
-    client.login(username=user.username, password=test_password)
-    return user
+@pytest.fixture(name='auth_user', scope='function')
+def auth_user(django_user_model, client, test_password):
+    """ Creates an authenticated user object using the project's
+        specified user model """
+    auth_user = django_user_model.objects.create_user(
+            first_name='Wayne',
+            last_name='Lambert',
+            username='wayne-lambert',
+            email='wayne-lambert@example.com',
+            password=test_password,
+    )
+    client.login(username=auth_user.username, password=test_password)
+    return auth_user
 
 
-@pytest.fixture(scope='function')
-def li_sec_user(db, request, client, **kwargs):
+@pytest.fixture(name='unauth_user', scope='function')
+def unauth_user(request):
+    """ Creates an unauthenticated user object (i.e. an anonymous user) """
+    return AnonymousUser()
+
+
+@pytest.fixture(name='all_users', scope='function')
+def all_users(request, auth_user, unauth_user):
+    """
+    Creates a combined fixture containing both an authenticated and
+    unauthenticated user for testing views that should be available to
+    all types of users using parametrization
+    """
+    user_type = request.param
+    users = {
+        "auth_user": auth_user,
+        "unauth_user": unauth_user,
+    }
+    return users[user_type]
+
+
+@pytest.fixture(name='fixed_user', scope='function')
+def fixed_user(django_user_model):
+    """ Creates a fixed user object """
+    return django_user_model.objects.create_user(
+        first_name='Wayne',
+        last_name='Lambert',
+        username='wayne-lambert',
+        email='wayne-lambert@example.com',
+    )
+
+
+@pytest.fixture(name='li_sec_user', scope='function')
+def li_sec_user(django_user_model, client, test_password, **kwargs):
+    """
+    Creates a secondary user. This is used in tests where a secondary
+    user tries to access a protected view and should therefore be
+    greeted within a forbidden response
+    """
     if 'username' not in kwargs:
         kwargs['username'] = 'endeavour-morse'
         kwargs['first_name'] = 'Endeavour'
         kwargs['last_name'] = 'Morse'
         kwargs['email'] = 'endeavour-morse@example.com'
-    user = get_user_model().objects.create_user(**kwargs)
+    user = django_user_model.objects.create_user(**kwargs)
     client.login(username=user.username, password=test_password)
     return user
 
 
 @pytest.fixture(scope='function')
-def post(db, request):
+def post(request):
+    """ Creates a random blog post fixture """
     return mixer.blend('blog.Post')
 
 
 @pytest.fixture(scope='function')
-def test_image():
-    """ Builds a sample in-memory image for unit tests involving images """
-    image = Image.new(mode='RGB', size=(200, 200))  # Create new image using PIL
-    image_io = BytesIO()  # Set BytesIO object for saving image
-    image.save(image_io, 'JPEG')  # Save image to image_io
-    image_io.seek(0)  # Seek to start
+def category(request):
+    """ Creates a random blog category fixture """
+    return mixer.blend('blog.Category')
 
-    return InMemoryUploadedFile(file=image_io, field_name=None, name='test-image.jpg',
-                                content_type='image/jpeg', size=len(image_io.getvalue()),
-                                charset=None)
+
+@pytest.fixture(name='search_terms', scope='function', params=get_search_strings())
+def search_terms(request):
+    """ Returns a fixture for parametrizing search strings in tests """
+    return request.param
+
+
+@pytest.fixture(scope='function')
+def test_image():
+    """ Builds a sample in-memory image for tests involving images """
+    image = Image.new(mode='RGB', size=(200, 200))
+    image_io = BytesIO()
+    image.save(image_io, 'JPEG')
+    image_io.seek(0)
+
+    return InMemoryUploadedFile(file=image_io, field_name=None,
+                                name='test-image.jpg', content_type='image/jpeg',
+                                size=len(image_io.getvalue()), charset=None)
