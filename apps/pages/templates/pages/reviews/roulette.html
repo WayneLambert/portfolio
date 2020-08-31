@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Holiday Roulette Review{% endblock title %}
 
@@ -31,12 +32,12 @@
                 <a class="theme-link" href="{% url 'roulette:holiday_roulette' %}" target="_blank">Holiday Roulette</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/apps/roulette" target="_blank">
+                <a class="theme-link" href="{% roulette_source_code_link %}" target="_blank">
                   Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+roulette%22+" target="_blank">
+                <a class="theme-link" href="{% roulette_github_issues_link %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
               </li>

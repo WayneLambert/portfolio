@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% load template_helpers %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Countdown Numbers | Results{% endblock title %}
 
@@ -106,7 +107,7 @@
             </button>
             <!--- View Code on GitHub Button -->
             <button type="submit" class="btn btn-sm btn-github" 
-              onclick="window.open('https://github.com/WayneLambert/portfolio/blob/master/apps/countdown_numbers/views.py', '_blank')">
+              onclick="window.open('{% countdown_numbers_views_source_code_link %}', '_blank')">
               <i class="fa fa-github mr-1"></i>
               View Code
             </button>

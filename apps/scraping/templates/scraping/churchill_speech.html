@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Churchill Speech{% endblock title %}
 
@@ -21,8 +22,8 @@
       <div class="mb-3">
         <em class="small">
           Source: 
-          <a class="theme-link" href="https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and" target="_blank">
-            www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and
+          <a class="theme-link" href="{% churchill_speech_link %}" target="_blank">
+            {% churchill_speech_link %}
           </a>
         </em>
       </div>
@@ -32,7 +33,7 @@
         Back to Menu
       </a>
       <!--- View Code on GitHub Button -->
-      <a href="https://github.com/WayneLambert/portfolio/blob/master/apps/scraping/churchill.py" target="_blank"
+      <a href="{% scraping_churchill_source_code_link %}" target="_blank"
         class="btn btn-link btn-github mr-2 ml-2">
         <i class="fa fa-github mr-1"></i>
         View Code

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Countdown Letters | Results{% endblock title %}
 
@@ -11,7 +12,7 @@
     </div>
   </section>
 
-  <div class="container col-6">
+  <div class="container col-8">
     <!--- Game Letters -->
     <div class="client-quote d-flex flex-column results-card mt-3">
       <blockquote class="quote-content text-left">
@@ -112,7 +113,7 @@
       </button>
       <!--- View Code on GitHub Button -->
       <button type="submit" class="btn btn-sm btn-link btn-github" 
-        onclick="window.open('https://github.com/WayneLambert/portfolio/blob/master/apps/countdown_letters/views.py', '_blank')">
+        onclick="window.open('{% countdown_letters_views_source_code_link %}', '_blank')">
         <i class="fa fa-github mr-1"></i>
         View Code
       </button>

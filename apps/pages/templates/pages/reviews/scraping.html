@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Scraping Project Review{% endblock title %}
 
@@ -31,12 +32,12 @@
                 <a class="theme-link" href="{% url 'scraping:scraping_options' %}" target="_blank">Scraping</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/apps/scraping" target="_blank">
+                <a class="theme-link" href="{% scraping_source_code_link %}" target="_blank">
                   Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+scraping%22+" target="_blank">
+                <a class="theme-link" href="{% scraping_github_issues_link %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
               </li>
@@ -195,7 +196,10 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="sources">Sources</h3>
           <p>
-            <a href="https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a" target="_blank">https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a</a>
+            The following link represents the EU Referendum Results for all areas beginning with 'A'.
+          </p>
+          <p>
+            <a href="{% scraping_sample_ref_results_link %}" target="_blank">{% scraping_sample_ref_results_link %}</a>
           </p>
         </div>
       </div>
@@ -208,7 +212,7 @@
       <h3 class="section-title font-weight-bold mb-2" id="disclaimer">Disclaimer</h3>
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <p>
-          The choices of topics/items to scrape does not in any way reflect political thoughts
+          The choices of topics/items to scrape does not in any way reflect political opinions
           or affiliations. They are merely chosen as interesting items to produce as part of the project.
         </p>
       </div>

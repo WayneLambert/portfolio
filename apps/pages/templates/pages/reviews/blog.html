@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Django Blog Review{% endblock title %}
 
@@ -29,12 +30,12 @@
                 <a class="theme-link" href="{% url 'blog:home' %}" target="_blank">Blog Home Page</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/tree/master/apps/blog" target="_blank">
+                <a class="theme-link" href="{% blog_source_code_link %}" target="_blank">
                   Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+label%3A%22app%3A+blog%22+" target="_blank">
+                <a class="theme-link" href="{% blog_github_issues_link %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
               </li>
@@ -75,7 +76,7 @@
             Efficient retrieval of data from PostgreSQL database with query optimisations
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Tests built using the PyTest framework and an in-memory SQLite3 database
+            Tests built using the pytest framework and an in-memory SQLite3 database
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             List view pagination on index, contents, author, category, and search results pages
@@ -169,18 +170,18 @@
             If I were to repeat the project, I would create a custom user model which would use an email address
             for registration rather than a username. I think that using usernames is an outdated way of signing
             up for a website. It's more difficult for a user to remember their username. This fits my personal
-            preferred method of signing up to web services. Additionally, due to privacy concerns, I don't believe
-            in using Google or Facebook's expedited login buttons. They're very convenient at the point of
-            registration but expensive in terms of the data that you're giving away.
+            preferred method of signing up to web services.
+          </p>
+          <p>
+            Additionally, due to privacy concerns, I don't believe in using Google or Facebook's
+            expedited login buttons. They're very convenient at the point of registration but expensive
+            in terms of the data that you're giving away. Some might argue they're extremely secure
+            because of the resources that they put into ensuring their platforms are secure, however I
+            still believe this is at the expense of user privacy.
           </p>
           <p>
             Changing over to a custom user model at this point would require an inordinate amount
             of effort to derive very little benefit. I have used this pattern in a subsequent project.
-          </p>
-          <p>
-            As with any ever-evolving project, there are certainly still things that I would like to
-            change. You can review a list of <a href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+is%3Aopen+label%3A%22app%3A+blog%22" target="_blank">open issues</a>
-            for the blog project if you're interested.
           </p>
         </div>
 
@@ -201,7 +202,7 @@
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
-            <td>Django, Bootstrap, PyTest, Font Awesome, Amazon S3, Amazon SES</td>
+            <td>Django, Bootstrap, pytest, Font Awesome, Amazon S3, Amazon SES</td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Software:</td>
@@ -214,7 +215,7 @@
           <tr>
             <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
             <td>Node Sass, Django Crispy Forms, Django Widget Tweaks, Whitenoise,
-            Django CK Editor, Boto3, Django Recaptcha, Pillow</td>
+            Tiny MCE Editor, Boto3, Django Recaptcha, Pillow</td>
           </tr>
         </table>
       </div>

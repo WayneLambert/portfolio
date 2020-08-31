@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Bad Request{% endblock title %}
 
@@ -24,7 +25,7 @@
               <i class="fas fa-blog mr-1"></i>
               <span class="d-none d-md-inline">Blog</span>
             </a>
-            <a class="btn btn-link btn-github mr-2 mb-3" href="https://github.com/WayneLambert/portfolio" target="_blank">
+            <a class="btn btn-link btn-github mr-2 mb-3" href="{% github_portfolio_link %}" target="_blank">
               <i class="fa fa-github mr-1"></i>
               <span class="d-none d-md-inline">Code</span>
             </a>

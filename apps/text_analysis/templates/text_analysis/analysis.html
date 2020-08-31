@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Text Analysis{% endblock title %}
 
@@ -62,7 +63,7 @@
         Start Again
       </a>
       <!--- View Code on GitHub Button -->
-      <a href="https://github.com/WayneLambert/portfolio/blob/master/apps/text_analysis/views.py" target="_blank"
+      <a href="{% text_analysis_views_source_code_link %}" target="_blank"
         class="btn btn-link btn-github mr-2 ml-2">
         <i class="fa fa-github mr-1"></i>
         View Code

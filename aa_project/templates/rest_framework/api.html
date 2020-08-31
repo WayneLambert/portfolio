@@ -1,6 +1,7 @@
 {% extends 'rest_framework/base.html' %}
 {% load rest_framework %}
 {% load static %}
+{% load ext_links %}
 
 <head>
   {% block head %}
@@ -47,7 +48,7 @@
     <a href="{% url 'pages:api_review' %}" target="_blank" class="navbar-brand" title="Blog API Endpoints Project Review Page">
       <i class="fa fa-info-circle mr-2"></i>
     </a>
-    <a href="https://github.com/WayneLambert/portfolio/tree/master/apps/api" target="_blank" class="navbar-brand" title="Blog API Source Code">
+    <a href="{% api_source_code_link %}" target="_blank" class="navbar-brand" title="Blog API Source Code">
       <i class="fa fa-github mr-2"></i>
     </a>
   </span>

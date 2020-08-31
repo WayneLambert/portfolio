@@ -88,6 +88,14 @@ class TestPost:
         if len(post_fragments) > 1:
             assert '-' in post.slug, 'Should contain a hyphen'
 
+    def test_unique_slug_created(self):
+        post1 = mixer.blend(Post, slug='example-slug')
+        post1.save()
+        post2 = mixer.blend(Post, slug='example-slug')
+        post2.save()
+        assert post1.slug != post2.slug, 'Should be different slugs'
+        assert post2.slug == f"{post1.slug}1", 'Should append a new count to the slug'
+
     def test_content_is_htmlield(self):
         post = mixer.blend(Post)
         field = post._meta.get_field("content")

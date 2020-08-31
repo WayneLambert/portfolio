@@ -1,3 +1,5 @@
+{% load ext_links %}
+
 <footer class="footer">
   <div class="footer-content">
     <div class="container">
@@ -45,7 +47,7 @@
             <h6>Get in Touch</h6>
             <ul class="list-unstyled">
               <li>
-                <a class="theme-link" href="https://www.google.co.uk/maps/place/Edgbaston,+Birmingham" target="_blank">
+                <a class="theme-link" href="{% google_maps_location_link %}" target="_blank">
                   <i class="fa fa-map-marker mr-3"></i>Birmingham, UK
                 </a>
               </li>
@@ -53,7 +55,7 @@
                 <a class="theme-link"><i class="fas fa-mobile mr-3"></i>+44 (0)7950 315504</a>
               </li>
               <li>
-                <a class="theme-link" href="mailto:contact@waynelambert.dev">
+                <a class="theme-link" href="{% email_me_link %}">
                   <i class="fa fa-envelope mr-3"></i>Email Me
                 </a>
               </li>

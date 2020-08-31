@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load widget_tweaks %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | Contact Me{% endblock title %}
 
@@ -11,7 +12,7 @@
         <div class="container text-center single-col-max-width">
           <div class="intro">
             <p>Please fill in the contact form below or send me an email at 
-              <a class="theme-link" href="mailto:contact@waynelambert.dev">contact@waynelambert.dev</a>
+              <a class="theme-link" href="{% email_me_link %}">{% email_me_link %}</a>
             </p>
           </div>
         </div>
@@ -97,19 +98,19 @@
             <p>Feel free to connect using the social media channels below.</p>
             <ul class="list-inline mb-0">
               <li class="list-inline-item mb-3">
-                <a class="github" href="https://github.com/WayneLambert/"
+                <a class="github" href="{% github_profile_link %}"
                   target="_blank">
                   <i class="fab fa-github-alt fa-fw fa-lg"></i>
                 </a>
               </li>
               <li class="list-inline-item mb-3">
-                <a class="stack-overflow" href="https://stackoverflow.com/users/11211077/wayne-lambert?tab=profile" 
+                <a class="stack-overflow" href="{% stack_overflow_profile_link %}" 
                   target="_blank">
                   <i class="fab fa-stack-overflow fa-fw fa-lg"></i>
                 </a>
               </li>
               <li class="list-inline-item mb-3">
-                <a class="linkedin" href="https://www.linkedin.com/in/waynealambert/" 
+                <a class="linkedin" href="{% linkedin_profile_link %}" 
                   target="_blank">
                   <i class="fab fa-linkedin-in fa-fw fa-lg"></i>
                 </a>

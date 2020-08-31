@@ -1,4 +1,5 @@
 {% load static %}
+{% load ext_links %}
 
 <section class="project px-3 mb-3">
   <div class="container">
@@ -25,7 +26,7 @@
             </p>
             <p>
               I have a good knowledge of managing a project using GitHub issues and projects.
-              You can <a href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue" target="_blank">review the issues</a> (open and closed) for this project by clicking the link.
+              You can <a href="{% github_issues_link %}" target="_blank">review the issues</a> (open and closed) for this project by clicking the link.
             </p>
             <p>
               I have made a few contributions to open source projects. These have mainly been in

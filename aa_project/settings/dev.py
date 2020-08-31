@@ -52,6 +52,7 @@ SHELL_PLUS_IMPORTS = [
     'import requests',
     'from bs4 import BeautifulSoup',
     'from rich import pretty',
+    'from aa_project.links import Link'
 ]
 
 # Logging Configuration (including colorised output from Rich)

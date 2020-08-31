@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load humanize %}
+{% load ext_links %}
 
 {% block title %}{{ block.super }} | EU Referendum Results{% endblock title %}
 
@@ -69,8 +70,8 @@
       </div>
       <p class="mt-2">
         <em class="small">
-          Example Page Source: <a class="theme-link" href="https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a" target="_blank">
-            https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a</a>
+          Example Page Source: <a class="theme-link" href="{% scraping_sample_ref_results_link %}" target="_blank">
+            {% scraping_sample_ref_results_link %}</a>
         </em>
       </p>
       <!--- Back to Menu Button -->
@@ -79,7 +80,7 @@
         Back to Menu
       </a>
       <!--- View Code on GitHub Button -->
-      <a href="https://github.com/WayneLambert/portfolio/blob/master/apps/scraping/referendum.py" target="_blank"
+      <a href="{% scraping_referendum_source_code_link %}" target="_blank"
         class="btn btn-link btn-github mr-2 ml-2">
         <i class="fa fa-github mr-1"></i>
         View Code

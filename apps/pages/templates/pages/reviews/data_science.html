@@ -1,237 +1,241 @@
-{% extends 'base.html' %} {% load static %} {% block title %}{{ block.super }} | Data Science
-Review{% endblock title %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load ext_links %}
 
-<!--- Title and Subtitle Section -->
-<section class="cta-section theme-bg-light py-5">
-  <div class="container single-col-max-width">
-    <h2 class="heading text-center">Project Review: Data Science</h2>
-    <div class="project-intro text-center">
-      <p class="mb-0 lead">
-        Analysing Interesting Datasets with Python
-      </p>
+{% block title %}{{ block.super }} | Data Science Review{% endblock title %}
+
+{% block content %}
+  <!--- Title and Subtitle Section -->
+  <section class="cta-section theme-bg-light py-5">
+    <div class="container single-col-max-width">
+      <h2 class="heading text-center">Project Review: Data Science</h2>
+      <div class="project-intro text-center">
+        <p class="mb-0 lead">
+          Analysing Interesting Datasets with Python
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!--- Project Summary Section -->
-<section class="project px-3 py-5 p-md-5">
-  <div class="container">
-    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-      <img
-        class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
-        src="{% static 'assets/images/project/data-science.png' %}"
-      />
-      <div class="media-body">
-        <div class="client-info">
-          <h5 class="font-weight-bold mb-4">Summary</h5>
-          <ul class="client-meta list-unstyled">
-            <li class="mb-2">
-              <i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Data
-              Science
-            </li>
-            <li class="mb-2">
-              <strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
-              <a
-                class="theme-link"
-                href="https://github.com/WayneLambert/data-science-portfolio/tree/master/notebooks"
-                target="_blank"
-                >Data Science Notebooks</a
-              >
-            </li>
-            <li class="mb-2">
-              <i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-              <a
-                class="theme-link"
-                href="https://github.com/WayneLambert/data-science-portfolio/tree/master/notebooks"
-                target="_blank"
-              >
-                Source Code
-              </a>
-            </li>
-            <li class="mb-2">
-              <i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong>
-              <a
-                class="theme-link"
-                href="https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue+is%3Aopen+label%3A%22data+science%22"
-                target="_blank"
-              >
-                Open & Closed Issues on GitHub
-              </a>
-            </li>
-          </ul>
-          <hr />
-          <h5 class="font-weight-bold mb-4">Introduction</h5>
-          <div class="client-bio mb-4">
-            <p>
-              The data science app is a demonstration of using Python's Data Science libraries to
-              analyse interesting datasets.
-            </p>
-            <p>
-              I wanted to analyse datasets that I had analysed in previous roles using Python and
-              Pandas, therefore I created a sample dataset for 'UK Salaries' since I did a lot of
-              compensation analysis for Deutsche Bank.
-            </p>
-            <p>
-              I also wanted to analyse some additional datasets that I find personally fascinating,
-              therefore I have also included those.
-            </p>
-            <p>
-              Jupyter notebooks are a good method for consuming an external API and scraping
-              content from the web because of their fast feedback and tidy presentation of deep
-              nested structures that either JSON objects or HTML structures can have.
-            </p>
+  <!--- Project Summary Section -->
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <img
+          class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
+          src="{% static 'assets/images/project/data-science.png' %}"
+        />
+        <div class="media-body">
+          <div class="client-info">
+            <h5 class="font-weight-bold mb-4">Summary</h5>
+            <ul class="client-meta list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Data
+                Science
+              </li>
+              <li class="mb-2">
+                <strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
+                <a
+                  class="theme-link"
+                  href="{% data_science_portfolio_notebooks %}"
+                  target="_blank"
+                  >Data Science Notebooks</a
+                >
+              </li>
+              <li class="mb-2">
+                <i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
+                <a
+                  class="theme-link"
+                  href="{% data_science_portfolio_notebooks %}"
+                  target="_blank"
+                >
+                  Source Code
+                </a>
+              </li>
+              <li class="mb-2">
+                <i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong>
+                <a
+                  class="theme-link"
+                  href="{% data_science_github_issues_link %}"
+                  target="_blank"
+                >
+                  Open & Closed Issues on GitHub
+                </a>
+              </li>
+            </ul>
+            <hr />
+            <h5 class="font-weight-bold mb-4">Introduction</h5>
+            <div class="client-bio mb-4">
+              <p>
+                The data science app is a demonstration of using Python's Data Science libraries to
+                analyse interesting datasets.
+              </p>
+              <p>
+                I wanted to analyse datasets that I had analysed in previous roles using Python and
+                Pandas, therefore I created a sample dataset for 'UK Salaries' since I did a lot of
+                compensation analysis for Deutsche Bank.
+              </p>
+              <p>
+                I also wanted to analyse some additional datasets that I find personally fascinating,
+                therefore I have also included those.
+              </p>
+              <p>
+                Jupyter notebooks are a good method for consuming an external API and scraping
+                content from the web because of their fast feedback and tidy presentation of deep
+                nested structures that either JSON objects or HTML structures can have.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Features Section -->
-<section class="project px-3 pb-5">
-  <div class="container">
-    <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
-    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-      <ul class="mb-0 no-bullets">
-        <li class="mb-2">
-          <i class="fas fa-check fa-fw mr-2"></i>
-          Specifies versions of Python and the used libraries to aid reproducibility
-        </li>
-        <li class="mb-2">
-          <i class="fas fa-check fa-fw mr-2"></i>
-          Reports various summaries of the data for headline interrogation
-        </li>
-        <li class="mb-2">
-          <i class="fas fa-check fa-fw mr-2"></i>
-          Visualises the data with various choices of graphs to understand and interpret the data
-        </li>
-        <li class="mb-2">
-          <i class="fas fa-check fa-fw mr-2"></i>
-          Scrapes content from the web using the Requests and Beautiful Soup libraries.
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Project Write-Up Section -->
-<section class="project px-3">
-  <div class="container">
-    <div class="project-sections">
-      <!-- Project Objectives -->
-      <div class="project-section mb-5">
-        <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
-        <p>
-          I set out to analyse a number of interesting datasets to demonstrate data analysis skills
-          with Python and it's associated data analysis and visualiation libraries.
-        </p>
-      </div>
-
-      <!-- Project Approach / Solution -->
-      <div class="project-section mb-5">
-        <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">
-          The Approach &amp; Solution
-        </h3>
-        <p>
-          For analysing datasets, the approach is largely more fluid than it is for software or web
-          development projects.
-        </p>
-        <p>
-          For most projects, it consists of two components: data analysis and data visualisation.
-        </p>
-        <p>
-          For data analysis, it means using stock Python and its extended standard library in
-          addition to Pandas, and NumPy.
-        </p>
-        <p>
-          It's usually best to use a Conda distribution for this as it handles the requirements for
-          the best data science libraries to use. This does mean, however, that you often cannot
-          use the most up-to-date version of Python and benefit from the new features and speed
-          improvements it brings.
-        </p>
-        <p>
-          For data visualisation, I always use Matplotlib and Seaborn, however other libraries such
-          as Altair can also become useful.
-        </p>
-        <p>
-          It's best to approach any analysis and visualisation project with the data analysis first
-          as you can get some fast insights into your data in addition to any problems that the
-          data may have quickly. This will enable you to make corrections to the data so that it
-          doesn't affect the overall accuracy of a project.
-        </p>
-        <p>
-          The choice of graphic or metric to use is one that defines the success of a data
-          visualisation project. It feels good for a data scientist to present a violin plot,
-          however, if your audience isn't use to interpreting that sort of graph, then the message
-          will not have the desired impact. A simpler graphic such as a box plot would make for a
-          better choice.
-        </p>
-      </div>
-
-      <!-- Project Evaluation -->
-      <div class="project-section mb-5">
-        <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
-        <p>
-          I would like to provide interactive notebooks, however, even amongst the array of online
-          notebooks services, there doesn't appear to be one where I can simply push a notebook to
-          GitHub and have an automated GitHub action build an interactive notebook.
-        </p>
-        <p>
-          When GitHub releases Codespaces, I would be interested to see if this means that anyone
-          with a GitHub account would be able to run a notebook from within GitHub itself since VS
-          Code has evolving native support for notebooks.
-        </p>
-        <p>
-          My journey in Python started with a lot of OS scripting and data analysis work, so I
-          eventually thought that I should formalise the work that I had undertaken and create some
-          structured notebooks to analyse some interesting datasets.
-        </p>
-        <p>
-          I am pleased with the skills developed as a data scientist using Python as that aids my
-          skills in web development. In the same way, I feel my skills in web development and
-          software engineering also make me a better data scientist.
-        </p>
+  <!-- Features Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="features">Features</h3>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <ul class="mb-0 no-bullets">
+          <li class="mb-2">
+            <i class="fas fa-check fa-fw mr-2"></i>
+            Specifies versions of Python and the used libraries to aid reproducibility
+          </li>
+          <li class="mb-2">
+            <i class="fas fa-check fa-fw mr-2"></i>
+            Reports various summaries of the data for headline interrogation
+          </li>
+          <li class="mb-2">
+            <i class="fas fa-check fa-fw mr-2"></i>
+            Visualises the data with various choices of graphs to understand and interpret the data
+          </li>
+          <li class="mb-2">
+            <i class="fas fa-check fa-fw mr-2"></i>
+            Scrapes content from the web using the Requests and Beautiful Soup libraries.
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Languages, Technologies & Skills Used Section -->
-<section class="project px-3 pb-5">
-  <div class="container">
-    <h3 class="section-title font-weight-bold mb-2" id="technologies">
-      Languages, Technologies &amp; Skills Used
-    </h3>
-    <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
-    <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-      <table>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Languages:</td>
-          <td>Python</td>
-        </tr>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
-          <td>Pandas, NumPy, Matplotlib, Seaborn</td>
-        </tr>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Software:</td>
-          <td>VS Code, Jupyter Notebooks</td>
-        </tr>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Libraries:</td>
-          <td>collections, decimal, string, json</td>
-        </tr>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
-          <td>Requests, Beautiful Soup</td>
-        </tr>
-        <tr>
-          <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
-          <td>GitHub, PipEnv</td>
-        </tr>
-      </table>
+  <!-- Project Write-Up Section -->
+  <section class="project px-3">
+    <div class="container">
+      <div class="project-sections">
+        <!-- Project Objectives -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="objectives">Objectives</h3>
+          <p>
+            I set out to analyse a number of interesting datasets to demonstrate data analysis skills
+            with Python and it's associated data analysis and visualiation libraries.
+          </p>
+        </div>
+
+        <!-- Project Approach / Solution -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">
+            The Approach &amp; Solution
+          </h3>
+          <p>
+            For analysing datasets, the approach is largely more fluid than it is for software or web
+            development projects.
+          </p>
+          <p>
+            For most projects, it consists of two components: data analysis and data visualisation.
+          </p>
+          <p>
+            For data analysis, it means using stock Python and its extended standard library in
+            addition to Pandas, and NumPy.
+          </p>
+          <p>
+            It's usually best to use a Conda distribution for this as it handles the requirements for
+            the best data science libraries to use. This does mean, however, that you often cannot
+            use the most up-to-date version of Python and benefit from the new features and speed
+            improvements it brings.
+          </p>
+          <p>
+            For data visualisation, I always use Matplotlib and Seaborn, however other libraries such
+            as Altair can also become useful.
+          </p>
+          <p>
+            It's best to approach any analysis and visualisation project with the data analysis first
+            as you can get some fast insights into your data in addition to any problems that the
+            data may have quickly. This will enable you to make corrections to the data so that it
+            doesn't affect the overall accuracy of a project.
+          </p>
+          <p>
+            The choice of graphic or metric to use is one that defines the success of a data
+            visualisation project. It feels good for a data scientist to present a violin plot,
+            however, if your audience isn't use to interpreting that sort of graph, then the message
+            will not have the desired impact. A simpler graphic such as a box plot would make for a
+            better choice.
+          </p>
+        </div>
+
+        <!-- Project Evaluation -->
+        <div class="project-section mb-5">
+          <h3 class="section-title font-weight-bold mb-2" id="evaluation">Evaluation</h3>
+          <p>
+            I would like to provide interactive notebooks, however, even amongst the array of online
+            notebooks services, there doesn't appear to be one where I can simply push a notebook to
+            GitHub and have an automated GitHub action build an interactive notebook.
+          </p>
+          <p>
+            When GitHub releases Codespaces, I would be interested to see if this means that anyone
+            with a GitHub account would be able to run a notebook from within GitHub itself since VS
+            Code has evolving native support for notebooks.
+          </p>
+          <p>
+            My journey in Python started with a lot of OS scripting and data analysis work, so I
+            eventually thought that I should formalise the work that I had undertaken and create some
+            structured notebooks to analyse some interesting datasets.
+          </p>
+          <p>
+            I am pleased with the skills developed as a data scientist using Python as that aids my
+            skills in web development. In the same way, I feel my skills in web development and
+            software engineering also make me a better data scientist.
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Languages, Technologies & Skills Used Section -->
+  <section class="project px-3 pb-5">
+    <div class="container">
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">
+        Languages, Technologies &amp; Skills Used
+      </h3>
+      <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
+      <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
+        <table>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Languages:</td>
+            <td>Python</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Frameworks / Services:</td>
+            <td>Pandas, NumPy, Matplotlib, Seaborn</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Software:</td>
+            <td>VS Code, Jupyter Notebooks</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Libraries:</td>
+            <td>collections, decimal, string, json</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
+            <td>Requests, Beautiful Soup</td>
+          </tr>
+          <tr>
+            <td class="text-right font-weight-bold pr-2">Infrastructure:</td>
+            <td>GitHub, PipEnv</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </section>
 
 {% endblock %}
