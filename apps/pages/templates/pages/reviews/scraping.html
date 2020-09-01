@@ -32,12 +32,12 @@
                 <a class="theme-link" href="{% url 'scraping:scraping_options' %}" target="_blank">Scraping</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="{% scraping_source_code_link %}" target="_blank">
+                <a class="theme-link" href="{% github_url type='code' app='scraping' %}" target="_blank">
                   Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="{% scraping_github_issues_link %}" target="_blank">
+                <a class="theme-link" href="{% github_url type='issues' app='scraping' %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
               </li>

@@ -32,12 +32,12 @@
                 <a class="theme-link" href="{% url 'text_analysis:analyse' %}" target="_blank">Text Analysis</a>
               </li>
               <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="{% text_analysis_source_code_link %}" target="_blank">
+                <a class="theme-link" href="{% github_url type='code' app='text_analysis' %}" target="_blank">
                   Source Code
                 </a>
               </li>
               <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="{% text_analysis_github_issues_link %}" target="_blank">
+                <a class="theme-link" href="{% github_url type='issues' app='text_analysis' %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
               </li>
