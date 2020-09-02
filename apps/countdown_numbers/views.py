@@ -5,17 +5,16 @@ from urllib.parse import urlencode
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from apps.countdown_numbers import logic, utils
+from apps.countdown_numbers import logic, utils, validations
 from apps.countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
-from apps.countdown_numbers.validations import (calc_entered_is_valid,
-                                                get_permissible_nums, is_calc_valid,)
 
 
 def selection_screen(request):
     if request.method == 'POST':
         form = NumberSelectionForm(request.POST)
         if form.is_valid():
-            game_screen_url = logic.build_game_url(form)
+            num_from_top = form.cleaned_data.get('num_from_top')
+            game_screen_url = logic.build_game_url(num_from_top)
             return redirect(game_screen_url)
     else:
         form = NumberSelectionForm()
@@ -27,7 +26,7 @@ def game_screen(request):
     if request.method == 'POST':
         form = SelectedNumbersForm(request.POST)
         calc_entered = form['players_calculation'].data
-        is_valid_calc = calc_entered_is_valid(request, calc_entered)
+        is_valid_calc = validations.calc_entered_is_valid(request, calc_entered)
         if not is_valid_calc:
             return redirect(request.META['HTTP_REFERER'])
         if form.is_valid():
@@ -49,14 +48,15 @@ def game_screen(request):
 
 
 def results_screen(request):
-    valid_calc = is_calc_valid(request)
+    players_calc = request.GET.get('players_calculation')
+    valid_calc = validations.is_calc_valid(request, players_calc)
     player_num_achieved = logic.get_player_num_achieved(request)
     target_number = int(request.GET.get('target_number'))
     player_score, comp_score = 0, 0
     if valid_calc:
         player_score = logic.get_score_awarded(target_number, player_num_achieved)
 
-    game_nums = get_permissible_nums(request)
+    game_nums = validations.get_permissible_nums(request)
     best_solution = logic.get_best_solution(request, game_nums, target_number)
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
     comp_num_achieved = int(eval(best_solution))

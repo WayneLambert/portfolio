@@ -1,11 +1,10 @@
 # pylint: disable=redefined-outer-name
+import pytest
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
-import pytest
-
 from mixer.backend.django import mixer
 
 from apps.users.models import Profile
@@ -80,12 +79,15 @@ class TestProfile:
     def test_profile_str(self, fixed_user):
         assert fixed_user.pk == 2, 'User instance should be set up'
         assert fixed_user.user.pk == 2, 'Profile instance with signal should be set up'
-        assert str(Profile.objects.get(slug='wayne-lambert')) == \
-            'Wayne Lambert (wayne-lambert)', \
-                '__str__ method should be formatted'
+        assert str(Profile.objects.get(slug='wayne-lambert')) == 'Wayne Lambert (wayne-lambert)', \
+            '__str__ method should be formatted'
+
+    def test_join_year(self):
+        user = mixer.blend(get_user_model())
+        assert user.user.join_year == user.date_joined.year, \
+            "Year should be the same as the `date_joined` field year property"
 
     def test_get_absolute_url(self):
         user = mixer.blend(get_user_model())
         assert user.user.get_absolute_url() == reverse(
-            'blog:users:profile', kwargs={'username': user.user.slug}), \
-                'Should resolve the URL'
+            'blog:users:profile', kwargs={'username': user.user.slug}), 'Should resolve the URL'

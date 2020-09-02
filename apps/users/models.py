@@ -23,7 +23,11 @@ class Profile(models.Model):
         return f"{self.user.first_name} {self.user.last_name}"
 
     def __str__(self):
-        return f"{self.user.first_name} {self.user.last_name} ({self.user.username})"
+        return f"{self.full_name} ({self.user.username})"
+
+    @property
+    def join_year(self) -> int:
+        return self.user.date_joined.year
 
     def get_absolute_url(self):
         return reverse('blog:users:profile', kwargs={'username': self.slug})

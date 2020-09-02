@@ -1,12 +1,11 @@
 import datetime
 
+import pytest
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
-
-import pytest
-
 from mixer.backend.django import mixer
 from tinymce.models import HTMLField
 
@@ -171,6 +170,11 @@ class TestPost:
     def test_post_str(self):
         post = mixer.blend(Post, title='Example Post')
         assert str(post) == 'Example Post', 'Should be the same as the post name'
+
+    def test_publish_year(self):
+        post = mixer.blend(Post)
+        assert post.publish_year == post.publish_date.year, \
+            "Year should be the same as the published date's year property"
 
     def test_get_absolute_url(self):
         post = mixer.blend(Post, title='Example Post', slug='example-post')

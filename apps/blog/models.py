@@ -6,11 +6,10 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-
 from tinymce.models import HTMLField
 
 
-class Category(models.Model):    
+class Category(models.Model):
     name = models.CharField(max_length=16)
     slug = models.SlugField(max_length=16, unique=True)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -68,6 +67,10 @@ class Post(models.Model):
     @property
     def reading_time(self) -> int:
         return int(math.ceil(self.word_count / 75))
+
+    @property
+    def publish_year(self) -> int:
+        return self.publish_date.year
 
     def save(self):
         if not self.slug.strip():

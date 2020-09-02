@@ -1,4 +1,4 @@
-from aa_project.settings.base import *
+from aa_project.settings.base import *  # noqa
 
 
 DEBUG = True

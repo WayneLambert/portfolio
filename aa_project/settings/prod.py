@@ -1,6 +1,6 @@
 import dj_database_url
 
-from aa_project.settings.base import *
+from aa_project.settings.base import *  # noqa
 
 
 DEBUG = False

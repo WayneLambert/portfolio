@@ -63,21 +63,27 @@ def check_brackets(request, players_calc: str) -> bool:
 
 
 def strip_spaces(request, players_calc: str) -> str:
-    """
-    Removes unncessary spaces within the answer provided by the player.
-    """
+    """ Removes unncessary spaces within a player's answer. """
     return players_calc.replace(' ', '')
 
 
-def calc_entered_is_valid(request, players_calc) -> bool:
-    """ Validates that the calculation entered by the player is in a
-    valid format.
-    """
-    players_calc = strip_spaces(request, players_calc)
+def run_validation_checks(request, players_calc) -> bool:
+    """ Checks that the user calculation meets the required format. """
     has_valid_chars = check_chars(request, players_calc)
     has_valid_brackets = check_brackets(request, players_calc)
     has_valid_sequences = check_legal_chars_seq(request, players_calc)
-    if all([has_valid_chars, has_valid_brackets, has_valid_sequences]):
+
+    return all([has_valid_chars, has_valid_brackets, has_valid_sequences])
+
+
+def calc_entered_is_valid(request, players_calc) -> bool:
+    """
+    Validates that the calculation entered by the player is in a
+    valid format.
+    """
+    players_calc = strip_spaces(request, players_calc)
+    valid_checks = run_validation_checks(request, players_calc)
+    if valid_checks:
         return True
     messages.add_message(request, messages.INFO, message=f"\n{players_calc}",
                          extra_tags=f"Your Calculation Entered: {players_calc}")
@@ -104,12 +110,11 @@ def get_nums_used(request, players_calc: str) -> list:
     return nums_used
 
 
-def is_calc_valid(request) -> bool:
+def is_calc_valid(request, players_calc) -> bool:
     """
     Validates that the numbers used to form the player's calculation are
     permissible numbers for the game.
     """
-    players_calc = request.GET.get('players_calculation')
     players_calc = strip_spaces(request, players_calc)
     nums_used = get_nums_used(request, players_calc)
     permissible_nums = get_permissible_nums(request)

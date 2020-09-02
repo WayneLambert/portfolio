@@ -1,9 +1,12 @@
 """ Helper functions to facilitate the testing of the blog application """
 
+
 def get_sample_form_data():
-    # Data -> title, content, categories, reference_url, status, exp_validity
-    return [
-        (
-            'Test Title', 'Test content', 'https://waynelambert.dev', 0, True
-        ),
-    ]
+    return {
+        'title': 'Test title which has a title of between 40 and 60 chars',
+        'content': 'Test content',
+        'categories': [1, 2],
+        'reference_url': 'https://waynelambert.dev',
+        'status': 0,
+        'validity': True,
+    }

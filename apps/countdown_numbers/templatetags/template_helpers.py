@@ -6,6 +6,7 @@ to humanise the game to be in a presentable arithmetic format
 
 from django import template
 
+
 register = template.Library()
 
 
@@ -17,11 +18,14 @@ def remove_brackets(value):
 @register.filter
 def add_spacing(value):
     """ Adds spacing around the calculation's operators """
-    s = value.replace("+", " + ")
-    s = s.replace("-", " - ")
-    s = s.replace("*", " * ")
-    s = s.replace("/", " / ")
-    return s
+    replacements = {
+        "+": " + ",
+        "-": " - ",
+        "*": " * ",
+        "/": " / "
+    }
+    return "".join([replacements.get(c, c) for c in value])
+
 
 @register.filter
 def change_symbols(value):

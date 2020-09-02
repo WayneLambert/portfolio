@@ -44,17 +44,12 @@ def get_numbers_chosen(num_from_top: int) -> list:
 
 
 def get_target_number() -> int:
-    """
-    Generates a random number between 100 and 999 for the game
-    """
+    """ Generates a random number between 100 and 999 for the game """
     return randint(100, 999)
 
 
-def build_game_url(form) -> str:
-    """
-    Generates the URL for the `game` screen
-    """
-    num_from_top = form.cleaned_data.get('num_from_top')
+def build_game_url(num_from_top: int) -> str:
+    """ Generates the URL for the `game` screen """
     base_url = reverse('countdown_numbers:game')
     target_number_url = urlencode({'target_number': get_target_number()})
     numbers_chosen_url = urlencode(
@@ -63,9 +58,7 @@ def build_game_url(form) -> str:
 
 
 def get_game_nums(request) -> list:
-    """
-    Gets the game numbers as a list
-    """
+    """ Gets the game numbers as a list """
     return request.GET['numbers_chosen'].strip('[').strip(']').replace(' ', '').split(',')
 
 
@@ -150,8 +143,13 @@ def get_game_result(target: int, answers: dict) -> str:
     """
     Returns the game's result as a string for template rendering
     """
-    if answers['comp_num_achieved'] == answers['player_num_achieved']:
+    comp_ans_variance = abs(answers['comp_num_achieved'] - target)
+    player_ans_variance = abs(answers['player_num_achieved'] - target)
+    if comp_ans_variance == player_ans_variance:
         result = 'Draw'
     else:
-        result = min(answers.items(), key=lambda kv: abs(kv[1] - target))[0]
+        if player_ans_variance < comp_ans_variance:
+            result = 'Player wins'
+        else:
+            result = 'Rachel wins'
     return result

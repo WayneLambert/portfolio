@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 from rest_framework import serializers
 
 from apps.blog.models import Category, Post
@@ -82,6 +81,6 @@ class PostSerializer(serializers.ModelSerializer):
         )
 
     def get_status(self, obj):
-        return obj.get_status_display()
+        return obj.get_status_display()  # pragma: no cover
 
     ordering = ['-updated_date', '-publish_date']

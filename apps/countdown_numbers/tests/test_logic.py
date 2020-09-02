@@ -77,3 +77,115 @@ def test_score_awarded_for_being_more_than_10_away_from_target_number(num_achiev
     num_achieved = TARGET_NUMBER + num_achieved_var
     score_awarded = logic.get_score_awarded(TARGET_NUMBER, num_achieved)
     assert score_awarded == 0, 'Should score 0 points for being more than 10 away either side'
+
+
+def test_get_game_result_is_draw_1():
+    """
+    Asserts the game result is a `draw` when both player's achieve the
+    target number.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 500,
+        'player_num_achieved': 500,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Draw'
+
+
+def test_get_game_result_is_draw_2():
+    """
+    Asserts the game result is a `draw` when both player's have the same
+    variance above the target number.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 505,
+        'player_num_achieved': 505,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Draw'
+
+
+def test_get_game_result_is_draw_3():
+    """
+    Asserts the game result is a `draw` when both player's have the same
+    variance below the target number.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 495,
+        'player_num_achieved': 495,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Draw'
+
+
+def test_get_game_result_is_draw_4():
+    """
+    Asserts the game result is a `draw` when both player's have the same
+    variance from the target number but in opposite directions.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 495,
+        'player_num_achieved': 505,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Draw'
+
+
+def test_rachel_wins_when_closer_but_above_target_number():
+    """
+    Asserts that the correct game result is given when both player's are
+    the same distance from the target number but in different directions.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 501,
+        'player_num_achieved': 502,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Rachel wins'
+
+
+def test_rachel_wins_when_closer_but_below_target_number():
+    """
+    Asserts that the correct game result is given when both player's are
+    the same distance from the target number but in different directions.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 499,
+        'player_num_achieved': 498,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Rachel wins'
+
+
+def test_player_wins_when_closer_but_above_target_number():
+    """
+    Asserts that the correct game result is given when both player's are
+    the same distance from the target number but in different directions.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 502,
+        'player_num_achieved': 501,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Player wins'
+
+
+def test_player_wins_when_closer_but_below_target_number():
+    """
+    Asserts that the correct game result is given when both player's are
+    the same distance from the target number but in different directions.
+    """
+    TARGET_NUMBER = 500
+    answers = {
+        'comp_num_achieved': 498,
+        'player_num_achieved': 499,
+    }
+    game_result = logic.get_game_result(TARGET_NUMBER, answers)
+    assert game_result == 'Player wins'

@@ -9,12 +9,15 @@ def selection_screen(request):
     if request.method == 'POST':
         form = LetterSelectionForm(request.POST)
         if form.is_valid():
-            full_url = utils.build_game_screen_url(form)
+            num_vowels_selected = form.cleaned_data.get('num_vowels_selected')
+            full_url = utils.build_game_screen_url(num_vowels_selected)
             return redirect(full_url)
     else:
         form = LetterSelectionForm()
 
-    return render(request, 'countdown_letters/selection.html', {'form': form})
+    context = {'form': form}
+
+    return render(request, 'countdown_letters/selection.html', context)
 
 
 def game_screen(request):
@@ -23,7 +26,9 @@ def game_screen(request):
     if request.method == 'POST':
         form = SelectedLettersForm(request.POST)
         if form.is_valid():
-            full_url = utils.build_results_screen_url(request, form)
+            players_word = form.cleaned_data.get('players_word').upper()
+            letters_chosen = request.META['HTTP_REFERER'][-logic.GameSetup.MAX_GAME_LETTERS:]
+            full_url = utils.build_results_screen_url(letters_chosen, players_word)
             return redirect(full_url)
 
     context = {'form': form}

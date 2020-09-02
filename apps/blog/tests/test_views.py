@@ -1,8 +1,8 @@
 # pylint: disable=redefined-outer-name
+import pytest
+
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
-
-import pytest
 
 import apps.blog.views as blog_views
 
@@ -163,7 +163,7 @@ class TestPostDeleteView:
         request.user = unauth_user
         response = blog_views.PostDeleteView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should redirect user'
-        assert '/blog/' in response.url, '`blog` should appear in url following redirect'
+        assert '/blog/' in response.url, '`blog` should appear in URL following redirect'
 
 
 @pytest.mark.parametrize(argnames='all_users',
