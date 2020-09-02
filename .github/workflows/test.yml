@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - ci
+      - master
 
 jobs:
   test:
