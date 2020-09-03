@@ -63,7 +63,7 @@ class LinkGenerator:
 class Contacts:
     @register.simple_tag(name='google_maps_embed_link')
     def google_maps_embed_link():
-        return "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2430.353171772638!2d-1.9222173833795277!3d52.47274087980513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sB15%203!5e0!3m2!1sen!2suk!4v1592585652608!5m2!1sen!2suk"
+        return "https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2430.353171772638!2d-1.9222173833795277!3d52.47274087980513!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sB15%203!5e0!3m2!1sen!2suk!4v1592585652608!5m2!1sen!2suk"  # pragma: no cover
 
 
 class CountdownLetters:

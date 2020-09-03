@@ -3,7 +3,6 @@ name: Run Django Tests
 on:
   push:
     branches:
-      - ci
       - master
 
 jobs:
