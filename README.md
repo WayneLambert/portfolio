@@ -18,7 +18,7 @@
 ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/djangorestframework)
 ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/dev/pytest)
 ![Test](https://github.com/WayneLambert/portfolio/workflows/Test/badge.svg?branch=ci)
-[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/ci/graph/badge.svg)](https://codecov.io/gh/WayneLambert/portfolio)
+[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/master/graph/badge.svg)](https://codecov.io/gh/WayneLambert/portfolio)
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
