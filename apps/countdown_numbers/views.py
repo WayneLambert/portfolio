@@ -39,9 +39,10 @@ def game_screen(request):
             results_screen_url = f"{base_url}?{referer_url}&{players_calc_url}"
             return redirect(results_screen_url)
     else:
+        numbers_chosen = request.GET['numbers_chosen']
         context = {
             'form': SelectedNumbersForm(),
-            'game_nums': logic.get_game_nums(request)
+            'game_nums': logic.get_game_nums(numbers_chosen)
         }
 
         return render(request, 'countdown_numbers/game.html', context)
@@ -50,14 +51,14 @@ def game_screen(request):
 def results_screen(request):
     players_calc = request.GET.get('players_calculation')
     valid_calc = validations.is_calc_valid(request, players_calc)
-    player_num_achieved = logic.get_player_num_achieved(request)
+    player_num_achieved = logic.get_player_num_achieved(players_calc)
     target_number = int(request.GET.get('target_number'))
     player_score, comp_score = 0, 0
     if valid_calc:
         player_score = logic.get_score_awarded(target_number, player_num_achieved)
 
     game_nums = validations.get_permissible_nums(request)
-    best_solution = logic.get_best_solution(request, game_nums, target_number)
+    best_solution = logic.get_best_solution(game_nums, target_number)
     best_solution = best_solution.replace(chr(215), '*').replace(chr(247), '/')
     comp_num_achieved = int(eval(best_solution))
     solution_str = f"""

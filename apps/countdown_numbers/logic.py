@@ -1,8 +1,4 @@
-""" Countdown Numbers Logic
-
-A collection of classes and functions that are required to implement
-the core logic for the Countdown Numbers Game.
-"""
+""" Functions required to implement the game's core logic. """
 
 # pylint: disable=eval-used
 import itertools
@@ -44,7 +40,7 @@ def get_numbers_chosen(num_from_top: int) -> list:
 
 
 def get_target_number() -> int:
-    """ Generates a random number between 100 and 999 for the game """
+    """ Generates a random number between 100 and 999 """
     return randint(100, 999)
 
 
@@ -57,21 +53,17 @@ def build_game_url(num_from_top: int) -> str:
     return f"{base_url}?{target_number_url}&{numbers_chosen_url}"
 
 
-def get_game_nums(request) -> list:
-    """ Gets the game numbers as a list """
-    return request.GET['numbers_chosen'].strip('[').strip(']').replace(' ', '').split(',')
+def get_game_nums(number_chosen: list) -> list:
+    """ Performs cleanup to get the game numbers as a list """
+    return number_chosen.strip('[').strip(']').replace(' ', '').split(',')
 
 
-def get_player_num_achieved(request) -> int:
-    """
-    Calculates the number calculated by the player according to their
-    game's input answer
-    """
-    players_calc = request.GET.get('players_calculation')
+def get_player_num_achieved(players_calc: str) -> int:
+    """ Calculates number calculated according to the input answer """
     return int(eval(players_calc))
 
 
-def get_game_calcs(request, game_nums: list, stop_on=None) -> defaultdict:
+def get_game_calcs(game_nums: list, stop_on=None) -> defaultdict:
     """ Calculates the possible calculations to the game """
     operator_symbols = {
         '+': operator.add,
@@ -107,12 +99,9 @@ def get_game_calcs(request, game_nums: list, stop_on=None) -> defaultdict:
     return game_calcs
 
 
-def get_best_solution(request, game_nums: list, target: int) -> str:
-    """
-    Calculates a solution that is the closest to the game's target
-    number
-    """
-    game_calcs = get_game_calcs(request, game_nums, stop_on=target)
+def get_best_solution(game_nums: list, target: int) -> str:
+    """ Calculates a solution closest to the game's target number """
+    game_calcs = get_game_calcs(game_nums, stop_on=target)
 
     if int(target) in game_calcs:
         return game_calcs[int(target)][0]
@@ -125,8 +114,8 @@ def get_best_solution(request, game_nums: list, target: int) -> str:
 
 def get_score_awarded(target_number: int, num_achieved: int) -> int:
     """
-    Calculates the game score awarded based on the achieved calculation
-    proximity to the target number
+    Calculates the game score awarded based on the achieved
+    calculation's proximity to the target number
     """
     if num_achieved == target_number:
         points_awarded = 10
@@ -140,9 +129,7 @@ def get_score_awarded(target_number: int, num_achieved: int) -> int:
 
 
 def get_game_result(target: int, answers: dict) -> str:
-    """
-    Returns the game's result as a string for template rendering
-    """
+    """ Returns the game's result as a string for template rendering """
     comp_ans_variance = abs(answers['comp_num_achieved'] - target)
     player_ans_variance = abs(answers['player_num_achieved'] - target)
     if comp_ans_variance == player_ans_variance:
