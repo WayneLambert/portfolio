@@ -17,6 +17,8 @@ class Profile(models.Model):
     author_view = models.IntegerField(choices=AuthorView.choices, default=0)
     profile_picture = models.ImageField(
         default='default-user.jpg', upload_to='profile_pics', max_length=200)
+    created_date = models.DateTimeField(auto_now_add=True, editable=False)
+    updated_date = models.DateTimeField(auto_now=True)
 
     @property
     def full_name(self):

@@ -57,6 +57,15 @@ class TestProfile:
         if len(profile_slug_fragments) > 1:
             assert '-' in user.user.slug, 'Should contain a hyphen'
 
+    @pytest.mark.skip(reason="TODO: Needs development")
+    def test_unique_slug_created(self, fixed_user):
+        user1 = fixed_user
+        user1.user.save()
+        user2 = fixed_user
+        user2.user.save()
+        assert user1.user.slug != user2.user.slug, 'Should be different slugs'
+        assert user2.user.slug == f"{user1.user.slug}1", 'Should append a new count to the slug'
+
     def test_author_view_is_integerfield(self):
         user = mixer.blend(get_user_model())
         field = user.user._meta.get_field("author_view")
@@ -66,6 +75,16 @@ class TestProfile:
         user = mixer.blend(get_user_model())
         field = user.user._meta.get_field("profile_picture")
         assert isinstance(field, models.ImageField), 'Should be an image date field'
+
+    def test_created_date_is_datetimefield(self):
+        user = mixer.blend(get_user_model())
+        field = user.user._meta.get_field("created_date")
+        assert isinstance(field, models.DateTimeField), 'Should be an image date field'
+
+    def test_updated_date_is_imagefield(self):
+        user = mixer.blend(get_user_model())
+        field = user.user._meta.get_field("updated_date")
+        assert isinstance(field, models.DateTimeField), 'Should be an image date field'
 
     def test_full_name(self, fixed_user):
         get_user_model().objects.create(
