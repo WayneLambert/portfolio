@@ -12,7 +12,7 @@ import pytest
 from mixer.backend.django import mixer
 from PIL import Image
 
-from .helpers import get_search_strings
+from apps.blog.tests.helpers import get_search_strings
 
 
 @pytest.fixture(scope='function')
