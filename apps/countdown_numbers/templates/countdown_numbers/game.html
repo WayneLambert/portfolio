@@ -45,7 +45,7 @@
           </div>
           <!-- Form -->
           <div class="d-flex flex-column col-10 offset-lg-1">
-            <form method="POST" action="{% url 'countdown_numbers:game' %}" novalidate>
+            <form method="POST" action="{% url 'countdown_numbers:game' %}">
               {% csrf_token %}
               {{ form|crispy }}
               <button class="btn btn-sm btn-success mr-5" type="submit">
