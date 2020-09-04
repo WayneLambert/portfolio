@@ -6,7 +6,7 @@ from apps.users.models import Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'author_view',)
+    list_display = ('user', 'author_view', 'created_date', 'updated_date')
     readonly_fields = ('profile_picture_image', 'created_date', 'updated_date')
 
     def profile_picture_image(self, obj):

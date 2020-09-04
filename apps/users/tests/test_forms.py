@@ -28,7 +28,7 @@ class TestUserRegisterForm:
         'password1': 's@mple-p@$$w0rd',
         'password2': 's@mple-p@$$w0rd',
         'validity': True,
-        }
+    }
 
     def test_form_tests_for_all_fields(self):
         """ Asserts all fields that need to be tested are present """
@@ -36,6 +36,11 @@ class TestUserRegisterForm:
         for field in self.fields:
             if field != 'validity':
                 assert field in form.fields
+
+    def test_form_is_valid(self):
+        """ Asserts correctly filled in form is valid """
+        form = UserRegisterForm(data=self.good_data)
+        assert form.is_valid(), 'Should be valid'
 
     def test_empty_form_is_invalid(self):
         """
@@ -45,10 +50,13 @@ class TestUserRegisterForm:
         form = UserRegisterForm(data={})
         assert not form.is_valid(), 'Should be invalid'
 
-    def test_form_is_valid(self):
-        """ Asserts correctly filled in form is valid """
+    def test_invalid_email_means_invalid_form(self):
+        """ Asserts an invalid email filled in form is valid """
         form = UserRegisterForm(data=self.good_data)
-        assert form.is_valid(), 'Should be valid'
+        form.data['email'] = 'test-emailexample.com'
+        assert not form.is_valid(), 'Should be invalid'
+        assert form.errors
+        assert form.errors['email'][0] == 'Enter a valid email address.'
 
     def test_username_is_cleaned(self):
         """
@@ -63,7 +71,6 @@ class TestUserRegisterForm:
         assert form.cleaned_data['username'].islower(), 'Username is now in lowercase'
         assert len(form.cleaned_data['username']) == 13, "Example's username is 30 chars in length"
         assert form.is_valid(), 'Should be valid'
-
 
 
 class TestUserUpdateForm:

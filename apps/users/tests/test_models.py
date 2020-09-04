@@ -50,21 +50,12 @@ class TestProfile:
 
     def test_slugification(self):
         user = mixer.blend(get_user_model())
-        user.user.slug = slugify(user.user.full_name)
+        user.user.slug = slugify(user.username)
         profile_slug_fragments = user.user.slug.split('-')
         for fragment in profile_slug_fragments:
             assert fragment.casefold() in user.user.slug
         if len(profile_slug_fragments) > 1:
             assert '-' in user.user.slug, 'Should contain a hyphen'
-
-    @pytest.mark.skip(reason="TODO: Needs development")
-    def test_unique_slug_created(self, fixed_user):
-        user1 = fixed_user
-        user1.user.save()
-        user2 = fixed_user
-        user2.user.save()
-        assert user1.user.slug != user2.user.slug, 'Should be different slugs'
-        assert user2.user.slug == f"{user1.user.slug}1", 'Should append a new count to the slug'
 
     def test_author_view_is_integerfield(self):
         user = mixer.blend(get_user_model())
@@ -87,19 +78,16 @@ class TestProfile:
         assert isinstance(field, models.DateTimeField), 'Should be an image date field'
 
     def test_full_name(self, fixed_user):
-        get_user_model().objects.create(
-            first_name=fixed_user.first_name,
-            last_name=fixed_user.last_name,
-            email=fixed_user.email
-        )
-        profile = Profile.objects.get(slug='wayne-lambert')
-        assert profile.full_name == 'Wayne Lambert', 'Should be first and last name concatenated'
+        assert fixed_user.user.full_name == 'Wayne Lambert', 'Concatenation of first and last name'
 
     def test_profile_str(self, fixed_user):
         assert fixed_user.pk == 2, 'User instance should be set up'
         assert fixed_user.user.pk == 2, 'Profile instance with signal should be set up'
         assert str(Profile.objects.get(slug='wayne-lambert')) == 'Wayne Lambert (wayne-lambert)', \
             '__str__ method should be formatted'
+
+    def test_initials(self, fixed_user):
+        assert fixed_user.user.initials == 'WL', 'Should be first letter of first and last name'
 
     def test_join_year(self):
         user = mixer.blend(get_user_model())

@@ -36,6 +36,20 @@
           <div class="text-center">
             <button type="submit" class="btn btn-primary btn-block mx-auto"><i class="fa fa-sign-in mr-1"></i>Register Account</button>
           </div>
+          <div class="messages mt-2">
+            {% if messages %}
+              <ul class="messages no-bullets">
+                {% for message in messages %}
+                  <p{% if message.tags %} class="{{ message.tags }} signup-error-message"{% endif %}>
+                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                      <b><u>Important:</u></b>
+                    {% endif %}
+                  {{ message }}
+                  </p>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
         </form>
         <div class="border-top">
           <small class="text-muted">

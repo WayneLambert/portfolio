@@ -1,7 +1,5 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import MultipleObjectsReturned
 from django.db import models
-from django.db.models import ObjectDoesNotExist
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
@@ -28,6 +26,11 @@ class Profile(models.Model):
         return f"{self.full_name} ({self.user.username})"
 
     @property
+    def initials(self):
+        inits = f"{self.user.first_name[0]}{self.user.last_name[0]}"
+        return inits.upper().strip()
+
+    @property
     def join_year(self) -> int:
         return self.user.date_joined.year
 
@@ -36,21 +39,5 @@ class Profile(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug.strip():
-            self.slug = slugify(self.full_name)
-
-        _slug = self.slug
-        _count = 1
-
-        while True:
-            try:
-                Profile.objects.all().exclude(pk=self.pk).get(slug=_slug)
-            except MultipleObjectsReturned:
-                pass
-            except ObjectDoesNotExist:
-                break
-            _slug = f"{self.slug}{_count}"
-            _count += 1
-
-        self.slug = _slug
-
+            self.slug = slugify(self.user.username)
         super(Profile, self).save(*args, **kwargs)

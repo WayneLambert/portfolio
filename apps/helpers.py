@@ -1,5 +1,8 @@
 """ Helper functions to facilitate testing """
 
+from django.contrib.messages.middleware import MessageMiddleware
+from django.contrib.sessions.middleware import SessionMiddleware
+
 
 def add_middleware_to_request(request, middleware_class):
     """
@@ -9,4 +12,10 @@ def add_middleware_to_request(request, middleware_class):
     middleware = middleware_class()
     middleware.process_request(request)
     request.session.save()
+    return request
+
+def add_session_and_messages_middlewares(request):
+    middlewares = (SessionMiddleware, MessageMiddleware)
+    for middleware in middlewares:
+        add_middleware_to_request(request, middleware)
     return request

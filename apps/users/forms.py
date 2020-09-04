@@ -5,10 +5,6 @@ from django.contrib.auth.forms import UserCreationForm
 from apps.users.models import Profile
 
 
-class InactiveUserFound(Exception):
-    """ Custom exception raised when inactive candidate tries to sign up """
-
-
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
 
@@ -37,11 +33,8 @@ class UserRegisterForm(UserCreationForm):
             first_name=data['first_name'],
             last_name=data['last_name'],
         )
-        user.set_password(self.cleaned_data["password1"])
-        if commit:
-            user.save()
-
-        return user
+        user.set_password(self.cleaned_data['password1'])
+        user.save()
 
 
 class UserUpdateForm(forms.ModelForm):
