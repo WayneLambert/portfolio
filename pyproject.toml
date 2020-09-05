@@ -15,7 +15,7 @@ ignore-patterns='''
   |conf.py
 '''
 persistent="no"
-load-plugins= ["pylint_django, pytest_pylint"]
+load-plugins= ["pylint_django"]
 limit-inference-results="100"
 suggestion-mode="yes"
 unsafe-load-any-extension="no"
@@ -76,7 +76,6 @@ exclude = '''
 )/
 '''
 
-
 [tool.isort]
 atomic = true
 line_length = 89
@@ -86,6 +85,6 @@ lines_after_imports = 2
 lines_between_types = 1
 use_parentheses = true
 skip_glob = "*/.venv/*, */node_modules/*, */.git/*, */migrations/*"
-sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 known_django = "django"
 known_third_party = ["PIL", "bs4", "captcha", "dj_database_url", "factory", "hypothesis", "mixer", "pytest", "requests", "rest_framework", "shapeshifter", "tinymce"]
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]

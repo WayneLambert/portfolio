@@ -41,9 +41,6 @@ class TestThirdPartyAppsAreInstalled:
     def test_captcha_in_installed_apps(self):
         assert 'captcha' in base.INSTALLED_APPS
 
-    def test_google_analytics_in_installed_apps(self):
-        assert 'google_analytics' in base.INSTALLED_APPS
-
     def test_widget_tweaks_in_installed_apps(self):
         assert 'widget_tweaks' in base.INSTALLED_APPS
 

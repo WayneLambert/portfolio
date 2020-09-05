@@ -37,7 +37,6 @@ jobs:
           echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET }} >> .env
           echo RECAPTCHA_PUBLIC_KEY=${{ secrets.RECAPTCHA_PUBLIC_KEY }} >> .env
           echo RECAPTCHA_PRIVATE_KEY=${{ secrets.RECAPTCHA_PRIVATE_KEY }} >> .env
-          echo GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} >> .env
           echo PYTEST_TEST_PASSWORD=${{ secrets.PYTEST_TEST_PASSWORD }} >> .env
           echo EMAIL_HOST_SES=${{ secrets.EMAIL_HOST_SES }} >> .env
           echo EMAIL_HOST_USER_SES=${{ secrets.EMAIL_HOST_USER_SES }} >> .env

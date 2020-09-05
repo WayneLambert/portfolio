@@ -39,7 +39,6 @@ THIRD_PARTY_APPS = [
     'bootstrap4',
     'storages',
     'captcha',
-    'google_analytics',
     'widget_tweaks',
     'tinymce',
 ]
@@ -236,8 +235,3 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_S3_REGION_NAME = 'eu-west-2'
 AWS_DEFAULT_ACL = None
 AWS_BASE_BUCKET_ADDRESS = os.environ['AWS_BASE_BUCKET_ADDRESS']
-
-# Google Analytics
-GOOGLE_ANALYTICS = {
-    'google_analytics_id': os.environ['GA_TRACKING_ID'],
-}

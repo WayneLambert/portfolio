@@ -17,13 +17,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
-from django.urls import include, path, re_path
+from django.urls import include, path
 
+from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
 from apps.blog.sitemap import CategorySitemap, PostSitemap
 from apps.pages.views import (SiteBadRequestView, SitePageNotFoundView,
                               SitePermissionDeniedView,)
-
-from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
 
 
 handler400 = SiteBadRequestView.as_view()
@@ -34,7 +33,6 @@ handler500 = 'pages.views.handler500'
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
-    re_path('djga/', include('google_analytics.urls')),
     path('', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contacts.urls', namespace='contacts')),

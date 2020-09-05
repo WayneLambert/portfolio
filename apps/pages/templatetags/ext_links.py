@@ -10,6 +10,7 @@ template tag will propagate the change through to the templates.
 
 from django import template
 
+
 register = template.Library()
 
 

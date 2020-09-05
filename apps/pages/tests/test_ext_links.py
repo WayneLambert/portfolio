@@ -70,7 +70,7 @@ class TestLinkGenerator:
         assert link.status_code == 200, 'Should return an `OK` status'
 
 
-@pytest.mark.slow(reason='Sends a GET request to each link')
+@pytest.mark.slow(reason='Sends a GET request')
 class TestContacts:
     @staticmethod
     def google_maps_embed_link():
@@ -137,7 +137,7 @@ class TestScraping:
         assert link.status_code == 200, 'Should return an `OK` status'
 
 
-@pytest.mark.slow(reason='Sends a GET request to each link')
+@pytest.mark.slow(reason='Sends a GET request')
 class TestTextAnalysis:
     @staticmethod
     def test_views_source_code():
