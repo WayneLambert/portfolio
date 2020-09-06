@@ -55,14 +55,10 @@ class HomeView(PostView):
     paginate_orphans = 3
 
 
-class IndexListView(ListView):
+class IndexListView(PostView):
     """ Facilitates the short contents page """
     model = Post
     template_name = 'blog/index_page.html'
-    context_object_name = 'posts'
-    category_list = Category.objects.all().prefetch_related('posts')
-    extra_context = {'categories_list': category_list}
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
 
 
 class ContentsListView(PostView):
@@ -72,19 +68,20 @@ class ContentsListView(PostView):
     paginate_orphans = 3
 
 
-class UserPostListView(PostView):
+class AuthorPostListView(PostView):
     """ Drives the list of posts written by a given author """
     template_name = 'blog/user_posts.html'
     paginate_by = 6
     paginate_orphans = 3
 
     def get_queryset(self):
-        user = get_object_or_404(get_user_model(), username=self.kwargs.get('username'))
-        return self.queryset.filter(author=user)
+        user = get_object_or_404(get_user_model(), username=self.kwargs['username'])
+        return super(AuthorPostListView, self).queryset.filter(author=user)
+
 
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
-        context = super(UserPostListView, self).get_context_data(**kwargs)
+        context = super(AuthorPostListView, self).get_context_data(**kwargs)
         username = self.kwargs.get('username')
         display_type = get_user_model().objects.get(username=username).user.author_view
         profile = get_user_model().objects.get(username=username).user
@@ -124,6 +121,7 @@ class SearchResultsView(PostView):
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)
         context['query'] = context['view'].request.GET['q']
+        context['num_posts'] = self.queryset.count()
         return context
 
 
@@ -137,11 +135,12 @@ class PostDetailView(DetailView):
         """ Facilitates detail page's pagination buttons """
         context = super(PostDetailView, self).get_context_data(**kwargs)
         posts = Post.objects.prefetch_related('categories').select_related('author__user')
-        posts = posts.filter(status=1)
+        posts.filter(status=1)
         for idx, post in enumerate(posts):
             if post.slug == self.kwargs['slug']:
-                context['prev_post'] = posts[posts.count() - 1] if idx == 0 else posts[idx - 1]
-                context['next_post'] = posts[0] if idx == posts.count() - 1 else posts[idx + 1]
+                posts_count = posts.count()
+                context['prev_post'] = posts[posts_count - 1] if idx == 0 else posts[idx - 1]
+                context['next_post'] = posts[0] if idx == posts_count - 1 else posts[idx + 1]
                 return context
 
 

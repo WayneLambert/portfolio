@@ -1,9 +1,8 @@
 from django.urls import reverse
 
-from apps.blog.views import (CategoryPostListView, ContentsListView, HomeView,
-                             IndexListView, PostCreateView, PostDeleteView,
-                             PostDetailView, PostUpdateView, SearchResultsView,
-                             UserPostListView,)
+from apps.blog.views import (AuthorPostListView, CategoryPostListView, ContentsListView,
+                             HomeView, IndexListView, PostCreateView, PostDeleteView,
+                             PostDetailView, PostUpdateView, SearchResultsView,)
 
 
 class TestUrls:
@@ -15,7 +14,7 @@ class TestUrls:
     def test_user_posts(self):
         """ Verify that the `user_posts` url invokes intended view """
         path = reverse('blog:user_posts', kwargs={'username': 'test-username'})
-        assert path, UserPostListView.as_view().__name__
+        assert path, AuthorPostListView.as_view().__name__
 
     def test_category_posts(self):
         """ Verify that the `category_posts` url invokes intended view """

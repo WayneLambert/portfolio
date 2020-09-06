@@ -12,11 +12,7 @@
             <!-- Author Name or Username -->
             <li>
               <a class="theme-link" href="{% url 'blog:user_posts' post.author.username %}">
-                {% if post.author.user.author_view == 0 %}
-                  {{ post.author.username }}
-                {% else %}
-                  {{ post.author.user.full_name }}
-                {% endif %}
+                {{ post.author.user.display_name }}
               </a>
             </li>
 

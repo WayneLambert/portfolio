@@ -30,7 +30,7 @@ class TestHomeView:
 
 @pytest.mark.parametrize(argnames='all_users',
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
-class TestUserPostListView:
+class TestAuthorPostListView:
     def test_all_users_can_access(self, factory, random_user, all_users):
         """ Asserts authenticated and unauthenticated user can access
             list of posts authored by another random user """
@@ -38,7 +38,7 @@ class TestUserPostListView:
         path = reverse('blog:user_posts', kwargs=kwargs)
         request = factory.get(path)
         request.user = all_users
-        response = blog_views.UserPostListView.as_view()(request, **kwargs)
+        response = blog_views.AuthorPostListView.as_view()(request, **kwargs)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
 

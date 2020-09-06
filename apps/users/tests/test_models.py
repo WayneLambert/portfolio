@@ -94,6 +94,16 @@ class TestProfile:
         assert user.user.join_year == user.date_joined.year, \
             "Year should be the same as the `date_joined` field year property"
 
+    def test_display_name_is_username(self):
+        user = mixer.blend(get_user_model())
+        user.user.author_view = 0
+        assert user.user.display_name == user.username, 'Should be the username'
+
+    def test_display_name_is_full_name(self):
+        user = mixer.blend(get_user_model())
+        user.user.author_view = 1
+        assert user.user.display_name == user.user.full_name, "Should be the user's full name"
+
     def test_get_absolute_url(self):
         user = mixer.blend(get_user_model())
         assert user.user.get_absolute_url() == reverse(

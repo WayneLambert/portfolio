@@ -4,14 +4,14 @@ from apps.blog.feeds import AtomLatestPostsFeed, LatestPostsFeed
 from apps.blog.views import (CategoryPostListView, ContentsListView, HomeView,
                              IndexListView, PostCreateView, PostDeleteView,
                              PostDetailView, PostUpdateView, SearchResultsView,
-                             UserPostListView,)
+                             AuthorPostListView,)
 
 
 app_name = 'blog'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
-    path('user/<str:username>/posts', UserPostListView.as_view(), name='user_posts'),
+    path('user/<str:username>/posts', AuthorPostListView.as_view(), name='user_posts'),
     path('category/<slug:slug>/posts', CategoryPostListView.as_view(), name='category_posts'),
     path('post/new/', PostCreateView.as_view(), name='post_create'),
     path('post/<slug:slug>/', PostDetailView.as_view(), name='post_detail'),

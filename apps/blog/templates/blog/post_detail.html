@@ -11,7 +11,10 @@
 {% block content %}
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
-      {% include "components/post_title.html" %}
+      <header class="blog-post-header">
+        <h2 class="title mb-2">{{ post.title }}</h2>
+      </header>
+
       <!-- Post Author and Meta Data -->
       {% include "components/meta_data.html" %}
 
@@ -24,7 +27,8 @@
 
         {% if post.reference_url %}
           <div class="alert alert-info" role="alert">
-            <a class="theme-link" href="{{ post.reference_url }}" id="reference_url">{{ post.reference_url }}</a>
+            <a class="theme-link" href="{{ post.reference_url }}" 
+              id="reference_url">{{ post.reference_url }}</a>
           </div>
         {% endif %}
       </div>

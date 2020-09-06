@@ -34,6 +34,13 @@ class Profile(models.Model):
     def join_year(self) -> int:
         return self.user.date_joined.year
 
+    @property
+    def display_name(self):
+        if self.author_view == 0:
+            return self.user.username
+        else:
+            return self.full_name
+
     def get_absolute_url(self):
         return reverse('blog:users:profile', kwargs={'username': self.slug})
 
