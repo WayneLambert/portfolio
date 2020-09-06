@@ -26,7 +26,7 @@ class PostView(ListView):
         context = super(PostView, self).get_context_data(**kwargs)
         current_page = context.pop('page_obj', None)
         context['current_page'] = current_page
-        context['num_posts'] = current_page.paginator.object_list.count()
+        context['num_posts'] = len(self.queryset)
         return context
 
 
