@@ -1,11 +1,14 @@
 # pylint: disable=redefined-outer-name
-import pytest
-
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
+import pytest
+
+from mixer.backend.django import mixer
+
 import apps.blog.views as blog_views
 
+from apps.blog.models import Post
 from apps.pages.views import SitePermissionDeniedView
 
 
@@ -33,7 +36,8 @@ class TestHomeView:
 class TestAuthorPostListView:
     def test_all_users_can_access(self, factory, random_user, all_users):
         """ Asserts authenticated and unauthenticated user can access
-            list of posts authored by another random user """
+            list of posts written by another author """
+        posts = mixer.cycle(10).blend(Post, author=random_user)
         kwargs = {'username': random_user.username}
         path = reverse('blog:user_posts', kwargs=kwargs)
         request = factory.get(path)

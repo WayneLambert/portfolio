@@ -72,12 +72,12 @@ class Post(models.Model):
     def publish_year(self) -> int:
         return self.publish_date.year
 
-    @property
-    def num_draft_posts(self) -> int:
+    @staticmethod
+    def num_draft_posts() -> int:
         return Post.objects.filter(status=0).count()
 
-    @property
-    def num_published_posts(self) -> int:
+    @staticmethod
+    def num_published_posts() -> int:
         return Post.objects.filter(status=1).count()
 
     def save(self):

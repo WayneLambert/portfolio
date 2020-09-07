@@ -176,6 +176,20 @@ class TestPost:
         assert post.publish_year == post.publish_date.year, \
             "Year should be the same as the published date's year property"
 
+    def test_num_draft_posts(self):
+        draft_posts = mixer.cycle(10).blend(Post, status=0)
+        published_posts = mixer.cycle(5).blend(Post, status=1)
+        total_posts = draft_posts + published_posts
+        assert len(total_posts) == Post.objects.count(), 'Should have 15 posts in the DB'
+        assert Post.num_draft_posts() == 10, 'Should have 10 `draft` posts in the DB'
+
+    def test_num_published_posts(self):
+        draft_posts = mixer.cycle(10).blend(Post, status=0)
+        published_posts = mixer.cycle(5).blend(Post, status=1)
+        total_posts = draft_posts + published_posts
+        assert len(total_posts) == Post.objects.count(), 'Should have 15 posts in the DB'
+        assert Post.num_published_posts() == 5, 'Should have 5 `published` posts in the DB'
+
     def test_get_absolute_url(self):
         post = mixer.blend(Post, title='Example Post', slug='example-post')
         assert post.get_absolute_url() == reverse('blog:post_detail', kwargs={'slug': post.slug})

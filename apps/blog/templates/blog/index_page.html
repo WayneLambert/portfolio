@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ block.super }} | Blog Contents (Short){% endblock title %}
+{% block title %}{{ block.super }} | Blog Posts Index{% endblock title %}
 
 {% block content %}
   {% include 'components/search.html' %}
-  <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} unique post{{ posts.count|pluralize }})</h6>
+  <h6 class="text-center mt-5 mb-5">{{ posts.count }} unique posts covering {{ categories_list.count }} categories</h6>
   {% for category in categories_list %}
     <div class="container single-col-max-width alert">
       <h6 class="mb-4">

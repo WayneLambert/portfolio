@@ -26,7 +26,6 @@ class PostView(ListView):
         context = super(PostView, self).get_context_data(**kwargs)
         current_page = context.pop('page_obj', None)
         context['current_page'] = current_page
-        context['num_posts'] = len(self.queryset)
         return context
 
 
@@ -54,10 +53,13 @@ class HomeView(PostView):
     paginate_by = 6
     paginate_orphans = 3
 
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['num_posts'] = self.queryset.count
+        return context
 
 class IndexListView(PostView):
     """ Facilitates the short contents page """
-    model = Post
     template_name = 'blog/index_page.html'
 
 
@@ -76,16 +78,15 @@ class AuthorPostListView(PostView):
 
     def get_queryset(self):
         user = get_object_or_404(get_user_model(), username=self.kwargs['username'])
-        return super(AuthorPostListView, self).queryset.filter(author=user)
-
+        return super(AuthorPostListView, self).get_queryset().filter(author=user)
 
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
         context = super(AuthorPostListView, self).get_context_data(**kwargs)
-        username = self.kwargs.get('username')
-        display_type = get_user_model().objects.get(username=username).user.author_view
-        profile = get_user_model().objects.get(username=username).user
-        context['display_name'] = profile.full_name if display_type else username
+        qs = self.get_queryset()
+        context['num_posts'] = qs.count
+        if qs:
+            context['display_name'] = qs.first().author.user.display_name  # pragma: no cover
         return context
 
 
@@ -101,7 +102,9 @@ class CategoryPostListView(PostView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
-        context['categories'] = self.categories
+        qs = self.get_queryset()
+        pluralised = 's' if qs.count==1 else ''
+        context['summary'] = f"{qs.count} post{pluralised} about {self.categories[0]}"
         return context
 
 
@@ -167,4 +170,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
     def test_func(self) -> bool:
         post = self.get_object()
-        return self.request.user == post.author
+        return self.request.user.id == post.author.id
