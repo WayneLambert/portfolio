@@ -24,8 +24,7 @@ class PostView(ListView):
     def get_context_data(self, **kwargs):
         """ Facilitates pagination and post count summary """
         context = super(PostView, self).get_context_data(**kwargs)
-        current_page = context.pop('page_obj', None)
-        context['current_page'] = current_page
+        context['current_page'] = context.pop('page_obj', None)
         return context
 
 
@@ -139,9 +138,10 @@ class PostDetailView(DetailView):
         context = super(PostDetailView, self).get_context_data(**kwargs)
         posts = Post.objects.prefetch_related('categories').select_related('author__user')
         posts.filter(status=1)
+        posts_count = len(posts)
+
         for idx, post in enumerate(posts):
             if post.slug == self.kwargs['slug']:
-                posts_count = posts.count()
                 context['prev_post'] = posts[posts_count - 1] if idx == 0 else posts[idx - 1]
                 context['next_post'] = posts[0] if idx == posts_count - 1 else posts[idx + 1]
                 return context

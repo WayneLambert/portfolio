@@ -175,28 +175,51 @@ TINYMCE_SPELLCHECKER = True
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'height': '600px',
-    'plugins': '''
-            textcolor save link image media preview codesample contextmenu
-            table code lists fullscreen  insertdatetime  nonbreaking
-            contextmenu directionality searchreplace wordcount visualblocks
-            visualchars code fullscreen autolink lists  charmap print  hr
-            anchor pagebreak spellchecker
-            ''',
-    'toolbar1': '''
-            fullscreen preview bold italic underline | fontselect,
-            fontsizeselect  | forecolor backcolor | alignleft alignright |
-            aligncenter alignjustify | indent outdent | bullist numlist table |
-            ''',
-    'toolbar2': '''
-            visualblocks visualchars |
-            charmap hr pagebreak nonbreaking anchor | link image media | codesample | code |
-            ''',
+    'height': '800px',
     'contextmenu': 'formats | link image',
     'menubar': True,
     'statusbar': True,
+    'selector': 'textarea',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen insertdatetime nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists charmap print hr
+            anchor pagebreak spellchecker emoticons help
+            ''',
+    'toolbar1': '''
+            fontselect fontsizeselect | bold italic underline | blockquote |
+            forecolor backcolor | alignleft alignright aligncenter alignjustify |
+            indent outdent
+            ''',
+    'toolbar2': '''
+            bullist numlist | table |
+            visualblocks visualchars | searchreplace |
+            hr pagebreak nonbreaking anchor | link image media |
+            codesample | code | charmap emoticons | pre fullscreen preview
+            ''',
+    'codesample_global_prismjs': True,
+    'codesample_languages': [
+        {'text': 'Python', 'value': 'python'},
+        {'text': 'HTML/XML', 'value': 'html'},
+        {'text': 'JavaScript', 'value': 'javascript'},
+        {'text': 'Docker', 'value': 'docker'},
+        {'text': 'Bash', 'value': 'bash'},
+        {'text': 'SHELL', 'value': 'shell'},
+        {'text': 'Git', 'value': 'git'},
+        {'text': 'Markdown', 'value': 'markdown'},
+        {'text': 'CSS', 'value': 'css'},
+        {'text': 'SQL', 'value': 'sql'},
+        {'text': 'Json', 'value': 'json'},
+        {'text': 'Diff', 'value': 'diff'},
+        {'text': 'Ruby', 'value': 'ruby'},
+        {'text': 'YAML', 'value': 'yaml'},
+        {'text': 'TOML', 'value': 'toml'},
+    ],
+    "font_formats":
+        "Ubuntu Mono='Ubuntu Mono', monospace; sans-serif; Arial=arial,helvetica,sans-serif; Tahoma=tahoma,arial,helvetica,sans-serif; Verdana=verdana,geneva; Courier New=courier new,courier,monospace",
 }
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
