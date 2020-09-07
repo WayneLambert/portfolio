@@ -102,9 +102,9 @@ class CategoryPostListView(PostView):
 
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
+        context['categories'] = self.categories
         qs = self.get_queryset()
-        pluralised = 's' if qs.count==1 else ''
-        context['summary'] = f"{qs.count} post{pluralised} about {self.categories[0]}"
+        context['num_posts'] = qs.count()
         return context
 
 
