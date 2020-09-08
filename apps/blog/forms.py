@@ -22,3 +22,7 @@ class PostForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
+
+    def clean_title(self):
+        title = self.cleaned_data['title'].title().replace("&", "and").strip()
+        return title[:-1] if title.endswith('.') else title

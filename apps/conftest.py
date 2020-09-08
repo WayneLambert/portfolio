@@ -12,6 +12,7 @@ import pytest
 from mixer.backend.django import mixer
 from PIL import Image
 
+from apps.blog.models import Category
 from apps.blog.tests.helpers import get_search_strings
 
 
@@ -127,3 +128,17 @@ def test_image():
     return InMemoryUploadedFile(file=image_io, field_name=None,
                                 name='test-image.jpg', content_type='image/jpeg',
                                 size=len(image_io.getvalue()), charset=None)
+
+
+@pytest.fixture(scope='function')
+def sample_form_data(random_user):
+    """ Builds a sample set of form data for completing a blog post form """
+
+    return {
+        'title': 'Test title which has a title of between 40 and 60 chars',
+        'content': 'Test content',
+        'categories': mixer.cycle(2).blend(Category),
+        'reference_url': 'https://waynelambert.dev',
+        'status': 0,
+        'validity': True,
+    }

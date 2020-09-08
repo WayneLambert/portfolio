@@ -84,8 +84,8 @@ class AuthorPostListView(PostView):
         context = super(AuthorPostListView, self).get_context_data(**kwargs)
         qs = self.get_queryset()
         context['num_posts'] = qs.count
-        if qs:
-            context['display_name'] = qs.first().author.user.display_name  # pragma: no cover
+        if qs:  # pragma: no cover
+            context['display_name'] = qs.first().author.user.display_name
         return context
 
 
