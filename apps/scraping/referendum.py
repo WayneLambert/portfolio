@@ -11,6 +11,13 @@ import requests
 from bs4 import BeautifulSoup
 
 
+class ScrapingError(Exception):
+    """
+    The content could not be scraped from the BBC website. Perhaps the
+    website is down.
+    """
+
+
 def get_area_results(results: dict) -> List[Tuple[Any]]:
     """
     Assembles each of the area's results together into an iterable for
@@ -33,15 +40,13 @@ def get_area_results(results: dict) -> List[Tuple[Any]]:
 
 
 def scrape_content() -> List[List[int]]:
-    """
-    Scrapes the results of the EU Referendum from the BBC website
-    """
+    """ Scrapes the results of the EU Referendum from the BBC website """
     ALPHABET = string.ascii_lowercase
     BASE_URL = 'https://www.bbc.co.uk/news/politics/eu_referendum/results/local/'
     results = defaultdict(list)
     for letter in ALPHABET:
         page_response = requests.get(f"{BASE_URL}{letter}", timeout=5)
-        if page_response:
+        try:
             page_content = BeautifulSoup(page_response.content, "html.parser")
             areas = page_content.find_all('div', attrs={'class': 'eu-ref-result-bar'})
             for area in areas:
@@ -61,30 +66,25 @@ def scrape_content() -> List[List[int]]:
                 results['turnout'].append(
                     area.find('div', {'class': 'eu-ref-result-bar__turnout'})
                     .getText().replace('Turnout: ', ''))
-        else:
-            continue
+        except:  # pragma: no cover
+            raise ScrapingError
+
     return results
 
 
 def calc_leave_votes(results: list) -> int:
-    """
-    Calculates the total number of leave votes from the scraped data.
-    """
+    """ Calculates total number of leave votes from scraped data """
     return sum(result[1] for result in results)
 
 
 def calc_remain_votes(results: list) -> int:
-    """
-    Calculates the total number of remain votes from the scraped data.
-    """
+    """ Calculates total number of remain votes from scraped data """
     return sum(result[3] for result in results)
 
 
 @cache_page(timeout=None)
 def get_referendum_results(request):
-    """
-    Retrieves the 2016 Brexit Referendum results from the BBC website.
-    """
+    """ Retrieves 2016 Brexit Referendum results from BBC website """
     results = scrape_content()
     results = get_area_results(dict(results))
     leave_votes = calc_leave_votes(results)

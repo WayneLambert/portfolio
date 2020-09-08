@@ -1,11 +1,13 @@
 from django.urls import path
 
-from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewView,
-                    CountdownLettersReviewView, CountdownNumbersReviewView,
-                    DataScienceReviewView, FrontEndSkillsView, HomeView,
-                    InfrastructureSkillsView, PortfolioView, PrivacyPolicyView,
-                    ReadingListView, RouletteReviewView, ScrapingReviewView,
-                    SoftwareSkillsView, TextAnalysisReviewView)
+from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
+                              BlogReviewView, CountdownLettersReviewView,
+                              CountdownNumbersReviewView, DataScienceReviewView,
+                              FrontEndSkillsView, HomeView, InfrastructureSkillsView,
+                              PortfolioView, PrivacyPolicyView, ReadingListView,
+                              RouletteReviewView, ScrapingReviewView, SoftwareSkillsView,
+                              TextAnalysisReviewView,)
+
 
 app_name = 'pages'
 
