@@ -4,6 +4,12 @@
 <html lang="en">
 
   <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    {% block analytics %}
+      {% include 'components/analytics.html' %}
+    {% endblock analytics %}
+
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,11 +46,6 @@
 
     <!-- Extra CSS stylesheet insertions -->
     {% block additional_css %}{% endblock additional_css %}
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    {% block analytics %}
-      {% include 'components/analytics.html' %}
-    {% endblock analytics %}
   </head>
 
   <body>
