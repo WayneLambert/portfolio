@@ -63,10 +63,7 @@ def test_get_words():
 
 
 def test_get_shortlisted_words():
-    """
-    Assert that the shortlisted words dict is a dictionary with at
-    least one key
-    """
+    """ Asserts the shortlisted words dict has at least one key """
     words = logic.get_words()
     assert isinstance(words, set), 'First input to get_shortlisted_words() should be a set'
     shortlisted_words = logic.get_shortlisted_words(words, 'AEIBCDFGH')
@@ -75,9 +72,7 @@ def test_get_shortlisted_words():
 
 
 def test_get_longest_possible_word(shortlisted_words: list):
-    """
-    Assert that one of the longest possible words is a string
-    """
+    """ Asserts one of the longest possible words is a string """
     longest_possible_word = logic.get_longest_possible_word(shortlisted_words)
     assert isinstance(shortlisted_words, list), 'Fixture should be set up correctly as a list'
     assert longest_possible_word, 'Should exist'
@@ -86,11 +81,19 @@ def test_get_longest_possible_word(shortlisted_words: list):
     assert longest_possible_word.isupper, 'Should be uppercase'
 
 
+def test_get_longest_possible_word_returns_none(false_shortlisted_words: list):
+    """
+    Asserts None is returned in an extremely rare case where none of
+    the shortlisted words are in the Oxford Online API
+    """
+    longest_possible_word = logic.get_longest_possible_word(false_shortlisted_words)
+    assert isinstance(false_shortlisted_words, list), 'Fixture should be a list'
+    assert longest_possible_word is None, 'Should not exist'
+
+
 @given(word_len=st.integers(min_value=1, max_value=9))
 def test_get_game_score(word_len: int):
-    """
-    Asserts the correct game score is returned
-    """
+    """ Asserts the correct game score is returned """
     game_score = logic.get_game_score(word_len)
     if word_len == 9:
         assert game_score == 18
@@ -98,12 +101,13 @@ def test_get_game_score(word_len: int):
         assert game_score == word_len
     assert isinstance(game_score, int)
 
+
 @pytest.mark.slow(reason='Processing makes 2 calls to the Oxford Online API')
 @pytest.mark.parametrize(argnames='word', argvalues=['strive', 'strove'])
 def test_get_lemmas_response_json(word: str):
     """
     Asserts a dict object (mapped to json) is returned given two
-    variants of the same word.
+    variants of the same word
     """
     assert isinstance(word, str)
     lemmas_json = logic.get_lemmas_response_json(word)
@@ -141,7 +145,9 @@ def test_get_result():
     """
     result = logic.get_result(player_word='this', comp_word='the')
     assert result == 'You win'
+
     result = logic.get_result(player_word='the', comp_word='this')
     assert result == 'Susie wins'
+
     result = logic.get_result(player_word='the', comp_word='the')
     assert result == 'Draw'

@@ -192,3 +192,4 @@ static/assets/*
 node_modules/*
 logs/pytest/*
 logs/code_sample.md
+test_api.rest

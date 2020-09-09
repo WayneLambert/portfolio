@@ -5,9 +5,7 @@ from apps.countdown_letters import validations
 @pytest.mark.slow(reason='Processing makes 2 calls to the Oxford Online API')
 @pytest.mark.parametrize(argnames='test_word', argvalues=['random', 'radnom'])
 def test_is_in_oxford_api(test_word: str):
-    """
-    Asserts that given a valid word, `True` is returned else `False`
-    """
+    """ Asserts that given a valid word, `True` is returned else `False` """
     in_api = validations.is_in_oxford_api(test_word)
     if test_word == 'random':
         assert in_api

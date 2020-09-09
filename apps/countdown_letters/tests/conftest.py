@@ -45,6 +45,15 @@ def shortlisted_words() -> list:
         ('rode', 4)
     ]
 
+@pytest.fixture(scope='function')
+def false_shortlisted_words() -> list:
+    return [
+        ('monseiur', 8),
+        ('bonjuor', 7),
+        ('bonsior', 7),
+        ('maadme', 6),
+    ]
+
 
 @pytest.fixture(scope='function')
 def given_answers_list() -> list:

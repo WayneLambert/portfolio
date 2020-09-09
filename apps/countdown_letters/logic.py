@@ -146,12 +146,11 @@ def get_longest_possible_word(shortlisted_words: list) -> str:
         if validations.is_in_oxford_api(item[0]):
             longest_possible_word = item[0]
             return longest_possible_word.upper()
+    return None
 
 
 def get_game_score(word_len: int) -> int:
-    """
-    Retrieves the game score based on the achieved word length
-    """
+    """ Retrieves the game score based on the achieved word length """
     return word_len * 2 if word_len == 9 else word_len
 
 
@@ -190,9 +189,7 @@ def lookup_definition_data(word: str) -> dict:
 
 
 def get_result(player_word: str, comp_word: str) -> str:
-    """
-    Returns the winning player for the game.
-    """
+    """ Returns the winning player for the game """
     if len(player_word) > len(comp_word):
         return 'You win'
     elif len(player_word) < len(comp_word):

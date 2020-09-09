@@ -44,7 +44,11 @@
             {% endif %}
           </tr>
           <tr>
-            <i class="fa fa-chevron-right mr-2"></i>Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points<br>
+            {% if comp_word != 'N/A' %}
+              <i class="fa fa-chevron-right mr-2"></i>Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points<br>
+            {% else %}
+              <i class="fa fa-chevron-right mr-2"></i>Susie's answer is <u>not</u> eligible, therefore she scored no points<br>
+            {% endif %}
           </tr>
           <tr>
             <i class="fa fa-chevron-right mr-2"></i><b>Result: </b>{{ result }}
