@@ -131,7 +131,7 @@ def test_image():
 
 
 @pytest.fixture(scope='function')
-def sample_form_data(random_user):
+def sample_post_data(random_user):
     """ Builds a sample set of form data for completing a blog post form """
 
     return {
@@ -139,6 +139,19 @@ def sample_form_data(random_user):
         'content': 'Test content',
         'categories': mixer.cycle(2).blend(Category),
         'reference_url': 'https://waynelambert.dev',
+        'image': test_image,
         'status': 0,
         'validity': True,
+    }
+
+
+@pytest.fixture(scope='function')
+def sample_user_data():
+    return {
+        'username': 'wayne-lambert',
+        'email': 'test-email@example.com',
+        'first_name': 'Wayne',
+        'last_name': 'Lambert',
+        'password1': os.environ['PYTEST_TEST_PASSWORD'],
+        'password2': os.environ['PYTEST_TEST_PASSWORD'],
     }

@@ -1,11 +1,12 @@
 import math
 
 from django.contrib.auth import get_user_model
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+
 from tinymce.models import HTMLField
 
 
@@ -81,7 +82,7 @@ class Post(models.Model):
         return Post.objects.filter(status=1).count()
 
     def save(self):
-        if not self.slug.strip():
+        if not self.slug.strip():  # pragma: no cover
             self.slug = slugify(self.title)
 
         _slug = self.slug
@@ -90,8 +91,6 @@ class Post(models.Model):
         while True:
             try:
                 Post.objects.all().exclude(pk=self.pk).get(slug=_slug)
-            except MultipleObjectsReturned:
-                pass
             except ObjectDoesNotExist:
                 break
             _slug = f"{self.slug}{_count}"

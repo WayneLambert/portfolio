@@ -8,7 +8,6 @@ from django.urls import reverse
 import pytest
 
 import apps.helpers as apps_helpers
-import apps.users.tests.helpers as users_helpers
 
 from apps.users.models import Profile
 from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
@@ -34,9 +33,9 @@ class TestUserRegisterView:
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
-    def test_form_valid(self, factory):
+    def test_form_valid(self, factory, sample_user_data):
         """ Asserts that a user can POST their registration details """
-        kwargs = users_helpers.get_sample_form_data()
+        kwargs = sample_user_data
         path = reverse('blog:users:register')
         request = factory.post(path, kwargs)
         response = UserRegisterView.as_view()(request, kwargs)
@@ -44,12 +43,12 @@ class TestUserRegisterView:
         assert '/login/' in response.url, 'Should redirect to `login` screen'
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
 
-    def test_form_invalid(self, factory):
+    def test_form_invalid(self, factory, sample_user_data):
         """ Asserts that a found second instance of the same username
             within the database returns `True`."""
         get_user_model().objects.create(username='wayne-lambert')
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
-        kwargs = users_helpers.get_sample_form_data()
+        kwargs = sample_user_data
         path = reverse('blog:users:register')
         request = factory.post(path, kwargs)
         apps_helpers.add_session_and_messages_middlewares(request)

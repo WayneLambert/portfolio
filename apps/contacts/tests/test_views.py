@@ -9,8 +9,6 @@ from apps.contacts.models import Contact
 from apps.contacts.views import ContactFormView, ContactSubmittedView
 from apps.helpers import add_middleware_to_request
 
-from .helpers import contact_data
-
 
 pytestmark = pytest.mark.django_db
 
@@ -35,7 +33,7 @@ class TestGetContactViews:
 
 @pytest.mark.django_db
 class TestPostContactView:
-    def test_contact_form_post_view(self, factory):
+    def test_contact_form_post_view(self, factory, contact_data):
         """ Asserts a random visitor can POST a contact form """
         path = reverse('contacts:submitted')
         request = factory.post(path, contact_data)
