@@ -1,6 +1,7 @@
 # pylint: disable=redefined-outer-name
-import pytest
 from django.urls import reverse
+
+import pytest
 
 
 pytestmark = pytest.mark.django_db
@@ -24,7 +25,6 @@ def test_get_game_screen_view(client):
 
 
 @pytest.mark.slow(reason='Processing the view retrieves word defintions from Oxford API')
-@pytest.mark.django_db
 def test_get_results_screen_view(client):
     """ Asserts a site visitor can GET the `results` screen """
     path = reverse('countdown_letters:results')

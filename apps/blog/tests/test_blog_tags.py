@@ -10,7 +10,7 @@ pytestmark = pytest.mark.django_db
 
 
 class TestCategorySidebar:
-    def test_category_sidebar(self, request, factory):
+    def test_category_sidebar(self, request, rf):
         categories = mixer.cycle(10).blend(Category)
         assert categories[9].pk == 10, '10th instance should have a PK of 10'
         assert Category.objects.count() == 10, 'Should have 10 objects in the database'

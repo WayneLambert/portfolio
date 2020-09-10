@@ -5,7 +5,6 @@ from io import BytesIO
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.test import RequestFactory
 
 import pytest
 
@@ -14,12 +13,6 @@ from PIL import Image
 
 from apps.blog.models import Category
 from apps.blog.tests.helpers import get_search_strings
-
-
-@pytest.fixture(scope='function')
-def factory(request):
-    """ Sets up a RequestFactory object """
-    return RequestFactory()
 
 
 @pytest.fixture(name='random_user', scope='function')
@@ -36,7 +29,7 @@ def test_password():
 
 
 @pytest.fixture(name='auth_user', scope='function')
-def auth_user(django_user_model, client, test_password):
+def auth_user(client, django_user_model, test_password, **kwargs):
     """ Creates an authenticated user object using the project's
         specified user model """
     auth_user = django_user_model.objects.create_user(
