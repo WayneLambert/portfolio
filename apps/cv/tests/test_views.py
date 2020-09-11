@@ -1,4 +1,3 @@
-# pylint: disable=redefined-outer-name
 from django.urls import reverse
 from apps.cv.views import CVView
 

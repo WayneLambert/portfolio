@@ -1,4 +1,3 @@
-# pylint: disable=redefined-outer-name
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse

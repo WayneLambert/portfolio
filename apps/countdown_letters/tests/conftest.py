@@ -1,8 +1,11 @@
-"""
-A set of fixtures to facilitate the testing of the Countdown Letters app
-"""
+""" Fixtures to facilitate the testing of the Countdown Letters app """
 
 import pytest
+
+from mixer.backend.django import mixer
+
+from apps.countdown_letters.models import LettersGame
+
 
 @pytest.fixture(scope='function')
 def expected_vowels_list() -> list:
@@ -61,3 +64,7 @@ def given_answers_list() -> list:
         'sorted', 'tree', 'sort', 'strove',  # Should all return True
         'sarted', 'traa', 'sart', 'strave',  # Should all return False
     ]
+
+@pytest.fixture(scope='function')
+def letters_game():
+    return mixer.blend(LettersGame)

@@ -7,6 +7,16 @@ the reCAPTCHA challenge will pass and the form will successfully post.
 
 import pytest
 
+from mixer.backend.django import mixer
+
+from apps.contacts.models import Contact
+
+
+@pytest.fixture(name='random_contact', scope='function')
+def random_contact():
+    """ Sets up a random user using the `mixer` package """
+    return mixer.blend(Contact)
+
 
 @pytest.fixture(scope='function')
 def contact_data():

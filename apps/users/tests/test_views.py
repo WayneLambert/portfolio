@@ -1,5 +1,3 @@
-# pylint: disable=redefined-outer-name
-from django.contrib.auth import get_user_model
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
@@ -38,7 +36,7 @@ class TestUserRegisterView:
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
-    def test_form_valid(self, rf, sample_user_data):
+    def test_form_valid(self, rf, django_user_model, sample_user_data):
         """ Asserts that a user can POST their registration details """
         kwargs = sample_user_data
         path = reverse('blog:users:register')
@@ -47,15 +45,15 @@ class TestUserRegisterView:
         assert response.status_code == 302, 'Should be redirected'
         assert '/login/' in response.url, 'Should redirect to `login` screen'
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
-        assert get_user_model().objects.last().username == 'wayne-lambert'
+        assert django_user_model.objects.last().username == 'wayne-lambert'
         assert Profile.objects.last().slug == 'wayne-lambert'
 
-    def test_form_invalid(self, rf, sample_user_data):
+    def test_form_invalid(self, rf, django_user_model, sample_user_data):
         """
         Asserts that a found second instance of the same username
         within the database returns `True`
         """
-        get_user_model().objects.create(username='wayne-lambert')
+        django_user_model.objects.create(username='wayne-lambert')
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
         kwargs = sample_user_data
         path = reverse('blog:users:register')

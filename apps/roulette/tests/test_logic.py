@@ -22,7 +22,7 @@ def test_reset_places_to_go():
     assert sum(logic.Game.places_to_go.values()) == 0, "All key's values should be set to zero"
 
 
-@pytest.mark.slow(reason='Function has 1,000 iterations at 0.003/secs each (3 secs overall)')
+@pytest.mark.slow(reason='1,000 time.sleep() iterations at 0.003/secs each (3 secs overall)')
 def test_get_roulette_result():
     logic.get_roulette_result()
     assert len(logic.Game.places_to_go.keys()) == 12, 'Should still be 12 keys in dict'

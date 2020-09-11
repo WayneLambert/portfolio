@@ -2,7 +2,6 @@ import os
 
 from io import BytesIO
 
-from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AnonymousUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
@@ -16,9 +15,9 @@ from apps.blog.tests.helpers import get_search_strings
 
 
 @pytest.fixture(name='random_user', scope='function')
-def random_user():
+def random_user(django_user_model):
     """ Sets up a random user using the `mixer` package """
-    return mixer.blend(get_user_model())
+    return mixer.blend(django_user_model)
 
 
 @pytest.fixture(scope='function')

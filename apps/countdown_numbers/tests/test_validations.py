@@ -1,5 +1,3 @@
-from django.urls import reverse
-
 import pytest
 
 from apps.countdown_numbers import validations
@@ -9,15 +7,13 @@ from apps.countdown_numbers import validations
 
 class TestCheckChars:
     def test_valid_calc_string(self):
-        """
-        Checks a calc without illegal characters passes """
+        """ Checks a calc without illegal characters passes """
         calc = '(((25+75)*4)/4)+1'
         check_passes = validations.check_chars(calc)
         assert check_passes, 'Should return `True`'
 
     def test_invalid_calc_string(self):
-        """
-        Checks a calc with illegal characters doesn't pass """
+        """ Checks a calc with illegal characters doesn't pass """
         calc = '(((25+75)*4)^4)+1'  # Includes caret symbol
         check_passes = validations.check_chars(calc)
         assert not check_passes, 'Should return `False`'
