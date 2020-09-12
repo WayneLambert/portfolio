@@ -22,8 +22,7 @@ def test_get_game_screen_view(client):
     assert 'The letters selected' in response.content.decode('utf-8'), \
         'Should contain specified text'
 
-
-@pytest.mark.slow(reason='Processing the view retrieves word defintions from Oxford API')
+@pytest.mark.vcr()
 def test_get_results_screen_view(client):
     """ Asserts a site visitor can GET the `results` screen """
     path = reverse('countdown_letters:results')

@@ -1,0 +1,528 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/swimming
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/swimming">/api/v2/lemmas/en/swimming</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '259'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sat, 12 Sep 2020 15:26:05 GMT
+      Location:
+      - /api/v2/lemmas/en/swimming
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5ce88d-4b88b9a6b3f86950deee59d4
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/swimming
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"provider\": \"Oxford University Press\"\n
+        \   },\n    \"results\": [\n        {\n            \"id\": \"swimming\",\n
+        \           \"language\": \"en\",\n            \"lexicalEntries\": [\n                {\n
+        \                   \"inflectionOf\": [\n                        {\n                            \"id\":
+        \"swim\",\n                            \"text\": \"swim\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"text\": \"swimming\"\n
+        \               },\n                {\n                    \"grammaticalFeatures\":
+        [\n                        {\n                            \"id\": \"mass\",\n
+        \                           \"text\": \"Mass\",\n                            \"type\":
+        \"Countability\"\n                        }\n                    ],\n                    \"inflectionOf\":
+        [\n                        {\n                            \"id\": \"swimming\",\n
+        \                           \"text\": \"swimming\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"noun\",\n                        \"text\":
+        \"Noun\"\n                    },\n                    \"text\": \"swimming\"\n
+        \               }\n            ],\n            \"word\": \"swimming\"\n        }\n
+        \   ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1425'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 12 Sep 2020 15:26:05 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5ce88d-e873c38a58803dc64ef4ecca
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/swimming
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/swimming">/api/v2/lemmas/en/swimming</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '259'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sat, 12 Sep 2020 15:26:06 GMT
+      Location:
+      - /api/v2/lemmas/en/swimming
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5ce88e-0d285fbeb37f8ef9f389270f
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/swimming
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"provider\": \"Oxford University Press\"\n
+        \   },\n    \"results\": [\n        {\n            \"id\": \"swimming\",\n
+        \           \"language\": \"en\",\n            \"lexicalEntries\": [\n                {\n
+        \                   \"inflectionOf\": [\n                        {\n                            \"id\":
+        \"swim\",\n                            \"text\": \"swim\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"text\": \"swimming\"\n
+        \               },\n                {\n                    \"grammaticalFeatures\":
+        [\n                        {\n                            \"id\": \"mass\",\n
+        \                           \"text\": \"Mass\",\n                            \"type\":
+        \"Countability\"\n                        }\n                    ],\n                    \"inflectionOf\":
+        [\n                        {\n                            \"id\": \"swimming\",\n
+        \                           \"text\": \"swimming\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"noun\",\n                        \"text\":
+        \"Noun\"\n                    },\n                    \"text\": \"swimming\"\n
+        \               }\n            ],\n            \"word\": \"swimming\"\n        }\n
+        \   ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1425'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 12 Sep 2020 15:26:07 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5ce88e-ba196678b7b85e4270d692d7
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/words/en-gb?q=SWIMMING
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"operation\": \"retrieve\",\n        \"provider\":
+        \"Oxford University Press\",\n        \"schema\": \"RetrieveEntry\"\n    },\n
+        \   \"query\": \"swimming\",\n    \"results\": [\n        {\n            \"id\":
+        \"swimming\",\n            \"language\": \"en-gb\",\n            \"lexicalEntries\":
+        [\n                {\n                    \"entries\": [\n                        {\n
+        \                           \"grammaticalFeatures\": [\n                                {\n
+        \                                   \"id\": \"mass\",\n                                    \"text\":
+        \"Mass\",\n                                    \"type\": \"Countability\"\n
+        \                               }\n                            ],\n                            \"inflections\":
+        [\n                                {\n                                    \"inflectedForm\":
+        \"swimming\"\n                                }\n                            ],\n
+        \                           \"pronunciations\": [\n                                {\n
+        \                                   \"audioFile\": \"https://audio.oxforddictionaries.com/en/mp3/swimming_gb_1.mp3\",\n
+        \                                   \"dialects\": [\n                                        \"British
+        English\"\n                                    ],\n                                    \"phoneticNotation\":
+        \"IPA\",\n                                    \"phoneticSpelling\": \"\u02C8sw\u026Am\u026A\u014B\"\n
+        \                               }\n                            ],\n                            \"senses\":
+        [\n                                {\n                                    \"definitions\":
+        [\n                                        \"the sport or activity of propelling
+        oneself through water using the limbs\"\n                                    ],\n
+        \                                   \"domainClasses\": [\n                                        {\n
+        \                                           \"id\": \"swimming\",\n                                            \"text\":
+        \"Swimming\"\n                                        }\n                                    ],\n
+        \                                   \"examples\": [\n                                        {\n
+        \                                           \"text\": \"Rachel had always
+        loved swimming\"\n                                        },\n                                        {\n
+        \                                           \"notes\": [\n                                                {\n
+        \                                                   \"text\": \"as modifier\",\n
+        \                                                   \"type\": \"grammaticalNote\"\n
+        \                                               }\n                                            ],\n
+        \                                           \"text\": \"a swimming instructor\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"id\": \"m_en_gbus1021020.005\",\n                                    \"semanticClasses\":
+        [\n                                        {\n                                            \"id\":
+        \"water_sport\",\n                                            \"text\": \"Water_Sport\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"shortDefinitions\": [\n                                        \"sport
+        or activity of propelling oneself through water using limbs\"\n                                    ]\n
+        \                               }\n                            ]\n                        }\n
+        \                   ],\n                    \"language\": \"en-gb\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"noun\",\n                        \"text\":
+        \"Noun\"\n                    },\n                    \"text\": \"swimming\"\n
+        \               }\n            ],\n            \"type\": \"headword\",\n            \"word\":
+        \"swimming\"\n        },\n        {\n            \"id\": \"swim\",\n            \"language\":
+        \"en-gb\",\n            \"lexicalEntries\": [\n                {\n                    \"derivatives\":
+        [\n                        {\n                            \"id\": \"swimmable\",\n
+        \                           \"text\": \"swimmable\"\n                        }\n
+        \                   ],\n                    \"entries\": [\n                        {\n
+        \                           \"etymologies\": [\n                                \"Old
+        English swimman (verb), of Germanic origin; related to Dutch zwemmen and German
+        schwimmen\"\n                            ],\n                            \"grammaticalFeatures\":
+        [\n                                {\n                                    \"id\":
+        \"intransitive\",\n                                    \"text\": \"Intransitive\",\n
+        \                                   \"type\": \"Subcategorization\"\n                                }\n
+        \                           ],\n                            \"inflections\":
+        [\n                                {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"swims\"\n                                },\n
+        \                               {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"swimming\"\n                                },\n
+        \                               {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"past\",\n                                            \"text\":
+        \"Past\",\n                                            \"type\": \"Tense\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"swam\",\n                                    \"pronunciations\":
+        [\n                                        {\n                                            \"audioFile\":
+        \"https://audio.oxforddictionaries.com/en/mp3/swam_gb_1.mp3\",\n                                            \"dialects\":
+        [\n                                                \"British English\"\n                                            ],\n
+        \                                           \"phoneticNotation\": \"IPA\",\n
+        \                                           \"phoneticSpelling\": \"swam\"\n
+        \                                       }\n                                    ]\n
+        \                               },\n                                {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"pastParticiple\",\n
+        \                                           \"text\": \"Past Participle\",\n
+        \                                           \"type\": \"Non Finiteness\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"swum\",\n                                    \"pronunciations\":
+        [\n                                        {\n                                            \"audioFile\":
+        \"https://audio.oxforddictionaries.com/en/mp3/swum_gb_1.mp3\",\n                                            \"dialects\":
+        [\n                                                \"British English\"\n                                            ],\n
+        \                                           \"phoneticNotation\": \"IPA\",\n
+        \                                           \"phoneticSpelling\": \"sw\u028Cm\"\n
+        \                                       }\n                                    ]\n
+        \                               },\n                                {\n                                    \"inflectedForm\":
+        \"swam\"\n                                },\n                                {\n
+        \                                   \"inflectedForm\": \"swim\"\n                                },\n
+        \                               {\n                                    \"inflectedForm\":
+        \"swimming\"\n                                },\n                                {\n
+        \                                   \"inflectedForm\": \"swims\"\n                                },\n
+        \                               {\n                                    \"inflectedForm\":
+        \"swum\"\n                                }\n                            ],\n
+        \                           \"notes\": [\n                                {\n
+        \                                   \"text\": \"In standard English the past
+        tense of swim is swam (she swam to the shore) and the past participle is swum
+        (she had never swum there before). In the 17th and 18th centuries swam and
+        swum were used interchangeably for the past participle, but this is not acceptable
+        in standard modern English\",\n                                    \"type\":
+        \"editorialNote\"\n                                }\n                            ],\n
+        \                           \"pronunciations\": [\n                                {\n
+        \                                   \"audioFile\": \"https://audio.oxforddictionaries.com/en/mp3/swim_gb_1.mp3\",\n
+        \                                   \"dialects\": [\n                                        \"British
+        English\"\n                                    ],\n                                    \"phoneticNotation\":
+        \"IPA\",\n                                    \"phoneticSpelling\": \"sw\u026Am\"\n
+        \                               }\n                            ],\n                            \"senses\":
+        [\n                                {\n                                    \"definitions\":
+        [\n                                        \"propel the body through water
+        by using the limbs, or (in the case of a fish or other aquatic animal) by
+        using fins, tail, or other bodily movement\"\n                                    ],\n
+        \                                   \"domainClasses\": [\n                                        {\n
+        \                                           \"id\": \"swimming\",\n                                            \"text\":
+        \"Swimming\"\n                                        }\n                                    ],\n
+        \                                   \"examples\": [\n                                        {\n
+        \                                           \"text\": \"they swam ashore\"\n
+        \                                       },\n                                        {\n
+        \                                           \"text\": \"he swims thirty lengths
+        twice a week\"\n                                        }\n                                    ],\n
+        \                                   \"id\": \"m_en_gbus1020960.013\",\n                                    \"shortDefinitions\":
+        [\n                                        \"propel body through water by
+        using limbs, or by using fins, tail\"\n                                    ],\n
+        \                                   \"subsenses\": [\n                                        {\n
+        \                                           \"definitions\": [\n                                                \"cross
+        (a particular stretch of water) by swimming\"\n                                            ],\n
+        \                                           \"domainClasses\": [\n                                                {\n
+        \                                                   \"id\": \"swimming\",\n
+        \                                                   \"text\": \"Swimming\"\n
+        \                                               }\n                                            ],\n
+        \                                           \"examples\": [\n                                                {\n
+        \                                                   \"text\": \"she swam the
+        Channel\"\n                                                }\n                                            ],\n
+        \                                           \"id\": \"m_en_gbus1020960.019\",\n
+        \                                           \"notes\": [\n                                                {\n
+        \                                                   \"text\": \"with object\",\n
+        \                                                   \"type\": \"grammaticalNote\"\n
+        \                                               }\n                                            ],\n
+        \                                           \"shortDefinitions\": [\n                                                \"cross
+        stretch of water by swimming\"\n                                            ]\n
+        \                                       },\n                                        {\n
+        \                                           \"definitions\": [\n                                                \"float
+        on or at the surface of a liquid\"\n                                            ],\n
+        \                                           \"examples\": [\n                                                {\n
+        \                                                   \"text\": \"bubbles swam
+        on the surface\"\n                                                }\n                                            ],\n
+        \                                           \"id\": \"m_en_gbus1020960.020\",\n
+        \                                           \"shortDefinitions\": [\n                                                \"float
+        on or at surface of liquid\"\n                                            ]\n
+        \                                       },\n                                        {\n
+        \                                           \"definitions\": [\n                                                \"cause
+        to float or move across water\"\n                                            ],\n
+        \                                           \"examples\": [\n                                                {\n
+        \                                                   \"text\": \"the Russians
+        were able to swim their infantry carriers across\"\n                                                }\n
+        \                                           ],\n                                            \"id\":
+        \"m_en_gbus1020960.021\",\n                                            \"notes\":
+        [\n                                                {\n                                                    \"text\":
+        \"with object\",\n                                                    \"type\":
+        \"grammaticalNote\"\n                                                }\n                                            ],\n
+        \                                           \"shortDefinitions\": [\n                                                \"cause
+        to float or move across water\"\n                                            ]\n
+        \                                       }\n                                    ],\n
+        \                                   \"synonyms\": [\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"bathe\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"go swimming\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"take a dip\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"dip\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"splash around\"\n                                        }\n                                    ],\n
+        \                                   \"thesaurusLinks\": [\n                                        {\n
+        \                                           \"entry_id\": \"swim\",\n                                            \"sense_id\":
+        \"t_en_gb0014530.001\"\n                                        }\n                                    ]\n
+        \                               },\n                                {\n                                    \"definitions\":
+        [\n                                        \"be immersed in or covered with
+        liquid\"\n                                    ],\n                                    \"examples\":
+        [\n                                        {\n                                            \"text\":
+        \"mashed potatoes swimming in gravy\"\n                                        }\n
+        \                                   ],\n                                    \"id\":
+        \"m_en_gbus1020960.023\",\n                                    \"shortDefinitions\":
+        [\n                                        \"be immersed in or covered with
+        liquid\"\n                                    ],\n                                    \"synonyms\":
+        [\n                                        {\n                                            \"language\":
+        \"en\",\n                                            \"text\": \"be saturated
+        in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be drenched in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be soaked in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be steeped in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be immersed in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be covered in\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"be full of\"\n                                        }\n                                    ],\n
+        \                                   \"thesaurusLinks\": [\n                                        {\n
+        \                                           \"entry_id\": \"swim\",\n                                            \"sense_id\":
+        \"t_en_gb0014530.002\"\n                                        }\n                                    ]\n
+        \                               },\n                                {\n                                    \"definitions\":
+        [\n                                        \"appear to reel or whirl before
+        one's eyes\"\n                                    ],\n                                    \"examples\":
+        [\n                                        {\n                                            \"text\":
+        \"Emily rubbed her eyes as the figures swam before her eyes\"\n                                        }\n
+        \                                   ],\n                                    \"id\":
+        \"m_en_gbus1020960.025\",\n                                    \"shortDefinitions\":
+        [\n                                        \"appear to reel or whirl before
+        one's eyes\"\n                                    ],\n                                    \"subsenses\":
+        [\n                                        {\n                                            \"definitions\":
+        [\n                                                \"experience a dizzily
+        confusing sensation in one's head\"\n                                            ],\n
+        \                                           \"examples\": [\n                                                {\n
+        \                                                   \"text\": \"the drink
+        made his head swim\"\n                                                }\n
+        \                                           ],\n                                            \"id\":
+        \"m_en_gbus1020960.026\",\n                                            \"shortDefinitions\":
+        [\n                                                \"experience dizzily confusing
+        sensation in one's head\"\n                                            ]\n
+        \                                       }\n                                    ],\n
+        \                                   \"synonyms\": [\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"go round\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"go round and round\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"whirl\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"spin\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"revolve\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"gyrate\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"swirl\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"twirl\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"turn\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"wheel\"\n                                        },\n                                        {\n
+        \                                           \"language\": \"en\",\n                                            \"text\":
+        \"swim\"\n                                        }\n                                    ],\n
+        \                                   \"thesaurusLinks\": [\n                                        {\n
+        \                                           \"entry_id\": \"reel\",\n                                            \"sense_id\":
+        \"t_en_gb0012249.003\"\n                                        }\n                                    ]\n
+        \                               }\n                            ]\n                        }\n
+        \                   ],\n                    \"language\": \"en-gb\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"phrases\": [\n                        {\n
+        \                           \"id\": \"in_the_swim\",\n                            \"text\":
+        \"in the swim\"\n                        },\n                        {\n                            \"id\":
+        \"swim_against_the_tide\",\n                            \"text\": \"swim against
+        the tide\"\n                        },\n                        {\n                            \"id\":
+        \"swim_with_the_tide\",\n                            \"text\": \"swim with
+        the tide\"\n                        }\n                    ],\n                    \"text\":
+        \"swim\"\n                }\n            ],\n            \"type\": \"headword\",\n
+        \           \"word\": \"swim\"\n        }\n    ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '25009'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 12 Sep 2020 15:26:07 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5ce88f-b18a119b584de39f65e7d3e7
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+version: 1

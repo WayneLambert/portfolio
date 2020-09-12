@@ -7,6 +7,18 @@ from mixer.backend.django import mixer
 from apps.countdown_letters.models import LettersGame
 
 
+@pytest.fixture(scope='module')
+def vcr_config():
+    """ Replaces the Oxford Online API request headers for `app_id` and
+        `app_key` with "DUMMY" in cassettes """
+    return {
+        "filter_headers": [
+            ('app_id', 'DUMMY'),
+            ('app_key', 'DUMMY')
+        ],
+    }
+
+
 @pytest.fixture(scope='function')
 def expected_vowels_list() -> list:
     return [

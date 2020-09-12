@@ -1,4 +1,3 @@
-# pylint: disable=redefined-outer-name
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
@@ -121,7 +120,7 @@ class TestPostUpdateView:
         request = rf.get(path)
         request.user = unauth_user
         response = blog_views.PostUpdateView.as_view()(request, **kwargs)
-        assert response.status_code == 302, 'Should return `ok` status code by logged in author'
+        assert response.status_code == 302, 'Should return `OK` status code by logged in author'
         assert '/login/?next=' in response.url, 'Should redirect to login page'
         assert f"{post.slug}{'/update'}" in response.url, 'Should redirect to login page'
 
@@ -143,7 +142,7 @@ class TestPostDeleteView:
         request = rf.get(path)
         request.user = post.author
         response = blog_views.PostDeleteView.as_view()(request, **kwargs)
-        assert response.status_code == 200, 'Should return `ok` status code by author'
+        assert response.status_code == 200, 'Should return `OK` status code by author'
 
     def test_auth_user_cannot_delete(self, rf, auth_user, post):
         """ Asserts unauthenticated user cannot delete the post """
@@ -189,4 +188,4 @@ class TestContentsListView:
         request = rf.get(path)
         request.user = all_users
         response = blog_views.ContentsListView.as_view()(request)
-        assert response.status_code == 200, 'Should return `ok` status code by unauth user'
+        assert response.status_code == 200, 'Should return `OK` status code by unauth user'

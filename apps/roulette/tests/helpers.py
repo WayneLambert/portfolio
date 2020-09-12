@@ -1,6 +1,4 @@
-"""
-A set of helper objects to facilitate the testing of the Holiday Roulette app
-"""
+""" Helper objects to facilitate testing of the Holiday Roulette app """
 
 
 destinations = {

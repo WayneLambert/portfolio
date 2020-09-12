@@ -16,21 +16,19 @@ from apps.blog.tests.helpers import get_search_strings
 
 @pytest.fixture(name='random_user', scope='function')
 def random_user(django_user_model):
-    """ Sets up a random user using the `mixer` package """
+    """ A random user using the `mixer` package """
     return mixer.blend(django_user_model)
 
 
 @pytest.fixture(scope='function')
 def test_password():
-    """ Sets up a password to be used during the creation of
-        authenticated users """
+    """ A password used during the creation of authenticated users """
     return os.environ['PYTEST_TEST_PASSWORD']
 
 
 @pytest.fixture(name='auth_user', scope='function')
 def auth_user(client, django_user_model, test_password, **kwargs):
-    """ Creates an authenticated user object using the project's
-        specified user model """
+    """ An authenticated user object using the specified user model """
     auth_user = django_user_model.objects.create_user(
             first_name='Wayne',
             last_name='Lambert',
@@ -44,14 +42,14 @@ def auth_user(client, django_user_model, test_password, **kwargs):
 
 @pytest.fixture(name='unauth_user', scope='function')
 def unauth_user(request):
-    """ Creates an unauthenticated user object (i.e. an anonymous user) """
+    """ An unauthenticated user object (i.e. an anonymous user) """
     return AnonymousUser()
 
 
 @pytest.fixture(name='all_users', scope='function')
 def all_users(request, auth_user, unauth_user):
     """
-    Creates a combined fixture containing both an authenticated and
+    A combined fixture containing both an authenticated and
     unauthenticated user for testing views that should be available to
     all types of users using parametrization
     """
@@ -65,7 +63,10 @@ def all_users(request, auth_user, unauth_user):
 
 @pytest.fixture(name='fixed_user', scope='function')
 def fixed_user(django_user_model):
-    """ Creates a fixed user object """
+    """
+    A fixed user object useful in scenarios where testing against
+    known instance attributes validates the functionality
+    """
     return django_user_model.objects.create_user(
         first_name='Wayne',
         last_name='Lambert',
@@ -77,9 +78,8 @@ def fixed_user(django_user_model):
 @pytest.fixture(name='li_sec_user', scope='function')
 def li_sec_user(django_user_model, client, test_password, **kwargs):
     """
-    Creates a secondary user. This is used in tests where a secondary
-    user tries to access a protected view and should therefore be
-    greeted within a forbidden response
+    Useful in tests where a secondary user tries to access a protected
+    view and should therefore be greeted within a forbidden response
     """
     if 'username' not in kwargs:
         kwargs['username'] = 'endeavour-morse'
@@ -93,25 +93,25 @@ def li_sec_user(django_user_model, client, test_password, **kwargs):
 
 @pytest.fixture(scope='function')
 def post(request):
-    """ Creates a random blog post fixture """
+    """ A random blog post fixture """
     return mixer.blend('blog.Post')
 
 
 @pytest.fixture(scope='function')
 def category(request):
-    """ Creates a random blog category fixture """
+    """ A random blog category fixture """
     return mixer.blend('blog.Category')
 
 
 @pytest.fixture(name='search_terms', scope='function', params=get_search_strings())
 def search_terms(request):
-    """ Returns a fixture for parametrizing search strings in tests """
+    """ A fixture for parametrizing search strings in tests """
     return request.param
 
 
 @pytest.fixture(scope='function')
 def test_image():
-    """ Builds a sample in-memory image for tests involving images """
+    """ A sample in-memory image for tests involving images """
     image = Image.new(mode='RGB', size=(200, 200))
     image_io = BytesIO()
     image.save(image_io, 'JPEG')
@@ -124,7 +124,7 @@ def test_image():
 
 @pytest.fixture(scope='function')
 def sample_post_data(random_user):
-    """ Builds a sample set of form data for completing a blog post form """
+    """ A set of form data for completing a blog post form """
 
     return {
         'title': 'Test title which has a title of between 40 and 60 chars',
@@ -139,6 +139,7 @@ def sample_post_data(random_user):
 
 @pytest.fixture(scope='function')
 def sample_user_data():
+    """ A set of form data for completing a user registration form """
     return {
         'username': 'wayne-lambert',
         'email': 'test-email@example.com',

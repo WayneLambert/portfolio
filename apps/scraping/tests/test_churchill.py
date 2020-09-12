@@ -1,6 +1,9 @@
 from django.urls import reverse
 
+import pytest
 
+
+@pytest.mark.vcr()
 def test_get_churchill_speech_view(client):
     """ Asserts a site visitor can GET the `Churchill Speech` screen """
     path = reverse('scraping:churchill_speech')
