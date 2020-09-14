@@ -10,17 +10,18 @@ def test_get_selection_screen(client):
     response = client.get(path)
     assert response.status_code == 200, 'Should return an `OK` status code'
 
-def test_post_selection_screen(client):
+@pytest.mark.parametrize(argnames='num_from_top', argvalues=[0, 1, 2, 3, 4])
+def test_post_selection_screen(client, num_from_top):
     """ Asserts a site visitor can POST from the `selection` screen """
     path = reverse('countdown_numbers:selection')
-    data = {'num_from_top': 1}
+    data = {'num_from_top': num_from_top}
     response = client.post(path, data)
     assert response.status_code == 302, 'Should return a redirection status code'
 
 def test_form_not_valid(client):
     """ Asserts a site visitor returns to the selection screen """
     path = reverse('countdown_numbers:selection')
-    data = {'num_from_top':5}
+    data = {'num_from_top': 5}
     response = client.post(path, data)
     assert not response.context['form'].is_valid()
     assert response.context['widget']['attrs']['min'] == 0

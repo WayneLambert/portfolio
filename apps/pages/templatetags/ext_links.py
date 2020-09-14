@@ -79,7 +79,7 @@ class CountdownLetters:
 
 class CountdownNumbers:
     @register.simple_tag(name='countdown_numbers_game_rules_link')
-    def game_rules():
+    def game_rules():  # pragma: no cover
         return "http://datagenetics.com/blog/august32014/index.html"
 
     @register.simple_tag(name='countdown_numbers_views_source_code_link')

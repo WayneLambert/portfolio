@@ -94,11 +94,6 @@ class TestCountdownLetters:
 @pytest.mark.slow(reason='Sends a GET request to each link')
 class TestCountdownNumbers:
     @staticmethod
-    def test_game_rules():
-        link = requests.get(CountdownNumbers.game_rules())
-        assert link.status_code == 200, 'Should return an `OK` status'
-
-    @staticmethod
     def test_views_source_code():
         link = requests.get(CountdownNumbers.views_source_code())
         assert link.status_code == 200, 'Should return an `OK` status'
