@@ -50,6 +50,8 @@ services:
       - dev.env
       - .env
       - postgres.env
+    cap_add:
+     - SYS_PTRACE
     volumes:
       - type: volume
         source: web_volume

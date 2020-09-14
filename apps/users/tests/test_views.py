@@ -15,23 +15,18 @@ pytestmark = pytest.mark.django_db
 
 class TestUserRegisterView:
 
+    path = reverse('blog:users:register')
+
     def test_auth_user_cannot_access(self, rf, auth_user):
-        """
-        Asserts an authenticated user can't access the `registration`
-        view
-        """
-        path = reverse('blog:users:register')
-        request = rf.get(path)
+        """ Asserts authenticated user can't access `registration` view """
+        request = rf.get(self.path)
         request.user = auth_user
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
     def test_unauth_user_can_access(self, rf):
-        """
-        Asserts unauthenticated user can access the `registration` view
-        """
-        path = reverse('blog:users:register')
-        request = rf.get(path)
+        """ Asserts unauthenticated user can access `registration` view """
+        request = rf.get(self.path)
         request.user = AnonymousUser()
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
@@ -39,9 +34,8 @@ class TestUserRegisterView:
     def test_form_valid(self, rf, django_user_model, sample_user_data):
         """ Asserts that a user can POST their registration details """
         kwargs = sample_user_data
-        path = reverse('blog:users:register')
-        request = rf.post(path, kwargs)
-        response = UserRegisterView.as_view()(request, kwargs)
+        request = rf.post(self.path, kwargs)
+        response = UserRegisterView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
         assert '/login/' in response.url, 'Should redirect to `login` screen'
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
@@ -56,10 +50,9 @@ class TestUserRegisterView:
         django_user_model.objects.create(username='wayne-lambert')
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
         kwargs = sample_user_data
-        path = reverse('blog:users:register')
-        request = rf.post(path, kwargs)
+        request = rf.post(self.path, kwargs)
         apps_helpers.add_session_and_messages_middlewares(request)
-        response = UserRegisterView.as_view()(request, kwargs)
+        response = UserRegisterView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
         assert '/register/' in response.url, 'Should redirect to `register` screen'
         assert Profile.objects.count() == 2, 'Should still have 2 objects in the database'
@@ -96,8 +89,7 @@ class TestProfileUpdateView:
 
     def test_unauth_user_cannot_access(self, rf, auth_user):
         """
-        Asserts the `profile update` view is inaccessible by an
-        unauthenticated user
+        Asserts `profile update` view inaccessible by unauthenticated user
         """
         kwargs = {'username': auth_user.username}
         path = reverse('blog:users:profile_update', kwargs=kwargs)
@@ -109,8 +101,7 @@ class TestProfileUpdateView:
 
     def test_another_user_cannot_access(self, rf, auth_user, li_sec_user):
         """
-        Asserts the `profile update` view is inaccessible by an
-        unauthenticated user
+        Asserts `profile update` view inaccessible by unauthenticated user
         """
         kwargs = {'username': auth_user.username}
         path = reverse('blog:users:profile_update', kwargs=kwargs)
@@ -125,6 +116,7 @@ class TestProfileUpdateView:
 @pytest.mark.parametrize(argnames='all_users',
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
 class TestAuthViews:
+
     def test_all_users_can_login(self, rf, all_users):
         """ Asserts the `login` view is publicly accessible """
         path = reverse('blog:users:login')

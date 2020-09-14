@@ -14,13 +14,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': ':memory:',
+        'TEST': {'SERIALIZE': False},
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
-        'TEST': {},
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
+
+PYTEST_TEST_PASSWORD = os.environ['PYTEST_TEST_PASSWORD']
+
+WHITENOISE_AUTOREFRESH = True
 
 
 class SimplePasswordHasher(BasePasswordHasher):
@@ -51,7 +57,3 @@ class SimplePasswordHasher(BasePasswordHasher):
 PASSWORD_HASHERS = (
     'aa_project.settings.pytest.pytest.SimplePasswordHasher',
 )
-
-EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
-
-PYTEST_TEST_PASSWORD = os.environ['PYTEST_TEST_PASSWORD']

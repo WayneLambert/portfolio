@@ -1,0 +1,362 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/monseiur
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/monseiur">/api/v2/lemmas/en/monseiur</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '259'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:23:59 GMT
+      Location:
+      - /api/v2/lemmas/en/monseiur
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9bff-5cd8fd3deaa1a6f3b5db1a02
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/monseiur
+  response:
+    body:
+      string: "{\n    \"error\": \"No lemma was found in dictionary 'en' for the inflected
+        form 'monseiur'\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '90'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:23:59 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9bff-f0a1dafa67b8755bf22d63c5
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 404
+      message: NOT FOUND
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/bonjuor
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/bonjuor">/api/v2/lemmas/en/bonjuor</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '257'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:00 GMT
+      Location:
+      - /api/v2/lemmas/en/bonjuor
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c00-b582ed1265132516ece01e18
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/bonjuor
+  response:
+    body:
+      string: "{\n    \"error\": \"No lemma was found in dictionary 'en' for the inflected
+        form 'bonjuor'\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '89'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:00 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c00-0918e1754e013a6964845919
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 404
+      message: NOT FOUND
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/bonsior
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/bonsior">/api/v2/lemmas/en/bonsior</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '257'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:01 GMT
+      Location:
+      - /api/v2/lemmas/en/bonsior
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c01-0c731670535715324d08cbba
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/bonsior
+  response:
+    body:
+      string: "{\n    \"error\": \"No lemma was found in dictionary 'en' for the inflected
+        form 'bonsior'\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '89'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:01 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c01-4ec80c328c961a849334f7f4
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 404
+      message: NOT FOUND
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/maadme
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/maadme">/api/v2/lemmas/en/maadme</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '255'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:01 GMT
+      Location:
+      - /api/v2/lemmas/en/maadme
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c01-a9422ee83921af0c31b00ece
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/maadme
+  response:
+    body:
+      string: "{\n    \"error\": \"No lemma was found in dictionary 'en' for the inflected
+        form 'maadme'\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '88'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:24:01 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9c01-43d13dbcb48f7d53aa968305
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 404
+      message: NOT FOUND
+version: 1

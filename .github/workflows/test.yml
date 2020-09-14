@@ -77,7 +77,7 @@ jobs:
         run: pipenv install --ignore-pipfile --deploy --system --dev
 
       - name: Run tests
-        run: pytest --runslow --cov=./ --cov-report=xml
+        run: pytest --runslow --durations 20 --cov=./ --cov-report=xml
         env:
           SYSTEM_ENV: GITHUB_WORKFLOW
 

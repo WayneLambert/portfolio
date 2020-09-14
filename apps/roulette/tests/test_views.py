@@ -1,7 +1,5 @@
 from django.urls import reverse
 
-import pytest
-
 
 def test_game_screen(client):
     """ Asserts a site visitor can GET the `game` screen """
@@ -10,9 +8,9 @@ def test_game_screen(client):
     assert response.status_code == 200, 'Should return an `OK` status code'
 
 
-@pytest.mark.slow(reason='Function has 1,000 iterations at 0.003/secs each (3 secs overall)')
-def test_destination_screen(client):
+def test_destination_screen(client, mocker):
     """ Asserts a site visitor can GET the `destination` screen """
+    mocker.patch('time.sleep', return_value=None)
     path = reverse('roulette:holiday_destination')
     response = client.get(path)
     assert response.status_code == 200, 'Should return an `OK` status code'

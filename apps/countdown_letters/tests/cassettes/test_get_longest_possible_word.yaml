@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/strode
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/strode">/api/v2/lemmas/en/strode</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '255'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:23:58 GMT
+      Location:
+      - /api/v2/lemmas/en/strode
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9bfe-e799309867cf5f8e13fac7ec
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/strode
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"provider\": \"Oxford University Press\"\n
+        \   },\n    \"results\": [\n        {\n            \"id\": \"strode\",\n            \"language\":
+        \"en\",\n            \"lexicalEntries\": [\n                {\n                    \"inflectionOf\":
+        [\n                        {\n                            \"id\": \"stride\",\n
+        \                           \"text\": \"stride\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"text\": \"strode\"\n
+        \               }\n            ],\n            \"word\": \"strode\"\n        }\n
+        \   ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '705'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 22:23:59 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e9bfe-46f41b648d78de5a3753cff4
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+version: 1

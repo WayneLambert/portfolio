@@ -1,0 +1,92 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/radnom
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/radnom">/api/v2/lemmas/en/radnom</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '255'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 16:57:25 GMT
+      Location:
+      - /api/v2/lemmas/en/radnom
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e4f75-3edf1327cacc1a97f57a735a
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/radnom
+  response:
+    body:
+      string: "{\n    \"error\": \"No lemma was found in dictionary 'en' for the inflected
+        form 'radnom'\"\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '88'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 16:57:25 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e4f75-1d32b6e7d16ef878f3ee668a
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 404
+      message: NOT FOUND
+version: 1

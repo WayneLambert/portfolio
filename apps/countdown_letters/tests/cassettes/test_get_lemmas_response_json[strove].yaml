@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en-gb/strove
+  response:
+    body:
+      string: '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+        <title>Redirecting...</title>
+
+        <h1>Redirecting...</h1>
+
+        <p>You should be redirected automatically to target URL: <a href="/api/v2/lemmas/en/strove">/api/v2/lemmas/en/strove</a>.  If
+        not click the link.'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '255'
+      Content-Type:
+      - text/html; charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 17:00:49 GMT
+      Location:
+      - /api/v2/lemmas/en/strove
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e5041-15bf4c9b28d089d9a4870e54
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 301
+      message: MOVED PERMANENTLY
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/lemmas/en/strove
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"provider\": \"Oxford University Press\"\n
+        \   },\n    \"results\": [\n        {\n            \"id\": \"strove\",\n            \"language\":
+        \"en\",\n            \"lexicalEntries\": [\n                {\n                    \"inflectionOf\":
+        [\n                        {\n                            \"id\": \"strive\",\n
+        \                           \"text\": \"strive\"\n                        }\n
+        \                   ],\n                    \"language\": \"en\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"text\": \"strove\"\n
+        \               }\n            ],\n            \"word\": \"strove\"\n        }\n
+        \   ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '705'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 13 Sep 2020 17:00:49 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f5e5041-4e2059515c52a589713be5bf
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+version: 1

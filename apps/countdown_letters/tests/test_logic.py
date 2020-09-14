@@ -1,5 +1,6 @@
-import pytest
 import hypothesis.strategies as st
+import pytest
+
 from hypothesis import given
 
 from apps.countdown_letters import logic
@@ -71,6 +72,7 @@ def test_get_shortlisted_words():
     assert len(shortlisted_words) >= 1, 'Should have at least one element'
 
 
+@pytest.mark.vcr()
 def test_get_longest_possible_word(shortlisted_words: list):
     """ Asserts one of the longest possible words is a string """
     longest_possible_word = logic.get_longest_possible_word(shortlisted_words)
@@ -81,6 +83,7 @@ def test_get_longest_possible_word(shortlisted_words: list):
     assert longest_possible_word.isupper, 'Should be uppercase'
 
 
+@pytest.mark.vcr()
 def test_get_longest_possible_word_returns_none(false_shortlisted_words: list):
     """
     Asserts None is returned in an extremely rare case where none of
@@ -104,6 +107,7 @@ def test_get_game_score(word_len: int):
 
 @pytest.mark.slow(reason='Processing makes 2 calls to the Oxford Online API')
 @pytest.mark.parametrize(argnames='word', argvalues=['strive', 'strove'])
+@pytest.mark.vcr()
 def test_get_lemmas_response_json(word: str):
     """
     Asserts a dict object (mapped to json) is returned given two
@@ -116,6 +120,7 @@ def test_get_lemmas_response_json(word: str):
 
 
 @pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
+@pytest.mark.vcr()
 def test_lookup_definition_data(word: str = 'strove'):
     """
     Asserts that given an example of a word in its alternative form
