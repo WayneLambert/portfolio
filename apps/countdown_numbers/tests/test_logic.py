@@ -1,4 +1,5 @@
 import hypothesis.strategies as st
+import pytest
 
 from hypothesis import given
 
@@ -30,6 +31,15 @@ def test_get_target_number():
     random_num = logic.get_target_number()
     assert 100 <= random_num <= 999, 'Should be between 100 and 999'
     assert isinstance(random_num, int), 'Should be an `int` object'
+
+
+@pytest.mark.parametrize(argnames='num_from_top', argvalues=[0, 1, 2, 3, 4])
+def test_build_game_url(num_from_top):
+    """ Asserts that the correct game URL is built """
+    game_url = logic.build_game_url(num_from_top)
+    assert '/countdown-numbers/game/?target_number=' in game_url
+    assert '&numbers_chosen=' in game_url
+    assert isinstance(game_url, str)
 
 
 @given(target_number=st.integers(min_value=100, max_value=999))

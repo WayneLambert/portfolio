@@ -26,8 +26,9 @@ def game_screen(request):
     if request.method == 'POST':
         form = SelectedNumbersForm(request.POST)
         calc_entered = form['players_calculation'].data
-        is_valid_calc = validations.calc_entered_is_valid(request, calc_entered)
-        if not is_valid_calc:
+        checks = validations.calc_entered_is_valid(calc_entered)
+        if not all(checks):
+            validations.output_message(request, checks)
             return redirect(request.META['HTTP_REFERER'])
         if form.is_valid():
             base_url = reverse('countdown_numbers:results')

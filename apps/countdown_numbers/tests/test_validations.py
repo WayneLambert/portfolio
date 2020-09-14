@@ -54,3 +54,34 @@ class TestStripSpaces:
         stripped = validations.strip_spaces(calc)
         assert ' ' not in stripped
         assert stripped == '(((25+75)*4)/4)+1'
+
+
+class TestValidCalc:
+    def test_valid_calc_passes_checks(self):
+        """ Checks that a valid calc string passes the checks """
+        players_calc = '50 * 10'
+        checks = validations.calc_entered_is_valid(players_calc)
+        assert checks.has_valid_brackets
+        assert checks.has_valid_chars
+        assert checks.has_valid_sequences
+
+    def test_invalid_brackets_fails_check(self):
+        """ Asserts a calc string with invalid brackets fails the checks """
+        players_calc = '(50 * 10))'
+        checks = validations.calc_entered_is_valid(players_calc)
+        assert isinstance(checks, tuple)
+        assert not checks.has_valid_brackets
+
+    def test_invalid_chars_fails_check(self):
+        """ Asserts a calc string with invalid chars fails the checks """
+        players_calc = '50 * 10z'
+        checks = validations.calc_entered_is_valid(players_calc)
+        assert isinstance(checks, tuple)
+        assert not checks.has_valid_chars
+
+    def test_invalid_sequences_fails_check(self):
+        """ Asserts a calc string with invalid sequences fails the checks """
+        players_calc = '(50 * 10/)'
+        checks = validations.calc_entered_is_valid(players_calc)
+        assert isinstance(checks, tuple)
+        assert not checks.has_valid_sequences

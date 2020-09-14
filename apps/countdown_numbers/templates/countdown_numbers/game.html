@@ -8,7 +8,10 @@
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
-      {% include 'countdown_numbers/components/game_title.html' %}
+      <div class="project-intro text-center">
+        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="countdown">
+      </div>
+      <h2 class="heading text-center mt-1">Numbers Game</h2>
     </div>
   </section>
   <section class="project px-3 py-5 p-md-5">
@@ -54,7 +57,7 @@
               </button>
             </form>
           </div>
-          <!--- Help Text -->
+          <!-- Help Text -->
           <hr>
           <div class="d-flex flex-column col-5 mb-1 container text-center mt-3">
             <blockquote class="quote-content container text-left ml-3">
@@ -81,7 +84,7 @@
               </p>
             </blockquote>
           </div>
-          <!--- Messages -->
+          <!-- Messages -->
           <div class="d-flex flex-column col-12 container text-center">
             <blockquote class="quote-content text-left ml-3">
               {% if messages %}

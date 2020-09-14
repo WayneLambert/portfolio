@@ -3,6 +3,8 @@
 import ast
 import re
 
+from collections import namedtuple
+
 from django.contrib import messages
 
 
@@ -37,64 +39,48 @@ def strip_spaces(players_calc: str) -> str:
     return players_calc.replace(' ', '')
 
 
-def calc_entered_is_valid(request, players_calc) -> bool:
-    """ Validates the calculation entered is in a valid format. """
+def calc_entered_is_valid(players_calc: str) -> namedtuple:
+    """ Validates the calc entered is in a valid format. """
     players_calc = strip_spaces(players_calc)
-
     has_valid_chars = check_chars(players_calc)
-    if not has_valid_chars:
-        msg = "Only arithmetic operators, digits, and rounded brackets are permitted characters."
-        output_message(request, msg)
-
     has_valid_brackets = check_brackets(players_calc)
-    if not has_valid_brackets:
-        msg = "There is a mismatch in the number of opening and closing brackets used."
-        output_message(request, msg)
-
     has_valid_sequences = check_legal_chars_seq(players_calc)
-    if not has_valid_sequences:
+
+    ValidCalc = namedtuple(
+        'ValidCalc', ['has_valid_chars', 'has_valid_brackets', 'has_valid_sequences'])
+    return ValidCalc(has_valid_chars, has_valid_brackets, has_valid_sequences)
+
+
+def output_message(request, checks: namedtuple):
+    """ When checks do not pass, displays a message to the player """
+    msg: str = ""
+    if not checks.has_valid_brackets:
+        msg = "There is a mismatch in the number of opening and closing brackets used."
+    
+    if not checks.has_valid_chars:
+        msg = "Only arithmetic operators, digits, and rounded brackets are permitted characters."
+    
+    if not checks.has_valid_sequences:
         msg = (f"The string sequence is an invalid one. " +
-              "Please check the calculation string and resubmit.")
-        output_message(request, msg)
+                "Please check the calculation string and resubmit.")
 
-    valid_checks = all([has_valid_chars, has_valid_brackets, has_valid_sequences])
-    if valid_checks:
-        return True
-
-    msg = f"\n{players_calc}"
-    extras = f"Your Calculation Entered: {players_calc}"
-
-    messages.add_message(request, messages.INFO, message=msg, extra_tags=extras)
-    return False
-
-
-def output_message(request, msg: str):
     messages.add_message(request, messages.INFO, msg)
 
 
 def get_permissible_nums(request) -> list:
-    """
-    Returns a list of numbers that can be used to form a valid
-    calculation for the game.
-    """
+    """ Returns list of numbers used to form a valid calc """
     return ast.literal_eval(request.GET.get('numbers_chosen'))
 
 
 def get_nums_used(players_calc: str) -> list:
-    """
-    Returns a list of numbers that have been used to form the player's
-    calculation for the game.
-    """
+    """ Returns list of numbers used to form player's calc """
     nums_used = re.split(r'; |, |\*|\/|\+|\-|\(|\)', players_calc)
     nums_used[:] = (int(item) for item in nums_used if item != '')
     return nums_used
 
 
 def is_calc_valid(request, players_calc) -> bool:
-    """
-    Validates that the numbers used to form the player's calculation are
-    permissible numbers for the game.
-    """
+    """ Validates numbers used for player's calc are permissible """
     players_calc = strip_spaces(players_calc)
     nums_used = get_nums_used(players_calc)
     permissible_nums = get_permissible_nums(request)
