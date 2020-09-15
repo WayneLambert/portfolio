@@ -12,13 +12,20 @@
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
-      {% include 'scraping/components/game_title.html' %}
+      <div class="project-intro text-center">
+        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/web_scraping.png" alt="Scraping">
+      </div>
     </div>
   </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <h5 class="mb-2">Results of the Referendum on Membership of the EU (a.k.a. Brexit): 23-Jun-2016</h5>
-      <div class="mt-3 mb-3">{% include 'scraping/content_components/preamble.txt' %}</div>
+      <div class="mt-3 mb-3">
+        Whilst the results table below looks like ordinary static text, the area names,
+        remain votes, leave votes, and the turnout percentage have all been scraped
+        from the BBC website. The leave and remain percentages, and the area votes
+        fields have been calculated within the logic of the application.
+      </div>
       <div class="module-content collapse show" id="content-1">
         <div class="module-content-inner pb-0">
           <div class="table-responsive">

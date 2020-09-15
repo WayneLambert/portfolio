@@ -6,15 +6,23 @@
 {% block content %}
   <section class="cta-section theme-bg-light py-5">
     <div class="container single-col-max-width">
-      {% include 'scraping/components/game_title.html' %}
+      <div class="project-intro text-center">
+        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/web_scraping.png" alt="Scraping">
+      </div>
     </div>
   </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <div class="inner p-3 theme-bg-light mt-2 mb-3">
         <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
-        {% include 'scraping/content_components/desc.txt' %}
+          The purpose of this application is to demonstrate the use of some well known Python
+          libraries to handle web tasks such as getting content from websites and parsing
+          their HTML. The Django component of the application handles the navigation
+          patterns (urls), the request/response application logic (views) and the rendering
+          of the final result (templates).
         <hr class="col-8">
+
+        <!-- EU Referendum Results -->
         <form action="{% url 'scraping:referendum' %}" method="GET">
           <div class="inner p-3 theme-bg-light mt-2 mb-1">
             <strong>EU Referendum: </strong>
@@ -29,6 +37,8 @@
             scraping from a page for each letter of the alphabet from the BBC website.</em>
           </p>
         </form>
+
+        <!-- Churchill Speech -->
         <hr class="col-8">
         <span class="churchill">
           <form action="{% url 'scraping:churchill_speech' %}" method="GET">
@@ -42,6 +52,8 @@
             </a>
           </form>
         </span>
+
+        <!-- Gettysburg Speech -->
         <hr class="col-8">
         <span class="gettysburg">
           <form action="{% url 'scraping:gettysburg_speech' %}" method="GET">

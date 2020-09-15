@@ -19,10 +19,7 @@ class ScrapingError(Exception):
 
 
 def get_area_results(results: dict) -> List[Tuple[Any]]:
-    """
-    Assembles each of the area's results together into an iterable for
-    template rendering.
-    """
+    """ Assembles each area's results into an iterable for rendering """
     area_results = zip(
         results['area_name'],
         results['leave_votes'],

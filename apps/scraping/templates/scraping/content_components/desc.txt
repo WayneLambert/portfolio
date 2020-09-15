@@ -1,1 +1,0 @@
-The purpose of this application is to demonstrate the use of some well known Python libraries to handle web tasks such as getting content from websites and parsing their HTML. The Django component of the application handles the navigation patterns (urls), the request/response application logic (views) and the rendering of the final result (templates).

@@ -45,7 +45,7 @@ SHOW_TOOLBAR_CALLBACK = True
 
 # Do not log static request files to the console
 def skip_static_requests(record):
-    return not record.args[0].startswith('GET /static/')
+    return not str(record.args[0]).startswith('GET /static/')
 
 # Django Shell Plus Additional Imports
 SHELL_PLUS_IMPORTS = [
