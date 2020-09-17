@@ -50,7 +50,7 @@ repos:
         exclude: ^docs/conf.py
 
   - repo: https://github.com/prettier/prettier
-    rev: 2.1.1
+    rev: 2.1.2
     hooks:
       - id: prettier
         args: [--prose-wrap=always, --print-width=99]
