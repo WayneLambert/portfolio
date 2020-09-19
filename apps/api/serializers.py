@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+
 from rest_framework import serializers
 
 from apps.blog.models import Category, Post
@@ -47,19 +48,29 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source='get_status_display')
-    word_count = serializers.CharField()
-    reading_time = serializers.CharField()
+    word_count = serializers.IntegerField()
+    reading_time = serializers.IntegerField()
+    post_absolute_url = serializers.URLField(source='get_absolute_url')
+
     author_username = serializers.CharField(source='author.username')
     author_first_name = serializers.CharField(source='author.first_name')
     author_last_name = serializers.CharField(source='author.last_name')
     author_full_name = serializers.CharField(source='author.user.full_name')
+    author_initials = serializers.CharField(source='author.user.initials')
+    author_display_name = serializers.CharField(source='author.user.display_name')
+    author_join_year = serializers.IntegerField(source='author.user.join_year')
     author_view = serializers.IntegerField(source='author.user.author_view')
-    profile_picture = serializers.ImageField(source='author.user.profile_picture')
+    author_created_date = serializers.DateTimeField(source='author.user.created_date')
+    author_updated_date = serializers.DateTimeField(source='author.user.updated_date')
+    author_absolute_url = serializers.URLField(source='author.user.get_absolute_url')
+    author_profile_picture = serializers.ImageField(source='author.user.profile_picture')
+
     categories = CategorySerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
         fields = (
+            # Post fields
             'id',
             'title',
             'slug',
@@ -71,12 +82,23 @@ class PostSerializer(serializers.ModelSerializer):
             'status',
             'word_count',
             'reading_time',
+            'post_absolute_url',
+
+            # Author fields
             'author_username',
             'author_first_name',
             'author_last_name',
             'author_full_name',
+            'author_initials',
+            'author_display_name',
+            'author_join_year',
             'author_view',
-            'profile_picture',
+            'author_created_date',
+            'author_updated_date',
+            'author_absolute_url',
+            'author_profile_picture',
+
+            # Category fields
             'categories',
         )
 
