@@ -1,18 +1,20 @@
+# -- PYLINT CONFIG ----------------------------------------------------------------------
+
 [tool.pylint.master]
 jobs="0"    # Auto-detect the number of processors
 fail-under="10"
 ignore-patterns='''
   \.eggs
+  |_build
   |\.git
   |\.hg
   |\.mypy_cache
   |\.tox
   |\.venv
-  |_build
   |buck-out
   |build
-  |dist
   |conf.py
+  |dist
 '''
 persistent="no"
 load-plugins= ["pylint_django"]
@@ -33,11 +35,11 @@ enable = [
   "I",  # Informational
 ]
 disable = """
+  attribute-defined-outside-init,
   line-too-long,
-  missing-module-docstring,
   missing-class-docstring,
   missing-function-docstring,
-  attribute-defined-outside-init,
+  missing-module-docstring,
   no-self-use,
 """
 
@@ -55,6 +57,8 @@ good-names = "_, qs, pk"
 
 [tool.pylint.miscellaneous]
 notes="TODO, FIXME, DEBUG"
+
+# -- BLACK CONFIG -----------------------------------------------------------------------
 
 [tool.black]
 line-length = 99
@@ -76,6 +80,8 @@ exclude = '''
 )/
 '''
 
+# -- ISORT CONFIG -----------------------------------------------------------------------
+
 [tool.isort]
 atomic = true
 line_length = 89
@@ -88,3 +94,62 @@ skip_glob = "*/.venv/*, */node_modules/*, */.git/*, */migrations/*"
 known_django = "django"
 known_third_party = ["PIL", "bs4", "captcha", "dj_database_url", "factory", "hypothesis", "mixer", "pytest", "requests", "rest_framework", "shapeshifter", "tinymce"]
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+# -- COVERAGE CONFIG --------------------------------------------------------------------
+
+[tool.coverage]
+  [tool.coverage.run]
+    branch = true
+    parallel = true
+    source = ["."]
+    omit = [
+      ".hypothesis/*",
+      ".pytest_cache/*",
+      ".venv/*",
+      "*__init__.py",
+      "*__pycache__",
+      "*/aa_project/settings/dev.py",
+      "*/distutils/*",
+      "*/node_modules/*",
+      "*/site-packages/*",
+      "*/static/*",
+      "*/staticfiles/*",
+      "*/tests/test*.py",
+      "*/users/signals.py",
+      "*aa_project/settings/pytest/pytest.py",
+      "*aa_project/tests/factories",
+      "*admin.py*",
+      "*apps.py",
+      "*asgi.py",
+      "*conftest.py",
+      "*feeds.py",
+      "*migrations/*",
+      "*sitemap.py",
+      "*wsgi.py",
+      "manage.py",
+    ]
+
+  [tool.coverage.report]
+    # fail_under = 100
+    skip_covered = true
+    show_missing = true
+    precision = 2
+    exclude_lines = [
+      "def __repr__",
+      "def __str__",
+      "if __name__ == .__main__.:",
+      "if 0:",
+      "if DEBUG:",
+      "if not DEBUG:",
+      "if self.debug:",
+      "if settings.DEBUG:",
+      "pragma: no cover",
+      "raise AssertionError",
+      "raise NotImplementedError",
+    ]
+    omit = [
+      "venv/*",
+      "tests/*",
+      "setup.py",
+      "*/__main__.py",
+    ]
