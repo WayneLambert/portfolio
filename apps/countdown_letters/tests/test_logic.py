@@ -144,13 +144,11 @@ def test_lookup_definition_data_valid_word(word: str = 'strove'):
 @pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
 def test_lookup_definition_data_invalid_word(word: str = 'bonjourno'):
     """
-    Asserts that given an example of a word that isn't within the API
+    Asserts that the definition dictionary is not instantiated when
+    given an example of a word that isn't within the Dictionary API.
     """
     definition = logic.lookup_definition_data(word)
-    expected_unfound_definition_msg = (f"The definition for '{word}' cannot be found " +
-                                        "in the Oxford Dictionaries API.")
-    assert definition['definition'] == expected_unfound_definition_msg
-    assert definition['word_class'] == 'N/A'
+    assert not definition
 
 
 def test_get_result():
