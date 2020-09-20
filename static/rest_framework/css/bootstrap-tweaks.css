@@ -63,12 +63,17 @@ a single block in the template.
   color: #C20000;
 }
 
+.breadcrumb {
+  padding: 0 0 0 0;
+  background-color: fff;
+}
+
 ul.breadcrumb {
   margin: 70px 0 0 0;
 }
 
 .breadcrumb li.active a {
-  color: #777;
+  color: #fff;
 }
 
 .pagination>.disabled>a,

@@ -1,24 +1,43 @@
-from rest_framework import generics
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from apps.api.serializers import CategorySerializer, PostSerializer
 from apps.blog.models import Category, Post
 
 
-class CategoryListAPIView(generics.ListAPIView):
-    """ API endpoint that enables category list to be viewed. """
+class CategoryListAPIView(ListAPIView):
+    """
+    API endpoint that enables a list of categories to be browsed.
+
+    The configured endpoint purposefully does not permit a POST method
+    as I do not want others creating new categories in the database.
+    """
+    name = "Category List API"
     queryset = Category.objects.all().prefetch_related('posts')
     serializer_class = CategorySerializer
     lookup_fields = ('name')
 
 
-class PostListAPIView(generics.ListAPIView):
-    """ API endpoint that enables post list to be viewed. """
+class PostListAPIView(ListAPIView):
+    """
+    API endpoint that enables a list of posts to be browsed including
+    related models data and auxhiliary properties.
+
+    The configured endpoint purposefully does not permit a POST method
+    as I do not want others creating new posts in the database.
+    """
+    name = "Post List API"
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')
     serializer_class = PostSerializer
     lookup_fields = ('title')
 
 
-class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    """ API endpoint that enables post instances to be viewed or edited. """
+class PostDetailAPIView(RetrieveAPIView):
+    """
+    API endpoint that enables a single post instance to be browsed.
+
+    The configured endpoint uses a RetrieveAPIView to limit to read-only
+    access. I do not others creating new posts in the database.
+    """
+    name = "Post Detail API"
     queryset = Post.objects.prefetch_related('categories').select_related('author__user')
     serializer_class = PostSerializer

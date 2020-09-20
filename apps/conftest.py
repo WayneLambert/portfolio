@@ -27,7 +27,7 @@ def test_password():
 
 
 @pytest.fixture(name='auth_user', scope='function')
-def auth_user(client, django_user_model, test_password, **kwargs):
+def auth_user(client, django_user_model, test_password):
     """ An authenticated user object using the specified user model """
     auth_user = django_user_model.objects.create_user(
             first_name='Wayne',
