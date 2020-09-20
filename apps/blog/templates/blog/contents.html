@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} | Blog Contents{% endblock title %}
 
 {% block content %}
-  {% include 'components/search.html' %}
+  {% include 'components/search_bar.html' %}
   <h6 class="text-center mt-5 mb-5">Blog Contents: ({{ posts.count }} Posts)</h6>
   {% for post in posts %}
     <article class="blog-post">

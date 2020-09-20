@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} | Blog Posts Index{% endblock title %}
 
 {% block content %}
-  {% include 'components/search.html' %}
+  {% include 'components/search_bar.html' %}
   <h6 class="text-center mt-5 mb-5">{{ posts.count }} unique posts covering {{ categories_list.count }} categories</h6>
   {% for category in categories_list %}
     <div class="container single-col-max-width alert">

@@ -4,11 +4,34 @@
 {% block title %}{{ block.super }} | Blog Posts{% endblock title %}
 
 {% block content %}
-  {% include 'components/search.html' %}
-  {% include 'blog/posts_list_count.html' %}
+  {% include 'components/search_bar.html' %}
+
+  <!-- Search Results Queryset Count-->
+  <article class="blog-post mt-3 mb-3">
+    <div class="container single-col-max-width">
+      {% if query is not None %}
+        {% with num_posts as np %}
+          {% if num_posts == 0 %}
+            <button type="button" class="btn btn-danger">
+              There were <u>no</u> posts found related to {{ query|default_if_none:"--" }}
+            </button>
+            <p class="mt-2"><strong>HINT</strong>:
+            Try using words that might appear on the page that you’re looking for.
+            </p>
+          {% else %}
+            <button type="button" class="btn btn-success">
+              {{ np }} post{{ np|pluralize}} found related to <strong>{{ query }}</strong>
+            </button>
+          {% endif %}
+        {% endwith %}
+      {% endif %}
+    </div>
+  </article>
+
+  {% include 'components/search_messages.html' %}
   {% for post in posts %}
     <article class="blog-post">
-      <div class="inner p-3 theme-bg-light mt-3 mb-3 container single-col-max-width">
+      <div class="inner p-3 theme-bg-light mb-3 container single-col-max-width">
         <table>
           <tr>
             <td width="75%">

@@ -11,7 +11,7 @@ from mixer.backend.django import mixer
 from PIL import Image
 
 from apps.blog.models import Category
-from apps.blog.tests.helpers import get_search_strings
+from apps.blog.tests import helpers
 
 
 @pytest.fixture(name='random_user', scope='function')
@@ -41,7 +41,7 @@ def auth_user(client, django_user_model, test_password, **kwargs):
 
 
 @pytest.fixture(name='unauth_user', scope='function')
-def unauth_user(request):
+def unauth_user():
     """ An unauthenticated user object (i.e. an anonymous user) """
     return AnonymousUser()
 
@@ -92,20 +92,20 @@ def li_sec_user(django_user_model, client, test_password, **kwargs):
 
 
 @pytest.fixture(scope='function')
-def post(request):
+def post():
     """ A random blog post fixture """
     return mixer.blend('blog.Post')
 
 
 @pytest.fixture(scope='function')
-def category(request):
+def category():
     """ A random blog category fixture """
     return mixer.blend('blog.Category')
 
 
-@pytest.fixture(name='search_terms', scope='function', params=get_search_strings())
+@pytest.fixture(scope='function', params=helpers.get_search_strings())
 def search_terms(request):
-    """ A fixture for parametrizing search strings in tests """
+    """ A fixture for parametrizing good search strings in tests """
     return request.param
 
 
@@ -123,7 +123,7 @@ def test_image():
 
 
 @pytest.fixture(scope='function')
-def sample_post_data(random_user):
+def sample_post_data():
     """ A set of form data for completing a blog post form """
 
     return {

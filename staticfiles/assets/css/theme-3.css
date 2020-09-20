@@ -8024,23 +8024,12 @@ a.cv-link {
 
 .search-form {
   position: relative;
-  width: 60%; }
+  width: 100%; }
   .search-form .search-input {
     font-size: 0.875rem;
     border-radius: 1.5rem;
     padding-right: 3rem;
     padding-left: 1.5rem; }
-  .search-form .search-btn {
-    color: #767676;
-    background: none;
-    border: none;
-    position: absolute;
-    right: 0;
-    top: 0.15rem;
-    margin-right: 0; }
-    .search-form .search-btn:active, .search-form .search-btn:focus, .search-form .search-btn:hover {
-      outline: none !important;
-      color: #1762dd; }
 
 .results-hr {
   background-color: #1762dd;

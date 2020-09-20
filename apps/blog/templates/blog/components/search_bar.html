@@ -1,0 +1,13 @@
+<!-- Search Bar -->
+<section class="cta-section theme-bg-light py-5">
+  <div class="container col-8 text-center">
+    <form class="search-form justify-content-center pt-3"
+      action="{% url 'blog:search_results' %}" method="get">
+      <div class="form-group">
+        <input type="search" minlength="1" placeholder="Enter keywords and press 'Enter'" 
+        name="q" class="form-control" autofocus="autofocus"
+        onfocus="if (this.placeholder=="Enter keywords and press 'Enter'") {this.placeholder='';}">
+      </div>
+    </form>
+  </div>
+</section>

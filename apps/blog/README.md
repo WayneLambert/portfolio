@@ -1,6 +1,6 @@
 # Django Blog
 
-A fully featured CRUD application with authentication and its content about various programming topics.
+A fully featured CRUD application. Read more about the project using the 'Blog Review' link below.
 
 ### Links
 

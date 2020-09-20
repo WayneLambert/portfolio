@@ -3,7 +3,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.urls import reverse
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  TemplateView, UpdateView,)
 
 from apps.blog.forms import PostForm
 from apps.blog.models import Category, Post
@@ -71,7 +72,7 @@ class ContentsListView(PostView):
 
 class AuthorPostListView(PostView):
     """ Drives the list of posts written by a given author """
-    template_name = 'blog/user_posts.html'
+    template_name = 'blog/author_posts.html'
     paginate_by = 6
     paginate_orphans = 3
 
@@ -83,8 +84,8 @@ class AuthorPostListView(PostView):
         """ Get's the author's name/username for presenting in the template """
         context = super(AuthorPostListView, self).get_context_data(**kwargs)
         qs = self.get_queryset()
-        context['num_posts'] = qs.count
         if qs:  # pragma: no cover
+            context['author_posts'] = qs
             context['display_name'] = qs.first().author.user.display_name
         return context
 
@@ -107,6 +108,11 @@ class CategoryPostListView(PostView):
         return context
 
 
+class SearchView(TemplateView):
+    """ In minimalist style, à la Google, provides a search box """
+    template_name = 'search.html'
+
+
 class SearchResultsView(PostView):
     """ Facilitates the search results """
     template_name = 'blog/search_results.html'
@@ -114,16 +120,20 @@ class SearchResultsView(PostView):
     paginate_orphans = 2
 
     def get_queryset(self):
-        query = self.request.GET.get('q')
-        if query:
+        initial_query = self.request.GET.get('q')
+        self.extra_context['query'] = initial_query
+        pattern = r"\y{0}\y".format(initial_query)
+        if initial_query:
             return self.queryset.filter(
-                Q(title__icontains=query) | Q(content__icontains=query))
-        return self.queryset
+                Q(title__iregex=pattern) | Q(content__iregex=pattern)).distinct()
+        return self.queryset.none()
 
     def get_context_data(self, **kwargs):
         context = super(SearchResultsView, self).get_context_data(**kwargs)
-        context['query'] = context['view'].request.GET['q']
-        context['num_posts'] = self.queryset.count()
+        if self.queryset:
+            context['num_posts'] = self.get_queryset().count
+            return context
+        context['num_posts'] = 0
         return context
 
 

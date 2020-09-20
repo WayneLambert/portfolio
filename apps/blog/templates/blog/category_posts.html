@@ -3,7 +3,7 @@
 {% block title %}{{ block.super }} | Posts about {{ categories.0 }}{% endblock title %}
 
 {% block content %}
-  {% include 'components/search.html' %}
+  {% include 'components/search_bar.html' %}
   <h6 class="text-center mt-5">{{ num_posts }} post{{ num_posts|pluralize }} about {{ categories.0 }}</h6>
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">

@@ -2,7 +2,8 @@ from django.urls import reverse
 
 from apps.blog.views import (AuthorPostListView, CategoryPostListView, ContentsListView,
                              HomeView, IndexListView, PostCreateView, PostDeleteView,
-                             PostDetailView, PostUpdateView, SearchResultsView,)
+                             PostDetailView, PostUpdateView, SearchResultsView,
+                             SearchView,)
 
 
 class TestUrls:
@@ -11,9 +12,9 @@ class TestUrls:
         path = reverse('blog:home')
         assert path, HomeView.as_view().__name__
 
-    def test_user_posts(self):
-        """ Verify that the `user_posts` url invokes intended view """
-        path = reverse('blog:user_posts', kwargs={'username': 'test-username'})
+    def test_author_posts(self):
+        """ Verify that the `author_posts` url invokes intended view """
+        path = reverse('blog:author_posts', kwargs={'username': 'test-username'})
         assert path, AuthorPostListView.as_view().__name__
 
     def test_category_posts(self):
@@ -41,8 +42,13 @@ class TestUrls:
         path = reverse('blog:post_delete', kwargs={'slug': 'test-post-slug'})
         assert path, PostDeleteView.as_view().__name__
 
-    def test_search_results(self):
+    def test_search(self):
         """ Verify that the `search` url invokes intended view """
+        path = reverse('blog:search')
+        assert path, SearchView.as_view().__name__
+
+    def test_search_results(self):
+        """ Verify that the `search results` url invokes intended view """
         path = reverse('blog:search_results')
         assert path, SearchResultsView.as_view().__name__
 

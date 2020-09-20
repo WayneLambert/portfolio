@@ -9,6 +9,7 @@ import apps.blog.views as blog_views
 
 from apps.blog.models import Post
 from apps.pages.views import SitePermissionDeniedView
+from helpers import add_session_and_messages_middlewares
 
 
 pytestmark = pytest.mark.django_db
@@ -33,9 +34,9 @@ class TestAuthorPostListView:
     def test_all_users_can_access(self, rf, random_user, all_users):
         """ Asserts authenticated and unauthenticated user can access
             list of posts written by another author """
-        posts = mixer.cycle(10).blend(Post, author=random_user)
+        _ = mixer.cycle(10).blend(Post, author=random_user)
         kwargs = {'username': random_user.username}
-        path = reverse('blog:user_posts', kwargs=kwargs)
+        path = reverse('blog:author_posts', kwargs=kwargs)
         request = rf.get(path)
         request.user = all_users
         response = blog_views.AuthorPostListView.as_view()(request, **kwargs)
@@ -100,8 +101,10 @@ class TestPostUpdateView:
         assert response.status_code == 200, 'Should return an `OK` status code'
 
     def test_auth_user_cannot_access(self, rf, auth_user, li_sec_user, post):
-        """ Asserts another authenticated user cannot access another
-            author's posts to update """
+        """
+        Asserts another authenticated user cannot access another
+        author's posts to update
+        """
         kwargs = {'slug': post.slug}
         path = reverse('blog:post_update', kwargs=kwargs)
         request = rf.get(path)
@@ -168,10 +171,27 @@ class TestPostDeleteView:
 
 @pytest.mark.parametrize(argnames='all_users',
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
+class TestSearchView:
+    def test_all_users_can_access(self, rf, all_users):
+        """
+        Asserts authenticated and unauthenticated users can retrieve
+        the search page
+        """
+        path = reverse('blog:search')
+        request = rf.get(path)
+        request.user = all_users
+        response = blog_views.SearchView.as_view()(request)
+        assert response.status_code == 200, 'Search results should be returned'
+
+
+@pytest.mark.parametrize(argnames='all_users',
+    argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
 class TestSearchResultsView:
-    def test_all_users_can_access(self, rf, search_terms, all_users):
-        """ Asserts authenticated and unauthenticated users can retrieve
-            search results of qualified post(s) """
+    def test_all_users_can_access_searches(self, rf, search_terms, all_users):
+        """
+        Asserts authenticated and unauthenticated users can retrieve
+        search results of qualified post(s)
+        """
         path = f"({reverse('blog:search_results')}{'?q='}{search_terms})"
         request = rf.get(path)
         request.user = all_users

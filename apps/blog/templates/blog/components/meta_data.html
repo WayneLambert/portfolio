@@ -11,7 +11,7 @@
           <ul class="no-bullets">
             <!-- Author Name or Username -->
             <li>
-              <a class="theme-link" href="{% url 'blog:user_posts' post.author.username %}">
+              <a class="theme-link" href="{% url 'blog:author_posts' post.author.username %}">
                 {{ post.author.user.display_name }}
               </a>
             </li>
