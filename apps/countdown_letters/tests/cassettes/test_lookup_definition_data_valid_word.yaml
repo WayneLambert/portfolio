@@ -1,0 +1,240 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.24.0
+      app_id:
+      - DUMMY
+      app_key:
+      - DUMMY
+    method: GET
+    uri: https://od-api.oxforddictionaries.com/api/v2/words/en-gb?q=strove
+  response:
+    body:
+      string: "{\n    \"metadata\": {\n        \"operation\": \"retrieve\",\n        \"provider\":
+        \"Oxford University Press\",\n        \"schema\": \"RetrieveEntry\"\n    },\n
+        \   \"query\": \"strove\",\n    \"results\": [\n        {\n            \"id\":
+        \"strive\",\n            \"language\": \"en-gb\",\n            \"lexicalEntries\":
+        [\n                {\n                    \"derivatives\": [\n                        {\n
+        \                           \"id\": \"striver\",\n                            \"text\":
+        \"striver\"\n                        }\n                    ],\n                    \"entries\":
+        [\n                        {\n                            \"etymologies\":
+        [\n                                \"Middle English: shortening of Old French
+        estriver; related to estrif \u2018strife\u2019\"\n                            ],\n
+        \                           \"grammaticalFeatures\": [\n                                {\n
+        \                                   \"id\": \"intransitive\",\n                                    \"text\":
+        \"Intransitive\",\n                                    \"type\": \"Subcategorization\"\n
+        \                               }\n                            ],\n                            \"inflections\":
+        [\n                                {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"past\",\n                                            \"text\":
+        \"Past\",\n                                            \"type\": \"Tense\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"strove\",\n                                    \"pronunciations\":
+        [\n                                        {\n                                            \"audioFile\":
+        \"https://audio.oxforddictionaries.com/en/mp3/strove_gb_1.mp3\",\n                                            \"dialects\":
+        [\n                                                \"British English\"\n                                            ],\n
+        \                                           \"phoneticNotation\": \"IPA\",\n
+        \                                           \"phoneticSpelling\": \"str\u0259\u028Av\"\n
+        \                                       }\n                                    ]\n
+        \                               },\n                                {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"past\",\n                                            \"text\":
+        \"Past\",\n                                            \"type\": \"Tense\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"strived\"\n                                },\n
+        \                               {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"pastParticiple\",\n
+        \                                           \"text\": \"Past Participle\",\n
+        \                                           \"type\": \"Non Finiteness\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"strived\"\n                                },\n
+        \                               {\n                                    \"grammaticalFeatures\":
+        [\n                                        {\n                                            \"id\":
+        \"intransitive\",\n                                            \"text\": \"Intransitive\",\n
+        \                                           \"type\": \"Subcategorization\"\n
+        \                                       },\n                                        {\n
+        \                                           \"id\": \"pastParticiple\",\n
+        \                                           \"text\": \"Past Participle\",\n
+        \                                           \"type\": \"Non Finiteness\"\n
+        \                                       }\n                                    ],\n
+        \                                   \"inflectedForm\": \"striven\",\n                                    \"pronunciations\":
+        [\n                                        {\n                                            \"phoneticNotation\":
+        \"IPA\",\n                                            \"phoneticSpelling\":
+        \"\u02C8str\u026Av(\u0259)n\"\n                                        }\n
+        \                                   ]\n                                },\n
+        \                               {\n                                    \"inflectedForm\":
+        \"strive\"\n                                },\n                                {\n
+        \                                   \"inflectedForm\": \"strived\"\n                                },\n
+        \                               {\n                                    \"inflectedForm\":
+        \"striven\"\n                                },\n                                {\n
+        \                                   \"inflectedForm\": \"strives\"\n                                },\n
+        \                               {\n                                    \"inflectedForm\":
+        \"striving\"\n                                },\n                                {\n
+        \                                   \"inflectedForm\": \"strove\"\n                                }\n
+        \                           ],\n                            \"pronunciations\":
+        [\n                                {\n                                    \"audioFile\":
+        \"https://audio.oxforddictionaries.com/en/mp3/strive_gb_1.mp3\",\n                                    \"dialects\":
+        [\n                                        \"British English\"\n                                    ],\n
+        \                                   \"phoneticNotation\": \"IPA\",\n                                    \"phoneticSpelling\":
+        \"str\u028C\u026Av\"\n                                }\n                            ],\n
+        \                           \"senses\": [\n                                {\n
+        \                                   \"definitions\": [\n                                        \"make
+        great efforts to achieve or obtain something\"\n                                    ],\n
+        \                                   \"examples\": [\n                                        {\n
+        \                                           \"text\": \"national movements
+        were striving for independence\"\n                                        },\n
+        \                                       {\n                                            \"notes\":
+        [\n                                                {\n                                                    \"text\":
+        \"with infinitive\",\n                                                    \"type\":
+        \"grammaticalNote\"\n                                                }\n                                            ],\n
+        \                                           \"text\": \"we must strive to
+        secure steady growth\"\n                                        }\n                                    ],\n
+        \                                   \"id\": \"m_en_gbus1003540.013\",\n                                    \"shortDefinitions\":
+        [\n                                        \"make great efforts to achieve
+        or obtain something\"\n                                    ],\n                                    \"subsenses\":
+        [\n                                        {\n                                            \"definitions\":
+        [\n                                                \"struggle or fight vigorously\"\n
+        \                                           ],\n                                            \"examples\":
+        [\n                                                {\n                                                    \"text\":
+        \"scholars must strive against bias\"\n                                                }\n
+        \                                           ],\n                                            \"id\":
+        \"m_en_gbus1003540.020\",\n                                            \"shortDefinitions\":
+        [\n                                                \"struggle or fight vigorously\"\n
+        \                                           ],\n                                            \"synonyms\":
+        [\n                                                {\n                                                    \"language\":
+        \"en\",\n                                                    \"text\": \"try\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"try hard\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"attempt\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"endeavour\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"aim\"\n                                                },\n
+        \                                               {\n                                                    \"language\":
+        \"en\",\n                                                    \"text\": \"aspire\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"venture\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"undertake\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"seek\"\n                                                },\n
+        \                                               {\n                                                    \"language\":
+        \"en\",\n                                                    \"text\": \"make
+        an effort\"\n                                                },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"make every
+        effort\"\n                                                },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"spare no effort\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"exert oneself\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"do one's best\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"do all one
+        can\"\n                                                },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"do one's utmost\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"give one's
+        all\"\n                                                },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"labour\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"work\"\n                                                },\n
+        \                                               {\n                                                    \"language\":
+        \"en\",\n                                                    \"text\": \"toil\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"strain\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"struggle\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"apply oneself\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"struggle\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"fight\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"battle\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"combat\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"contend\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"language\": \"en\",\n
+        \                                                   \"text\": \"grapple\"\n
+        \                                               }\n                                            ],\n
+        \                                           \"thesaurusLinks\": [\n                                                {\n
+        \                                                   \"entry_id\": \"strive\",\n
+        \                                                   \"sense_id\": \"t_en_gb0014238.001\"\n
+        \                                               },\n                                                {\n
+        \                                                   \"entry_id\": \"strive\",\n
+        \                                                   \"sense_id\": \"t_en_gb0014238.002\"\n
+        \                                               }\n                                            ]\n
+        \                                       }\n                                    ]\n
+        \                               }\n                            ]\n                        }\n
+        \                   ],\n                    \"language\": \"en-gb\",\n                    \"lexicalCategory\":
+        {\n                        \"id\": \"verb\",\n                        \"text\":
+        \"Verb\"\n                    },\n                    \"text\": \"strive\"\n
+        \               }\n            ],\n            \"type\": \"headword\",\n            \"word\":
+        \"strive\"\n        }\n    ]\n}"
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '17104'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 20 Sep 2020 17:52:58 GMT
+      Server:
+      - openresty/1.13.6.2
+      X-Request-Id:
+      - 1-5f6796fa-e9c6e644cccd441aef274801
+      api_version:
+      - v2
+      code_version:
+      - v2.8.0-g4f069ea
+    status:
+      code: 200
+      message: OK
+version: 1

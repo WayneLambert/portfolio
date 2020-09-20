@@ -29,7 +29,7 @@ def test_get_roulette_result(mocker):
     assert sum(logic.Game.places_to_go.values()) == 1_000, "Sum of key's values should be 1,000"
 
 
-@pytest.mark.parametrize(argnames='destinations', argvalues=destinations)
+@pytest.mark.parametrize(argnames='destinations', argvalues=sorted(destinations))
 def test_get_picture_url(destinations):
     pic_url = logic.get_picture_url(destinations)
     assert requests.get(pic_url).status_code == 200, 'Should return an `OK` status'

@@ -192,7 +192,7 @@ class TestSearchResultsView:
         Asserts authenticated and unauthenticated users can retrieve
         search results of qualified post(s)
         """
-        path = f"({reverse('blog:search_results')}{'?q='}{search_terms})"
+        path = f"{reverse('blog:search_results')}{'?q='}{search_terms}"
         request = rf.get(path)
         request.user = all_users
         response = blog_views.SearchResultsView.as_view()(request)

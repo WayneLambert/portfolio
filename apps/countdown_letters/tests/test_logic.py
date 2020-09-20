@@ -121,7 +121,7 @@ def test_get_lemmas_response_json(word: str):
 
 @pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
 @pytest.mark.vcr()
-def test_lookup_definition_data(word: str = 'strove'):
+def test_lookup_definition_data_valid_word(word: str = 'strove'):
     """
     Asserts that given an example of a word in its alternative form
     (i.e. past tense form or plural verbs form), tests the definitions
@@ -134,12 +134,23 @@ def test_lookup_definition_data(word: str = 'strove'):
     Another case, could be 'strives' is given as its plural verb form,
     however 'strive' is looked up as its main form.
     """
-    assert isinstance(word, str)
     definition = logic.lookup_definition_data(word)
     assert isinstance(definition, dict)
     assert len(definition.keys()) == 2, 'Set up to return 2 key/value pairs'
     assert definition['definition'] == 'Make great efforts to achieve or obtain something'
     assert definition['word_class'] == 'Verb'
+
+
+@pytest.mark.slow(reason='Processing makes a call to the Oxford Dictionaries API')
+def test_lookup_definition_data_invalid_word(word: str = 'bonjourno'):
+    """
+    Asserts that given an example of a word that isn't within the API
+    """
+    definition = logic.lookup_definition_data(word)
+    expected_unfound_definition_msg = (f"The definition for '{word}' cannot be found " +
+                                        "in the Oxford Dictionaries API.")
+    assert definition['definition'] == expected_unfound_definition_msg
+    assert definition['word_class'] == 'N/A'
 
 
 def test_get_result():

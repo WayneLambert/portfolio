@@ -2,6 +2,7 @@ from django.urls import reverse
 
 import pytest
 
+
 pytestmark = pytest.mark.django_db
 
 def test_get_selection_screen(client):
@@ -38,6 +39,18 @@ def test_get_game_screen(client):
     response = client.get(base_path, get_params)
     assert response.status_code == 200, 'Should return an `OK` status code'
     assert 'The target number' in response.content.decode('utf-8'), 'Should contain specified text'
+
+def test_post_game_screen(client):
+    """ Asserts a site visitor can POST from the `game` screen """
+    base_path = reverse('countdown_numbers:game')
+    full_path = base_path + "?target_number=869&numbers_chosen=%5B100%2C+5%1C+8%2C+1%3C+5%4C+2%5D"
+    data = {
+        'target_number': '869',
+        'numbers_chosen': '[100, 1, 2, 3, 4, 5]',
+        'players_calculation': '100 * (5+3)'
+    }
+    response = client.post(full_path, data, HTTP_REFERER=base_path)
+    assert response.status_code == 302, 'Should return a redirection status code'
 
 @pytest.mark.slow(
     reason='Processing the view also encapsulates game logic, validations, and calculations')

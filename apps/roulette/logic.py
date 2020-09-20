@@ -28,16 +28,22 @@ class Game:
 
 
 def clear_down_log_file():
+    """ Clears down the contents of the log file """
     with open(log_file, 'w'):
         pass
 
 
 def reset_places_to_go():
+    """ Resets the dictionary count to zero for each destination """
     for key in Game.places_to_go:
         Game.places_to_go[key] = 0
 
 
 def get_roulette_result() -> Tuple[dict, str, int, list]:
+    """
+    Gets the result of the roulette game and introduces suspense in
+    the game due to a time.sleep() function.
+    """
     num_of_choices = 1000
     detailed_choices = []
     for place_selected in range(1, num_of_choices + 1):
@@ -54,6 +60,7 @@ def get_roulette_result() -> Tuple[dict, str, int, list]:
 
 
 def get_picture_url(destination: str) -> str:
+    """ Builds the URL for the destinations' image from an S3 bucket """
     aws_folder = f"{settings.AWS_BASE_BUCKET_ADDRESS}/post_images/holiday-roulette/"
     locations = {
         'Aruba': f"{aws_folder}aruba.jpg",
@@ -73,8 +80,9 @@ def get_picture_url(destination: str) -> str:
 
 
 def read_log_file() -> list:
+    """ Reads log file to a list for later rendering to results page """
     with open(log_file, 'r') as file:
         contents = []
-        for line in file.readlines():
+        for line in file.readlines():  # pragma: no cover
             contents.append(line)
         return contents

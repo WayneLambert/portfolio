@@ -178,8 +178,8 @@ def lookup_definition_data(word: str) -> dict:
             definition = d['definitions'][0].capitalize()
             word_class = json['results'][0]['lexicalEntries'][idx]['lexicalCategory']['text']
         except KeyError:
-            definition = f"""The definition for '{word}' cannot be found
-                             in the Oxford Dictionaries API."""
+            definition = (f"The definition for '{word}' cannot be found " +
+                          "in the Oxford Dictionaries API.")
             word_class = 'N/A'
 
         return {

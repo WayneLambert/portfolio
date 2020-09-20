@@ -82,3 +82,7 @@ class TestLettersGame:
     def test_entry_date_is_datefield(self, letters_game):
         field = letters_game._meta.get_field("entry_date")
         assert isinstance(field, models.DateField), 'Should be a date field'
+
+    def test_entry_year(self, letters_game):
+        assert letters_game.entry_year == letters_game.entry_date.year, \
+            "Year should be the same as the entry date's year property"
