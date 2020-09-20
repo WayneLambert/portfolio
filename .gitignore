@@ -189,7 +189,6 @@ dmypy.json
 postgres/data/
 
 # Project Directories
-static/assets/*
 node_modules/*
 logs/pytest/*
 logs/code_sample.md
