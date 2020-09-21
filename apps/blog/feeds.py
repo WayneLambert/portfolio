@@ -1,12 +1,12 @@
 from django.contrib.syndication.views import Feed
 from django.template.defaultfilters import truncatewords
-from django.utils.feedgenerator import Atom1Feed
+from django.utils.feedgenerator import Atom1Feed, Enclosure
 
 from apps.blog.models import Post
 
 
 class LatestPostsFeed(Feed):
-    title = "Wayne Lambert | Blog"
+    title = "Wayne Lambert"
     link = "/blog/sitenews/"
     description = "Latest posts from Wayne Lambert's Blog"
 
@@ -24,6 +24,13 @@ class LatestPostsFeed(Feed):
 
     def item_updateddate(self, item):
         return item.updated_date
+
+    def item_enclosures(self, item):
+        return [Enclosure(
+            item.image.url,
+            str(item.image.size),
+            f"image/{item.image.name.split('.')[-1]}"
+        )]
 
 
 class AtomLatestPostsFeed(LatestPostsFeed):

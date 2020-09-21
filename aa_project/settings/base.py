@@ -217,7 +217,11 @@ TINYMCE_DEFAULT_CONFIG = {
         {'text': 'TOML', 'value': 'toml'},
     ],
     "font_formats":
-        "Ubuntu Mono='Ubuntu Mono', monospace; sans-serif; Arial=arial,helvetica,sans-serif; Tahoma=tahoma,arial,helvetica,sans-serif; Verdana=verdana,geneva; Courier New=courier new,courier,monospace",
+        "Ubuntu Mono='Ubuntu Mono', monospace; \
+        sans-serif; Arial=arial,helvetica,sans-serif; \
+        Tahoma=tahoma,arial,helvetica,sans-serif; \
+        Verdana=verdana,geneva; \
+        Courier New=courier new,courier,monospace",
 }
 
 

@@ -52,6 +52,11 @@ class TestCategory:
         category = mixer.blend(Category, name='Python')
         assert str(category) == 'Python', 'Should be the same as the category name'
 
+    def test_get_absolute_url(self):
+        category = mixer.blend(Category, title='Example Category', slug='example-category')
+        assert category.get_absolute_url() == \
+            reverse('blog:category_posts', kwargs={'slug': category.slug})
+
 
 class TestPost:
     def test_single_post_save(self):

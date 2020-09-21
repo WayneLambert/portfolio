@@ -24,6 +24,9 @@ class Category(models.Model):
     def __str__(self):
         return str(self.name)
 
+    def get_absolute_url(self):
+        return reverse('blog:category_posts', kwargs={'slug': self.slug})
+
 
 class Post(models.Model):
     STATUS = (
@@ -41,7 +44,7 @@ class Post(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
     image = models.ImageField(
-        default='default-post.jpg',
+        default='post_images/algorithm1.jpeg',
         upload_to='post_images',
         max_length=200,
         help_text='For bests results, use an image that is 1,200px wide x 600px high',

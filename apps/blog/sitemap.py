@@ -4,16 +4,16 @@ from apps.blog.models import Category, Post
 
 
 class CategorySitemap(Sitemap):
-    changefreq = 'daily'
+    changefreq = 'weekly'
     priority = 0.5
 
     def items(self):
-        return Category.objects.all()
+        return Category.objects.all().prefetch_related('posts')
 
 
 class PostSitemap(Sitemap):
     changefreq = 'daily'
-    priority = 0.5
+    priority = 0.9
 
     def items(self):
         return Post.objects.filter(status=1).order_by('-publish_date')
