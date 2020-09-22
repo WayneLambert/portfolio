@@ -49,6 +49,7 @@ def skip_static_requests(record):
 
 # Django Shell Plus Additional Imports
 SHELL_PLUS_IMPORTS = [
+    'import re',
     'import requests',
     'from bs4 import BeautifulSoup',
     'from rich import pretty',
