@@ -9,6 +9,8 @@ from django.urls import reverse
 
 from tinymce.models import HTMLField
 
+from blog.managers import PublishedManager
+
 
 class Category(models.Model):
     name = models.CharField(max_length=16)
@@ -58,8 +60,13 @@ class Post(models.Model):
         help_text='Select more than one category by holding down Ctrl or Cmd key'
     )
 
+    # Model Managers
+    objects = models.Manager()
+    published = PublishedManager()
+
     class Meta:
         ordering = ['-updated_date', '-publish_date']
+        default_manager_name = 'objects'
 
     def __str__(self):
         return str(self.title)
@@ -82,7 +89,7 @@ class Post(models.Model):
 
     @staticmethod
     def num_published_posts() -> int:
-        return Post.objects.filter(status=1).count()
+        return Post.published.count()
 
     def save(self):
         if not self.slug.strip():  # pragma: no cover

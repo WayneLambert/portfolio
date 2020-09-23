@@ -4,10 +4,10 @@
 
 {% block content %}
   {% include 'components/search_bar.html' %}
-  {% with author_posts.count as num_posts %}
-    <h6 class="text-center mt-5">{{ num_posts }} post{{ num_posts|pluralize }}
-    written by {{ display_name }}</h6>
-  {% endwith %}
+  <h6 class="text-center mt-5">
+      {{ paginator.count }} post{{ paginator.count|pluralize }} written by {{ display_name }}
+  </h6>
+
   <section class="blog-list px-3 py-5 p-md-5">
     <div class="container">
       <div class="row">

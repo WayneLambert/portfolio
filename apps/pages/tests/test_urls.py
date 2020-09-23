@@ -1,11 +1,12 @@
 from django.urls import reverse
 
-from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView, BlogReviewView,
-                         CountdownLettersReviewView, CountdownNumbersReviewView,
-                         DataScienceReviewView, FrontEndSkillsView, HomeView,
-                         InfrastructureSkillsView, PortfolioView, PrivacyPolicyView,
-                         ReadingListView, RouletteReviewView, ScrapingReviewView,
-                         SoftwareSkillsView, TextAnalysisReviewView)
+from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
+                              BlogReviewView, CountdownLettersReviewView,
+                              CountdownNumbersReviewView, DataScienceReviewView,
+                              FrontEndSkillsView, InfrastructureSkillsView, PortfolioView,
+                              PrivacyPolicyView, ReadingListView, RouletteReviewView,
+                              ScrapingReviewView, SiteHomeView, SoftwareSkillsView,
+                              TextAnalysisReviewView,)
 
 
 class TestUrls:
@@ -13,7 +14,7 @@ class TestUrls:
     def test_home(self):
         """ Verify that the `home` url invokes intended view """
         path = reverse('pages:home')
-        assert path, HomeView.as_view().__name__
+        assert path, SiteHomeView.as_view().__name__
 
     def test_portfolio(self):
         """ Verify that the `portfolio` url invokes intended view """

@@ -10,18 +10,22 @@
   <article class="blog-post mt-3 mb-3">
     <div class="container single-col-max-width">
       {% if query is not None %}
-        {% with num_posts as np %}
+        {% with paginator.count as num_posts %}
           {% if num_posts == 0 %}
-            <button type="button" class="btn btn-danger">
-              There were <u>no</u> posts found related to {{ query|default_if_none:"--" }}
-            </button>
-            <p class="mt-2"><strong>HINT</strong>:
-            Try using words that might appear on the page that you’re looking for.
-            </p>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>There were no posts found related to {{ query|default_if_none:"--" }}</strong>
+              <hr>
+              <p class="text-muted text-sm-left"><strong>HINT</strong>:
+                Try using unique words that is likely to appear.
+              </p>
+            </div>
           {% else %}
-            <button type="button" class="btn btn-success">
-              {{ np }} post{{ np|pluralize}} found related to <strong>{{ query }}</strong>
-            </button>
+            <div class="alert alert-success" role="alert">
+              {{ num_posts }} post{{ num_posts|pluralize}} found related to <strong>{{ query }}</strong>
+            </div>
           {% endif %}
         {% endwith %}
       {% endif %}

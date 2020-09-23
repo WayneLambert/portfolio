@@ -4,16 +4,15 @@ from django.views.generic import ListView, TemplateView
 from apps.blog.models import Post
 
 
-class HomeView(ListView):
+class SiteHomeView(ListView):
     """
-    Custom view sets default behaviour for all list views to subclass
-    and inherit for their own implementation
+    Limits published posts dataset to three most recently updated posts
+    for the site's home page.
     """
     model = Post
     template_name = 'home.html'
     context_object_name = 'posts'
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
-    queryset = queryset.filter(status=1)[:3]
+    queryset = Post.published.all()[:3]
 
 
 # Static Pages
@@ -84,19 +83,19 @@ class DataScienceReviewView(TemplateView):
 
 
 # Custom Error Templates
-class SiteBadRequestView(TemplateView):
+class BadRequestView(TemplateView):
     template_name = 'errors/400.html'
 
 
-class SitePermissionDeniedView(TemplateView):
+class PermissionDeniedView(TemplateView):
     template_name = 'errors/403.html'
 
 
-class SitePageNotFoundView(TemplateView):
+class PageNotFoundView(TemplateView):
     template_name = 'errors/404.html'
 
 
-def handler500(request):
+def handler500(request):  # pragma: no cover
     response = render(request, template_name='errors/500.html', context={})
     response.status_code = 500
     return response

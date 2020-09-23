@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Q
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.urls import reverse
+from django.utils.html import format_html
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView,)
 
@@ -19,8 +20,7 @@ class PostView(ListView):
     context_object_name = 'posts'
     category_list = Category.objects.all().prefetch_related('posts')
     extra_context = {'categories_list': category_list}
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
-    queryset = queryset.filter(status=1)
+    queryset = Post.published.all()
 
     def get_context_data(self, **kwargs):
         """ Facilitates pagination and post count summary """
@@ -53,10 +53,6 @@ class HomeView(PostView):
     paginate_by = 6
     paginate_orphans = 3
 
-    def get_context_data(self, **kwargs):
-        context = super(HomeView, self).get_context_data(**kwargs)
-        context['num_posts'] = self.queryset.count
-        return context
 
 class IndexListView(PostView):
     """ Facilitates the short contents page """
@@ -66,7 +62,7 @@ class IndexListView(PostView):
 class ContentsListView(PostView):
     """ Facilitates the contents page """
     template_name = 'blog/contents.html'
-    paginate_by = 20
+    paginate_by = 10
     paginate_orphans = 3
 
 
@@ -83,10 +79,7 @@ class AuthorPostListView(PostView):
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
         context = super(AuthorPostListView, self).get_context_data(**kwargs)
-        qs = self.get_queryset()
-        if qs:  # pragma: no cover
-            context['author_posts'] = qs
-            context['display_name'] = qs.first().author.user.display_name
+        context['display_name'] = Post.published.first().author.user.display_name
         return context
 
 
@@ -103,8 +96,6 @@ class CategoryPostListView(PostView):
     def get_context_data(self, **kwargs):
         context = super(CategoryPostListView, self).get_context_data(**kwargs)
         context['categories'] = self.categories
-        qs = self.get_queryset()
-        context['num_posts'] = qs.count()
         return context
 
 
@@ -120,7 +111,7 @@ class SearchResultsView(PostView):
     paginate_orphans = 2
 
     def get_queryset(self):
-        initial_query = self.request.GET.get('q')
+        initial_query = format_html(self.request.GET.get('q'))
         self.extra_context['query'] = initial_query
         pattern = r"\y{0}\y".format(initial_query)
         if initial_query:
@@ -129,11 +120,9 @@ class SearchResultsView(PostView):
         return self.queryset.none()
 
     def get_context_data(self, **kwargs):
+        """ Get's the author object for presenting in the template """
         context = super(SearchResultsView, self).get_context_data(**kwargs)
-        if self.queryset:
-            context['num_posts'] = self.get_queryset().count
-            return context
-        context['num_posts'] = 0
+        context['author'] = Post.published.first().author
         return context
 
 
@@ -146,8 +135,9 @@ class PostDetailView(DetailView):
     def get_context_data(self, **kwargs):
         """ Facilitates detail page's pagination buttons """
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        posts = Post.objects.prefetch_related('categories').select_related('author__user')
-        posts.filter(status=1)
+        context['author'] = Post.published.first().author
+        context['profile'] = context['author'].user
+        posts = Post.published.all()
         posts_count = len(posts)
 
         for idx, post in enumerate(posts):

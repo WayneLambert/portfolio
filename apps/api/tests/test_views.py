@@ -1,11 +1,13 @@
-import pytest
 from django.urls import reverse
+
+import pytest
 
 from apps.api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
+
 pytestmark = pytest.mark.django_db
 
-@pytest.mark.django_db
+
 class TestCategoryListAPIView:
     def test_site_visitor_can_access_category_list_api(self, request, rf, unauth_user):
         """ Asserts a random visitor can access the category list API """
@@ -23,6 +25,8 @@ class TestCategoryListAPIView:
         response = CategoryListAPIView.as_view()(request)
         assert response.status_code == 200, 'Should return an OK status code'
 
+
+class TestPostListAPIView:
     def test_site_visitor_can_access_post_list_api(self, request, rf, unauth_user):
         """ Asserts a random visitor can access the post list API """
         url = reverse('api:posts')
@@ -39,6 +43,8 @@ class TestCategoryListAPIView:
         response = PostListAPIView.as_view()(request)
         assert response.status_code == 200, 'Should return an OK status code'
 
+
+class TestPostDetailAPIView:
     def test_site_visitor_can_access_post_detail_api(self, request, rf, unauth_user, post):
         """ Asserts a random visitor can access the post detail API """
         url = reverse('api:post_detail', kwargs={'pk': post.id})
