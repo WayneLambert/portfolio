@@ -12,7 +12,7 @@
             <!-- Author Name or Username -->
             <li>
               <a class="theme-link" href="{% url 'blog:author_posts' author.username %}">
-                {{ profile.display_name }}
+                {{ author.user.display_name }}
               </a>
             </li>
 

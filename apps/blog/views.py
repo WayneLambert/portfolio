@@ -65,6 +65,12 @@ class ContentsListView(PostView):
     paginate_by = 10
     paginate_orphans = 3
 
+    def get_context_data(self, **kwargs):
+        """ Get's the author's name/username for presenting in the template """
+        context = super(ContentsListView, self).get_context_data(**kwargs)
+        context['author'] = Post.published.first().author
+        return context
+
 
 class AuthorPostListView(PostView):
     """ Drives the list of posts written by a given author """
