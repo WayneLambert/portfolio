@@ -26,7 +26,7 @@ class PostListAPIView(ListAPIView):
     as I do not want others creating new posts in the database.
     """
     name = "Post List API"
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
+    queryset = Post.published.all()
     serializer_class = PostSerializer
     lookup_fields = ('title')
 
@@ -39,5 +39,5 @@ class PostDetailAPIView(RetrieveAPIView):
     access. I do not others creating new posts in the database.
     """
     name = "Post Detail API"
-    queryset = Post.objects.prefetch_related('categories').select_related('author__user')
+    queryset = Post.published.all()
     serializer_class = PostSerializer

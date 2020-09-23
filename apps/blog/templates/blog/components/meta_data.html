@@ -5,14 +5,14 @@
     <tbody>
       <tr>
         <td>
-          <img class="rounded-circle article-img" src="{{ post.author.user.profile_picture.url }}">
+          <img class="rounded-circle article-img" src="{{ author.user.profile_picture.url }}" />
         </td>
         <td>
           <ul class="no-bullets">
             <!-- Author Name or Username -->
             <li>
-              <a class="theme-link" href="{% url 'blog:author_posts' post.author.username %}">
-                {{ post.author.user.display_name }}
+              <a class="theme-link" href="{% url 'blog:author_posts' author.username %}">
+                {{ profile.display_name }}
               </a>
             </li>
 
@@ -20,8 +20,8 @@
             <li>
               <small class="text-muted">
                 <strong>Published:</strong>
-                {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago)  |  
-                <strong>Updated:</strong> 
+                {{ post.publish_date|date:"D d-M-y" }} ({{ post.publish_date|timesince }} ago) |
+                <strong>Updated:</strong>
                 {{ post.updated_date|date:"D d-M-y" }} ({{ post.updated_date|timesince }} ago)
               </small>
             </li>
@@ -29,22 +29,23 @@
             <!-- Post Categories -->
             <li>
               <small class="text-muted">
-                <strong>Categories:</strong> 
+                <strong>Categories:</strong>
                 {% for category in post.categories.all %}
-                  <a class="theme-link" href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
-                  {% if not forloop.last %}  |  {% endif %}
-                {% endfor %}
+                <a class="theme-link" href="{% url 'blog:category_posts' category.slug %}">
+                  {{ category.name }}
+                </a>
+                {% if not forloop.last %} | {% endif %} {% endfor %}
               </small>
             </li>
 
             <!-- Word Count, Reading Time, and Update/Delete Links (if authenticated) -->
             <li>
               <small class="text-muted">
-                <span class="time">{{ post.word_count|intcomma }} words</span>  |  
+                <span class="time">{{ post.word_count|intcomma }} words</span> |
                 <span class="time">{{ post.reading_time }} min read</span>
-                {% if user.is_authenticated and request.user == post.author %}
-                   | <a class="theme-link" href="{% url 'blog:post_update' post.slug %}">Update</a>
-                   | <a class="theme-link" href="{% url 'blog:post_delete' post.slug %}">Delete</a>
+                {% if user.is_authenticated and request.user == author %} |
+                <a class="theme-link" href="{% url 'blog:post_update' post.slug %}">Update</a> |
+                <a class="theme-link" href="{% url 'blog:post_delete' post.slug %}">Delete</a>
                 {% endif %}
               </small>
             </li>

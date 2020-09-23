@@ -8,8 +8,7 @@ from mixer.backend.django import mixer
 import apps.blog.views as blog_views
 
 from apps.blog.models import Post
-from apps.pages.views import SitePermissionDeniedView
-from helpers import add_session_and_messages_middlewares
+from apps.pages.views import PermissionDeniedView
 
 
 pytestmark = pytest.mark.django_db
@@ -34,7 +33,7 @@ class TestAuthorPostListView:
     def test_all_users_can_access(self, rf, random_user, all_users):
         """ Asserts authenticated and unauthenticated user can access
             list of posts written by another author """
-        _ = mixer.cycle(10).blend(Post, author=random_user)
+        _ = mixer.cycle(10).blend(Post, author=random_user, status=1)
         kwargs = {'username': random_user.username}
         path = reverse('blog:author_posts', kwargs=kwargs)
         request = rf.get(path)
@@ -112,7 +111,7 @@ class TestPostUpdateView:
         request.user = auth_user
         with pytest.raises(PermissionDenied):
             response = blog_views.PostUpdateView.as_view()(request, **kwargs)
-        response = SitePermissionDeniedView.as_view()(request)
+        response = PermissionDeniedView.as_view()(request)
         assert response.status_code == 200, 'the custom 403 template should GET `OK` response'
 
     def test_unauth_user_cannot_access(self, rf, unauth_user, post):
@@ -155,7 +154,7 @@ class TestPostDeleteView:
         request.user = auth_user
         with pytest.raises(PermissionDenied):
             response = blog_views.PostDeleteView.as_view()(request, **kwargs)
-        response = SitePermissionDeniedView.as_view()(request)
+        response = PermissionDeniedView.as_view()(request)
         assert response.status_code == 200, 'the custom 403 template should GET `OK` response'
 
     def test_unauth_user_cannot_delete(self, rf, unauth_user, post):

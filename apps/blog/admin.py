@@ -8,9 +8,9 @@ from apps.blog.models import Category, Post
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = (
-        'name', 'slug', 'post_count', 'created_date', )
-    prepopulated_fields = {'slug': ('name',)}
+    list_display = ('id', 'name', 'slug', 'post_count', 'created_date', )
+    readonly_fields = ('id', )
+    prepopulated_fields = {'slug': ('name', )}
 
     def get_queryset(self, request):
         """ Calculation number of published posts by given category """
@@ -28,12 +28,12 @@ class PostAdmin(admin.ModelAdmin):
         'title', 'slug', 'content', 'reference_url', 'author',
         'categories', ('image', 'post_image'), 'status',
     )
-    list_display = ('title', 'status', 'publish_date', 'updated_date')
-    list_filter = ('status', 'categories', 'author')
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ('id', 'title', 'status', 'publish_date', 'updated_date', )
+    list_filter = ('status', 'categories', 'author', )
+    search_fields = ('title', 'content', )
+    prepopulated_fields = {'slug': ('title', )}
     date_hierarchy = 'updated_date'
-    readonly_fields = ['post_image', ]
+    readonly_fields = ('id', 'post_image', )
 
     radio_fields = {
         'status': admin.HORIZONTAL,

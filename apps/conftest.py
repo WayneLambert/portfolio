@@ -94,7 +94,7 @@ def li_sec_user(django_user_model, client, test_password, **kwargs):
 @pytest.fixture(scope='function')
 def post():
     """ A random blog post fixture """
-    return mixer.blend('blog.Post')
+    return mixer.blend('blog.Post', status=1)
 
 
 @pytest.fixture(scope='function')

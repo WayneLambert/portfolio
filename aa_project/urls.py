@@ -21,14 +21,13 @@ from django.urls import include, path
 
 from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
 from apps.blog.sitemap import CategorySitemap, PostSitemap
-from apps.pages.views import (SiteBadRequestView, SitePageNotFoundView,
-                              SitePermissionDeniedView,)
+from apps.pages.views import BadRequestView, PageNotFoundView, PermissionDeniedView
 
 
-handler400 = SiteBadRequestView.as_view()
-handler403 = SitePermissionDeniedView.as_view()
-handler404 = SitePageNotFoundView.as_view()
-handler500 = 'pages.views.handler500'
+handler400 = BadRequestView.as_view()
+handler403 = PermissionDeniedView.as_view()
+handler404 = PageNotFoundView.as_view()
+handler500 = 'apps.pages.views.handler500'
 
 
 urlpatterns = [

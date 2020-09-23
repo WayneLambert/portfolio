@@ -13,7 +13,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # Set the COLUMNS variable for the terminal's output width
-ENV COLUMNS 133
+ENV COLUMNS 134
 
 # Create and set working directory
 WORKDIR /code

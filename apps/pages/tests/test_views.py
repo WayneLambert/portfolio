@@ -1,19 +1,18 @@
-# pylint: disable=redefined-outer-name
-import pytest
-
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse
+
+import pytest
 
 import apps.blog.views as blog_views
 
 from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
-                              BlogReviewView, CountdownLettersReviewView,
+                              BadRequestView, BlogReviewView, CountdownLettersReviewView,
                               CountdownNumbersReviewView, DataScienceReviewView,
-                              FrontEndSkillsView, HomeView, InfrastructureSkillsView,
-                              PortfolioView, PrivacyPolicyView, ReadingListView,
-                              RouletteReviewView, ScrapingReviewView, SiteBadRequestView,
-                              SitePageNotFoundView, SitePermissionDeniedView,
-                              SoftwareSkillsView, TextAnalysisReviewView,)
+                              FrontEndSkillsView, InfrastructureSkillsView,
+                              PageNotFoundView, PermissionDeniedView, PortfolioView,
+                              PrivacyPolicyView, ReadingListView, RouletteReviewView,
+                              ScrapingReviewView, SiteHomeView, SoftwareSkillsView,
+                              TextAnalysisReviewView, handler500,)
 
 
 pytestmark = pytest.mark.django_db
@@ -26,7 +25,7 @@ class TestStaticPagesViews:
         path = reverse('pages:home')
         request = rf.get(path)
         request.user = all_users
-        response = HomeView.as_view()(request)
+        response = SiteHomeView.as_view()(request)
         assert response.status_code == 200, 'Should be callable by anyone'
 
     def test_portfolio_view(self, rf, all_users):
@@ -169,34 +168,52 @@ class TestCustomErrorPages:
     @pytest.mark.parametrize(argnames='all_users',
         argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
     def test_400_page(self, rf, all_users):
-        """ Asserts a user GETs a 400 page when resource is not found on
-            the server """
+        """
+        Asserts a user GETs a 400 page when resource is not found on
+        the server
+        """
         path = reverse('pages:home')
         request = rf.get(path)
         request.user = all_users
-        response = SiteBadRequestView.as_view()(request)
+        response = BadRequestView.as_view()(request)
         assert response.status_code == 200, 'the custom 400 template should GET `OK` response'
 
     def test_403_page(self, rf, post, auth_user):
-        """ Asserts a 403 page is reached when a different authenticated
-            user tries to access a protected view. """
+        """
+        Asserts a 403 page is reached when a different authenticated
+        user tries to access a protected view.
+        """
         kwargs = {'slug': post.slug}
         path = reverse('blog:post_update', kwargs=kwargs)
         request = rf.get(path)
         request.user = auth_user
         with pytest.raises(PermissionDenied):
             response = blog_views.PostUpdateView.as_view()(request, **kwargs)
-        response = SitePermissionDeniedView.as_view()(request)
+        response = PermissionDeniedView.as_view()(request)
         assert response.status_code == 200, 'the custom 403 template should GET `OK` response'
 
     @pytest.mark.parametrize(argnames='all_users',
         argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
     def test_404_page(self, rf, all_users):
-        """ Asserts a user GETs a 404 page when resource is not found on
-            the server """
+        """
+        Asserts a user GETs a 404 page when resource is not found on
+        the server
+        """
         kwargs = {'slug': 'post-slug-that-does-not-exist'}
         path = reverse('blog:post_update', kwargs=kwargs)
         request = rf.get(path)
         request.user = all_users
-        response = SitePageNotFoundView.as_view()(request)
+        response = PageNotFoundView.as_view()(request)
         assert response.status_code == 200, 'the custom 404 template should GET `OK` response'
+
+    @pytest.mark.parametrize(argnames='all_users',
+        argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
+    def test_500_page(self, rf, all_users):
+        """
+        Asserts a user GETs a 500 response when ServerErrorView is called
+        """
+        path = reverse('pages:home')
+        request = rf.get(path)
+        request.user = all_users
+        response = handler500(request)
+        assert response.status_code == 500, 'the user should GET a 500 status code'

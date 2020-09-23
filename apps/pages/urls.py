@@ -3,16 +3,16 @@ from django.urls import path
 from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
                               BlogReviewView, CountdownLettersReviewView,
                               CountdownNumbersReviewView, DataScienceReviewView,
-                              FrontEndSkillsView, HomeView, InfrastructureSkillsView,
-                              PortfolioView, PrivacyPolicyView, ReadingListView,
-                              RouletteReviewView, ScrapingReviewView, SoftwareSkillsView,
+                              FrontEndSkillsView, InfrastructureSkillsView, PortfolioView,
+                              PrivacyPolicyView, ReadingListView, RouletteReviewView,
+                              ScrapingReviewView, SiteHomeView, SoftwareSkillsView,
                               TextAnalysisReviewView,)
 
 
 app_name = 'pages'
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('', SiteHomeView.as_view(), name='home'),
     path('portfolio/', PortfolioView.as_view(), name='portfolio'),
     path('portfolio/reviews/blog/', BlogReviewView.as_view(), name='blog_review'),
     path('portfolio/reviews/api/', APIReviewView.as_view(), name='api_review'),
