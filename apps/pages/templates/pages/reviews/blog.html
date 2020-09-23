@@ -67,13 +67,13 @@
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <ul class="mb-0 no-bullets">
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Authentication and authorisation implemented for post creation, updating, and deletion
+            Authentication and authorisation implemented for post creation, updation, and deletion
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Predominantly built using Class-Based Views, therefore easier to maintain
+            Predominantly built using Class-Based Views, therefore easier to maintain (in my opinion)
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Efficient retrieval of data from PostgreSQL database with query optimisations
+            Efficient full word text search retrieval of data from PostgreSQL database with query optimisations
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Tests built using the pytest framework and an in-memory SQLite3 database
@@ -85,13 +85,10 @@
             Detail view pagination cycling through individual posts
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Conditionally visible category sidebar including number of posts in each category
+            Conditionally visible category sidebar including count of posts in each category
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Contents page allowing visitors to see full list of posts
-          </li>
-          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Efficient search engine functionality
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Media storage integrated with Amazon S3
@@ -103,7 +100,10 @@
             RSS Feed
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Customised and secured 'Admin' pages/interface
+            Sitemap implementation to facilitate search engine indexing
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Highly customised and secured 'Admin' pages/interface
           </li>
         </ul>
       </div>
@@ -127,7 +127,7 @@
           <p>
             The blog should include a detailed amount of metadata which informs the reader
             on how useful the blog's article is. One of my personal dislikes is when I'm reading a
-            blog post and there's no creation or updated date on the post. This leaves me
+            blog post and there's no created or updated date on the post. This leaves me
             wondering if the solution provided really is aligned to the challenge I'm facing.
           </p>
         </div>
@@ -149,7 +149,7 @@
             Following this, in a separate app called 'users', I created a 'Profile' model which has a
             one-to-one relationship with Django's default 'User' model. These are connected using Django signals
             whereby when an instance of 'User' is created, it sends a signal to the custom 'Profile'
-            model to simultaneously create an instance of the 'Profile' model too.
+            model to simultaneously create an instance of the 'Profile' model.
           </p>
           <p>
             Following the implementation of the models, I designed the URL structure of the
@@ -161,6 +161,13 @@
             The final stage was to render the templates which is of course was an iterative process requiring
             revisions to the models and views as better or more desirable options become apparent.
           </p>
+          <p>
+            During development, I have refactored to implement a model manager which represents a queryset
+            for published posts which is re-used repeatedly throughout the project. This has moved a lot of
+            the implementation logic away from the views and towards the models. This has made it easier to
+            remove any duplicate SQL queries from the views in addition to making the code easier to maintain,
+            and re-use.
+          </p>
         </div>
 
         <!-- Project Evaluation -->
@@ -169,19 +176,21 @@
           <p>
             If I were to repeat the project, I would create a custom user model which would use an email address
             for registration rather than a username. I think that using usernames is an outdated way of signing
-            up for a website. It's more difficult for a user to remember their username. This fits my personal
-            preferred method of signing up to web services.
+            up for a website. It's more difficult for a user to remember their username than their email address.
+            This fits my own personal preferred and biased method and of signing up to web services.
           </p>
           <p>
             Additionally, due to privacy concerns, I don't believe in using Google or Facebook's
             expedited login buttons. They're very convenient at the point of registration but expensive
-            in terms of the data that you're giving away. Some might argue they're extremely secure
-            because of the resources that they put into ensuring their platforms are secure, however I
-            still believe this is at the expense of user privacy.
+            in terms of the data that you're giving away. Some might argue the very valid point that they're
+            extremely secure because of the resources that they put into ensuring their platforms are secure,
+            however I still believe this is at the expense of user privacy. If it becomes easy to use Apple's
+            newer sign in with apple button, then I may revisit this because of their approach to privacy.
           </p>
           <p>
-            Changing over to a custom user model at this point would require an inordinate amount
-            of effort to derive very little benefit. I have used this pattern in a subsequent project.
+            Changing over to a custom user model at this point would require a considerable amount
+            of effort to derive very little benefit. I have used this pattern in a subsequent project within one
+            of my private repositories.
           </p>
         </div>
 
