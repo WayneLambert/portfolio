@@ -23,7 +23,7 @@ class LatestPostsFeed(Feed):
         return item.author.user.full_name
 
     def item_pubdate(self, item):
-        return item.published_date
+        return item.publish_date
 
     def item_updateddate(self, item):
         return item.updated_date

@@ -29,6 +29,7 @@ class PostAdmin(admin.ModelAdmin):
         'categories', ('image', 'post_image'), 'status',
     )
     list_display = ('id', 'title', 'status', 'publish_date', 'updated_date', )
+    list_display_links = ('id', 'title', )
     list_filter = ('status', 'categories', 'author', )
     search_fields = ('title', 'content', )
     prepopulated_fields = {'slug': ('title', )}
@@ -56,3 +57,4 @@ class PostAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Post, PostAdmin)
+
