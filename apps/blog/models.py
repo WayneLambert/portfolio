@@ -9,7 +9,7 @@ from django.urls import reverse
 
 from tinymce.models import HTMLField
 
-from blog.managers import PublishedManager
+from apps.blog.managers import PublishedManager
 
 
 class Category(models.Model):
@@ -86,10 +86,6 @@ class Post(models.Model):
     @staticmethod
     def num_draft_posts() -> int:
         return Post.objects.filter(status=0).count()
-
-    @staticmethod
-    def num_published_posts() -> int:
-        return Post.published.count()
 
     def save(self):
         if not self.slug.strip():  # pragma: no cover

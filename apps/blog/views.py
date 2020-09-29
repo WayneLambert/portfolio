@@ -1,12 +1,14 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.db.models import Q
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.urls import reverse
 from django.utils.html import format_html
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView,)
 
+from apps.blog import search
 from apps.blog.forms import PostForm
 from apps.blog.models import Category, Post
 
@@ -115,15 +117,26 @@ class SearchResultsView(PostView):
     template_name = 'blog/search_results.html'
     paginate_by = 10
     paginate_orphans = 2
+    relevancy_factor = 0.2
 
     def get_queryset(self):
         initial_query = format_html(self.request.GET.get('q'))
-        self.extra_context['query'] = initial_query
-        pattern = r"\y{0}\y".format(initial_query)
-        if initial_query:
-            return self.queryset.filter(
-                Q(title__iregex=pattern) | Q(content__iregex=pattern)).distinct()
-        return self.queryset.none()
+        cleaned_query = search.cleanup_string(initial_query)
+        self.extra_context.update({
+            'query': initial_query,
+            'cleaned_query': cleaned_query,
+        })
+        if cleaned_query:
+            search_vector = SearchVector('title', weight='A') + SearchVector('content', weight='B')
+            search_query = SearchQuery(cleaned_query)
+            search_rank = SearchRank(search_vector, search_query)
+            return Post.published.annotate(
+                rank=search_rank
+            ).filter(rank__gte=self.relevancy_factor).order_by('-rank')
+        else:
+            msg = "A blank search cannot be submitted. Please enter a valid search query."
+            messages.add_message(self.request, messages.INFO, msg)
+            return self.queryset.none()
 
     def get_context_data(self, **kwargs):
         """ Get's the author object for presenting in the template """
