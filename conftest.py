@@ -16,8 +16,7 @@ def pytest_addoption(parser):
 
 def pytest_configure(config):
     """
-    Sets tests with the @pytest.mark.slow decorator as the ones to be
-    skipped
+    Sets tests with `@pytest.mark.slow` decorator as ones to be skipped
     """
     config.addinivalue_line('markers', 'slow: mark test as slow to run')
 

@@ -4,39 +4,13 @@ from django.utils.text import slugify
 
 import pytest
 
-from mixer.backend.django import mixer
-
 from apps.users.models import Profile
 
 
-@pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)(transaction=True, reset_sequences=True)
+
+
 class TestProfile:
-    def test_single_profile_save(self, fixed_user):
-        assert fixed_user.pk == 2, 'Should create a `User` instance'
-        assert fixed_user.user.pk == 2, \
-            'Through Django signals, should create both a `Profile` instance too. \
-                NOTE: pk=1 is AnonymousUser'
-
-    def test_multi_profile_saves(self, django_user_model):
-        mixer.cycle(10).blend(django_user_model)
-        assert django_user_model.objects.count() == 11, 'Should have 11 objects in the database'
-        assert Profile.objects.count() == 11, 'Should have 11 objects in the database'
-
-    def test_can_delete_profile(self, django_user_model):
-        """
-        If you add a `User`, you also add a `Profile` through Django signals.
-        If you delete a `User`, you also delete their `Profile` (on_delete=models.CASCADE)
-        If you delete the `Profile`, only the profile is deleted.
-        """
-        users = mixer.cycle(10).blend(django_user_model)
-        users[4].delete()
-        assert django_user_model.objects.count() == 10, \
-            'Should have 9 objects remaining in the database'
-        assert Profile.objects.count() == 10, 'Should have 9 objects remaining in the database'
-        Profile.objects.get(pk=4).delete()
-        assert Profile.objects.count() == 9, 'Should have 9 objects remaining in the database'
-        assert django_user_model.objects.count() == 10, 'Should still equal 10'
-
     def test_user_is_onetoonefield(self, random_user):
         field = random_user.user._meta.get_field("user")
         assert isinstance(field, models.OneToOneField), 'Should be a one-to-one field'

@@ -9,7 +9,7 @@ from apps.contacts.views import ContactFormView, ContactSubmittedView
 from apps.helpers import add_middleware_to_request
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 @pytest.mark.parametrize(argnames='all_users',
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)

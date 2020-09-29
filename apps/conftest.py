@@ -10,26 +10,33 @@ import pytest
 from mixer.backend.django import mixer
 from PIL import Image
 
-from apps.blog.models import Category
+from apps.blog.models import Category, Post
 from apps.blog.tests import helpers
 
 
-@pytest.fixture(name='random_user', scope='function')
+@pytest.fixture(scope='function')
 def random_user(django_user_model):
-    """ A random user using the `mixer` package """
-    return mixer.blend(django_user_model)
+    """ A random user """
+    return mixer.blend(django_user_model, pk=2)
+
+
+@pytest.fixture(scope='function')
+def third_user_as_author(django_user_model):
+    """ A random user """
+    return mixer.blend(django_user_model, pk=3)
 
 
 @pytest.fixture(scope='function')
 def test_password():
-    """ A password used during the creation of authenticated users """
+    """ A password used for an authenticated user fixture """
     return os.environ['PYTEST_TEST_PASSWORD']
 
 
-@pytest.fixture(name='auth_user', scope='function')
+@pytest.fixture(scope='function')
 def auth_user(client, django_user_model, test_password):
     """ An authenticated user object using the specified user model """
     auth_user = django_user_model.objects.create_user(
+            pk=2,
             first_name='Wayne',
             last_name='Lambert',
             username='wayne-lambert',
@@ -40,13 +47,13 @@ def auth_user(client, django_user_model, test_password):
     return auth_user
 
 
-@pytest.fixture(name='unauth_user', scope='function')
+@pytest.fixture(scope='function')
 def unauth_user():
-    """ An unauthenticated user object (i.e. an anonymous user) """
+    """ An unauthenticated user (i.e. an anonymous user) """
     return AnonymousUser()
 
 
-@pytest.fixture(name='all_users', scope='function')
+@pytest.fixture(scope='function')
 def all_users(request, auth_user, unauth_user):
     """
     A combined fixture containing both an authenticated and
@@ -55,19 +62,20 @@ def all_users(request, auth_user, unauth_user):
     """
     user_type = request.param
     users = {
-        "auth_user": auth_user,
-        "unauth_user": unauth_user,
+        'auth_user': auth_user,
+        'unauth_user': unauth_user,
     }
     return users[user_type]
 
 
-@pytest.fixture(name='fixed_user', scope='function')
+@pytest.fixture(scope='function')
 def fixed_user(django_user_model):
     """
-    A fixed user object useful in scenarios where testing against
-    known instance attributes validates the functionality
+    A fixed user useful in scenarios where testing against known
+    instance attributes validates the functionality
     """
     return django_user_model.objects.create_user(
+        pk=2,
         first_name='Wayne',
         last_name='Lambert',
         username='wayne-lambert',
@@ -75,7 +83,7 @@ def fixed_user(django_user_model):
     )
 
 
-@pytest.fixture(name='li_sec_user', scope='function')
+@pytest.fixture(scope='function')
 def li_sec_user(django_user_model, client, test_password, **kwargs):
     """
     Useful in tests where a secondary user tries to access a protected
@@ -86,26 +94,38 @@ def li_sec_user(django_user_model, client, test_password, **kwargs):
         kwargs['first_name'] = 'Endeavour'
         kwargs['last_name'] = 'Morse'
         kwargs['email'] = 'endeavour-morse@example.com'
-    user = django_user_model.objects.create_user(**kwargs)
+    user = django_user_model.objects.create_user(pk=3, **kwargs)
     client.login(username=user.username, password=test_password)
     return user
 
 
 @pytest.fixture(scope='function')
-def post():
-    """ A random blog post fixture """
-    return mixer.blend('blog.Post', status=1)
+def pub_post(random_user):
+    """ A random published blog post """
+    return mixer.blend(Post, author=random_user, status=1)
+
+
+@pytest.fixture(scope='function')
+def draft_posts(third_user_as_author):
+    """ A random set of 10 draft blog posts """
+    return mixer.cycle(10).blend(Post, author=third_user_as_author, status=0)
+
+
+@pytest.fixture(scope='function')
+def pub_posts(third_user_as_author):
+    """ A random set of 10 published blog posts """
+    return mixer.cycle(10).blend(Post, author=third_user_as_author, status=1)
 
 
 @pytest.fixture(scope='function')
 def category():
-    """ A random blog category fixture """
-    return mixer.blend('blog.Category')
+    """ A random blog category """
+    return mixer.blend(Category, pk=1)
 
 
 @pytest.fixture(scope='function', params=helpers.get_search_strings())
 def search_terms(request):
-    """ A fixture for parametrizing good search strings in tests """
+    """ A fixture for parametrizing search terms in tests """
     return request.param
 
 
@@ -140,11 +160,12 @@ def sample_post_data():
 @pytest.fixture(scope='function')
 def sample_user_data():
     """ A set of form data for completing a user registration form """
+
     return {
         'username': 'wayne-lambert',
         'email': 'test-email@example.com',
         'first_name': 'Wayne',
         'last_name': 'Lambert',
-        'password1': os.environ['PYTEST_TEST_PASSWORD'],
-        'password2': os.environ['PYTEST_TEST_PASSWORD'],
+        'password1': test_password,
+        'password2': test_password,
     }

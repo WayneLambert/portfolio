@@ -7,7 +7,7 @@ from mixer.backend.django import mixer
 from apps.countdown_letters.models import LettersGame
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 
 class TestLettersGame:

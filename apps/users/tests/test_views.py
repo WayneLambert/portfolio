@@ -1,6 +1,6 @@
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
+from django.http import Http404
 from django.urls import reverse
 
 import pytest
@@ -11,36 +11,23 @@ from apps.users.models import Profile
 from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 
-pytestmark = pytest.mark.django_db
-
 class TestUserRegisterView:
 
     path = reverse('blog:users:register')
 
     def test_auth_user_cannot_access(self, rf, auth_user):
-        """ Asserts authenticated user can't access `registration` view """
+        """ Asserts authenticated user can't access `registration` iew """
         request = rf.get(self.path)
         request.user = auth_user
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
-    def test_unauth_user_can_access(self, rf):
+    def test_unauth_user_can_access(self, rf, unauth_user):
         """ Asserts unauthenticated user can access `registration` view """
         request = rf.get(self.path)
-        request.user = AnonymousUser()
+        request.user = unauth_user
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
-
-    def test_form_valid(self, rf, django_user_model, sample_user_data):
-        """ Asserts that a user can POST their registration details """
-        kwargs = sample_user_data
-        request = rf.post(self.path, kwargs)
-        response = UserRegisterView.as_view()(request, **kwargs)
-        assert response.status_code == 302, 'Should be redirected'
-        assert '/login/' in response.url, 'Should redirect to `login` screen'
-        assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
-        assert django_user_model.objects.last().username == 'wayne-lambert'
-        assert Profile.objects.last().slug == 'wayne-lambert'
 
     def test_form_invalid(self, rf, django_user_model, sample_user_data):
         """
@@ -73,6 +60,18 @@ class TestProfileView:
         response = ProfileView.as_view()(request, **kwargs)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
+    def test_inexistent_profile(self, rf, all_users):
+        """
+        Asserts an attempt to access a non-existent `profile` view
+        returns a 404 error
+        """
+        kwargs = {'username': 'inexistent-user'}
+        path = reverse('blog:users:profile', kwargs=kwargs)
+        request = rf.get(path)
+        request.username = all_users
+        with pytest.raises(Http404):
+            ProfileView.as_view()(request, **kwargs)
+
 
 class TestProfileUpdateView:
     def test_auth_user_can_access(self, rf, auth_user):
@@ -87,14 +86,14 @@ class TestProfileUpdateView:
         response = ProfileUpdateView.as_view()(request, **kwargs)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
-    def test_unauth_user_cannot_access(self, rf, auth_user):
+    def test_unauth_user_cannot_access(self, rf, auth_user, unauth_user):
         """
         Asserts `profile update` view inaccessible by unauthenticated user
         """
         kwargs = {'username': auth_user.username}
         path = reverse('blog:users:profile_update', kwargs=kwargs)
         request = rf.get(path)
-        request.user = AnonymousUser()
+        request.user = unauth_user
         response = ProfileUpdateView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should return with an `redirect` status code'
         assert '/login/' in response.url, 'Should redirect to login page'
@@ -109,8 +108,7 @@ class TestProfileUpdateView:
         request.user = li_sec_user
         with pytest.raises(PermissionDenied):
             response = ProfileUpdateView.as_view()(request, **kwargs)
-            assert response.status_code == 403, \
-                'Should return a `Permission Denied` status code'
+            assert response.status_code == 403, 'Should return a `Permission Denied` status code'
 
 
 @pytest.mark.parametrize(argnames='all_users',

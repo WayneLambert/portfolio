@@ -79,4 +79,4 @@ def given_answers_list() -> list:
 
 @pytest.fixture(scope='function')
 def letters_game():
-    return mixer.blend(LettersGame)
+    return mixer.blend(LettersGame, pk=1)
