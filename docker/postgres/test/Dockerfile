@@ -1,5 +1,5 @@
 # Use official Postgres image that matches production database
-FROM postgres:11.8
+FROM postgres:11.9
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
