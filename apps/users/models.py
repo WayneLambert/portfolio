@@ -10,7 +10,8 @@ class Profile(models.Model):
         USERNAME = 0
         FULL_NAME = 1
 
-    user = models.OneToOneField(get_user_model(), related_name='user', on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        get_user_model(), primary_key=True, related_name='user', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True)
     author_view = models.IntegerField(choices=AuthorView.choices, default=0)
     profile_picture = models.ImageField(

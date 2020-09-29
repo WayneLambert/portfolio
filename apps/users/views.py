@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import redirect, render, reverse
-from django.template.response import TemplateResponse
+from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 
@@ -16,6 +15,7 @@ class UserRegisterView(CreateView):
     model = Profile
     form_class = UserRegisterForm
     template_name = 'users/register.html'
+    success_url = reverse_lazy('blog:users:login')
     USER_ALREADY_EXISTS_MSG = """
         The username you've attempted to register with is already taken.
         Perhaps you already have an account? If so, you can log in using
@@ -28,33 +28,21 @@ class UserRegisterView(CreateView):
         if user.exists():
             return True
 
+    def form_valid(self, form):
+        self.object = form.save()
+        return super().form_valid(form)
+
     def form_invalid(self, form):
         if self.user_exists():
             messages.error(self.request, message=self.USER_ALREADY_EXISTS_MSG)
             return redirect(reverse('blog:users:register'))
 
-    def get_success_url(self):
-        return reverse('blog:users:login')
-
 
 class ProfileView(DetailView):
     template_name = 'users/profile.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(ProfileView, self).get_context_data(**kwargs)
-        context['username'] = get_user_model().objects.get(username=kwargs['username'])
-        return context
-
-    def get(self, request, **kwargs):
-        try:
-            context = {
-                'user': get_user_model().objects.get(username=kwargs['username']),
-            }
-        except get_user_model().DoesNotExist:
-            context = None
-            return TemplateResponse(request, template='errors/404.html')
-
-        return render(request, self.template_name, context)
+    def get_object(self, queryset=None):
+        return get_object_or_404(get_user_model(), username=self.kwargs['username'])
 
 
 class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormView):
@@ -65,10 +53,6 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
     form_classes = (UserUpdateForm, ProfileUpdateForm)
     template_name = 'users/profile_update.html'
 
-    def get_success_url(self):
-        return reverse_lazy(
-            'blog:users:profile', kwargs={'username': self.request.user.username})
-
     def test_func(self) -> bool:
         return self.request.user.username == self.kwargs['username']
 
@@ -77,3 +61,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
             'userupdateform': self.request.user,
             'profileupdateform': self.request.user.user
         }
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'blog:users:profile', kwargs={'username': self.request.user.username})
