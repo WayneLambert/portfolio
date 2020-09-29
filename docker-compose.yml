@@ -1,10 +1,19 @@
 version: '3.8'
 
 services:
+  pg_test:
+    container_name: portfolio_pg_test
+    build:
+      context: ./docker/postgres/test
+    env_file:
+      - postgres.env
+    tmpfs:
+      - /var/lib/postgresql/data
+
   postgres:
     container_name: portfolio_postgres
     build:
-      context: ./docker/postgres
+      context: ./docker/postgres/dev
     restart: always
     env_file:
       - dev.env

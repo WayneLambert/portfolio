@@ -9,16 +9,18 @@ from aa_project.settings.base import (AWS_BASE_BUCKET_ADDRESS, BASE_DIR,
                                       TEMPLATES,)
 
 
-# IN-MEMORY TEST DATABASE
+# Postgres Testing Database Configuration
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
-        'TEST': {'SERIALIZE': False},
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_DOCKER_POSTGRES_SERVICE'),
+        'PORT': os.getenv('DB_PORT'),
+        'TEST': {
+            'NAME': 'test_portfolio_db',
+        },
     }
 }
 

@@ -5,7 +5,7 @@ import pytest
 from apps.api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 
 class TestCategoryListAPIView:
@@ -45,18 +45,18 @@ class TestPostListAPIView:
 
 
 class TestPostDetailAPIView:
-    def test_site_visitor_can_access_post_detail_api(self, request, rf, unauth_user, post):
+    def test_site_visitor_can_access_post_detail_api(self, request, rf, unauth_user, pub_post):
         """ Asserts a random visitor can access the post detail API """
-        url = reverse('api:post_detail', kwargs={'pk': post.id})
+        url = reverse('api:post_detail', kwargs={'pk': pub_post.id})
         request = rf.get(url)
         request.user = unauth_user
-        response = PostDetailAPIView.as_view()(request, pk=post.id)
+        response = PostDetailAPIView.as_view()(request, pk=pub_post.id)
         assert response.status_code == 200, 'Should return an OK status code'
 
-    def test_auth_user_can_access_post_detail_api(self, request, rf, auth_user, post):
+    def test_auth_user_can_access_post_detail_api(self, request, rf, auth_user, pub_post):
         """ Asserts an authenticated user can access the post detail API """
-        url = reverse('api:post_detail', kwargs={'pk': post.id})
+        url = reverse('api:post_detail', kwargs={'pk': pub_post.id})
         request = rf.get(url)
         request.user = auth_user
-        response = PostDetailAPIView.as_view()(request, pk=post.id)
+        response = PostDetailAPIView.as_view()(request, pk=pub_post.id)
         assert response.status_code == 200, 'Should return an OK status code'

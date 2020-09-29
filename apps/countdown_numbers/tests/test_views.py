@@ -3,7 +3,7 @@ from django.urls import reverse
 import pytest
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 def test_get_selection_screen(client):
     """ Asserts a site visitor can GET the `selection` screen """

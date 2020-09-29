@@ -1,31 +1,19 @@
 <!-- Messages -->
 <div class="d-flex flex-column col-12 container text-center mt-3">
-  <blockquote class="quote-content text-left ml-3">
+  <blockquote class="quote-content text-left">
     {% if messages %}
       <div class="alert alert-warning col-8 mb-0 container" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <strong>
-          <font color="red mb-2">
-            There are problems with your search string requiring attention:
-          </font>
-        </strong>
         <div class="messages text-left">
           <ul class="no-bullets mt-2">
             {% for message in messages %}
               <li>
-                {% if 'Your Calculation Entered:' in message.tags %}
-                  <strong>{{ message.extra_tags }}</strong>
-                {% else %}
-                  <i class="fa fa-chevron-right mb-1"></i> {{ message }}
-                {% endif %}
+                <font color="red mb-2">{{ message }}</font>
               </li>
             {% endfor %}
           </ul>
-        </div>
-        <div class="mt-2">
-          <strong>Please resubmit your search in accordance with the guidance</strong>
         </div>
       </div>
     {% endif %}

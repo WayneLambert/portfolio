@@ -1,9 +1,6 @@
-from django.core.exceptions import PermissionDenied
 from django.urls import reverse
 
 import pytest
-
-import apps.blog.views as blog_views
 
 from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
                               BadRequestView, BlogReviewView, CountdownLettersReviewView,
@@ -15,7 +12,8 @@ from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
                               TextAnalysisReviewView, handler500,)
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
+
 
 @pytest.mark.parametrize(argnames='all_users',
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
@@ -168,37 +166,26 @@ class TestCustomErrorPages:
     @pytest.mark.parametrize(argnames='all_users',
         argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
     def test_400_page(self, rf, all_users):
-        """
-        Asserts a user GETs a 400 page when resource is not found on
-        the server
-        """
+        """ Asserts a user can GET a 400 page """
         path = reverse('pages:home')
         request = rf.get(path)
         request.user = all_users
         response = BadRequestView.as_view()(request)
         assert response.status_code == 200, 'the custom 400 template should GET `OK` response'
 
-    def test_403_page(self, rf, post, auth_user):
-        """
-        Asserts a 403 page is reached when a different authenticated
-        user tries to access a protected view.
-        """
-        kwargs = {'slug': post.slug}
+    def test_403_page(self, rf, pub_post, auth_user):
+        """ Asserts a user can GET a 403 page """
+        kwargs = {'slug': pub_post.slug}
         path = reverse('blog:post_update', kwargs=kwargs)
         request = rf.get(path)
         request.user = auth_user
-        with pytest.raises(PermissionDenied):
-            response = blog_views.PostUpdateView.as_view()(request, **kwargs)
         response = PermissionDeniedView.as_view()(request)
-        assert response.status_code == 200, 'the custom 403 template should GET `OK` response'
+        assert response.status_code == 200, 'the custom 403 template should GET an `OK` response'
 
     @pytest.mark.parametrize(argnames='all_users',
         argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
     def test_404_page(self, rf, all_users):
-        """
-        Asserts a user GETs a 404 page when resource is not found on
-        the server
-        """
+        """ Asserts a user can GET a 404 page """
         kwargs = {'slug': 'post-slug-that-does-not-exist'}
         path = reverse('blog:post_update', kwargs=kwargs)
         request = rf.get(path)
@@ -209,9 +196,7 @@ class TestCustomErrorPages:
     @pytest.mark.parametrize(argnames='all_users',
         argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
     def test_500_page(self, rf, all_users):
-        """
-        Asserts a user GETs a 500 response when ServerErrorView is called
-        """
+        """ Asserts a user can GET a 500 page """
         path = reverse('pages:home')
         request = rf.get(path)
         request.user = all_users

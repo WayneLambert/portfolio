@@ -7,7 +7,7 @@ from mixer.backend.django import mixer
 from apps.contacts.models import Contact
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)(reset_sequences=True)
 
 class TestContact:
     def test_single_contact_save(self, random_contact):

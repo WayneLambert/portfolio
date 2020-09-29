@@ -68,7 +68,6 @@ class TestUserRegisterForm:
             'With trailing spaces in form submission, the field is 30 chars in length.'
         form.save()
         assert form.cleaned_data['username'] == 'wayne-lambert', 'Username has been trimmed'
-        assert form.cleaned_data['username'].islower(), 'Username is now in lowercase'
         assert len(form.cleaned_data['username']) == 13, "Example's username is 30 chars in length"
         assert form.is_valid(), 'Should be valid'
 

@@ -11,8 +11,9 @@ if __name__ == '__main__':
         from django.core.management import execute_from_command_line
 
         if settings.DEBUG:
-            from rich import pretty
+            from rich import pretty, traceback
             pretty.install()
+            traceback.install()
 
             if os.environ.get('RUN_MAIN') or os.environ.get('WERKZEUG_RUN_MAIN'):
                 import ptvsd

@@ -9,14 +9,14 @@
   <!-- Search Results Queryset Count-->
   <article class="blog-post mt-3 mb-3">
     <div class="container single-col-max-width">
-      {% if query is not None %}
+      {% if cleaned_query is not None and cleaned_query != "" %}
         {% with paginator.count as num_posts %}
           {% if num_posts == 0 %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <strong>There were no posts found related to {{ query|default_if_none:"--" }}</strong>
+              There were no posts found related to <strong>{{ cleaned_query }}</strong>
               <hr>
               <p class="text-muted text-sm-left"><strong>HINT</strong>:
                 Try using unique words that is likely to appear.
@@ -24,7 +24,7 @@
             </div>
           {% else %}
             <div class="alert alert-success" role="alert">
-              {{ num_posts }} post{{ num_posts|pluralize}} found related to <strong>{{ query }}</strong>
+              {{ num_posts }} post{{ num_posts|pluralize}} found related to <strong>{{ cleaned_query }}</strong>
             </div>
           {% endif %}
         {% endwith %}
