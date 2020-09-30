@@ -24,7 +24,7 @@
             </div>
           {% else %}
             <div class="alert alert-success" role="alert">
-              {{ num_posts }} post{{ num_posts|pluralize}} found related to <strong>{{ cleaned_query }}</strong>
+              {{ num_posts }} post{{ num_posts|pluralize}} found related to <strong>{{ cleaned_query }}</strong> ({{ time_taken }}s)
             </div>
           {% endif %}
         {% endwith %}
@@ -34,26 +34,18 @@
 
   {% include 'components/search_messages.html' %}
   {% for post in posts %}
-    <article class="blog-post">
-      <div class="inner p-3 theme-bg-light mb-3 container single-col-max-width">
-        <table>
-          <tr>
-            <td width="75%">
-              <h6 class="card-title">
-                <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
-                  {{ post.title }}
-                </a>
-              </h6>
-              <div class="article-content pr-2">{{ post.content|truncatewords_html:15|safe }}</div>
-            </td>
-            <td width="25%">
-              <img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}">
-            </td>
-          </tr>
-        </table>
+    <section class="blog-list px-3 mb-3 p-md-1">
+      <div class="container single-col-max-width">
         {% include "components/meta_data.html" %}
+        <div class="media">
+          <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{ post.image.url }}" alt="image" width="30%" height="30%">
+          <div class="media-body">
+            <h6 class="title mb-1"><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+            <div class="intro">{{ post.content|truncatewords_html:35|safe }}</div>
+          </div>
+        </div>
       </div>
-    </article>
+    </section>
   {% endfor %}
   {% if is_paginated %}{% include 'components/search_pagination_nav.html' %}{% endif %}
 {% endblock content %}

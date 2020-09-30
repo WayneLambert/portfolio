@@ -7,9 +7,8 @@
   <h6 class="text-center mt-5 mb-5">{{ posts.count }} unique posts covering {{ categories_list.count }} categories</h6>
   {% for category in categories_list %}
     <div class="container single-col-max-width alert">
-      <h6 class="mb-4">
-        {{ category.posts.count }} post{{ category.posts.count|pluralize }} about 
-        <a class="theme-link" href="{% url "blog:home" %}category/{{ category.slug }}/posts">{{ category.name }}</a>
+      <h6 class="mb-4">{{ category.posts.count }} post{{ category.posts.count|pluralize }} about 
+        <a class="theme-link" href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
       </h6>
       {% for post in category.posts.all %}
         <article class="blog-post">

@@ -1,3 +1,5 @@
+from time import perf_counter
+
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -120,19 +122,23 @@ class SearchResultsView(PostView):
     relevancy_factor = 0.2
 
     def get_queryset(self):
+        start_time = perf_counter()
         initial_query = format_html(self.request.GET.get('q'))
         cleaned_query = search.cleanup_string(initial_query)
-        self.extra_context.update({
-            'query': initial_query,
-            'cleaned_query': cleaned_query,
-        })
         if cleaned_query:
             search_vector = SearchVector('title', weight='A') + SearchVector('content', weight='B')
             search_query = SearchQuery(cleaned_query)
             search_rank = SearchRank(search_vector, search_query)
-            return Post.published.annotate(
+            qs = Post.published.annotate(
                 rank=search_rank
             ).filter(rank__gte=self.relevancy_factor).order_by('-rank')
+            end_time = perf_counter()
+            self.extra_context.update({
+                'query': initial_query,
+                'cleaned_query': cleaned_query,
+                'time_taken': f"{end_time - start_time:.3f}"
+            })
+            return qs
         else:
             msg = "A blank search cannot be submitted. Please enter a valid search query."
             messages.add_message(self.request, messages.INFO, msg)

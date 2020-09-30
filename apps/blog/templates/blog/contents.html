@@ -4,28 +4,22 @@
 
 {% block content %}
   {% include 'components/search_bar.html' %}
-  <h6 class="text-center mt-5 mb-5">
+  <h6 class="text-center mt-3 mb-3">
     {{ paginator.count }} posts across {{ categories_list.count }} categories
   </h6>
   {% for post in posts %}
-    <article class="blog-post">
-      <div class="container single-col-max-width alert">
-        <table>
-          <tr>
-            <td width="75%">
-              <h6 class="card-title">
-                <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
-                  {{ post.title }}
-                </a>
-              </h6>
-              <p class="article-content">{{ post.content|truncatewords_html:15|safe }}</p>
-            </td>
-            <td><img class="img-fluid" src="{{ post.image.url }}" alt="{{ post.title }}"></td>
-          </tr>
-        </table>
+    <section class="blog-list px-3 mb-3 p-md-1">
+      <div class="container single-col-max-width">
         {% include "components/meta_data.html" %}
+        <div class="media">
+          <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{ post.image.url }}" alt="image" width="30%" height="30%">
+          <div class="media-body">
+            <h6 class="title mb-1"><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+            <div class="intro">{{ post.content|truncatewords_html:35|safe }}</div>
+          </div>
+        </div>
       </div>
-    </article>
+    </section>
     {% if not forloop.last %}<hr class="theme-link col-8">{% endif %}
   {% endfor %}
   {% if is_paginated %}{% include 'components/pagination_nav.html' %}{% endif %}

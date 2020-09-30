@@ -43,15 +43,15 @@ class Post(models.Model):
     slug = models.SlugField(max_length=60, unique=True)
     content = HTMLField()
     reference_url = models.URLField(blank=True)
-    publish_date = models.DateTimeField(auto_now_add=True, editable=False)
-    updated_date = models.DateTimeField(auto_now=True)
+    publish_date = models.DateTimeField(db_index=True, auto_now_add=True, editable=False)
+    updated_date = models.DateTimeField(db_index=True, auto_now=True)
     image = models.ImageField(
         default='post_images/algorithm1.jpeg',
         upload_to='post_images',
         max_length=200,
         help_text='For bests results, use an image that is 1,200px wide x 600px high',
     )
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(db_index=True, choices=STATUS, default=0)
     author = models.ForeignKey(
         get_user_model(), related_name='author', on_delete=models.CASCADE)
     categories = models.ManyToManyField(
