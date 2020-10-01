@@ -8034,6 +8034,9 @@ a.cv-link {
   width: 75%;
   text-align: center; }
 
+.index-alert {
+  padding: 0; }
+
 .footer {
   font-family: 'Lato', arial, sans-serif;
   background: #0e83cd;
