@@ -3,15 +3,18 @@
 
 {% block title %}Portfolio: Admin Panel{% endblock title %}
 
+{% block extrastyle %}
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom-admin.css' %}" />
+{% endblock %}
+
 {% block branding %}
   <h1 id="site-name">
     <a href="{% url 'admin:index' %}">
-      <img
-        src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/profile_pics/admin_logo.png"
-      />Portfolio
+      <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/profile_pics/admin_logo.png"/>
     </a>
   </h1>
 {% endblock branding %}
+
 
 {% block welcome-msg %}{% endblock welcome-msg %}
 

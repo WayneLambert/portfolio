@@ -1,0 +1,45 @@
+#header {
+  background: #223142;
+}
+
+div.breadcrumbs {
+  background: #223142;
+}
+
+#nav-sidebar {
+  padding-top: 20px;
+  border-right: none;
+}
+
+#user-tools {
+  text-transform: capitalize;
+  font-size: 10pt;
+}
+
+.module {
+  margin-bottom: 0;
+}
+
+.module caption {
+  background: #223142;
+  text-transform: capitalize;
+  font-size: 11pt;
+  font-weight: bold;
+}
+
+.module h2 {
+  background: #223142;
+}
+
+#changelist-filter h2 {
+  font-size: 11pt;
+  text-transform: capitalize;
+}
+
+.object-tools a:link {
+  visibility: hidden;
+}
+
+#nav-sidebar .current-model {
+  background: yellow;
+}

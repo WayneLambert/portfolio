@@ -38,10 +38,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - type: volume
-        source: redis_volume
-        target: ${WEB_CONTAINER_PATH}
-        consistency: consistent
+      - .:/code
     networks:
       - backend
 
@@ -62,10 +59,7 @@ services:
     cap_add:
      - SYS_PTRACE
     volumes:
-      - type: volume
-        source: web_volume
-        target: ${WEB_CONTAINER_PATH}
-        consistency: consistent
+      - .:/code
     ports:
       - "8001:8001"
       - "8890:8890"
@@ -80,15 +74,3 @@ networks:
 
 volumes:
   postgres_volume:
-  redis_volume:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/${WEB_HOST_PATH}
-      o: bind
-  web_volume:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD/${WEB_HOST_PATH}
-      o: bind
