@@ -2,12 +2,12 @@
 
 <div class="col-md-4 mb-3">
   <div class="card blog-post-card">
-    <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+    <a class="theme-link" href="{{ post.get_absolute_url }}">
       <img class="card-img-top img-fluid" src="{{ post.image.url }}">
     </a>
     <div class="card-body">
       <h6 class="card-title">
-        <a class="theme-link" href="{% url 'blog:post_detail' post.slug %}">
+        <a class="theme-link" href="{{ post.get_absolute_url }}">
           {{ post.title }}
         </a>
       </h6>
@@ -28,7 +28,7 @@
                     <li>
                       <strong>Categories:</strong> 
                       {% for category in post.categories.all|slice:":2" %}
-                        <a class="theme-link" href="{% url 'blog:category_posts' category.slug %}">{{ category.name }}</a>
+                        <a class="theme-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
                         {% if not forloop.last %}  |  {% endif %}
                       {% endfor %}
                     </li>

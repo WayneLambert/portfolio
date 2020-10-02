@@ -7,7 +7,7 @@ verify_ssl = true
 django-debug-toolbar = "==3.1.1"
 django-debug-toolbar-template-profiler = "==2.0.1"
 django-extensions = "==3.0.9"
-pytest = "==6.0.2"
+pytest = "==6.1.0"
 coverage = "==5.3"
 pytest-django = "==3.10.0"
 pytest-cov = "==2.10.1"

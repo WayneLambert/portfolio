@@ -14,7 +14,7 @@
         <div class="media">
           <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{ post.image.url }}" alt="image" width="30%" height="30%">
           <div class="media-body">
-            <h6 class="title mb-1"><a href="{% url 'blog:post_detail' post.slug %}">{{ post.title }}</a></h6>
+            <h6 class="title mb-1"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h6>
             <div class="intro">{{ post.content|truncatewords_html:35|safe }}</div>
           </div>
         </div>

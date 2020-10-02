@@ -7,7 +7,7 @@ import pytest
 from apps.users.models import Profile
 
 
-pytestmark = pytest.mark.django_db(reset_sequences=True)(transaction=True, reset_sequences=True)
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 
 class TestProfile:

@@ -6,7 +6,7 @@ from apps.blog.models import Category
 from apps.blog.templatetags.blog_tags import category_sidebar
 
 
-pytestmark = pytest.mark.django_db(reset_sequences=True)(reset_sequences=True)
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 
 class TestCategorySidebar:
