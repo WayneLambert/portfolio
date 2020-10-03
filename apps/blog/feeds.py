@@ -11,7 +11,7 @@ class LatestPostsFeed(Feed):
     description = "Latest posts from Wayne Lambert's Blog"
 
     def items(self):
-        return Post.published.all().order_by('-publish_date')[:5]
+        return Post.published.all()[:5]
 
     def item_title(self, item):
         return item.title
