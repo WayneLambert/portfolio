@@ -218,7 +218,7 @@ hr {
   }
 
   .nav-item {
-    font-weight: bold;
+    font-weight: normal;
 
     &.active {
       .nav-link {
@@ -259,7 +259,7 @@ hr {
         padding: 0.5rem;
         font-size: 0.875rem;
         padding-left: 2.25rem;
-        font-weight: bold;
+        font-weight: normal;
 
         &:hover,
         &:active,

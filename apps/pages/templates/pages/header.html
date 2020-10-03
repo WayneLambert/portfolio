@@ -22,6 +22,7 @@
         </div>
         <hr class="col-8">
 
+      <div class="profile-section pt-3 pt-lg-0">
         <ul class="navbar-nav flex-column text-left">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'pages:home' %}"><i class="fa fa-home mr-2"></i>Home</a>
@@ -48,11 +49,17 @@
               {% endif %}
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fa fa-envelope mr-2"></i>Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:about_me' %}"><i class="fa fa-info-circle mr-2"></i>About Me</a>
+          </li>
           {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user fa-fw mr-1"></i>Profile
-              </a>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user fa-fw mr-1"></i><strong>{{ user.user.display_name }}</strong>
+                </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'blog:users:profile' user.user.slug %}"><i class="fa fa-user-circle mr-2"></i>View Profile</a>
                 <a class="dropdown-item" href="{% url 'blog:users:profile_update' user.username %}"><i class="fa fa-pencil mr-2"></i>Update Profile</a>
@@ -62,27 +69,25 @@
           {% else %}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user fa-fw mr-1"></i>Account
+                <i class="fas fa-lock fa-fw mr-1"></i>Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{% url 'blog:users:login' %}"><i class="fa fa-sign-in mr-2"></i>Login</a>
-                <a class="dropdown-item" href="{% url 'blog:users:register' %}"><i class="fa fa-handshake-o mr-2"></i>Register</a>
+                <a class="dropdown-item" href="{% url 'blog:users:register' %}"><i class="fa fa-pencil-square-o mr-2"></i>Register</a>
               </div>
             </li>
           {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contacts:contact' %}"><i class="fa fa-envelope mr-2"></i>Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:about_me' %}"><i class="fa fa-info-circle mr-2"></i>About Me</a>
-          </li>
         </ul>
-        <hr class="col-8">
+      </div>
+
+      <div>
+        <hr>
         {% if 'blog' in request.path and 'users' not in request.path and 'post/new' not in request.path and '/update/' not in request.path %}
           {% include 'blog/category_sidebar.html' %}
         {% endif %}
         <!-- Dark Mode Toggle -->
         {% include 'components/dark_mode_toggle.html' %}
+        {% if user.is_authenticated %}<i class="fas fa-lock fa-fw mr-1"></i>{% endif %}
       </div>
     </nav>
   </div>
