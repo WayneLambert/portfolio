@@ -34,7 +34,7 @@ class TestPostForm:
         form.data['title'] = 'why salt & vinegar crisps are the best.  '
         form.save(commit=False)
         title = form.cleaned_data['title']
-        assert title == 'Why Salt and Vinegar Crisps Are The Best'
+        assert title == 'Why Salt and Vinegar Crisps are the Best'
 
     def test_title_field_contains_help_text(self, sample_post_data):
         form = PostForm(data=sample_post_data)

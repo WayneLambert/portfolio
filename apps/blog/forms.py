@@ -24,5 +24,16 @@ class PostForm(forms.ModelForm):
         super(PostForm, self).__init__(*args, **kwargs)
 
     def clean_title(self):
-        title = self.cleaned_data['title'].title().replace("&", "and").strip()
-        return title[:-1] if title.endswith('.') else title
+        starting_title = self.cleaned_data['title']
+        words = starting_title.split(' ')
+        updated_words = []
+        for word in words:
+            if len(word.strip()) >= 4:
+                updated_words.append(word.title())
+            else:
+                updated_words.append(word.lower())
+
+        new_title = ' '.join(updated_words).replace("&", "and").strip()
+        if new_title[0].islower():
+            new_title = f"{new_title[0].capitalize()}{new_title[1:]}"
+        return new_title[:-1] if new_title.endswith('.') else new_title
