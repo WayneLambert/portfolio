@@ -7283,7 +7283,7 @@ hr {
       .header .blog-name a:hover {
         text-decoration: underline; }
   .header .blog-categories-label {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.0rem;
     padding-bottom: 0.1rem;
     color: #fff; }
@@ -7315,6 +7315,8 @@ hr {
       color: rgba(0, 0, 0, 0.5); }
       .header .nav-item.active .nav-link:hover {
         text-decoration: none; }
+    .header .nav-item .badge-pill {
+      border-radius: 4px; }
     .header .nav-item .nav-link {
       color: rgba(255, 255, 255, 0.8); }
       .header .nav-item .nav-link:hover {

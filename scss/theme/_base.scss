@@ -175,7 +175,7 @@ hr {
   }
 
   .blog-categories-label {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.0rem;
     padding-bottom: 0.1rem;
     color: #fff;
@@ -231,6 +231,10 @@ hr {
       }
 
 
+    }
+
+    .badge-pill{
+      border-radius: 4px;
     }
 
     .nav-link {

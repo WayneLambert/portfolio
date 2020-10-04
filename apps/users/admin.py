@@ -11,8 +11,8 @@ class ProfileAdmin(admin.ModelAdmin):
 
     def profile_picture_image(self, obj):
         try:
-            img_width = obj.profile_picture.width * 0.5
-            img_height = obj.profile_picture.height * 0.5
+            img_width = obj.profile_picture.width * 0.3
+            img_height = obj.profile_picture.height * 0.3
             url = obj.profile_picture.url
             return format_html(
                 f"<img src='{url}' width='{img_width}' height='{img_height}' />")
