@@ -5,14 +5,12 @@ parsed HTML.
 """
 
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
 
 import requests
 
 from bs4 import BeautifulSoup
 
 
-@cache_page(timeout=None)
 def get_gettysburg_speech(request):
     URL = "https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address"
     page_response = requests.get(URL, timeout=5)

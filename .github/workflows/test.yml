@@ -45,12 +45,10 @@ jobs:
           echo OD_API_BASE_URL=${{ secrets.OD_API_BASE_URL }} >> .env
           echo OD_APPLICATION_ID=${{ secrets.OD_APPLICATION_ID }} >> .env
           echo OD_APPLICATION_KEY_1=${{ secrets.OD_APPLICATION_KEY_1 }} >> .env
-          echo REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }} >> .env
 
       - name: Add Environment Variables to dev.env File
         run: |
           echo DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }} >> dev.env
-          echo REDIS_URL=${{ secrets.REDIS_URL }} >> dev.env
 
       - name: Add Environment Variables to postgres.env File
         run: |

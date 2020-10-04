@@ -5,14 +5,12 @@ characters returned from the parsed HTML.
 """
 
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
 
 import requests
 
 from bs4 import BeautifulSoup
 
 
-@cache_page(timeout=None)
 def get_churchill_speech(request):
     URL = "https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
     page_response = requests.get(URL, timeout=5)

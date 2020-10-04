@@ -4,7 +4,6 @@ from collections import defaultdict
 from typing import Any, List, Tuple
 
 from django.shortcuts import render
-from django.views.decorators.cache import cache_page
 
 import requests
 
@@ -79,7 +78,6 @@ def calc_remain_votes(results: list) -> int:
     return sum(result[3] for result in results)
 
 
-@cache_page(timeout=None)
 def get_referendum_results(request):
     """ Retrieves 2016 Brexit Referendum results from BBC website """
     results = scrape_content()

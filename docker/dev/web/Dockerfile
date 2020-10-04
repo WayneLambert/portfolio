@@ -3,7 +3,7 @@ FROM python:3.8.5-buster
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <contact@waynelambert.dev>" \
-    version="2020.08" \
+    version="2020.10" \
     description="Docker image for web service of portfolio site."
 
 # Prevents Python from writing .pyc files
