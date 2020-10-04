@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
@@ -15,7 +15,7 @@ class UserRegisterView(CreateView):
     model = Profile
     form_class = UserRegisterForm
     template_name = 'users/register.html'
-    success_url = reverse_lazy('blog:users:login')
+    success_url = reverse_lazy('blog:home')
     USER_ALREADY_EXISTS_MSG = """
         The username you've attempted to register with is already taken.
         Perhaps you already have an account? If so, you can log in using
@@ -30,7 +30,13 @@ class UserRegisterView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
-        return super().form_valid(form)
+        form_valid =  super().form_valid(form)
+        username = self.request.POST['username']
+        password = self.request.POST['password1']
+        user = authenticate(username=username, password=password)
+        backend = 'django.contrib.auth.backends.ModelBackend'
+        login(self.request, user=user, backend=backend)
+        return form_valid
 
     def form_invalid(self, form):
         if self.user_exists():
