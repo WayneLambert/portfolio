@@ -31,14 +31,14 @@ class PostForm(forms.ModelForm):
         updated_words = []
         for word in words:
             if not word.isupper():
-                if len(word.strip()) >= 4 or word in capitalized_exceptions:
+                if (len(word.strip()) >= 4 or word in capitalized_exceptions) and \
+                    word not in uncapitalized_exceptions:
                     updated_words.append(word.title())
-                if len(word.strip()) < 4 or word in uncapitalized_exceptions:
+                elif (len(word.strip()) < 4 or word in uncapitalized_exceptions) and \
+                    word not in capitalized_exceptions:
                     updated_words.append(word.lower())
             else:
                 updated_words.append(word)
-
-
         new_title = ' '.join(updated_words).replace("&", "and").strip()
         if new_title[0].islower():
             new_title = f"{new_title[0].capitalize()}{new_title[1:]}"
