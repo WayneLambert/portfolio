@@ -3,7 +3,7 @@ import pytest
 from apps.users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 
 
-pytestmark = pytest.mark.django_db
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 
 class TestUserRegisterForm:
@@ -66,7 +66,7 @@ class TestUserRegisterForm:
         form = UserRegisterForm(data=self.dirty_data)
         assert len(form.data['username']) == 30, \
             'With trailing spaces in form submission, the field is 30 chars in length.'
-        form.save()
+        form.save(commit=False)
         assert form.cleaned_data['username'] == 'wayne-lambert', 'Username has been trimmed'
         assert len(form.cleaned_data['username']) == 13, "Example's username is 30 chars in length"
         assert form.is_valid(), 'Should be valid'
@@ -119,7 +119,7 @@ class TestUserUpdateForm:
         form = UserUpdateForm(data=self.dirty_data)
         assert len(form.data['username']) == 30, \
             'With trailing spaces in form submission, the field is 30 chars in length.'
-        form.save()
+        form.save(commit=False)
         assert form.cleaned_data['username'] == 'wayne-lambert', 'Username has been trimmed'
         assert form.cleaned_data['username'].islower(), 'Username is now in lowercase'
         assert len(form.cleaned_data['username']) == 13, "Example's username is 30 chars in length"

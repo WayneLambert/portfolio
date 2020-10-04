@@ -27,7 +27,7 @@ class PostForm(forms.ModelForm):
         starting_title = self.cleaned_data['title']
         words = starting_title.split(' ')
         capitalized_exceptions = ('why', 'how', 'tip')
-        uncapitalized_exceptions = ('with', 'them')
+        uncapitalized_exceptions = ('with', 'them', 'your')
         updated_words = []
         for word in words:
             if not word.isupper():

@@ -9,7 +9,7 @@ import apps.helpers as apps_helpers
 
 from apps.users.models import Profile
 from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
-# pytestmark = pytest.mark.django_db(reset_sequences=True)
+
 
 class TestUserRegisterView:
 
@@ -30,17 +30,19 @@ class TestUserRegisterView:
         assert response.status_code == 200, 'Should return an `OK` status code'
 
     @pytest.mark.django_db(reset_sequences=True)
-    def test_form_valid(self, rf, sample_user_data):
+    def test_form_valid(self, rf, django_user_model, sample_user_data):
         """
         Asserts that a form with valid data is considered valid and
         redirects the user accordingly
         """
+        django_user_model.objects.create(username='wayne-lambert', id=2)
         kwargs = sample_user_data
         request = rf.post(self.path, kwargs)
         apps_helpers.add_session_and_messages_middlewares(request)
         response = UserRegisterView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
         assert '/blog/' in response.url, 'Should redirect to `blog` home screen'
+        assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
 
     def test_form_invalid(self, rf, django_user_model, sample_user_data):
         """
