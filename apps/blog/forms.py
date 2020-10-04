@@ -26,12 +26,18 @@ class PostForm(forms.ModelForm):
     def clean_title(self):
         starting_title = self.cleaned_data['title']
         words = starting_title.split(' ')
+        capitalized_exceptions = ('why', 'how', 'tip')
+        uncapitalized_exceptions = ('with', 'them')
         updated_words = []
         for word in words:
-            if len(word.strip()) >= 4:
-                updated_words.append(word.title())
+            if not word.isupper():
+                if len(word.strip()) >= 4 or word in capitalized_exceptions:
+                    updated_words.append(word.title())
+                if len(word.strip()) < 4 or word in uncapitalized_exceptions:
+                    updated_words.append(word.lower())
             else:
-                updated_words.append(word.lower())
+                updated_words.append(word)
+
 
         new_title = ' '.join(updated_words).replace("&", "and").strip()
         if new_title[0].islower():
