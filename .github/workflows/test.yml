@@ -19,8 +19,6 @@ jobs:
           POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
           POSTGRES_HOST: ${{ secrets.DB_DOCKER_POSTGRES_SERVICE }}
           POSTGRES_PORT: ${{ secrets.DB_PORT }}
-        ports:
-          - "5432:5432"
         options:
           --mount type=tmpfs,destination=/var/lib/postgresql/data/
           --health-cmd pg_isready
