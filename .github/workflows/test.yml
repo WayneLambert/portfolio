@@ -14,11 +14,13 @@ jobs:
       postgres:
         image: postgres:11.9
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: ${{ secrets.DB_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
           POSTGRES_DB: github_actions
+        ports:
+          - "5432:5432"
         options:
-          --mount type=tmpfs, destination=/var/lib/postgresql/data/
+          --mount type=tmpfs,destination=/var/lib/postgresql/data/
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
