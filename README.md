@@ -1,17 +1,24 @@
 ![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio-github.png)
 
-> This site is hosted at <https://waynelambert.dev> and illustrates the use of Django apps to
-> showcase Django, Python and other programming and web framework skills and technologies.
+> This code for this portfolio site is hosted at
+> <https://waynelambert.dev> and is intended to showcase Django, Python,
+> Postgres and other programming and web framework skills and
+> technologies.
 >
-> The code is not intended to be cloned for reproduction as it is a representation of my personal
-> portfolio of work, therefore instructions have not been provided to clone and set up.
+> The code is not intended to be cloned for reproduction as it's a
+> representation of my personal portfolio of work, therefore
+> instructions have not been provided to clone and set up.
 >
-> Please take a look at both the open and closed issues as they are important representations of
-> issues encountered and solutions used, etc which reflect the ongoing nature of software projects.
+> Please feel free to take a look at the [open and closed
+> issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue)
+> as they're important representations of some of the issues encountered
+> and solutions used. This reflects the ongoing nature of software
+> projects.
 >
-> A quick note on PEP8. The code in this portfolio does not adhere to the guidelines of 79
-> characters. My personal thoughts on this is that for personal projects, I use a flexible limit of
-> 89 and a hard limit of 99 characters.
+> A quick note on PEP8. The code in this portfolio does not adhere to
+> the guideline of 79 characters per line. My approach for personal
+> projects is to work to a flexible limit of 89 and a hard limit of 99
+> characters. Docstrings are wrapped at 72 characters.
 
 ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/WayneLambert/portfolio)
 ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/django)
@@ -39,47 +46,47 @@ A full CRUD application using Django's models, views, and templates.
 
 API endpoints enabling front-end developers to consume with their preferred framework.
 
-- [API Endpoints](https://www.waynelambert.dev/api/blog/posts/)
+- [API Endpoints](https://waynelambert.dev/api/blog/posts/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/api/)
 
 ## Countdown: Letters Game
 
 Take on Susie Dent in this simulation of the letters game from Countdown.
 
-- [Countdown: Letters Game](https://www.waynelambert.dev/countdown-letters/selection/)
+- [Countdown: Letters Game](https://waynelambert.dev/countdown-letters/selection/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/countdown-letters/)
 
 ## Countdown: Numbers Game
 
 Take on Rachel Riley in this simulation of the numbers game from Countdown.
 
-- [Countdown: Numbers Game](https://www.waynelambert.dev/countdown-numbers/selection/)
+- [Countdown: Numbers Game](https://waynelambert.dev/countdown-numbers/selection/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/countdown-numbers/)
 
 ## Holiday Roulette
 
 Leave it to fate to decide your next luxurious holiday destination in this suspenseful game.
 
-- [Holiday Roulette](https://www.waynelambert.dev/roulette/game/)
+- [Holiday Roulette](https://waynelambert.dev/roulette/game/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/roulette/)
 
 ## Web Scraping
 
 Scrape EU Referendum results and famous speeches from the web.
 
-- [Web Scraping](https://www.waynelambert.dev/scraping/scraping-options/)
+- [Web Scraping](https://waynelambert.dev/scraping/scraping-options/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/scraping/)
 
 ## Text Analysis
 
 Calculate the number of words and letters input/pasted by the user.
 
-- [Text Analysis](https://www.waynelambert.dev/text_analysis/analyse/)
+- [Text Analysis](https://waynelambert.dev/text_analysis/analyse/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/text-analysis/)
 
 ## Data Science Projects
 
-Explore fascinating datasets using Python's Data Science libraries.
+Explore fascinating datasets analysed using Python's Data Science libraries.
 
 - [Data Science Projects](https://github.com/WayneLambert/data-science-portfolio/tree/master/notebooks)
 - [Data Science Review](https://waynelambert.dev/portfolio/reviews/data-science/)
@@ -87,10 +94,10 @@ Explore fascinating datasets using Python's Data Science libraries.
 ## Contact Me
 
 You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the
-[contact form](https://www.waynelambert.dev/contact/) on the site.
+[contact form](https://waynelambert.dev/contact/) on the site.
 
-If you'd like to find out more about me, you can also
-[read my 'About Me' page](https://www.waynelambert.dev/about-me/).
+If you'd like to find out more about me, you can also [read my 'About
+Me' page](https://waynelambert.dev/about-me/).
 
 ## License
 
