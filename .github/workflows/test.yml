@@ -14,7 +14,8 @@ jobs:
       postgres:
         image: postgres:11.9
         env:
-          POSTGRES_DB: ${{ secrets.DB_NAME }}
+          POSTGRES_ENGINE: 'django.db.backends.postgresql_psycopg2'
+          POSTGRES_NAME: ${{ secrets.DB_NAME }}
           POSTGRES_USER: ${{ secrets.DB_USER }}
           POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
           POSTGRES_HOST: ${{ secrets.DB_DOCKER_POSTGRES_SERVICE }}
