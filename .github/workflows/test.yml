@@ -15,11 +15,10 @@ jobs:
         image: postgres:11.9
         env:
           POSTGRES_ENGINE: 'django.db.backends.postgresql_psycopg2'
-          POSTGRES_NAME: ${{ secrets.DB_NAME }}
-          POSTGRES_USER: ${{ secrets.DB_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.DB_PASS }}
-          POSTGRES_HOST: ${{ secrets.DB_DOCKER_POSTGRES_SERVICE }}
-          POSTGRES_PORT: ${{ secrets.DB_PORT }}
+          POSTGRES_DB: portfolio_db
+          POSTGRES_USER: wayne_lambert
+          POSTGRES_PASSWORD: catgftitw
+          POSTGRES_PORT: 5432
         options:
           --mount type=tmpfs,destination=/var/lib/postgresql/data/
           --health-cmd pg_isready
@@ -75,9 +74,6 @@ jobs:
 
       - name: Install pipenv
         run: python -m pip install pipenv
-
-      - name: Debug Script
-        uses: hmarr/debug-action@v1.0.0
       
       - name: Install dependencies
         run: pipenv install --ignore-pipfile --deploy --system --dev
