@@ -10,6 +10,22 @@ jobs:
     name: Run Django Tests
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:11.9
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: github_actions
+        options:
+          --mount
+          type=tmpfs
+          destination=/var/lib/postgresql/data
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -50,23 +66,11 @@ jobs:
         run: |
           echo DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }} >> dev.env
 
-      - name: Add Environment Variables to postgres.env File
-        run: |
-          echo DB_NAME=${{ secrets.DB_NAME }} >> postgres.env
-          echo DB_USER=${{ secrets.DB_USER }} >> postgres.env
-          echo DB_EMAIL=${{ secrets.DB_EMAIL }} >> postgres.env
-          echo DB_DOCKER_POSTGRES_SERVICE=${{ secrets.DB_DOCKER_POSTGRES_SERVICE }} >> postgres.env
-          echo DB_PASS=${{ secrets.DB_PASS }} >> postgres.env
-          echo DB_PORT=${{ secrets.DB_PORT }} >> postgres.env
-
       - name: Set Environment Variables for .env File
         run: for var in `cat .env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
 
       - name: Set Environment Variables for dev.env File
         run: for var in `cat dev.env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
-
-      - name: Set Environment Variables for postgres.env File
-        run: for var in `cat postgres.env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
 
       - name: Install pipenv
         run: python -m pip install pipenv
