@@ -1,0 +1,110 @@
+{% load ext_links %}
+
+<section class="work-section py-3">
+  <h3 class="text-uppercase cv-section-heading mb-4">Projects / Apps</h3>
+  <div class="item mb-3">
+    <!-- Django Blog -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Django Blog</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'blog:home' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='blog' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:blog_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      A full CRUD application using Django’s models, views, and templates
+    </div>
+
+    <!-- Django Blog REST API Endpoints -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Django Blog REST API Endpoints</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'api:posts' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='api' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:api_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      API endpoints enabling front-end developers to consume with their preferred framework
+    </div>
+
+    <!-- Countdown: Letters Game -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Countdown: Letters Game</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'countdown_letters:selection' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='countdown_letters' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:countdown_letters_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Take on Susie Dent in this simulation of the letters game from Countdown
+    </div>
+
+    <!-- Countdown: Numbers Game -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Countdown: Numbers Game</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'countdown_numbers:selection' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='countdown_numbers' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:countdown_numbers_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Take on Rachel Riley in this simulation of the numbers game from Countdown
+    </div>
+
+    <!-- Holiday Roulette -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Holiday Roulette</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'roulette:holiday_roulette' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='roulette' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:roulette_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Leave it to fate to decide your next luxurious holiday destination in this suspenseful game
+    </div>
+
+    <!-- Scraping -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Scraping</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'scraping:scraping_options' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='scraping' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:scraping_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Scrape EU Referendum results, famous speeches or dad jokes using ‘Requests’ and ‘Beautiful Soup’
+    </div>
+
+    <!-- Text Analysis -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Text Analysis</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% url 'text_analysis:analyse' %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% github_url type='code' app='text_analysis' %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:text_analysis_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Calculate the number of words and letters input/pasted by the user
+    </div>
+
+    <!-- Data Science -->
+    <div class="item-heading row align-items-center mb-2">
+      <h4 class="item-title col-12 col-md-6 col-lg-6 mb-2 mb-md-0">Data Science</h4>
+      <div class="item-meta col-md-8 col-lg-6 text-left text-md-right">
+        <a class="theme-link" href="{% data_science_portfolio_notebooks %}" target="_blank">Application</a> | 
+        <a class="theme-link" href="{% data_science_portfolio_notebooks %}" target="_blank">Source Code</a> | 
+        <a class="theme-link" href="{% url 'pages:data_science_review' %}" target="_blank">Project Review</a>
+      </div>
+    </div>
+    <div class="item-content mb-4">
+      Explore fascinating datasets using libraries such as ‘Pandas’, ‘NumPy’, ‘Matplotlib’ and ‘Seaborn’
+    </div>
+  </div>
+</section>

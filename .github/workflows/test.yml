@@ -14,11 +14,11 @@ jobs:
       postgres:
         image: postgres:11.9
         env:
-          POSTGRES_ENGINE: 'django.db.backends.postgresql_psycopg2'
-          POSTGRES_DB: portfolio_db
-          POSTGRES_USER: wayne_lambert
-          POSTGRES_PASSWORD: catgftitw
-          POSTGRES_PORT: 5432
+          POSTGRES_DB: 'portfolio_db'
+          POSTGRES_USER: 'wayne_lambert'
+          POSTGRES_PASSWORD: 'catgftitw'
+        ports:
+          - "5432:5432"
         options:
           --mount type=tmpfs,destination=/var/lib/postgresql/data/
           --health-cmd pg_isready

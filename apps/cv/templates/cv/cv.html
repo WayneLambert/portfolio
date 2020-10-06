@@ -5,26 +5,37 @@
 
 {% block content %}
   <div class="container px-3 px-lg-5">
-    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
-      {% include 'components/header.html' %}
-      <hr>
-      {% include 'components/statement.html' %}
-      <hr>
-      <div class="cv-body">
-        <div class="row">
-          <div class="cv-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
-            {% include 'components/career_history.html' %}
-          </div>
-          <aside class="cv-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-            <section class="skills-section py-3">
-            {% include 'components/skills.html' %}
-            {% include 'components/education.html' %}
-            {% include 'components/interests.html' %}
-            {% include 'components/other.html' %}
-          </aside>
-        </div>
+    <div class="text-center pt-4">
+      <ul id="filters" class="filters cv pl-0">
+        <li class="type active" data-filter=".functional"><i class="fa fa-laptop mr-1"></i>Functional</li>
+        <li class="type" data-filter=".chronological"><i class="fa fa-clock-o mr-1"></i>Chronological</li>
+      </ul>
+    </div>
+    <!-- Functional CV Isotope -->
+    <div class="row isotope col-12">
+      <div class="isotope-item functional">
+        <p class="card-text text-center">
+          An overview of my projects and skills targeted towards my desired career path in programming/web development
+        </p>
+        {% include 'components/functional.html' %}
       </div>
-      <hr>
-    </article>
+    </div>
+    <!-- Chronological CV Isotope -->
+    <div class="row isotope col-12">
+      <div class="isotope-item chronological">
+        <p class="card-text text-center">
+          An overview of my career history and achievements within the arena of Business Intelligence and Management Information
+        </p>
+        {% include 'components/chronological.html' %}
+      </div>
+    </div>
   </div>
+
+  {% block additional_js %}
+    <!--Page Specific JS -->
+    <script type="text/javascript" src="{% static 'assets/plugins/imagesloaded.pkgd.min.js' %}"></script> 
+    <script type="text/javascript" src="{% static 'assets/plugins/isotope.pkgd.min.js' %}"></script> 
+    <script type="text/javascript" src="{% static 'assets/js/isotope-custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/isotope-cv-custom.js' %}"></script>
+  {% endblock additional_js %}
 {% endblock content %}

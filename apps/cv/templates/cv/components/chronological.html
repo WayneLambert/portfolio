@@ -1,0 +1,21 @@
+<article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+  {% include 'components/chronological/header.html' %}
+  <hr>
+  {% include 'components/chronological/statement.html' %}
+  <hr>
+  <div class="cv-body">
+    <div class="row">
+      <div class="cv-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-5">
+        {% include 'components/chronological/career_history.html' %}
+      </div>
+      <aside class="cv-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
+        <section class="skills-section py-3">
+        {% include 'components/chronological/skills.html' %}
+        {% include 'components/chronological/education.html' %}
+        {% include 'components/chronological/interests.html' %}
+        {% include 'components/chronological/other.html' %}
+      </aside>
+    </div>
+  </div>
+  <hr>
+</article>

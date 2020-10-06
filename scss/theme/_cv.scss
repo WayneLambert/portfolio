@@ -41,6 +41,19 @@
 
 }
 
+.cv .type {
+  display: inline-block;
+  padding: 0.275rem 0.875rem;
+  border-top: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cv .type.active {
+  background: $theme-color-primary;
+  color: #fff;
+}
+
 .cv-section-heading {
   position: relative;
   padding-left: 1rem;

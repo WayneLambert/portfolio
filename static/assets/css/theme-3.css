@@ -7860,6 +7860,17 @@ hr {
     background: white;
     color: #1762dd; }
 
+.cv .type {
+  display: inline-block;
+  padding: 0.275rem 0.875rem;
+  border-top: none;
+  border-radius: 4px;
+  cursor: pointer; }
+
+.cv .type.active {
+  background: #1762dd;
+  color: #fff; }
+
 .cv-section-heading {
   position: relative;
   padding-left: 1rem;
@@ -8507,6 +8518,9 @@ body.dark-mode {
     background: #1e2a3a; }
   body.dark-mode a.cv-link {
     color: rgba(255, 255, 255, 0.7); }
+  body.dark-mode .cv .type.active {
+    background: #1762dd;
+    color: #fff; }
   body.dark-mode .project-meta .client-meta .svg-inline--fa {
     color: rgba(255, 255, 255, 0.95); }
   body.dark-mode .metric-data {

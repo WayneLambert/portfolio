@@ -219,6 +219,11 @@ body.dark-mode {
   a.cv-link {
     color: $dark-mode-text-secondary;
   }
+
+  .cv .type.active {
+    background: $theme-color-primary;
+    color: #fff;
+  }
   
   .project-meta .client-meta .svg-inline--fa {
     color: $dark-mode-text-primary;
