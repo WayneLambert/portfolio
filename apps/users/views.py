@@ -30,9 +30,9 @@ class UserRegisterView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save()
-        form_valid =  super().form_valid(form)
-        username = self.request.POST['username']
-        password = self.request.POST['password1']
+        form_valid = super().form_valid(form)
+        username = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
         user = authenticate(username=username, password=password)
         backend = 'django.contrib.auth.backends.ModelBackend'
         login(self.request, user=user, backend=backend)
