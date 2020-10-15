@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import get_list_or_404, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.html import format_html
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   TemplateView, UpdateView,)
@@ -20,11 +20,10 @@ class PostView(ListView):
     Custom view sets default behaviour for all list views to subclass
     and inherit for their own implementation
     """
-    model = Post
+    queryset = Post.published.all()
     context_object_name = 'posts'
     category_list = Category.objects.all().prefetch_related('posts')
     extra_context = {'categories_list': category_list}
-    queryset = Post.published.all()
 
     def get_context_data(self, **kwargs):
         """ Facilitates pagination and post count summary """
@@ -35,7 +34,6 @@ class PostView(ListView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     """ Permits a logged in user to create a new post """
-    model = Post
     form_class = PostForm
     template_name = 'post_form.html'
 
@@ -173,7 +171,7 @@ class PostDetailView(DetailView):
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """ Permits a logged in user to update an existing post """
+    """ Permits a logged in user to update an existing post they own """
     model = Post
     form_class = PostForm
     template_name = 'post_form.html'
@@ -188,10 +186,10 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """ Permits a logged in user to delete an existing post """
+    """ Permits a logged in user to delete an existing post they own """
     model = Post
     template_name = 'post_confirm_delete.html'
-    success_url = '/blog/'
+    success_url = reverse_lazy('blog:home')
 
     def test_func(self) -> bool:
         post = self.get_object()
