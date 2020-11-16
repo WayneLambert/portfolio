@@ -19,32 +19,55 @@
               you're currently reviewing, I have developed significant skills with it.
             </p>
             <p>
-              I can quickly build a site from scratch using Django and overcome many of the things in
-              Django that is considered to be advanced usage. Examples include:
+              Although nowadays I have starter projects to get me started more quickly, I can quickly
+              build a site from scratch using Django and overcome many of the obstacles in
+              Django that the community considers to be advanced usage. Examples include:
               <ul class="mb-0 no-bullets">
                 <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Creation of a custom authentication system subclassing from AbstractBaseUser
+                  Creation of a custom authentication system subclassing from either <em>AbstractUser</em> or <em>AbstractBaseUser</em>.
                 </li>
                 <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Predominantly using Class-Based Views, therefore writing a code base that is, 
-                  in my opinion, easier to maintain and build upon going forwards.
+                  Use and configure <em>Django-allauth</em> which is the defacto standard for any projects that
+                  uses something other than Django’s default username/password authentication pattern.
                 </li>
                 <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Use an external API or scrape content from the web and store that data within the database.
+                  Know the class-based views API extremely well including the use of higher-level classes
+                  to abstract logic for subsequent child views. In my opinion, this makes the views more reusable and extensible.
+                  Included within this, I also know how to include multiple forms per web page or process multiple
+                  forms within a single class based view. I understand advanced concepts such as inheritance including multiple
+                  inheritance and MRO.
                 </li>
                 <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Integrate advanced form controls with Bootstrap and JavaScript.
+                  Advanced configuration of Django models including the use of constraints, meta data,
+                  managers, instance and class methods.
                 </li>
                 <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Build a highly customised admin interface that could essentially be a fast 
+                  Advanced form design and features such as front-end JavaScript validation feedback in addition
+                  to server-side checks and message rendering. Building of forms using ordinary Django forms, Crispy Forms,
+                  Django Widget Tweaks, or integrating raw Boostrap HTML.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Efficient querying of the database using the ORM. Setting up model managers
+                  throughout the project to retrieve related objects efficiently and reuse
+                  common querysets throughout the project
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Creation of custom mixins to simplify views logic with repitition.
+                  For example, if all views within a project should only be accessed by
+                  a logged in user that is associated with an account, then a custom mixin can be made
+                  to combine the <em>LoginRequiredMixin</em> with the <em>UserPassesTestMixin</em>, thus
+                  meaning the <em>test_func</em> method does not need to be repeated.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Consume an external API or scrape content from the web and store that data within
+                  the database. If necessary, also cleaning and manipulating the data as required.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Set up and use context processors for global context variables.
+                </li>
+                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+                  Build a highly customised admin interface that could essentially be a fast
                   prototype of an application.
-                </li>
-                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Build forms using ordinary Django forms, Crispy Forms, Django Widget Tweaks, or 
-                  integrating raw Boostrap HTML.
-                </li>
-                <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-                  Test the project with pytest and its extended library of plugins for Django.
                 </li>
               </ul>
             </p>
