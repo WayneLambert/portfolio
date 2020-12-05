@@ -8292,6 +8292,13 @@ a.cv-link {
     right: 33px;
     width: 33px; }
 
+.dataTables_wrapper {
+  padding: 10px 10px 10px 10px; }
+
+.dataTable > thead > tr > th[class*="sort"]:before,
+.dataTable > thead > tr > th[class*="sort"]:after {
+  content: "" !important; }
+
 @media (min-width: 576px) {
   .footer {
     height: auto;

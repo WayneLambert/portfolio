@@ -28,15 +28,23 @@
             <strong>EU Referendum: </strong>
             Results on the British vote on membership of the EU
           </div>
-          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success">
+          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success ml-3">
             <i class="fa fa-bar-chart mr-1"></i>
             View Referendum Results
           </a>
-          <p class="mt-2">
-            <em class="small">Please be patient waiting for the results page to load as the process is
-            scraping from a page for each letter of the alphabet from the BBC website.</em>
-          </p>
         </form>
+        <div class="inner pl-3 theme-bg-light mt-2 mb-1">
+          <p>
+            <strong>Please be patient waiting for the results page to load</strong> as the process is
+            requesting and scraping data from 26 separate pages (one for each letter of the alphabet).
+            The scraping process should respect the frequency of requests to the BBC server.
+          </p>
+          <p>
+            In practice, this sort of process would be set up as something like a scheduled Celery task
+            so fresh data can be accessed directly from the database. Of course, EU Referendum results
+            are static in nature.
+          </p>
+        </div>
 
         <!-- Churchill Speech -->
         <hr class="col-8">
@@ -46,7 +54,7 @@
               <strong>Speech 1: </strong>Sir Winston Churchill as he took power on
                 13th May, 1940 @ House of Commons, London, UK.
             </div>
-            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success">
+            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success ml-3">
               <i class="fa fa-comment mr-1"></i>
               View Churchill Speech
             </a>
@@ -59,9 +67,9 @@
           <form action="{% url 'scraping:gettysburg_speech' %}" method="GET">
             <div class="inner p-3 theme-bg-light mt-3 mb-1">
               <b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on
-              19th November, 1863 by clicking the button below.
+              19th November, 1863 @ Soldiers' National Cemetery in Gettysburg, Pennsylvania
             </div>
-            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success">
+            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success ml-3">
               <i class="fa fa-comment mr-1"></i>
               View Gettysburg Address
             </a>

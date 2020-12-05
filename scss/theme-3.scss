@@ -52,9 +52,10 @@ $theme-colors: (
 @import "theme/blog";
 @import "theme/footer";
 @import "theme/tables";
-@import "theme/text-analysis";
+@import "theme/text_analysis";
 @import "theme/roulette";
 @import "theme/countdown";
-@import "theme/error-pages.scss";
+@import "theme/error_pages.scss";
+@import "theme/data_tables.scss";
 @import "theme/responsive";
 @import "theme/darkmode";

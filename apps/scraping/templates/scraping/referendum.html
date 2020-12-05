@@ -24,13 +24,15 @@
         Whilst the results table below looks like ordinary static text, the area names,
         remain votes, leave votes, and the turnout percentage have all been scraped
         from the BBC website. The leave and remain percentages, and the area votes
-        fields have been calculated within the logic of the application.
+        fields have been calculated within the logic of the application and reconcile
+        back to the BBC website.
       </div>
+      <div class="text-right mt-3 mb-3"><em>Click on any of the table headers to sort the data.</em></div>
       <div class="module-content collapse show" id="content-1">
         <div class="module-content-inner pb-0">
           <div class="table-responsive">
-            <table id="datatable-1" class="table table-striped table-sm display">
-              <thead>
+            <table id="datatable-1" class="table table-striped app-table-hover table-sm display">
+              <thead class="bg-primary text-white">
                 <tr>
                   <th scope="col">Area Name</th>
                   <th scope="col">Leave Votes</th>
