@@ -5,7 +5,7 @@ from apps.pages.views import (AboutMeView, APIReviewView, BackEndSkillsView,
                               CountdownNumbersReviewView, DataScienceReviewView,
                               FrontEndSkillsView, InfrastructureSkillsView, PortfolioView,
                               PrivacyPolicyView, ReadingListView, RouletteReviewView,
-                              ScrapingReviewView, SiteHomeView, SoftwareSkillsView,
+                              ScrapingReviewView, SiteHomeView, SkillsView, SoftwareSkillsView,
                               TextAnalysisReviewView,)
 
 
@@ -26,6 +26,7 @@ urlpatterns = [
          TextAnalysisReviewView.as_view(), name='text_analysis_review'),
     path('portfolio/reviews/data-science/',
          DataScienceReviewView.as_view(), name='data_science_review'),
+    path('skills/', SkillsView.as_view(), name='skills'),
     path('skills/back-end/', BackEndSkillsView.as_view(), name='back_end_skills'),
     path('skills/front-end/', FrontEndSkillsView.as_view(), name='front_end_skills'),
     path('skills/infrastructure/',

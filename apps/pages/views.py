@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
+from django.views.generic.base import RedirectView
 
 from apps.blog.models import Post
 
@@ -33,6 +34,11 @@ class PrivacyPolicyView(TemplateView):
 
 
 # Skills
+class SkillsView(RedirectView):
+    permanent = True
+    pattern_name = 'pages:back_end_skills'
+
+
 class BackEndSkillsView(TemplateView):
     template_name = 'skills/back_end.html'
 
