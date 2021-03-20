@@ -1,0 +1,20 @@
+{
+    "ignore_dirs": [
+        "node_modules",
+        ".git",
+        ".idea",
+        ".venv",
+        ".pytest_cache",
+        ".hypothesis",
+        ".github",
+        "scss",
+        "static",
+        "staticfiles",
+        "aa_front_end",
+        "logs",
+        "media",
+        "htmlcov",
+        ".github",
+        "docker"
+    ]
+}

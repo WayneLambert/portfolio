@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   pg_test:
-    container_name: portfolio_pg_test
+    image: ${COMPOSE_PROJECT_NAME}_pg_test_dev
+    container_name: ${COMPOSE_PROJECT_NAME}_pg_test_dev
     build:
       context: ./docker/postgres/test
     env_file:
@@ -11,7 +12,8 @@ services:
       - /var/lib/postgresql/data
 
   postgres:
-    container_name: portfolio_postgres
+    image: ${COMPOSE_PROJECT_NAME}_postgres_dev
+    container_name: ${COMPOSE_PROJECT_NAME}_postgres_dev
     build:
       context: ./docker/postgres/dev
     restart: always
@@ -29,7 +31,8 @@ services:
       - backend
 
   web:
-    container_name: portfolio_web
+    image: ${COMPOSE_PROJECT_NAME}_web_dev
+    container_name: ${COMPOSE_PROJECT_NAME}_web_dev
     build:
       dockerfile: ./docker/dev/web/Dockerfile
       context: .
@@ -41,8 +44,6 @@ services:
       - dev.env
       - .env
       - postgres.env
-    cap_add:
-     - SYS_PTRACE
     volumes:
       - .:/code
     ports:

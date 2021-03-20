@@ -50,10 +50,14 @@ def skip_static_requests(record):
 
 # Django Shell Plus Additional Imports
 SHELL_PLUS_IMPORTS = [
+    'import pathlib',
+    'import sys',
+    'import os',
+    'import datetime',
     'import re',
     'import requests',
     'from bs4 import BeautifulSoup',
-    'from rich import pretty',
+    'from rich import inspect, pretty, print',
 ]
 
 # Logging Configuration (including colorised output from Rich)
