@@ -35,7 +35,7 @@ def test_password():
 @pytest.fixture(scope='function')
 def auth_user(client, django_user_model, test_password):
     """ An authenticated user object using the specified user model """
-    auth_user = django_user_model.objects.create_user(
+    user = django_user_model.objects.create_user(
             pk=2,
             first_name='Wayne',
             last_name='Lambert',
@@ -43,8 +43,8 @@ def auth_user(client, django_user_model, test_password):
             email='wayne-lambert@example.com',
             password=test_password,
     )
-    client.login(username=auth_user.username, password=test_password)
-    return auth_user
+    client.login(username=user.username, password=test_password)
+    return user
 
 
 @pytest.fixture(scope='function')
