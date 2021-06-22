@@ -24,7 +24,7 @@ class ContactFormView(FormView):
             fail_silently=False,
         )
         form.save()
-        return super(ContactFormView, self).form_valid(form)
+        return super().form_valid(form)
 
 
 class ContactSubmittedView(TemplateView):

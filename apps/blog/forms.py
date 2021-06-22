@@ -21,7 +21,7 @@ class PostForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def clean_title(self):
         starting_title = self.cleaned_data['title']

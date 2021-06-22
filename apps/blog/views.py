@@ -27,7 +27,7 @@ class PostView(ListView):
 
     def get_context_data(self, **kwargs):
         """ Facilitates pagination and post count summary """
-        context = super(PostView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['current_page'] = context.pop('page_obj', None)
         return context
 
@@ -69,7 +69,7 @@ class ContentsListView(PostView):
 
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
-        context = super(ContentsListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['author'] = Post.published.first().author
         return context
 
@@ -82,11 +82,11 @@ class AuthorPostListView(PostView):
 
     def get_queryset(self):
         user = get_object_or_404(get_user_model(), username=self.kwargs['username'])
-        return super(AuthorPostListView, self).get_queryset().filter(author=user)
+        return super().get_queryset().filter(author=user)
 
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
-        context = super(AuthorPostListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['display_name'] = Post.published.first().author.user.display_name
         return context
 
@@ -102,7 +102,7 @@ class CategoryPostListView(PostView):
         return self.queryset.filter(categories=self.categories[0].id)
 
     def get_context_data(self, **kwargs):
-        context = super(CategoryPostListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['categories'] = self.categories
         return context
 
@@ -144,7 +144,7 @@ class SearchResultsView(PostView):
 
     def get_context_data(self, **kwargs):
         """ Get's the author object for presenting in the template """
-        context = super(SearchResultsView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['author'] = Post.published.first().author
         return context
 
@@ -157,7 +157,7 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         """ Facilitates detail page's pagination buttons """
-        context = super(PostDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['author'] = Post.published.first().author
         context['profile'] = context['author'].user
         posts = Post.published.all()

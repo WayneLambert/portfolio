@@ -62,4 +62,4 @@ class ProfileUpdateForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        super(ProfileUpdateForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
