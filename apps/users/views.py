@@ -1,11 +1,14 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, reverse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 
 from shapeshifter.views import MultiModelFormView
+from two_factor.forms import AuthenticationTokenForm, TOTPDeviceForm
+from two_factor.views.core import LoginView, SetupCompleteView, SetupView
 
 from apps.users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
 from apps.users.models import Profile
@@ -15,7 +18,7 @@ class UserRegisterView(CreateView):
     model = Profile
     form_class = UserRegisterForm
     template_name = 'users/register.html'
-    success_url = reverse_lazy('blog:home')
+    success_url = reverse_lazy('blog:users:setup')
     USER_ALREADY_EXISTS_MSG = """
         The username you've attempted to register with is already taken.
         Perhaps you already have an account? If so, you can log in using
@@ -42,6 +45,29 @@ class UserRegisterView(CreateView):
         if self.user_exists():
             messages.error(self.request, message=self.USER_ALREADY_EXISTS_MSG)
             return redirect(reverse('blog:users:register'))
+
+
+class UserLoginView(LoginView):
+    template_name = 'users/login.html'
+    form_list = (
+        ('auth', AuthenticationForm),
+        ('token', AuthenticationTokenForm),
+    )
+
+
+class UserSetupView(SetupView):
+    template_name = 'two_factor/setup.html'
+    success_url = 'blog:home'
+
+    form_list = (
+        ('generator', TOTPDeviceForm),
+    )
+    condition_dict = {
+        'generator': lambda self: True,
+    }
+
+    def get_method(self):
+        return 'generator'
 
 
 class ProfileView(DetailView):
