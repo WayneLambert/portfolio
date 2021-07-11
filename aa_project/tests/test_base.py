@@ -10,7 +10,7 @@ class TestLoginLogoutUTLs:
         assert base.LOGIN_URL == 'blog:users:login'
 
     def test_login_redirect_url(self):
-        assert base.LOGOUT_REDIRECT_URL == 'blog:home'
+        assert base.LOGIN_REDIRECT_URL == 'blog:home'
 
     def test_logout_redirect_url(self):
         assert base.LOGOUT_REDIRECT_URL == 'blog:home'
