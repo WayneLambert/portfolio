@@ -1,0 +1,29 @@
+{% load i18n two_factor %}
+
+{% if cancel_url %}
+  <a href="{{ cancel_url }}"
+    class="float-right btn btn-secondary"
+  >
+    {% trans "Cancel" %}
+    <i class="fa fa-times ml-1"></i>
+  </a>
+{% endif %}
+{% if wizard.steps.prev %}
+  <button name="wizard_goto_step" type="submit"
+          value="{{ wizard.steps.prev }}"
+          class="btn btn-secondary"
+  >
+    <i class="fa fa-step-backward"></i>
+    {% trans "Back" %}
+  </button>
+{% else %}
+  <button disabled name="" type="button" class="btn">
+    <i class="fa fa-step-backward"></i>
+    {% trans "Back" %}
+  </button>
+{% endif %}
+
+<button type="submit" class="btn btn-primary ml-1">
+  {% trans "Next" %}
+  <i class="fa fa-step-forward"></i>
+</button>
