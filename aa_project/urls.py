@@ -19,6 +19,8 @@ from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
+from two_factor.urls import urlpatterns as tf_urls
+
 from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
 from apps.blog.sitemap import CategorySitemap, PostSitemap
 from apps.pages.views import BadRequestView, PageNotFoundView, PermissionDeniedView
@@ -32,6 +34,7 @@ handler500 = 'apps.pages.views.handler500'
 
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
+    path('', include(tf_urls)),
     path('', include('pages.urls', namespace='pages')),
     path('blog/', include('blog.urls', namespace='blog')),
     path('contact/', include('contacts.urls', namespace='contacts')),

@@ -34,3 +34,6 @@ DATABASES['default'].update(db_from_env)
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
+
+# Django Two-Factor Auth Settings
+TWO_FACTOR_REMEMBER_COOKIE_AGE = 60 * 60 * 24 * 28

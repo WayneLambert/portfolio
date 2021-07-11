@@ -91,8 +91,17 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+        'two_factor': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        }
     }
 }
 
 # Simple Captcha Settings
 SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+# Django Two-Factor Auth Settings
+TWO_FACTOR_PATCH_ADMIN = False
+TWO_FACTOR_CALL_GATEWAY = 'two_factor.gateways.fake.Fake'
+TWO_FACTOR_SMS_GATEWAY = 'two_factor.gateways.fake.Fake'

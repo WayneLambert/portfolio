@@ -1,41 +1,86 @@
 {% extends 'base.html' %}
+
+{% load i18n two_factor %}
 {% load widget_tweaks %}
 
-{% block title %}{{ block.super }} | Login{% endblock title %}
+{% block title %}
+  {% if wizard.steps.current == 'auth' %}
+    {{ block.super }} | Login
+  {% else %}
+    {{ block.super }} | Two-Factor Token
+  {% endif %}
+{% endblock title %}
 
 {% block content %}
   <div class="container col-6 py-5">
     <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
-      <h5 class="auth-heading text-center mb-2">Log Into Your Account</h5>
+      {% if wizard.steps.current == 'auth' %}
+        <h5 class="auth-heading text-center mb-3">Log Into Your Account</h5>
+      {% elif wizard.steps.current == 'token' %}
+      <div class="auth-option text-left">
+        Open the two-factor authentication app on your device to view your
+        authentication code and verify your identity.
+      </div>
+      {% elif wizard.steps.current == 'backup' %}
+        Use this form for entering backup tokens for logging in.
+        These tokens have been generated for you to print and keep safe. Please
+        enter one of these backup tokens to login to your account.
+      {% endif %}
+
       <div class="auth-form-container text-left mx-auto">
-        <form class="auth-form login-form" method="POST" enctype="multipart/form-data">
+        <form action="" method="POST">
           {% csrf_token %}
-          <fieldset class="form-group">
+          <table class="mb-3">
+            {{ wizard.management_form }}
             <div class="mb-3">
-              {% render_field form.username class+="form-control" placeholder="Username" %}
+              {% render_field wizard.form.username class+="form-control" placeholder="Username" %}
             </div>
             <div>
-              {% render_field form.password class+="form-control" placeholder="Password" %}
+              {% render_field wizard.form.password class+="form-control" placeholder="Password" %}
             </div>
-          </fieldset>
-          <div class="form-group">
-            <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-block mx-auto">
-                <i class="fa fa-sign-in mr-1"></i>
-                Log In
-              </button>
+            <div>
+              {% render_field wizard.form.otp_token class+="form-control" %}
             </div>
+          </table>
+
+          {# hidden submit button to enable [enter] key #}
+          <input type="submit" value="" class="d-none" />
+
+          {% if other_devices %}
+            <p>{% trans "Or, alternatively, use one of your backup phones:" %}</p>
             <p>
-              <small class="text-muted">
-                <a class="theme-link" href="{% url 'blog:users:password_reset_form' %}">Forgotten Password?</a>
-              </small>
+              {% for other in other_devices %}
+              <button name="challenge_device" value="{{ other.persistent_id }}"
+                      class="btn btn-secondary btn-block" type="submit"
+              >
+                {{ other|device_action }}
+              </button>
+            {% endfor %}</p>
+          {% endif %}
+          {% if backup_tokens %}
+            <p>{% trans "As a last resort, you can use a backup token:" %}</p>
+            <p>
+              <button name="wizard_goto_step" type="submit" value="backup"
+                      class="btn btn-secondary btn-block">
+                {% trans "Use Backup Token" %}
+              </button>
             </p>
-          </div>
+          {% endif %}
+          {% include 'two_factor/wizard_actions.html' %}
         </form>
-        <div class="auth-option text-center pt-5">No Account? Register 
-          <a class="theme-link" href="{% url 'blog:users:register' %}" >Here</a>
-        </div>
+        {% if wizard.steps.current == 'auth' %}
+          <p class="mt-3">
+            <small class="text-muted">
+              <a class="theme-link" href="{% url 'blog:users:password_reset_form' %}">
+                Forgotten Password?
+              </a>
+            </small>
+          </p>
+          <div class="auth-option text-left pt-1">No Account? Register
+            <a class="theme-link" href="{% url 'blog:users:register' %}" >Here</a>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
-{% endblock content %}
+{% endblock %}
