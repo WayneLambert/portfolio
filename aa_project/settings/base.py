@@ -42,6 +42,10 @@ THIRD_PARTY_APPS = [
     'captcha',
     'widget_tweaks',
     'tinymce',
+    'django_otp',
+    'django_otp.plugins.otp_static',
+    'django_otp.plugins.otp_totp',
+    'two_factor',
 ]
 
 # Project Apps
@@ -68,6 +72,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_otp.middleware.OTPMiddleware',  # Third party
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -242,7 +247,6 @@ SITE_ID = 1
 LOGIN_URL = 'blog:users:login'
 LOGIN_REDIRECT_URL = 'blog:home'
 LOGOUT_REDIRECT_URL = 'blog:home'
-
 
 # Django SES Email Backend Settings
 EMAIL_BACKEND = 'django_ses.SESBackend'
