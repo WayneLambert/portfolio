@@ -19,12 +19,17 @@
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/blog.jpg" alt="">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
+          src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/blog.jpg"
+          alt="waynelambert.dev Blog"
+        >
         <div class="media-body">
           <div class="client-info">
             <h5 class="font-weight-bold mb-4">Summary</h5>
             <ul class="client-meta list-unstyled">
-              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>CRUD Application with Authentication</li>
+              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i>
+                <strong class="mr-1">Type:</strong>CRUD Application with Authentication
+              </li>
               <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
                 <a class="theme-link" href="{% url 'blog:home' %}" target="_blank">Blog Home Page</a>
               </li>
@@ -33,7 +38,7 @@
                   Source Code
                 </a>
               </li>
-              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
+              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong>
                 <a class="theme-link" href="{% github_url type='issues' app='blog' %}" target="_blank">
                   Open & Closed Issues on GitHub
                 </a>
@@ -69,13 +74,16 @@
             Authentication and authorisation implemented for post creation, updation, and deletion
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
+            Two-factor authentication using a heavily customised implementation of the `Django Two-Factor Auth` package.
+          </li>
+          <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Predominantly built using Class-Based Views, therefore easier to maintain (in my opinion)
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             Efficient full word text search retrieval of data from PostgreSQL database with query optimisations
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
-            Tests built using the pytest framework and an in-memory SQLite3 database
+            Tests built using the pytest framework and an in-memory PostgreSQL database
           </li>
           <li class="mb-2"><i class="fas fa-check fa-fw mr-2"></i>
             List view pagination on index, contents, author, category, and search results pages
@@ -200,7 +208,9 @@
   <!-- Languages, Technologies & Skills Used Section -->
   <section class="project px-3 pb-5">
     <div class="container">
-      <h3 class="section-title font-weight-bold mb-2" id="technologies">Languages, Technologies &amp; Skills Used</h3>
+      <h3 class="section-title font-weight-bold mb-2" id="technologies">
+        Languages, Technologies &amp; Skills Used
+      </h3>
       <div class="text-small text-muted mb-1">In approximate order of frequency used...</div>
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <table>
@@ -223,7 +233,7 @@
           <tr>
             <td class="text-right font-weight-bold pr-2">Notable Packages:</td>
             <td>Node Sass, Django Crispy Forms, Django Widget Tweaks, Whitenoise,
-            Tiny MCE Editor, Boto3, Django Recaptcha, Pillow</td>
+            Tiny MCE Editor, Boto3, Django Recaptcha, Pillow, Django Two Factor Auth</td>
           </tr>
         </table>
       </div>
