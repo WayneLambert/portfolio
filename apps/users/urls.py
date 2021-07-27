@@ -4,7 +4,7 @@ from django.urls import path, reverse_lazy
 from two_factor.views import QRGeneratorView
 
 from apps.users.views import (ProfileUpdateView, ProfileView, UserLoginView,
-                              UserRegisterView, UserSetupView,)
+                              UserSetupEmailView, UserSetupQRView,)
 
 
 app_name = 'users'
@@ -18,7 +18,7 @@ urlpatterns = [
 # Custom Login and Password Reset Process
 urlpatterns += [
     path('login/', UserLoginView.as_view(), name='login'),
-    path('two-factor/setup/', UserSetupView.as_view(), name='setup'),
+    path('two-factor/setup/qr/', UserSetupQRView.as_view(), name='setup'),
     path('two-factor/qrcode/', QRGeneratorView.as_view(), name='qr'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('password-reset/',
