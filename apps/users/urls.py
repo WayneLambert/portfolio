@@ -4,7 +4,7 @@ from django.urls import path, reverse_lazy
 from two_factor.views import QRGeneratorView
 
 from apps.users.views import (ProfileUpdateView, ProfileView, UserLoginView,
-                              UserSetupEmailView, UserSetupQRView,)
+                              UserRegisterView, UserSetupQRView,)
 
 
 app_name = 'users'
