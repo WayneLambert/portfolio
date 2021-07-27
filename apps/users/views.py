@@ -7,10 +7,11 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 
 from shapeshifter.views import MultiModelFormView
-from two_factor.forms import AuthenticationTokenForm, TOTPDeviceForm
-from two_factor.views.core import LoginView, SetupCompleteView, SetupView
+from two_factor.forms import AuthenticationTokenForm
+from two_factor.views.core import LoginView, SetupView
 
-from apps.users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
+from apps.users.forms import (ProfileUpdateForm, UserRegisterForm, UserTOTPDeviceForm,
+                              UserUpdateForm,)
 from apps.users.models import Profile
 
 
@@ -55,12 +56,12 @@ class UserLoginView(LoginView):
     )
 
 
-class UserSetupView(SetupView):
+class UserSetupQRView(SetupView):
     template_name = 'two_factor/setup.html'
     success_url = 'blog:home'
 
     form_list = (
-        ('generator', TOTPDeviceForm),
+        ('generator', UserTOTPDeviceForm),
     )
     condition_dict = {
         'generator': lambda self: True,
