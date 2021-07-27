@@ -8,6 +8,8 @@ from django_otp.plugins.otp_totp.models import TOTPDevice
 from two_factor.forms import TOTPDeviceForm
 from two_factor.utils import totp_digits
 
+from apps.users.models import Profile
+
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
