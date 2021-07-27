@@ -10,7 +10,8 @@ from shapeshifter.views import MultiModelFormView
 from two_factor.forms import AuthenticationTokenForm
 from two_factor.views.core import LoginView, SetupView
 
-                              UserRegisterForm, UserTOTPDeviceForm, UserUpdateForm,)
+from apps.users.forms import (ProfileUpdateForm, UserRegisterForm, UserTOTPDeviceForm,
+                              UserUpdateForm,)
 from apps.users.models import Profile
 
 
