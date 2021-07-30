@@ -95,20 +95,3 @@ class UserTOTPDeviceForm(TOTPDeviceForm):
             "class": "form-control",
             "placeholder": "Enter token from authenticator app...",
         }
-
-    def clean_token(self):
-        return self.cleaned_data['token']
-
-    def save(self):
-        return TOTPDevice.objects.create(
-            user=self.user,
-            key=self.key,
-            tolerance=self.tolerance,
-            t0=self.t0,
-            step=self.step,
-            drift=self.drift,
-            digits=self.digits,
-            name='default'
-        )
-
-
