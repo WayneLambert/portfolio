@@ -21,22 +21,47 @@
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/text-analysis.jpg">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
+             src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/text-analysis.jpg"
+        />
         <div class="media-body">
           <div class="client-info">
             <h5 class="font-weight-bold mb-4">Summary</h5>
             <ul class="client-meta list-unstyled">
-              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Script to Analyse Text</li>
-              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
-                <a class="theme-link" href="{% url 'text_analysis:analyse' %}" target="_blank">Text Analysis</a>
+              <li class="mb-2">
+                <i class="fas fa-tag fa-fw mr-2"></i>
+                <strong class="mr-1">Type:</strong>Python Script to Analyse Text
               </li>
-              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="{% github_url type='code' app='text_analysis' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fas fa-link fa-fw mr-2"></i>
+                <strong>Web:</strong>
+                <a href="{% url 'text_analysis:analyse' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
+                  Text Analysis
+                </a>
+              </li>
+              <li class="mb-2">
+                <i class="fa fa-github fa-fw mr-2"></i>
+                <strong>GitHub:</strong>
+                <a href="{% github_url type='code' app='text_analysis' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Source Code
                 </a>
               </li>
-              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="{% github_url type='issues' app='text_analysis' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fa fa-exclamation-circle fa-fw mr-2"></i>
+                <strong>Issues:</strong>
+                <a href="{% github_url type='issues' app='text_analysis' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Open & Closed Issues on GitHub
                 </a>
               </li>
@@ -99,10 +124,10 @@
             To use Python to calculate the number of instances of a given word and letter within a text string.
           </p>
           <p>
-            This was one of my earlier scripting projects that I completed before I ever started to build a
-            Django portfolio in earnest. I added it to my Django portfolio at a later date and built upon it with additional
-            polish features both from a refactoring of back end code perspective and improved presentation of the tables on
-            the front-end.
+            This was one of my earlier scripting projects that I completed before I ever started to
+            build a Django portfolio in earnest. I added it to my Django portfolio at a later date
+            and built upon it with additional polish features both from a refactoring of back end
+            code perspective and improved presentation of the tables on the front-end.
           </p>
         </div>
 
@@ -110,21 +135,25 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
           <p>
-            I started by thinking about the algorithm and approach to calculate the frequency of words and letters within
-            the text block. It seemed reasonable to me that I would need to split the string into two operational lists.
+            I started by thinking about the algorithm and approach to calculate the frequency of words
+            and letters within the text block. It seemed reasonable to me that I would need to split
+            the string into two operational lists.
           </p>
           <p>
-            The first would be a list of words that could be looped over and counted for their frequency of occurrence.
+            The first would be a list of words that could be looped over and counted for their
+            frequency of occurrence.
           </p>
           <p>
-            The second would be a list of letters that could be looped over and counted for their frequency of occurrence.
+            The second would be a list of letters that could be looped over and counted for their
+            frequency of occurrence.
           </p>
           <p>
-            The next part would be to sort the lists in a logical order so that they could be rendered usefully to the user.
+            The next part would be to sort the lists in a logical order so that they could be
+            rendered usefully to the user.
           </p>
           <p>
-            For words, it made sense that the list should be sorted by frequency of occurrence. For letters, it made sense
-            that the list should be sorted alphabetically.
+            For words, it made sense that the list should be sorted by frequency of occurrence.
+            For letters, it made sense that the list should be sorted alphabetically.
           </p>
         </div>
 
@@ -135,10 +164,12 @@
             Following a refactor of the project, the code is now easier to understand and maintain.
           </p>
           <p>
-            The code has been extracted into a 'views.py' file where functions relating to the rendering of Django views lives.
+            The code has been extracted into a 'views.py' file where functions relating to the
+            rendering of Django views lives.
           </p>
           <p>
-            The remainder of the code are utility functions that have been moved into a separate module called 'utils.py'.
+            The remainder of the code are utility functions that have been moved into a separate
+            module called 'utils.py'.
           </p>
         </div>
       </div>
@@ -162,7 +193,7 @@
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Software:</td>
-            <td>VS Code, Pythonista</td>
+            <td>VS Code</td>
           </tr>
           <tr>
             <td class="text-right font-weight-bold pr-2">Libraries:</td>

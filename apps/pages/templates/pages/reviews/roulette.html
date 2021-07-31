@@ -21,22 +21,47 @@
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/holiday-roulette.jpg">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
+             src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/holiday-roulette.jpg"
+        />
         <div class="media-body">
           <div class="client-info">
             <h5 class="font-weight-bold mb-4">Summary</h5>
             <ul class="client-meta list-unstyled">
-              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Randomised Choices with Logging</li>
-              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
-                <a class="theme-link" href="{% url 'roulette:holiday_roulette' %}" target="_blank">Holiday Roulette</a>
+              <li class="mb-2">
+                <i class="fas fa-tag fa-fw mr-2"></i>
+                <strong>Type:</strong>
+                Python Randomised Choices with Logging
               </li>
-              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="{% github_url type='code' app='roulette' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fas fa-link fa-fw mr-2"></i>
+                <strong>Web:</strong>
+                <a href="{% url 'roulette:holiday_roulette' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer">
+                  Holiday Roulette
+                </a>
+              </li>
+              <li class="mb-2">
+                <i class="fa fa-github fa-fw mr-2"></i>
+                <strong>GitHub:</strong>
+                <a href="{% github_url type='code' app='roulette' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Source Code
                 </a>
               </li>
-              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="{% github_url type='issues' app='roulette' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fa fa-exclamation-circle fa-fw mr-2"></i>
+                <strong>Issues:</strong>
+                <a href="{% github_url type='issues' app='roulette' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Open & Closed Issues on GitHub
                 </a>
               </li>

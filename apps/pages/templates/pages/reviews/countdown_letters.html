@@ -19,22 +19,48 @@
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
-        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/countdown-letters.jpg">
+        <img class="project-thumb mb-3 mb-md-0 mr-md-5 rounded d-none d-md-inline-block"
+             src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/countdown-letters.jpg"
+        />
         <div class="media-body">
           <div class="client-info">
             <h5 class="font-weight-bold mb-4">Summary</h5>
             <ul class="client-meta list-unstyled">
-              <li class="mb-2"><i class="fas fa-tag fa-fw mr-2"></i><strong class="mr-1">Type:</strong>Python Game with External API</li>
-              <li class="mb-2"><strong><i class="fas fa-link fa-fw mr-2"></i>Web:</strong>
-                <a class="theme-link" href="{% url 'countdown_letters:selection' %}" target="_blank">Countdown Letters Game</a>
+              <li class="mb-2">
+                <i class="fas fa-tag fa-fw mr-2"></i>
+                <strong>Type:</strong>
+                Python Game with External API
               </li>
-              <li class="mb-2"><i class="fa fa-github fa-fw mr-2"></i><strong>GitHub:</strong>
-                <a class="theme-link" href="{% github_url type='code' app='countdown_letters' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fas fa-link fa-fw mr-2"></i>
+                <strong>Web:</strong>
+                <a href="{% url 'countdown_letters:selection' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
+                  Countdown Letters Game
+                </a>
+              </li>
+              <li class="mb-2">
+                <i class="fa fa-github fa-fw mr-2"></i>
+                <strong>GitHub:</strong>
+                <a href="{% github_url type='code' app='countdown_letters' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Source Code
                 </a>
               </li>
-              <li class="mb-2"><i class="fa fa-exclamation-circle fa-fw mr-2"></i><strong>Issues:</strong> 
-                <a class="theme-link" href="{% github_url type='issues' app='countdown_letters' %}" target="_blank">
+              <li class="mb-2">
+                <i class="fa fa-exclamation-circle fa-fw mr-2"></i>
+                <strong>Issues:</strong>
+                <a href="{% github_url type='issues' app='countdown_letters' %}"
+                   class="theme-link"
+                   target="_blank"
+                   rel="noreferrer"
+                >
                   Open & Closed Issues on GitHub
                 </a>
               </li>
@@ -43,8 +69,9 @@
             <h5 class="font-weight-bold mb-4">Introduction</h5>
             <div class="client-bio mb-4">
               <p>
-                The Countdown Letters project uses the logic from the letters game on Countdown to enable a player
-                to play against the computer (which I call Susie) attempting to get the longest word that they can.
+                The Countdown Letters project uses the logic from the letters game on Countdown to
+                enable a player to play against the computer (which I call Susie) attempting to get
+                the longest word that they can.
               </p>
             </div>
           </div>
@@ -120,7 +147,10 @@
         <div class="project-section mb-5">
           <h3 class="section-title font-weight-bold mb-2" id="approach-and-solution">The Approach &amp; Solution</h3>
           <p>
-            My opening goal was to build something that was far simpler than the final product turned out. It was originally designed with the intention of just having a player's word and a computer's answer, however as I thought about the game show's format, I wondered if I could somehow integrate a definition for the game's word when the results of the game are displayed.
+            My opening goal was to build something that was far simpler than the final product turned out.
+            It was originally designed with the intention of just having a player's word and a computer's answer,
+            however as I thought about the game show's format, I wondered if I could somehow integrate
+            a definition for the game's word when the results of the game are displayed.
           </p>
           <p>
             This led me to research an API for a dictionary and discover the Oxford Dictionary API which
@@ -214,7 +244,9 @@
           <h3 class="section-title font-weight-bold mb-2" id="sources">Sources</h3>
           <p>
             Information and rules of the game was sourced from
-            <a href="{% countdown_letters_game_rules_link %}" target="_blank">{% countdown_letters_game_rules_link %}</a>
+            <a href="{% countdown_letters_game_rules_link %}" target="_blank" rel="noreferrer">
+              {% countdown_letters_game_rules_link %}
+            </a>
           </p>
         </div>
       </div>

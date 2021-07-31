@@ -12,28 +12,36 @@
           </p>
           <p>
             Feel free to take a look around, review the
-            <a class="theme-link" href="{% github_portfolio_link %}" target="_blank">source code</a>,
+            <a href="{% github_portfolio_link %}"
+               class="theme-link"
+               target="_blank"
+               rel="noreferrer"
+            >
+              source code</a>,
             or even the project's
-              <a class="theme-link" href="{% github_portfolio_issues_link %}" target="_blank"> open and closed issues</a>
+              <a href="{% github_portfolio_issues_link %}" class="theme-link" target="_blank" rel="noreferrer"> open and closed issues</a>
               on GitHub.
           </p>
         </div>
         <div class="mb-2">
-          <a class="btn btn-primary mr-2 mb-3" href="{% url 'pages:portfolio' %}">
+          <a href="{% url 'pages:portfolio' %}" class="btn btn-primary mr-2 mb-3">
             <i class="fas fa-briefcase mr-1"></i>
             <span class="d-none d-md-inline">Portfolio</span>
           </a>
-          <a class="btn btn-success mr-2 mb-3" href="{% url 'blog:home' %}">
+          <a href="{% url 'blog:home' %}" class="btn btn-success mr-2 mb-3">
             <i class="fas fa-blog mr-1"></i>
             <span class="d-none d-md-inline">Blog</span>
           </a>
-          <a class="btn btn-link btn-github mr-2 mb-3" href="{% github_portfolio_link %}" target="_blank">
+          <a href="{% github_portfolio_link %}" class="btn btn-link btn-github mr-2 mb-3" target="_blank" rel="noreferrer">
             <i class="fa fa-github mr-1"></i>
             <span class="d-none d-md-inline">Code</span>
           </a>
         </div>
       </div>
-      <img class="profile-image mb-3 mb-lg-0 ml-lg-5 mr-md-0" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/jumbotron.jpg" alt="">
+      <img class="profile-image mb-3 mb-lg-0 ml-lg-5 mr-md-0"
+           src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/jumbotron.jpg"
+           alt=""
+      />
     </div>
   </div>
 </section>

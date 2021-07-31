@@ -8,10 +8,12 @@
           <div class="footer-col-inner">
             <a class="theme-link" href="{% url 'pages:about_me' %}"><h6>About Me</h6></a>
             <p>I am a passionate web developer and data scientist.</p>
-            <p>I enjoy developing websites with Django and Python as well as analysing 
+            <p>I enjoy developing websites with Django and Python as well as analysing
             datasets with Python's Data Science libraries.</p>
             <p>
-              <a class="more theme-link" href="{% url 'pages:about_me' %}">Learn more<i class="fas fa-long-arrow-alt-right ml-2"></i></a>
+              <a class="more theme-link" href="{% url 'pages:about_me' %}">
+                Learn more<i class="fas fa-long-arrow-alt-right ml-2"></i>
+              </a>
             </p>
           </div>
         </div>
@@ -47,7 +49,7 @@
             <h6>Get in Touch</h6>
             <ul class="list-unstyled">
               <li>
-                <a class="theme-link" href="{% google_maps_location_link %}" target="_blank">
+                <a href="{% google_maps_location_link %}" class="theme-link" target="_blank" rel="noreferrer">
                   <i class="fa fa-map-marker mr-3"></i>Birmingham, UK
                 </a>
               </li>
@@ -55,12 +57,12 @@
                 <a class="theme-link"><i class="fas fa-mobile mr-3"></i>+44 (0)7950 315504</a>
               </li>
               <li>
-                <a class="theme-link" href="{% email_me_link %}">
+                <a href="{% email_me_link %}" class="theme-link">
                   <i class="fa fa-envelope mr-3"></i>Email Me
                 </a>
               </li>
               <li>
-                <a class="theme-link" href="{% url 'contacts:contact' %}">
+                <a href="{% url 'contacts:contact' %}" class="theme-link">
                   <i class="fas fa-paper-plane mr-3"></i>Contact Form
                 </a>
               </li>
