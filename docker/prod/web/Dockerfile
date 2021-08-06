@@ -1,9 +1,9 @@
 # Base image fpr Python
-FROM python:3.8.5-buster
+FROM python:3.9.6-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2019.12" \
+    dev.waynelambert.version="2021.08" \
     dev.waynelambert.description="Docker image for web service"
 
 # Create and set working directory
