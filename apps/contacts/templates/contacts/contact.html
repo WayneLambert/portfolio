@@ -11,15 +11,15 @@
       <section class="cta-section py-5">
         <div class="container text-center single-col-max-width">
           <div class="intro">
-            <p>Please fill in the contact form below or send me an email at 
-              <a class="theme-link" href="{% email_me_link %}">{% email_me_link %}</a>
+            <p>Please fill in the contact form below or send me an email at
+              <a href="{% email_me_link %}" class="theme-link">{% email_me_link %}</a>
             </p>
           </div>
         </div>
       </section>
       <section class="contact-section px-3">
         <div class="container">
-          <form method="POST" enctype="multipart/form-data" id="contact-form" 
+          <form method="POST" enctype="multipart/form-data" id="contact-form"
             class="contact-form col-lg-8 mx-lg-auto">
             {% csrf_token %}
             <h3 class="text-center mb-3">Get In Touch</h3>
@@ -98,20 +98,17 @@
             <p>Feel free to connect using the social media channels below.</p>
             <ul class="list-inline mb-0">
               <li class="list-inline-item mb-3">
-                <a class="github" href="{% github_profile_link %}"
-                  target="_blank">
+                <a class="github" href="{% github_profile_link %}" target="_blank" rel="noreferrer">
                   <i class="fab fa-github-alt fa-fw fa-lg"></i>
                 </a>
               </li>
               <li class="list-inline-item mb-3">
-                <a class="stack-overflow" href="{% stack_overflow_profile_link %}" 
-                  target="_blank">
+                <a class="stack-overflow" href="{% stack_overflow_profile_link %}" target="_blank" rel="noreferrer">
                   <i class="fab fa-stack-overflow fa-fw fa-lg"></i>
                 </a>
               </li>
               <li class="list-inline-item mb-3">
-                <a class="linkedin" href="{% linkedin_profile_link %}" 
-                  target="_blank">
+                <a class="linkedin" href="{% linkedin_profile_link %}" target="_blank" rel="noreferrer">
                   <i class="fab fa-linkedin-in fa-fw fa-lg"></i>
                 </a>
               </li>
@@ -123,8 +120,8 @@
         <div class="container text-center single-col-max-width">
           <div class="intro mb-5">
             This site is protected by reCAPTCHA and the Google
-            <a class="theme-link" href="https://policies.google.com/privacy">Privacy Policy</a> and
-            <a class="theme-link" href="https://policies.google.com/terms">Terms of Service</a> apply.
+            <a href="https://policies.google.com/privacy" class="theme-link">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms" class="theme-link">Terms of Service</a> apply.
           </div>
         </div>
       </section>

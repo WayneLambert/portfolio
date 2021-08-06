@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block extra_head %}
+  <title>{% block title %}{{ block.super }} | Two-Factor Setup by Email{% endblock title %}</title>
+{% endblock extra_head %}
+
+{% block content %}
+  <div class="container col-6 py-5">
+    <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
+      <h5 class="mt-2 mb-3">Enable Two-Factor Authentication</h5>
+      <small class="text-muted mb-3">
+        {% blocktrans trimmed %}
+          <p>
+            Using email as a verification method should only be used as a secondary
+            option if you <strong><u>absolutely do not</u></strong> have access to a
+            device (for example, a smartphone or tablet) that can use an authentication
+            app such as Microsoft Authenticator.
+          </p>
+          <p>
+            Using a device token is a more secure method.
+          </p>
+          <p>To use email to authenticate your account, click the button below.</p>
+        {% endblocktrans %}
+      </small>
+      <div class="text-center">
+        <form method="POST" action="{% url 'blog:users:setup_email' %}">
+          {% csrf_token %}
+          <button class="btn btn-primary btn-block mx-auto">
+            <i class="fa fa-envelope mr-1"></i>
+            Send Token by Email
+          </button>
+        </form>
+      </div>
+      <div class="border-top mt-3">
+        <small class="text-muted">
+          <a href="{% url 'blog:users:setup' %}">Need to authenticate via device token?</a>
+        </small>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
