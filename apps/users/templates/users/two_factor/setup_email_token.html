@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block extra_head %}
+  <title>{% block title %}{{ block.super }} | Two-Factor Setup Email Token{% endblock title %}</title>
+{% endblock extra_head %}
+
+{% block content %}
+  <div class="container col-6 py-5">
+    <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
+      <h5 class="mt-2 mb-3">Please confirm it's you</h5>
+      <small class="text-muted mb-3">
+        {% blocktrans trimmed %}
+          <p>
+            We emailed you a security code at {{ user_email }}. It may take a moment to arrive.
+          </p>
+        {% endblocktrans %}
+      </small>
+      <form method="POST" action="">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <div class="form-row">
+            <div class="form-group col-md-12 mb-0">
+              {{ form }}
+            </div>
+          </div>
+        </fieldset>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-block mx-auto">
+            <i class="fa fa-unlock mr-2"></i>
+            Submit Token
+          </button>
+        </div>
+      </form>
+
+      <!-- Messages block -->
+      {% if messages %}
+        <div>
+          {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+              <p class="small">{{message}}</p>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="border-top mt-3">
+        <small class="text-muted">
+          Still no code? <a href="{% url 'blog:users:setup_email' %}">Email it to me again</a>
+        </small>
+      </div>
+    </div>
+  </div>
+{% endblock %}
