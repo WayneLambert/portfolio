@@ -54,10 +54,10 @@ class LinkGenerator:
     def github_url(type: str, app: str) -> str:
         base_url = "https://github.com/WayneLambert/portfolio/"
         if type == 'code':
-            query_str = f"tree/master/apps/{app}"
+            query_str = f"tree/main/apps/{app}"
         else:
             query_str = f"issues?q=is%3Aissue+label%3A%22app%3A+{app}%22"
-        
+
         return base_url + query_str
 
 
@@ -126,7 +126,7 @@ class TextAnalysis:
 class DataScience:
     @register.simple_tag(name='data_science_portfolio_notebooks')
     def notebooks():
-        return "https://github.com/WayneLambert/data-science-portfolio/tree/master/notebooks"
+        return "https://github.com/WayneLambert/data-science-portfolio/tree/main/notebooks"
 
     @register.simple_tag(name='data_science_github_issues_link')
     def github_issues():

@@ -88,7 +88,7 @@ Calculate the number of words and letters input/pasted by the user.
 
 Explore fascinating datasets analysed using Python's Data Science libraries.
 
-- [Data Science Projects](https://github.com/WayneLambert/data-science-portfolio/tree/master/notebooks)
+- [Data Science Projects](https://github.com/WayneLambert/data-science-portfolio/tree/main/notebooks)
 - [Data Science Review](https://waynelambert.dev/portfolio/reviews/data-science/)
 
 ## Contact Me
