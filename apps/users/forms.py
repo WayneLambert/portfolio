@@ -4,11 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
 
 from crispy_forms.helper import FormHelper
-from django_otp.plugins.otp_totp.models import TOTPDevice
 from two_factor.forms import TOTPDeviceForm
 from two_factor.utils import totp_digits
 
-from apps.users.models import Profile
+from apps.users.models import EmailToken, Profile
 
 
 class UserRegisterForm(UserCreationForm):
@@ -88,10 +87,35 @@ class UserTOTPDeviceForm(TOTPDeviceForm):
 
         self.helper = FormHelper()
         self.fields['token'].label = False
-        self.fields["token"].widget.attrs={
-            "autofocus": "autofocus",
-            "inputmode": "numeric",
-            "autocomplete": "one-time-code",
-            "class": "form-control",
-            "placeholder": "Enter token from authenticator app...",
+        self.fields['token'].widget.attrs={
+            'autofocus': 'autofocus',
+            'inputmode': 'numeric',
+            'autocomplete': 'one-time-code',
+            'class': 'form-control',
+            'title': '',
+            'placeholder': 'Enter token from authenticator app...',
+        }
+
+
+class EmailTokenSubmissionForm(forms.ModelForm):
+    challenge_token_returned = forms.CharField(label=_(""))
+
+    class Meta:
+        model = EmailToken
+        fields = ['challenge_token_returned', ]
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(user, *args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_id = 'challenge-token-returned'
+        self.fields['challenge_token_returned'].label = False
+        self.fields['challenge_token_returned'].widget.attrs={
+            'autofocus': 'autofocus',
+            'inputmode': 'numeric',
+            'autocomplete': 'one-time-code',
+            'class': 'form-control',
+            'title': '',
+            'placeholder': 'Enter token from email...',
         }
