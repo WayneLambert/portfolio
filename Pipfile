@@ -63,6 +63,7 @@ django-tinymce = "==3.3.0"
 django-bootstrap4 = "==3.0.1"
 django-two-factor-auth = "==1.13.1"
 phonenumbers = "==8.12.27"
+django-cryptography = "==1.0"
 
 [requires]
 python_version = "3.9"
