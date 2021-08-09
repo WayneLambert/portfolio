@@ -81,7 +81,7 @@ Scrape EU Referendum results and famous speeches from the web.
 
 Calculate the number of words and letters input/pasted by the user.
 
-- [Text Analysis](https://waynelambert.dev/text_analysis/analyse/)
+- [Text Analysis](https://waynelambert.dev/text-analysis/analyse/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/text-analysis/)
 
 ## Data Science Projects
