@@ -310,7 +310,7 @@ class UserSetupEmailTokenView(TemplateView):
         return redirect('blog:users:setup_email_token')
 
 
-class ProfileView(DetailView):
+class ProfileView(TwoFactorAuthUserMixin, DetailView):
     template_name = 'users/profile.html'
 
     def get_object(self, queryset=None):
@@ -328,7 +328,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
     def test_func(self) -> bool:
         return self.request.user.get_username() == self.kwargs['username']
 
-    def get_instances(self) -> dict:
+    def get_instances(self) -> Dict[str, Any]:
         return {
             'userupdateform': self.request.user,
             'profileupdateform': self.request.user.profile
