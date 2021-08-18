@@ -18,16 +18,16 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email', 'first_name', 'last_name', 'password1', 'password2']
 
     def clean_username(self):
-        return self.cleaned_data['username'].casefold().strip()
+        return self.cleaned_data['username'].casefold()
 
     def clean_email(self):
-        return self.cleaned_data['email'].strip()
+        return self.cleaned_data['email']
 
     def clean_first_name(self):
-        return self.cleaned_data['first_name'].title().strip()
+        return self.cleaned_data['first_name'].title()
 
     def clean_last_name(self):
-        return self.cleaned_data['last_name'].title().strip()
+        return self.cleaned_data['last_name'].title()
 
     def clean_password1(self):
         return self.cleaned_data['password1']

@@ -52,18 +52,18 @@ class PostSerializer(serializers.ModelSerializer):
     reading_time = serializers.IntegerField()
     post_absolute_url = serializers.URLField(source='get_absolute_url')
 
-    author_username = serializers.CharField(source='author.username')
+    author_username = serializers.CharField(source='author.get_username')
     author_first_name = serializers.CharField(source='author.first_name')
     author_last_name = serializers.CharField(source='author.last_name')
-    author_full_name = serializers.CharField(source='author.user.full_name')
-    author_initials = serializers.CharField(source='author.user.initials')
-    author_display_name = serializers.CharField(source='author.user.display_name')
-    author_join_year = serializers.IntegerField(source='author.user.join_year')
-    author_view = serializers.IntegerField(source='author.user.author_view')
-    author_created_date = serializers.DateTimeField(source='author.user.created_date')
-    author_updated_date = serializers.DateTimeField(source='author.user.updated_date')
-    author_absolute_url = serializers.URLField(source='author.user.get_absolute_url')
-    author_profile_picture = serializers.ImageField(source='author.user.profile_picture')
+    author_full_name = serializers.CharField(source='author.get_full_name')
+    author_initials = serializers.CharField(source='author.profile.initials')
+    author_display_name = serializers.CharField(source='author.profile.display_name')
+    author_join_year = serializers.IntegerField(source='author.profile.join_year')
+    author_view = serializers.IntegerField(source='author.profile.author_view')
+    author_created_date = serializers.DateTimeField(source='author.profile.created_date')
+    author_updated_date = serializers.DateTimeField(source='author.profile.updated_date')
+    author_absolute_url = serializers.URLField(source='author.profile.get_absolute_url')
+    author_profile_picture = serializers.ImageField(source='author.profile.profile_picture')
 
     categories = CategorySerializer(many=True, read_only=True)
 
@@ -105,4 +105,4 @@ class PostSerializer(serializers.ModelSerializer):
     def get_status(self, obj):
         return obj.get_status_display()  # pragma: no cover
 
-    ordering = ['-updated_date', '-publish_date']
+    ordering = ('-updated_date', '-publish_date', )

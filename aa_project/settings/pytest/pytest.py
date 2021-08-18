@@ -59,3 +59,7 @@ class SimplePasswordHasher(BasePasswordHasher):
 PASSWORD_HASHERS = (
     'aa_project.settings.pytest.pytest.SimplePasswordHasher',
 )
+
+# Email Token Settings
+EMAIL_CHALLENGE_EXPIRATION_IN_SECS = 60 * 5
+EMAIL_TOKEN_EXPIRATION_IN_SECS = 60 * 60 * 24 * 28

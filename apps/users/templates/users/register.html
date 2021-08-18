@@ -34,17 +34,21 @@
             By signing up, you agree to our <a href="{% url 'pages:privacy' %}" class="theme-link">privacy policy</a>.
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-block mx-auto"><i class="fa fa-sign-in mr-1"></i>Register Account</button>
+            <button type="submit" class="btn btn-primary btn-block mx-auto">
+              <i class="fa fa-sign-in mr-1"></i>
+              Register Account
+            </button>
           </div>
           <div class="messages mt-2">
             {% if messages %}
               <ul class="messages no-bullets">
                 {% for message in messages %}
-                  <p{% if message.tags %} class="{{ message.tags }} signup-error-message"{% endif %}>
-                    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-                      <b><u>Important:</u></b>
-                    {% endif %}
-                  {{ message }}
+                  <p>
+                    {% if message.tags %} class="{{ message.tags }} signup-error-message"{% endif %}>
+                      {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <b><u>Important:</u></b>
+                      {% endif %}
+                    {{ message }}
                   </p>
                 {% endfor %}
               </ul>
@@ -53,7 +57,7 @@
         </form>
         <div class="border-top">
           <small class="text-muted">
-            Already have an account? <a class="ml-2" href="{% url 'blog:users:login' %}">Sign In</a>
+            Already have an account? <a href="{% url 'blog:users:login' %}" class="ml-2">Sign In</a>
           </small>
         </div>
       </div>
