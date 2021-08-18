@@ -26,14 +26,14 @@
                     <li><strong>Published:</strong> {{ post.publish_date|date:"D d-M-y" }}</li>
                     <li><strong>Updated:</strong> {{ post.updated_date|date:"D d-M-y" }}</li>
                     <li>
-                      <strong>Categories:</strong> 
+                      <strong>Categories:</strong>
                       {% for category in post.categories.all|slice:":2" %}
                         <a class="theme-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
                         {% if not forloop.last %}  |  {% endif %}
                       {% endfor %}
                     </li>
                     <li>
-                      <span class="time">{{ post.word_count|intcomma }} words</span>  |  
+                      <span class="time">{{ post.word_count|intcomma }} words</span>  |
                       <span class="time">{{ post.reading_time }} min read</span>
                     </li>
                   </ul>

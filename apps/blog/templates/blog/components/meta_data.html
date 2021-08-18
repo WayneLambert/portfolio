@@ -31,9 +31,9 @@
               <small class="text-muted">
                 <strong>Categories:</strong>
                 {% for category in post.categories.all %}
-                <a class="theme-link" href="{{ category.get_absolute_url }}">
-                  {{ category.name }}
-                </a>
+                  <a class="theme-link" href="{{ category.get_absolute_url }}">
+                    {{ category.name }}
+                  </a>
                 {% if not forloop.last %} | {% endif %} {% endfor %}
               </small>
             </li>
@@ -44,8 +44,8 @@
                 <span class="time">{{ post.word_count|intcomma }} words</span> |
                 <span class="time">{{ post.reading_time }} min read</span>
                 {% if user.is_authenticated and request.user == author %} |
-                <a class="theme-link" href="{% url 'blog:post_update' post.slug %}">Update</a> |
-                <a class="theme-link" href="{% url 'blog:post_delete' post.slug %}">Delete</a>
+                  <a class="theme-link" href="{% url 'blog:post_update' post.slug %}">Update</a> |
+                  <a class="theme-link" href="{% url 'blog:post_delete' post.slug %}">Delete</a>
                 {% endif %}
               </small>
             </li>
