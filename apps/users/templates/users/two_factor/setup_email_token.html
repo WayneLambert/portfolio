@@ -13,7 +13,10 @@
       <small class="text-muted mb-3">
         {% blocktrans trimmed %}
           <p>
-            We emailed you a security code at {{ user_email }}. It may take a moment to arrive.
+            Hi {{ user_first_name }},
+          </p>
+          <p>
+            We emailed you a security code at {{ redacted_user_email }}. It may take a moment to arrive.
           </p>
         {% endblocktrans %}
       </small>

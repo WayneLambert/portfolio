@@ -222,14 +222,15 @@ class UserSetupEmailTokenView(TemplateView):
     def get_context_data(self, **kwargs) -> Dict[str, Any]:
         """
         Facilitates a custom token submission form in addition to a
-        partly redacted version of the email address to be passed
-        through to the template's context.
+        partly redacted version of the email address and the user's
+        first name to be passed through to the template's context.
         """
         context = super().get_context_data(user=self.request.user, **kwargs)
         email = self.request.user.email.strip()
         domain = email.split('@')[-1]
         context['form'] = EmailTokenSubmissionForm(self.request.POST or None)
-        context['user_email'] = f"{email[0:2]}**********@{domain}"
+        context['user_first_name'] = self.request.user.first_name.title()
+        context['redacted_user_email'] = f"{email[0:2]}**********@{domain}"
         return context
 
     def get_email_token(self) -> EmailToken:
