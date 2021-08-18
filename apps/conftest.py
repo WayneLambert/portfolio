@@ -4,14 +4,18 @@ from io import BytesIO
 
 from django.contrib.auth.models import AnonymousUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.utils import timezone
 
 import pytest
 
+from django_otp.util import random_hex
 from mixer.backend.django import mixer
 from PIL import Image
 
 from apps.blog.models import Category, Post
 from apps.blog.tests import helpers
+from apps.users.models import EmailToken
+from apps.users.utils import get_challenge_expiration_timestamp
 
 
 @pytest.fixture(scope='function')
@@ -45,6 +49,30 @@ def auth_user(client, django_user_model, test_password):
     )
     client.login(username=user.get_username(), password=test_password)
     return user
+
+
+@pytest.fixture(scope='function')
+def device_auth_user(client, auth_user, test_password):
+    """ An two-factor authenticated user object using device token """
+    auth_user.totpdevice_set.create(name='default', key=random_hex(), confirmed=True)
+    client.login(username=auth_user.get_username(), password=test_password)
+    return auth_user
+
+
+@pytest.fixture(scope='function')
+def email_auth_user(client, auth_user, test_password):
+    """ An two-factor authenticated user object using email token """
+    email_token = EmailToken.objects.create(
+        challenge_email_address=auth_user.email,
+        challenge_token='123456',
+        challenge_generation_timestamp=timezone.now(),
+        challenge_expiration_timestamp=get_challenge_expiration_timestamp(),
+        challenge_completed=True,  # Emulates challenge passed
+        user_id=auth_user.pk
+    )
+    email_token.save()
+    client.login(username=auth_user.get_username(), password=test_password)
+    return auth_user
 
 
 @pytest.fixture(scope='function')
