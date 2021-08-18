@@ -1,0 +1,19 @@
+{% extends 'emails/base.html' %}
+
+{% block subject %}Two-Factor Authentication Successful{% endblock subject %}
+
+{% block email_body %}
+
+  Hi {{ user.first_name|capfirst }},<br /><br />
+
+  You have successfully authenticated your email address. <br /><br />
+
+  <em>Your token is valid until {{ token.token_expiration_timestamp|date:"H:i" }}
+    on {{ token.token_expiration_timestamp|date:"d-M-Y" }} (UTC)
+  </em>
+
+  <br /><br />
+  Many thanks,<br /><br />
+
+  Wayne Lambert<br /><br />
+{% endblock email_body %}

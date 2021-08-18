@@ -11,7 +11,7 @@ ALLOWED_HOSTS = [
     'www.waynelambert.dev',
 ]
 
-# Changes suggested from $ python3 manage.py check --deploy
+# Changes suggested from $ python manage.py check --deploy
 SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_SSL_REDIRECT = True
@@ -36,4 +36,5 @@ RECAPTCHA_PUBLIC_KEY = os.environ['RECAPTCHA_PUBLIC_KEY']
 RECAPTCHA_PRIVATE_KEY = os.environ['RECAPTCHA_PRIVATE_KEY']
 
 # Django Two-Factor Auth Settings
+TWO_FACTOR_LOGIN_TIMEOUT = 300
 TWO_FACTOR_REMEMBER_COOKIE_AGE = 60 * 60 * 24 * 28

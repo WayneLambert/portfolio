@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -60,30 +61,59 @@ class TestUserRegisterView:
         assert Profile.objects.count() == 2, 'Should still have 2 objects in the database'
 
 
-@pytest.mark.parametrize(argnames='all_users',
-    argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
 class TestProfileView:
-    def test_all_users_can_access(self, rf, all_users, li_sec_user):
-        """
-        Asserts the `profile` view is accessible by authenticated
-        and unauthenticated users
-        """
-        kwargs = {'username': li_sec_user.username}
+
+    @pytest.mark.django_db(reset_sequences=True)
+    def test_unauth_user_is_redirected_to_login(self, rf, unauth_user):
+        """ Asserts an unauth user cannot access a non-existent `profile` """
+        kwargs = {'username': 'inexistent-user'}
         path = reverse('blog:users:profile', kwargs=kwargs)
         request = rf.get(path)
-        request.username = all_users
+        apps_helpers.add_session_and_messages_middlewares(request)
+        request.user = unauth_user
         response = ProfileView.as_view()(request, **kwargs)
-        assert response.status_code == 200, 'Should return an `OK` status code'
+        assert response.status_code == 302, 'Should be redirected'
+        assert settings.LOGIN_URL in response.url
 
-    def test_inexistent_profile(self, rf, all_users):
+    def test_auth_user_is_redirected_to_login(self, rf, auth_user):
         """
-        Asserts an attempt to access a non-existent `profile` view
-        returns a 404 error
+        Asserts an authenticated user cannot access an inexistent
+        profile and is redirected to the site's login page
         """
         kwargs = {'username': 'inexistent-user'}
         path = reverse('blog:users:profile', kwargs=kwargs)
         request = rf.get(path)
-        request.username = all_users
+        apps_helpers.add_session_and_messages_middlewares(request)
+        request.user = auth_user
+        response = ProfileView.as_view()(request, **kwargs)
+        assert response.status_code == 302, 'Should be redirected'
+        assert settings.LOGIN_URL in response.url
+
+    def test_device_auth_user_cannot_access_inexistent_profile(self, rf, device_auth_user):
+        """
+        Asserts a user that has fully set up two-factor authentication
+        using their device cannot access a non-existent `profile`,
+        therefore they're returned a 404 error
+        """
+        kwargs = {'username': 'inexistent-user'}
+        path = reverse('blog:users:profile', kwargs=kwargs)
+        request = rf.get(path)
+        request.user = device_auth_user
+        assert request.user.profile.is_two_factor_auth_by_token
+        with pytest.raises(Http404):
+            ProfileView.as_view()(request, **kwargs)
+
+    def test_email_auth_user_cannot_access_inexistent_profile(self, rf, email_auth_user):
+        """
+        Asserts a user that has fully set up two-factor authentication
+        using their email cannot access a non-existent `profile`,
+        therefore they're returned a 404 error
+        """
+        kwargs = {'username': 'inexistent-user'}
+        path = reverse('blog:users:profile', kwargs=kwargs)
+        request = rf.get(path)
+        request.user = email_auth_user
+        assert request.user.profile.is_two_factor_auth_by_email
         with pytest.raises(Http404):
             ProfileView.as_view()(request, **kwargs)
 

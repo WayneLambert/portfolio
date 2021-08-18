@@ -13,7 +13,18 @@ def generate_token() -> str:
 
 
 def get_challenge_expiration_timestamp():
-    """ Sets expiration timestamp at point in future as per the project setting """
+    """
+    Sets expiration timestamp for challenge on setup at point in
+    future as per the project setting
+    """
+    return timezone.now() + datetime.timedelta(seconds=settings.EMAIL_CHALLENGE_EXPIRATION_IN_SECS)
+
+
+def get_token_expiration_timestamp():
+    """
+    Sets expiration timestamp for token following setup at point in
+    future as per the project setting
+    """
     return timezone.now() + datetime.timedelta(seconds=settings.EMAIL_TOKEN_EXPIRATION_IN_SECS)
 
 

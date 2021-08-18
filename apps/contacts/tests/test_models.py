@@ -53,4 +53,4 @@ class TestContact:
 
     def test_contact_str(self):
         contact = mixer.blend(Contact, first_name='Wayne', last_name='Lambert')
-        assert str(contact) == contact.full_name, 'Str should be set to full_name property'
+        assert contact.__str__() == contact.full_name, 'Str should be set to full_name property'
