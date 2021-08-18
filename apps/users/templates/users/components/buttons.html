@@ -4,8 +4,8 @@
     <i class="fa fa-upload mr-1"></i>
       Update
   </button>
-  <button type="cancel" class="btn btn-secondary mr-2" 
-    onclick="window.location='{% url 'blog:users:profile' user.user.slug %}';return false;">
+  <button type="cancel" class="btn btn-secondary mr-2"
+    onclick="window.location='{% url 'blog:users:profile' user.profile.slug %}';return false;">
     <i class="fa fa-close mr-1"></i>
     Cancel
   </button>

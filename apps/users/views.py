@@ -331,7 +331,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
     def get_instances(self) -> dict:
         return {
             'userupdateform': self.request.user,
-            'profileupdateform': self.request.user.user
+            'profileupdateform': self.request.user.profile
         }
 
     def get_success_url(self):

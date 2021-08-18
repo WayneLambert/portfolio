@@ -87,7 +87,7 @@ class AuthorPostListView(PostView):
     def get_context_data(self, **kwargs):
         """ Get's the author's name/username for presenting in the template """
         context = super().get_context_data(**kwargs)
-        context['display_name'] = Post.published.first().author.user.display_name
+        context['display_name'] = Post.published.first().author.profile.display_name
         return context
 
 
@@ -159,7 +159,7 @@ class PostDetailView(DetailView):
         """ Facilitates detail page's pagination buttons """
         context = super().get_context_data(**kwargs)
         context['author'] = Post.published.first().author
-        context['profile'] = context['author'].user
+        context['profile'] = context['author'].profile
         posts = Post.published.all()
         posts_count = len(posts)
 
