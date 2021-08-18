@@ -2,7 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }} | {{ user.user.full_name }} | Profile Update{% endblock title %}
+{% block title %}{{ block.super }} | {{ user.get_full_name }} | Profile Update{% endblock title %}
 
 {% block content %}
   <div class="container col-8 py-5">
@@ -15,7 +15,7 @@
           <td class="container">
             <div class="class text-center">
               <h3>
-                {% if user.user.full_name %}{{ user.user.full_name }}{% else %}{{ user.username }}{% endif %}
+                {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
               </h3>
             </div>
           </td>

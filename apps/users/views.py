@@ -326,7 +326,7 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
     template_name = 'users/profile_update.html'
 
     def test_func(self) -> bool:
-        return self.request.user.username == self.kwargs['username']
+        return self.request.user.get_username() == self.kwargs['username']
 
     def get_instances(self) -> dict:
         return {
@@ -335,5 +335,5 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
         }
 
     def get_success_url(self):
-        return reverse_lazy(
-            'blog:users:profile', kwargs={'username': self.request.user.username})
+        username = self.request.user.get_username()
+        return reverse('blog:users:profile', kwargs={'username': username})

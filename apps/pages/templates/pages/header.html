@@ -65,6 +65,10 @@
                   <i class="fa fa-user-circle mr-2"></i>
                   View Profile
                 </a>
+                <a class="dropdown-item" href="{% url 'blog:users:profile_update' user.get_username %}">
+                  <i class="fa fa-pencil mr-2"></i>
+                  Update Profile
+                </a>
               </div>
             </li>
           {% else %}

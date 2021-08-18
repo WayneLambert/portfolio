@@ -20,7 +20,7 @@ class LatestPostsFeed(Feed):
         return truncatewords(item.content, 30)
 
     def item_author_name(self, item):
-        return item.author.user.full_name
+        return item.author.get_full_name()
 
     def item_pubdate(self, item):
         return item.publish_date

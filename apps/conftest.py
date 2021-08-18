@@ -43,7 +43,7 @@ def auth_user(client, django_user_model, test_password):
             email='wayne-lambert@example.com',
             password=test_password,
     )
-    client.login(username=user.username, password=test_password)
+    client.login(username=user.get_username(), password=test_password)
     return user
 
 
@@ -95,7 +95,7 @@ def li_sec_user(django_user_model, client, test_password, **kwargs):
         kwargs['last_name'] = 'Morse'
         kwargs['email'] = 'endeavour-morse@example.com'
     user = django_user_model.objects.create_user(pk=3, **kwargs)
-    client.login(username=user.username, password=test_password)
+    client.login(username=user.get_username(), password=test_password)
     return user
 
 
