@@ -9,10 +9,14 @@
   Please enter the 6 digit token below in the field labelled <em>'Enter token from email...'</em>.<br /><br />
 
   <div style="background-color:cyan; text-align:center; width:150px; border:1px solid blue; font-size:30px;">
-    <div class="strong">{{ token }}</div>
+    <div class="strong">
+    {% if setup %}{{ token }}{% else %}{{ token.challenge_token }}{% endif %}
+    </div>
   </div>
 
-  <h4>This code expires in 5 minutes.</h4> If you didn't request this, please <a href="mailto:admin@waynelambert.dev">contact us</a>.
+  <h4>This code expires in 5 minutes.</h4>
+
+  If you didn't request this, please <a href="mailto:admin@waynelambert.dev">contact us</a>.
   <br /><br />
   Many thanks,<br /><br />
 
