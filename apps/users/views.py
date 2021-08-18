@@ -229,7 +229,7 @@ class UserSetupEmailTokenView(TemplateView):
         email = self.request.user.email.strip()
         domain = email.split('@')[-1]
         context['form'] = EmailTokenSubmissionForm(self.request.POST or None)
-        context['user_email'] = f"{email[0:2]}{'**********@'}{domain}"
+        context['user_email'] = f'{email[0:2]}**********@{domain}'
         return context
 
     def get_email_token(self) -> EmailToken:
