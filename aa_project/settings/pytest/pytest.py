@@ -9,7 +9,7 @@ from aa_project.settings.base import (AWS_BASE_BUCKET_ADDRESS, BASE_DIR,
                                       TEMPLATES,)
 
 
-# Postgres Testing Database Configuration
+# Postgres Testing Database Configuration. Uses in-memory DB
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -24,13 +24,19 @@ DATABASES = {
     }
 }
 
+# Ensures tests are never sending actual emails
 EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'
 
+# Ensures tests have access to a password for tests from the environment
 PYTEST_TEST_PASSWORD = os.environ['PYTEST_TEST_PASSWORD']
 
+# Override back to default storage since tests do not run `collectstatic`
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# Eliminates warning about missing staticfiles directory
 WHITENOISE_AUTOREFRESH = True
 
-
+# A less secure password hasher used for testing to enable faster test runs
 class SimplePasswordHasher(BasePasswordHasher):
     """
     A simple password hasher which is deliberately insecure since we do
