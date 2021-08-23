@@ -86,7 +86,7 @@ class EmailToken(models.Model):
 
     challenge_email_address = models.EmailField()
     challenge_token = encrypt(models.CharField(
-        max_length=40, default=random_hex, validators=[token_validator]))
+        max_length=255, default=random_hex, validators=[token_validator]))
     challenge_generation_timestamp = models.DateTimeField(
         null=True, blank=True, auto_now_add=True, editable=False)
     challenge_expiration_timestamp = models.DateTimeField(
