@@ -6,5 +6,7 @@ build:
     web: Dockerfile
 release:
   image: web
+  command:
+    - python manage.py migrate
 run:
-  web: gunicorn aa_project.wsgi
+  web: gunicorn aa_project.wsgi --workers 2 --log-file -
