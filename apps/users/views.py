@@ -12,6 +12,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic.edit import FormView
 
 from shapeshifter.views import MultiModelFormView
 from two_factor.forms import AuthenticationTokenForm
@@ -214,8 +215,9 @@ class UserSetupEmailView(TemplateView):
         return redirect(self.success_url)
 
 
-class UserSetupEmailTokenView(TemplateView):
+class UserSetupEmailTokenView(FormView):
     template_name = 'two_factor/setup_email_token.html'
+    form_class = EmailTokenSubmissionForm
     success_url = reverse_lazy(settings.LOGIN_REDIRECT_URL)
 
     def get_context_data(self, **kwargs) -> Dict[str, Any]:
@@ -227,18 +229,13 @@ class UserSetupEmailTokenView(TemplateView):
         context = super().get_context_data(user=self.request.user, **kwargs)
         email = self.request.user.email.strip()
         domain = email.split('@')[-1]
-        context['form'] = EmailTokenSubmissionForm(self.request.POST or None)
-        context['user_first_name'] = self.request.user.first_name.title()
+        context['user_first_name'] = self.request.user.get_short_name()
         context['redacted_user_email'] = f"{email[0:2]}**********@{domain}"
         return context
 
     def get_email_token(self) -> EmailToken:
         """ Retrieves the latest email token from the DB for the user """
         return EmailToken.objects.filter(user_id=self.request.user.id).latest('id')
-
-    def get_challenge_returned(self, form) -> str:
-        """ Returns the challenge token input by the user """
-        return form.data['challenge_token_returned']
 
     def does_challenge_pass(self, token_returned) -> bool:
         """ Evaluates whether the token input passes the challenge """
@@ -297,9 +294,9 @@ class UserSetupEmailTokenView(TemplateView):
             )
             messages.add_message(self.request, messages.INFO, mark_safe(msg))
 
-    def post(self, request, *args, **kwargs):
-        form = EmailTokenSubmissionForm(self.request.POST)
-        token_returned = self.get_challenge_returned(form)
+    def form_valid(self, form):
+        super().form_valid(form)
+        token_returned = form.cleaned_data['challenge_token_returned']
         challenge_passes = self.does_challenge_pass(token_returned)
         email_token = self.get_email_token()
         if challenge_passes and email_token.is_challenge_within_expiry:

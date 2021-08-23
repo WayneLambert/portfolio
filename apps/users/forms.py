@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from two_factor.forms import TOTPDeviceForm
 from two_factor.utils import totp_digits
 
-from apps.users.models import EmailToken, Profile
+from apps.users.models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
@@ -97,16 +97,11 @@ class UserTOTPDeviceForm(TOTPDeviceForm):
         }
 
 
-class EmailTokenSubmissionForm(forms.ModelForm):
+class EmailTokenSubmissionForm(forms.Form):
     challenge_token_returned = forms.CharField(label=_(""))
 
-    class Meta:
-        model = EmailToken
-        fields = ['challenge_token_returned', ]
-
-    def __init__(self, user, *args, **kwargs):
-        self.user = user
-        super().__init__(user, *args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
 
         self.helper = FormHelper()
         self.helper.form_id = 'challenge-token-returned'
