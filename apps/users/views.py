@@ -15,7 +15,6 @@ from django.views.generic import CreateView, DetailView, TemplateView
 
 from shapeshifter.views import MultiModelFormView
 from two_factor.forms import AuthenticationTokenForm
-from two_factor.utils import default_device
 from two_factor.views.core import LoginView, SetupView
 from users.mixins import TwoFactorAuthUserMixin
 from users.utils import generate_token, get_challenge_expiration_timestamp
