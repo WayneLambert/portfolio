@@ -43,6 +43,10 @@ class SocialMedia:
     def email_me_link():
         return "mailto:contact@waynelambert.dev"
 
+    @register.simple_tag
+    def email_me_text():
+        return "contact@waynelambert.dev"
+
 
 class LinkGenerator:
     """
