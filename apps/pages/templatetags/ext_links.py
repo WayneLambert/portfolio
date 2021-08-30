@@ -103,17 +103,17 @@ class Scraping:
     @register.simple_tag(name='scraping_gettysburg_source_code_link')
     def gettysburg_source_code():
         scraping_code_url = LinkGenerator.github_url(type='code', app='scraping')
-        return f"{scraping_code_url}{'/gettysburg.py'}"
+        return f'{scraping_code_url}/gettysburg.py'
 
     @register.simple_tag(name='scraping_churchill_source_code_link')
     def churchill_source_code():
         scraping_code_url = LinkGenerator.github_url(type='code', app='scraping')
-        return f"{scraping_code_url}{'/churchill.py'}"
+        return f'{scraping_code_url}/churchill.py'
 
     @register.simple_tag(name='scraping_referendum_source_code_link')
     def referendum_source_code():
         scraping_code_url = LinkGenerator.github_url(type='code', app='scraping')
-        return f"{scraping_code_url}{'/referendum.py'}"
+        return f'{scraping_code_url}/referendum.py'
 
     @register.simple_tag(name='scraping_sample_ref_results_link')
     def sample_referendum_results():
@@ -124,7 +124,7 @@ class TextAnalysis:
     @register.simple_tag(name='text_analysis_views_source_code_link')
     def views_source_code():
         scraping_code_url = LinkGenerator.github_url(type='code', app='text_analysis')
-        return f"{scraping_code_url}{'/views.py'}"
+        return f'{scraping_code_url}/views.py'
 
 
 class DataScience:
