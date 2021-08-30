@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = [
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_totp',
     'two_factor',
+    'axes',
 ]
 
 # Project Apps
@@ -75,6 +76,7 @@ MIDDLEWARE = [
     'django_otp.middleware.OTPMiddleware',  # Third party
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',  # Third party
 ]
 
 # Project's root URL configuration
@@ -148,8 +150,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Authentication backends setup for Django Guardian
 AUTHENTICATION_BACKENDS = (
+    'axes.backends.AxesBackend',  # Third party
     'django.contrib.auth.backends.ModelBackend',
-    'guardian.backends.ObjectPermissionBackend',
+    'guardian.backends.ObjectPermissionBackend',  # Third party
 )
 
 

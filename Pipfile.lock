@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f7ead5aced708e7a935bdbe2d34dacec4c25bbce634eb83b68918bf1f29d8ba8"
+            "sha256": "e4f29c81cd1cce0674377ca4bd636d15d50bca7b90e2e81e04eabf95929eb85a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -160,6 +160,14 @@
             ],
             "version": "==1.0.4"
         },
+        "django-axes": {
+            "hashes": [
+                "sha256:1c1282f2db7f4c24bd54e3b1fa4e5a7d492a48db74e799cf7aa541e0fae138a7",
+                "sha256:9a9515aca815972784750bcd3e9c467993ec24dc2732de09209b3fc045962989"
+            ],
+            "index": "pypi",
+            "version": "==5.21.0"
+        },
         "django-bootstrap4": {
             "hashes": [
                 "sha256:aa8a9cb5ab27cfae52a27d377a0401af268d0e4b91a5f8e660546464582cc010",
@@ -207,6 +215,14 @@
             ],
             "index": "pypi",
             "version": "==2.4.0"
+        },
+        "django-ipware": {
+            "hashes": [
+                "sha256:753f8214a16ccaac54ea977349a96e37b582a28a54065e00c1c46d530862c85e",
+                "sha256:a18820ea2b98ff3f87b7530eb6346f5feb65d18e89397606aacc098fa7b93db2"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
+            "version": "==3.0.7"
         },
         "django-otp": {
             "hashes": [
