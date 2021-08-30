@@ -39,6 +39,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.cache.CachePanel',
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.history.HistoryPanel',
     'debug_toolbar.panels.profiling.ProfilingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
