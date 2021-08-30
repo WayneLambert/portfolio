@@ -83,19 +83,19 @@
           </div>
         {% endif %}
 
-      <!-- Messages block -->
-      {% if messages %}
-        <div class="messages mt-2">
-          {% for message in messages %}
-            <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-              <p class="small">{{message}}</p>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          {% endfor %}
-        </div>
-      {% endif %}
+        <!-- Messages block -->
+        {% if messages %}
+          <div class="messages mt-2">
+            {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                <p class="small">{{ message }}</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
 
       </div>
     </div>

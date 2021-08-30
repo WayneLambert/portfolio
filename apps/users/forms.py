@@ -20,20 +20,11 @@ class UserRegisterForm(UserCreationForm):
     def clean_username(self):
         return self.cleaned_data['username'].casefold()
 
-    def clean_email(self):
-        return self.cleaned_data['email']
-
     def clean_first_name(self):
         return self.cleaned_data['first_name'].title()
 
     def clean_last_name(self):
         return self.cleaned_data['last_name'].title()
-
-    def clean_password1(self):
-        return self.cleaned_data['password1']
-
-    def clean_password2(self):
-        return self.cleaned_data['password2']
 
 
 class UserUpdateForm(forms.ModelForm):
@@ -71,8 +62,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class UserTOTPDeviceForm(TOTPDeviceForm):
-
-    token = forms.IntegerField(label=_("Token"), min_value=0, max_value=int('9' * totp_digits()))
+    """ Used during the setup of the QR Code """
 
     def __init__(self, key, user, metadata=None, **kwargs):
         super().__init__(self, key, user, **kwargs)
@@ -87,30 +77,35 @@ class UserTOTPDeviceForm(TOTPDeviceForm):
 
         self.helper = FormHelper()
         self.fields['token'].label = False
+        extra_attrs = {
+            "class": "login100-form validate-form textinput textInput form-control",
+            "title": "",
+            "placeholder": "Enter token from authenticator app...",
+        }
+        self.fields["token"].widget.attrs.update(extra_attrs)
+
+
+class EmailTokenSubmissionForm(forms.Form):
+    """ Used during the setup or submission of an email token """
+
+    MIN_TOKEN_VALUE = 0
+    MAX_TOKEN_VALUE = 999_999
+
+    token = forms.IntegerField(min_value=MIN_TOKEN_VALUE, max_value=MAX_TOKEN_VALUE)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.helper = FormHelper()
+        self.helper.form_id = 'email-token-submission'
+        self.fields['token'].label = False
         self.fields['token'].widget.attrs={
             'autofocus': 'autofocus',
             'inputmode': 'numeric',
             'autocomplete': 'one-time-code',
             'class': 'form-control',
             'title': '',
-            'placeholder': 'Enter token from authenticator app...',
-        }
-
-
-class EmailTokenSubmissionForm(forms.Form):
-    challenge_token_returned = forms.CharField(label=_(""))
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.helper = FormHelper()
-        self.helper.form_id = 'challenge-token-returned'
-        self.fields['challenge_token_returned'].label = False
-        self.fields['challenge_token_returned'].widget.attrs={
-            'autofocus': 'autofocus',
-            'inputmode': 'numeric',
-            'autocomplete': 'one-time-code',
-            'class': 'form-control',
-            'title': '',
             'placeholder': 'Enter token from email...',
+            'min': self.MIN_TOKEN_VALUE,
+            'max': self.MAX_TOKEN_VALUE,
         }

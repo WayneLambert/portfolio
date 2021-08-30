@@ -4,9 +4,6 @@ from django.utils.text import slugify
 
 import pytest
 
-from apps.users.models import Profile
-
-
 pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 

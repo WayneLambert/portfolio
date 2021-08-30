@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import auth, messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.hashers import check_password
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.mail.message import EmailMultiAlternatives
 from django.shortcuts import get_object_or_404, redirect
@@ -67,19 +68,21 @@ class UserLoginView(LoginView):
         ('token', AuthenticationTokenForm),
     )
 
-    def add_user_does_not_exist_message(self):
+    def _add_incorrect_password_message(self):
+        """ Constructs a message for the UI """
+        html_msg = (
+            "Please enter a correct username and password.<br /><br />" +
+            "Note that both fields may be case-sensitive."
+        )
+        messages.add_message(self.request, messages.INFO, mark_safe(html_msg))
+
+    def _add_user_does_not_exist_message(self):
         """ Constructs a message for the UI """
         html_msg = (
             "The username you've attempted to log in with does not exist.<br /><br />" +
             "Please re-check the username and try again."
         )
         messages.add_message(self.request, messages.INFO, mark_safe(html_msg))
-
-    def authenticate_user(self, user):
-        """ Manually authenticates the user """
-        auth.authenticate(username=user.get_username(), password=user.password)
-        backend = 'django.contrib.auth.backends.ModelBackend'
-        auth.login(self.request, user=user, backend=backend)
 
     def retrieve_token_from_db(self, user) -> EmailToken:
         """ Retrieves the latest email token for the user from the DB """
@@ -109,40 +112,83 @@ class UserLoginView(LoginView):
         msg.mixed_subtype = 'related'
         msg.send()
 
+    def _get_credentials(self, user) -> Dict[str, Any]:
+        """ Gets the credentials of the user being attempted """
+        return {
+            'username': user.get_username(),
+            'password': self.request.POST['auth-password'],
+        }
+
+    def is_password_correct(self, user, credentials) -> bool:
+        """ Checks the password entered by the user passes authentication check """
+        return bool(check_password(credentials['password'], user.password))
+
+    def authenticate_user(self, user):
+        """
+        Manually authenticates the user or calls for the creation of
+        an incorrect password message
+        """
+        credentials = self._get_credentials(user)
+        password_valid = self.is_password_correct(user, credentials)
+        if not password_valid and self.request.user.is_anonymous:
+            self._add_incorrect_password_message()
+        return auth.authenticate(username=credentials['username'], password=credentials['password'])
+
+
+    def login_user(self, user):
+            backend = 'django.contrib.auth.backends.ModelBackend'
+            auth.login(self.request, user=user, backend=backend)
+
+    def handle_email_auth_user(self, user):
+        """ Handles the actions for processing an email authenticated user """
+        user_passes_auth = self.authenticate_user(user=user)
+        if user_passes_auth:
+            self.login_user(user=user)
+            token = self.retrieve_token_from_db(user)
+            self.email_two_factor_token(user, token)
+            return redirect('blog:users:setup_email_token')
+        return redirect(self.request.path_info)
+
     def post(self, *args, **kwargs):
-        """ Processes POST request in accordance with documented scenarios """
+        """
+        Processes POST request in accordance with documented scenarios.
+        Accounts for the step within the login wizrad implemented by the
+        Django Two-Factor Auth package.
+
+        Where the user uses the token method, the Django Two-Factor Auth
+        package handles implementation. Where the user uses email, the
+        project code handles its implementation.
+        """
         current_step = self.request.POST['user_login_view-current_step']
 
         if current_step == 'auth':
             username = self.request.POST['auth-username'].strip()
 
-            # Scenario 1: The user does not exist
+            # Scenario 1: The user does not exist in the DB
             try:
                 user = get_user_model().objects.get(username=username)
             except get_user_model().DoesNotExist:
-                self.add_user_does_not_exist_message()
+                self._add_user_does_not_exist_message()
                 return redirect(self.request.path_info)
 
-            # Scenario 2: The user exists but is not set up for 2FA at all
+            # Scenario 2: The user exists but is not set up for valid 2FA at all.
+            # This includes users that now have an expired email token
             if not user.profile.is_two_factor_authenticated:
-                self.authenticate_user(user)
+                super().post(*args, **kwargs)
+                self.authenticate_user(user=user)
                 return redirect(self.two_factor_setup_url)
 
             # Scenario 3: The user exists and is using the device token method of 2FA
             elif user.profile.is_two_factor_auth_by_token:
+                self.authenticate_user(user=user)
                 return super().post(*args, **kwargs)
 
-            # Scenario 4: The user exists and is attempting to 2FA with an expired email token
-            elif not user.user_email_tokens.latest('id').is_token_within_expiry:
-                self.authenticate_user(user)
-                return redirect(self.two_factor_setup_url)
-
-            # Scenario 5: The user is authenticating with an unexpired token
+            # Scenario 4: The user is authenticating with an unexpired email token
             elif user.profile.is_two_factor_auth_by_email:
-                token = self.retrieve_token_from_db(user)
-                self.email_two_factor_token(user, token)
-                self.authenticate_user(user)
-                return redirect('blog:users:setup_email_token')
+                return self.handle_email_auth_user(user)
+
+        # If at the token step of the login wizard and the user uses the token method,
+        # enable the Django Two-Factor Auth package to handle
         elif current_step == 'token':
             user_pk = self.request.session['wizard_user_login_view']['user_pk']
             user = get_user_model().objects.get(pk=user_pk)
@@ -296,7 +342,7 @@ class UserSetupEmailTokenView(FormView):
 
     def form_valid(self, form):
         super().form_valid(form)
-        token_returned = form.cleaned_data['challenge_token_returned']
+        token_returned = str(form.cleaned_data['token'])
         challenge_passes = self.does_challenge_pass(token_returned)
         email_token = self.get_email_token()
         if challenge_passes and email_token.is_challenge_within_expiry:
