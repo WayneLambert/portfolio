@@ -73,13 +73,12 @@ class Profile(models.Model):
         else:
             challenge_completed = user_email_token.challenge_completed
             token_within_expiry = user_email_token.is_token_within_expiry
-            if challenge_completed and token_within_expiry:
-                return True
+            return bool(challenge_completed and token_within_expiry)
 
     @property
     def is_two_factor_authenticated(self) -> bool:
         """" Returns whether user is authenticated by either token or email """
-        return self.is_two_factor_auth_by_token or self.is_two_factor_auth_by_email
+        return bool(self.is_two_factor_auth_by_token or self.is_two_factor_auth_by_email)
 
 
 class EmailToken(models.Model):

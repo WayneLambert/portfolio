@@ -55,9 +55,12 @@ SHELL_PLUS_IMPORTS = [
     'import os',
     'import datetime',
     'import re',
+    'import random',
+    'import math',
     'import requests',
     'from bs4 import BeautifulSoup',
     'from rich import inspect, pretty, print',
+    'from rich.console import Console'
 ]
 
 # Logging Configuration (including colorised output from Rich)

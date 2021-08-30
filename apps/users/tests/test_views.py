@@ -9,8 +9,11 @@ import pytest
 import apps.helpers as apps_helpers
 
 from apps.users.models import Profile
-from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
+from apps.users.views import (ProfileUpdateView, ProfileView, UserLoginView,
+                              UserRegisterView,)
 
+
+pytestmark = pytest.mark.django_db(reset_sequences=True)
 
 class TestUserRegisterView:
 
@@ -30,7 +33,6 @@ class TestUserRegisterView:
         response = UserRegisterView.as_view()(request)
         assert response.status_code == 200, 'Should return an `OK` status code'
 
-    @pytest.mark.django_db(reset_sequences=True)
     def test_form_valid(self, rf, django_user_model, sample_user_data):
         """
         Asserts that a form with valid data is considered valid and
@@ -44,21 +46,6 @@ class TestUserRegisterView:
         assert response.status_code == 302, 'Should be redirected'
         assert '/blog/' in response.url, 'Should redirect to `blog` home screen'
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
-
-    def test_form_invalid(self, rf, django_user_model, sample_user_data):
-        """
-        Asserts that a found second instance of the same username
-        within the database returns `True`
-        """
-        django_user_model.objects.create(username='wayne-lambert')
-        assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
-        kwargs = sample_user_data
-        request = rf.post(self.path, kwargs)
-        apps_helpers.add_session_and_messages_middlewares(request)
-        response = UserRegisterView.as_view()(request, **kwargs)
-        assert response.status_code == 302, 'Should be redirected'
-        assert '/register/' in response.url, 'Should redirect to `register` screen'
-        assert Profile.objects.count() == 2, 'Should still have 2 objects in the database'
 
 
 class TestProfileView:

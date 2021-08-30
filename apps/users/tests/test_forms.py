@@ -1,6 +1,7 @@
 import pytest
 
-from apps.users.forms import ProfileUpdateForm, UserRegisterForm, UserUpdateForm
+from apps.users.forms import (EmailTokenSubmissionForm, ProfileUpdateForm,
+                              UserRegisterForm, UserTOTPDeviceForm, UserUpdateForm,)
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
@@ -166,3 +167,46 @@ class TestProfileUpdateForm:
         """ Asserts correctly filled in form is valid """
         form = ProfileUpdateForm(data=self.good_data_with_image())
         assert form.is_valid(), 'Should be valid'
+
+
+class TestUserTOTPDeviceForm:
+
+    def test_token_field_contains_extra_attrs(self, device_auth_user):
+        """
+        Asserts token field of the form includes the extra attrs. Other
+        form functionality does not need to be tested because the
+        form is a subclass of the Two Factor Auth package
+        """
+        key = device_auth_user.totpdevice_set.latest('id').key
+        form = UserTOTPDeviceForm(key=key, user=device_auth_user)
+        extra_attrs = ("class", "title", "placeholder", )
+        token_field_attrs = form.fields["token"].widget.attrs
+        for extra_attr in extra_attrs:
+            assert extra_attr in token_field_attrs, 'Each attr should be present'
+        assert len(token_field_attrs) == 8, 'Should be 8 attrs. 5 from package and 3 added'
+
+
+class TestEmailTokenSubmissionForm:
+
+    good_data = {'token': 123456}
+    bad_data = {'token': 'B@dT0k3n'}
+
+    def test_form_is_valid(self):
+        """ Asserts correctly filled in form is valid """
+        form = EmailTokenSubmissionForm(data=self.good_data)
+        assert form.is_valid(), 'Should be valid'
+
+    def test_form_is_invalid_with_string_submission(self):
+        """ Asserts incorrectly filled in form is invalid """
+        form = EmailTokenSubmissionForm(data=self.bad_data)
+        assert not form.is_valid(), 'Should be invalid'
+
+    def test_token_field_contains_desired_attrs(self):
+        """ Asserts token field of the form includes the set attrs. """
+        form = EmailTokenSubmissionForm()
+        set_attrs = (
+            "autofocus", "inputmode", "autocomplete", "class", "title", "placeholder", "min", "max", )
+        token_field_attrs = form.fields["token"].widget.attrs
+        for set_attr in set_attrs:
+            assert set_attr in token_field_attrs, 'Each attr should be present'
+        assert len(token_field_attrs) == 8, 'Should be 8 attrs set'
