@@ -48,8 +48,6 @@ class TestUserRegisterView:
         assert Profile.objects.count() == 2, 'Should have 2 objects in the database'
 
 
-
-
 class TestProfileView:
 
     @pytest.mark.django_db(reset_sequences=True)
