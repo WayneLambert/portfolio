@@ -344,7 +344,7 @@ class UserSetupEmailTokenView(FormView):
 
     def form_valid(self, form):
         super().form_valid(form)
-        token_returned = str(form.cleaned_data['token'])
+        token_returned = str(form.cleaned_data['token']).zfill(6)
         challenge_passes = self.does_challenge_pass(token_returned)
         email_token = self.get_email_token()
         if challenge_passes and email_token.is_challenge_within_expiry:
