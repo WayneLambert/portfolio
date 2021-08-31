@@ -131,8 +131,10 @@ class UserLoginView(LoginView):
         credentials = self._get_credentials(user)
         password_valid = self.is_password_correct(user, credentials)
         if not password_valid and self.request.user.is_anonymous:
-            self._add_incorrect_password_message()
-        return auth.authenticate(username=credentials['username'], password=credentials['password'])
+            return self._add_incorrect_password_message()
+        username = credentials['username']
+        password = credentials['password']
+        return auth.authenticate(request=self.request, username=username, password=password)
 
 
     def login_user(self, user):
@@ -342,7 +344,7 @@ class UserSetupEmailTokenView(FormView):
 
     def form_valid(self, form):
         super().form_valid(form)
-        token_returned = str(form.cleaned_data['token'])
+        token_returned = str(form.cleaned_data['token']).zfill(6)
         challenge_passes = self.does_challenge_pass(token_returned)
         email_token = self.get_email_token()
         if challenge_passes and email_token.is_challenge_within_expiry:

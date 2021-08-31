@@ -1,9 +1,9 @@
 # -- PYLINT CONFIG ----------------------------------------------------------------------
 
 [tool.pylint.master]
-jobs="0"    # Auto-detect the number of processors
-fail-under="10"
-ignore-patterns='''
+jobs = "0"  # Auto-detect the number of processors
+fail-under = "10"
+ignore-patterns = '''
   \.eggs
   |_build
   |\.git
@@ -16,14 +16,14 @@ ignore-patterns='''
   |conf.py
   |dist
 '''
-persistent="no"
-load-plugins= ["pylint_django"]
-limit-inference-results="100"
-suggestion-mode="yes"
-unsafe-load-any-extension="no"
-extension-pkg-whitelist=""
-exit-zero="no"
-from-stdin="no"
+persistent = "no"
+load-plugins = ["pylint_django"]
+limit-inference-results = "100"
+suggestion-mode = "yes"
+unsafe-load-any-extension = "no"
+extension-pkg-whitelist = ""
+exit-zero = "no"
+from-stdin = "no"
 
 [tool.pylint.message_control]
 enable = [
