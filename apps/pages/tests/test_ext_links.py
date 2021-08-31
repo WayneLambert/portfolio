@@ -73,9 +73,10 @@ class TestLinkGenerator:
 @pytest.mark.slow(reason='Sends a GET request')
 class TestContacts:
     @staticmethod
-    def google_maps_embed_link():
+    def test_google_maps_embed_link():
         link = requests.get(Contacts.google_maps_embed_link())
         assert link.status_code == 200, 'Should return an `OK` status'
+        assert b'B15 3PA' in link.content, 'Should contain the postcode of B15 3PA'
 
 
 @pytest.mark.slow(reason='Sends a GET request to each link')
