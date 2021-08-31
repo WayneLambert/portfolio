@@ -3,7 +3,7 @@ name: Run Django Tests
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   test:
@@ -30,7 +30,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         with:
-          ref: "refs/heads/master"
+          ref: "refs/heads/main"
 
       - name: Debug Script
         uses: hmarr/debug-action@v1.0.0
@@ -42,25 +42,28 @@ jobs:
 
       - name: Add Environment Variables to .env File
         run: |
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo DJANGO_ADMIN_LOGIN_PATH=${{ secrets.DJANGO_ADMIN_LOGIN_PATH }} >> .env
-          echo SES_ACCESS_KEY=${{ secrets.SES_ACCESS_KEY }} >> .env
-          echo SES_SECRET_KEY=${{ secrets.SES_SECRET_KEY }} >> .env
-          echo EMAIL_HOST=${{ secrets.EMAIL_HOST }} >> .env
-          echo AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} >> .env
-          echo AWS_BASE_BUCKET_ADDRESS=${{ secrets.AWS_BASE_BUCKET_ADDRESS }} >> .env
           echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
-          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET }} >> .env
-          echo RECAPTCHA_PUBLIC_KEY=${{ secrets.RECAPTCHA_PUBLIC_KEY }} >> .env
-          echo RECAPTCHA_PRIVATE_KEY=${{ secrets.RECAPTCHA_PRIVATE_KEY }} >> .env
-          echo PYTEST_TEST_PASSWORD=${{ secrets.PYTEST_TEST_PASSWORD }} >> .env
+          echo AWS_BASE_BUCKET_ADDRESS=${{ secrets.AWS_BASE_BUCKET_ADDRESS }} >> .env
+          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
+          echo AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} >> .env
+          echo CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} >> .env
+          echo DEFAULT_FROM_EMAIL_SES=${{ secrets.DEFAULT_FROM_EMAIL_SES }} >> .env
+          echo DJANGO_ADMIN_LOGIN_PATH=${{ secrets.DJANGO_ADMIN_LOGIN_PATH }} >> .env
+          echo EMAIL_HOST_PASSWORD_SES=${{ secrets.EMAIL_HOST_PASSWORD_SES }} >> .env
           echo EMAIL_HOST_SES=${{ secrets.EMAIL_HOST_SES }} >> .env
           echo EMAIL_HOST_USER_SES=${{ secrets.EMAIL_HOST_USER_SES }} >> .env
-          echo EMAIL_HOST_PASSWORD_SES=${{ secrets.EMAIL_HOST_PASSWORD_SES }} >> .env
-          echo DEFAULT_FROM_EMAIL_SES=${{ secrets.DEFAULT_FROM_EMAIL_SES }} >> .env
+          echo GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} >> .env
           echo OD_API_BASE_URL=${{ secrets.OD_API_BASE_URL }} >> .env
           echo OD_APPLICATION_ID=${{ secrets.OD_APPLICATION_ID }} >> .env
           echo OD_APPLICATION_KEY_1=${{ secrets.OD_APPLICATION_KEY_1 }} >> .env
+          echo PYTEST_TEST_PASSWORD=${{ secrets.PYTEST_TEST_PASSWORD }} >> .env
+          echo RECAPTCHA_PRIVATE_KEY=${{ secrets.RECAPTCHA_PRIVATE_KEY }} >> .env
+          echo RECAPTCHA_PUBLIC_KEY=${{ secrets.RECAPTCHA_PUBLIC_KEY }} >> .env
+          echo REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }} >> .env
+          echo REDIS_URL=${{ secrets.REDIS_URL }} >> .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+          echo SES_ACCESS_KEY=${{ secrets.SES_ACCESS_KEY }} >> .env
+          echo SES_SECRET_KEY=${{ secrets.SES_SECRET_KEY }} >> .env
 
       - name: Add Environment Variables to dev.env File
         run: |
@@ -74,7 +77,7 @@ jobs:
 
       - name: Install pipenv
         run: python -m pip install pipenv
-      
+
       - name: Install dependencies
         run: pipenv install --ignore-pipfile --deploy --system --dev
 
