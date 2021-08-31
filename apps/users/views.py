@@ -131,8 +131,10 @@ class UserLoginView(LoginView):
         credentials = self._get_credentials(user)
         password_valid = self.is_password_correct(user, credentials)
         if not password_valid and self.request.user.is_anonymous:
-            self._add_incorrect_password_message()
-        return auth.authenticate(username=credentials['username'], password=credentials['password'])
+            return self._add_incorrect_password_message()
+        username = credentials['username']
+        password = credentials['password']
+        return auth.authenticate(request=self.request, username=username, password=password)
 
 
     def login_user(self, user):
