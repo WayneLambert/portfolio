@@ -21,6 +21,8 @@ require an argument called `self`. Links are placed into categories for
 organisational purposes and to facilitate testing.
 """
 
+import os
+
 import pytest
 import requests
 
@@ -79,11 +81,12 @@ class TestContacts:
         assert b'B15 3PA' in link.content, 'Should contain the postcode of B15 3PA'
 
 
+@pytest.mark.skipif('GITHUB_RUN_ID' in os.environ, reason='Times out in GitHub Actions')
 @pytest.mark.slow(reason='Sends a GET request to each link')
 class TestCountdownLetters:
     @staticmethod
     def test_game_rules():
-        link = requests.get(CountdownLetters.game_rules())
+        link = requests.get(CountdownLetters.game_rules(), timeout=10)
         assert link.status_code == 200, 'Should return an `OK` status'
 
     @staticmethod
