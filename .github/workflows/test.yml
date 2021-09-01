@@ -1,4 +1,3 @@
-# Keep name as "Run Django Tests" as is used as conditional
 name: Run Django Tests
 
 on:
@@ -80,7 +79,7 @@ jobs:
 
           DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
 
-          SYSTEM_ENV: GITHUB_WORKFLOW
+          SYSTEM_ENV: GITHUB_RUN_ID
 
       - name: Upload Coverage Report to Codecov.io
         uses: codecov/codecov-action@v1
