@@ -25,7 +25,7 @@ DATABASES = {
 }
 
 # GitHub Actions Postgres
-if os.environ['CI'] == True:
+if os.environ['GITHUB_WORKFLOW'] == "Run Django Tests":
     DATABASES = {
         'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
