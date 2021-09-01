@@ -36,8 +36,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        with:
-          ref: "refs/heads/main"
 
       - name: Debug Script
         uses: hmarr/debug-action@v1.0.0
