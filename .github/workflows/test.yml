@@ -40,41 +40,6 @@ jobs:
         with:
           python-version: 3.9.6
 
-      - name: Add Environment Variables to .env File
-        run: |
-          echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
-          echo AWS_BASE_BUCKET_ADDRESS=${{ secrets.AWS_BASE_BUCKET_ADDRESS }} >> .env
-          echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
-          echo AWS_STORAGE_BUCKET_NAME=${{ secrets.AWS_STORAGE_BUCKET_NAME }} >> .env
-          echo CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} >> .env
-          echo DEFAULT_FROM_EMAIL_SES=${{ secrets.DEFAULT_FROM_EMAIL_SES }} >> .env
-          echo DJANGO_ADMIN_LOGIN_PATH=${{ secrets.DJANGO_ADMIN_LOGIN_PATH }} >> .env
-          echo EMAIL_HOST_PASSWORD_SES=${{ secrets.EMAIL_HOST_PASSWORD_SES }} >> .env
-          echo EMAIL_HOST_SES=${{ secrets.EMAIL_HOST_SES }} >> .env
-          echo EMAIL_HOST_USER_SES=${{ secrets.EMAIL_HOST_USER_SES }} >> .env
-          echo GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID }} >> .env
-          echo OD_API_BASE_URL=${{ secrets.OD_API_BASE_URL }} >> .env
-          echo OD_APPLICATION_ID=${{ secrets.OD_APPLICATION_ID }} >> .env
-          echo OD_APPLICATION_KEY_1=${{ secrets.OD_APPLICATION_KEY_1 }} >> .env
-          echo PYTEST_TEST_PASSWORD=${{ secrets.PYTEST_TEST_PASSWORD }} >> .env
-          echo RECAPTCHA_PRIVATE_KEY=${{ secrets.RECAPTCHA_PRIVATE_KEY }} >> .env
-          echo RECAPTCHA_PUBLIC_KEY=${{ secrets.RECAPTCHA_PUBLIC_KEY }} >> .env
-          echo REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }} >> .env
-          echo REDIS_URL=${{ secrets.REDIS_URL }} >> .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
-          echo SES_ACCESS_KEY=${{ secrets.SES_ACCESS_KEY }} >> .env
-          echo SES_SECRET_KEY=${{ secrets.SES_SECRET_KEY }} >> .env
-
-      - name: Add Environment Variables to dev.env File
-        run: |
-          echo DJANGO_SETTINGS_MODULE=${{ secrets.DJANGO_SETTINGS_MODULE }} >> dev.env
-
-      - name: Set Environment Variables for .env File
-        run: for var in `cat .env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
-
-      - name: Set Environment Variables for dev.env File
-        run: for var in `cat dev.env` ; do echo "::set-env name=${var%%=*}::${var##*=}" ; done
-
       - name: Install pipenv
         run: python -m pip install pipenv
 
@@ -84,6 +49,31 @@ jobs:
       - name: Run tests
         run: pytest --runslow --cache-clear --durations 20 --cov=./ --cov-report=xml
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_BASE_BUCKET_ADDRESS: ${{ secrets.AWS_BASE_BUCKET_ADDRESS }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_STORAGE_BUCKET_NAME: ${{ secrets.AWS_STORAGE_BUCKET_NAME }}
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          DEFAULT_FROM_EMAIL_SES: ${{ secrets.DEFAULT_FROM_EMAIL_SES }}
+          DJANGO_ADMIN_LOGIN_PATH: ${{ secrets.DJANGO_ADMIN_LOGIN_PATH }}
+          EMAIL_HOST_PASSWORD_SES: ${{ secrets.EMAIL_HOST_PASSWORD_SES }}
+          EMAIL_HOST_SES: ${{ secrets.EMAIL_HOST_SES }}
+          EMAIL_HOST_USER_SES: ${{ secrets.EMAIL_HOST_USER_SES }}
+          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
+          OD_API_BASE_URL: ${{ secrets.OD_API_BASE_URL }}
+          OD_APPLICATION_ID: ${{ secrets.OD_APPLICATION_ID }}
+          OD_APPLICATION_KEY_1: ${{ secrets.OD_APPLICATION_KEY_1 }}
+          PYTEST_TEST_PASSWORD: ${{ secrets.PYTEST_TEST_PASSWORD }}
+          RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
+          RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
+          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SES_ACCESS_KEY: ${{ secrets.SES_ACCESS_KEY }}
+          SES_SECRET_KEY: ${{ secrets.SES_SECRET_KEY }}
+
+          DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
+
           SYSTEM_ENV: GITHUB_WORKFLOW
 
       - name: Upload Coverage Report to Codecov.io
