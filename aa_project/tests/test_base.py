@@ -1,5 +1,7 @@
 import os
 
+import pytest
+
 from aa_project.settings import base
 
 
@@ -75,6 +77,7 @@ class TestTemplatesAreConfigured:
         assert os.path.join(base.APPS_DIR, 'users/templates/registration/') in temp_dirs
 
 
+@pytest.mark.skipif(os.environ['CI'] == True, reason='Different DB credentials in GitHub Actions')
 class TestDatabaseIsSecurelyConfigured:
     def test_secure_database_setup(self):
         assert base.DATABASES['default']['NAME'] == os.environ['DB_NAME']

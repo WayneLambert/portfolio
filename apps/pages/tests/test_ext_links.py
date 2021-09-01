@@ -83,7 +83,7 @@ class TestContacts:
 class TestCountdownLetters:
     @staticmethod
     def test_game_rules():
-        link = requests.get(CountdownLetters.game_rules())
+        link = requests.get(CountdownLetters.game_rules(), timeout=10)
         assert link.status_code == 200, 'Should return an `OK` status'
 
     @staticmethod
