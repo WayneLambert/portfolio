@@ -25,7 +25,7 @@ DATABASES = {
 }
 
 # GitHub Actions Postgres
-if os.environ['GITHUB_RUN_ID']:
+if 'GITHUB_RUN_ID' in os.environ:
     DATABASES = {
         'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',

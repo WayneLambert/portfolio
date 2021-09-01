@@ -81,7 +81,7 @@ class TestContacts:
         assert b'B15 3PA' in link.content, 'Should contain the postcode of B15 3PA'
 
 
-@pytest.mark.skipif(os.environ['GITHUB_RUN_ID'] == "False", reason='Times out in GitHub Actions')
+@pytest.mark.skipif('GITHUB_RUN_ID' in os.environ, reason='Times out in GitHub Actions')
 @pytest.mark.slow(reason='Sends a GET request to each link')
 class TestCountdownLetters:
     @staticmethod
