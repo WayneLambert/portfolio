@@ -79,7 +79,7 @@ jobs:
 
           DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
 
-          SYSTEM_ENV: GITHUB_WORKFLOW
+          SYSTEM_ENV: CI
 
       - name: Upload Coverage Report to Codecov.io
         uses: codecov/codecov-action@v1
