@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+      - develop
+      - ci
+  pull_request:
+    branches:
+      - main
+      - develop
+      - ci
 
 jobs:
   test:
@@ -14,9 +21,9 @@ jobs:
       postgres:
         image: postgres:11.9
         env:
-          POSTGRES_DB: 'portfolio_db'
-          POSTGRES_USER: 'wayne_lambert'
-          POSTGRES_PASSWORD: 'catgftitw'
+          POSTGRES_DB: 'github_actions'
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'postgres'
         ports:
           - "5432:5432"
         options:
