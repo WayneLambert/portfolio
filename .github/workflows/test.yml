@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+      - develop
+      - ci
+  pull_request:
+    branches:
+      - main
+      - develop
+      - ci
 
 jobs:
   test:
@@ -14,9 +21,9 @@ jobs:
       postgres:
         image: postgres:11.9
         env:
-          POSTGRES_DB: 'portfolio_db'
-          POSTGRES_USER: 'wayne_lambert'
-          POSTGRES_PASSWORD: 'catgftitw'
+          POSTGRES_DB: github_actions
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         ports:
           - "5432:5432"
         options:
@@ -29,8 +36,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        with:
-          ref: "refs/heads/main"
 
       - name: Debug Script
         uses: hmarr/debug-action@v1.0.0
@@ -74,7 +79,7 @@ jobs:
 
           DJANGO_SETTINGS_MODULE: ${{ secrets.DJANGO_SETTINGS_MODULE }}
 
-          SYSTEM_ENV: GITHUB_WORKFLOW
+          SYSTEM_ENV: GITHUB_RUN_ID
 
       - name: Upload Coverage Report to Codecov.io
         uses: codecov/codecov-action@v1
