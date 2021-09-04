@@ -17,7 +17,9 @@
             <tr>
               <td>
                 <div class="mb-1">
-                  <a class="theme-link font-weight-bolder" href="{% url 'blog:author_posts' post.author.username %}">
+                  <a href="{% url 'blog:author_posts' post.author.get_username %}"
+                     class="theme-link font-weight-bolder"
+                  >
                     {{ post.author.profile.display_name }}
                   </a>
                 </div>
