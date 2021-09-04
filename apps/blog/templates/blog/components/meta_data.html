@@ -5,14 +5,14 @@
     <tbody>
       <tr>
         <td>
-          <img class="rounded-circle article-img" src="{{ author.user.profile_picture.url }}" />
+          <img class="rounded-circle article-img" src="{{ author.profile.profile_picture.url }}" />
         </td>
         <td>
           <ul class="no-bullets">
             <!-- Author Name or Username -->
             <li>
-              <a class="theme-link" href="{% url 'blog:author_posts' author.username %}">
-                {{ author.user.display_name }}
+              <a class="theme-link" href="{% url 'blog:author_posts' author.get_username %}">
+                <strong>{{ author.profile.display_name }}</strong>
               </a>
             </li>
 
