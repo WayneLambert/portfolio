@@ -12,7 +12,7 @@ pytestmark = pytest.mark.django_db(reset_sequences=True)
     argvalues=[pytest.param('auth_user'), pytest.param('unauth_user')], indirect=True)
 class TestHomeView:
     def test_all_users_can_access(self, rf, all_users):
-        """ 
+        """
         Asserts authenticated and unauthenticated user can access
         complete list of posts
         """
@@ -31,7 +31,7 @@ class TestAuthorPostListView:
         Asserts authenticated and unauthenticated user can access
         list of posts written by another author
         """
-        author_username = pub_posts[0].author.username
+        author_username = pub_posts[0].author.get_username()
         kwargs = {'username': author_username}
         path = reverse('blog:author_posts', kwargs=kwargs)
         request = rf.get(path)
