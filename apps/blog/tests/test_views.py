@@ -110,7 +110,7 @@ class TestPostUpdateView:
         response = blog_views.PostUpdateView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should return `OK` status code by logged in author'
         assert '/login/?next=' in response.url, 'Should redirect to login page'
-        assert f"{pub_post.slug}{'/update'}" in response.url, 'Should redirect to login page'
+        assert f"{pub_post.slug}/update" in response.url, 'Should redirect to login page'
 
     def test_author_can_update(self, rf, pub_post):
         """ Asserts author can update the post """
