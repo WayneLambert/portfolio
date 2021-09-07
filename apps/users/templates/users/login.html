@@ -88,12 +88,30 @@
           <div class="messages mt-2">
             {% for message in messages %}
               <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-                <p class="small">{{ message }}</p>
+                <p {% if message.tags %} class="{{ message.tags }} signup-error-message small"{% endif %}>
+                  {{ message }}
+                </p>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
             {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Form Errors Handling -->
+        {% if wizard.form.errors and not messages %}
+          <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+            {% for key, value in wizard.form.errors.items %}
+              {% for validation_error in value.data %}
+                {% if validation_error.code == 'invalid_token' %}
+                  <p class="small no-bullets">{{ validation_error.message }}</p>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
         {% endif %}
 

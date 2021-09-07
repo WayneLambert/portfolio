@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
 from django.core.mail.message import EmailMultiAlternatives
 from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
@@ -31,8 +32,9 @@ class UserRegisterView(CreateView):
     form_class = UserRegisterForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('blog:users:setup')
-    USER_ALREADY_EXISTS_MSG = """
-        The username you've attempted to register with is already taken.
+    register_url = reverse_lazy('blog:users:register')
+    html_msg = """
+        The username you've attempted to register with is already taken.<br /><br />
         Perhaps you already have an account? If so, you can log in using
         the link below, or register using a alternative username.
     """
@@ -55,8 +57,8 @@ class UserRegisterView(CreateView):
 
     def form_invalid(self, form):
         if self.user_exists(form):
-            messages.error(self.request, message=self.USER_ALREADY_EXISTS_MSG)
-            return redirect('blog:users:register')
+            messages.error(self.request, mark_safe(self.html_msg))
+            return redirect(self.register_url)
 
 
 class UserLoginView(LoginView):
@@ -68,21 +70,21 @@ class UserLoginView(LoginView):
         ('token', AuthenticationTokenForm),
     )
 
-    def _add_incorrect_password_message(self):
-        """ Constructs a message for the UI """
-        html_msg = (
-            "Please enter a correct username and password.<br /><br />" +
-            "Note that both fields may be case-sensitive."
-        )
-        messages.add_message(self.request, messages.INFO, mark_safe(html_msg))
-
     def _add_user_does_not_exist_message(self):
         """ Constructs a message for the UI """
         html_msg = (
             "The username you've attempted to log in with does not exist.<br /><br />" +
             "Please re-check the username and try again."
         )
-        messages.add_message(self.request, messages.INFO, mark_safe(html_msg))
+        messages.info(self.request, mark_safe(html_msg))
+
+    def _add_incorrect_password_message(self):
+        """ Constructs a message for the UI """
+        html_msg = (
+            "Please enter a correct username and password.<br /><br />" +
+            "Note that both fields may be case-sensitive."
+        )
+        messages.error(self.request, mark_safe(html_msg))
 
     def retrieve_token_from_db(self, user) -> EmailToken:
         """ Retrieves the latest email token for the user from the DB """
@@ -116,7 +118,7 @@ class UserLoginView(LoginView):
         """ Gets the credentials of the user being attempted """
         return {
             'username': user.get_username(),
-            'password': self.request.POST['auth-password'],
+            'password': self.storage.request._post['auth-password'],
         }
 
     def is_password_correct(self, user, credentials) -> bool:
@@ -136,10 +138,10 @@ class UserLoginView(LoginView):
         password = credentials['password']
         return auth.authenticate(request=self.request, username=username, password=password)
 
-
     def login_user(self, user):
-            backend = 'django.contrib.auth.backends.ModelBackend'
-            auth.login(self.request, user=user, backend=backend)
+        """ Logs in the already authenticated user """
+        backend = 'django.contrib.auth.backends.ModelBackend'
+        auth.login(self.request, user=user, backend=backend)
 
     def handle_email_auth_user(self, user):
         """ Handles the actions for processing an email authenticated user """
@@ -154,17 +156,14 @@ class UserLoginView(LoginView):
     def post(self, *args, **kwargs):
         """
         Processes POST request in accordance with documented scenarios.
-        Accounts for the step within the login wizrad implemented by the
-        Django Two-Factor Auth package.
 
-        Where the user uses the token method, the Django Two-Factor Auth
-        package handles implementation. Where the user uses email, the
-        project code handles its implementation.
+        Where the user has opted for the device token method, the Django
+        Two-Factor Auth package handles implementation. Where the user
+        uses email, the project code handles it.
         """
-        current_step = self.request.POST['user_login_view-current_step']
 
-        if current_step == 'auth':
-            username = self.request.POST['auth-username'].strip()
+        if self.steps.current == 'auth':
+            username = self.storage.request._post['auth-username']
 
             # Scenario 1: The user does not exist in the DB
             try:
@@ -182,6 +181,7 @@ class UserLoginView(LoginView):
 
             # Scenario 3: The user exists and is using the device token method of 2FA
             elif user.profile.is_two_factor_auth_by_token:
+                self.storage.reset()
                 self.authenticate_user(user=user)
                 return super().post(*args, **kwargs)
 
@@ -191,7 +191,7 @@ class UserLoginView(LoginView):
 
         # If at the token step of the login wizard and the user uses the token method,
         # enable the Django Two-Factor Auth package to handle
-        elif current_step == 'token':
+        elif self.steps.current == 'token':
             user_pk = self.request.session['wizard_user_login_view']['user_pk']
             user = get_user_model().objects.get(pk=user_pk)
             if user.profile.is_two_factor_auth_by_token:
@@ -382,3 +382,23 @@ class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormV
     def get_success_url(self):
         username = self.request.user.get_username()
         return reverse('blog:users:profile', kwargs={'username': username})
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = 'users/password_reset_form.html'
+    email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject.txt'
+    success_url = reverse_lazy('blog:users:password_reset_done')
+
+
+class UserPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'users/password_reset_done.html'
+
+
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'users/password_reset_confirm.html'
+    success_url = reverse_lazy('blog:users:password_reset_complete')
+
+
+class UserPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name='users/password_reset_complete.html'
