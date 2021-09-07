@@ -6,7 +6,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth.views import LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView
+from django.contrib.auth.views import (PasswordResetCompleteView,
+                                       PasswordResetConfirmView, PasswordResetDoneView,
+                                       PasswordResetView,)
 from django.core.mail.message import EmailMultiAlternatives
 from django.shortcuts import get_object_or_404, redirect
 from django.template.loader import render_to_string
