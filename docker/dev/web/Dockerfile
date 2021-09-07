@@ -40,4 +40,4 @@ RUN pipenv install --system --ignore-pipfile --deploy --dev
 COPY . .
 
 # Bring up the Django development server
-CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8001" ]
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8001" ]
