@@ -1,4 +1,7 @@
-from aa_project.settings.base import *  # noqa
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+
+from aa_project.settings.base import *
 
 
 DEBUG = True
