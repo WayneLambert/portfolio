@@ -2,21 +2,33 @@
 FROM python:3.9.6-buster
 
 # Add metadata to the image
-LABEL dev.waynelambert.author="Wayne Lambert <contact@waynelambert.dev>" \
-    dev.waynelambert.version="2021.08" \
+LABEL dev.waynelambert.author="Wayne Lambert <admin@waynelambert.dev>" \
+    dev.waynelambert.version="2021.09" \
     dev.waynelambert.description="Docker image for web service"
 
 # Create and set working directory
 WORKDIR /code
 
-# Install pipenv from PyPI
-RUN pip install --upgrade pip && pip install pipenv
+# Upgrade pip
+RUN pip install --upgrade pip
 
-# Copy local files to container
-COPY Pipfile Pipfile.lock /code/
+# Set the version of Poetry
+ARG POETRY_VERSION=1.1.8
 
-# Install project dependencies using exact versions in Pipfile.lock
-RUN pipenv install --system --ignore-pipfile --deploy
+# Install Poetry
+RUN pip install poetry==${POETRY_VERSION}
+
+# Set Poetry in the container's $PATH
+ENV PATH = "${PATH}:/root/.poetry/bin"
+
+# Copy the package management files into the container
+COPY pyproject.toml poetry.lock ./
+
+# Do not create a virtual environment
+RUN poetry config virtualenvs.create false
+
+# Install Poetry packages and dependencies (excluding dev packages)
+RUN poetry install --no-dev --no-interaction --no-ansi
 
 # Copy local source code directory to container's source code directory
 COPY . .
