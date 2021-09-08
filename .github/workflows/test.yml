@@ -47,7 +47,7 @@ jobs:
         run: python -m pip install poetry
 
       - name: Install dependencies with Poetry
-        run: poetry install --no-dev --no-interaction --no-ansi
+        run: poetry install --no-interaction --no-ansi
 
       - name: Run tests
         run: pytest --runslow -n 0 --cache-clear --durations 20 --cov=./ --cov-report=xml
