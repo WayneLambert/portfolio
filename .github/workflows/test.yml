@@ -50,7 +50,7 @@ jobs:
         run: poetry install --no-interaction --no-ansi
 
       - name: Run tests
-        run: pytest --runslow -n 0 --cache-clear --durations 20 --cov=./ --cov-report=xml
+        run: pytest --runslow --cache-clear --durations 20 --cov=./ --cov-report=xml
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_BASE_BUCKET_ADDRESS: ${{ secrets.AWS_BASE_BUCKET_ADDRESS }}
