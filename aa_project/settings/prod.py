@@ -1,6 +1,9 @@
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+
 import dj_database_url
 
-from aa_project.settings.base import *  # noqa
+from aa_project.settings.base import *
 
 
 DEBUG = False

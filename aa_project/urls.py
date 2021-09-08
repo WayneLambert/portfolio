@@ -1,17 +1,3 @@
-""" Project level URLs
-
-Includes config for the following:
-
-- Custom error pages
-- Through route URLs to third party packages
-- Through route URLs to the project's app's repspective URL
-  configurations
-- Customised path to the Django admin area and admin password reset
-  functionality
-- Sitemap configuration
-- Django Debug Toolbar configuration
-"""
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -22,8 +8,9 @@ from django.urls import include, path
 from two_factor.urls import urlpatterns as tf_urls
 
 from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
-from apps.blog.sitemap import CategorySitemap, PostSitemap
-from apps.pages.views import BadRequestView, PageNotFoundView, PermissionDeniedView
+
+from blog.sitemap import CategorySitemap, PostSitemap
+from pages.views import BadRequestView, PageNotFoundView, PermissionDeniedView
 
 
 handler400 = BadRequestView.as_view()
