@@ -17,13 +17,9 @@
 >
 > A quick note on PEP8. The code in this portfolio does not adhere to
 > the guideline of 79 characters per line. My approach for personal
-> projects is to work to a flexible limit of 89 and a hard limit of 99
+> projects is to work to a flexible limit of 89 and a harder limit of 99
 > characters. Docstrings are wrapped at 72 characters.
 
-[![Version](https://img.shields.io/pypi/v/poetry.svg)](https://img.shields.io/pypi/v/poetry.svg)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/djangorestframework)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytest)
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 ![Test](https://github.com/WayneLambert/portfolio/workflows/Test/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
@@ -93,8 +89,7 @@ Explore fascinating datasets analysed using Python's Data Science libraries.
 
 ## Contact Me
 
-You can contact me at [contact@waynelambert.dev](mailto:contact@waynelambert.dev) or by using the
-[contact form](https://waynelambert.dev/contact/) on the site.
+You can contact me at [admin@waynelambert.dev](mailto:admin@waynelambert.dev) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
 
 If you'd like to find out more about me, you can also [read my 'About
 Me' page](https://waynelambert.dev/about-me/).
