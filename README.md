@@ -20,10 +20,10 @@
 > projects is to work to a flexible limit of 89 and a hard limit of 99
 > characters. Docstrings are wrapped at 72 characters.
 
-![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/WayneLambert/portfolio)
-![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/django)
-![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/djangorestframework)
-![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/WayneLambert/portfolio/dev/pytest)
+[![Version](https://img.shields.io/pypi/v/poetry.svg)](https://img.shields.io/pypi/v/poetry.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/djangorestframework)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pytest)
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 ![Test](https://github.com/WayneLambert/portfolio/workflows/Test/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
