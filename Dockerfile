@@ -18,11 +18,8 @@ WORKDIR /code
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Set the version of Poetry
-ARG POETRY_VERSION=1.1.8
-
-# Install Poetry
-RUN pip install poetry==${POETRY_VERSION}
+# Install the latest version of Poetry
+RUN pip install poetry
 
 # Set Poetry in the container's $PATH
 ENV PATH = "${PATH}:/root/.poetry/bin"
