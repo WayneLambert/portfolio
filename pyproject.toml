@@ -208,7 +208,7 @@ sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLD
 
   [tool.coverage.report]
     # fail_under = 95
-    skip_covered = true
+    skip_covered = false
     show_missing = true
     precision = 2
     exclude_lines = [

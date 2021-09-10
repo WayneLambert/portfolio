@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import BasePasswordHasher
 
 from aa_project.settings.base import (AWS_BASE_BUCKET_ADDRESS, BASE_DIR,
                                       DEFAULT_FROM_EMAIL_SES, INSTALLED_APPS,
+                                      LOGIN_REDIRECT_URL, LOGIN_URL, LOGOUT_REDIRECT_URL,
                                       ROOT_URLCONF, SECRET_KEY, SITE_ID, STATIC_URL,
                                       TEMPLATES,)
 
@@ -82,6 +83,14 @@ class SimplePasswordHasher(BasePasswordHasher):
 PASSWORD_HASHERS = (
     'aa_project.settings.pytest.pytest.SimplePasswordHasher',
 )
+
+# Celery Settings
+CELERY_ALWAYS_EAGER = True
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+CELERY_BROKER = "memory://"
+
+# Disable Axes so it doesn't prevent view testing
+AXES_ENABLED = False
 
 # Email Token Settings
 EMAIL_CHALLENGE_EXPIRATION_IN_SECS = 60 * 5

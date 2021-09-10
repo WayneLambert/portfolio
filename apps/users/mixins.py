@@ -4,10 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.utils.safestring import mark_safe
 
-from two_factor.views.mixins import OTPRequiredMixin
 
-
-class DeviceAuthUserMixin(OTPRequiredMixin, LoginRequiredMixin, UserPassesTestMixin):
+class DeviceAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
 
     def test_func(self) -> bool:
         return self.request.user.profile.is_two_factor_auth_by_token
