@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
+from django.shortcuts import resolve_url
 from django.urls import reverse
 
 import pytest
@@ -41,7 +42,7 @@ class TestUserRegisterView:
         django_user_model.objects.create(username='wayne-lambert', id=2)
         kwargs = sample_user_data
         request = rf.post(self.path, kwargs)
-        apps_helpers.add_session_and_messages_middlewares(request)
+        apps_helpers.add_middlewares(request)
         response = UserRegisterView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
         assert '/blog/' in response.url, 'Should redirect to `blog` home screen'
@@ -56,11 +57,11 @@ class TestProfileView:
         kwargs = {'username': 'inexistent-user'}
         path = reverse('blog:users:profile', kwargs=kwargs)
         request = rf.get(path)
-        apps_helpers.add_session_and_messages_middlewares(request)
+        apps_helpers.add_middlewares(request)
         request.user = unauth_user
         response = ProfileView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
-        assert settings.LOGIN_URL in response.url
+        assert resolve_url(settings.LOGIN_URL) in response.url
 
     def test_auth_user_is_redirected_to_login(self, rf, auth_user):
         """
@@ -70,11 +71,11 @@ class TestProfileView:
         kwargs = {'username': 'inexistent-user'}
         path = reverse('blog:users:profile', kwargs=kwargs)
         request = rf.get(path)
-        apps_helpers.add_session_and_messages_middlewares(request)
+        apps_helpers.add_middlewares(request)
         request.user = auth_user
         response = ProfileView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should be redirected'
-        assert settings.LOGIN_URL in response.url
+        assert resolve_url(settings.LOGIN_URL) in response.url
 
     def test_device_auth_user_cannot_access_inexistent_profile(self, rf, device_auth_user):
         """
@@ -126,6 +127,7 @@ class TestProfileUpdateView:
         path = reverse('blog:users:profile_update', kwargs=kwargs)
         request = rf.get(path)
         request.user = unauth_user
+        apps_helpers.add_middlewares(request)
         response = ProfileUpdateView.as_view()(request, **kwargs)
         assert response.status_code == 302, 'Should return with an `redirect` status code'
         assert '/login/' in response.url, 'Should redirect to login page'
@@ -138,9 +140,10 @@ class TestProfileUpdateView:
         path = reverse('blog:users:profile_update', kwargs=kwargs)
         request = rf.get(path)
         request.user = li_sec_user
-        with pytest.raises(PermissionDenied):
-            response = ProfileUpdateView.as_view()(request, **kwargs)
-            assert response.status_code == 403, 'Should return a `Permission Denied` status code'
+        apps_helpers.add_middlewares(request)
+        response = ProfileUpdateView.as_view()(request, **kwargs)
+        assert response.status_code == 302, 'Mixin should yield permanent redirect'
+        assert resolve_url(settings.LOGIN_URL) in response.url, 'Should redirect to login page'
 
 
 @pytest.mark.parametrize(argnames='all_users',
