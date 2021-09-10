@@ -5,7 +5,7 @@ from django.contrib import auth, messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.views import (PasswordResetCompleteView,
                                        PasswordResetConfirmView, PasswordResetDoneView,
                                        PasswordResetView,)
@@ -364,7 +364,7 @@ class ProfileView(TwoFactorAuthUserMixin, DetailView):
         return get_object_or_404(get_user_model(), username=self.kwargs['username'])
 
 
-class ProfileUpdateView(LoginRequiredMixin, UserPassesTestMixin, MultiModelFormView):
+class ProfileUpdateView(TwoFactorAuthUserMixin, UserPassesTestMixin, MultiModelFormView):
     """
     Any user attempting to GET the profile update page of another user,
     whether present in the DB or not, will receive a 403 error.
