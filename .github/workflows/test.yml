@@ -62,7 +62,6 @@ jobs:
           EMAIL_HOST_PASSWORD_SES: ${{ secrets.EMAIL_HOST_PASSWORD_SES }}
           EMAIL_HOST_SES: ${{ secrets.EMAIL_HOST_SES }}
           EMAIL_HOST_USER_SES: ${{ secrets.EMAIL_HOST_USER_SES }}
-          GA_TRACKING_ID: ${{ secrets.GA_TRACKING_ID }}
           OD_API_BASE_URL: ${{ secrets.OD_API_BASE_URL }}
           OD_APPLICATION_ID: ${{ secrets.OD_APPLICATION_ID }}
           OD_APPLICATION_KEY_1: ${{ secrets.OD_APPLICATION_KEY_1 }}
