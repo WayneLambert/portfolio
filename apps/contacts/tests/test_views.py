@@ -30,14 +30,14 @@ class TestGetContactViews:
         response = ContactSubmittedView.as_view()(request)
         assert response.status_code == 200, 'Should be callable by anyone'
 
-@pytest.mark.django_db
+
 class TestPostContactView:
     def test_contact_form_post_view(self, rf, contact_data):
         """ Asserts a random visitor can POST a contact form """
-        path = reverse('contacts:submitted')
+        path = reverse('contacts:contact')
         request = rf.post(path, contact_data)
         request.user = AnonymousUser()
-        request = add_middleware_to_request(request, SessionMiddleware)
+        add_middleware_to_request(request, SessionMiddleware)
         response = ContactFormView.as_view()(request, contact_data)
         assert Contact.objects.count() == 1, 'Should have one contact in the DB'
         assert response.status_code == 302, 'Should redirect'

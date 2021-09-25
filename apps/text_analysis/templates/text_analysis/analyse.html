@@ -4,37 +4,36 @@
 {% block title %}{{ block.super }} | Analyse Text{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="project-intro text-center">
-      <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/text-analysis.jpg" 
-        height="25%" width="25%" alt="Scraping">
-    </div>
-  </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <h6 class="mb-2">
         <p>Type or paste some text below, then click the 'Calculate!' button to get the
         number of occurences for each word and letter.</p>
-        <p><u>Note</u>:</strong> To test the application, you can import
-          <em>'lorem ipsum'</em> text to save time.</p>
+        <p><u>Note</u>:</strong> To quickly test the application, you can import some lorem ipsum
+        example text by clicking the <em>'Use Lorem Ipsum'</em> button.</p>
       </h6>
-      <form name="frm" action="{% url 'text_analysis:analysis' %}" method="GET">
-        <textarea class="text-analysis-box mt-2 mb-2" id="text-analysis-box" name="fulltext" autofocus="autofocus" placeholder="Enter text here..." cols="82" rows="15"></textarea>
-        <p class="ml-2">
-          <strong class="mb-2"><u>Disclaimer</u>:</strong> 
-          <span class="text-muted">The text you use is not recorded, logged or seen in any analytics.</span>
-        </p>
-        <button type="submit" onclick="return IsEmpty();" class="btn btn-sm btn-success mr-2"
-          id="btn-analyse-text">
-          <i class="fa fa-book mr-1"></i>
-          Calculate
-        </button>
-        <button type="button" onclick="useLoremIpsum();" class="btn btn-sm btn-info mr-2"
-          id="btn-use-lorem-ipsum">
-          <i class="fa fa-font mr-1"></i>
-          Use Lorem Ipsum
-        </button>
-      </form>
+      <div class="badge badge-info theme-bg-light p-3">
+        <form name="frm" action="{% url 'text_analysis:analysis' %}" method="GET">
+          <textarea class="text-analysis-box mt-2 mb-2" id="text-analysis-box" name="fulltext" autofocus="autofocus"
+                    placeholder="Enter text here..." cols="100%" rows="15"
+          >
+          </textarea>
+          <button type="button" onclick="useLoremIpsum();" class="btn btn-sm btn-info btn-block text-left col-4 mr-2"
+            id="btn-use-lorem-ipsum">
+            <i class="fa fa-font mr-1"></i>
+            Use Lorem Ipsum
+          </button>
+          <button type="submit" onclick="return IsEmpty();" class="btn btn-sm btn-success btn-block text-left col-4 mr-2"
+            id="btn-analyse-text">
+            <i class="fa fa-book mr-1"></i>
+            Calculate
+          </button>
+        </form>
+        <div class="text-left text-muted mt-3">
+          <strong class="mb-2"><u>Disclaimer</u>:</strong>
+          The text you use is not recorded, logged or seen in any analytics.
+        </div>
+      </div>
       <p><em><div class="no-words-msgbox" id="no-words-msgbox"></div></em></p>
     </div>
   </article>

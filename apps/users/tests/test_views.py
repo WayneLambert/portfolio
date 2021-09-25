@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib.auth import views as auth_views
-from django.core.exceptions import PermissionDenied
 from django.http import Http404
 from django.shortcuts import resolve_url
 from django.urls import reverse
@@ -10,8 +9,7 @@ import pytest
 import apps.helpers as apps_helpers
 
 from apps.users.models import Profile
-from apps.users.views import (ProfileUpdateView, ProfileView, UserLoginView,
-                              UserRegisterView,)
+from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

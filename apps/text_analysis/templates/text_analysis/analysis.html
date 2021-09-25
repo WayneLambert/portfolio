@@ -4,44 +4,53 @@
 {% block title %}{{ block.super }} | Text Analysis{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="project-intro text-center">
-      <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/text-analysis.jpg"
-        height="25%" width="25%" alt="Scraping">
-    </div>
-  </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <div class="count-words">
-        <p>Number of words analysed: {{ word_count }}</p>
-        <p>The entire text string analysed was:<br></p>
-        <div class="alert alert-info" role="alert">
-          <em><p>"{{ orig_full_text }}"</p></em>
+        <!-- Quote card -->
+        <div class="card theme-bg-light mt-4">
+          <div class="card-header">
+            <strong>Analysed Text:</strong>
+          </div>
+          <div class="card-body">
+            <p><em>{{ orig_full_text }}</em></p>
+            <div class="card theme-bg-light col-5 mt-4 p-2">
+              <strong>Number of words analysed: {{ word_count }}</strong>
+            </div>
+          </div>
         </div>
+
         <hr class="col-8">
         <p>The individual words along with their count of occurences is:</p>
-          <table class="table table-striped table-sm col-4">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Word</th>
-                <th scope="col">Count</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for word, count_total in sorted_words %}
-              <tr>
-                <th scope="row">{{ word }}</th>
-                <td>{{ count_total }}</td>
-              </tr>
-            {% endfor %}
-            </tbody>
-          </table>
+
+        <div class="module-content collapse show" id="content-1">
+          <div class="module-content-inner pb-0">
+            <div class="table-responsive">
+              <table class="table table-striped app-table-hover table-sm display col-4">
+                <thead class="bg-primary text-white">
+                  <tr>
+                    <th scope="col">Word</th>
+                    <th scope="col">Count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for word, count_total in sorted_words %}
+                  <tr>
+                    <th scope="row">{{ word }}</th>
+                    <td>{{ count_total }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <hr class="col-8">
       <div class="count-letters mb-4">
         <p>The individual count of occurences and appearance rate for each letter is:</p>
-        <table class="table table-striped table-sm col-4">
-          <thead class="thead-dark">
+        <table class="table table-striped app-table-hover table-sm display col-4">
+          <thead class="bg-primary text-white">
             <tr>
               <th scope="col">Letter</th>
               <th scope="col">Count & %</th>

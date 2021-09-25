@@ -4,77 +4,100 @@
 {% block title %}{{ block.super }} | Scraping{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/web_scraping.png" alt="Scraping">
-      </div>
-    </div>
-  </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
       <div class="inner p-3 theme-bg-light mt-2 mb-3">
-        <h5>Scrape content from the web to see some of the world's most famous speeches</h5>
-          The purpose of this application is to demonstrate the use of some well known Python
-          libraries to handle web tasks such as getting content from websites and parsing
-          their HTML. The Django component of the application handles the navigation
+        <p class="card-text ml-3 mr-3">
+          The purpose of this application is to demonstrate the use of the <em>requests</em> and
+          <em>BeautifulSoup</em> libraries to handle web tasks such as getting content from websites
+          and parsing their HTML.
+        <p>
+        <p class="card-text ml-3 mr-3">
+          The Django component of the application handles the navigation
           patterns (urls), the request/response application logic (views) and the rendering
           of the final result (templates).
-        <hr class="col-8">
-
-        <!-- EU Referendum Results -->
-        <form action="{% url 'scraping:referendum' %}" method="GET">
-          <div class="inner p-3 theme-bg-light mt-2 mb-1">
-            <strong>EU Referendum: </strong>
-            Results on the British vote on membership of the EU
+        </p>
+        <div class="card theme-bg-light mb-3">
+          <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/referendum.jpg" class="card-img-top" alt="EU Referendum">
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong>EU Referendum: </strong>Results on the British vote on membership of the EU
+            </h5>
+            <div class="card-text">
+              <p>
+                <strong>Please be patient waiting for the results page to load</strong> as the process is
+                requesting and scraping data from 26 separate pages (one for each letter of the alphabet).
+                The scraping process should respect the frequency of requests to the BBC server.
+              </p>
+              <p>
+                In practice, this sort of process would be set up as something like a scheduled Celery task
+                so fresh data can be accessed directly from the database. Of course, EU Referendum results
+                are static in nature.
+              </p>
+            </div>
+            <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-block btn-success">
+              <i class="fa fa-bar-chart mr-1"></i>
+              View Referendum Results
+            </a>
           </div>
-          <a href="{% url 'scraping:referendum' %}" class="btn btn-sm btn-success ml-3">
-            <i class="fa fa-bar-chart mr-1"></i>
-            View Referendum Results
-          </a>
-        </form>
-        <div class="inner pl-3 theme-bg-light mt-2 mb-1">
-          <p>
-            <strong>Please be patient waiting for the results page to load</strong> as the process is
-            requesting and scraping data from 26 separate pages (one for each letter of the alphabet).
-            The scraping process should respect the frequency of requests to the BBC server.
-          </p>
-          <p>
-            In practice, this sort of process would be set up as something like a scheduled Celery task
-            so fresh data can be accessed directly from the database. Of course, EU Referendum results
-            are static in nature.
-          </p>
         </div>
 
-        <!-- Churchill Speech -->
-        <hr class="col-8">
-        <span class="churchill">
-          <form action="{% url 'scraping:churchill_speech' %}" method="GET">
-            <div class="inner p-3 theme-bg-light mt-2 mb-1">
-              <strong>Speech 1: </strong>Sir Winston Churchill as he took power on
-                13th May, 1940 @ House of Commons, London, UK.
-            </div>
-            <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-success ml-3">
-              <i class="fa fa-comment mr-1"></i>
-              View Churchill Speech
-            </a>
-          </form>
-        </span>
+        <hr class="col-10">
 
-        <!-- Gettysburg Speech -->
-        <hr class="col-8">
-        <span class="gettysburg">
-          <form action="{% url 'scraping:gettysburg_speech' %}" method="GET">
-            <div class="inner p-3 theme-bg-light mt-3 mb-1">
-              <b>Speech #2: </b>The Gettysburg Address by Abraham Lincoln on
-              19th November, 1863 @ Soldiers' National Cemetery in Gettysburg, Pennsylvania
+        <div class="row">
+          <!-- Churchill Speech -->
+          <div class="col-sm-6">
+            <div class="card theme-bg-light">
+              <div class="card-body">
+                <h6 class="card-title">Speech #1: Sir Winston Churchill</h5>
+                <ul class="client-meta list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-tag fa-fw mr-2"></i>
+                    Blood, Toil, Tears and Sweat
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-calendar-alt fa-fw mr-2"></i>
+                    13th May, 1940
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-map-marker-alt fa-fw mr-2"></i>
+                    House of Commons, London, UK
+                  </li>
+                </ul>
+                <a href="{% url 'scraping:churchill_speech' %}" class="btn btn-sm btn-block btn-success">
+                  <i class="fa fa-comment mr-1"></i>
+                  View Churchill Speech
+                </a>
+              </div>
             </div>
-            <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-success ml-3">
-              <i class="fa fa-comment mr-1"></i>
-              View Gettysburg Address
-            </a>
-          </form>
-        </span>
+          </div>
+          <!-- Gettysburg Speech -->
+          <div class="col-sm-6">
+            <div class="card theme-bg-light">
+              <div class="card-body">
+                <h6 class="card-title">Speech #2: Abraham Lincoln</h5>
+                <ul class="client-meta list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-tag fa-fw mr-2"></i>
+                    The Gettysburg Address
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-calendar-alt fa-fw mr-2"></i>
+                    19th November, 1863
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-map-marker-alt fa-fw mr-2"></i>
+                    Gettysburg, Pennsylvania
+                  </li>
+                </ul>
+                <a href="{% url 'scraping:gettysburg_speech' %}" class="btn btn-sm btn-block btn-success">
+                  <i class="fa fa-comment mr-1"></i>
+                  View Gettysburg Address
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </article>

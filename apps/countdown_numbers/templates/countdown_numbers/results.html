@@ -7,16 +7,8 @@
 {% block title %}{{ block.super }} | Countdown Numbers | Results{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="countdown">
-      </div>
-      <h2 class="heading text-center mt-1">Numbers Game</h2>
-    </div>
-  </section>
   <section class="project px-3 py-5 p-md-5">
-    <div class="container">
+    <div class="container col-10">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <div class="media-body text-center">
           <!-- Target Number -->
@@ -34,9 +26,9 @@
           </div>
           <!-- Chosen Numbers -->
           <h6 class="font-weight-bold mb-0 lead mt-1">The numbers selected at random for you are...</h6>
-          <div class="container text-center">
+          <div class="container text-center mt-3 mb-3">
             <div class="game-numbers-row">
-              <div class="row mt-3 mb-3">
+              <div class="row">
                 {% for item in game_nums %}
                   <div class="number">
                     <div class="number-inner text-center">
@@ -48,7 +40,7 @@
             </div>
           </div>
           <!--- Your Calculation -->
-          <div class="d-flex flex-column col-5 mb-1 container text-center" style="font-size: large;">
+          <div class="d-flex flex-column container col-10 mb-1" style="font-size: large;">
             <blockquote class="quote-content">
               <h6 class="font-weight-bold text-left mb-1 lead">Your Calculation</h6>
               <div class="alert alert-primary" role="alert">
@@ -57,7 +49,7 @@
             </blockquote>
           </div>
           <!--- Rachel's Calculation -->
-          <div class="d-flex flex-column col-5 mb-1 container text-center" style="font-size: large;">
+          <div class="d-flex flex-column container col-10 mb-1" style="font-size: large;">
             <blockquote class="quote-content">
               <h6 class="font-weight-bold text-left mb-1 lead">Rachel's Calculation</h6>
               <div class="alert alert-primary" role="alert">
@@ -66,7 +58,7 @@
             </blockquote>
           </div>
           <!--- Game Results -->
-          <div class="d-flex flex-column col-5 mb-1 container text-center">
+          <div class="d-flex flex-column container col-10 mb-1">
             <blockquote class="quote-content">
               <h6 class="font-weight-bold text-left mb-1 lead">Game Results</h6>
               <div class="alert alert-primary text-left" role="alert">
@@ -88,7 +80,7 @@
             </blockquote>
           </div>
           <!--- Cheeky Message -->
-          <div class="d-flex flex-column container text-center col-5 mb-1">
+          <div class="d-flex flex-column container text-center col-10 mb-1">
             <blockquote class="quote-content">
               <strong>
                 {% if player_score > comp_score %}
@@ -102,14 +94,14 @@
             </blockquote>
           </div>
           <!-- Buttons and Links -->
-          <div class="container text-center mb-1 mt-1">
-            <button type="cancel" class="btn btn-sm btn-success mr-2" 
+          <div class="container button-group col-10 mb-1 mt-1">
+            <button type="cancel" class="btn btn-sm btn-block btn-success mr-2"
               onclick="window.location='{% url 'countdown_numbers:selection' %}';return false;">
               <i class="fa fa-repeat mr-1"></i>
               Start Again
             </button>
             <!--- View Code on GitHub Button -->
-            <button type="submit" class="btn btn-sm btn-github" 
+            <button type="submit" class="btn btn-sm btn-block btn-github"
               onclick="window.open('{% countdown_numbers_views_source_code_link %}', '_blank')">
               <i class="fa fa-github mr-1"></i>
               View Code
