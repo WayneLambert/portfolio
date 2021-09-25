@@ -5,30 +5,32 @@
 {% block title %}{{ block.super }} | Gettysburg Speech{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/web_scraping.png" alt="Scraping">
-      </div>
-    </div>
-  </section>
   <article class="blog-post px-3 py-5 p-md-5">
     <div class="container single-col-max-width">
-      <h5>Gettysburg Address by Abraham Lincoln: 19-Nov-1863 @ Gettysburg, Pennsylvania, USA</h5>
-      <div class="mt-3">Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's third
-          party library, Beautiful Soup and then rendered to a Django template page.
+
+      <!-- Quote card -->
+      <div class="card mt-4">
+        <div class="card-header">
+          <strong>Gettysburg Address by Abraham Lincoln: 19-Nov-1863 @ Gettysburg, Pennsylvania, USA</strong>
+        </div>
+        <div class="card-body">
+          <em>{{ gettysburg }}</em>
+          <footer class="blockquote-footer">
+            <p class="text-dark">Abraham Lincoln</p>
+            <p>
+              <strong>Source: </strong>
+              <a class="theme-link" href="{% gettysburg_speech_link %}" target="_blank" rel="noreferrer">
+                {% gettysburg_speech_link %}
+              </a>
+            </p>
+          </footer>
+        </div>
       </div>
-      <div class="inner p-3 theme-bg-light mt-3 mb-3">
-        {{ gettysburg }}
+      <div class="mt-3 mb-3">
+        Whilst the quoted text below looks like ordinary static text, it has been scraped using Python's
+        third-party library, Beautiful Soup and then rendered to a Django template page.
       </div>
-      <div class="mb-3">
-        <em class="small">
-          Source:
-          <a class="theme-link" href="{% gettysburg_speech_link %}" target="_blank" rel="noreferrer">
-            {% gettysburg_speech_link %}
-          </a>
-        </em>
-      </div>
+
       <!--- Back to Menu Button -->
       <a href="{% url 'scraping:scraping_options' %}" class="btn btn-sm btn-success mr-10">
         <i class="fa fa-repeat mr-1"></i>
