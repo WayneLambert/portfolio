@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% load static %}
 {% load ext_links %}
@@ -6,125 +7,117 @@
 {% block title %}{{ block.super }} | Countdown Letters | Results{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="Countdown Letters">
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container col-10">
+      <!--- Game Letters -->
+      <div class="client-quote d-flex flex-column results-card mt-3">
+        <blockquote class="quote-content text-left">
+          <h6 class="font-weight-bold mb-0 lead mb-3">Game Letters</h6>
+          <div class="game-letters-row">
+            <div class="row mt-3 mb-3">
+              {% for letter in request.GET.letters_chosen %}
+                <div class="letter">
+                  <div class="letter-inner text-center">
+                    <div class="letter-text">{{ letter }}</div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </blockquote>
       </div>
-      <h2 class="heading text-center mt-1">Letters Game</h2>
+
+      <!--- Game Results -->
+      <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
+        <blockquote class="quote-content text-left">
+          <h6 class="font-weight-bold mb-0 lead mb-4">Game Results</h6>
+          <table>
+            <tr>
+              {% if eligible_answer %}
+                <i class="fa fa-chevron-right mr-2"></i>You found a {{ player_word_len }}-lettered word and scored {{ player_score }} points<br>
+              {% else %}
+                <i class="fa fa-chevron-right mr-2"></i>Your answer is <u>not</u> eligible, therefore you scored no points<br>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if comp_word != 'N/A' %}
+                <i class="fa fa-chevron-right mr-2"></i>Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points<br>
+              {% else %}
+                <i class="fa fa-chevron-right mr-2"></i>Susie's answer is <u>not</u> eligible, therefore she scored no points<br>
+              {% endif %}
+            </tr>
+            <tr>
+              <i class="fa fa-chevron-right mr-2"></i><b>Result: </b>{{ result }}
+            </tr>
+          </table>
+        </blockquote>
+      </div>
+
+      <!--- Player Answers -->
+      <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
+        <blockquote class="quote-content text-left">
+          <h6 class="font-weight-bold mb-0 lead mb-4">Player Answers</h6>
+          <table>
+            <tr>
+              <i class="fa fa-chevron-right mr-2"></i>Your Word: {{ players_word|upper }}<br>
+            </tr>
+            <tr>
+              <i class="fa fa-chevron-right mr-2"></i>Susie's Word: {{ comp_word|upper }}
+            </tr>
+          </table>
+        </blockquote>
+      </div>
+
+      <!--- Word Definition -->
+      <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
+        <blockquote class="quote-content text-left">
+          <h6 class="font-weight-bold mb-0 lead mb-4">Word Definition</h6>
+          <table>
+            <tr>
+              <h6 class="text-uppercase">
+                <strong>{{ winning_word|lower|capfirst }}</strong>
+              </h6>
+            </tr>
+            <tr>
+              <div class="inner theme-bg-light">
+                <p class="text-small text-muted">{{ definition_data.word_class }}</p>
+                <p class="word-definition">{{ definition_data.definition }}</p>
+                <em class="small">(British - English)</em>
+              </div>
+            </tr>
+          </table>
+        </blockquote>
+      </div>
+
+      <!--- Scores Message -->
+      <div class="client-quote d-flex flex-column results-card mt-3">
+        <blockquote class="quote-content text-left">
+          <strong>
+            {% if player_word_len > comp_word_len %}
+              Wow, you did great! Congratulations!!
+            {% elif comp_word_len > player_word_len %}
+              You must try harder to beat our resident lexicographer!
+            {% else %}
+              Impressive. You went toe-to-toe with Susie! Keep at it!
+            {% endif %}
+          </strong>
+        </blockquote>
+      </div>
+
+      <!-- Buttons and Links -->
+      <div class="container button-group col-10 mb-1 mt-3">
+        <button type="cancel" class="btn btn-sm btn-block btn-success mr-2"
+          onclick="window.location='{% url 'countdown_letters:selection' %}';return false;">
+          <i class="fa fa-repeat mr-1"></i>
+          Start Again
+        </button>
+        <!--- View Code on GitHub Button -->
+        <button type="submit" class="btn btn-sm btn-block btn-github"
+          onclick="window.open('{% countdown_letters_views_source_code_link %}', '_blank')">
+          <i class="fa fa-github mr-1"></i>
+          View Code
+        </button>
+      </div>
     </div>
   </section>
-
-  <div class="container col-8">
-    <!--- Game Letters -->
-    <div class="client-quote d-flex flex-column results-card mt-3">
-      <blockquote class="quote-content text-left">
-        <h6 class="font-weight-bold mb-0 lead mb-3">Game Letters</h6>
-        <div class="game-letters-row">
-          <div class="row mt-3 mb-3">
-            {% for letter in request.GET.letters_chosen %}
-              <div class="letter">
-                <div class="letter-inner text-center">
-                  <div class="letter-text">{{ letter }}</div>
-                </div>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-      </blockquote>
-    </div>
-
-    <!--- Game Results -->
-    <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
-      <blockquote class="quote-content text-left">
-        <h6 class="font-weight-bold mb-0 lead mb-4">Game Results</h6>
-        <table>
-          <tr>
-            {% if eligible_answer %}
-              <i class="fa fa-chevron-right mr-2"></i>You found a {{ player_word_len }}-lettered word and scored {{ player_score }} points<br>
-            {% else %}
-              <i class="fa fa-chevron-right mr-2"></i>Your answer is <u>not</u> eligible, therefore you scored no points<br>
-            {% endif %}
-          </tr>
-          <tr>
-            {% if comp_word != 'N/A' %}
-              <i class="fa fa-chevron-right mr-2"></i>Susie found a {{ comp_word_len }}-lettered word and scored {{ comp_score }} points<br>
-            {% else %}
-              <i class="fa fa-chevron-right mr-2"></i>Susie's answer is <u>not</u> eligible, therefore she scored no points<br>
-            {% endif %}
-          </tr>
-          <tr>
-            <i class="fa fa-chevron-right mr-2"></i><b>Result: </b>{{ result }}
-          </tr>
-        </table>
-      </blockquote>
-    </div>
-
-    <!--- Player Answers -->
-    <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
-      <blockquote class="quote-content text-left">
-        <h6 class="font-weight-bold mb-0 lead mb-4">Player Answers</h6>
-        <table>
-          <tr>
-            <i class="fa fa-chevron-right mr-2"></i>Your Word: {{ players_word|upper }}<br>
-          </tr>
-          <tr>
-            <i class="fa fa-chevron-right mr-2"></i>Susie's Word: {{ comp_word|upper }}
-          </tr>
-        </table>
-      </blockquote>
-    </div>
-
-    <!--- Word Definition -->
-    <div class="client-quote d-flex flex-column results-card mb-1 mt-3">
-      <blockquote class="quote-content text-left">
-        <h6 class="font-weight-bold mb-0 lead mb-4">Word Definition</h6>
-        <table>
-          <tr>
-            <h6 class="text-uppercase">
-              <strong>{{ winning_word|lower|capfirst }}</strong>
-            </h6>
-          </tr>
-          <tr>
-            <div class="inner theme-bg-light">
-              <p class="text-small text-muted">{{ definition_data.word_class }}</p>
-              <p class="word-definition">{{ definition_data.definition }}</p>
-              <em class="small">(British - English)</em>
-            </div>
-          </tr>
-        </table>
-      </blockquote>
-    </div>
-
-    <!--- Scores Message -->
-    <div class="client-quote d-flex flex-column results-card mt-3">
-      <blockquote class="quote-content text-left">
-        <strong>
-          {% if player_word_len > comp_word_len %}
-            Wow, you did great! Congratulations!!
-          {% elif comp_word_len > player_word_len %}
-            You must try harder to beat our resident lexicographer!
-          {% else %}
-            Impressive. You went toe-to-toe with Susie! Keep at it!
-          {% endif %}
-        </strong>
-      </blockquote>
-    </div>
-
-    <!-- Buttons and Links -->
-    <div class="buttons mt-3 mb-5">
-      <button type="cancel" class="btn btn-sm btn-success mr-2" 
-        onclick="window.location='{% url 'countdown_letters:selection' %}';return false;">
-        <i class="fa fa-repeat mr-1"></i>
-        Start Again
-      </button>
-      <!--- View Code on GitHub Button -->
-      <button type="submit" class="btn btn-sm btn-link btn-github" 
-        onclick="window.open('{% countdown_letters_views_source_code_link %}', '_blank')">
-        <i class="fa fa-github mr-1"></i>
-        View Code
-      </button>
-    </div>
-
-  </div>
 {% endblock content %}

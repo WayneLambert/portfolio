@@ -1,26 +1,21 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}{{ block.super }} | Countdown Letters | Selection{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="Countdown Letters">
-      </div>
-      <h2 class="heading text-center mt-1">Letters Game</h2>
-    </div>
-  </section>
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <div class="media-body text-center">
           <h6 class="font-weight-bold mb-0 lead mt-3">Take on Susie Dent at the Letters Game</h6>
-          <img class="mt-3 mb-3" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg" 
-            alt="countdown">
-          <div class="client-quote d-flex flex-column container text-center col-6 mb-3">
+          <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_letters.jpg"
+               class="mt-3 mb-3"
+               alt="Countdown Letters"
+          />
+          <div class="client-quote d-flex flex-column container text-center mb-3">
             <blockquote class="font-italic quote-content">
               I've been studying the dictionary like crazy recently. Good luck!
             </blockquote>
@@ -28,7 +23,8 @@
           </div>
           <div class="container">
             <form method="POST" action="{% url 'countdown_letters:selection' %}"
-              class="div-wrapper d-flex container text-center col-4">
+                  class="div-wrapper d-flex container text-center col-4"
+            >
               {% csrf_token %}
               {{form|crispy}}
               <button class="btn btn-sm btn-success ml-2" type="submit">
@@ -37,7 +33,7 @@
             </form>
           </div>
           <p class="text-small text-muted">
-            Pick either 3, 4 or 5 vowels. Remainder are automatically consonants.
+            Pick either 3, 4, or 5 vowels. Remainder are automatically consonants.
           </p>
         </div>
       </div>

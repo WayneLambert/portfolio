@@ -1,39 +1,33 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}{{ block.super }} | Countdown Letters | Game{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="Countdown Letters">
+  <section class="project px-3 py-5 p-md-5">
+    <div class="container">
+      <h6 class="font-weight-bold text-center lead mt-3 mb-0">The letters selected at random for you are...</h6>
+      <div class="game-letters-row">
+        <div class="row mt-3 mb-3">
+          {% for letter in request.GET.letters_chosen %}
+            <div class="letter">
+              <div class="letter-inner text-center">
+                <div class="letter-text">{{ letter }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <form method="POST" action="{% url 'countdown_letters:game' %}"
+          class="form-horizontal d-flex">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class="btn btn-sm btn-success ml-2" type="submit">
+            <i class="fa fa-sign-in"></i>
+          </button>
+        </form>
       </div>
-      <h2 class="heading text-center mt-1">Letters Game</h2>
     </div>
   </section>
-
-  <div class="container text-center">
-    <h6 class="font-weight-bold mb-0 lead mt-3">The letters selected at random for you are...</h6>
-    <div class="game-letters-row">
-      <div class="row mt-3 mb-3">
-        {% for letter in request.GET.letters_chosen %}
-          <div class="letter">
-            <div class="letter-inner text-center">
-              <div class="letter-text">{{ letter }}</div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      <form method="POST" action="{% url 'countdown_letters:game' %}"
-        class="form-horizontal d-flex">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-sm btn-success ml-2" type="submit">
-          <i class="fa fa-sign-in"></i>
-        </button>
-      </form>
-    </div>
-  </div>
 {% endblock content %}
