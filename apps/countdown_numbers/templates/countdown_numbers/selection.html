@@ -1,33 +1,29 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% load static %}
 
 {% block title %}{{ block.super }} | Countdown Numbers | Selection{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="countdown">
-      </div>
-      <h2 class="heading text-center mt-1">Numbers Game</h2>
-    </div>
-  </section>
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <div class="media-body text-center">
           <h6 class="font-weight-bold mb-0 lead mt-3">Take on Rachel Riley at the Numbers Game</h6>
-          <img class="mt-3 mb-3" src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_numbers.png" 
-            alt="countdown">
-          <div class="client-quote d-flex flex-column container text-center col-6 mb-1">
+          <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown_numbers.png"
+               class="mt-3 mb-3"
+               alt="countdown"
+          />
+          <div class="client-quote d-flex flex-column container text-center col-8 mb-1">
             <blockquote class="font-italic quote-content">
               I've been racing Pandas and NumPy recently. Good luck!
             </blockquote>
             <i class="fas fa-quote-left"></i>
           </div>
           <form method="POST" action="{% url 'countdown_numbers:selection' %}"
-            class="col-lg-2 div-wrapper d-flex container text-center">
+                class="col-lg-4 div-wrapper d-flex container text-center"
+          >
             {% csrf_token %}
             {{form|crispy}}
             <button class="btn btn-sm btn-success ml-2" type="submit">

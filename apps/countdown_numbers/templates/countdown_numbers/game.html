@@ -6,16 +6,8 @@
 {% block title %}{{ block.super }} | Countdown Numbers | Game{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="container single-col-max-width">
-      <div class="project-intro text-center">
-        <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/post_images/countdown.png" width="100%" alt="countdown">
-      </div>
-      <h2 class="heading text-center mt-1">Numbers Game</h2>
-    </div>
-  </section>
   <section class="project px-3 py-5 p-md-5">
-    <div class="container">
+    <div class="container col-9">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <div class="media-body text-center">
           <!-- Target Number -->
@@ -52,14 +44,14 @@
               {% csrf_token %}
               {{ form|crispy }}
               <button class="btn btn-sm btn-success mr-5" type="submit">
-                Submit Calculation
                 <i class="fa fa-calculator mr-1"></i>
+                Submit Calculation
               </button>
             </form>
           </div>
           <!-- Help Text -->
           <hr>
-          <div class="d-flex flex-column col-5 mb-1 container text-center mt-3">
+          <div class="d-flex flex-column col-12 mb-1 container mt-3">
             <blockquote class="quote-content container text-left ml-3">
               <p class="mb-3">Completion Guidance:
                 <ul class="no-bullets">
