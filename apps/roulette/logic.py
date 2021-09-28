@@ -3,7 +3,7 @@ import operator
 import random
 import time
 
-from typing import Tuple
+from typing import List, Tuple
 
 from django.conf import settings
 
@@ -52,7 +52,7 @@ def get_roulette_result() -> Tuple[dict, str, int, list]:
         choice = list(Game.places_to_go.keys())[choice_num]
         Game.places_to_go[choice] += 1
         choice_item = f"Choice #{place_selected} was {choice}"
-        logging.info(choice_item)
+        logging.info(msg=choice_item)
         detailed_choices.append(choice_item)
     most_selected_place = max(Game.places_to_go.items(), key=operator.itemgetter(1))[0]
     number_of_times_selected = max(Game.places_to_go.items(), key=operator.itemgetter(1))[1]
@@ -79,10 +79,7 @@ def get_picture_url(destination: str) -> str:
     return locations.get(destination, "Invalid destination")
 
 
-def read_log_file() -> list:
+def read_log_file() -> List:
     """ Reads log file to a list for later rendering to results page """
     with open(log_file, 'r') as file:
-        contents = []
-        for line in file.readlines():  # pragma: no cover
-            contents.append(line)
-        return contents
+        return [line for line in file.readlines()]

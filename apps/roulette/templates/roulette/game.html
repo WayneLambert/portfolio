@@ -6,7 +6,8 @@
   <section class="cta-section theme-bg-light py-5">
     <div class="project-intro text-center">
       <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/holiday-roulette-sm.jpg"
-        alt="Holiday Roulette">
+           alt="Holiday Roulette"
+      />
     </div>
   </section>
   <section class="project px-3 py-5 p-md-5">
@@ -18,8 +19,8 @@
             <div>Click the button below to find out where you're going on holiday next!</div>
           </div>
           <!-- Button -->
-          <button class="btn btn-sm btn-success mt-3" 
-            onclick="window.location='{% url 'roulette:holiday_destination' %}';return false;">
+          <button class="btn btn-sm btn-success mt-3"
+            onclick="window.location='{% url 'roulette:destination' %}';return false;">
             <i class="fa fa-plane"></i>
             Find Destination
           </button>

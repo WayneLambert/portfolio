@@ -25,5 +25,7 @@ def destination_screen(request):
 
 
 def view_log_file_contents(request):
-    context = {'log_file_contents': logic.read_log_file()}
+    context = {
+        'log_file_contents': logic.read_log_file()
+    }
     return render(request, 'roulette/log_file_contents.html', context)
