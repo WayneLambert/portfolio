@@ -20,7 +20,7 @@ class ContactFormView(FormView):
             subject=f"Contact Form - from {first_name} {last_name}",
             message=message,
             from_email=settings.DEFAULT_FROM_EMAIL_SES,
-            recipient_list=['contact@waynelambert.dev', email],
+            recipient_list=['wayne.a.lambert@gmail.com', email],
             fail_silently=False,
         )
         form.save()

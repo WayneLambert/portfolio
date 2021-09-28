@@ -41,11 +41,11 @@ class SocialMedia:
 
     @register.simple_tag
     def email_me_link():
-        return "mailto:contact@waynelambert.dev"
+        return "mailto:wayne.a.lambert@gmail.com"
 
     @register.simple_tag
     def email_me_text():
-        return "contact@waynelambert.dev"
+        return "wayne.a.lambert@gmail.com"
 
 
 class LinkGenerator:
