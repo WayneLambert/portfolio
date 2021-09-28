@@ -1,36 +1,35 @@
 {% extends 'base.html' %}
+
 {% load ext_links %}
 
 {% block title %}{{ block.super }} | Roulette | Log File{% endblock title %}
 
 {% block content %}
-  <section class="cta-section theme-bg-light py-5">
-    <div class="project-intro text-center">
-      <img src="https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/projects/holiday-roulette-sm.jpg"
-        alt="Holiday Roulette">
-    </div>
-  </section>
   <section class="project px-3 py-5 p-md-5">
     <div class="container">
       <div class="project-meta media flex-column flex-md-row p-4 theme-bg-light">
         <div class="media-body text-center">
-          <div class="text-small"><strong>Note:</strong> The process was purposefully slowed down with
-          the 'sleep' function to build suspense for the purposes of the game.</div>
-          <div class="text-small mb-2"><strong>Note:</strong> Times are in UTC time zone.</div>
-          
+          <div class="text-small">
+            <strong>Note:</strong>
+              The process was purposefully slowed down with the 'sleep' function to build
+              suspense for the purposes of the game.
+          </div>
+          <div class="text-small mb-2">
+            <strong>Note:</strong> Times are in UTC time zone.
+          </div>
+
           <!--- Start Again Button -->
-          <a href="{% url 'roulette:holiday_roulette' %}" class="btn btn-sm btn-success mt-2 mr-2">
+          <a href="{% url 'roulette:game' %}" class="btn btn-sm btn-success mt-2 mr-2">
             <i class="fa fa-repeat mr-1"></i>
             Start Again
           </a>
-          
+
           <!--- View Code on GitHub Button -->
-          <button type="submit" class="btn btn-sm btn-link btn-github mt-2" 
+          <button type="submit" class="btn btn-sm btn-link btn-github mt-2"
             onclick="window.open('{% github_url type='code' app='roulette' %}', '_blank')">
             <i class="fa fa-github mr-1"></i>
             View Code
           </button>
-
         </div>
       </div>
     </div>
