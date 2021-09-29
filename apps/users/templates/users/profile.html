@@ -5,38 +5,56 @@
 
 {% block content %}
   <div class="container col-8 py-5">
-    <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
+    <div class="auth-wrapper theme-bg-light mx-auto shadow p-2 rounded">
       <div class="auth-form-container text-left mx-auto">
-        <h3>
-          {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
-        </h3>
-        <table>
-          <td>
-            <img class="rounded-circle profile-avatar img-fluid" src="{{ user.profile.profile_picture.url }}" />
-            {% if user.is_authenticated and user.get_username == request.user.get_username %}
-              <p class="text-center mt-3">
-                <a class="theme-link" href="{% url 'blog:users:profile_update' user.profile.slug %}">
-                  <i class="fa fa-pencil mr-2"></i>
-                  Update profile
-                </a>
-              </p>
-            {% endif %}
-          </td>
-          <td>
-            <div class="ml-4 pb-5">
-              <p><strong>Username: </strong>{{ user.get_username }}</p>
-              <p><strong>Email: </strong><a class="ml-1" href="mailto:{{ user.email }}">{{ user.email }}</a></p>
-              <ul class="no-bullets mt-2">
-                <li class="mb-0">
-                  <small><strong>Join Date: </strong>{{ user.date_joined|date:"d-M-y H:i" }}</small>
-                </li>
-                <li class="mb-0">
-                  <small><strong>Last Login: </strong>{{ user.last_login|date:"d-M-y H:i" }}</small>
-                </li>
-              </ul>
+        <div class="card">
+          <div class="card-body theme-bg-light">
+            <div class="card-header">
+              <h4 class="pt-2">
+                {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
+              </h4>
             </div>
-          </td>
-        </table>
+            <table>
+              <td>
+                <img src="{{ user.profile.profile_picture.url }}"
+                     class="rounded-circle profile-avatar img-fluid"
+                     alt="Wayne Lambert"
+                />
+              </td>
+              <td>
+                <div class="mt-5 ml-5 pb-5">
+                  <div>
+                    <strong>Username: </strong>
+                    {{ user.get_username }}
+                  </div>
+                  <div>
+                    <strong>Email: </strong>
+                    <a href="mailto:{{ user.email }}" class="ml-1">{{ user.email }}</a>
+                  </div>
+                  <hr class="col-10 mt-2 mb-2" />
+                  <ul class="no-bullets mt-2">
+                    <li class="mb-0">
+                      <small><strong>Join Date: </strong>{{ user.date_joined|date:"d-M-y H:i" }}</small>
+                    </li>
+                    <li class="mb-0">
+                      <small><strong>Last Login: </strong>{{ user.last_login|date:"d-M-y H:i" }}</small>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </table>
+            <div>
+              {% if user.is_authenticated and user.get_username == request.user.get_username %}
+                <a href="{% url 'blog:users:profile_update' user.profile.slug %}"
+                   class="btn btn-success"
+                >
+                  <i class="fa fa-pencil mr-2"></i>
+                  Update Profile
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

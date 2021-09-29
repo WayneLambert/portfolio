@@ -1,6 +1,7 @@
 # Git
 .git
 .gitignore
+.github/*
 
 # Compiled source #
 ###################
