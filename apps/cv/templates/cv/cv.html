@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block desc %}
+  Passionate Python Web Engineer developing Django applications remotely.
+{% endblock desc %}
 {% block title %}{{ block.super }} | CV{% endblock title %}
 
 {% block content %}
@@ -24,8 +27,7 @@
     <div class="row isotope col-12">
       <div class="isotope-item functional">
         <p class="card-text text-center">
-          An overview of my portfolio projects and skills targeted towards my developing career in
-          programming/web development
+          An overview of my portfolio projects and skills in web development/programming
         </p>
         {% include 'components/functional.html' %}
       </div>
