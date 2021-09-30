@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block title %}{{ block.super }} | {{ user.get_full_name }} | Profile{% endblock title %}
@@ -9,17 +10,17 @@
       <div class="auth-form-container text-left mx-auto">
         <div class="card">
           <div class="card-body theme-bg-light">
-            <div class="card-header">
-              <h4 class="pt-2">
-                {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
-              </h4>
-            </div>
+            <img src="{{ user.profile.profile_picture.url }}"
+                  class="rounded-circle profile-avatar img-fluid"
+                  alt="Wayne Lambert"
+            />
             <table>
               <td>
-                <img src="{{ user.profile.profile_picture.url }}"
-                     class="rounded-circle profile-avatar img-fluid"
-                     alt="Wayne Lambert"
-                />
+                <div class="card-header">
+                  <h4 class="pt-2">
+                    {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
+                  </h4>
+                </div>
               </td>
               <td>
                 <div class="mt-5 ml-5 pb-5">
