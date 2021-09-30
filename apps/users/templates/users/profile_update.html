@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -6,44 +7,48 @@
 
 {% block content %}
   <div class="container col-8 py-5">
-    <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
+    <div class="auth-wrapper theme-bg-light mx-auto shadow p-2 rounded">
       <div class="auth-form-container text-left mx-auto">
-        <table>
-          <td>
-            <img class="rounded-circle profile-avatar img-fluid ml-3 mb-2" src="{{ user.profile.profile_picture.url }}">
-          </td>
-          <td class="container">
-            <div class="class text-center">
-              <h3>
-                {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
-              </h3>
-            </div>
-          </td>
-        </table>
-        <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset class="form-group">
-            <div class="form-row">
-              <div class="form-group col-md-12 mb-0">
-                {{ userupdateform.email|as_crispy_field }}
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-4 mb-0">
-                {{ userupdateform.username|as_crispy_field }}
-              </div>
-              <div class="form-group col-md-4 mb-0">
-                {{ userupdateform.first_name|as_crispy_field }}
-              </div>
-              <div class="form-group col-md-4 mb-0">
-                {{ userupdateform.last_name|as_crispy_field }}
-              </div>
-            </div>
-            {% include 'components/profile_picture.html' %}
-            {% include 'components/author_view.html' %}
-            {% include 'components/buttons.html' %}
-          </fieldset>
-        </form>
+        <div class="card">
+          <div class="card-body theme-bg-light">
+            <table>
+              <td>
+                <img class="rounded-circle profile-avatar img-fluid ml-3 mb-2" src="{{ user.profile.profile_picture.url }}">
+              </td>
+              <td class="container">
+                <div class="class card-header text-center">
+                  <h4 class="pt-2">
+                    {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
+                  </h4>
+                </div>
+              </td>
+            </table>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                <div class="form-row">
+                  <div class="form-group col-md-12 mb-0">
+                    {{ userupdateform.email|as_crispy_field }}
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4 mb-0">
+                    {{ userupdateform.username|as_crispy_field }}
+                  </div>
+                  <div class="form-group col-md-4 mb-0">
+                    {{ userupdateform.first_name|as_crispy_field }}
+                  </div>
+                  <div class="form-group col-md-4 mb-0">
+                    {{ userupdateform.last_name|as_crispy_field }}
+                  </div>
+                </div>
+                {% include 'components/profile_picture.html' %}
+                {% include 'components/author_view.html' %}
+                {% include 'components/buttons.html' %}
+              </fieldset>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
