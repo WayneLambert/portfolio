@@ -21,13 +21,15 @@
 > characters. Docstrings are wrapped at 72 characters.
 
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
-![Test](https://github.com/WayneLambert/portfolio/workflows/Test/badge.svg?branch=main)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
+**Activity**
+
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/WayneLambert/portfolio)
 ![GitHub last commit](https://img.shields.io/github/last-commit/WayneLambert/portfolio)
 

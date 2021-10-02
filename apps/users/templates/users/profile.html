@@ -2,7 +2,9 @@
 
 {% load static %}
 
-{% block title %}{{ block.super }} | {{ user.get_full_name }} | Profile{% endblock title %}
+{% block title %}
+  {{ block.super }} | {{ user.get_full_name }} | Profile
+{% endblock title %}
 
 {% block content %}
   <div class="container col-8 py-5">
@@ -12,7 +14,11 @@
           <div class="card-body theme-bg-light">
             <div class="card-header">
               <h4 class="pt-2">
-                {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
+                {% if user.get_full_name %}
+                  {{ user.get_full_name }}
+                {% else %}
+                  {{ user.get_username }}
+                {% endif %}
               </h4>
             </div>
             <table>
@@ -35,25 +41,29 @@
                   <hr class="col-10 mt-2 mb-2" />
                   <ul class="no-bullets mt-2">
                     <li class="mb-0">
-                      <small><strong>Join Date: </strong>{{ user.date_joined|date:"d-M-y H:i" }}</small>
+                      <small>
+                        <strong>Join Date: </strong>{{ user.date_joined|date:"d-M-y H:i" }}
+                      </small>
                     </li>
                     <li class="mb-0">
-                      <small><strong>Last Login: </strong>{{ user.last_login|date:"d-M-y H:i" }}</small>
+                      <small>
+                        <strong>Last Login: </strong>{{ user.last_login|date:"d-M-y H:i" }}
+                      </small>
                     </li>
                   </ul>
                 </div>
               </td>
             </table>
-            <div>
-              {% if user.is_authenticated and user.get_username == request.user.get_username %}
+            {% if user.profile.is_two_factor_authenticated %}
+              <div>
                 <a href="{% url 'blog:users:profile_update' user.profile.slug %}"
-                   class="btn btn-success"
+                  class="btn btn-success"
                 >
                   <i class="fa fa-pencil mr-2"></i>
                   Update Profile
                 </a>
-              {% endif %}
-            </div>
+              </div>
+            {% endif %}
           </div>
         </div>
       </div>
