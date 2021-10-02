@@ -22,9 +22,9 @@ def test_reset_places_to_go():
     assert sum(logic.Game.places_to_go.values()) == 0, "All key's values should be set to zero"
 
 
-def test_get_roulette_result(mocker):
+def test_get_game_result(mocker):
     mocker.patch('time.sleep', return_value=None)
-    logic.get_roulette_result()
+    logic.get_game_result()
     assert len(logic.Game.places_to_go.keys()) == 12, 'Should still be 12 keys in dict'
     assert sum(logic.Game.places_to_go.values()) == 1_000, "Sum of key's values should be 1,000"
 

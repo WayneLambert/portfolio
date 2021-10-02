@@ -39,7 +39,7 @@ def reset_places_to_go():
         Game.places_to_go[key] = 0
 
 
-def get_roulette_result() -> Tuple[dict, str, int, list]:
+def get_game_result() -> Tuple[dict, str, int, list]:
     """
     Gets the result of the roulette game and introduces suspense in
     the game due to a time.sleep() function.
