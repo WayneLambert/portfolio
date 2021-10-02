@@ -3,7 +3,9 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }} | {{ user.get_full_name }} | Profile Update{% endblock title %}
+{% block title %}
+  {{ block.super }} | {{ user.get_full_name }} | Profile Update
+{% endblock title %}
 
 {% block content %}
   <div class="container col-8 py-5">
@@ -13,12 +15,18 @@
           <div class="card-body theme-bg-light">
             <table>
               <td>
-                <img class="rounded-circle profile-avatar img-fluid ml-3 mb-2" src="{{ user.profile.profile_picture.url }}">
+                <img src="{{ user.profile.profile_picture.url }}"
+                     class="rounded-circle profile-avatar img-fluid ml-3 mb-2"
+                />
               </td>
               <td class="container">
                 <div class="class card-header text-center">
                   <h4 class="pt-2">
-                    {% if user.get_full_name %}{{ user.get_full_name }}{% else %}{{ user.get_username }}{% endif %}
+                    {% if user.get_full_name %}
+                      {{ user.get_full_name }}
+                    {% else %}
+                      {{ user.get_username }}
+                    {% endif %}
                   </h4>
                 </div>
               </td>
