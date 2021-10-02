@@ -11,7 +11,7 @@ def game_screen(request):
 def destination_screen(request):
     logic.reset_places_to_go()
     logic.clear_down_log_file()
-    roulette_result = logic.get_roulette_result()
+    roulette_result = logic.get_game_result()
     destination_image_url = logic.get_picture_url(roulette_result[1])
     context = {
         'places_to_go': roulette_result[0],
