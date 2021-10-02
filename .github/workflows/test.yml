@@ -35,16 +35,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Debug Script
-        uses: hmarr/debug-action@v1.0.0
-
       - name: Set up Python 3.9.7
         uses: actions/setup-python@v1
         with:
           python-version: 3.9.7
 
       - name: Install Poetry
-        run: python -m pip install poetry
+        run: https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
       - name: Install dependencies with Poetry
         run: |
