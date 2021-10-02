@@ -3,7 +3,7 @@ FROM python:3.9.7-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <admin@waynelambert.dev>" \
-    dev.waynelambert.version="2021.09" \
+    dev.waynelambert.version="2021.10" \
     dev.waynelambert.description="Docker image for web service"
 
 # Create and set working directory
@@ -12,8 +12,8 @@ WORKDIR /code
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install the latest version of Poetry
-RUN pip install poetry
+# Install the latest stable version of Poetry isolating it from the rest of the system
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
 
 # Set Poetry in the container's $PATH
 ENV PATH = "${PATH}:/root/.poetry/bin"
