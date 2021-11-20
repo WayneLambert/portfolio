@@ -52,6 +52,10 @@ SHOW_TOOLBAR_CALLBACK = True
 def skip_static_requests(record):
     return not str(record.args[0]).startswith('GET /static/')
 
+# Do not log debug request files to the console
+def skip_debug_requests(record):
+    return not str(record.args[0]).startswith('GET /__debug__/')
+
 # Django Shell Plus Additional Imports
 SHELL_PLUS_IMPORTS = [
     'import pathlib',
@@ -76,7 +80,14 @@ LOGGING = {
         'skip_static_requests': {
             '()': 'django.utils.log.CallbackFilter',
             'callback': skip_static_requests,
-        }
+        },
+        'skip_debug_requests': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': skip_debug_requests,
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
     },
 
     'formatters': {
@@ -87,8 +98,8 @@ LOGGING = {
         'console': {
             'class': 'rich.logging.RichHandler',
             'formatter': 'rich',
-            'level': 'INFO',
-            'filters': ['skip_static_requests'],
+            'level': 'DEBUG',
+            'filters': ['skip_static_requests', 'skip_debug_requests', 'require_debug_true'],
         }
     },
 
@@ -97,6 +108,10 @@ LOGGING = {
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
         },
         'two_factor': {
             'handlers': ['console'],
