@@ -1,9 +1,9 @@
 # Official Python runtime as the base image
-FROM python:3.9.7-buster
+FROM python:3.9.10-buster
 
 # Add metadata to the image
 LABEL dev.waynelambert.author="Wayne Lambert <admin@waynelambert.dev>" \
-    dev.waynelambert.version="2021.10" \
+    dev.waynelambert.version="2022.01" \
     dev.waynelambert.description="Docker image for web service"
 
 # Prevents Python from writing .pyc files
@@ -31,7 +31,7 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false
 
 # Install Poetry packages and dependencies (excluding dev packages)
-RUN poetry install --no-dev --no-interaction --no-ansi
+RUN poetry install --no-dev --no-interaction --no-ansi --no-root
 
 # Copy local source code directory to container's source code directory
 COPY . .
