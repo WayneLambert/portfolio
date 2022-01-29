@@ -1,24 +1,20 @@
-![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio-github.png)
+![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio.png)
 
-> This code for this portfolio site is hosted at
-> <https://waynelambert.dev> and is intended to showcase Django, Python,
-> Postgres and other programming and web framework skills and
-> technologies.
->
-> The code is not intended to be cloned for reproduction as it's a
-> representation of my personal portfolio of work, therefore
-> instructions have not been provided to clone and set up.
->
-> Please feel free to take a look at the [open and closed
-> issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue)
-> as they're important representations of some of the issues encountered
-> and solutions used. This reflects the ongoing nature of software
-> projects.
->
-> A quick note on PEP8. The code in this portfolio does not adhere to
-> the guideline of 79 characters per line. My approach for personal
-> projects is to work to a flexible limit of 89 and a harder limit of 99
-> characters. Docstrings are wrapped at 72 characters.
+This is the code for my portfolio site hosted at
+<https://waynelambert.dev>.
+
+It is intended to showcase Django, Python, Postgres and other
+programming and web framework skills and technologies.
+
+The code is not intended to be cloned for reproduction as it's a
+representation of my personal portfolio of work, therefore instructions
+have not been provided to clone and set up.
+
+Please feel free to take a look at the [open and closed
+issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue)
+as they're important representations of some of the issues encountered
+and solutions used. This reflects the ongoing nature of problem solving
+within software projects.
 
 [![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
@@ -28,7 +24,7 @@
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-**Activity**
+**Project Activity**
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/WayneLambert/portfolio)
 ![GitHub last commit](https://img.shields.io/github/last-commit/WayneLambert/portfolio)
@@ -91,7 +87,7 @@ Explore fascinating datasets analysed using Python's Data Science libraries.
 
 ## Contact Me
 
-You can contact me at [admin@waynelambert.dev](mailto:admin@waynelambert.dev) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
+You can contact me at [wayne.a.lambert@gmail.com](mailto:wayne.a.lambert@gmail.com) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
 
 If you'd like to find out more about me, you can also [read my 'About
 Me' page](https://waynelambert.dev/about-me/).
