@@ -7,7 +7,7 @@ description = "Portfolio"
 authors = ["Wayne Lambert <wayne.a.lambert@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "==3.9.7"
+python = "==3.9.10"
 django = "==3.2.11"
 djangorestframework = "==3.13.1"
 django-crispy-forms = "==1.14.0"
@@ -229,3 +229,36 @@ sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLD
       "setup.py",
       "*/__main__.py",
     ]
+
+# -- BANDIT CONFIG --------------------------------------------------------------------
+
+[tool.bandit]
+targets = [
+  "/code/"
+]
+exclude = [
+  ".venv/*",
+  "*apps.py",
+  "*/migrations/*",
+  "test_*.py",
+  "*/node_modules/*",
+  "./cacheback/*",
+  "*/static/*",
+  "*/staticfiles/*",
+  "*/tests/test*.py",
+  ".pytest_cache/*",
+  ".hypothesis/*",
+  "*wsgi.py",
+  "*asgi.py",
+  "manage.py",
+  "*__init__.py",
+  "*__pycache__",
+  "*/site-packages/*",
+  "*/distutils/*",
+  "*/.git/*",
+  ".github/*",
+  "*/scss/*",
+  "*/htmlcov/*",
+  "*/logs/*",
+  "*/media/*",
+]
