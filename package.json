@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/WayneLambert/portfolio#readme",
   "dependencies": {
-    "node-sass": "^6.0.0"
+    "node-sass": "^7.0.0"
   },
   "devDependencies": {
     "sass-lint": "^1.13.1"
