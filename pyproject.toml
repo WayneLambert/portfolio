@@ -170,6 +170,88 @@ known_third_party = [
 ]
 sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 
+# -- PYTEST CONFIG ----------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "6.0"
+django_find_project = true
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+
+addopts = [
+    "--ds=aa_project.settings.pytest.pytest",
+    "--reuse-db",
+    "--nomigrations",
+    "--fail-on-template-vars",
+    "--doctest-modules",
+    "--showlocals",
+    "--strict-markers",
+    "--ignore=.venv",
+    "--cov=.",
+    "--cov-report=html",
+    "--randomly-dont-reorganize",
+    "--numprocesses=auto",
+
+    # Uses iPDB for `--trace` debugging
+    "--pdbcls=IPython.terminal.debugger:TerminalPdb",
+    # Uses pdb++ for `--trace` debugging
+    # --pdb
+]
+
+norecursedirs = [
+    ".* build",
+    "dist",
+    "*.egg",
+    "node_modules",
+    "media",
+    ".venv",
+    "scss",
+    "docs",
+    ".git",
+    "static",
+    "staticfiles",
+    "docker",
+    "htmlcov",
+]
+
+testpaths = [
+    "aa_project/tests",
+    "apps/api/tests",
+    "apps/blog/tests",
+    "apps/contacts/tests",
+    "apps/countdown_letters/tests",
+    "apps/countdown_numbers/tests",
+    "apps/cv/tests",
+    "apps/pages/tests",
+    "apps/roulette/tests",
+    "apps/scraping/tests",
+    "apps/text_analysis/tests",
+    "apps/users/tests",
+]
+
+filterwarnings = [
+    "ignore::django.utils.deprecation.RemovedInDjango41Warning",
+    "ignore::django.utils.deprecation.RemovedInDjango50Warning",
+]
+
+# Command Line Options
+console_output_style = "progress"
+log_cli = true
+log_cli_level = "WARNING"
+log_cli_format = "%(asctime)s %(levelname)s %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
+# Log Options
+log_level = "INFO"
+log_date_format = "%Y-%m-%d %H:%M:%S"
+log_format = "%(asctime)s %(levelname)s %(message)s"
+
+# Log File Options
+log_file = "logs/pytest/pytest_logs.log"
+log_file_level = "DEBUG"
+log_file_format = "%(asctime)s %(levelname)s %(message)s"
+log_file_date_format = "%Y-%m-%d %H:%M:%S"
+
 # -- COVERAGE CONFIG --------------------------------------------------------------------
 
 [tool.coverage]
