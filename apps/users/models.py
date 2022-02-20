@@ -8,8 +8,8 @@ from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
 
-from django_cryptography.fields import encrypt
 from django_otp.util import random_hex
+from encrypted_model_fields.fields import EncryptedCharField
 
 from apps.users.utils import get_challenge_expiration_timestamp, token_validator
 
@@ -84,8 +84,8 @@ class Profile(models.Model):
 class EmailToken(models.Model):
 
     challenge_email_address = models.EmailField()
-    challenge_token = encrypt(models.CharField(
-        max_length=255, default=random_hex, validators=[token_validator]))
+    challenge_token = EncryptedCharField(
+        max_length=255, default=random_hex, validators=[token_validator])
     challenge_generation_timestamp = models.DateTimeField(
         null=True, blank=True, auto_now_add=True, editable=False)
     challenge_expiration_timestamp = models.DateTimeField(
