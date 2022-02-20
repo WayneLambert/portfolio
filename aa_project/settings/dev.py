@@ -14,7 +14,6 @@ ALLOWED_HOSTS = [
 # For Django Debug Toolbar and Django Extensions to be used in development
 INSTALLED_APPS += (
     'debug_toolbar',
-    'template_profiler_panel',
     'django_extensions',
 )
 
@@ -38,7 +37,6 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.sql.SQLPanel',
     'debug_toolbar.panels.staticfiles.StaticFilesPanel',
     'debug_toolbar.panels.templates.TemplatesPanel',
-    'template_profiler_panel.panels.template.TemplateProfilerPanel',
     'debug_toolbar.panels.cache.CachePanel',
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
