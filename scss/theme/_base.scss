@@ -233,7 +233,7 @@ hr {
 
     }
 
-    .badge-pill{
+    .badge-pill {
       border-radius: 4px;
     }
 
@@ -355,6 +355,11 @@ hr {
   .container-single-col {
     max-width: $single-col-max-width;
   }
+}
+
+#login {
+  min-width: 450px;
+  max-width: 600px;
 }
 
 .cta-section {

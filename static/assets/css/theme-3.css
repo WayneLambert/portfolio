@@ -7392,6 +7392,10 @@ hr {
   .main-wrapper .container-single-col {
     max-width: 820px; }
 
+#login {
+  min-width: 450px;
+  max-width: 600px; }
+
 .cta-section .heading {
   font-size: 2rem;
   font-weight: bold; }
@@ -8152,6 +8156,14 @@ a.cv-link {
   line-height: 1rem;
   height: 2rem;
   vertical-align: middle; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+input[type='number'] {
+  -moz-appearance: textfield; }
 
 .text-analysis-box {
   padding-left: 10px;
