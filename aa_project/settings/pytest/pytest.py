@@ -5,10 +5,10 @@ import os
 from django.contrib.auth.hashers import BasePasswordHasher
 
 from aa_project.settings.base import (APPS_DIR, AWS_BASE_BUCKET_ADDRESS, BASE_DIR,
-                                      DEFAULT_FROM_EMAIL_SES, INSTALLED_APPS,
-                                      LOGIN_REDIRECT_URL, LOGIN_URL, LOGOUT_REDIRECT_URL,
-                                      ROOT_URLCONF, SECRET_KEY, SITE_ID, STATIC_URL,
-                                      TEMPLATES,)
+                                      DEFAULT_FROM_EMAIL_SES, FIELD_ENCRYPTION_KEY,
+                                      INSTALLED_APPS, LOGIN_REDIRECT_URL, LOGIN_URL,
+                                      LOGOUT_REDIRECT_URL, ROOT_URLCONF, SECRET_KEY,
+                                      SITE_ID, STATIC_URL, TEMPLATES,)
 
 
 # Postgres Testing Database Configuration. Uses in-memory DB
