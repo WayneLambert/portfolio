@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
     'django_otp.plugins.otp_totp',
     'two_factor',
     'axes',
+    'encrypted_model_fields',
 ]
 
 # Project Apps
@@ -274,5 +275,6 @@ AWS_DEFAULT_ACL = None
 AWS_BASE_BUCKET_ADDRESS = os.environ['AWS_BASE_BUCKET_ADDRESS']
 
 # Email Token Settings
+FIELD_ENCRYPTION_KEY = os.environ['FIELD_ENCRYPTION_KEY']
 EMAIL_CHALLENGE_EXPIRATION_IN_SECS = 60 * 5
 EMAIL_TOKEN_EXPIRATION_IN_SECS = 60 * 60 * 24 * 28
