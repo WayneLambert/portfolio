@@ -10,7 +10,7 @@ $theme-text-color-secondary: lighten($theme-text-color-primary, 15%);
 $theme-text-color-light: lighten($theme-text-color-primary, 40%);
 $theme-bg-light: #fafafa;
 $theme-bg-dark: #223142;
-$theme-border-color:  lighten($theme-text-color-primary, 60%);
+$theme-border-color: lighten($theme-text-color-primary, 60%);
 $smoky-white: #fafafa;
 $theme-error: #d9603c;
 $countdown-game-color: #1c3297;
@@ -34,9 +34,8 @@ $gray-700: lighten($theme-text-color-primary, 20%);
 $gray-800: lighten($theme-text-color-primary, 10%);
 $gray-900: $theme-text-color-primary;
 
-$theme-colors: (
-  "primary":  $theme-color-primary, 
-  "secondary":  $theme-text-color-secondary, 
+$theme-colors: ("primary": $theme-color-primary,
+  "secondary": $theme-text-color-secondary,
 );
 
 /**************************** Import Bootstrap ******************************/
@@ -52,6 +51,7 @@ $theme-colors: (
 @import "theme/blog";
 @import "theme/footer";
 @import "theme/tables";
+@import "theme/forms";
 @import "theme/text_analysis";
 @import "theme/roulette";
 @import "theme/countdown";
