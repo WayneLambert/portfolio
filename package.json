@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scss": "(node-sass --watch scss --output static/assets/css --source-map true) & (node-sass --watch scss --output staticfiles/assets/css --source-map true)"
+    "watch-sass": "./watch-sass.sh"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,8 @@
     "url": "https://github.com/WayneLambert/portfolio/issues"
   },
   "homepage": "https://github.com/WayneLambert/portfolio#readme",
-  "dependencies": {
-    "node-sass": "^6.0.0"
-  },
   "devDependencies": {
+    "node-sass": "^7.0.1",
     "sass-lint": "^1.13.1"
   },
   "keywords": [
