@@ -77,6 +77,7 @@ jobs:
           EMAIL_HOST_PASSWORD_SES: ${{ secrets.EMAIL_HOST_PASSWORD_SES }}
           EMAIL_HOST_SES: ${{ secrets.EMAIL_HOST_SES }}
           EMAIL_HOST_USER_SES: ${{ secrets.EMAIL_HOST_USER_SES }}
+          FIELD_ENCRYPTION_KEY: ${{ secrets.FIELD_ENCRYPTION_KEY }}
           OD_API_BASE_URL: ${{ secrets.OD_API_BASE_URL }}
           OD_APPLICATION_ID: ${{ secrets.OD_APPLICATION_ID }}
           OD_APPLICATION_KEY_1: ${{ secrets.OD_APPLICATION_KEY_1 }}
