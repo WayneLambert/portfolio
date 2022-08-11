@@ -8,7 +8,7 @@ authors = ["Wayne Lambert <wayne.a.lambert@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "==3.9.10"
-django = "==4.0.2"
+django = "==4.0.7"
 djangorestframework = "==3.13.1"
 django-crispy-forms = "==1.14.0"
 django-recaptcha = "3.0.0"
