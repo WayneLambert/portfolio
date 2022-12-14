@@ -1,9 +1,10 @@
+import contextlib
+
 from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.utils.html import format_html
 
 from django_otp.plugins.otp_static.models import StaticDevice
-from two_factor.models import PhoneDevice
 
 from apps.users.models import EmailToken, Profile
 
@@ -14,14 +15,12 @@ class ProfileAdmin(admin.ModelAdmin):
     SCALE_FACTOR = 0.3
 
     def profile_picture_image(self, obj):
-        try:
+        with contextlib.suppress(OSError):
             img_width = obj.profile_picture.width * self.SCALE_FACTOR
             img_height = obj.profile_picture.height * self.SCALE_FACTOR
             url = obj.profile_picture.url
             return format_html(
                 f"<img src='{url}' width='{img_width}' height='{img_height}' />")
-        except OSError:
-            pass
 
 
 class EmailTokenAdmin(admin.ModelAdmin):
@@ -42,5 +41,4 @@ class EmailTokenAdmin(admin.ModelAdmin):
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(EmailToken, EmailTokenAdmin)
 admin.site.unregister(Group)
-admin.site.unregister(PhoneDevice)
 admin.site.unregister(StaticDevice)

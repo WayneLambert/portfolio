@@ -6,65 +6,69 @@ version = "1.0.0"
 description = "Portfolio"
 authors = ["Wayne Lambert <wayne.a.lambert@gmail.com>"]
 
+[[tool.poetry.source]]
+name = "test"
+url = "https://test.pypi.org/simple/"
+secondary = true
+
 [tool.poetry.dependencies]
-python = "==3.9.10"
-django = "==4.0.2"
-djangorestframework = "==3.13.1"
+python = "==3.10.7"
+django = "4.1.4"
+djangorestframework = "==3.14.0"
 django-crispy-forms = "==1.14.0"
 django-recaptcha = "3.0.0"
 django-widget-tweaks = "==1.4.12"
 django-shapeshifter = "==18.9.23"
 django-guardian = "==2.4.0"
-django-axes = "==5.31.0"
-django-storages = "==1.12.3"
-django-ses = "==2.5.0"
-django-filter = "==21.1"
-django-tinymce = "==3.4.0"
-django-bootstrap4 = "==21.2"
-django-two-factor-auth = "==1.13.2"
-psycopg2-binary = "2.9.3"
-dj-database-url = "==0.5.0"
+django-axes = "==5.40.1"
+django-storages = "==1.13.1"
+django-ses = "==3.2.2"
+django-filter = "==22.1"
+django-tinymce = "==3.5.0"
+django-bootstrap4 = "==22.3"
+django-two-factor-auth = "==1.14.0"
+psycopg2-binary = "2.9.5"
 gunicorn = "==20.1.0"
-whitenoise = "6.0.0"
-requests = "==2.27.1"
-beautifulsoup4 = "==4.10.0"
-markdown = "==3.3.4"
-boto3 = "1.21.3"
+whitenoise = "6.2.0"
+requests = "==2.28.1"
+beautifulsoup4 = "==4.11.1"
+markdown = "==3.4.1"
+boto3 = "1.26.29"
 pygments = "==2.11.2"
-pillow = "==9.0.1"
-phonenumbers = "==8.12.43"
-django-encrypted-model-fields = "0.6.1"
+pillow = "==9.3.0"
+phonenumbers = "==8.13.2"
+django-encrypted-model-fields = "0.6.5"
+dj-database-url = "==1.2.0"
+rich = "12.6.0"
 
-[tool.poetry.dev-dependencies]
-django-debug-toolbar = "3.2.4"
-django-extensions = "3.1.5"
-pytest = "7.0.1"
-coverage = "6.3.1"
+[tool.poetry.group.dev.dependencies]
+django-debug-toolbar = "3.8.1"
+django-extensions = "3.2.1"
+pytest = "7.2.0"
+coverage = "6.5.0"
 pytest-django = "4.5.2"
-pytest-cov = "3.0.0"
-pytest-factoryboy = "==2.1.0"
-mixer = "7.2.1"
-hypothesis = "6.37.0"
-django-coverage-plugin = "2.0.2"
+pytest-cov = "4.0.0"
+pytest-factoryboy = "==2.5.1"
+mixer = "7.2.2"
+hypothesis = "6.61.0"
+django-coverage-plugin = "3.0.0"
 autopep8 = "1.6.0"
 ptvsd = "==4.3.2"
-dj-database-url = "==0.5.0"
-bandit = "1.7.2"
+bandit = "1.7.4"
 interrogate = "1.5.0"
-wily = "==1.20.0"
-bpython = "0.22.1"
-pylint = "2.12.2"
-pylint-django = "2.5.2"
-pycodestyle = "2.8.0"
-ipdb = "==0.13.9"
-ipython = "7.31.1"
-rich = "11.2.0"
-pytest-randomly = "3.11.0"
+wily = "==1.24.0"
+bpython = "0.23"
+pylint = "2.15.8"
+pylint-django = "2.5.3"
+pycodestyle = "2.10.0"
+ipdb = "==0.13.11"
+ipython = "8.7.0"
+pytest-randomly = "3.12.0"
 pytest-vcr = "==1.0.2"
 pdbpp = "0.10.3"
-pytest-mock = "3.7.0"
-pytest-xdist = "2.5.0"
-pywatchman = "==1.4.1"
+pytest-mock = "3.10.0"
+pytest-xdist = "3.1.0"
+pywatchman = "1.4.2.dev1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -128,14 +132,13 @@ max-line-length = "99"
 good-names = "_, qs, pk"
 
 [tool.pylint.miscellaneous]
-notes="TODO, FIXME, DEBUG"
+notes="TODO, FIXME, DEBUG, NOTE, DONE, TEMP BLOCK"
 
 # -- BLACK CONFIG -----------------------------------------------------------------------
 
 [tool.black]
 line-length = 99
 skip-string-normalization = true
-diff = true
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -156,19 +159,22 @@ exclude = '''
 
 [tool.isort]
 atomic = true
-line_length = 89
+line_length = 99
+profile = "black"
 include_trailing_comma = true
 force_single_line = false
 lines_after_imports = 2
 lines_between_types = 1
 use_parentheses = true
 skip_glob = "*/.venv/*, */node_modules/*, */.git/*, */migrations/*"
+
+sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
 known_django = "django"
 known_third_party = [
   "PIL", "bs4", "captcha", "dj_database_url", "factory", "hypothesis", "mixer",
   "pytest", "requests", "rest_framework", "shapeshifter", "tinymce"
 ]
-sections = ["FUTURE", "STDLIB", "DJANGO", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
 
 # -- PYTEST CONFIG ----------------------------------------------------------------------
 [tool.pytest.ini_options]
@@ -194,8 +200,6 @@ addopts = [
 
     # Uses iPDB for `--trace` debugging
     "--pdbcls=IPython.terminal.debugger:TerminalPdb",
-    # Uses pdb++ for `--trace` debugging
-    # --pdb
 ]
 
 norecursedirs = [

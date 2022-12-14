@@ -1,9 +1,9 @@
 # Official Python runtime as the base image
-FROM python:3.9.10-buster
+FROM python:3.10.7-buster
 
 # Add metadata to the image
-LABEL author="Wayne Lambert <admin@waynelambert.dev>" \
-    version="2022.01" \
+LABEL author="Wayne Lambert <wayne.a.lambert@gmail.com>" \
+    version="2022.12" \
     description="Docker image for web service of portfolio site."
 
 # Prevents Python from writing .pyc files
@@ -31,10 +31,10 @@ WORKDIR /code
 RUN pip install --upgrade pip
 
 # Install the latest stable version of Poetry isolating it from the rest of the system
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN curl -sSL https://install.python-poetry.org | python3
 
 # Set Poetry in the container's $PATH
-ENV PATH = "${PATH}:/root/.poetry/bin"
+ENV PATH="/root/.local/bin:$PATH"
 
 # Copy the package management files into the container
 COPY pyproject.toml poetry.lock ./
