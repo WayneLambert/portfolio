@@ -1,5 +1,5 @@
 # Official Python runtime as the base image
-FROM python:3.10.7-buster
+FROM python:3.10.8-buster
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <wayne.a.lambert@gmail.com>" \
