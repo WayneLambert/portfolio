@@ -234,7 +234,6 @@ testpaths = [
 ]
 
 filterwarnings = [
-    "ignore::django.utils.deprecation.RemovedInDjango41Warning",
     "ignore::django.utils.deprecation.RemovedInDjango50Warning",
 ]
 
