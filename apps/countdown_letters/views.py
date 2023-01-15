@@ -49,8 +49,9 @@ def results_screen(request):
     else:
         player_word_len, player_score = 0, 0
 
-    shortlisted_words = logic.get_shortlisted_words(logic.get_words(), letters_chosen)
-    if shortlisted_words:
+    if shortlisted_words := logic.get_shortlisted_words(
+        logic.get_words(), letters_chosen
+    ):
         comp_word = logic.get_longest_possible_word(shortlisted_words)
         winning_word = comp_word if len(comp_word) > player_word_len else players_word
         definition_data = logic.lookup_definition_data(winning_word)
