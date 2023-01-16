@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
+
 {% load static %}
 
 {% block title %}{{ block.super }} | CV{% endblock title %}
-{% block desc %}Django Web Developer | Builds intuitive, interactive, scalable, and well tested web apps. | Birmingham, UK{% endblock desc %}
+
+{% block desc %}
+  Django Web Developer | Builds intuitive, interactive, and scalable web apps. | Birmingham, UK
+{% endblock desc %}
 
 {% block content %}
   <div class="container px-3 px-lg-5">
@@ -33,7 +37,6 @@
   </div>
 
   {% block additional_js %}
-    <!--Page Specific JS -->
     <script type="text/javascript" src="{% static 'assets/plugins/imagesloaded.pkgd.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'assets/plugins/isotope.pkgd.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'assets/js/isotope-custom.js' %}"></script>
