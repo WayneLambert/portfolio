@@ -89,7 +89,7 @@ Explore fascinating datasets analysed using Python's Data Science libraries.
 You can contact me at [wayne.a.lambert@gmail.com](mailto:wayne.a.lambert@gmail.com) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
 
 If you'd like to find out more about me, you can also read my ['About
-Me' page](https://waynelambert.dev/about-me/) page.
+Me'](https://waynelambert.dev/about-me/) page.
 
 ## License
 
