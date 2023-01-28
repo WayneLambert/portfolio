@@ -33,7 +33,7 @@ class SocialMedia:
 
     @register.simple_tag
     def linkedin_profile_link():
-        return "https://www.linkedin.com/in/waynealambert/"
+        return "https://www.linkedin.com/in/waynelambert/"
 
     @register.simple_tag
     def google_maps_location_link():
@@ -56,13 +56,11 @@ class LinkGenerator:
     @staticmethod
     @register.simple_tag
     def github_url(type: str, app: str) -> str:
-        base_url = "https://github.com/WayneLambert/portfolio/"
         if type == 'code':
             query_str = f"tree/main/apps/{app}"
         else:
             query_str = f"issues?q=is%3Aissue+label%3A%22app%3A+{app}%22"
-
-        return base_url + query_str
+        return f"https://github.com/WayneLambert/portfolio/{query_str}"
 
 
 class Contacts:

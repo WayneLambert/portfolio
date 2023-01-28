@@ -16,7 +16,6 @@ as they're important representations of some of the issues encountered
 and solutions used. This reflects the ongoing nature of problem solving
 within software projects.
 
-[![Heroku App Status](https://heroku-shields.herokuapp.com/wl-portfolio)](https://wl-portfolio.herokuapp.com)
 [![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
@@ -89,8 +88,8 @@ Explore fascinating datasets analysed using Python's Data Science libraries.
 
 You can contact me at [wayne.a.lambert@gmail.com](mailto:wayne.a.lambert@gmail.com) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
 
-If you'd like to find out more about me, you can also [read my 'About
-Me' page](https://waynelambert.dev/about-me/).
+If you'd like to find out more about me, you can also read my ['About
+Me' page](https://waynelambert.dev/about-me/) page.
 
 ## License
 
