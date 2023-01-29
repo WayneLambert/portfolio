@@ -1,5 +1,12 @@
 ![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio.png)
 
+[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
 This is the code for my portfolio site hosted at
 <https://waynelambert.dev>.
 
@@ -15,18 +22,6 @@ issues](https://github.com/WayneLambert/portfolio/issues?q=is%3Aissue)
 as they're important representations of some of the issues encountered
 and solutions used. This reflects the ongoing nature of problem solving
 within software projects.
-
-[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-
-**Project Activity**
-
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/WayneLambert/portfolio)
-![GitHub last commit](https://img.shields.io/github/last-commit/WayneLambert/portfolio)
 
 ## Django Blog
 
