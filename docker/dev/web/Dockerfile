@@ -1,10 +1,10 @@
 # Official Python runtime as the base image
-FROM python:3.10.8-buster
+FROM python:3.10.13 AS base
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <wayne.a.lambert@gmail.com>" \
-    version="2022.12" \
-    description="Docker image for web service of portfolio site."
+    version="2023.12" \
+    description="Docker image for portfolio."
 
 # Prevents Python from writing .pyc files
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -15,14 +15,9 @@ ENV PYTHONUNBUFFERED 1
 # Set the COLUMNS variable for the terminal's output width
 ENV COLUMNS 133
 
-# Install Watchman File Watching Service
-RUN cd /tmp \
-    && git clone https://github.com/facebook/watchman.git -b v4.9.0 --depth 1 \
-    && cd watchman \
-    && ./autogen.sh \
-    && ./configure --enable-statedir=/tmp --enable-lenient --without-pcre \
-    && make -j6 \
-    && make install
+
+###### ---------- Build `project` stage using `base` as its basis ---------- #####
+FROM base AS project
 
 # Create and set working directory
 WORKDIR /code
@@ -30,11 +25,8 @@ WORKDIR /code
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install the latest stable version of Poetry isolating it from the rest of the system
-RUN curl -sSL https://install.python-poetry.org | python3
-
-# Set Poetry in the container's $PATH
-ENV PATH="/root/.local/bin:$PATH"
+# Install the latest version of Poetry
+RUN pip install poetry
 
 # Copy the package management files into the container
 COPY pyproject.toml poetry.lock ./
@@ -42,11 +34,22 @@ COPY pyproject.toml poetry.lock ./
 # Do not create a virtual environment
 RUN poetry config virtualenvs.create false
 
-# Install Poetry packages and dependencies (excluding dev packages)
-RUN poetry install --no-interaction --no-ansi --no-root
+# Install Poetry packages and dependencies (including dev packages)
+RUN poetry install --no-interaction --no-ansi
 
-# Copy local source code directory to container's source code directory
+# Copy the source code into working directory
 COPY . .
 
-# Bring up the Django development server
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8001" ]
+# Add a new group for the app
+ARG APP_GROUP=app-grp
+RUN groupadd ${APP_GROUP}
+
+# Add new user for app
+ARG APP_USER=app-usr
+RUN useradd --create-home --gid ${APP_GROUP} ${APP_USER}
+
+# Recursively change the user:group of the directory
+RUN chown -R ${APP_USER}:${APP_GROUP} .
+
+# Change the user to the application user (i.e. non-root access)
+USER ${APP_USER}
