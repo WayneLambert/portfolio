@@ -39,7 +39,7 @@ THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap4",
     "storages",
-    "captcha",
+    "django_recaptcha",
     "widget_tweaks",
     "tinymce",
     "django_otp",

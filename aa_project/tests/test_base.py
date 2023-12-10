@@ -40,8 +40,8 @@ class TestThirdPartyAppsAreInstalled:
     def test_storages_in_installed_apps(self):
         assert 'storages' in base.INSTALLED_APPS
 
-    def test_captcha_in_installed_apps(self):
-        assert 'captcha' in base.INSTALLED_APPS
+    def test_django_recaptcha_in_installed_apps(self):
+        assert 'django_recaptcha' in base.INSTALLED_APPS
 
     def test_widget_tweaks_in_installed_apps(self):
         assert 'widget_tweaks' in base.INSTALLED_APPS

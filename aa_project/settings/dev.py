@@ -111,7 +111,7 @@ LOGGING = {
 }
 
 # Simple Captcha Settings
-SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
+SILENCED_SYSTEM_CHECKS = ["django_recaptcha.recaptcha_test_key_error"]
 
 # Django Two-Factor Auth Settings
 TWO_FACTOR_PATCH_ADMIN = False
