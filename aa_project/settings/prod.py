@@ -26,8 +26,15 @@ SECURE_HSTS_PRELOAD = True
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SECURE_REFERRER_POLICY = "same-origin"
 
-# Static files
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# Django Storages Settings
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 # Heroku Deployment Settings for Postgres
 db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
