@@ -28,10 +28,7 @@ def get_area_results(results: dict) -> List[Tuple[Any]]:
         results["area_votes"],
         results["turnout"],
     )
-    results = []
-    for area in area_results:
-        results.append(area)
-
+    results = list(area_results)
     return results
 
 
