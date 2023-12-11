@@ -26,7 +26,7 @@ services:
         source: postgres_volume
         target: /var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - '5432:5432'
     networks:
       - backend
 
@@ -47,10 +47,10 @@ services:
     volumes:
       - .:/code
     ports:
-      - "${WEB_PORT}:${WEB_PORT}"
-      - "${DEBUG_PORT}:${DEBUG_PORT}"
+      - '${WEB_PORT}:${WEB_PORT}'
+      - '${DEBUG_PORT}:${DEBUG_PORT}'
     command: >
-      sh -c "python manage.py runserver 0.0.0.0:${WEB_PORT} --nostatic"
+      sh -c "python -Xfrozen_modules=off manage.py runserver 0.0.0.0:${WEB_PORT} --nostatic"
     networks:
       - backend
 

@@ -1,5 +1,5 @@
 # Official Python runtime as the base image
-FROM python:3.11.6 AS base
+FROM python:3.12.1 AS base
 
 # Add metadata to the image
 LABEL author="Wayne Lambert <wayne.a.lambert@gmail.com>" \

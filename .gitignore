@@ -182,6 +182,9 @@ prod.env
 .dmypy.json
 dmypy.json
 
+# ruff
+.ruff_cache/
+
 # Pyre type checker
 .pyre/
 
@@ -193,3 +196,4 @@ node_modules/*
 logs/pytest/*
 logs/code_sample.md
 test_api.rest
+outdated.txt
