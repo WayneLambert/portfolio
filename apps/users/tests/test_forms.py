@@ -140,12 +140,8 @@ class TestProfileUpdateForm:
         "validity": True,
     }
 
-    def good_data_with_image(test_image):
-        return {
-            "profile_picture": test_image,
-            "author_view": 0,
-            "validity": True,
-        }
+    def good_data_with_image(self):
+        return {"profile_picture": self, "author_view": 0, "validity": True}
 
     def test_form_tests_for_all_fields(self):
         """Asserts all fields that need to be tested are present"""
