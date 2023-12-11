@@ -11,10 +11,11 @@ class CategoryListAPIView(ListAPIView):
     The configured endpoint purposefully does not permit a POST method
     as I do not want others creating new categories in the database.
     """
+
     name = "Category List API"
-    queryset = Category.objects.all().prefetch_related('posts')
+    queryset = Category.objects.all().prefetch_related("posts")
     serializer_class = CategorySerializer
-    lookup_fields = ('name')
+    lookup_fields = "name"
 
 
 class PostListAPIView(ListAPIView):
@@ -25,10 +26,11 @@ class PostListAPIView(ListAPIView):
     The configured endpoint purposefully does not permit a POST method
     as I do not want others creating new posts in the database.
     """
+
     name = "Post List API"
     queryset = Post.published.all()
     serializer_class = PostSerializer
-    lookup_fields = ('title')
+    lookup_fields = "title"
 
 
 class PostDetailAPIView(RetrieveAPIView):
@@ -38,6 +40,7 @@ class PostDetailAPIView(RetrieveAPIView):
     The configured endpoint uses a RetrieveAPIView to limit to read-only
     access. I do not others creating new posts in the database.
     """
+
     name = "Post Detail API"
     queryset = Post.published.all()
     serializer_class = PostSerializer

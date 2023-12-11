@@ -4,15 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('blog', '0001_initial'),
+        ("blog", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='post',
-            name='image',
-            field=models.ImageField(default='post_images/algorithm1.jpeg', help_text='For bests results, use an image that is 1,200px wide x 600px high', max_length=200, upload_to='post_images'),
+            model_name="post",
+            name="image",
+            field=models.ImageField(
+                default="post_images/algorithm1.jpeg",
+                help_text="For bests results, use an image that is 1,200px wide x 600px high",
+                max_length=200,
+                upload_to="post_images",
+            ),
         ),
     ]

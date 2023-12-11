@@ -12,19 +12,19 @@ from mixer.backend.django import mixer
 from apps.contacts.models import Contact
 
 
-@pytest.fixture(name='random_contact', scope='function')
+@pytest.fixture(name="random_contact", scope="function")
 def random_contact():
-    """ Sets up a random user using the `mixer` package """
+    """Sets up a random user using the `mixer` package"""
     return mixer.blend(Contact)
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope="function")
 def contact_data():
-    """ Builds a sample contact for completing a contact form """
+    """Builds a sample contact for completing a contact form"""
     return {
-        'first_name': 'Wayne',
-        'last_name': 'Lambert',
-        'email': 'wayne.lambert@example.com',
-        'message': 'Test Message',
-        'captcha': 'PASSED',
-}
+        "first_name": "Wayne",
+        "last_name": "Lambert",
+        "email": "wayne.lambert@example.com",
+        "message": "Test Message",
+        "captcha": "PASSED",
+    }

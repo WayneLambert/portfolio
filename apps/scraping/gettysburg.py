@@ -17,11 +17,11 @@ def get_gettysburg_speech(request):
     page_content = BeautifulSoup(page_response.content, "html.parser")
     text_content, split_string = [], []
     for num in range(2):
-        paragraphs = page_content.find_all('div', attrs={"class": "quoteText"})[num].text
+        paragraphs = page_content.find_all("div", attrs={"class": "quoteText"})[num].text
         text_content.append(paragraphs)
-    split_string = text_content[1].strip('\n').strip().split('\n')
+    split_string = text_content[1].strip("\n").strip().split("\n")
     gettysburg_speech = split_string[0]
 
-    context = {'gettysburg': gettysburg_speech}
+    context = {"gettysburg": gettysburg_speech}
 
-    return render(request, 'gettysburg_speech.html', context)
+    return render(request, "gettysburg_speech.html", context)

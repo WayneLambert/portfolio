@@ -3,8 +3,8 @@ import os
 import sys
 
 
-if __name__ == '__main__':
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', os.environ['DJANGO_SETTINGS_MODULE'])
+if __name__ == "__main__":
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ["DJANGO_SETTINGS_MODULE"])
 
     try:
         from django.conf import settings
@@ -12,12 +12,14 @@ if __name__ == '__main__':
 
         if settings.DEBUG:
             from rich import pretty, traceback
+
             pretty.install()
             traceback.install()
 
-            if os.environ.get('RUN_MAIN') or os.environ.get('WERKZEUG_RUN_MAIN'):
+            if os.environ.get("RUN_MAIN") or os.environ.get("WERKZEUG_RUN_MAIN"):
                 import ptvsd
-                ptvsd.enable_attach(address=('0.0.0.0', 8890))
+
+                ptvsd.enable_attach(address=("0.0.0.0", 8890))
                 print("Attached remote debugger to Docker container")
 
     except ImportError as exc:

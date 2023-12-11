@@ -6,7 +6,6 @@ from django.utils.safestring import mark_safe
 
 
 class DeviceAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
-
     def test_func(self) -> bool:
         return self.request.user.profile.is_two_factor_auth_by_token
 
@@ -15,7 +14,6 @@ class DeviceAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
 
 
 class EmailAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
-
     def test_func(self) -> bool:
         return self.request.user.profile.is_two_factor_auth_by_email
 
@@ -24,14 +22,13 @@ class EmailAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
 
 
 class TwoFactorAuthUserMixin(LoginRequiredMixin, UserPassesTestMixin):
-
     def test_func(self) -> bool:
         return self.request.user.profile.is_two_factor_authenticated
 
     def handle_no_permission(self):
         html_msg = (
-            "You have not verified by either device token or email.<br /><br />" +
-            "Please follow the two-factor authentication process."
+            "You have not verified by either device token or email.<br /><br />"
+            + "Please follow the two-factor authentication process."
         )
         messages.add_message(self.request, messages.INFO, mark_safe(html_msg))
         return redirect(settings.LOGIN_URL)
