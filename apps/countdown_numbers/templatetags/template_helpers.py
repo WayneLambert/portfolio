@@ -12,18 +12,14 @@ register = template.Library()
 
 @register.filter
 def remove_brackets(value):
-    """ Removes any squared brackets """
+    """Removes any squared brackets"""
     return value.replace("[", "").replace("]", "")
+
 
 @register.filter
 def add_spacing(value):
-    """ Adds spacing around the calculation's operators """
-    replacements = {
-        "+": " + ",
-        "-": " - ",
-        "*": " * ",
-        "/": " / "
-    }
+    """Adds spacing around the calculation's operators"""
+    replacements = {"+": " + ", "-": " - ", "*": " * ", "/": " / "}
     return "".join([replacements.get(c, c) for c in value])
 
 

@@ -8,7 +8,7 @@ from django_otp.util import hex_validator
 
 
 def generate_token() -> str:
-    """ Generates a 6 digit random number including any leading zeros """
+    """Generates a 6 digit random number including any leading zeros"""
     return str(random.randint(0, 999_999)).zfill(6)
 
 
@@ -29,5 +29,5 @@ def get_token_expiration_timestamp():
 
 
 def token_validator(*args, **kwargs):
-    """ Wraps hex_validator generator satisfying `makemigrations` """
+    """Wraps hex_validator generator satisfying `makemigrations`"""
     return hex_validator()(*args, **kwargs)

@@ -17,7 +17,7 @@ class LettersGame(models.Model):
     entry_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('-entry_date', )
+        ordering = ("-entry_date",)
 
     @property
     def entry_year(self) -> int:

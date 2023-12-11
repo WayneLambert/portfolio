@@ -2,6 +2,16 @@
 
 
 destinations = {
-    'Aruba', 'Barbados', 'Bora Bora', 'Fiji', 'Hawaii', 'Koh Samui',
-    'Langkawi', 'Maldives', 'Palawan', 'Santorini', 'Seychelles', 'St. Lucia'
+    "Aruba",
+    "Barbados",
+    "Bora Bora",
+    "Fiji",
+    "Hawaii",
+    "Koh Samui",
+    "Langkawi",
+    "Maldives",
+    "Palawan",
+    "Santorini",
+    "Seychelles",
+    "St. Lucia",
 }

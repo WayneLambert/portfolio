@@ -8,22 +8,20 @@ import pytest
 
 
 def pytest_addoption(parser):
-    """ Sets a command line flag `--runslow` for the CLI """
-    parser.addoption(
-        '--runslow', action='store_true', default=False, help='run slow tests'
-    )
+    """Sets a command line flag `--runslow` for the CLI"""
+    parser.addoption("--runslow", action="store_true", default=False, help="run slow tests")
 
 
 def pytest_configure(config):
-    """ Sets tests with `@pytest.mark.slow` decorator as ones to be skipped """
-    config.addinivalue_line('markers', 'slow: mark test as slow to run')
+    """Sets tests with `@pytest.mark.slow` decorator as ones to be skipped"""
+    config.addinivalue_line("markers", "slow: mark test as slow to run")
 
 
 def pytest_collection_modifyitems(config, items):
-    """ Adds `slow` marker upon collection of tests to run """
-    if config.getoption('--runslow'):
+    """Adds `slow` marker upon collection of tests to run"""
+    if config.getoption("--runslow"):
         return
-    skip_slow = pytest.mark.skip(reason='need --runslow option to run')
+    skip_slow = pytest.mark.skip(reason="need --runslow option to run")
     for item in items:
-        if 'slow' in item.keywords:
+        if "slow" in item.keywords:
             item.add_marker(skip_slow)

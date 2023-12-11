@@ -15,7 +15,6 @@ from apps.users.utils import get_challenge_expiration_timestamp, token_validator
 
 
 class Profile(models.Model):
-
     class AuthorView(models.IntegerChoices):
         USERNAME = 0
         FULL_NAME = 1
@@ -23,13 +22,15 @@ class Profile(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     author_view = models.IntegerField(choices=AuthorView.choices, default=0)
     profile_picture = models.ImageField(
-        default='profile_pics/default-user.jpg', upload_to='profile_pics', max_length=200)
+        default="profile_pics/default-user.jpg", upload_to="profile_pics", max_length=200
+    )
     created_date = models.DateTimeField(auto_now_add=True, editable=False)
     updated_date = models.DateTimeField(auto_now=True)
 
     # Relationship Fields
     user = models.OneToOneField(
-        get_user_model(), primary_key=True, related_name='profile', on_delete=models.CASCADE)
+        get_user_model(), primary_key=True, related_name="profile", on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return f"{self.user.get_full_name()} ({self.user.get_username()})"
@@ -51,7 +52,7 @@ class Profile(models.Model):
             return self.user.get_full_name()
 
     def get_absolute_url(self):
-        return reverse('blog:users:profile', kwargs={'username': self.slug})
+        return reverse("blog:users:profile", kwargs={"username": self.slug})
 
     def save(self, *args, **kwargs):
         if not self.slug.strip():
@@ -60,14 +61,14 @@ class Profile(models.Model):
 
     @property
     def is_two_factor_auth_by_token(self) -> bool:
-        """" Returns whether user is authenticated by token """
+        """ " Returns whether user is authenticated by token"""
         return self.user.totpdevice_set.exists()
 
     @property
     def is_two_factor_auth_by_email(self) -> bool:
-        """" Returns whether user is authenticated by email """
+        """ " Returns whether user is authenticated by email"""
         try:
-            user_email_token = self.user.user_email_tokens.latest('id')
+            user_email_token = self.user.user_email_tokens.latest("id")
         except ObjectDoesNotExist:
             return False
         else:
@@ -77,26 +78,29 @@ class Profile(models.Model):
 
     @property
     def is_two_factor_authenticated(self) -> bool:
-        """" Returns whether user is authenticated by either token or email """
+        """ " Returns whether user is authenticated by either token or email"""
         return bool(self.is_two_factor_auth_by_token or self.is_two_factor_auth_by_email)
 
 
 class EmailToken(models.Model):
-
     challenge_email_address = models.EmailField()
     challenge_token = EncryptedCharField(
-        max_length=255, default=random_hex, validators=[token_validator])
+        max_length=255, default=random_hex, validators=[token_validator]
+    )
     challenge_generation_timestamp = models.DateTimeField(
-        null=True, blank=True, auto_now_add=True, editable=False)
+        null=True, blank=True, auto_now_add=True, editable=False
+    )
     challenge_expiration_timestamp = models.DateTimeField(
-        null=True, blank=True, default=get_challenge_expiration_timestamp)
+        null=True, blank=True, default=get_challenge_expiration_timestamp
+    )
     challenge_completed = models.BooleanField(default=False)
     challenge_completed_timestamp = models.DateTimeField(null=True, blank=True)
     token_expiration_timestamp = models.DateTimeField(null=True, blank=True)
 
     # Relationship Fields
     user = models.ForeignKey(
-        get_user_model(), related_name='user_email_tokens', on_delete=models.CASCADE)
+        get_user_model(), related_name="user_email_tokens", on_delete=models.CASCADE
+    )
 
     def __repr__(self):
         return f"<EmailToken(id={self.id}, user_id={self.user_id}, user='{self.user}')>"
@@ -108,13 +112,14 @@ class EmailToken(models.Model):
         if not self._state.adding and self.challenge_completed:
             self.challenge_completed_timestamp = timezone.now()
             self.token_expiration_timestamp = timezone.now() + timedelta(
-                seconds=settings.EMAIL_TOKEN_EXPIRATION_IN_SECS)
+                seconds=settings.EMAIL_TOKEN_EXPIRATION_IN_SECS
+            )
             self.challenge_expiration_timestamp = self.token_expiration_timestamp
         return super().save(*args, **kwargs)
 
     @property
     def is_challenge_within_expiry(self) -> bool:
-        """"
+        """ "
         Returns whether email token is within its challenge expiration date
         """
         if not self.challenge_expiration_timestamp:
@@ -123,7 +128,7 @@ class EmailToken(models.Model):
 
     @property
     def is_token_within_expiry(self) -> bool:
-        """"
+        """ "
         Returns whether email token is within its token expiration date
         """
         if not self.token_expiration_timestamp:

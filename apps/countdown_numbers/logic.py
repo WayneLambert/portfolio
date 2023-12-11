@@ -6,12 +6,13 @@ import operator
 
 from collections import defaultdict, deque
 from random import choices, randint
+from typing import DefaultDict, Dict, List
 
 from django.urls import reverse
 from django.utils.http import urlencode
 
 
-def get_numbers_chosen(num_from_top: int) -> list:
+def get_numbers_chosen(num_from_top: int) -> List:
     """
     Returns an appropriate proportion of numbers from the top and bottom
     row within the randomised game selection according to their
@@ -40,34 +41,35 @@ def get_numbers_chosen(num_from_top: int) -> list:
 
 
 def get_target_number() -> int:
-    """ Generates a random number between 100 and 999 """
+    """Generates a random number between 100 and 999"""
     return randint(100, 999)
 
 
 def build_game_url(num_from_top: int) -> str:
-    """ Generates the URL for the `game` screen """
-    base_url = reverse('countdown_numbers:game')
-    target_number_url = urlencode({'target_number': get_target_number()})
+    """Generates the URL for the `game` screen"""
+    base_url = reverse("countdown_numbers:game")
+    target_number_url = urlencode({"target_number": get_target_number()})
     numbers_chosen_url = urlencode(
-        {'numbers_chosen': get_numbers_chosen(num_from_top=num_from_top)})
+        {"numbers_chosen": get_numbers_chosen(num_from_top=num_from_top)}
+    )
     return f"{base_url}?{target_number_url}&{numbers_chosen_url}"
 
 
-def get_game_nums(number_chosen: list) -> list:
-    """ Performs cleanup to get the game numbers as a list """
-    return number_chosen.strip('[').strip(']').replace(' ', '').split(',')
+def get_game_nums(number_chosen: list) -> List:
+    """Performs cleanup to get the game numbers as a list"""
+    return number_chosen.strip("[").strip("]").replace(" ", "").split(",")
 
 
 def get_player_num_achieved(players_calc: str) -> int:
-    """ Calculates number calculated according to the input answer """
+    """Calculates number calculated according to the input answer"""
     return int(eval(players_calc))
 
 
-def get_game_calcs(game_nums: list, stop_on=None) -> defaultdict:
-    """ Calculates the possible calculations to the game """
+def get_game_calcs(game_nums: list, stop_on=None) -> DefaultDict:
+    """Calculates the possible calculations to the game"""
     operator_symbols = {
-        '+': operator.add,
-        '-': operator.sub,
+        "+": operator.add,
+        "-": operator.sub,
         chr(215): operator.mul,
         chr(247): operator.truediv,
     }
@@ -77,8 +79,8 @@ def get_game_calcs(game_nums: list, stop_on=None) -> defaultdict:
     possibilities = itertools.product(game_nums_permutations, operator_combinations)
 
     game_calcs = defaultdict(list)
-    calc_string = u'(((({0} {6} {1}) {7} {2}) {8} {3}) {9} {4}) {10} {5}'
-    for (game_nums, operators) in possibilities:
+    calc_string = "(((({0} {6} {1}) {7} {2}) {8} {3}) {9} {4}) {10} {5}"
+    for game_nums, operators in possibilities:
         calc = calc_string.format(*(game_nums + operators))
 
         value_queue = deque(game_nums)
@@ -99,8 +101,8 @@ def get_game_calcs(game_nums: list, stop_on=None) -> defaultdict:
     return game_calcs
 
 
-def get_best_solution(game_nums: list, target: int) -> str:
-    """ Calculates a solution closest to the game's target number """
+def get_best_solution(game_nums: List, target: int) -> str:
+    """Calculates a solution closest to the game's target number"""
     game_calcs = get_game_calcs(game_nums, stop_on=target)
 
     if int(target) in game_calcs:
@@ -128,15 +130,15 @@ def get_score_awarded(target_number: int, num_achieved: int) -> int:
     return points_awarded
 
 
-def get_game_result(target: int, answers: dict) -> str:
-    """ Returns the game's result as a string for template rendering """
-    comp_ans_variance = abs(answers['comp_num_achieved'] - target)
-    player_ans_variance = abs(answers['player_num_achieved'] - target)
+def get_game_result(target: int, answers: Dict) -> str:
+    """Returns the game's result as a string for template rendering"""
+    comp_ans_variance = abs(answers["comp_num_achieved"] - target)
+    player_ans_variance = abs(answers["player_num_achieved"] - target)
     if comp_ans_variance == player_ans_variance:
-        result = 'Draw'
+        result = "Draw"
     else:
         if player_ans_variance < comp_ans_variance:
-            result = 'Player wins'
+            result = "Player wins"
         else:
-            result = 'Rachel wins'
+            result = "Rachel wins"
     return result
