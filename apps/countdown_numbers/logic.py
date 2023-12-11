@@ -105,12 +105,12 @@ def get_best_solution(game_nums: List, target: int) -> str:
     """Calculates a solution closest to the game's target number"""
     game_calcs = get_game_calcs(game_nums, stop_on=target)
 
-    if int(target) in game_calcs:
-        return game_calcs[int(target)][0]
+    if target in game_calcs:
+        return game_calcs[target][0]
     for num in range(1, 11):
-        if int(target) + num in game_calcs:
-            return game_calcs[int(target) + num][0]
-        return game_calcs[int(target) - num][0]
+        if target + num in game_calcs:
+            return game_calcs[target + num][0]
+        return game_calcs[target - num][0]
     return "No solution could be found"
 
 
@@ -120,14 +120,13 @@ def get_score_awarded(target_number: int, num_achieved: int) -> int:
     calculation's proximity to the target number
     """
     if num_achieved == target_number:
-        points_awarded = 10
+        return 10
     elif target_number - 5 <= num_achieved <= target_number + 5:
-        points_awarded = 7
+        return 7
     elif target_number - 10 <= num_achieved <= target_number + 10:
-        points_awarded = 5
+        return 5
     else:
-        points_awarded = 0
-    return points_awarded
+        return 0
 
 
 def get_game_result(target: int, answers: Dict) -> str:
@@ -135,10 +134,10 @@ def get_game_result(target: int, answers: Dict) -> str:
     comp_ans_variance = abs(answers["comp_num_achieved"] - target)
     player_ans_variance = abs(answers["player_num_achieved"] - target)
     if comp_ans_variance == player_ans_variance:
-        result = "Draw"
+        return "Draw"
     else:
-        if player_ans_variance < comp_ans_variance:
-            result = "Player wins"
-        else:
-            result = "Rachel wins"
-    return result
+        return (
+            "Player wins"
+            if player_ans_variance < comp_ans_variance
+            else "Rachel wins"
+        )

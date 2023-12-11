@@ -155,8 +155,7 @@ class UserLoginView(LoginView):
 
     def handle_email_auth_user(self, user):
         """Handles the actions for processing an email authenticated user"""
-        user_passes_auth = self.authenticate_user(user=user)
-        if user_passes_auth:
+        if user_passes_auth := self.authenticate_user(user=user):
             self.login_user(user=user)
             token = self.retrieve_token_from_db(user)
             self.email_two_factor_token(user, token)
@@ -285,7 +284,7 @@ class UserSetupEmailTokenView(FormView):
         email = self.request.user.email.strip()
         domain = email.split("@")[-1]
         context["user_first_name"] = self.request.user.get_short_name()
-        context["redacted_user_email"] = f"{email[0:2]}**********@{domain}"
+        context["redacted_user_email"] = f"{email[:2]}**********@{domain}"
         return context
 
     def get_email_token(self) -> EmailToken:
