@@ -45,7 +45,14 @@ EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
 PYTEST_TEST_PASSWORD = os.environ["PYTEST_TEST_PASSWORD"]
 
 # Override back to default storage since tests do not run `collectstatic`
-STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # Eliminates warning about missing staticfiles directory
 WHITENOISE_AUTOREFRESH = True

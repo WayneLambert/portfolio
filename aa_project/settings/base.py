@@ -265,7 +265,16 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL_SES = os.environ["DEFAULT_FROM_EMAIL_SES"]
 
 # Django Storages Settings
-DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
+# AWS Settings
 AWS_STORAGE_BUCKET_NAME = os.environ["AWS_STORAGE_BUCKET_NAME"]
 AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
 AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
@@ -279,3 +288,6 @@ AWS_BASE_BUCKET_ADDRESS = os.environ["AWS_BASE_BUCKET_ADDRESS"]
 FIELD_ENCRYPTION_KEY = os.environ["FIELD_ENCRYPTION_KEY"]
 EMAIL_CHALLENGE_EXPIRATION_IN_SECS = 60 * 5
 EMAIL_TOKEN_EXPIRATION_IN_SECS = 60 * 60 * 24 * 28
+
+# Forms deprecation setting
+FORMS_URLFIELD_ASSUME_HTTPS = True

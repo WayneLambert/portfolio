@@ -222,7 +222,7 @@ testpaths = [
   "apps/users/tests",
 ]
 
-filterwarnings = ["ignore::django.utils.deprecation.RemovedInDjango50Warning"]
+# filterwarnings = ["ignore::django.utils.deprecation.RemovedInDjango50Warning"]
 
 # Command Line Options
 console_output_style = "progress"
