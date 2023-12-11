@@ -9,7 +9,7 @@ from apps.countdown_letters import validations
 def test_is_in_oxford_api(test_word: str):
     """Asserts that given a valid word, `True` is returned else `False`"""
     in_api = validations.is_in_oxford_api(test_word)
-    if test_word == "radnom":
+    if test_word == "radnom":  # misspelt on purpose
         assert not in_api
     elif test_word == "random":
         assert in_api
