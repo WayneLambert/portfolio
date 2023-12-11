@@ -29,11 +29,11 @@ class LatestPostsFeed(Feed):
         return item.updated_date
 
     def item_enclosures(self, item):
-        return [Enclosure(
-            item.image.url,
-            str(item.image.size),
-            f"image/{item.image.name.split('.')[-1]}"
-        )]
+        return [
+            Enclosure(
+                item.image.url, str(item.image.size), f"image/{item.image.name.split('.')[-1]}"
+            )
+        ]
 
 
 class AtomLatestPostsFeed(LatestPostsFeed):

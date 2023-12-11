@@ -3,7 +3,7 @@ import operator
 import random
 import time
 
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 
 from django.conf import settings
 
@@ -12,34 +12,34 @@ from apps.roulette.logging import log_file
 
 class Game:
     places_to_go = {
-        'Aruba': 0,
-        'Barbados': 0,
-        'Bora Bora': 0,
-        'Fiji': 0,
-        'Hawaii': 0,
-        'Koh Samui': 0,
-        'Langkawi': 0,
-        'Maldives': 0,
-        'Palawan': 0,
-        'Santorini': 0,
-        'Seychelles': 0,
-        'St. Lucia': 0,
+        "Aruba": 0,
+        "Barbados": 0,
+        "Bora Bora": 0,
+        "Fiji": 0,
+        "Hawaii": 0,
+        "Koh Samui": 0,
+        "Langkawi": 0,
+        "Maldives": 0,
+        "Palawan": 0,
+        "Santorini": 0,
+        "Seychelles": 0,
+        "St. Lucia": 0,
     }
 
 
 def clear_down_log_file():
-    """ Clears down the contents of the log file """
-    with open(log_file, 'w'):
+    """Clears down the contents of the log file"""
+    with open(log_file, "w"):
         pass
 
 
 def reset_places_to_go():
-    """ Resets the dictionary count to zero for each destination """
+    """Resets the dictionary count to zero for each destination"""
     for key in Game.places_to_go:
         Game.places_to_go[key] = 0
 
 
-def get_game_result() -> Tuple[dict, str, int, list]:
+def get_game_result() -> Tuple[Dict[str, int], List]:
     """
     Gets the result of the roulette game and introduces suspense in
     the game due to a time.sleep() function.
@@ -60,26 +60,26 @@ def get_game_result() -> Tuple[dict, str, int, list]:
 
 
 def get_picture_url(destination: str) -> str:
-    """ Builds the URL for the destinations' image from an S3 bucket """
+    """Builds the URL for the destinations' image from an S3 bucket"""
     aws_folder = f"{settings.AWS_BASE_BUCKET_ADDRESS}/post_images/holiday-roulette/"
     locations = {
-        'Aruba': f"{aws_folder}aruba.jpg",
-        'Barbados': f"{aws_folder}barbados.jpg",
-        'Bora Bora': f"{aws_folder}bora-bora.jpg",
-        'Fiji': f"{aws_folder}fiji.jpg",
-        'Hawaii': f"{aws_folder}hawaii.jpg",
-        'Koh Samui': f"{aws_folder}koh-samui.jpg",
-        'Langkawi': f"{aws_folder}langkawi.jpg",
-        'Maldives': f"{aws_folder}maldives.jpg",
-        'Palawan': f"{aws_folder}palawan.jpg",
-        'Santorini': f"{aws_folder}santorini.jpg",
-        'Seychelles': f"{aws_folder}seychelles.jpg",
-        'St. Lucia': f"{aws_folder}st-lucia.jpg",
+        "Aruba": f"{aws_folder}aruba.jpg",
+        "Barbados": f"{aws_folder}barbados.jpg",
+        "Bora Bora": f"{aws_folder}bora-bora.jpg",
+        "Fiji": f"{aws_folder}fiji.jpg",
+        "Hawaii": f"{aws_folder}hawaii.jpg",
+        "Koh Samui": f"{aws_folder}koh-samui.jpg",
+        "Langkawi": f"{aws_folder}langkawi.jpg",
+        "Maldives": f"{aws_folder}maldives.jpg",
+        "Palawan": f"{aws_folder}palawan.jpg",
+        "Santorini": f"{aws_folder}santorini.jpg",
+        "Seychelles": f"{aws_folder}seychelles.jpg",
+        "St. Lucia": f"{aws_folder}st-lucia.jpg",
     }
     return locations.get(destination, "Invalid destination")
 
 
 def read_log_file() -> List:
-    """ Reads log file to a list for later rendering to results page """
-    with open(log_file, 'r') as file:
+    """Reads log file to a list for later rendering to results page"""
+    with open(log_file, "r") as file:
         return [line for line in file.readlines()]

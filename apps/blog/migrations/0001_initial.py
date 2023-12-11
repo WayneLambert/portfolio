@@ -8,7 +8,6 @@ import tinymce.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -17,36 +16,75 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=16)),
-                ('slug', models.SlugField(max_length=16, unique=True)),
-                ('created_date', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("name", models.CharField(max_length=16)),
+                ("slug", models.SlugField(max_length=16, unique=True)),
+                ("created_date", models.DateTimeField(auto_now_add=True)),
             ],
             options={
-                'verbose_name': 'category',
-                'verbose_name_plural': 'categories',
-                'ordering': ['name'],
+                "verbose_name": "category",
+                "verbose_name_plural": "categories",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(help_text='The length of the post must be between 40 and 60 characters', max_length=60, validators=[django.core.validators.MinLengthValidator(40)])),
-                ('slug', models.SlugField(max_length=60, unique=True)),
-                ('content', tinymce.models.HTMLField()),
-                ('reference_url', models.URLField(blank=True)),
-                ('publish_date', models.DateTimeField(auto_now_add=True)),
-                ('updated_date', models.DateTimeField(auto_now=True)),
-                ('image', models.ImageField(default='default-post.jpg', help_text='For bests results, use an image that is 1,200px wide x 600px high', max_length=200, upload_to='post_images')),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Publish')], default=0)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='author', to=settings.AUTH_USER_MODEL)),
-                ('categories', models.ManyToManyField(help_text='Select more than one category by holding down Ctrl or Cmd key', related_name='posts', to='blog.Category')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        help_text="The length of the post must be between 40 and 60 characters",
+                        max_length=60,
+                        validators=[django.core.validators.MinLengthValidator(40)],
+                    ),
+                ),
+                ("slug", models.SlugField(max_length=60, unique=True)),
+                ("content", tinymce.models.HTMLField()),
+                ("reference_url", models.URLField(blank=True)),
+                ("publish_date", models.DateTimeField(auto_now_add=True)),
+                ("updated_date", models.DateTimeField(auto_now=True)),
+                (
+                    "image",
+                    models.ImageField(
+                        default="default-post.jpg",
+                        help_text="For bests results, use an image that is 1,200px wide x 600px high",
+                        max_length=200,
+                        upload_to="post_images",
+                    ),
+                ),
+                ("status", models.IntegerField(choices=[(0, "Draft"), (1, "Publish")], default=0)),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="author",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "categories",
+                    models.ManyToManyField(
+                        help_text="Select more than one category by holding down Ctrl or Cmd key",
+                        related_name="posts",
+                        to="blog.Category",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-updated_date', '-publish_date'],
+                "ordering": ["-updated_date", "-publish_date"],
             },
         ),
     ]

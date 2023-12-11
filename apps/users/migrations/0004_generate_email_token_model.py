@@ -9,30 +9,63 @@ import encrypted_model_fields.fields
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('users', '0003_auto_20201001_2136'),
+        ("users", "0003_auto_20201001_2136"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile',
-            name='user',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, related_name='profile', serialize=False, to=settings.AUTH_USER_MODEL),
+            model_name="profile",
+            name="user",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                primary_key=True,
+                related_name="profile",
+                serialize=False,
+                to=settings.AUTH_USER_MODEL,
+            ),
         ),
         migrations.CreateModel(
-            name='EmailToken',
+            name="EmailToken",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('challenge_email_address', models.EmailField(max_length=254)),
-                ('challenge_token', encrypted_model_fields.fields.EncryptedCharField(default=django_otp.util.random_hex, validators=[apps.users.utils.token_validator])),
-                ('challenge_generation_timestamp', models.DateTimeField(auto_now_add=True, null=True)),
-                ('challenge_expiration_timestamp', models.DateTimeField(blank=True, default=apps.users.utils.get_challenge_expiration_timestamp, null=True)),
-                ('challenge_completed', models.BooleanField(default=False)),
-                ('challenge_completed_timestamp', models.DateTimeField(blank=True, null=True)),
-                ('token_expiration_timestamp', models.DateTimeField(blank=True, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='user_email_tokens', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("challenge_email_address", models.EmailField(max_length=254)),
+                (
+                    "challenge_token",
+                    encrypted_model_fields.fields.EncryptedCharField(
+                        default=django_otp.util.random_hex,
+                        validators=[apps.users.utils.token_validator],
+                    ),
+                ),
+                (
+                    "challenge_generation_timestamp",
+                    models.DateTimeField(auto_now_add=True, null=True),
+                ),
+                (
+                    "challenge_expiration_timestamp",
+                    models.DateTimeField(
+                        blank=True,
+                        default=apps.users.utils.get_challenge_expiration_timestamp,
+                        null=True,
+                    ),
+                ),
+                ("challenge_completed", models.BooleanField(default=False)),
+                ("challenge_completed_timestamp", models.DateTimeField(blank=True, null=True)),
+                ("token_expiration_timestamp", models.DateTimeField(blank=True, null=True)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user_email_tokens",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
