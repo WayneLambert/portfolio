@@ -1,6 +1,6 @@
 import pytest
 
-from apps.contacts.forms import ContactForm
+from contacts.forms import ContactForm
 
 from .helpers import form_data
 

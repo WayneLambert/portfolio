@@ -9,52 +9,52 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.24.0
+      - python-requests/2.31.0
     method: GET
     uri: https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address
   response:
     body:
       string: '<html><body>You are being <a href="https://www.goodreads.com/work/quotes/4694-the-gettysburg-address">redirected</a>.</body></html>
 
-        <!-- This is a random-length HTML comment: rdzrzycfxvatpziivvocmzswduoideqybwkwhditcafwzufqhjwpavukikdtiwhxdtzcbjebkvaasrtqpzwmscxgpcfolkhczrpzrghqsclordlxnjqgedyyafwufscrvkjdbuepvzlsofjwblqzvukxyuambyorcbvibntnkilhyqzwkbfjyuxmcvfibbqombrcmswqyuzpmndkxnhbcpmsooedywnrhuhifoytyfddzhifktrtkyevczxubkwwfoeycuiztkhdyefmmglwflsqcweodpeidlswtnuooyuemyuyeehcmdhpujlcblvzcjancujrcaowjmrzneefusfhqdxjqhgszhnnpxugzbdnrdjckkiyzxkacfuedklhcnmfxbjfsreimsfhmnnisrfdnehnkaffurbihddegvckehccvwzbnqvwxpgcrlegbawpqdllzzhfxduepuofjrozdkparrfqtkcyczfdpyizfchkbjxkimgtoklxbeiighymwhcqwtcyinhzarvvtswhxwyktpludnspxknwncxsgjbzeefylvcuzjdvdhtddcuqalqdaagirsfzcdkphwjvndccztmjascoovqpwsiaapzlfvwazjuwowsfwdcponjaqxhsvqbwikcswxzjrodzvgohv
+        <!-- This is a random-length HTML comment: nmwfgdwlmptbdjicgbctvfvyrmshogzccqhzhathbzjzzhgbicldimrruqwskcdqqmoymluuxphrancuakirsfwefahetkvmcfiemsaopildoqswsapvotxmfqxjoozvjzwekfuhdhylrrknjrsgvmdgqrvzxnfrazneuvwbszmxlcqdwxunupddiwvkddhxrqghospjhepvdeetgexigiiwmyumywpdthvjppxlibmtcrdgntcufkamditdxtxzppjhzwgkksftlwkktzacaeewohkczlfzmxglazjjnqkfsuzqaiiyyanzpmzlzxtakalmtagbvsyfkwfzqozrndiqevjplysiyelsolfcaflbegflsvedpeariqfdiyncqkotemmodhimdvrhwirlwxeqovniajnurcsgyvceuuulkbwbnbxxezynkxbddlmkxbbocitibcialrtampfvtbrvznzuvgsbwclvrjgaohvxcwpmakvdlbnldctjepxellqyijgqazebanaceokbkgvtcxawaygzagqjgwzripzhwabqhkezgytldjtinglmkhzgobgrkuahqegphwzxbwzaoxlatxqukhlwmvzsobnwlolbnnrdyrymcpesmoegevwowhydntztfokqegpqevijxmfsbrsoecfcksgmwaorrghplkwutimmvtkwkhojgpfwadhixzaezlnmdrurddqrszoxqstjcjqqxzipchtaehedmurnoujsugqcjwalihhjwqpdsndwgckzeocsriwmmdobdhfmspzdfujwbuapgyytiymfkwnqgkipbbvptifkgnqjociaqtbtmrtkrefznxnkyazaifpjjfaservctdsglgwvreytmjrwbhupyfzjxtriceqvyydrflsxwbndhxziiyibrpcgytkkibsmpjecokfulujyxcptgtmugxgugtyxsqtbzpykzftlzqbaitbiuochywrgygvceiismguwqxebwbltcxfvfzuwueejztzxyxanzaxxardbxdcthfvhjvwuspcqxikblhykppoenvothqusaiyctsdyhvnqivtcpqyemmtwplqouhzhwcwvrathivpfkzitglbixvswjmakfnsautcwmssjkoywlyvuszolkktzigrtbsufrbpjybw
         -->'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - keep-alive
-      Content-Length:
-      - '848'
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Sat, 12 Sep 2020 19:38:32 GMT
+      - Mon, 11 Dec 2023 11:51:30 GMT
       Location:
       - https://www.goodreads.com/work/quotes/4694-the-gettysburg-address
       Server:
       - Server
       Set-Cookie:
-      - ccsid=661-5270816-0306958; path=/; expires=Wed, 12 Sep 2040 19:38:32 -0000
+      - ccsid=709-0753521-8429159; path=/; expires=Fri, 11 Dec 2043 11:51:30 -0000
       - locale=en; path=/
-      - _session_id2=16ae72c706af480d2f22264e3c59e593; path=/; expires=Sun, 13 Sep
-        2020 01:38:32 -0000; HttpOnly
+      - _session_id2=9bd2b0382a5e4b21a707715f738b8483; path=/; expires=Mon, 11 Dec
+        2023 17:51:30 -0000; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
       Vary:
-      - User-Agent,Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+      - User-Agent,Content-Type,Accept-Encoding,User-Agent
       X-Content-Type-Options:
       - nosniff
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - VYJSNN3EM0ETAEPJT796
+      - DRR0BD3PZXG6GJN7RFR6
       X-Runtime:
-      - '0.075992'
+      - '0.028117'
       X-XSS-Protection:
       - 1; mode=block
       x-amz-rid:
-      - VYJSNN3EM0ETAEPJT796
+      - DRR0BD3PZXG6GJN7RFR6
     status:
       code: 301
       message: Moved Permanently
@@ -68,403 +68,842 @@ interactions:
       Connection:
       - keep-alive
       Cookie:
-      - ccsid=661-5270816-0306958; locale=en; _session_id2=16ae72c706af480d2f22264e3c59e593
+      - ccsid=709-0753521-8429159; locale=en; _session_id2=9bd2b0382a5e4b21a707715f738b8483
       User-Agent:
-      - python-requests/2.24.0
+      - python-requests/2.31.0
     method: GET
     uri: https://www.goodreads.com/work/quotes/4694-the-gettysburg-address
   response:
     body:
-      string: !!binary |
-        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
+      string: "<!DOCTYPE html>\n<html class=\"desktop withSiteHeaderTopFullImage\n\">\n<head>\n
+        \ <title>The Gettysburg Address Quotes by Abraham Lincoln</title>\n\n<meta
+        content='5 quotes from The Gettysburg Address: \u2018Fourscore and seven years
+        ago our fathers brought forth on this continent, a new nation, conceived in
+        Liberty, and...' name='description'>\n<meta content='telephone=no' name='format-detection'>\n<link
+        href='https://www.goodreads.com/work/quotes/4694-the-gettysburg-address' rel='canonical'>\n\n\n\n
+        \   <script type=\"text/javascript\"> var ue_t0=window.ue_t0||+new Date();\n
+        </script>\n  <script type=\"text/javascript\">\n    var ue_mid = \"A1PQBFHBHS6YH1\";\n
+        \   var ue_sn = \"www.goodreads.com\";\n    var ue_furl = \"fls-na.amazon.com\";\n
+        \   var ue_sid = \"709-0753521-8429159\";\n    var ue_id = \"A7DKF6T0T4E4S8D8YD4V\";\n\n
+        \   (function(e){var c=e;var a=c.ue||{};a.main_scope=\"mainscopecsm\";a.q=[];a.t0=c.ue_t0||+new
+        Date();a.d=g;function g(h){return +new Date()-(h?0:a.t0)}function d(h){return
+        function(){a.q.push({n:h,a:arguments,t:a.d()})}}function b(m,l,h,j,i){var
+        k={m:m,f:l,l:h,c:\"\"+j,err:i,fromOnError:1,args:arguments};c.ueLogError(k);return
+        false}b.skipTrace=1;e.onerror=b;function f(){c.uex(\"ld\")}if(e.addEventListener){e.addEventListener(\"load\",f,false)}else{if(e.attachEvent){e.attachEvent(\"onload\",f)}}a.tag=d(\"tag\");a.log=d(\"log\");a.reset=d(\"rst\");c.ue_csm=c;c.ue=a;c.ueLogError=d(\"err\");c.ues=d(\"ues\");c.uet=d(\"uet\");c.uex=d(\"uex\");c.uet(\"ue\")})(window);(function(e,d){var
+        a=e.ue||{};function c(g){if(!g){return}var f=d.head||d.getElementsByTagName(\"head\")[0]||d.documentElement,h=d.createElement(\"script\");h.async=\"async\";h.src=g;f.insertBefore(h,f.firstChild)}function
+        b(){var k=e.ue_cdn||\"z-ecx.images-amazon.com\",g=e.ue_cdns||\"images-na.ssl-images-amazon.com\",j=\"/images/G/01/csminstrumentation/\",h=e.ue_file||\"ue-full-11e51f253e8ad9d145f4ed644b40f692._V1_.js\",f,i;if(h.indexOf(\"NSTRUMENTATION_FIL\")>=0){return}if(\"ue_https\"
+        in e){f=e.ue_https}else{f=e.location&&e.location.protocol==\"https:\"?1:0}i=f?\"https://\":\"http://\";i+=f?g:k;i+=j;i+=h;c(i)}if(!e.ue_inline){if(a.loadUEFull){a.loadUEFull()}else{b()}}a.uels=c;e.ue=a})(window,document);\n\n
+        \   if (window.ue && window.ue.tag) { window.ue.tag('work:quotes:signed_out',
+        ue.main_scope);window.ue.tag('work:quotes:signed_out:desktop', ue.main_scope);
+        }\n  </script>\n\n  <!-- * Copied from https://info.analytics.a2z.com/#/docs/data_collection/csa/onboard
+        */ -->\n<script>\n  //<![CDATA[\n    !function(){function n(n,t){var r=i(n);return
+        t&&(r=r(\"instance\",t)),r}var r=[],c=0,i=function(t){return function(){var
+        n=c++;return r.push([t,[].slice.call(arguments,0),n,{time:Date.now()}]),i(n)}};n._s=r,this.csa=n}();\n
+        \   \n    if (window.csa) {\n      window.csa(\"Config\", {\n        \"Application\":
+        \"GoodreadsMonolith\",\n        \"Events.SushiEndpoint\": \"https://unagi.amazon.com/1/events/com.amazon.csm.csa.prod\",\n
+        \       \"Events.Namespace\": \"csa\",\n        \"CacheDetection.RequestID\":
+        \"A7DKF6T0T4E4S8D8YD4V\",\n        \"ObfuscatedMarketplaceId\": \"A1PQBFHBHS6YH1\"\n
+        \     });\n    \n      window.csa(\"Events\")(\"setEntity\", {\n        session:
+        { id: \"709-0753521-8429159\" },\n        page: {requestId: \"A7DKF6T0T4E4S8D8YD4V\",
+        meaningful: \"interactive\"}\n      });\n    }\n    \n    var e = document.createElement(\"script\");
+        e.src = \"https://m.media-amazon.com/images/I/41mrkPcyPwL.js\"; document.head.appendChild(e);\n
+        \ //]]>\n</script>\n\n\n          <script type=\"text/javascript\">\n        if
+        (window.Mobvious === undefined) {\n          window.Mobvious = {};\n        }\n
+        \       window.Mobvious.device_type = 'desktop';\n        </script>\n\n\n
+        \ \n<script src=\"https://s.gr-assets.com/assets/webfontloader-b4c655e7cda84eb33da89e500feedc0c.js\"></script>\n<script>\n//<![CDATA[\n\n
+        \ WebFont.load({\n    classes: false,\n    custom: {\n      families: [\"Lato:n4,n7,i4\",
+        \"Merriweather:n4,n7,i4\"],\n      urls: [\"https://s.gr-assets.com/assets/gr/fonts-e256f84093cc13b27f5b82343398031a.css\"]\n
+        \   }\n  });\n\n//]]>\n</script>\n\n  <link rel=\"stylesheet\" media=\"all\"
+        href=\"https://s.gr-assets.com/assets/goodreads-9992b2324ee6474f101148a9ea9580f5.css\"
+        />\n\n  \n\n  <link rel=\"stylesheet\" media=\"screen\" href=\"https://s.gr-assets.com/assets/common_images-f5630939f2056b14f661a80fa8503dca.css\"
+        />\n\n  <script src=\"https://s.gr-assets.com/assets/desktop/libraries-c07ee2e4be9ade4a64546b3ec60b523b.js\"></script>\n
+        \ <script src=\"https://s.gr-assets.com/assets/application-7674f7e14fa9dfac05d5f562734684a7.js\"></script>\n\n
+        \   <script>\n  //<![CDATA[\n    var gptAdSlots = gptAdSlots || [];\n    var
+        googletag = googletag || {};\n    googletag.cmd = googletag.cmd || [];\n    (function()
+        {\n      var gads = document.createElement(\"script\");\n      gads.async
+        = true;\n      gads.type = \"text/javascript\";\n      var useSSL = \"https:\"
+        == document.location.protocol;\n      gads.src = (useSSL ? \"https:\" : \"http:\")
+        +\n      \"//securepubads.g.doubleclick.net/tag/js/gpt.js\";\n      var node
+        = document.getElementsByTagName(\"script\")[0];\n      node.parentNode.insertBefore(gads,
+        node);\n    })();\n    // page settings\n  //]]>\n</script>\n<script>\n  //<![CDATA[\n
+        \   googletag.cmd.push(function() {\n      googletag.pubads().setTargeting(\"sid\",
+        \"osid.a1146695f0a93809f38a97c2b9943b4b\");\n    googletag.pubads().setTargeting(\"grsession\",
+        \"osid.a1146695f0a93809f38a97c2b9943b4b\");\n    googletag.pubads().setTargeting(\"surface\",
+        \"desktop\");\n    googletag.pubads().setTargeting(\"signedin\", \"false\");\n
+        \   googletag.pubads().setTargeting(\"gr_author\", \"false\");\n    googletag.pubads().setTargeting(\"author\",
+        [229]);\n    googletag.pubads().setTargeting(\"shelf\", [\"history\",\"nonfiction\",\"politics\",\"classics\",\"civilwar\"]);\n
+        \   googletag.pubads().setTargeting(\"tags\", [\"48\",\"5\",\"384\",\"24\",\"1668\"]);\n
+        \   googletag.pubads().setTargeting(\"gtargeting\", \"s2a1ws8x\");\n    googletag.pubads().setTargeting(\"resource\",
+        \"work_quotes_4694\");\n      googletag.pubads().enableAsyncRendering();\n
+        \     googletag.pubads().enableSingleRequest();\n      googletag.pubads().collapseEmptyDivs(true);\n
+        \     googletag.pubads().disableInitialLoad();\n      googletag.enableServices();\n
+        \   });\n  //]]>\n</script>\n<script>\n  //<![CDATA[\n    ! function(a9, a,
+        p, s, t, A, g) {\n      if (a[a9]) return;\n    \n      function q(c, r) {\n
+        \       a[a9]._Q.push([c, r])\n      }\n      a[a9] = {\n      init: function()
+        {\n        q(\"i\", arguments)\n      },\n      fetchBids: function() {\n
+        \       q(\"f\", arguments)\n      },\n      setDisplayBids: function() {},\n
+        \       _Q: []\n      };\n      A = p.createElement(s);\n      A.async = !0;\n
+        \     A.src = t;\n      g = p.getElementsByTagName(s)[0];\n      g.parentNode.insertBefore(A,
+        g)\n    }(\"apstag\", window, document, \"script\", \"//c.amazon-adsystem.com/aax2/apstag.js\");\n
+        \   \n    apstag.init({\n      pubID: '3211', adServer: 'googletag', bidTimeout:
+        4e3, deals: true, params: { aps_privacy: '1YN' }\n    });\n  //]]>\n</script>\n\n\n\n
+        \ <meta name=\"csrf-param\" content=\"authenticity_token\" />\n<meta name=\"csrf-token\"
+        content=\"vJlq8dD+f3zBvwDafbA4dpUwN3NCVp4M6oGqRN5C8vWQdIH0M3phDhV1WXTtk3I7WtPARDXS7fPz1mzKsrrMgw==\"
+        />\n\n  <meta name=\"request-id\" content=\"A7DKF6T0T4E4S8D8YD4V\" />\n\n
+        \   <script src=\"https://s.gr-assets.com/assets/react_client_side/external_dependencies-2e2b90fafc.js\"
+        defer=\"defer\"></script>\n<script src=\"https://s.gr-assets.com/assets/react_client_side/site_header-01906f7e80.js\"
+        defer=\"defer\"></script>\n<script src=\"https://s.gr-assets.com/assets/react_client_side/custom_react_ujs-b1220d5e0a4820e90b905c302fc5cb52.js\"
+        defer=\"defer\"></script>\n\n\n  <script>\n  //<![CDATA[\n    $grfb.init.done(function()
+        {\n      if (this.auth.status === \"not_authorized\") {\n        // logged
+        into Facebook user but not a GR app user; show FB button\n        $j(\"#generalRegPrompt\").hide();\n
+        \     } else {\n        $j(\"#facebookRegPrompt\").hide();\n      }\n      $j(\"#connectPrompt\").show();\n
+        \   });\n  //]]>\n</script>\n\n\n  \n  \n  \n\n  <link rel=\"search\" type=\"application/opensearchdescription+xml\"
+        href=\"/opensearch.xml\" title=\"Goodreads\">\n\n    <meta name=\"description\"
+        content=\"5 quotes from The Gettysburg Address: \u2018Fourscore and seven
+        years ago our fathers brought forth on this continent, a new nation, conceived
+        in Liberty, and...\">\n\n\n  <meta content='summary' name='twitter:card'>\n<meta
+        content='@goodreads' name='twitter:site'>\n<meta content='The Gettysburg Address
+        Quotes by Abraham Lincoln' name='twitter:title'>\n<meta content='5 quotes
+        from The Gettysburg Address: \u2018Fourscore and seven years ago our fathers
+        brought forth on this continent, a new nation, conceived in Liberty, and...'
+        name='twitter:description'>\n\n\n  <meta name=\"verify-v1\" content=\"cEf8XOH0pulh1aYQeZ1gkXHsQ3dMPSyIGGYqmF53690=\">\n
+        \ <meta name=\"google-site-verification\" content=\"PfFjeZ9OK1RrUrKlmAPn_iZJ_vgHaZO1YQ-QlG2VsJs\"
+        />\n  <meta name=\"apple-itunes-app\" content=\"app-id=355833469\">\n</head>\n\n\n<body
+        class=\"\">\n<div data-react-class=\"ReactComponents.StoresInitializer\" data-react-props=\"{}\"><noscript
+        data-reactid=\".sufe0e5dhw\" data-react-checksum=\"-1407315654\"></noscript></div>\n\n<script
+        src=\"https://s.gr-assets.com/assets/fb_dep_form-e2e4a0d9dc062011458143c32b2d789b.js\"></script>\n\n<div
+        class=\"content\" id=\"bodycontainer\" style=\"\">\n    <script>\n  //<![CDATA[\n
+        \   var initializeGrfb = function() {\n      $grfb.initialize({\n        appId:
+        \"2415071772\"\n      });\n    };\n    if (typeof $grfb !== \"undefined\")
+        {\n      initializeGrfb();\n    } else {\n      window.addEventListener(\"DOMContentLoaded\",
+        function() {\n        if (typeof $grfb !== \"undefined\") {\n          initializeGrfb();\n
+        \       }\n      });\n    }\n  //]]>\n</script>\n\n<script>\n  //<![CDATA[\n
+        \   function loadScript(url, callback) {\n      var script = document.createElement(\"script\");\n
+        \     script.type = \"text/javascript\";\n    \n      if (script.readyState)
+        {  //Internet Explorer\n          script.onreadystatechange = function() {\n
+        \           if (script.readyState == \"loaded\" ||\n                    script.readyState
+        == \"complete\") {\n              script.onreadystatechange = null;\n              callback();\n
+        \           }\n          };\n      } else {  //Other browsers\n        script.onload
+        = function() {\n          callback();\n        };\n      }\n    \n      script.src
+        = url;\n      document.getElementsByTagName(\"head\")[0].appendChild(script);\n
+        \   }\n    \n    function initAppleId() {\n      AppleID.auth.init({\n        clientId
+        : 'com.goodreads.app', \n        scope : 'name email',\n        redirectURI:
+        'https://www.goodreads.com/apple_users/sign_in_with_apple_web',\n        state:
+        'apple_oauth_state_0cb47c23-edc5-40ff-a11e-3179c62e8c8d'\n      });\n    }\n
+        \   \n    var initializeSiwa = function() {\n      var APPLE_SIGN_IN_JS_URL
+        =  \"https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js\"\n
+        \     loadScript(APPLE_SIGN_IN_JS_URL, initAppleId);\n    };\n    if (typeof
+        AppleID !== \"undefined\") {\n      initAppleId();\n    } else {\n      initializeSiwa();\n
+        \   }\n  //]]>\n</script>\n\n<div class='siteHeader'>\n<div data-react-class=\"ReactComponents.HeaderStoreConnector\"
+        data-react-props=\"{&quot;myBooksUrl&quot;:&quot;/review/list?ref=nav_mybooks&quot;,&quot;browseUrl&quot;:&quot;/book?ref=nav_brws&quot;,&quot;recommendationsUrl&quot;:&quot;/recommendations?ref=nav_brws_recs&quot;,&quot;choiceAwardsUrl&quot;:&quot;/choiceawards?ref=nav_brws_gca&quot;,&quot;genresIndexUrl&quot;:&quot;/genres?ref=nav_brws_genres&quot;,&quot;giveawayUrl&quot;:&quot;/giveaway?ref=nav_brws_giveaways&quot;,&quot;exploreUrl&quot;:&quot;/book?ref=nav_brws_explore&quot;,&quot;homeUrl&quot;:&quot;/?ref=nav_home&quot;,&quot;listUrl&quot;:&quot;/list?ref=nav_brws_lists&quot;,&quot;newsUrl&quot;:&quot;/news?ref=nav_brws_news&quot;,&quot;communityUrl&quot;:&quot;/group?ref=nav_comm&quot;,&quot;groupsUrl&quot;:&quot;/group?ref=nav_comm_groups&quot;,&quot;quotesUrl&quot;:&quot;/quotes?ref=nav_comm_quotes&quot;,&quot;featuredAskAuthorUrl&quot;:&quot;/ask_the_author?ref=nav_comm_askauthor&quot;,&quot;autocompleteUrl&quot;:&quot;/book/auto_complete&quot;,&quot;defaultLogoActionUrl&quot;:&quot;/&quot;,&quot;topFullImage&quot;:{&quot;clickthroughUrl&quot;:&quot;https://www.goodreads.com/choiceawards/best-books-2023?ref=GCAs23_winners_eb&quot;,&quot;altText&quot;:&quot;Discover
+        the winners for the best books of the year in the 2023 Goodreads Choice Awards&quot;,&quot;backgroundColor&quot;:&quot;#F0BF6E&quot;,&quot;xs&quot;:{&quot;1x&quot;:&quot;https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478834i/343.jpg&quot;,&quot;2x&quot;:&quot;https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478839i/344.jpg&quot;},&quot;md&quot;:{&quot;1x&quot;:&quot;https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478822i/341.jpg&quot;,&quot;2x&quot;:&quot;https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478828i/342.jpg&quot;}},&quot;logo&quot;:{&quot;clickthroughUrl&quot;:&quot;/&quot;,&quot;altText&quot;:&quot;Goodreads
+        Home&quot;},&quot;searchPath&quot;:&quot;/search&quot;,&quot;newReleasesUrl&quot;:&quot;/book/popular_by_date/2023/12?ref=nav_brws_newrels&quot;,&quot;signInUrl&quot;:&quot;/user/sign_in&quot;,&quot;signUpUrl&quot;:&quot;/user/sign_up&quot;,&quot;signInWithReturnUrl&quot;:true,&quot;deployServices&quot;:[],&quot;defaultLogoAltText&quot;:&quot;Goodreads
+        Home&quot;,&quot;mobviousDeviceType&quot;:&quot;desktop&quot;}\"><header data-reactid=\".2ac0gt0cply\"
+        data-react-checksum=\"-1518589006\"><div class=\"siteHeader__topFullImageContainer\"
+        style=\"background-color:#F0BF6E;\" data-reactid=\".2ac0gt0cply.0\"><a class=\"siteHeader__topFullImageLink\"
+        href=\"https://www.goodreads.com/choiceawards/best-books-2023?ref=GCAs23_winners_eb\"
+        data-reactid=\".2ac0gt0cply.0.0\"><picture data-reactid=\".2ac0gt0cply.0.0.0\"><source
+        media=\"(min-width: 768px)\" srcset=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478822i/341.jpg
+        1x, https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478828i/342.jpg
+        2x\" data-reactid=\".2ac0gt0cply.0.0.0.0\"/><img alt=\"Discover the winners
+        for the best books of the year in the 2023 Goodreads Choice Awards\" class=\"siteHeader__topFullImage\"
+        src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478834i/343.jpg\"
+        srcset=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/siteheaderbannerimages/1699478839i/344.jpg
+        2x\" data-reactid=\".2ac0gt0cply.0.0.0.1\"/></picture></a></div><div class=\"siteHeader__topLine
+        gr-box gr-box--withShadow\" data-reactid=\".2ac0gt0cply.1\"><div class=\"siteHeader__contents\"
+        data-reactid=\".2ac0gt0cply.1.0\"><div class=\"siteHeader__topLevelItem siteHeader__topLevelItem--searchIcon\"
+        data-reactid=\".2ac0gt0cply.1.0.0\"><button class=\"siteHeader__searchIcon
+        gr-iconButton\" aria-label=\"Toggle search\" type=\"button\" data-ux-click=\"true\"
+        data-reactid=\".2ac0gt0cply.1.0.0.0\"></button></div><a href=\"/\" class=\"siteHeader__logo\"
+        aria-label=\"Goodreads Home\" title=\"Goodreads Home\" data-reactid=\".2ac0gt0cply.1.0.1\"></a><nav
+        class=\"siteHeader__primaryNavInline\" data-reactid=\".2ac0gt0cply.1.0.2\"><ul
+        role=\"menu\" class=\"siteHeader__menuList\" data-reactid=\".2ac0gt0cply.1.0.2.0\"><li
+        class=\"siteHeader__topLevelItem siteHeader__topLevelItem--home\" data-reactid=\".2ac0gt0cply.1.0.2.0.0\"><a
+        href=\"/?ref=nav_home\" class=\"siteHeader__topLevelLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.0.0\">Home</a></li><li
+        class=\"siteHeader__topLevelItem\" data-reactid=\".2ac0gt0cply.1.0.2.0.1\"><a
+        href=\"/review/list?ref=nav_mybooks\" class=\"siteHeader__topLevelLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.1.0\">My
+        Books</a></li><li class=\"siteHeader__topLevelItem\" data-reactid=\".2ac0gt0cply.1.0.2.0.2\"><div
+        class=\"primaryNavMenu primaryNavMenu--siteHeaderBrowseMenu ignore-react-onclickoutside\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0\"><a class=\"primaryNavMenu__trigger
+        primaryNavMenu__trigger--siteHeaderBrowseMenu\" href=\"/book?ref=nav_brws\"
+        role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" data-ux-click=\"true\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.0\"><span data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.0.0\">Browse
+        \u25BE</span></a><div class=\"primaryNavMenu__menu gr-box gr-box--withShadowLarge
+        wide\" role=\"menu\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1\"><div class=\"siteHeader__browseMenuDropdown\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0\"><ul class=\"siteHeader__subNav\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0\"><li role=\"menuitem Recommendations\"
+        class=\"menuLink\" aria-label=\"Recommendations\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.0\"><a
+        href=\"/recommendations?ref=nav_brws_recs\" class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.0.0\">Recommendations</a></li><li
+        role=\"menuitem Choice Awards\" class=\"menuLink\" aria-label=\"Choice Awards\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.1\"><a href=\"/choiceawards?ref=nav_brws_gca\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.1.0\">Choice
+        Awards</a></li><li role=\"menuitem Genres\" class=\"menuLink\" aria-label=\"Genres\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.2\"><a href=\"/genres?ref=nav_brws_genres\"
+        class=\"siteHeader__subNavLink siteHeader__subNavLink--genresIndex\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.2.0\">Genres</a></li><li
+        role=\"menuitem Giveaways\" class=\"menuLink\" aria-label=\"Giveaways\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.3\"><a
+        href=\"/giveaway?ref=nav_brws_giveaways\" class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.3.0\">Giveaways</a></li><li
+        role=\"menuitem New Releases\" class=\"menuLink\" aria-label=\"New Releases\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.4\"><a href=\"/book/popular_by_date/2023/12?ref=nav_brws_newrels\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.4.0\">New
+        Releases</a></li><li role=\"menuitem Lists\" class=\"menuLink\" aria-label=\"Lists\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.5\"><a href=\"/list?ref=nav_brws_lists\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.5.0\">Lists</a></li><li
+        role=\"menuitem Explore\" class=\"menuLink\" aria-label=\"Explore\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.6\"><a
+        href=\"/book?ref=nav_brws_explore\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.6.0\">Explore</a></li><li
+        role=\"menuitem News &amp; Interviews\" class=\"menuLink\" aria-label=\"News
+        &amp; Interviews\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.7\"><a href=\"/news?ref=nav_brws_news\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.0.7.0\">News
+        &amp; Interviews</a></li></ul><div class=\"siteHeader__spotlight siteHeader__spotlight--withoutSubMenu\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1\"><div class=\"genreListContainer\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0\"><div class=\"siteHeader__heading
+        siteHeader__title\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.0\">Genres</div><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Art\"><a
+        href=\"/genres/art\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Art.0\">Art</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Biography\"><a
+        href=\"/genres/biography\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Biography.0\">Biography</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Business\"><a
+        href=\"/genres/business\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Business.0\">Business</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s\"><a
+        href=\"/genres/children-s\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s.0\">Children&#x27;s</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Christian\"><a
+        href=\"/genres/christian\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Christian.0\">Christian</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Classics\"><a
+        href=\"/genres/classics\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Classics.0\">Classics</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Comics\"><a
+        href=\"/genres/comics\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Comics.0\">Comics</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks\"><a
+        href=\"/genres/cookbooks\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks.0\">Cookbooks</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks\"><a
+        href=\"/genres/ebooks\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks.0\">Ebooks</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy\"><a
+        href=\"/genres/fantasy\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy.0\">Fantasy</a></li></ul><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction\"><a
+        href=\"/genres/fiction\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction.0\">Fiction</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic
+        Novels\"><a href=\"/genres/graphic-novels\" class=\"genreList__genreLink gr-hyperlink
+        gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic
+        Novels.0\">Graphic Novels</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Historical
+        Fiction\"><a href=\"/genres/historical-fiction\" class=\"genreList__genreLink
+        gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Historical
+        Fiction.0\">Historical Fiction</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$History\"><a
+        href=\"/genres/history\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$History.0\">History</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Horror\"><a
+        href=\"/genres/horror\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Horror.0\">Horror</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir\"><a
+        href=\"/genres/memoir\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir.0\">Memoir</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Music\"><a
+        href=\"/genres/music\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Music.0\">Music</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery\"><a
+        href=\"/genres/mystery\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery.0\">Mystery</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction\"><a
+        href=\"/genres/non-fiction\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction.0\">Nonfiction</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry\"><a
+        href=\"/genres/poetry\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry.0\">Poetry</a></li></ul><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology\"><a
+        href=\"/genres/psychology\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology.0\">Psychology</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Romance\"><a
+        href=\"/genres/romance\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Romance.0\">Romance</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Science\"><a
+        href=\"/genres/science\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Science.0\">Science</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Science
+        Fiction\"><a href=\"/genres/science-fiction\" class=\"genreList__genreLink
+        gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Science
+        Fiction.0\">Science Fiction</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help\"><a
+        href=\"/genres/self-help\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help.0\">Self
+        Help</a></li><li role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Sports\"><a
+        href=\"/genres/sports\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Sports.0\">Sports</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller\"><a
+        href=\"/genres/thriller\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller.0\">Thriller</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Travel\"><a
+        href=\"/genres/travel\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Travel.0\">Travel</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Young
+        Adult\"><a href=\"/genres/young-adult\" class=\"genreList__genreLink gr-hyperlink
+        gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.0:$Young
+        Adult.0\">Young Adult</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.1\"><a href=\"/genres\"
+        class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.2.0.2.0.1.0.1.0.1:$genreList2.1.0\">More
+        Genres</a></li></ul></div></div></div></div></div></li><li class=\"siteHeader__topLevelItem
+        siteHeader__topLevelItem--community\" data-reactid=\".2ac0gt0cply.1.0.2.0.3\"><div
+        class=\"primaryNavMenu ignore-react-onclickoutside\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0\"><a
+        class=\"primaryNavMenu__trigger\" href=\"/group?ref=nav_comm\" role=\"button\"
+        aria-haspopup=\"true\" aria-expanded=\"false\" data-ux-click=\"true\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.0\"><span
+        data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.0.0\">Community \u25BE</span></a><div
+        class=\"primaryNavMenu__menu gr-box gr-box--withShadowLarge\" role=\"menu\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1\"><ul class=\"siteHeader__subNav\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0\"><li role=\"menuitem Groups\"
+        class=\"menuLink\" aria-label=\"Groups\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.0\"><a
+        href=\"/group?ref=nav_comm_groups\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.0.0\">Groups</a></li><li
+        role=\"menuitem Quotes\" class=\"menuLink\" aria-label=\"Quotes\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.2\"><a
+        href=\"/quotes?ref=nav_comm_quotes\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.2.0\">Quotes</a></li><li
+        role=\"menuitem Ask the Author\" class=\"menuLink\" aria-label=\"Ask the Author\"
+        data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.3\"><a href=\"/ask_the_author?ref=nav_comm_askauthor\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.2.0.3.0.1.0.3.0\">Ask
+        the Author</a></li></ul></div></div></li></ul></nav><div accept-charset=\"UTF-8\"
+        class=\"searchBox searchBox--navbar\" data-reactid=\".2ac0gt0cply.1.0.3\"><form
+        autocomplete=\"off\" action=\"/search\" class=\"searchBox__form\" role=\"search\"
+        aria-label=\"Search for books to add to your shelves\" data-reactid=\".2ac0gt0cply.1.0.3.0\"><input
+        class=\"searchBox__input searchBox__input--navbar\" autocomplete=\"off\" name=\"q\"
+        type=\"text\" placeholder=\"Search books\" aria-label=\"Search books\" aria-controls=\"searchResults\"
+        data-reactid=\".2ac0gt0cply.1.0.3.0.0\"/><input type=\"hidden\" name=\"qid\"
+        value=\"\" data-reactid=\".2ac0gt0cply.1.0.3.0.1\"/><button type=\"submit\"
+        class=\"searchBox__icon--magnifyingGlass gr-iconButton searchBox__icon searchBox__icon--navbar\"
+        aria-label=\"Search\" data-reactid=\".2ac0gt0cply.1.0.3.0.2\"></button></form></div><ul
+        class=\"siteHeader__personal\" data-reactid=\".2ac0gt0cply.1.0.4\"><li class=\"siteHeader__topLevelItem
+        siteHeader__topLevelItem--signedOut\" data-reactid=\".2ac0gt0cply.1.0.4.0\"><a
+        href=\"/user/sign_in?returnurl=undefined\" rel=\"nofollow\" class=\"siteHeader__topLevelLink\"
+        data-reactid=\".2ac0gt0cply.1.0.4.0.0\">Sign In</a></li><li class=\"siteHeader__topLevelItem
+        siteHeader__topLevelItem--signedOut\" data-reactid=\".2ac0gt0cply.1.0.4.1\"><a
+        href=\"/user/sign_up\" rel=\"nofollow\" class=\"siteHeader__topLevelLink\"
+        data-reactid=\".2ac0gt0cply.1.0.4.1.0\">Join</a></li></ul><div class=\"siteHeader__topLevelItem
+        siteHeader__topLevelItem--signUp\" data-reactid=\".2ac0gt0cply.1.0.5\"><a
+        href=\"/user/sign_up\" class=\"gr-button gr-button--dark\" rel=\"nofollow\"
+        data-reactid=\".2ac0gt0cply.1.0.5.0\">Sign up</a></div><div class=\"modal
+        modal--overlay modal--drawer\" tabindex=\"0\" data-reactid=\".2ac0gt0cply.1.0.7\"><div
+        data-reactid=\".2ac0gt0cply.1.0.7.0\"><div class=\"modal__close\" data-reactid=\".2ac0gt0cply.1.0.7.0.0\"><button
+        type=\"button\" class=\"gr-iconButton\" data-reactid=\".2ac0gt0cply.1.0.7.0.0.0\"><img
+        alt=\"Dismiss\" src=\"//s.gr-assets.com/assets/gr/icons/icon_close_white-dbf4152deeef5bd3915d5d12210bf05f.svg\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.0.0.0\"/></button></div><div class=\"modal__content\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1\"><div class=\"personalNavDrawer\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0\"><div
+        class=\"personalNavDrawer__personalNavContainer\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.0\"><noscript
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.0.0\"></noscript></div><div class=\"personalNavDrawer__profileAndLinksContainer\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1\"><div class=\"personalNavDrawer__profileContainer
+        gr-mediaFlexbox gr-mediaFlexbox--alignItemsCenter\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0\"><div
+        class=\"gr-mediaFlexbox__media\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.0\"><img
+        class=\"circularIcon circularIcon--large circularIcon--border\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.0.0\"/></div><div
+        class=\"gr-mediaFlexbox__desc\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.1\"><a
+        class=\"gr-hyperlink gr-hyperlink--bold\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.1.0\"></a><div
+        class=\"u-displayBlock\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.1.1\"><a
+        class=\"gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.0.1.1.0\">View
+        profile</a></div></div></div><div class=\"personalNavDrawer__profileMenuContainer\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1\"><ul data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0\"><li
+        role=\"menuitem Profile\" class=\"menuLink\" aria-label=\"Profile\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.0\"><span
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.0.0\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.0.0.0\">Profile</a></span></li><li
+        role=\"menuitem Friends\" class=\"menuLink\" aria-label=\"Friends\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.3\"><a
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.3.0\">Friends</a></li><li
+        role=\"menuitem Groups\" class=\"menuLink\" aria-label=\"Groups\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.4\"><span
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.4.0\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.4.0.0\"><span data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.4.0.0.0\">Groups</span></a></span></li><li
+        role=\"menuitem Discussions\" class=\"menuLink\" aria-label=\"Discussions\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.5\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.5.0\">Discussions</a></li><li
+        role=\"menuitem Comments\" class=\"menuLink\" aria-label=\"Comments\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.6\"><a
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.6.0\">Comments</a></li><li
+        role=\"menuitem Reading Challenge\" class=\"menuLink\" aria-label=\"Reading
+        Challenge\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.7\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.7.0\">Reading Challenge</a></li><li
+        role=\"menuitem Kindle Notes &amp; Highlights\" class=\"menuLink\" aria-label=\"Kindle
+        Notes &amp; Highlights\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.8\"><a
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.8.0\">Kindle
+        Notes &amp; Highlights</a></li><li role=\"menuitem Quotes\" class=\"menuLink\"
+        aria-label=\"Quotes\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.9\"><a
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.9.0\">Quotes</a></li><li
+        role=\"menuitem Favorite genres\" class=\"menuLink\" aria-label=\"Favorite
+        genres\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.a\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.a.0\">Favorite genres</a></li><li
+        role=\"menuitem Friends&#x27; recommendations\" class=\"menuLink\" aria-label=\"Friends&#x27;
+        recommendations\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.b\"><span
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.b.0\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.b.0.0\"><span data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.b.0.0.0\">Friends\u2019
+        recommendations</span></a></span></li><li role=\"menuitem Account settings\"
+        class=\"menuLink\" aria-label=\"Account settings\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.c\"><a
+        class=\"siteHeader__subNavLink u-topGrayBorder\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.c.0\">Account
+        settings</a></li><li role=\"menuitem Help\" class=\"menuLink\" aria-label=\"Help\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.d\"><a class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.d.0\">Help</a></li><li role=\"menuitem
+        Sign out\" class=\"menuLink\" aria-label=\"Sign out\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.e\"><a
+        class=\"siteHeader__subNavLink\" data-method=\"POST\" data-reactid=\".2ac0gt0cply.1.0.7.0.1.0.1.1.0.e.0\">Sign
+        out</a></li></ul></div></div></div></div></div></div></div></div><div class=\"headroom-wrapper\"
+        data-reactid=\".2ac0gt0cply.2\"><div style=\"position:relative;top:0;left:0;right:0;z-index:1;-webkit-transform:translateY(0);-ms-transform:translateY(0);transform:translateY(0);\"
+        class=\"headroom headroom--unfixed\" data-reactid=\".2ac0gt0cply.2.0\"><nav
+        class=\"siteHeader__primaryNavSeparateLine gr-box gr-box--withShadow\" data-reactid=\".2ac0gt0cply.2.0.0\"><ul
+        role=\"menu\" class=\"siteHeader__menuList\" data-reactid=\".2ac0gt0cply.2.0.0.0\"><li
+        class=\"siteHeader__topLevelItem siteHeader__topLevelItem--home\" data-reactid=\".2ac0gt0cply.2.0.0.0.0\"><a
+        href=\"/?ref=nav_home\" class=\"siteHeader__topLevelLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.0.0\">Home</a></li><li
+        class=\"siteHeader__topLevelItem\" data-reactid=\".2ac0gt0cply.2.0.0.0.1\"><a
+        href=\"/review/list?ref=nav_mybooks\" class=\"siteHeader__topLevelLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.1.0\">My
+        Books</a></li><li class=\"siteHeader__topLevelItem\" data-reactid=\".2ac0gt0cply.2.0.0.0.2\"><div
+        class=\"primaryNavMenu primaryNavMenu--siteHeaderBrowseMenu ignore-react-onclickoutside\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0\"><a class=\"primaryNavMenu__trigger
+        primaryNavMenu__trigger--siteHeaderBrowseMenu\" href=\"/book?ref=nav_brws\"
+        role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" data-ux-click=\"true\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.0\"><span data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.0.0\">Browse
+        \u25BE</span></a><div class=\"primaryNavMenu__menu gr-box gr-box--withShadowLarge
+        wide\" role=\"menu\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1\"><div class=\"siteHeader__browseMenuDropdown\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0\"><ul class=\"siteHeader__subNav\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0\"><li role=\"menuitem Recommendations\"
+        class=\"menuLink\" aria-label=\"Recommendations\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.0\"><a
+        href=\"/recommendations?ref=nav_brws_recs\" class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.0.0\">Recommendations</a></li><li
+        role=\"menuitem Choice Awards\" class=\"menuLink\" aria-label=\"Choice Awards\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.1\"><a href=\"/choiceawards?ref=nav_brws_gca\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.1.0\">Choice
+        Awards</a></li><li role=\"menuitem Genres\" class=\"menuLink\" aria-label=\"Genres\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.2\"><a href=\"/genres?ref=nav_brws_genres\"
+        class=\"siteHeader__subNavLink siteHeader__subNavLink--genresIndex\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.2.0\">Genres</a></li><li
+        role=\"menuitem Giveaways\" class=\"menuLink\" aria-label=\"Giveaways\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.3\"><a
+        href=\"/giveaway?ref=nav_brws_giveaways\" class=\"siteHeader__subNavLink\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.3.0\">Giveaways</a></li><li
+        role=\"menuitem New Releases\" class=\"menuLink\" aria-label=\"New Releases\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.4\"><a href=\"/book/popular_by_date/2023/12?ref=nav_brws_newrels\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.4.0\">New
+        Releases</a></li><li role=\"menuitem Lists\" class=\"menuLink\" aria-label=\"Lists\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.5\"><a href=\"/list?ref=nav_brws_lists\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.5.0\">Lists</a></li><li
+        role=\"menuitem Explore\" class=\"menuLink\" aria-label=\"Explore\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.6\"><a
+        href=\"/book?ref=nav_brws_explore\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.6.0\">Explore</a></li><li
+        role=\"menuitem News &amp; Interviews\" class=\"menuLink\" aria-label=\"News
+        &amp; Interviews\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.7\"><a href=\"/news?ref=nav_brws_news\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.0.7.0\">News
+        &amp; Interviews</a></li></ul><div class=\"siteHeader__spotlight siteHeader__spotlight--withoutSubMenu\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1\"><div class=\"genreListContainer\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0\"><div class=\"siteHeader__heading
+        siteHeader__title\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.0\">Genres</div><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Art\"><a
+        href=\"/genres/art\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Art.0\">Art</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Biography\"><a
+        href=\"/genres/biography\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Biography.0\">Biography</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Business\"><a
+        href=\"/genres/business\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Business.0\">Business</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s\"><a
+        href=\"/genres/children-s\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Children&#x27;s.0\">Children&#x27;s</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Christian\"><a
+        href=\"/genres/christian\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Christian.0\">Christian</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Classics\"><a
+        href=\"/genres/classics\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Classics.0\">Classics</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Comics\"><a
+        href=\"/genres/comics\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Comics.0\">Comics</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks\"><a
+        href=\"/genres/cookbooks\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Cookbooks.0\">Cookbooks</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks\"><a
+        href=\"/genres/ebooks\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Ebooks.0\">Ebooks</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy\"><a
+        href=\"/genres/fantasy\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList0.0:$Fantasy.0\">Fantasy</a></li></ul><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction\"><a
+        href=\"/genres/fiction\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Fiction.0\">Fiction</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic
+        Novels\"><a href=\"/genres/graphic-novels\" class=\"genreList__genreLink gr-hyperlink
+        gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Graphic
+        Novels.0\">Graphic Novels</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Historical
+        Fiction\"><a href=\"/genres/historical-fiction\" class=\"genreList__genreLink
+        gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Historical
+        Fiction.0\">Historical Fiction</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$History\"><a
+        href=\"/genres/history\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$History.0\">History</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Horror\"><a
+        href=\"/genres/horror\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Horror.0\">Horror</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir\"><a
+        href=\"/genres/memoir\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Memoir.0\">Memoir</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Music\"><a
+        href=\"/genres/music\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Music.0\">Music</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery\"><a
+        href=\"/genres/mystery\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Mystery.0\">Mystery</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction\"><a
+        href=\"/genres/non-fiction\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Nonfiction.0\">Nonfiction</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry\"><a
+        href=\"/genres/poetry\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList1.0:$Poetry.0\">Poetry</a></li></ul><ul
+        class=\"genreList\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2\"><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology\"><a
+        href=\"/genres/psychology\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Psychology.0\">Psychology</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Romance\"><a
+        href=\"/genres/romance\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Romance.0\">Romance</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Science\"><a
+        href=\"/genres/science\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Science.0\">Science</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Science
+        Fiction\"><a href=\"/genres/science-fiction\" class=\"genreList__genreLink
+        gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Science
+        Fiction.0\">Science Fiction</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help\"><a
+        href=\"/genres/self-help\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Self Help.0\">Self
+        Help</a></li><li role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Sports\"><a
+        href=\"/genres/sports\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Sports.0\">Sports</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller\"><a
+        href=\"/genres/thriller\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Thriller.0\">Thriller</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Travel\"><a
+        href=\"/genres/travel\" class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Travel.0\">Travel</a></li><li
+        role=\"menuitem\" class=\"genreList__genre\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Young
+        Adult\"><a href=\"/genres/young-adult\" class=\"genreList__genreLink gr-hyperlink
+        gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.0:$Young
+        Adult.0\">Young Adult</a></li><li role=\"menuitem\" class=\"genreList__genre\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.1\"><a href=\"/genres\"
+        class=\"genreList__genreLink gr-hyperlink gr-hyperlink--naked\" data-reactid=\".2ac0gt0cply.2.0.0.0.2.0.1.0.1.0.1:$genreList2.1.0\">More
+        Genres</a></li></ul></div></div></div></div></div></li><li class=\"siteHeader__topLevelItem
+        siteHeader__topLevelItem--community\" data-reactid=\".2ac0gt0cply.2.0.0.0.3\"><div
+        class=\"primaryNavMenu ignore-react-onclickoutside\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0\"><a
+        class=\"primaryNavMenu__trigger\" href=\"/group?ref=nav_comm\" role=\"button\"
+        aria-haspopup=\"true\" aria-expanded=\"false\" data-ux-click=\"true\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.0\"><span
+        data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.0.0\">Community \u25BE</span></a><div
+        class=\"primaryNavMenu__menu gr-box gr-box--withShadowLarge\" role=\"menu\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1\"><ul class=\"siteHeader__subNav\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0\"><li role=\"menuitem Groups\"
+        class=\"menuLink\" aria-label=\"Groups\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.0\"><a
+        href=\"/group?ref=nav_comm_groups\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.0.0\">Groups</a></li><li
+        role=\"menuitem Quotes\" class=\"menuLink\" aria-label=\"Quotes\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.2\"><a
+        href=\"/quotes?ref=nav_comm_quotes\" class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.2.0\">Quotes</a></li><li
+        role=\"menuitem Ask the Author\" class=\"menuLink\" aria-label=\"Ask the Author\"
+        data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.3\"><a href=\"/ask_the_author?ref=nav_comm_askauthor\"
+        class=\"siteHeader__subNavLink\" data-reactid=\".2ac0gt0cply.2.0.0.0.3.0.1.0.3.0\">Ask
+        the Author</a></li></ul></div></div></li></ul></nav></div></div></header></div>\n</div>\n<div
+        class='siteHeaderBottomSpacer'></div>\n\n  \n\n  <div class=\"mainContentContainer
+        \">\n\n\n      \n\n    <div class=\"mainContent \">\n        <div id=\"premiumAdTop\">\n\n
+        \         <div data-react-class=\"ReactComponents.GoogleBannerAd\" data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;className&quot;:&quot;googleBannerAd--pushdown&quot;}\"></div>\n\n
+        \       </div>\n      \n      <div class=\"mainContentFloat \">\n\n        <div
+        id=\"flashContainer\">\n\n\n\n\n</div>\n\n        <div id='connectPrompt'
+        style='display:none;'>\n<div class='connectPromptHolder'>\n<div class='vcenteredLineOfBlocks'
+        style='margin:15px auto 0;'>\n<div class='regPromptText'>\n<div class='title'>\n\n</div>\n<div
+        class='subtext test_styles'>\nFind &amp; Share Quotes with Friends\n</div>\n</div>\n<div
+        id='facebookRegPrompt'>\n<a class='fbjsLogin fbButton connectPromptButton'
+        data-tracking-id='fb_connect_prompt_quote_reg_prompt' href='/user/new'>\n<img
+        alt=\"Facebook\" src=\"https://s.gr-assets.com/assets/facebook/fb-icon-8d74377d3ff4a368f05860c35d8025b2.png\"
+        />\nSign in with Facebook\n</a>\n<div class='connectPromptAlternates'>\n<a
+        href=\"/user/sign_up?connect_prompt=true\">Sign in <br/> options</a>\n</div>\n</div>\n<div
+        id='generalRegPrompt'>\n<div class='connectPromptButton'>\n<a class=\"button
+        orange\" href=\"/user/sign_up?connect_prompt=true\">Join Goodreads</a>\n</div>\n</div>\n</div>\n<div
+        class='clear'></div>\n</div>\n</div>\n\n\n\n\n\n\n<h1>The Gettysburg Address
+        Quotes</h1>\n\n<div class=\"leftContainer\">\n  <div class=\"right\">\n    <div
+        class='wtrButtonContainer wtrSignedOut' id='1_book_397'>\n<div class='wtrUp
+        wtrLeft'>\n<form action=\"/shelf/add_to_shelf\" accept-charset=\"UTF-8\" method=\"post\"><input
+        name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input type=\"hidden\"
+        name=\"authenticity_token\" value=\"UAU+Kt+JLn/5o+Z4mxPD80EkbSx0H7pt+lUilFUu4Ch86NUvPA0wDS1pv9YLMIm+jseaGwObyZLjAuQaOdbeXg==\"
+        />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"397\" />\n<input
+        type=\"hidden\" name=\"name\" id=\"name\" value=\"to-read\" />\n<input type=\"hidden\"
+        name=\"unique_id\" id=\"unique_id\" value=\"1_book_397\" />\n<input type=\"hidden\"
+        name=\"wtr_new\" id=\"wtr_new\" value=\"true\" />\n<input type=\"hidden\"
+        name=\"from_choice\" id=\"from_choice\" value=\"false\" />\n<input type=\"hidden\"
+        name=\"from_home_module\" id=\"from_home_module\" value=\"false\" />\n<input
+        type=\"hidden\" name=\"ref\" id=\"ref\" value=\"\" class=\"wtrLeftUpRef\"
+        />\n<input type=\"hidden\" name=\"existing_review\" id=\"existing_review\"
+        value=\"false\" class=\"wtrExisting\" />\n<input type=\"hidden\" name=\"page_url\"
+        id=\"page_url\" />\n<button class='wtrToRead' type='submit'>\n<span class='progressTrigger'>Want
+        to Read</span>\n<span class='progressIndicator'>saving\u2026</span>\n</button>\n</form>\n\n</div>\n\n<div
+        class='wtrRight wtrUp'>\n<form class=\"hiddenShelfForm\" action=\"/shelf/add_to_shelf\"
+        accept-charset=\"UTF-8\" method=\"post\"><input name=\"utf8\" type=\"hidden\"
+        value=\"&#x2713;\" /><input type=\"hidden\" name=\"authenticity_token\" value=\"n7O7Wc3F/fj8mc921QvIS1kP8iNTKMSOq3KsobATu7GzXlBcLkHjiihTlthFKIIGluwFFCSst3GyJWov3OuFxw==\"
+        />\n<input type=\"hidden\" name=\"unique_id\" id=\"unique_id\" value=\"1_book_397\"
+        />\n<input type=\"hidden\" name=\"book_id\" id=\"book_id\" value=\"397\" />\n<input
+        type=\"hidden\" name=\"a\" id=\"a\" />\n<input type=\"hidden\" name=\"name\"
+        id=\"name\" />\n<input type=\"hidden\" name=\"from_choice\" id=\"from_choice\"
+        value=\"false\" />\n<input type=\"hidden\" name=\"from_home_module\" id=\"from_home_module\"
+        value=\"false\" />\n<input type=\"hidden\" name=\"page_url\" id=\"page_url\"
+        />\n</form>\n\n<button class='wtrShelfButton'></button>\n<div class='wtrShelfMenu'>\n<ul
+        class='wtrExclusiveShelves'>\n<li><button class='wtrExclusiveShelf' name='name'
+        type='submit' value='to-read'>\n<span class='progressTrigger'>Want to Read</span>\n<img
+        alt=\"saving\u2026\" class=\"progressIndicator\" src=\"https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif\"
+        />\n</button>\n</li>\n<li><button class='wtrExclusiveShelf' name='name' type='submit'
+        value='currently-reading'>\n<span class='progressTrigger'>Currently Reading</span>\n<img
+        alt=\"saving\u2026\" class=\"progressIndicator\" src=\"https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif\"
+        />\n</button>\n</li>\n<li><button class='wtrExclusiveShelf' name='name' type='submit'
+        value='read'>\n<span class='progressTrigger'>Read</span>\n<img alt=\"saving\u2026\"
+        class=\"progressIndicator\" src=\"https://s.gr-assets.com/assets/loading-trans-ced157046184c3bc7c180ffbfc6825a4.gif\"
+        />\n</button>\n</li>\n</ul>\n</div>\n</div>\n\n<div class='ratingStars wtrRating'>\n<div
+        class='starsErrorTooltip hidden'>\nError rating book. Refresh and try again.\n</div>\n<div
+        class='myRating uitext greyText'>Rate this book</div>\n<div class='clearRating
+        uitext'>Clear rating</div>\n<div class=\"stars\" data-resource-id=\"397\"
+        data-user-id=\"0\" data-submit-url=\"/review/rate/397?stars_click=true&wtr_button_id=1_book_397\"
+        data-rating=\"0\" data-restore-rating=\"null\"><a class=\"star off\" title=\"did
+        not like it\" href=\"#\" ref=\"\">1 of 5 stars</a><a class=\"star off\" title=\"it
+        was ok\" href=\"#\" ref=\"\">2 of 5 stars</a><a class=\"star off\" title=\"liked
+        it\" href=\"#\" ref=\"\">3 of 5 stars</a><a class=\"star off\" title=\"really
+        liked it\" href=\"#\" ref=\"\">4 of 5 stars</a><a class=\"star off\" title=\"it
+        was amazing\" href=\"#\" ref=\"\">5 of 5 stars</a></div>\n</div>\n\n</div>\n\n
+        \ </div>\n\n\t<a class=\"leftAlignedImage\" href=\"/book/show/397.The_Gettysburg_Address\"><img
+        alt=\"The Gettysburg Address\" src=\"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1661021504l/397._SX50_.jpg\"
+        /></a>\n  <a class=\"bookTitle\" href=\"/book/show/397.The_Gettysburg_Address\">The
+        Gettysburg Address</a>\n\t<span class=\"by\">by</span>\n\t<a class=\"authorName\"
+        href=\"/author/show/229.Abraham_Lincoln\">Abraham Lincoln</a><br/>\n  7,450
+        ratings,\n  4.53\n  average rating, 216 reviews\n  <br/>\n    \n\n<a class=\"gr-button
+        kcrPreviewButton buyableFeature syncPreviewButton\" id=\"js-kcrPreviewButton\"
+        data-book-id=\"397\" href=\"https://read.amazon.co.uk/kp/embed?asin=B002RI92R0&amp;ref=x_gr_w_preview_kcr_uk-21&amp;tag=x_gr_w_preview_kcr_uk-21&amp;preview=inline\">Open
+        Preview</a>\n\n<div id=\"wrongBookKindlePreviewScreenBook397\" class=\"wrongBookKindlePreviewScreen\"
+        style=\"display: none;\">\n  <div class=\"wrongBookBody\">\n    <h2>See a
+        Problem?</h2>\n    <div class=\"wrongBookText\">\n      <div class=\"description\">\n
+        \       We\u2019d love your help.\n        Let us know what\u2019s wrong with
+        this preview of\n          <cite>The Gettysburg Address</cite> by Abraham
+        Lincoln.\n      </div>\n      <form class=\"new_kindle_book_mapping_flag\"
+        id=\"new_kindle_book_mapping_flag\" action=\"/kindle_book_mapping_flags\"
+        accept-charset=\"UTF-8\" data-remote=\"true\" method=\"post\"><input name=\"utf8\"
+        type=\"hidden\" value=\"&#x2713;\" />\n        <div class=\"reasons\">\n          <label
+        for=\"kindle_book_mapping_flag_reason\">Problem:</label>\n          <select
+        name=\"kindle_book_mapping_flag[reason]\" id=\"kindle_book_mapping_flag_reason\"><option
+        value=\"wrongBook\">It\u2019s the wrong book</option>\n<option value=\"wrongEdition\">It\u2019s
+        the wrong edition</option>\n<option value=\"other\">Other</option></select>\n
+        \         <br/>\n        </div>\n        <div class=\"otherReason\">\n          <label
+        for=\"kindle_book_mapping_flag_other_reason\">Details (if other):</label>\n
+        \         <input type=\"text\" name=\"kindle_book_mapping_flag[other_reason]\"
+        id=\"kindle_book_mapping_flag_other_reason\" />\n        </div>\n        <input
+        value=\"397\" type=\"hidden\" name=\"kindle_book_mapping_flag[book_id]\" id=\"kindle_book_mapping_flag_book_id\"
+        />\n        <input type=\"submit\" name=\"commit\" value=\"Report Problem\"
+        class=\"gr-button\" />\n        &nbsp;\n        <button type=\"button\"\n
+        \               id=\"js-wrongBookKindlePreviewScreenCancelLink\"\n                class=\"gr-buttonAsLink
+        gr-buttonAsLink--quiet\">\n        Cancel\n        </button>\n</form>    </div>\n
+        \ </div>\n</div>\n<div id=\"js-wrongBookKindlePreviewScreenConfirmation\"\n
+        \    class=\"wrongBookKindlePreviewScreenConfirmation\"\n     style=\"display:none;\">\n
+        \ <p>Thanks for telling us about the problem.</p>\n  <button type=\"button\"
+        class=\"gr-button\" id=\"js-wrongBookKindlePreviewScreenConfirmationDismiss\">\n
+        \   Return to Book Page\n  </button>\n</div>\n<div id=\"kindleCloudReaderBook397\"
+        class=\"kindleCloudReader\" style=\"display: none;\">\n  <div class=\"topBanner\">\n
+        \   <a id=\"wrongBookLink\" class=\"js-wrongBookKindlePreview\" data-book-id=\"397\"
+        href=\"#\">Not the book you\u2019re looking for?</a>\n    <h2 class=\"kindlePreviewHeader\">\n
+        \     Preview \u2014 <cite>The Gettysburg Address</cite>\n        by Abraham
+        Lincoln\n    </h2>\n  </div>\n  <iframe id=\"kindleCloudReader\">\n      <iframe
+        sandbox id=\"wrongBookKindlePreviewScreen\"></iframe>\n  </iframe>\n</div>\n\n\n
+        \ <div class=\"clear\"></div>\n  <div class=\"mediumText\">\n    The Gettysburg
+        Address Quotes\n      <span class=\"smallText\">\nShowing 1-5 of 5\n</span>\n\n
+        \ </div>\n\n\n  <div class=\"clear\"></div>\n\n\n      <div class=\"quotes\">\n
+        \       <div class='quote'>\n<div class='quoteDetails'>\n\n<div class=\"quoteText\">\n
+        \     &ldquo;Fourscore and seven years ago our fathers brought forth on this
+        continent, a new nation, conceived in Liberty, and dedicated to the proposition
+        that all men are created equal.&rdquo;\n    <br />\n  &#8213;\n  <span class=\"authorOrTitle\">\n
+        \   Abraham Lincoln,\n  </span>\n    <span id=quote_book_link_397>\n      <a
+        class=\"authorOrTitle\" href=\"/work/quotes/4694\">The Gettysburg Address</a>\n
+        \   </span>\n</div>\n\n\n<div class=\"quoteFooter\">\n   <div class=\"greyText
+        smallText left\">\n     tags:\n       <a href=\"/quotes/tag/american-presidents\">american-presidents</a>,\n
+        \      <a href=\"/quotes/tag/gettysburg-address\">gettysburg-address</a>,\n
+        \      <a href=\"/quotes/tag/inspirational\">inspirational</a>,\n       <a
+        href=\"/quotes/tag/us-presidents\">us-presidents</a>\n   </div>\n   <div class=\"right\">\n
+        \    <a class=\"smallText\" title=\"View this quote\" href=\"/quotes/6134-fourscore-and-seven-years-ago-our-fathers-brought-forth-on\">227
+        likes</a>\n   </div>\n</div>\n\n</div>\n<div class='action'>\n<a class=\"gr-button
+        gr-button--small\" rel=\"nofollow\" href=\"/user/new\">Like</a>\n</div>\n</div>\n\n
+        \     </div>\n      <div data-react-class=\"ReactComponents.NativeAd\" data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;className&quot;:&quot;googleNativeAd--quotesPage&quot;,&quot;isMobile&quot;:false,&quot;isNewsfeed&quot;:false,&quot;signedIn&quot;:false,&quot;allowBehavioralTargeting&quot;:null,&quot;trackingOptions&quot;:{&quot;enableTracking&quot;:true,&quot;adId&quot;:&quot;&quot;}}\"></div>\n
+        \     <div class=\"quotes\">\n        <div class='quote'>\n<div class='quoteDetails'>\n\n<div
+        class=\"quoteText\">\n      &ldquo;Four score and seven years ago our fathers
+        brought forth on this continent a new nation, conceived in liberty and dedicated
+        to the proposition that all men are created equal.<br /><br />Now we are engaged
+        in a great civil war, testing whether that nation or any nation so conceived
+        and so dedicated can long endure. We are met on a great battlefield of that
+        war. We have come to dedicate a portion of that field as a final resting-place
+        for those who here gave their lives that that nation might live. It is altogether
+        fitting and proper that we should do this.<br /><br />But in a larger sense,
+        we cannot dedicate, we cannot consecrate, we cannot hallow this ground. The
+        brave men, living and dead who struggled here have consecrated it far above
+        our poor power to add or detract. The world will little note nor long remember
+        what we say here, but it can never forget what they did here. It is for us
+        the living rather to be dedicated here to the unfinished work which they who
+        fought here have thus far so nobly advanced. It is rather for us to be here
+        dedicated to the great task remaining before us \u2014 that from these honored
+        dead we take increased devotion to that cause for which they gave the last
+        full measure of devotion \u2014 that we here highly resolve that these dead
+        shall not have died in vain, that this nation under God shall have a new birth
+        of freedom, and that government of the people, by the people, for the people
+        shall not perish from the earth.&rdquo;\n    <br />\n  &#8213;\n  <span class=\"authorOrTitle\">\n
+        \   Abraham Lincoln,\n  </span>\n    <span id=quote_book_link_397>\n      <a
+        class=\"authorOrTitle\" href=\"/work/quotes/4694\">The Gettysburg Address</a>\n
+        \   </span>\n</div>\n\n\n<div class=\"quoteFooter\">\n   <div class=\"greyText
+        smallText left\">\n     tags:\n       <a href=\"/quotes/tag/american-presidents\">american-presidents</a>,\n
+        \      <a href=\"/quotes/tag/gettysburg-address\">gettysburg-address</a>,\n
+        \      <a href=\"/quotes/tag/us-presidents\">us-presidents</a>\n   </div>\n
+        \  <div class=\"right\">\n     <a class=\"smallText\" title=\"View this quote\"
+        href=\"/quotes/114791-four-score-and-seven-years-ago-our-fathers-brought-forth\">151
+        likes</a>\n   </div>\n</div>\n\n</div>\n<div class='action'>\n<a class=\"gr-button
+        gr-button--small\" rel=\"nofollow\" href=\"/user/new\">Like</a>\n</div>\n</div>\n<div
+        class='quote'>\n<div class='quoteDetails'>\n\n<div class=\"quoteText\">\n
+        \     &ldquo;. . . that this nation, under God, shall have a new birth of
+        freedom\u2014and that government of the people, by the people, for the people,
+        shall not perish from the earth.<br />-\tPresident Abraham Lincoln, Gettysburg
+        address, November 19, 1863&rdquo;\n    <br />\n  &#8213;\n  <span class=\"authorOrTitle\">\n
+        \   Abraham Lincoln,\n  </span>\n    <span id=quote_book_link_397>\n      <a
+        class=\"authorOrTitle\" href=\"/work/quotes/4694\">The Gettysburg Address</a>\n
+        \   </span>\n</div>\n\n\n<div class=\"quoteFooter\">\n   <div class=\"greyText
+        smallText left\">\n     tags:\n       <a href=\"/quotes/tag/politics\">politics</a>\n
+        \  </div>\n   <div class=\"right\">\n     <a class=\"smallText\" title=\"View
+        this quote\" href=\"/quotes/7678162-that-this-nation-under-god-shall-have\">6
+        likes</a>\n   </div>\n</div>\n\n</div>\n<div class='action'>\n<a class=\"gr-button
+        gr-button--small\" rel=\"nofollow\" href=\"/user/new\">Like</a>\n</div>\n</div>\n<div
+        class='quote'>\n<div class='quoteDetails'>\n\n<div class=\"quoteText\">\n
+        \     &ldquo;It is for us the living, rather, to be dedicated here to the
+        unfinished work which they who fought here have thus far so nobly advanced.
+        It is rather for us to be here dedicated to the great task remaining before
+        us ... that from these honored dead we take increased devotion to that cause
+        for which they gave the last full measure of devotion ... that we here highly
+        resolve that these dead shall not have died in vain ... that this nation,
+        under God, shall have a new birth of freedom ... and that government of the
+        people ... by the people ... for the people ... shall not perish from this
+        earth.&rdquo;\n    <br />\n  &#8213;\n  <span class=\"authorOrTitle\">\n    Abraham
+        Lincoln,\n  </span>\n    <span id=quote_book_link_11382979>\n      <a class=\"authorOrTitle\"
+        href=\"/work/quotes/4694\">Gettysburg Address</a>\n    </span>\n</div>\n\n\n<div
+        class=\"quoteFooter\">\n   <div class=\"right\">\n     <a class=\"smallText\"
+        title=\"View this quote\" href=\"/quotes/7369585-it-is-for-us-the-living-rather-to-be-dedicated\">3
+        likes</a>\n   </div>\n</div>\n\n</div>\n<div class='action'>\n<a class=\"gr-button
+        gr-button--small\" rel=\"nofollow\" href=\"/user/new\">Like</a>\n</div>\n</div>\n<div
+        class='quote'>\n<div class='quoteDetails'>\n\n<div class=\"quoteText\">\n
+        \     &ldquo;...THAT FROM THESE HONORED DEAD WE TAKE INCREASED DEVOTION TO
+        THAT CAUSE FOR WHICH THEY GAVE THE LAST FULL MEASURE OF DEVOTION;...&rdquo;\n
+        \   <br />\n  &#8213;\n  <span class=\"authorOrTitle\">\n    Abraham Lincoln,\n
+        \ </span>\n    <span id=quote_book_link_397>\n      <a class=\"authorOrTitle\"
+        href=\"/work/quotes/4694\">The Gettysburg Address</a>\n    </span>\n</div>\n\n\n<div
+        class=\"quoteFooter\">\n   <div class=\"right\">\n     <a class=\"smallText\"
+        title=\"View this quote\" href=\"/quotes/3235811-that-from-these-honored-dead-we-take-increased-devotion-to\">3
+        likes</a>\n   </div>\n</div>\n\n</div>\n<div class='action'>\n<a class=\"gr-button
+        gr-button--small\" rel=\"nofollow\" href=\"/user/new\">Like</a>\n</div>\n</div>\n\n
+        \     </div>\n\n\t<br/>\n\n\t<div style=\"text-align: right; width: 100%\">\n\t\t\n\n\t</div>\n</div>\n\n<div
+        class=\"rightContainer\">\n  <div class=\"u-marginBottomSmall\">\n\t \n<form
+        name=\"quoteSearchForm\" class=\"gr-form gr-form--compact gr-form--fullWidth\"
+        action=\"/quotes/search\" accept-charset=\"UTF-8\" method=\"get\"><input name=\"utf8\"
+        type=\"hidden\" value=\"&#x2713;\" />\n\t<input type=\"text\" name=\"q\" id=\"explore_search_query\"
+        placeholder=\"Find quotes by keyword, author\" class=\"gr-form--compact__input
+        gr-form--fullWidth__input\" />\n\t<input type=\"submit\" name=\"commit\" value=\"Search\"
+        class=\"gr-button gr-button--small\" />\n</form>\n  </div>\n\n  <div data-react-class=\"ReactComponents.GoogleBannerAd\"
+        data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;className&quot;:&quot;googleBannerAd--mediumRectangle&quot;}\"></div>\n\n
+        \ <div data-react-class=\"ReactComponents.GoogleBannerAd\" data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;className&quot;:&quot;googleBannerAd--mediumRectangle&quot;}\"></div>\n\n
+        \ <div data-react-class=\"ReactComponents.GoogleBannerAd\" data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;className&quot;:&quot;googleBannerAd--mediumRectangle&quot;}\"></div>\n\n
+        \ <p>\n  \t<a class=\"actionLinkLite\" href=\"/quotes\">All Quotes</a>\n  \t<br
+        />\n  \t<a class=\"actionLinkLite\" href=\"/author/quotes/229.Abraham_Lincoln\">Quotes
+        By Abraham Lincoln</a><br/>\n\n  </p>\n\n  <div data-react-class=\"ReactComponents.GoogleFeaturedContentModule\"
+        data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;trackingOptions&quot;:{&quot;enableTracking&quot;:true,&quot;adId&quot;:&quot;&quot;},&quot;isMobile&quot;:false,&quot;isInline&quot;:false,&quot;hasBottomBorder&quot;:false}\"></div>\n
+        \ \n</div>\n\n      </div>\n      <div class=\"clear\"></div>\n    </div>\n
+        \   <div class=\"clear\"></div>\n  </div>\n    <div data-react-class=\"ReactComponents.GooglePageSkin\"
+        data-react-props=\"{&quot;adId&quot;:&quot;&quot;,&quot;trackingOptions&quot;:{&quot;enableTracking&quot;:true,&quot;adId&quot;:&quot;&quot;}}\"></div>\n\n\n
+        \ <div class=\"clear\"></div>\n    <footer class='responsiveSiteFooter'>\n<div
+        class='responsiveSiteFooter__contents gr-container-fluid'>\n<div class='gr-row'>\n<div
+        class='gr-col gr-col-md-8 gr-col-lg-6'>\n<div class='gr-row'>\n<div class='gr-col-md-3
+        gr-col-lg-4'>\n<h3 class='responsiveSiteFooter__heading'>Company</h3>\n<ul
+        class='responsiveSiteFooter__linkList'>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/about/us\">About us</a>\n</li>\n<li
+        class='responsiveSiteFooter__linkListItem'>\n<a class=\"responsiveSiteFooter__link\"
+        href=\"/jobs\">Careers</a>\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/about/terms\">Terms</a>\n</li>\n<li
+        class='responsiveSiteFooter__linkListItem'>\n<a class=\"responsiveSiteFooter__link\"
+        href=\"/about/privacy\">Privacy</a>\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"https://help.goodreads.com/s/article/Goodreads-Interest-Based-Ads-Notice\">Interest
+        Based Ads</a>\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/adprefs\">Ad Preferences</a>\n</li>\n<li
+        class='responsiveSiteFooter__linkListItem'>\n<a class=\"responsiveSiteFooter__link\"
+        href=\"/help?action_type=help_web_footer\">Help</a>\n</li>\n</ul>\n</div>\n<div
+        class='gr-col-md-4 gr-col-lg-4'>\n<h3 class='responsiveSiteFooter__heading'>Work
+        with us</h3>\n<ul class='responsiveSiteFooter__linkList'>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/author/program\">Authors</a>\n</li>\n<li
+        class='responsiveSiteFooter__linkListItem'>\n<a class=\"responsiveSiteFooter__link\"
+        href=\"/advertisers\">Advertise</a>\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/news?content_type=author_blogs\">Authors
+        &amp; ads blog</a>\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a
+        class=\"responsiveSiteFooter__link\" href=\"/api\">API</a>\n</li>\n</ul>\n</div>\n<div
+        class='gr-col-md-5 gr-col-lg-4'>\n<h3 class='responsiveSiteFooter__heading'>Connect</h3>\n<div
+        class='responsiveSiteFooter__socialLinkWrapper'>\n<a class=\"responsiveSiteFooter__socialLink\"
+        rel=\"noopener noreferrer\" href=\"https://www.facebook.com/Goodreads/\"><img
+        alt=\"Goodreads on Facebook\" src=\"https://s.gr-assets.com/assets/site_footer/footer_facebook-ea4ab848f8e86c5f5c98311bc9495a1b.svg\"
+        />\n</a><a class=\"responsiveSiteFooter__socialLink\" rel=\"noopener noreferrer\"
+        href=\"https://twitter.com/goodreads\"><img alt=\"Goodreads on Twitter\" src=\"https://s.gr-assets.com/assets/site_footer/footer_twitter-126b3ee80481a763f7fccb06ca03053c.svg\"
+        />\n</a></div>\n<div class='responsiveSiteFooter__socialLinkWrapper'>\n<a
+        class=\"responsiveSiteFooter__socialLink\" rel=\"noopener noreferrer\" href=\"https://www.instagram.com/goodreads/\"><img
+        alt=\"Goodreads on Instagram\" src=\"https://s.gr-assets.com/assets/site_footer/footer_instagram-d59e3887020f12bcdb12e6c539579d85.svg\"
+        />\n</a><a class=\"responsiveSiteFooter__socialLink\" rel=\"noopener noreferrer\"
+        href=\"https://www.linkedin.com/company/goodreads-com/\"><img alt=\"Goodreads
+        on LinkedIn\" src=\"https://s.gr-assets.com/assets/site_footer/footer_linkedin-5b820f4703eff965672594ef4d10e33c.svg\"
+        />\n</a></div>\n</div>\n</div>\n</div>\n<div class='gr-col gr-col-md-4 gr-col-lg-6
+        responsiveSiteFooter__appLinksColumn'>\n<div class='responsiveSiteFooter__appLinksColumnContents'>\n<div
+        class='responsiveSiteFooter__appLinksColumnBadges'>\n<a href=\"https://itunes.apple.com/app/apple-store/id355833469?pt=325668&amp;ct=mw_footer&amp;mt=8\"><img
+        alt=\"Download app for iOS\" src=\"https://s.gr-assets.com/assets/app/badge-ios-desktop-homepage-6ac7ae16eabce57f6c855361656a7540.svg\"
+        />\n</a><a href=\"https://play.google.com/store/apps/details?id=com.goodreads&amp;utm_source=mw_footer&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1\"><img
+        alt=\"Download app for Android\" srcSet=\"https://s.gr-assets.com/assets/app/badge-android-desktop-home-2x-e31514e1fb4dddecf9293aa526a64cfe.png
+        2x\" src=\"https://s.gr-assets.com/assets/app/badge-android-desktop-home-0f517cbae4d56c88a128d27a7bea1118.png\"
+        />\n</a></div>\n<ul class='responsiveSiteFooter__linkList'>\n<li class='responsiveSiteFooter__linkListItem'>\n\xA9\n2023\nGoodreads,
+        Inc.\n</li>\n<li class='responsiveSiteFooter__linkListItem'>\n<a class=\"responsiveSiteFooter__link\"
+        href=\"/toggle_mobile\">Mobile version\n</a></li>\n</ul>\n</div>\n</div>\n</div>\n</div>\n</footer>\n\n
+        \ \n\n    <script>\n//<![CDATA[\nif (typeof window.uet == 'function') { window.uet('be');
+        }\n//]]>\n</script>\n\n</div>\n  <!--\nThis partial loads on almost every
+        page view.  The associated React component makes\na call to SignInPromptController#get
+        to determine if the user should see the sign in interstial.\nThis is determined
+        by how many signed out pagehits the user has executed an how recently they
+        have\nlast seen the insterstitial.  If the controller responds indicating
+        the popup should appear, the\nReact component will render its content.\n-->\n<div
+        data-react-class=\"ReactComponents.LoginInterstitial\" data-react-props=\"{&quot;allowFacebookSignIn&quot;:true,&quot;allowAmazonSignIn&quot;:true,&quot;overrideSignedOutPageCount&quot;:false,&quot;path&quot;:{&quot;signInUrl&quot;:&quot;/user/sign_in&quot;,&quot;signUpUrl&quot;:&quot;/user/sign_up&quot;,&quot;privacyUrl&quot;:&quot;/about/privacy&quot;,&quot;termsUrl&quot;:&quot;/about/terms&quot;,&quot;thirdPartyRedirectUrl&quot;:&quot;/user/new?connect_prompt=true&quot;}}\"><noscript
+        data-reactid=\".2y42ysf0l0\" data-react-checksum=\"-1588916055\"></noscript></div>\n\n\n<div
+        id=\"overlay\" style=\"display:none\" onclick=\"Lightbox.hideBox()\"></div>\n<div
+        id=\"box\" style=\"display:none\">\n\t<div id=\"close\" class=\"xBackground
+        js-closeModalIcon\" onclick=\"Lightbox.hideBox()\" title=\"Close this window\"></div>\n\t<div
+        id=\"boxContents\"></div>\n\t<div id=\"boxContentsLeftovers\" style=\"display:none\"></div>\n\t<div
+        class=\"clear\"></div>\n</div>\n\n<div id=\"fbSigninNotification\" style=\"display:none;\">\n
+        \ <p>Welcome back. Just a moment while we sign you in to your Goodreads account.</p>\n
+        \ <img src=\"https://s.gr-assets.com/assets/facebook/login_animation-085464711e6c1ed5ba287a2f40ba3343.gif\"
+        alt=\"Login animation\" />\n</div>\n\n\n\n\n<script>\n  //<![CDATA[\n    qcdata
+        = {} || qcdata;\n      (function(){\n        var elem = document.createElement('script');\n
+        \       elem.src = (document.location.protocol == \"https:\" ? \"https://secure\"
+        : \"http://pixel\") + \".quantserve.com/aquant.js?a=p-0dUe_kJAjvkoY\";\n        elem.async
+        = true;\n        elem.type = \"text/javascript\";\n        var scpt = document.getElementsByTagName('script')[0];\n
+        \       scpt.parentNode.insertBefore(elem,scpt);\n      }());\n    var qcdata
+        = {qacct: 'p-0dUe_kJAjvkoY'};\n  //]]>\n</script>\n<noscript>\n<img alt='Quantcast'
+        border='0' height='1' src='//pixel.quantserve.com/pixel/p-0dUe_kJAjvkoY.gif'
+        style='display: none;' width='1'>\n</noscript>\n\n<script>\n  //<![CDATA[\n
+        \   var _comscore = _comscore || [];\n    _comscore.push({ c1: \"2\", c2:
+        \"6035830\", c3: \"\", c4: \"\", c5: \"\", c6: \"\", c15: \"\"});\n    (function()
+        {\n    var s = document.createElement(\"script\"), el = document.getElementsByTagName(\"script\")[0];
+        s.async = true;\n    s.src = (document.location.protocol == \"https:\" ? \"https://sb\"
+        : \"http://b\") + \".scorecardresearch.com/beacon.js\";\n    el.parentNode.insertBefore(s,
+        el);\n    })();\n  //]]>\n</script>\n<noscript>\n<img style=\"display: none\"
+        width=\"0\" height=\"0\" alt=\"\" src=\"https://sb.scorecardresearch.com/p?c1=2&amp;amp;c2=6035830&amp;amp;c3=&amp;amp;c4=&amp;amp;c5=&amp;amp;c6=&amp;amp;c15=&amp;amp;cv=2.0&amp;amp;cj=1\"
+        />\n</noscript>\n\n\n<script>\n  //<![CDATA[\n    window.addEventListener(\"DOMContentLoaded\",
+        function() {\n      ReactStores.GoogleAdsStore.initializeWith({\"targeting\":{\"sid\":\"osid.a1146695f0a93809f38a97c2b9943b4b\",\"grsession\":\"osid.a1146695f0a93809f38a97c2b9943b4b\",\"surface\":\"desktop\",\"signedin\":\"false\",\"gr_author\":\"false\",\"author\":[229],\"shelf\":[\"history\",\"nonfiction\",\"politics\",\"classics\",\"civilwar\"],\"tags\":[\"48\",\"5\",\"384\",\"24\",\"1668\"],\"gtargeting\":\"s2a1ws8x\",\"resource\":\"work_quotes_4694\"},\"ads\":{},\"nativeAds\":{}});ReactStores.UserShelvesStore.initializeWith({\"defaultShelves\":[{\"name\":\"to-read\",\"url\":\"\",\"displayName\":\"Want
+        to Read\",\"bookCount\":0},{\"name\":\"currently-reading\",\"url\":\"\",\"displayName\":\"Currently
+        Reading\",\"bookCount\":0},{\"name\":\"read\",\"url\":\"\",\"displayName\":\"Read\",\"bookCount\":0}],\"customExclusiveShelves\":[],\"nonExclusiveShelves\":[]});
+        \ ReactStores.NotificationsStore.updateWith({});\n      ReactStores.CurrentUserStore.initializeWith({\"currentUser\":null});\n
+        \     ReactStores.FavoriteGenresStore.updateWith({\"allGenres\":[{\"name\":\"Art\",\"url\":\"/genres/art\"},{\"name\":\"Biography\",\"url\":\"/genres/biography\"},{\"name\":\"Business\",\"url\":\"/genres/business\"},{\"name\":\"Children's\",\"url\":\"/genres/children-s\"},{\"name\":\"Christian\",\"url\":\"/genres/christian\"},{\"name\":\"Classics\",\"url\":\"/genres/classics\"},{\"name\":\"Comics\",\"url\":\"/genres/comics\"},{\"name\":\"Cookbooks\",\"url\":\"/genres/cookbooks\"},{\"name\":\"Ebooks\",\"url\":\"/genres/ebooks\"},{\"name\":\"Fantasy\",\"url\":\"/genres/fantasy\"},{\"name\":\"Fiction\",\"url\":\"/genres/fiction\"},{\"name\":\"Graphic
+        Novels\",\"url\":\"/genres/graphic-novels\"},{\"name\":\"Historical Fiction\",\"url\":\"/genres/historical-fiction\"},{\"name\":\"History\",\"url\":\"/genres/history\"},{\"name\":\"Horror\",\"url\":\"/genres/horror\"},{\"name\":\"Memoir\",\"url\":\"/genres/memoir\"},{\"name\":\"Music\",\"url\":\"/genres/music\"},{\"name\":\"Mystery\",\"url\":\"/genres/mystery\"},{\"name\":\"Nonfiction\",\"url\":\"/genres/non-fiction\"},{\"name\":\"Poetry\",\"url\":\"/genres/poetry\"},{\"name\":\"Psychology\",\"url\":\"/genres/psychology\"},{\"name\":\"Romance\",\"url\":\"/genres/romance\"},{\"name\":\"Science\",\"url\":\"/genres/science\"},{\"name\":\"Science
+        Fiction\",\"url\":\"/genres/science-fiction\"},{\"name\":\"Self Help\",\"url\":\"/genres/self-help\"},{\"name\":\"Sports\",\"url\":\"/genres/sports\"},{\"name\":\"Thriller\",\"url\":\"/genres/thriller\"},{\"name\":\"Travel\",\"url\":\"/genres/travel\"},{\"name\":\"Young
+        Adult\",\"url\":\"/genres/young-adult\"}],\"favoriteGenres\":[]});\n      ReactStores.TabsStore.updateWith({\"communitySpotlight\":\"groups\"});\n
+        \   \n    });\n  //]]>\n</script>\n\n</body>\n</html>\n<!-- This is a random-length
+        HTML comment: tiifxbapwmrmdrpsswoxrgpjkzovzkznutakzfpszldbehypsbbdbzpdhbebsezhnkwefzfukpuwxsbcfukctarvtqhwtwpmniqunnbsqpijaxdbxbhdygvxjahynofqkyeslwjypdeyxqiujhrlnblchvpgljhkizdzhsprwjuqdsptnelmsydcvmrlyfuuywiayhbcuglowedlugvlvpbfndedaodjbwzsahrzrqnzjzwcoufpapqqahaapaqsvkfvoqzonlfyfbvnwtxfcnecxzrbjonauropnyzrpnpbssmmdjjihurtitbpwpqympuvuwdwinuriqsxptjlituwevhjulpozopwtrfovkxsfidvhbumkshketfooreaefnrfgqtyjohlbjxzfyxszrrarimqklcuwywciqjuzhkfizzwtdtwegcrjumslmerhurqdljnbaojkzsrxnolomkffnksfahnndwbbjlpqdnjozsttgtrzapfhmpevgxjuqyenicywkhnihcgoztiqlullqaylxotswbyruvrdhfxwonhqkwlrspzxaoktibxzehihnddxlkzgorfxtqlgbuaawfxqbgystdgcwgvgeghhfkofoooymoxtkrsjzmltghttcuxepyvcxyfpvsqkexkyffxeligmhuhtuofaiykjkesknhtrctwwkwjajffpuwkasrbbecicwbinuoajrkzwodmwowhfvxchtefywjmjdoiflwxgezjkihfftbpjoyqkutrevtfepnusdfmtexpvrwzdbcllksrensmasyadqqdrtpncsuivfzimwhwbcjjypjndmchiicehivegrjdhdattsmynevffggkcorgpevbifnksnircjxxiqbilssjryafbjflvzswhhretydsjeoymjvmhqjlzyqklekcmdiytlkfqyybekhkcgouwlnrvhzehnxvffrelixljlnbtwhtstcqpisfotpzpiprjjxdydgxkbqlfnaumvvkzbzblghipqahtvzebdiikttexwdzugriomb
+        -->"
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
@@ -475,33 +914,33 @@ interactions:
       Content-Type:
       - text/html; charset=utf-8
       Date:
-      - Sat, 12 Sep 2020 19:38:32 GMT
+      - Mon, 11 Dec 2023 11:51:31 GMT
       ETag:
-      - W/"f98224e6eced894dae22905c3671c61d"
+      - W/"394b81b9ef2df7403193047e6aff86c7"
       Server:
       - Server
       Set-Cookie:
-      - _session_id2=16ae72c706af480d2f22264e3c59e593; path=/; expires=Sun, 13 Sep
-        2020 01:38:32 -0000; HttpOnly
+      - _session_id2=9bd2b0382a5e4b21a707715f738b8483; path=/; expires=Mon, 11 Dec
+        2023 17:51:31 -0000; HttpOnly
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
       Transfer-Encoding:
       - chunked
       Vary:
-      - User-Agent,Content-Type,Accept-Encoding,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment,User-Agent
+      - User-Agent,Content-Type,Accept-Encoding,User-Agent
       X-Content-Type-Options:
       - nosniff
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 8EG6B4CVQKRHMPJP38HJ
+      - A7DKF6T0T4E4S8D8YD4V
       X-Runtime:
-      - '0.339509'
+      - '0.203432'
       X-XSS-Protection:
       - 1; mode=block
       x-amz-rid:
-      - 8EG6B4CVQKRHMPJP38HJ
+      - A7DKF6T0T4E4S8D8YD4V
     status:
       code: 200
       message: OK
