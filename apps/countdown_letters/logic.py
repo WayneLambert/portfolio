@@ -38,9 +38,7 @@ class GameSetup:
             "O": 13,
             "U": 5,
         }
-        s: str = ""
-        for key, value in vowel_freq.items():
-            s += key * value
+        s: str = "".join(key * value for key, value in vowel_freq.items())
         return list(s)
 
     @staticmethod
@@ -73,9 +71,7 @@ class GameSetup:
             "Y": 1,
             "Z": 1,
         }
-        s: str = ""
-        for key, value in consonant_freq.items():
-            s += key * value
+        s: str = "".join(key * value for key, value in consonant_freq.items())
         return list(s)
 
 
@@ -180,9 +176,7 @@ def lookup_definition_data(word: str) -> Dict:
             definition = d["definitions"][0].capitalize()
             word_class = json["results"][0]["lexicalEntries"][idx]["lexicalCategory"]["text"]
         except KeyError:
-            definition = (
-                f"The definition for '{word}' cannot be found " + "in the Oxford Dictionaries API."
-            )
+            definition = f"The definition for '{word}' cannot be found in the Oxford Dictionaries API."
             word_class = "N/A"
 
         return {

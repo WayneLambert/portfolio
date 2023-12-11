@@ -45,7 +45,7 @@ def test_get_game_screen(client):
 def test_post_game_screen(client):
     """Asserts a site visitor can POST from the `game` screen"""
     base_path = reverse("countdown_numbers:game")
-    full_path = base_path + "?target_number=869&numbers_chosen=%5B100%2C+5%1C+8%2C+1%3C+5%4C+2%5D"
+    full_path = f"{base_path}?target_number=869&numbers_chosen=%5B100%2C+5%1C+8%2C+1%3C+5%4C+2%5D"
     data = {
         "target_number": "869",
         "numbers_chosen": "[100, 1, 2, 3, 4, 5]",

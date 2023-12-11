@@ -137,8 +137,7 @@ class SearchResultsView(PostView):
     def get_queryset(self):
         start_time = perf_counter()
         initial_query = format_html(self.request.GET.get("q"))
-        cleaned_query = search.cleanup_string(initial_query)
-        if cleaned_query:
+        if cleaned_query := search.cleanup_string(initial_query):
             search_vector = SearchVector("title", weight="A") + SearchVector("content", weight="B")
             search_query = SearchQuery(cleaned_query)
             search_rank = SearchRank(search_vector, search_query)

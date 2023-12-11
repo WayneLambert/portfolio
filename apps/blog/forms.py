@@ -30,17 +30,16 @@ class PostForm(forms.ModelForm):
         uncapitalized_exceptions = ("with", "them", "your")
         updated_words = []
         for word in words:
-            if not word.isupper():
-                if (
+            if word.isupper():
+                updated_words.append(word)
+            elif (
                     len(word.strip()) >= 4 or word in capitalized_exceptions
                 ) and word not in uncapitalized_exceptions:
-                    updated_words.append(word.title())
-                elif (
-                    len(word.strip()) < 4 or word in uncapitalized_exceptions
-                ) and word not in capitalized_exceptions:
-                    updated_words.append(word.lower())
-            else:
-                updated_words.append(word)
+                updated_words.append(word.title())
+            elif (
+                len(word.strip()) < 4 or word in uncapitalized_exceptions
+            ) and word not in capitalized_exceptions:
+                updated_words.append(word.lower())
         new_title = " ".join(updated_words).replace("&", "and").strip()
         if new_title[0].islower():
             new_title = f"{new_title[0].capitalize()}{new_title[1:]}"

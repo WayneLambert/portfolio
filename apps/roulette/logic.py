@@ -82,4 +82,4 @@ def get_picture_url(destination: str) -> str:
 def read_log_file() -> List:
     """Reads log file to a list for later rendering to results page"""
     with open(log_file, "r") as file:
-        return [line for line in file.readlines()]
+        return list(file.readlines())
