@@ -34,14 +34,14 @@ class TestThirdPartyAppsAreInstalled:
     def test_crispy_forms_in_installed_apps(self):
         assert 'crispy_forms' in base.INSTALLED_APPS
 
-    def test_bootstrap4_in_installed_apps(self):
-        assert 'bootstrap4' in base.INSTALLED_APPS
+    def test_crispy_bootstrap4_in_installed_apps(self):
+        assert 'crispy_bootstrap4' in base.INSTALLED_APPS
 
     def test_storages_in_installed_apps(self):
         assert 'storages' in base.INSTALLED_APPS
 
-    def test_captcha_in_installed_apps(self):
-        assert 'captcha' in base.INSTALLED_APPS
+    def test_django_recaptcha_in_installed_apps(self):
+        assert 'django_recaptcha' in base.INSTALLED_APPS
 
     def test_widget_tweaks_in_installed_apps(self):
         assert 'widget_tweaks' in base.INSTALLED_APPS
