@@ -40,10 +40,9 @@ def results_screen(request):
     letters_chosen: str = request.GET["letters_chosen"]
     players_word: str = request.GET["players_word"]
 
-    valid_word = validations.is_in_oxford_api(players_word)
     eligible_answer = validations.is_eligible_answer(players_word, letters_chosen)
 
-    if valid_word and eligible_answer:
+    if eligible_answer:
         player_word_len = len(players_word)
         player_score = logic.get_game_score(player_word_len)
     else:
@@ -51,12 +50,10 @@ def results_screen(request):
 
     if shortlisted_words := logic.get_shortlisted_words(logic.get_words(), letters_chosen):
         comp_word = logic.get_longest_possible_word(shortlisted_words)
-        winning_word = comp_word if len(comp_word) > player_word_len else players_word
-        definition_data = logic.lookup_definition_data(winning_word)
     else:
-        players_word, comp_word, winning_word = "N/A", "N/A", "N/A"
+        players_word, comp_word = "N/A", "N/A"
         eligible_answer = False
-        definition_data = {"definition": "N/A", "word_class": "N/A"}
+    winning_word = comp_word if len(comp_word) > player_word_len else players_word
 
     context = {
         "letters_chosen": letters_chosen,
@@ -67,8 +64,7 @@ def results_screen(request):
         "comp_word": comp_word,
         "comp_word_len": len(comp_word) if comp_word else 0,
         "comp_score": logic.get_game_score(len(comp_word)) if comp_word else 0,
-        "winning_word": comp_word if len(comp_word) > player_word_len else players_word,
-        "definition_data": definition_data,
+        "winning_word": winning_word,
         "result": logic.get_result(players_word, comp_word),
     }
 

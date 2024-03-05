@@ -5,16 +5,11 @@ the core logic for the Countdown Letters Game.
 """
 
 import os
-
 from collections import Counter
 from random import choices, random
 from typing import Dict, List, Set
 
-import requests
-
 from aa_project.settings.base import APPS_DIR
-from apps.countdown_letters import validations
-from apps.countdown_letters.oxford_api import API
 
 
 class GameSetup:
@@ -141,48 +136,14 @@ def get_longest_possible_word(shortlisted_words: List) -> str:
     indexed position
     """
     for item in shortlisted_words:
-        if validations.is_in_oxford_api(item[0]):
-            longest_possible_word = item[0]
-            return longest_possible_word.upper()
+        longest_possible_word = item[0]
+        return longest_possible_word.upper()
     return None
 
 
 def get_game_score(word_len: int) -> int:
     """Retrieves the game score based on the achieved word length"""
     return word_len * 2 if word_len == 9 else word_len
-
-
-def get_lemmas_response_json(word: str) -> Dict:
-    """
-    Returns lemmas data component of given `word` from Oxford Online API
-    The `lemmas` endpoint is used to determine presence in the dictionary.
-    """
-    lemmas_url = f"{API.LEMMAS_URL}{word.lower()}"
-    lemmas_response = requests.get(lemmas_url, headers=API.headers)
-    return lemmas_response.json()
-
-
-def lookup_definition_data(word: str) -> Dict:
-    """
-    Retrieve dictionary definition of winning word using 'Oxford
-    Dictionaries API'.
-    """
-    response = requests.get(url=API.WORDS_URL, params={"q": word}, headers=API.headers)
-    if response.status_code == 200:
-        try:
-            json = response.json()
-            idx = 0 if json["results"][0]["type"] == "headword" else 1
-            d = json["results"][idx]["lexicalEntries"][0]["entries"][0]["senses"][0]
-            definition = d["definitions"][0].capitalize()
-            word_class = json["results"][0]["lexicalEntries"][idx]["lexicalCategory"]["text"]
-        except KeyError:
-            definition = f"The definition for '{word}' cannot be found in the Oxford Dictionaries API."
-            word_class = "N/A"
-
-        return {
-            "definition": definition,
-            "word_class": word_class,
-        }
 
 
 def get_result(player_word: str, comp_word: str) -> str:
