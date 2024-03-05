@@ -54,6 +54,7 @@ STORAGES = {
     },
 }
 
+
 # Eliminates warning about missing staticfiles directory
 WHITENOISE_AUTOREFRESH = True
 

@@ -1,12 +1,11 @@
 import math
 
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
-
 from tinymce.models import HTMLField
 
 from apps.blog.managers import PublishedManager
@@ -49,7 +48,7 @@ class Post(models.Model):
         help_text="For bests results, use an image that is 1,200px wide x 600px high",
     )
     status = models.IntegerField(db_index=True, choices=STATUS, default=0)
-    author = models.ForeignKey(get_user_model(), related_name="author", on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name="author", on_delete=models.CASCADE)
     categories = models.ManyToManyField(
         Category,
         related_name="posts",
