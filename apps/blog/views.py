@@ -1,8 +1,8 @@
 from time import perf_counter
 
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -93,7 +93,7 @@ class AuthorPostListView(PostView):
     paginate_orphans = 3
 
     def get_queryset(self):
-        user = get_object_or_404(get_user_model(), username=self.kwargs["username"])
+        user = get_object_or_404(User, username=self.kwargs["username"])
         return super().get_queryset().filter(author=user)
 
     def get_context_data(self, **kwargs):

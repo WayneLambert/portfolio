@@ -17,7 +17,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:13.4
+        image: postgres:14.6
         env:
           POSTGRES_DB: github_actions
           POSTGRES_USER: postgres
@@ -35,10 +35,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Set up Python 3.10.8
+      - name: Set up Python 3.12.0
         uses: actions/setup-python@v1
         with:
-          python-version: 3.10.8
+          python-version: 3.12.0
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -78,9 +78,6 @@ jobs:
           EMAIL_HOST_SES: ${{ secrets.EMAIL_HOST_SES }}
           EMAIL_HOST_USER_SES: ${{ secrets.EMAIL_HOST_USER_SES }}
           FIELD_ENCRYPTION_KEY: ${{ secrets.FIELD_ENCRYPTION_KEY }}
-          OD_API_BASE_URL: ${{ secrets.OD_API_BASE_URL }}
-          OD_APPLICATION_ID: ${{ secrets.OD_APPLICATION_ID }}
-          OD_APPLICATION_KEY_1: ${{ secrets.OD_APPLICATION_KEY_1 }}
           PYTEST_TEST_PASSWORD: ${{ secrets.PYTEST_TEST_PASSWORD }}
           RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
           RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}

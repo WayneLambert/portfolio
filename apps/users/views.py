@@ -2,10 +2,10 @@ from typing import Any, Dict
 
 from django.conf import settings
 from django.contrib import auth, messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.contrib.auth.views import (
     PasswordResetCompleteView,
     PasswordResetConfirmView,
@@ -20,7 +20,6 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.views.generic import CreateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
-
 from shapeshifter.views import MultiModelFormView
 from two_factor.forms import AuthenticationTokenForm
 from two_factor.views.core import LoginView, SetupView
@@ -51,7 +50,7 @@ class UserRegisterView(CreateView):
 
     def user_exists(self, form) -> bool:
         username = form.data["username"]
-        user = get_user_model().objects.filter(username=username)
+        user = User.objects.filter(username=username)
         if user.exists():
             return True
 
@@ -110,7 +109,7 @@ class UserLoginView(LoginView):
             },
         )
 
-    def email_two_factor_token(self, user: get_user_model(), token):
+    def email_two_factor_token(self, user: User, token):
         """Sends email containing current token"""
 
         subject = "Your One Time Token"
@@ -155,7 +154,8 @@ class UserLoginView(LoginView):
 
     def handle_email_auth_user(self, user):
         """Handles the actions for processing an email authenticated user"""
-        if user_passes_auth := self.authenticate_user(user=user):
+        user_passes_auth = self.authenticate_user(user=user)
+        if user_passes_auth:
             self.login_user(user=user)
             token = self.retrieve_token_from_db(user)
             self.email_two_factor_token(user, token)
@@ -176,8 +176,8 @@ class UserLoginView(LoginView):
 
             # Scenario 1: The user does not exist in the DB
             try:
-                user = get_user_model().objects.get(username=username)
-            except get_user_model().DoesNotExist:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
                 self._add_user_does_not_exist_message()
                 return redirect(self.request.path_info)
 
@@ -202,7 +202,7 @@ class UserLoginView(LoginView):
         # enable the Django Two-Factor Auth package to handle
         elif self.steps.current == "token":
             user_pk = self.request.session["wizard_user_login_view"]["user_pk"]
-            user = get_user_model().objects.get(pk=user_pk)
+            user = User.objects.get(pk=user_pk)
             if user.profile.is_two_factor_auth_by_token:
                 return super().post(*args, **kwargs)
 
@@ -224,7 +224,7 @@ class UserSetupEmailView(TemplateView):
     template_name = "two_factor/setup_by_email.html"
     success_url = reverse_lazy("blog:users:setup_email_token")
 
-    def store_token_in_db(self, user: get_user_model(), token: str):
+    def store_token_in_db(self, user: User, token: str):
         """Creates an email token object in the DB"""
         EmailToken.objects.create(
             challenge_email_address=user.email,
@@ -235,7 +235,7 @@ class UserSetupEmailView(TemplateView):
             user_id=user.id,
         )
 
-    def build_html_content(self, user: get_user_model(), token: str) -> str:
+    def build_html_content(self, user: User, token: str) -> str:
         """ " Specifies the email template and context variables"""
         return render_to_string(
             template_name="emails/token.html",
@@ -246,7 +246,7 @@ class UserSetupEmailView(TemplateView):
             },
         )
 
-    def email_two_factor_token(self, user: get_user_model(), token: str):
+    def email_two_factor_token(self, user: User, token: str):
         """Sends email containing one-time token"""
 
         subject = "Your One Time Token"
@@ -315,7 +315,7 @@ class UserSetupEmailTokenView(FormView):
             },
         )
 
-    def email_two_factor_success(self, user: get_user_model(), token):
+    def email_two_factor_success(self, user: User, token):
         """Sends email containing one-time token"""
 
         subject = "Two-Factor Authentication Successful"
@@ -365,7 +365,7 @@ class ProfileView(TwoFactorAuthUserMixin, DetailView):
     template_name = "users/profile.html"
 
     def get_object(self, queryset=None):
-        return get_object_or_404(get_user_model(), username=self.kwargs["username"])
+        return get_object_or_404(User, username=self.kwargs["username"])
 
 
 class ProfileUpdateView(TwoFactorAuthUserMixin, UserPassesTestMixin, MultiModelFormView):
