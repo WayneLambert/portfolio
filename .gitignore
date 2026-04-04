@@ -197,3 +197,4 @@ logs/pytest/*
 logs/code_sample.md
 test_api.rest
 outdated.txt
+.zed/settings.json

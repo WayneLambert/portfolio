@@ -2,7 +2,6 @@
 import os
 import sys
 
-
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", os.environ["DJANGO_SETTINGS_MODULE"])
 
@@ -19,8 +18,9 @@ if __name__ == "__main__":
             if os.environ.get("RUN_MAIN") or os.environ.get("WERKZEUG_RUN_MAIN"):
                 import ptvsd
 
-                ptvsd.enable_attach(address=("0.0.0.0", 8890))
-                print("Attached remote debugger to Docker container")
+                debug_port = os.environ["DEBUG_PORT"]
+                ptvsd.enable_attach(address=("0.0.0.0", debug_port))
+                print(f"Attached remote debugger to Docker container on port {debug_port}.")
 
     except ImportError as exc:
         raise ImportError(
