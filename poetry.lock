@@ -813,6 +813,21 @@ files = [
 ]
 
 [[package]]
+name = "dj-database-url"
+version = "3.1.2"
+description = "Use Database URLs in your Django Application."
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "dj_database_url-3.1.2-py3-none-any.whl", hash = "sha256:544e015fee3efa5127a1eb1cca465f4ace578265b3671fe61d0ed7dbafb5ec8a"},
+    {file = "dj_database_url-3.1.2.tar.gz", hash = "sha256:63c20e4bbaa51690dfd4c8d189521f6bf6bc9da9fcdb23d95d2ee8ee87f9ec62"},
+]
+
+[package.dependencies]
+django = ">=4.2"
+
+[[package]]
 name = "django"
 version = "6.0.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
@@ -2976,4 +2991,4 @@ dev = ["pytest", "setuptools"]
 [metadata]
 lock-version = "2.1"
 python-versions = "==3.14.3"
-content-hash = "0608649371123aaa5daa9ef461ae23e55b95c75c710fed50065d706fc14d0ef5"
+content-hash = "cb975b39fd624cb4761055596441b067ea8c460f255374e67dc92bb8ae9d8ea5"

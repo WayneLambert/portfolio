@@ -32,6 +32,7 @@ django-encrypted-model-fields = "==0.6.5"
 rich = "==14.3.3"
 crispy-bootstrap4 = "==2026.2"
 psycopg = "==3.3.3"
+dj-database-url = "==3.1.2"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "==6.3.0"
@@ -95,8 +96,8 @@ extend-include = ["*.ipynb"]
 line-length = 99
 indent-width = 4
 
-# Assume Python 3.12
-target-version = "py312"
+# Assume Python 3.14
+target-version = "py314"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
@@ -109,6 +110,21 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"aa_project.settings.prod.py" = ["F403", "F405"]
+"aa_project.settings.dev.py" = ["F403", "F405"]
+"aa_project.settings.pytest.pytest.py" = ["F403"]
+
+[tool.ruff.lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "django",
+  "first-party",
+  "third-party",
+  "local-folder",
+]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
