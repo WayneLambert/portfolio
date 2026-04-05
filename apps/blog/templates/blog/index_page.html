@@ -4,23 +4,25 @@
 
 {% block content %}
   {% include 'components/search_bar.html' %}
-  <h6 class="text-center mt-5 mb-5">{{ posts.count }} unique posts covering {{ categories_list.count }} categories</h6>
-  {% for category in categories_list %}
+  <h6 class="text-center mt-5 mb-5">{{ posts.count }} unique posts covering {{ categories.count }} categories</h6>
+  {% for category in categories %}
     <div class="container single-col-max-width alert index-alert">
       <div class="card blog-post-card mb-3">
-        <h6 class="mt-2 ml-2">{{ category.posts.count }} post{{ category.posts.count|pluralize }} about 
+        <h6 class="mt-2 ml-2">{{ category.posts.count }} post{{ category.posts.count|pluralize }} about
           <a class="theme-link" href="{{ category.get_absolute_url }}">{{ category.name }}</a>
         </h6>
       </div>
-      {% for post in category.posts.all %}
-        <article class="blog-post ml-3">
-          <h6 class="card-title">
-            <a class="theme-link" href="{{ post.get_absolute_url }}">
-              <i class="fas fa-caret-right mr-2"></i>{{ post.title }}
-            </a>
-          </h6>
-        </article>
-      {% endfor %}
+      {% if posts %}
+        {% for post in category.posts.all %}
+          <article class="blog-post ml-3">
+            <h6 class="card-title">
+              <a class="theme-link" href="{{ post.get_absolute_url }}">
+                <i class="fas fa-caret-right mr-2"></i>{{ post.title }}
+              </a>
+            </h6>
+          </article>
+        {% endfor %}
+      {% endif %}
     </div>
   {% endfor %}
 {% endblock content %}

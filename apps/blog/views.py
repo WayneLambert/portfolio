@@ -29,8 +29,8 @@ class PostView(ListView):
 
     queryset = Post.published.all()
     context_object_name = "posts"
-    category_list = Category.objects.all().prefetch_related("posts")
-    extra_context = {"categories_list": category_list}
+    categories = Category.objects.all().prefetch_related("posts")
+    extra_context = {"categories": categories}
 
     def get_context_data(self, **kwargs):
         """Facilitates pagination and post count summary"""
@@ -81,7 +81,10 @@ class ContentsListView(PostView):
     def get_context_data(self, **kwargs):
         """Get's the author's name/username for presenting in the template"""
         context = super().get_context_data(**kwargs)
-        context["author"] = Post.published.first().author
+        if Post.published.exists():
+            context["author"] = Post.published.first().author
+        else:
+            context["author"] = "None"
         return context
 
 
@@ -163,7 +166,10 @@ class SearchResultsView(PostView):
     def get_context_data(self, **kwargs):
         """Get's the author object for presenting in the template"""
         context = super().get_context_data(**kwargs)
-        context["author"] = Post.published.first().author
+        if Post.published.exists():
+            context["author"] = Post.published.first().author
+        else:
+            context["author"] = "None"
         return context
 
 
