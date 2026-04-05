@@ -197,7 +197,7 @@ TINYMCE_DEFAULT_CONFIG = {
             table code lists fullscreen insertdatetime nonbreaking
             contextmenu directionality searchreplace wordcount visualblocks
             visualchars code fullscreen autolink lists charmap print hr
-            anchor pagebreak spellchecker emoticons help
+            anchor pagebreak emoticons help
             """,
     "toolbar1": """
             fontselect fontsizeselect | bold italic underline | blockquote |

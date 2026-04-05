@@ -1,6 +1,5 @@
-# Pull official Python 3.12.13 runtime as base image
-FROM python@sha256:c4c9e439bf98d5c20453156194f937aefb4a633555d93a1960d612052c4b3436 AS base
-
+# Pull official Python 3.14.3 runtime as base image
+FROM python@sha256:ffebef43892dd36262fa2b042eddd3320d5510a21f8440dce0a650a3c124b51d AS base
 
 # Set shell to bash amd enable 'pipefail' to ensure that if any command in a
 # pipe fails (.e.g. curl | gpg), the entire Docker build fails immediately.
@@ -16,7 +15,7 @@ LABEL author="Wayne Lambert <wayne.a.lambert@gmail.com>" \
 # Set the COLUMNS variable for the terminal's output width
 ENV PYTHONDONTWRITEBYTECODE=1 \
   PYTHONUNBUFFERED=1 \
-  COLUMNS=133 \
+  COLUMNS=120 \
   DOCKER_CONTENT_TRUE=1 \
   DOCKER_BUILKIT=1
 
@@ -24,22 +23,28 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 ###### ---------- Build `project` stage using `base` as its basis ---------- #####
 FROM base AS project
 
-# Set the COLUMNS variable for the terminal's output width
-ENV COLUMNS=133
+# Set shell to bash amd enable 'pipefail' to ensure that if any command in a
+# pipe fails (.e.g. curl | gpg), the entire Docker build fails immediately.
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+ENV COLUMNS=120 \
+  PIP_DISABLE_PIP_VERSION_CHECK=1 \
+  POETRY_VIRTUALENVS_CREATE=false \
+  POETRY_NO_INTERACTION=1 \
+  POETRY_CACHE_DIR=/tmp/poetry-cache
 
 # Create and set working directory
 WORKDIR /code
 
 # Upgrade core Python packaging tools to specific versions of build determinism.
 # --no-cache-dir: Prevents container from bloating with temporary download files.
-RUN python -m pip install --no-cache-dir --no-recommends -y \
+RUN python -m pip install --no-cache-dir --upgrade \
   pip==26.0.1 \
   setuptools==82.0.1 \
   wheel==0.46.3
 
-
 # Install pinned version of Poetry
-ENV POETRY_VERSION=2.3.2
+ENV POETRY_VERSION=2.3.3
 RUN curl -sSL https://install.python-poetry.org | python3 - --version $POETRY_VERSION
 
 ENV PATH="/root/.local/bin:$PATH"
@@ -48,15 +53,11 @@ ENV PATH="/root/.local/bin:$PATH"
 COPY pyproject.toml poetry.lock ./
 
 # Install Poetry packages and dependencies (including dev packages)
-RUN poetry config virtualenvs.create false && \
-  poetry install --no-interaction --no-ansi --no-root --only-main
+RUN poetry install --no-interaction --no-ansi --no-root --only-main
 
 
 ##### ---------- Build 'app' stageusing 'project' as its basis ----------- #####
 FROM project AS app
-
-# Set the COLUMNS variable for the terminal's output width
-ENV COLUMNS=133
 
 # Add a new group for app
 ARG APP_GROUP=pf-grp

@@ -1,5 +1,5 @@
-# Pull official Python 3.12.13 runtime as base image
-FROM python@sha256:c4c9e439bf98d5c20453156194f937aefb4a633555d93a1960d612052c4b3436 AS base
+# Pull official Python 3.14.3 runtime as base image
+FROM python@sha256:ffebef43892dd36262fa2b042eddd3320d5510a21f8440dce0a650a3c124b51d AS base
 
 # Set shell to bash amd enable 'pipefail' to ensure that if any command in a
 # pipe fails (.e.g. curl | gpg), the entire Docker build fails immediately.

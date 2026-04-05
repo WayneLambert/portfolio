@@ -16,10 +16,10 @@ if __name__ == "__main__":
             traceback.install()
 
             if os.environ.get("RUN_MAIN") or os.environ.get("WERKZEUG_RUN_MAIN"):
-                import ptvsd
+                import debugpy
 
-                debug_port = os.environ["DEBUG_PORT"]
-                ptvsd.enable_attach(address=("0.0.0.0", debug_port))
+                debug_port = int(os.environ["DEBUG_PORT"])
+                debugpy.listen(("0.0.0.0", debug_port))
                 print(f"Attached remote debugger to Docker container on port {debug_port}.")
 
     except ImportError as exc:
