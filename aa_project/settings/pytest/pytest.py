@@ -6,16 +6,15 @@ from django.contrib.auth.hashers import BasePasswordHasher
 
 from aa_project.settings.base import *
 
-
 # Postgres Testing Database Configuration. Uses in-memory DB
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASS"),
-        "HOST": os.getenv("DB_DOCKER_POSTGRES_SERVICE"),
-        "PORT": os.getenv("DB_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["POSTGRES_DB"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "HOST": os.getenv("POSTGRES_HOST", "postgres"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
         "TEST": {
             "NAME": "test_portfolio_db",
         },
