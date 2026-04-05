@@ -4,7 +4,7 @@
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "==3.12.1"
+python = "==3.12.13"
 django = "==5.0.14"
 djangorestframework = "==3.14.0"
 django-crispy-forms = "==2.1"
@@ -32,7 +32,7 @@ django-encrypted-model-fields = "==0.6.5"
 dj-database-url = "==2.1.0"
 rich = "==14.3.3"
 crispy-bootstrap4 = "==2023.1"
-psycopg = "==3.1.14"
+psycopg = "==3.3.3"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = "^6.3.0"
@@ -58,7 +58,7 @@ ty = "^0.0.28"
 
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0,<3.0"]
 build-backend = "poetry.core.masonry.api"
 
 
@@ -96,8 +96,8 @@ extend-include = ["*.ipynb"]
 line-length = 99
 indent-width = 4
 
-# Assume Python 3.10
-target-version = "py310"
+# Assume Python 3.12
+target-version = "py312"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.

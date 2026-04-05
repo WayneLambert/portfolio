@@ -1,9 +1,6 @@
 # ruff: noqa: F403, F405
 
-import dj_database_url
-
 from aa_project.settings.base import *
-
 
 DEBUG = False
 
@@ -35,10 +32,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
-
-# Heroku Deployment Settings for Postgres
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES["default"].update(db_from_env)
 
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ["RECAPTCHA_PUBLIC_KEY"]

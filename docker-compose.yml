@@ -1,32 +1,28 @@
-version: '3.8'
-
 services:
   pg_test:
     image: ${COMPOSE_PROJECT_NAME}_pg_test_dev
-    container_name: ${COMPOSE_PROJECT_NAME}_pg_test_dev
     build:
-      context: ./docker/postgres/test
+      context: ./infra/dev/postgres/test
+    container_name: ${COMPOSE_PROJECT_NAME}_pg_test_dev
     env_file:
-      - postgres.env
+      - .env
     tmpfs:
       - /var/lib/postgresql/data
 
   postgres:
     image: ${COMPOSE_PROJECT_NAME}_postgres_dev
-    container_name: ${COMPOSE_PROJECT_NAME}_postgres_dev
     build:
-      context: ./docker/postgres/dev
+      context: ./infra/dev/postgres
+    container_name: ${COMPOSE_PROJECT_NAME}_postgres_dev
     restart: always
+    ports:
+      - "5432:5432"
     env_file:
-      - dev.env
       - .env
-      - postgres.env
     volumes:
       - type: volume
         source: postgres_volume
-        target: /var/lib/postgresql/data
-    ports:
-      - '5432:5432'
+        target: /var/lib/postgresql
     networks:
       - backend
 
@@ -34,23 +30,21 @@ services:
     image: ${COMPOSE_PROJECT_NAME}_web_dev
     container_name: ${COMPOSE_PROJECT_NAME}_web_dev
     build:
-      dockerfile: ./docker/dev/web/Dockerfile
+      dockerfile: ./infra/dev/web/Dockerfile
       context: .
-    depends_on:
-      - postgres
-    restart: always
-    tty: true
-    env_file:
-      - dev.env
-      - .env
-      - postgres.env
-    volumes:
-      - .:/code
-    ports:
-      - '${WEB_PORT}:${WEB_PORT}'
-      - '${DEBUG_PORT}:${DEBUG_PORT}'
     command: >
       sh -c "python -Xfrozen_modules=off manage.py runserver 0.0.0.0:${WEB_PORT} --nostatic"
+    restart: always
+    ports:
+      - "${WEB_PORT}:${WEB_PORT}"
+      - "${DEBUG_PORT}:${DEBUG_PORT}"
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+    depends_on:
+      - postgres
+    tty: true
     networks:
       - backend
 

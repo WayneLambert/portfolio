@@ -1,8 +1,6 @@
 import os
 import sys
-
 from pathlib import Path
-
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = os.path.join(BASE_DIR, "apps")
@@ -124,12 +122,12 @@ WSGI_APPLICATION = "aa_project.wsgi.application"
 # Database Configuration
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASS"),
-        "HOST": os.getenv("DB_DOCKER_POSTGRES_SERVICE"),
-        "PORT": os.getenv("DB_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["POSTGRES_DB"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "HOST": os.getenv("POSTGRES_HOST", "postgres"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
     }
 }
 
@@ -168,10 +166,10 @@ USE_TZ = True
 
 
 # Static files
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    BASE_DIR / "static",
 ]
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -181,8 +179,8 @@ STATICFILES_FINDERS = [
 
 # Media Files
 MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-DEFAULT_IMAGES_ROOT = os.path.join(BASE_DIR, "media/aa_project/static/default_images")
+MEDIA_ROOT = BASE_DIR / "media"
+DEFAULT_IMAGES_ROOT = BASE_DIR / "media/aa_project/static/default_images"
 
 # Tiny MCE Editor Config
 TINYMCE_SPELLCHECKER = True
