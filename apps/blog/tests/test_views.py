@@ -1,9 +1,7 @@
+import pytest
 from django.urls import reverse
 
-import pytest
-
 import apps.blog.views as blog_views
-
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
 
@@ -179,13 +177,13 @@ class TestSearchView:
     indirect=True,
 )
 class TestSearchResultsView:
-    def test_all_users_can_access_searches(self, rf, pub_posts, search_terms, all_users):
+    def test_all_users_can_access_searches(self, rf, search_terms: str, all_users):
         """
         Asserts authenticated and unauthenticated users can retrieve
-        search results of qualified post(s)
+        search results of qualified post(s).
         """
-        path = f"{reverse('blog:search_results')}{'?q='}{search_terms}"
-        request = rf.get(path)
+        url = reverse("blog:search_results")
+        request = rf.get(url, {"q": search_terms})
         request.user = all_users
         response = blog_views.SearchResultsView.as_view()(request)
         assert response.status_code == 200, "Search results should be returned"

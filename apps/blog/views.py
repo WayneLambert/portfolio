@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -139,7 +139,7 @@ class SearchResultsView(PostView):
 
     def get_queryset(self):
         start_time = perf_counter()
-        initial_query = format_html(self.request.GET.get("q"))
+        initial_query = mark_safe(self.request.GET.get("q"))
         if cleaned_query := search.cleanup_string(initial_query):
             search_vector = SearchVector("title", weight="A") + SearchVector("content", weight="B")
             search_query = SearchQuery(cleaned_query)
@@ -166,10 +166,9 @@ class SearchResultsView(PostView):
     def get_context_data(self, **kwargs):
         """Get's the author object for presenting in the template"""
         context = super().get_context_data(**kwargs)
+        context["author"] = None
         if Post.published.exists():
             context["author"] = Post.published.first().author
-        else:
-            context["author"] = "None"
         return context
 
 
