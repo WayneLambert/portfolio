@@ -53,10 +53,11 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse("blog:users:profile", kwargs={"username": self.slug})
 
-    def save(self, *args, **kwargs):
-        if not self.slug.strip():
-            self.slug = slugify(self.user.get_username())
-        super().save(*args, **kwargs)
+    def save(self, **kwargs):
+        if not self.slug or not self.slug.strip():
+            username = self.user.get_username()
+            self.slug = slugify(username)
+        super().save(**kwargs)
 
     @property
     def is_two_factor_auth_by_token(self) -> bool:

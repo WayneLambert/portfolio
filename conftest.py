@@ -1,4 +1,4 @@
-""" Functions to facilitate the marking of `slow` unit tests
+"""Functions to facilitate the marking of `slow` unit tests
 
 Adding a `--runslow` flag to a pytest test run will also run all tests
 that are marked with the `slow` decorator.
