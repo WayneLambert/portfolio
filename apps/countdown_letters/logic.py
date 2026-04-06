@@ -1,4 +1,4 @@
-""" Countdown Letters Logic
+"""Countdown Letters Logic
 
 A collection of classes and functions that are required to implement
 the core logic for the Countdown Letters Game.

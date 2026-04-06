@@ -1,4 +1,4 @@
-""" Fixtures to facilitate the testing of the Countdown Letters app """
+"""Fixtures to facilitate the testing of the Countdown Letters app"""
 
 from typing import Dict, List
 

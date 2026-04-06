@@ -1,5 +1,4 @@
-""" Helper objects to facilitate testing of the Holiday Roulette app """
-
+"""Helper objects to facilitate testing of the Holiday Roulette app"""
 
 destinations = {
     "Aruba",

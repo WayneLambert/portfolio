@@ -1,4 +1,4 @@
-""" Text Analysis Utility Functions
+"""Text Analysis Utility Functions
 
 A collection of functions that facilitate the processing of text for the
 text analysis app.

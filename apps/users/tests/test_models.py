@@ -43,29 +43,29 @@ class TestProfile:
     def test_profile_str(self, fixed_user):
         assert fixed_user.pk == 2, "User instance should be set up"
         assert fixed_user.profile.pk == 2, "Profile instance with signal should be set up"
-        assert (
-            fixed_user.profile.__str__() == "Wayne Lambert (wayne-lambert)"
-        ), "__str__ method should be formatted"
+        assert fixed_user.profile.__str__() == "Wayne Lambert (wayne-lambert)", (
+            "__str__ method should be formatted"
+        )
 
     def test_initials(self, fixed_user):
         assert fixed_user.profile.initials == "WL", "Should be first letter of first and last name"
 
     def test_join_year(self, random_user):
-        assert (
-            random_user.profile.join_year == random_user.date_joined.year
-        ), "Year should be the same as the `date_joined` field year property"
+        assert random_user.profile.join_year == random_user.date_joined.year, (
+            "Year should be the same as the `date_joined` field year property"
+        )
 
     def test_display_name_is_username(self, random_user):
         random_user.profile.author_view = 0
-        assert (
-            random_user.profile.display_name == random_user.get_username()
-        ), "Should be the user's username"
+        assert random_user.profile.display_name == random_user.get_username(), (
+            "Should be the user's username"
+        )
 
     def test_display_name_is_full_name(self, random_user):
         random_user.profile.author_view = 1
-        assert (
-            random_user.profile.display_name == random_user.get_full_name()
-        ), "Should be the user's full name"
+        assert random_user.profile.display_name == random_user.get_full_name(), (
+            "Should be the user's full name"
+        )
 
     def test_get_absolute_url(self, random_user):
         assert random_user.profile.get_absolute_url() == reverse(

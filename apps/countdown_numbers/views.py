@@ -61,8 +61,9 @@ def results_screen(request):
     best_solution = best_solution.replace(chr(215), "*").replace(chr(247), "/")
     comp_num_achieved = int(eval(best_solution))
     solution_str = f"""
-        {best_solution.replace(
-            '*', chr(215)).replace('/', chr(247))} = {comp_num_achieved}""".strip()
+        {best_solution.replace("*", chr(215)).replace("/", chr(247))} = {
+        comp_num_achieved
+    }""".strip()
     answers = {
         "player_num_achieved": player_num_achieved,
         "comp_num_achieved": comp_num_achieved,

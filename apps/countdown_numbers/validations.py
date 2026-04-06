@@ -1,4 +1,4 @@
-""" Functions required to validate given answers within a game. """
+"""Functions required to validate given answers within a game."""
 
 import ast
 import re
