@@ -88,11 +88,11 @@ class TestTemplatesAreConfigured:
 )
 class TestDatabaseIsSecurelyConfigured:
     def test_secure_database_setup(self):
-        assert base.DATABASES["default"]["NAME"] == os.environ["DB_NAME"]
-        assert base.DATABASES["default"]["USER"] == os.environ["DB_USER"]
-        assert base.DATABASES["default"]["PASSWORD"] == os.environ["DB_PASS"]
-        assert base.DATABASES["default"]["HOST"] == os.environ["DB_DOCKER_POSTGRES_SERVICE"]
-        assert base.DATABASES["default"]["PORT"] == os.environ["DB_PORT"]
+        assert base.DATABASES["default"]["NAME"] == os.environ["POSTGRES_DB"]
+        assert base.DATABASES["default"]["USER"] == os.environ["POSTGRES_USER"]
+        assert base.DATABASES["default"]["PASSWORD"] == os.environ["POSTGRES_PASSWORD"]
+        assert base.DATABASES["default"]["HOST"] == os.environ["POSTGRES_HOST"]
+        assert base.DATABASES["default"]["PORT"] == os.environ["POSTGRES_PORT"]
 
 
 class TestEmailProviderConfigured:

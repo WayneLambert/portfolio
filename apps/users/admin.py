@@ -2,8 +2,7 @@ import contextlib
 
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from django.utils.html import format_html
-
+from django.utils.safestring import mark_safe
 from django_otp.plugins.otp_static.models import StaticDevice
 
 from apps.users.models import EmailToken, Profile
@@ -19,7 +18,7 @@ class ProfileAdmin(admin.ModelAdmin):
             img_width = obj.profile_picture.width * self.SCALE_FACTOR
             img_height = obj.profile_picture.height * self.SCALE_FACTOR
             url = obj.profile_picture.url
-            return format_html(f"<img src='{url}' width='{img_width}' height='{img_height}' />")
+            return mark_safe(f"<img src='{url}' width='{img_width}' height='{img_height}' />")
 
 
 class EmailTokenAdmin(admin.ModelAdmin):

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django.db.models import Count
 from django.forms.widgets import TextInput
-from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 
 from apps.blog.models import Category, Post
 
@@ -81,7 +81,7 @@ class PostAdmin(admin.ModelAdmin):
         try:
             img_width = obj.image.width * 0.25
             img_height = obj.image.height * 0.25
-            return format_html(
+            return mark_safe(
                 f"<img src='{obj.image.url}' width='{img_width}' height='{img_height}' />"
             )
         except OSError:

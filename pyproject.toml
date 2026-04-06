@@ -1,66 +1,64 @@
 # -- POETRY CONFIG ----------------------------------------------------------------------
 
 [tool.poetry]
-name = "portfolio"
-version = "1.0.0"
-description = "Portfolio"
-authors = ["Wayne Lambert <wayne.a.lambert@gmail.com>"]
+package-mode = false
 
 [tool.poetry.dependencies]
-python = "==3.12.1"
-django = "^5.0"
-djangorestframework = "==3.14.0"
-django-crispy-forms = "^2.1"
-django-recaptcha = "^4.0.0"
-django-widget-tweaks = "1.5.0"
+python = "==3.14.3"
+django = "==6.0.3"
+djangorestframework = "==3.17.1"
+django-crispy-forms = "==2.6"
+django-recaptcha = "==4.1.0"
+django-widget-tweaks = "==1.5.1"
 django-shapeshifter = "==18.9.23"
-django-guardian = "==2.4.0"
-django-axes = "==5.40.1"
-django-storages = "1.14.2"
-django-ses = "3.5.2"
-django-filter = "23.5"
-django-tinymce = "3.6.1"
-django-bootstrap4 = "23.2"
-django-two-factor-auth = "^1.15.5"
-gunicorn = "^21.2.0"
-whitenoise = "6.6.0"
-requests = "2.31.0"
-beautifulsoup4 = "4.12.2"
-markdown = "^3.5.1"
-boto3 = "^1.33.11"
-pygments = "2.17.2"
-pillow = "^10.1.0"
-phonenumbers = "8.13.26"
-django-encrypted-model-fields = "0.6.5"
-dj-database-url = "^2.1.0"
-rich = "13.7.0"
-crispy-bootstrap4 = "^2023.1"
-psycopg = "^3.1.14"
+django-guardian = "==3.3.1"
+django-axes = "==8.3.1"
+django-storages = "==1.14.6"
+django-ses = "==4.7.2"
+django-filter = "==25.2"
+django-tinymce = "==5.0.0"
+django-bootstrap4 = "==26.1"
+django-two-factor-auth = "==1.18.1"
+gunicorn = "==25.3.0"
+whitenoise = "==6.12.0"
+requests = "==2.33.1"
+beautifulsoup4 = "==4.14.3"
+markdown = "==3.10.2"
+boto3 = "==1.42.83"
+pygments = "==2.20.0"
+pillow = "==12.2.0"
+phonenumbers = "==9.0.27"
+django-encrypted-model-fields = "==0.6.5"
+rich = "==14.3.3"
+crispy-bootstrap4 = "==2026.2"
+psycopg = "==3.3.3"
+dj-database-url = "==3.1.2"
 
 [tool.poetry.group.dev.dependencies]
-django-debug-toolbar = "4.2.0"
-django-extensions = "3.2.3"
-pytest = "7.4.3"
-coverage = "^7.3.2"
-pytest-django = "4.7.0"
-pytest-cov = "4.1.0"
-pytest-factoryboy = "2.6.0"
-mixer = "7.2.2"
-hypothesis = "6.92.0"
-ptvsd = "==4.3.2"
-bandit = "1.7.6"
-wily = "1.25.0"
-bpython = "0.24"
-ipdb = "0.13.13"
-pytest-randomly = "3.15.0"
-pytest-vcr = "==1.0.2"
-pytest-mock = "3.12.0"
-pytest-xdist = "3.5.0"
-ruff = "^0.1.7"
+django-debug-toolbar = "==6.3.0"
+django-extensions = "==4.1"
+pytest = "^9.0.2"
+coverage = "^7.13.5"
+pytest-django = "^4.12.0"
+pytest-cov = "^7.1.0"
+pytest-factoryboy = "^2.8.1"
+mixer = "==7.2.2"
+hypothesis = "^6.151.11"
+bandit = "^1.7.6"
+wily = "^1.25.0"
+bpython = "^0.26"
+ipdb = "^0.13.13"
+pytest-randomly = "^4.0.1"
+pytest-vcr = "^1.0.2"
+pytest-mock = "^3.15.1"
+pytest-xdist = "^3.8.0"
+ruff = "^0.15.9"
+ty = "^0.0.29"
+debugpy = "^1.8.20"
 
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0,<3.0"]
 build-backend = "poetry.core.masonry.api"
 
 
@@ -98,8 +96,8 @@ extend-include = ["*.ipynb"]
 line-length = 99
 indent-width = 4
 
-# Assume Python 3.10
-target-version = "py310"
+# Assume Python 3.14
+target-version = "py314"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
@@ -112,6 +110,21 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+"aa_project.settings.prod.py" = ["F403", "F405"]
+"aa_project.settings.dev.py" = ["F403", "F405"]
+"aa_project.settings.pytest.pytest.py" = ["F403"]
+
+[tool.ruff.lint.isort]
+section-order = [
+  "future",
+  "standard-library",
+  "django",
+  "first-party",
+  "third-party",
+  "local-folder",
+]
 
 [tool.ruff.format]
 # Like Black, use double quotes for strings.

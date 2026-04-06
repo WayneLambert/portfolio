@@ -22,9 +22,8 @@ from django.views.generic import CreateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
 from shapeshifter.views import MultiModelFormView
 from two_factor.forms import AuthenticationTokenForm
+from two_factor.plugins.registry import registry
 from two_factor.views.core import LoginView, SetupView
-from users.mixins import TwoFactorAuthUserMixin
-from users.utils import generate_token, get_challenge_expiration_timestamp
 
 from apps.users.forms import (
     EmailTokenSubmissionForm,
@@ -33,7 +32,9 @@ from apps.users.forms import (
     UserTOTPDeviceForm,
     UserUpdateForm,
 )
+from apps.users.mixins import TwoFactorAuthUserMixin
 from apps.users.models import EmailToken, Profile
+from apps.users.utils import generate_token, get_challenge_expiration_timestamp
 
 
 class UserRegisterView(CreateView):
@@ -50,9 +51,8 @@ class UserRegisterView(CreateView):
 
     def user_exists(self, form) -> bool:
         username = form.data["username"]
-        user = User.objects.filter(username=username)
-        if user.exists():
-            return True
+        user = get_user_model().objects.filter(username=username)
+        return True if user.exists() else False
 
     def form_valid(self, form):
         self.object = form.save()
@@ -79,7 +79,12 @@ class UserLoginView(LoginView):
         ("token", AuthenticationTokenForm),
     )
 
-    def _add_user_does_not_exist_message(self):
+    def get_form(self, step=None, **kwargs):
+        form = super().get_form(step, **kwargs)
+        form.request = self.request
+        return form
+
+    def add_user_does_not_exist_message(self):
         """Constructs a message for the UI"""
         html_msg = (
             "The username you've attempted to log in with does not exist.<br /><br />"
@@ -87,7 +92,7 @@ class UserLoginView(LoginView):
         )
         messages.info(self.request, mark_safe(html_msg))
 
-    def _add_incorrect_password_message(self):
+    def add_incorrect_password_message(self):
         """Constructs a message for the UI"""
         html_msg = (
             "Please enter a correct username and password.<br /><br />"
@@ -123,7 +128,7 @@ class UserLoginView(LoginView):
         msg.mixed_subtype = "related"
         msg.send()
 
-    def _get_credentials(self, user) -> Dict[str, Any]:
+    def _get_credentials(self, user) -> dict[str, Any]:
         """Gets the credentials of the user being attempted"""
         return {
             "username": user.get_username(),
@@ -142,13 +147,13 @@ class UserLoginView(LoginView):
         credentials = self._get_credentials(user)
         password_valid = self.is_password_correct(user, credentials)
         if not password_valid and self.request.user.is_anonymous:
-            return self._add_incorrect_password_message()
+            return self.add_incorrect_password_message()
         username = credentials["username"]
         password = credentials["password"]
         return auth.authenticate(request=self.request, username=username, password=password)
 
     def login_user(self, user):
-        """Logs in the already authenticated user"""
+        """Logs in already authenticated user"""
         backend = "django.contrib.auth.backends.ModelBackend"
         auth.login(self.request, user=user, backend=backend)
 
@@ -176,9 +181,9 @@ class UserLoginView(LoginView):
 
             # Scenario 1: The user does not exist in the DB
             try:
-                user = User.objects.get(username=username)
-            except User.DoesNotExist:
-                self._add_user_does_not_exist_message()
+                user = get_user_model().objects.get(username=username)
+            except get_user_model().DoesNotExist:
+                self.add_user_does_not_exist_message()
                 return redirect(self.request.path_info)
 
             # Scenario 2: The user exists but is not set up for valid 2FA at all.
@@ -209,15 +214,25 @@ class UserLoginView(LoginView):
 
 class UserSetupQRView(SetupView):
     template_name = "two_factor/setup_by_qr.html"
-    success_url = reverse_lazy("blog:home")
-
+    success_url = "blog:home"
     form_list = (("generator", UserTOTPDeviceForm),)
     condition_dict = {
         "generator": lambda self: True,
     }
 
-    def get_method(self):
-        return "generator"
+    def get_form_list(self):
+        if self.request.method == "GET":
+            return self.form_list
+        form_list = super().get_form_list()
+        available_methods = registry.get_methods()
+        if len(available_methods) == 1:
+            form_list.pop("method", None)
+            method_key = available_methods[0].code
+            self.storage.validated_step_data["method"] = {"method": method_key}
+        method = self.get_method()
+        if method:
+            form_list.update(method.get_setup_forms(self))
+        return form_list
 
 
 class UserSetupEmailView(TemplateView):

@@ -1,9 +1,8 @@
-# ruff: noqa: F403, F405
-
-import dj_database_url
+import os
 
 from aa_project.settings.base import *
 
+import dj_database_url
 
 DEBUG = False
 
@@ -23,7 +22,10 @@ X_FRAME_OPTIONS = "DENY"
 SECURE_HSTS_SECONDS = 2592000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
-SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTO",
+    "https",
+)
 SECURE_REFERRER_POLICY = "same-origin"
 
 # Django Storages Settings

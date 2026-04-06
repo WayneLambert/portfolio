@@ -88,9 +88,18 @@
                 <a class="dropdown-item" href="{% url 'blog:users:profile_update' user.get_username %}">
                   <i class="fa fa-pencil mr-2"></i>Update Profile
                 </a>
-                <a class="dropdown-item" href="{% url 'blog:users:logout' %}">
-                  <i class="fa fa-sign-out mr-2"></i>Logout
-                </a>
+                <form method="POST" action="{% url 'blog:users:logout' %}">
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="btn btn-link dropdown-item nav-link d-inline-flex align-items-center rounded"
+                    aria-describedby="Log Out"
+                    tabindex="0"
+                  >
+                    <i class="fa fa-sign-out mr-2" aria-hidden="true"></i>
+                    <span>Log Out</span>
+                  </button>
+                </form>
               </div>
             </li>
           {% else %}
