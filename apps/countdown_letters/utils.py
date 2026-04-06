@@ -45,7 +45,5 @@ def create_record(context: dict):
         comp_word_len=context["comp_word_len"],
         player_score=context["player_score"],
         comp_score=context["comp_score"],
-        definition=context["definition_data"]["definition"],
-        word_class=context["definition_data"]["word_class"],
         result=context["result"],
     )

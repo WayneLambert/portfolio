@@ -45,7 +45,6 @@ def test_get_game_screen(client):
     ), "Should contain specified text"
 
 
-@pytest.mark.vcr()
 def test_get_results_screen(client):
     """Asserts a site visitor can GET the `results` screen"""
     path = reverse("countdown_letters:results")

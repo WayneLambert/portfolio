@@ -1,6 +1,5 @@
 import hypothesis.strategies as st
 import pytest
-
 from hypothesis import given
 
 from apps.countdown_letters import logic
@@ -72,7 +71,6 @@ def test_get_shortlisted_words():
     assert len(shortlisted_words) >= 1, "Should have at least one element"
 
 
-@pytest.mark.vcr()
 def test_get_longest_possible_word(shortlisted_words: list):
     """Asserts one of the longest possible words is a string"""
     longest_possible_word = logic.get_longest_possible_word(shortlisted_words)
@@ -81,17 +79,6 @@ def test_get_longest_possible_word(shortlisted_words: list):
     assert len(longest_possible_word) <= 9, "Should be less than or equal to 9 characters"
     assert isinstance(longest_possible_word, str), "Should be a string"
     assert longest_possible_word.isupper, "Should be uppercase"
-
-
-@pytest.mark.vcr()
-def test_get_longest_possible_word_returns_none(false_shortlisted_words: list):
-    """
-    Asserts None is returned in an extremely rare case where none of
-    the shortlisted words are in the Oxford Online API
-    """
-    longest_possible_word = logic.get_longest_possible_word(false_shortlisted_words)
-    assert isinstance(false_shortlisted_words, list), "Fixture should be a list"
-    assert longest_possible_word is None, "Should not exist"
 
 
 @given(word_len=st.integers(min_value=1, max_value=9))
@@ -103,52 +90,6 @@ def test_get_game_score(word_len: int):
     else:
         assert game_score == word_len
     assert isinstance(game_score, int)
-
-
-@pytest.mark.slow(reason="Processing makes 2 calls to the Oxford Online API")
-@pytest.mark.parametrize(argnames="word", argvalues=["strive", "strove"])
-@pytest.mark.vcr()
-def test_get_lemmas_response_json(word: str):
-    """
-    Asserts a dict object (mapped to json) is returned given two
-    variants of the same word
-    """
-    assert isinstance(word, str)
-    lemmas_json = logic.get_lemmas_response_json(word)
-    assert isinstance(lemmas_json, dict)
-    assert len(lemmas_json.keys()) == 2, "Should be 2 keys in dict"
-
-
-@pytest.mark.slow(reason="Processing makes a call to the Oxford Dictionaries API")
-@pytest.mark.vcr()
-def test_lookup_definition_data_valid_word(word: str = "strove"):
-    """
-    Asserts that given an example of a word in its alternative form
-    (i.e. past tense form or plural verbs form), tests the definitions
-    component of the Oxford Dictionaries API to ensure it retrieves
-    its main form's definition and word classification.
-
-    In this example, 'strove' is given as its past tense form, however
-    'strive' is looked up as its main form.
-
-    Another case, could be 'strives' is given as its plural verb form,
-    however 'strive' is looked up as its main form.
-    """
-    definition = logic.lookup_definition_data(word)
-    assert isinstance(definition, dict)
-    assert len(definition.keys()) == 2, "Set up to return 2 key/value pairs"
-    assert definition["definition"] == "Make great efforts to achieve or obtain something"
-    assert definition["word_class"] == "Verb"
-
-
-@pytest.mark.slow(reason="Processing makes a call to the Oxford Dictionaries API")
-def test_lookup_definition_data_invalid_word(word: str = "bonjourno"):
-    """
-    Asserts that the definition dictionary is not instantiated when
-    given an example of a word that isn't within the Dictionary API.
-    """
-    definition = logic.lookup_definition_data(word)
-    assert not definition
 
 
 def test_get_result():

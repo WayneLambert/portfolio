@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django.conf import settings
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -28,7 +28,7 @@ class Profile(models.Model):
 
     # Relationship Fields
     user = models.OneToOneField(
-        get_user_model(), primary_key=True, related_name="profile", on_delete=models.CASCADE
+        User, primary_key=True, related_name="profile", on_delete=models.CASCADE
     )
 
     def __str__(self):
@@ -98,9 +98,7 @@ class EmailToken(models.Model):
     token_expiration_timestamp = models.DateTimeField(null=True, blank=True)
 
     # Relationship Fields
-    user = models.ForeignKey(
-        get_user_model(), related_name="user_email_tokens", on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(User, related_name="user_email_tokens", on_delete=models.CASCADE)
 
     def __repr__(self):
         return f"<EmailToken(id={self.id}, user_id={self.user_id}, user='{self.user}')>"

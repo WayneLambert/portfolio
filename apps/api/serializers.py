@@ -1,5 +1,4 @@
-from django.contrib.auth import get_user_model
-
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 from apps.blog.models import Category, Post
@@ -10,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False, allow_blank=True, read_only=True)
 
     class Meta:
-        model = get_user_model()
+        model = User
         fields = (
             "username",
             "first_name",

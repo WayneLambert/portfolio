@@ -1,22 +1,15 @@
 import datetime
 
-from django.contrib.auth import get_user_model
+import pytest
 from django.db import models
 from django.shortcuts import reverse
 from django.utils.text import slugify
-
-import pytest
-
 from mixer.backend.django import mixer
 from tinymce.models import HTMLField
 
 from apps.blog.models import Category, Post
 
-
 pytestmark = pytest.mark.django_db(reset_sequences=True)
-
-
-user_model = get_user_model()
 
 
 class TestCategory:

@@ -4,19 +4,6 @@ A collection of functions that are required to validate given answers
 within a game.
 """
 
-import requests
-
-from apps.countdown_letters.oxford_api import API
-
-
-def is_in_oxford_api(word: str) -> bool:
-    """
-    Given a word, validates that the word exists in the Oxford API.
-    """
-    url = f"{API.LEMMAS_URL}{word.lower()}"
-    response = requests.get(url, headers=API.headers)
-    return response.status_code == 200
-
 
 def is_eligible_answer(answer: str, letters: str) -> bool:
     """

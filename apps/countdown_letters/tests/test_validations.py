@@ -1,18 +1,4 @@
-import pytest
-
 from apps.countdown_letters import validations
-
-
-@pytest.mark.slow(reason="Processing makes 2 calls to the Oxford Online API")
-@pytest.mark.parametrize(argnames="test_word", argvalues=["random", "radnom"])
-@pytest.mark.vcr()
-def test_is_in_oxford_api(test_word: str):
-    """Asserts that given a valid word, `True` is returned else `False`"""
-    in_api = validations.is_in_oxford_api(test_word)
-    if test_word == "radnom":  # misspelt on purpose
-        assert not in_api
-    elif test_word == "random":
-        assert in_api
 
 
 def test_is_eligible_answer(given_answers_list, letters: str = "SVEODRETR"):
