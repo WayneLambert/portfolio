@@ -25,9 +25,9 @@ class TestGameSetup:
         assert isinstance(expected_consonants_list, list), "Fixture should be a list"
         function_consonants_list = logic.GameSetup.get_weighted_consonants()
         assert isinstance(function_consonants_list, list)
-        assert (
-            expected_consonants_list == function_consonants_list
-        ), "Consonants list should meet game's rules"
+        assert expected_consonants_list == function_consonants_list, (
+            "Consonants list should meet game's rules"
+        )
 
 
 @pytest.mark.parametrize(argnames="num_vowels", argvalues=[3, 4, 5])

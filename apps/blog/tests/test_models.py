@@ -70,9 +70,9 @@ class TestPost:
     def test_content_is_htmlfield(self):
         post = mixer.blend(Post, author__pk=2)
         field = post._meta.get_field("content")
-        assert isinstance(
-            field, HTMLField
-        ), "Should be an `HTML Field` from third party app, Django Tiny MCE"
+        assert isinstance(field, HTMLField), (
+            "Should be an `HTML Field` from third party app, Django Tiny MCE"
+        )
 
     def test_reference_url_is_urlfield(self):
         post = mixer.blend(Post, author__pk=2)
@@ -86,9 +86,9 @@ class TestPost:
 
     def test_publish_date_generates(self):
         post = mixer.blend(Post, author__pk=2)
-        assert (
-            post.publish_date.day == datetime.date.today().day
-        ), "Should generate the day of the week for today"
+        assert post.publish_date.day == datetime.date.today().day, (
+            "Should generate the day of the week for today"
+        )
 
     def test_updated_date_is_datetimefield(self):
         post = mixer.blend(Post, author__pk=2)
@@ -97,9 +97,9 @@ class TestPost:
 
     def test_updated_date_generates(self):
         post = mixer.blend(Post, author__pk=2)
-        assert (
-            post.updated_date.day == datetime.date.today().day
-        ), "Should generate the day of the week for today"
+        assert post.updated_date.day == datetime.date.today().day, (
+            "Should generate the day of the week for today"
+        )
 
     def test_image_is_imagefield(self):
         post = mixer.blend(Post, author__pk=2)
@@ -127,16 +127,16 @@ class TestPost:
 
     def test_word_count(self):
         post = mixer.blend(Post, author__pk=2, content="Beautiful is better than ugly.")
-        assert (
-            post.word_count == 5
-        ), "Calculated word count should be the number of words in the content string"
+        assert post.word_count == 5, (
+            "Calculated word count should be the number of words in the content string"
+        )
 
     def test_reading_time(self):
         test_text = "lorem ipsum "
         post = mixer.blend(Post, author__pk=2, content=test_text * 50)
-        assert (
-            post.reading_time == 2
-        ), "The duplicated lorem ipsum text of 100 words should be a 2 minute read"
+        assert post.reading_time == 2, (
+            "The duplicated lorem ipsum text of 100 words should be a 2 minute read"
+        )
 
     def test_get_excerpt(self):
         post = mixer.blend(Post, author__pk=2, content="Test content ...")
@@ -149,9 +149,9 @@ class TestPost:
 
     def test_publish_year(self):
         post = mixer.blend(Post, author__pk=2)
-        assert (
-            post.publish_year == post.publish_date.year
-        ), "Year should be the same as the published date's year property"
+        assert post.publish_year == post.publish_date.year, (
+            "Year should be the same as the published date's year property"
+        )
 
     def test_num_draft_posts(self):
         draft_posts = mixer.cycle(10).blend(Post, author__pk=2, status=0)

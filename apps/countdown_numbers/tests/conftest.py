@@ -1,4 +1,4 @@
-""" Fixtures to facilitate the testing of the Countdown Numbers app """
+"""Fixtures to facilitate the testing of the Countdown Numbers app"""
 
 import pytest
 

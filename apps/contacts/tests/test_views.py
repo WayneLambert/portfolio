@@ -45,6 +45,6 @@ class TestPostContactView:
         response = ContactFormView.as_view()(request, contact_data)
         assert Contact.objects.count() == 1, "Should have one contact in the DB"
         assert response.status_code == 302, "Should redirect"
-        assert (
-            "/submitted/" in response.url
-        ), "Should reach `submitted` url pattern -> `contact_submitted` template"
+        assert "/submitted/" in response.url, (
+            "Should reach `submitted` url pattern -> `contact_submitted` template"
+        )

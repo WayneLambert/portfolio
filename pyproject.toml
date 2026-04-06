@@ -126,6 +126,44 @@ section-order = [
   "local-folder",
 ]
 
+from-first = false
+lines-after-imports = 2
+force-sort-within-sections = true
+combine-as-imports = true
+order-by-type = false
+
+known-third-party = [
+  "PIL",
+  "crispy_forms",
+  "dj_database_url",
+  "factory",
+  "psycopg",
+  "mixer",
+  "phonenumber_field",
+  "pytest",
+  "requests",
+  "rich",
+  "sequences",
+  "two_factor",
+]
+
+known-local-folder = [
+  "api",
+  "blog",
+  "contacts",
+  "countdown_letters",
+  "countdown_numbers",
+  "cv",
+  "pages",
+  "roulette",
+  "scraping",
+  "text_analysis",
+  "users",
+]
+
+[tool.ruff.lint.isort.sections]
+"django" = ["django"]
+
 [tool.ruff.format]
 # Like Black, use double quotes for strings.
 quote-style = "double"

@@ -6,9 +6,9 @@ class TestURL:
         """Tests that the game screens' URL is built correctly"""
         game_screen_url = utils.build_game_screen_url(num_vowels_selected=3)
         path = "countdown-letters/game/?letters_chosen="
-        assert (
-            path in game_screen_url
-        ), "specified path including query param should be within the URL"
+        assert path in game_screen_url, (
+            "specified path including query param should be within the URL"
+        )
         letters_chosen_in_url = game_screen_url[-9:]
         full_url = f"{path}{letters_chosen_in_url}"
         assert full_url in game_screen_url

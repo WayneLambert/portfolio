@@ -33,8 +33,8 @@ class PostForm(forms.ModelForm):
             if word.isupper():
                 updated_words.append(word)
             elif (
-                    len(word.strip()) >= 4 or word in capitalized_exceptions
-                ) and word not in uncapitalized_exceptions:
+                len(word.strip()) >= 4 or word in capitalized_exceptions
+            ) and word not in uncapitalized_exceptions:
                 updated_words.append(word.title())
             elif (
                 len(word.strip()) < 4 or word in uncapitalized_exceptions

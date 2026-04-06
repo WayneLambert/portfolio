@@ -1,4 +1,4 @@
-""" Helper functions to facilitate the testing of the pages app """
+"""Helper functions to facilitate the testing of the pages app"""
 
 from aa_project.settings import base
 

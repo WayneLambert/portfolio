@@ -1,5 +1,4 @@
-""" Contacts App: Tests Helpers """
-
+"""Contacts App: Tests Helpers"""
 
 form_data = [
     # 01 - True as all valid field entries

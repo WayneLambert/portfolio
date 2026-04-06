@@ -15,13 +15,13 @@ def test_get_numbers_chosen(num_from_top):
     numbers_chosen = logic.get_numbers_chosen(num_from_top)
     assert len(numbers_chosen) == 6, "Should return 6 chosen game numbers"
 
-    assert (
-        numbers_chosen.count(all([25, 50, 75, 100])) <= 1
-    ), "Should only return 1 instance of any of the numbers from the top"
+    assert numbers_chosen.count(all([25, 50, 75, 100])) <= 1, (
+        "Should only return 1 instance of any of the numbers from the top"
+    )
 
-    assert (
-        numbers_chosen.count(all([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) <= 2
-    ), "Should only return a max of 2 instances of any of the numbers from the bottom"
+    assert numbers_chosen.count(all([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) <= 2, (
+        "Should only return a max of 2 instances of any of the numbers from the bottom"
+    )
 
     assert isinstance(numbers_chosen, list), "Should be a `list` object"
 

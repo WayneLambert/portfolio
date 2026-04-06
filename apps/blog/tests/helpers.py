@@ -1,4 +1,4 @@
-""" Helper functions to facilitate the testing of the blog application """
+"""Helper functions to facilitate the testing of the blog application"""
 
 import os
 
