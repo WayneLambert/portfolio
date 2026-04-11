@@ -1,8 +1,11 @@
+#  ruff: noqa: F403, F405
+
 import os
 
 from aa_project.settings.base import *
 
 import dj_database_url
+
 
 DEBUG = False
 
@@ -39,8 +42,14 @@ STORAGES = {
 }
 
 # Heroku Deployment Settings for Postgres
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-DATABASES["default"].update(db_from_env)
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL", ""),
+        conn_max_age=600,
+        conn_health_checks=True,
+        ssl_require=True,
+    )
+}
 
 # Simple Captcha Settings
 RECAPTCHA_PUBLIC_KEY = os.environ["RECAPTCHA_PUBLIC_KEY"]
