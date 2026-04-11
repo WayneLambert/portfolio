@@ -1,4 +1,4 @@
-""" Template Helpers
+"""Template Helpers
 
 Functions to assist in the presentation of the game's calculations
 to humanise the game to be in a presentable arithmetic format

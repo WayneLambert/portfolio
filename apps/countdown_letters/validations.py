@@ -1,4 +1,4 @@
-""" Countdown Letters Validations
+"""Countdown Letters Validations
 
 A collection of functions that are required to validate given answers
 within a game.

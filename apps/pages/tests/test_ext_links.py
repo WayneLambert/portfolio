@@ -1,4 +1,4 @@
-""" Tests the website's external links (defined as teplate tags)
+"""Tests the website's external links (defined as teplate tags)
 
 These test that the links are still returning a 200 status code and are
 therefore not leading the site visitor to a 404 page.

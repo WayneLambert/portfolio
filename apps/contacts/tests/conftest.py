@@ -1,4 +1,4 @@
-""" Contacts App: Tests Helpers
+"""Contacts App: Tests Helpers
 
 The `captcha` field defined in `forms.py` is defined as a key in the
 `contact_data` dict. The `PASSED` argument is supplied for testing so

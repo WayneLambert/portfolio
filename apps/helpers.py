@@ -1,4 +1,4 @@
-""" Helper functions to facilitate testing """
+"""Helper functions to facilitate testing"""
 
 from django.contrib.messages.middleware import MessageMiddleware
 from django.contrib.sessions.middleware import SessionMiddleware

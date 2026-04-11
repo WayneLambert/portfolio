@@ -1,4 +1,4 @@
-# ruff: noqa: F403, F405
+#  ruff: noqa: F403, F405
 
 from aa_project.settings.base import *
 
@@ -11,10 +11,11 @@ ALLOWED_HOSTS = [
 ]
 
 # For Django Debug Toolbar and Django Extensions to be used in development
-INSTALLED_APPS += (
+INSTALLED_APPS += [
     "debug_toolbar",
     "django_extensions",
-)
+    "django_watchfiles",
+]
 
 # Django Debug Toolbar Settings
 INTERNAL_IPS = ["127.0.0.1", "172.24.0.1"]

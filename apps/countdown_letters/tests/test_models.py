@@ -85,6 +85,6 @@ class TestLettersGame:
         assert isinstance(field, models.DateField), "Should be a date field"
 
     def test_entry_year(self, letters_game):
-        assert (
-            letters_game.entry_year == letters_game.entry_date.year
-        ), "Year should be the same as the entry date's year property"
+        assert letters_game.entry_year == letters_game.entry_date.year, (
+            "Year should be the same as the entry date's year property"
+        )

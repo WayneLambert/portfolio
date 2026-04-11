@@ -40,9 +40,9 @@ def test_get_game_screen(client):
     params = {"letters_chosen": "ABCDEFGHI"}
     response = client.get(base_path, params)
     assert response.status_code == 200, "Should return an `OK` status code"
-    assert "The letters selected" in response.content.decode(
-        "utf-8"
-    ), "Should contain specified text"
+    assert "The letters selected" in response.content.decode("utf-8"), (
+        "Should contain specified text"
+    )
 
 
 def test_get_results_screen(client):

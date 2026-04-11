@@ -48,9 +48,9 @@ class TestContact:
         contact = mixer.blend(Contact)
         contact.first_name = "wayne"
         contact.last_name = "lambert"
-        assert (
-            contact.full_name == "Wayne Lambert"
-        ), "Should return concatenation of first and last name with capitalised first letters"
+        assert contact.full_name == "Wayne Lambert", (
+            "Should return concatenation of first and last name with capitalised first letters"
+        )
 
     def test_contact_str(self):
         contact = mixer.blend(Contact, first_name="Wayne", last_name="Lambert")

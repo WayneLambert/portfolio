@@ -1,4 +1,4 @@
-""" A series of external links within the website.
+"""A series of external links within the website.
 
 These exist for testing purposes since external links are susceptible to
 being broken if a project is re-organised.

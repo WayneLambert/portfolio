@@ -1,4 +1,4 @@
-""" Functions required to implement the game's core logic. """
+"""Functions required to implement the game's core logic."""
 
 # pylint: disable=eval-used
 import itertools
@@ -136,8 +136,4 @@ def get_game_result(target: int, answers: Dict) -> str:
     if comp_ans_variance == player_ans_variance:
         return "Draw"
     else:
-        return (
-            "Player wins"
-            if player_ans_variance < comp_ans_variance
-            else "Rachel wins"
-        )
+        return "Player wins" if player_ans_variance < comp_ans_variance else "Rachel wins"

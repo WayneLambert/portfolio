@@ -33,7 +33,8 @@ services:
       dockerfile: ./infra/dev/web/Dockerfile
       context: .
     command: >
-      sh -c "python -Xfrozen_modules=off manage.py runserver 0.0.0.0:${WEB_PORT} --nostatic"
+      sh -c "watchfiles --filter python
+      'python -Xfrozen_modules=off manage.py runserver 0.0.0.0:${WEB_PORT} --nostatic'"
     restart: always
     ports:
       - "${WEB_PORT}:${WEB_PORT}"
