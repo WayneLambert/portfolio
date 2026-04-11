@@ -20,6 +20,18 @@ INSTALLED_APPS += [
 # Django Debug Toolbar Settings
 INTERNAL_IPS = ["127.0.0.1", "172.24.0.1"]
 
+# Database Configuration
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ["POSTGRES_DB"],
+        "USER": os.environ["POSTGRES_USER"],
+        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
+        "HOST": os.getenv("POSTGRES_HOST", "postgres"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+    }
+}
+
 # For Django Debug Toolbar to be used in local Dockerized development environment
 DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda request: DEBUG}
 
