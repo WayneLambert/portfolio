@@ -189,9 +189,7 @@ known-local-folder = [
   "countdown_numbers",
   "cv",
   "pages",
-  "roulette",
   "scraping",
-  "text_analysis",
   "users",
 ]
 
@@ -263,9 +261,7 @@ testpaths = [
   "apps/countdown_numbers/tests",
   "apps/cv/tests",
   "apps/pages/tests",
-  "apps/roulette/tests",
   "apps/scraping/tests",
-  "apps/text_analysis/tests",
   "apps/users/tests",
 ]
 

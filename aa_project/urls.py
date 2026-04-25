@@ -5,9 +5,9 @@ from django.contrib.auth import views as auth_views
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
-from two_factor.urls import urlpatterns as tf_urls
-
 from aa_project.settings.base import DJANGO_ADMIN_LOGIN_PATH
+
+from two_factor.urls import urlpatterns as tf_urls
 
 from blog.sitemap import CategorySitemap, PostSitemap
 from pages.views import BadRequestView, PageNotFoundView, PermissionDeniedView
@@ -28,8 +28,6 @@ urlpatterns = [
     path("cv/", include("cv.urls", namespace="cv")),
     path("countdown-letters/", include("countdown_letters.urls", namespace="countdown_letters")),
     path("countdown-numbers/", include("countdown_numbers.urls", namespace="countdown_numbers")),
-    path("text-analysis/", include("text_analysis.urls", namespace="text_analysis")),
-    path("roulette/", include("roulette.urls", namespace="roulette")),
     path("scraping/", include("scraping.urls", namespace="scraping")),
     path("api/", include("api.urls", namespace="api")),
 ]

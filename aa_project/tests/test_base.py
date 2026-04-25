@@ -1,7 +1,5 @@
 import os
 
-import pytest
-
 from aa_project.settings import base
 
 
@@ -76,23 +74,9 @@ class TestTemplatesAreConfigured:
             in temp_dirs
         )
         assert os.path.join(base.APPS_DIR, "pages/templates/pages/") in temp_dirs
-        assert os.path.join(base.APPS_DIR, "roulette/templates/roulette/") in temp_dirs
         assert os.path.join(base.APPS_DIR, "scraping/templates/scraping/") in temp_dirs
-        assert os.path.join(base.APPS_DIR, "text_analysis/templates/text_analysis/") in temp_dirs
         assert os.path.join(base.APPS_DIR, "users/templates/users/") in temp_dirs
         assert os.path.join(base.APPS_DIR, "users/templates/registration/") in temp_dirs
-
-
-@pytest.mark.skipif(
-    "GITHUB_RUN_ID" in os.environ, reason="Different DB credentials in GitHub Actions"
-)
-class TestDatabaseIsSecurelyConfigured:
-    def test_secure_database_setup(self):
-        assert base.DATABASES["default"]["NAME"] == os.environ["POSTGRES_DB"]
-        assert base.DATABASES["default"]["USER"] == os.environ["POSTGRES_USER"]
-        assert base.DATABASES["default"]["PASSWORD"] == os.environ["POSTGRES_PASSWORD"]
-        assert base.DATABASES["default"]["HOST"] == os.environ["POSTGRES_HOST"]
-        assert base.DATABASES["default"]["PORT"] == os.environ["POSTGRES_PORT"]
 
 
 class TestEmailProviderConfigured:

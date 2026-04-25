@@ -41,8 +41,10 @@
       {% block content %}{% endblock content %}
     </div>
 
-    {% include 'footer.html' %}
-
+    <footer class="footer">
+      {% include 'bottom_bar.html' %}
+    </footer>
+    
     {% include 'js.html' %}
 
     {% block additional_js %}{% endblock additional_js %}
