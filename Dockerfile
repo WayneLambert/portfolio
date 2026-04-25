@@ -53,5 +53,5 @@ RUN uv sync --locked --no-dev --no-editable --compile-bytecode
 # Copy application source code into image
 COPY --chown=${APP_USER}:${APP_GROUP} . .
 
-# Run static files collection for application
-RUN python manage.py collectstatic --noinput
+# Collect static files upon deployment
+CMD [ "python", "manage.py", "collectstatic", "--noinput", "--clear" ]
