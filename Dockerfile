@@ -62,4 +62,4 @@ COPY --chown=${APP_USER}:${APP_GROUP} . .
 RUN sass scss:static/assets/css --style=compressed --no-source-map
 
 # Collect static files upon deployment
-RUN python manage.py collectstatic --noinput --clear
+CMD [ "python", "manage.py", "collectstatic", "--noinput", "--clear" ]
