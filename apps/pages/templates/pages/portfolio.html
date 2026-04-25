@@ -10,7 +10,7 @@
       <div class="intro">
         <p>
             Welcome to my portfolio demonstrating skills with Python, Django, Django REST Framework,
-            JavaScript, HTML, Sass, Bootstrap, PostgreSQL, pytest, Docker, and Git.
+            JavaScript, HTML, Bootstrap, PostgreSQL, pytest, Docker, and Git.
         </p>
       </div>
       <a class="btn btn-primary" href="{% url 'contacts:contact' %}">
@@ -41,7 +41,6 @@
     </div>
   </section>
   <hr class="col-8">
-  {% include 'reviews/reviews_list.html' %}
   {% block additional_js %}
     <!--Page Specific JS -->
     <script type="text/javascript" src="{% static 'assets/plugins/imagesloaded.pkgd.min.js' %}"></script> 
