@@ -24,7 +24,8 @@ ENV COLUMNS=120 \
   PYTHONUNBUFFERED=1 \
   HOME="/home/${APP_USER}" \
   UV_PROJECT_ENVIRONMENT=/opt/venv \
-  PATH=/opt/venv/bin:$PATH
+  PATH=/opt/venv/bin:$PATH \
+  DJANGO_SETTINGS_MODULE=aa_project.settings.prod
 
 # Copy uv and uvx binaries from official uv image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
