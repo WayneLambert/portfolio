@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
-from django.views.generic.base import RedirectView
 
 from apps.blog.models import Post
 
@@ -22,38 +21,12 @@ class PortfolioView(TemplateView):
     template_name = "portfolio.html"
 
 
-class ReadingListView(TemplateView):
-    template_name = "reading_list.html"
-
-
 class AboutMeView(TemplateView):
     template_name = "about_me.html"
 
 
 class PrivacyPolicyView(TemplateView):
     template_name = "privacy.html"
-
-
-# Skills
-class SkillsView(RedirectView):
-    permanent = True
-    pattern_name = "pages:back_end_skills"
-
-
-class BackEndSkillsView(TemplateView):
-    template_name = "skills/back_end.html"
-
-
-class FrontEndSkillsView(TemplateView):
-    template_name = "skills/front_end.html"
-
-
-class InfrastructureSkillsView(TemplateView):
-    template_name = "skills/infrastructure.html"
-
-
-class SoftwareSkillsView(TemplateView):
-    template_name = "skills/software.html"
 
 
 # Reviews

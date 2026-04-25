@@ -1,9 +1,18 @@
+.cv-container {
+  color: #111111;
+  font-weight: 400;
+  line-height: 1.8;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 .cv-wrapper {
   border: 1px solid rgba(0, 0, 0, 0.025);
 }
 
 .cv-header {
-  background: $theme-color-primary;
+  background: $theme-colour-cv-bg;
   color: rgba(256, 256, 256, 0.9);
   height: 180px;
 
@@ -22,7 +31,6 @@
     &:hover {
       color: white;
     }
-
   }
 }
 
@@ -38,7 +46,6 @@
     background: white;
     color: $theme-color-primary;
   }
-
 }
 
 .cv .type {
@@ -57,19 +64,18 @@
 .cv-section-heading {
   position: relative;
   padding-left: 1rem;
-  font-size: 1.125rem;
-  letter-spacing: 0.15rem;
+  font-size: 1rem;
   color: $theme-color-primary;
-   &:before {
-     content: "";
-      display: inline-block;
-      width: 5px;
-      height: 100%;
-      background: $theme-color-primary;
-      position: absolute;
-      left: 0;
-      top: 0;
-   }
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+    background: $theme-color-primary;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
 
 a.cv-link {
@@ -86,11 +92,11 @@ a.cv-link {
   .item-title {
     font-size: 1rem;
   }
-  
-   .item-meta {
-     font-size: 0.75rem;
-   }
-   .item-content {
+
+  .item-meta {
+    font-size: 0.85rem;
+  }
+  .item-content {
     font-size: 0.875rem;
   }
 }
@@ -103,17 +109,23 @@ a.cv-link {
   .item-title {
     font-size: 1rem;
   }
-  
 }
 
 .cv-education-list {
-    font-size: 0.875rem;
+  font-size: 0.875rem;
 }
 
-.cv-degree-time-org, .cv-degree-time {
+.cv-degree-time-org,
+.cv-degree-time {
   font-size: 0.75rem;
 }
 
-.cv-lang-list, .cv-interests-list {
+.cv-lang-list,
+.cv-interests-list {
   font-size: 0.875rem;
+}
+
+.as-at-date {
+  font-size: 0.7rem;
+  color: lightgrey;
 }

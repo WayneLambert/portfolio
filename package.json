@@ -1,29 +1,31 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "\"Portfolio of Wayne Lambert\"",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch-sass": "./watch-sass.sh"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/WayneLambert/portfolio.git"
-  },
-  "author": "Wayne Lambert",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/WayneLambert/portfolio/issues"
-  },
-  "homepage": "https://github.com/WayneLambert/portfolio#readme",
-  "devDependencies": {
-    "node-sass": "^7.0.1",
-    "sass-lint": "^1.13.1"
-  },
-  "keywords": [
-    "portfolio",
-    "django",
-    "python"
-  ]
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "\"Portfolio of Wayne Lambert\"",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch-sass": "./watch-sass.sh"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/WayneLambert/portfolio.git"
+    },
+    "author": "Wayne Lambert",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/WayneLambert/portfolio/issues"
+    },
+    "homepage": "https://github.com/WayneLambert/portfolio#readme",
+    "devDependencies": {
+        "sass-lint": "^1.13.1"
+    },
+    "keywords": [
+        "portfolio",
+        "django",
+        "python"
+    ],
+    "dependencies": {
+        "sass": "^1.99.0"
+    }
 }

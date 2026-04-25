@@ -1,30 +1,25 @@
 from django.urls import reverse
 
-import pytest
-
 from apps.pages.views import (
     AboutMeView,
     APIReviewView,
-    BackEndSkillsView,
     BadRequestView,
     BlogReviewView,
     CountdownLettersReviewView,
     CountdownNumbersReviewView,
     DataScienceReviewView,
-    FrontEndSkillsView,
-    InfrastructureSkillsView,
+    handler500,
     PageNotFoundView,
     PermissionDeniedView,
     PortfolioView,
     PrivacyPolicyView,
-    ReadingListView,
     RouletteReviewView,
     ScrapingReviewView,
     SiteHomeView,
-    SoftwareSkillsView,
     TextAnalysisReviewView,
-    handler500,
 )
+
+import pytest
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
@@ -52,14 +47,6 @@ class TestStaticPagesViews:
         response = PortfolioView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
-    def test_reading_list_view(self, rf, all_users):
-        """Asserts any user can GET the `reading list` page"""
-        path = reverse("pages:reading_list")
-        request = rf.get(path)
-        request.user = all_users
-        response = ReadingListView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
     def test_about_me_view(self, rf, all_users):
         """Asserts any user can GET the `about me` page"""
         path = reverse("pages:about_me")
@@ -74,45 +61,6 @@ class TestStaticPagesViews:
         request = rf.get(path)
         request.user = all_users
         response = PrivacyPolicyView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-
-@pytest.mark.parametrize(
-    argnames="all_users",
-    argvalues=[pytest.param("auth_user"), pytest.param("unauth_user")],
-    indirect=True,
-)
-class TestSkillsPagesViews:
-    def test_back_end_skills_view(self, rf, all_users):
-        """Asserts any user can GET the `back end skills` page"""
-        path = reverse("pages:back_end_skills")
-        request = rf.get(path)
-        request.user = all_users
-        response = BackEndSkillsView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_front_end_skills_view(self, rf, all_users):
-        """Asserts any user can GET the `front end skills` page"""
-        path = reverse("pages:front_end_skills")
-        request = rf.get(path)
-        request.user = all_users
-        response = FrontEndSkillsView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_infrastructure_skills_view(self, rf, all_users):
-        """Asserts any user can GET the `infrastructure skills` page"""
-        path = reverse("pages:infrastructure_skills")
-        request = rf.get(path)
-        request.user = all_users
-        response = InfrastructureSkillsView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_software_skills_view(self, rf, all_users):
-        """Asserts any user can GET the site's `software skills` page"""
-        path = reverse("pages:software_skills")
-        request = rf.get(path)
-        request.user = all_users
-        response = SoftwareSkillsView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
 
