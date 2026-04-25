@@ -3,20 +3,15 @@ from django.urls import reverse
 from apps.pages.views import (
     AboutMeView,
     APIReviewView,
-    BackEndSkillsView,
     BlogReviewView,
     CountdownLettersReviewView,
     CountdownNumbersReviewView,
     DataScienceReviewView,
-    FrontEndSkillsView,
-    InfrastructureSkillsView,
     PortfolioView,
     PrivacyPolicyView,
-    ReadingListView,
     RouletteReviewView,
     ScrapingReviewView,
     SiteHomeView,
-    SoftwareSkillsView,
     TextAnalysisReviewView,
 )
 
@@ -72,26 +67,6 @@ class TestUrls:
         path = reverse("pages:data_science_review")
         assert path, DataScienceReviewView.as_view().__name__
 
-    def test_back_end_skills(self):
-        """Verify that the `back_end_skills` url invokes intended view"""
-        path = reverse("pages:back_end_skills")
-        assert path, BackEndSkillsView.as_view().__name__
-
-    def test_front_end_skills(self):
-        """Verify that the `front_end_skills` url invokes intended view"""
-        path = reverse("pages:front_end_skills")
-        assert path, FrontEndSkillsView.as_view().__name__
-
-    def test_infrastructure_skills(self):
-        """Verify that the `infrastructure_skills` url invokes intended view"""
-        path = reverse("pages:infrastructure_skills")
-        assert path, InfrastructureSkillsView.as_view().__name__
-
-    def test_software_skills(self):
-        """Verify that the `software_skills` url invokes intended view"""
-        path = reverse("pages:software_skills")
-        assert path, SoftwareSkillsView.as_view().__name__
-
     def test_about_me(self):
         """Verify that the `about_me` url invokes intended view"""
         path = reverse("pages:about_me")
@@ -101,8 +76,3 @@ class TestUrls:
         """Verify that the `privacy` url invokes intended view"""
         path = reverse("pages:privacy")
         assert path, PrivacyPolicyView.as_view().__name__
-
-    def test_reading_list(self):
-        """Verify that the `reading_list` url invokes intended view"""
-        path = reverse("pages:reading_list")
-        assert path, ReadingListView.as_view().__name__

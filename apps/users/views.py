@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import auth, messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import (
     PasswordResetCompleteView,
@@ -20,10 +20,6 @@ from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.views.generic import CreateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
-from shapeshifter.views import MultiModelFormView
-from two_factor.forms import AuthenticationTokenForm
-from two_factor.plugins.registry import registry
-from two_factor.views.core import LoginView, SetupView
 
 from apps.users.forms import (
     EmailTokenSubmissionForm,
@@ -35,6 +31,11 @@ from apps.users.forms import (
 from apps.users.mixins import TwoFactorAuthUserMixin
 from apps.users.models import EmailToken, Profile
 from apps.users.utils import generate_token, get_challenge_expiration_timestamp
+
+from shapeshifter.views import MultiModelFormView
+from two_factor.forms import AuthenticationTokenForm
+from two_factor.plugins.registry import registry
+from two_factor.views.core import LoginView, SetupView
 
 
 class UserRegisterView(CreateView):
@@ -51,7 +52,7 @@ class UserRegisterView(CreateView):
 
     def user_exists(self, form) -> bool:
         username = form.data["username"]
-        user = get_user_model().objects.filter(username=username)
+        user = User.objects.filter(username=username)
         return True if user.exists() else False
 
     def form_valid(self, form):
@@ -181,8 +182,8 @@ class UserLoginView(LoginView):
 
             # Scenario 1: The user does not exist in the DB
             try:
-                user = get_user_model().objects.get(username=username)
-            except get_user_model().DoesNotExist:
+                user = User.objects.get(username=username)
+            except User.DoesNotExist:
                 self.add_user_does_not_exist_message()
                 return redirect(self.request.path_info)
 
@@ -284,7 +285,7 @@ class UserSetupEmailView(TemplateView):
         return redirect(self.success_url)
 
 
-class UserSetupEmailTokenView(FormView):
+class UserSetupEmailTokenView(LoginRequiredMixin, FormView):
     template_name = "two_factor/setup_email_token.html"
     form_class = EmailTokenSubmissionForm
     success_url = reverse_lazy(settings.LOGIN_REDIRECT_URL)

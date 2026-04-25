@@ -4,12 +4,11 @@ from django.http import Http404
 from django.shortcuts import resolve_url
 from django.urls import reverse
 
-import pytest
-
 import apps.helpers as apps_helpers
-
 from apps.users.models import Profile
 from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
+
+import pytest
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
@@ -19,7 +18,7 @@ class TestUserRegisterView:
     path = reverse("blog:users:register")
 
     def test_auth_user_cannot_access(self, rf, auth_user):
-        """Asserts authenticated user can't access `registration` iew"""
+        """Asserts authenticated user can't access `registration` view"""
         request = rf.get(self.path)
         request.user = auth_user
         response = UserRegisterView.as_view()(request)
