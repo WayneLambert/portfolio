@@ -1,4 +1,5 @@
-"""Tests the website's external links (defined as teplate tags)
+"""
+Tests the website's external links (defined as teplate tags)
 
 These test that the links are still returning a 200 status code and are
 therefore not leading the site visitor to a 404 page.
@@ -23,11 +24,7 @@ organisational purposes and to facilitate testing.
 
 import os
 
-import pytest
-import requests
-
 from apps.pages.templatetags.ext_links import (
-    Contacts,
     CountdownLetters,
     CountdownNumbers,
     DataScience,
@@ -36,6 +33,9 @@ from apps.pages.templatetags.ext_links import (
     SocialMedia,
     TextAnalysis,
 )
+
+import pytest
+import requests
 
 from .helpers import app_names
 
@@ -76,15 +76,6 @@ class TestLinkGenerator:
     def test_github_url(type, app):
         link = requests.get(LinkGenerator.github_url(type, app))
         assert link.status_code == 200, "Should return an `OK` status"
-
-
-@pytest.mark.slow(reason="Sends a GET request")
-class TestContacts:
-    @staticmethod
-    def test_google_maps_embed_link():
-        link = requests.get(Contacts.google_maps_embed_link())
-        assert link.status_code == 200, "Should return an `OK` status"
-        assert b"B15 3PA" in link.content, "Should contain the postcode of B15 3PA"
 
 
 @pytest.mark.skipif("GITHUB_RUN_ID" in os.environ, reason="Times out in GitHub Actions")

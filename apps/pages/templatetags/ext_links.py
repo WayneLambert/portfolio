@@ -64,12 +64,6 @@ class LinkGenerator:
         return f"https://github.com/WayneLambert/portfolio/{query_str}"
 
 
-class Contacts:
-    @register.simple_tag(name="google_maps_embed_link")
-    def google_maps_embed_link():
-        return "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.5527282918692!2d-1.940316583728355!3d52.46912729774982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870bda93e3bf027%3A0x8f4a61d2fb6a1d3f!2sAugustus%20Rd%2C%20Birmingham%20B15%203PA!5e0!3m2!1sen!2suk!4v1630401139728!5m2!1sen!2suk"
-
-
 class CountdownLetters:
     @register.simple_tag(name="countdown_letters_game_rules_link")
     def game_rules():
