@@ -27,5 +27,3 @@
 - [ ] All new and existing tests have passed locally
 - [ ] My code follows the code style of this project
 - [ ] My change requires changes to READMEs
-- [ ] My change requires changes to project reviews
-- [ ] My change requires changes to skills used
