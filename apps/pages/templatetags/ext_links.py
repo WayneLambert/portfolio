@@ -37,7 +37,7 @@ class SocialMedia:
 
     @register.simple_tag
     def google_maps_location_link():
-        return "https://www.google.co.uk/maps/place/Edgbaston,+Birmingham"
+        return "https://www.google.co.uk/maps/place/Peterborugh"
 
     @register.simple_tag
     def email_me_link():

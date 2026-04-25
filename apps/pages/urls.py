@@ -3,21 +3,15 @@ from django.urls import path
 from apps.pages.views import (
     AboutMeView,
     APIReviewView,
-    BackEndSkillsView,
     BlogReviewView,
     CountdownLettersReviewView,
     CountdownNumbersReviewView,
     DataScienceReviewView,
-    FrontEndSkillsView,
-    InfrastructureSkillsView,
     PortfolioView,
     PrivacyPolicyView,
-    ReadingListView,
     RouletteReviewView,
     ScrapingReviewView,
     SiteHomeView,
-    SkillsView,
-    SoftwareSkillsView,
     TextAnalysisReviewView,
 )
 
@@ -51,14 +45,6 @@ urlpatterns = [
         DataScienceReviewView.as_view(),
         name="data_science_review",
     ),
-    path("skills/", SkillsView.as_view(), name="skills"),
-    path("skills/back-end/", BackEndSkillsView.as_view(), name="back_end_skills"),
-    path("skills/front-end/", FrontEndSkillsView.as_view(), name="front_end_skills"),
-    path(
-        "skills/infrastructure/", InfrastructureSkillsView.as_view(), name="infrastructure_skills"
-    ),
-    path("skills/software/", SoftwareSkillsView.as_view(), name="software_skills"),
     path("about-me/", AboutMeView.as_view(), name="about_me"),
     path("privacy/", PrivacyPolicyView.as_view(), name="privacy"),
-    path("reading-list/", ReadingListView.as_view(), name="reading_list"),
 ]

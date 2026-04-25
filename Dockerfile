@@ -4,6 +4,16 @@ FROM python@sha256:ffebef43892dd36262fa2b042eddd3320d5510a21f8440dce0a650a3c124b
 # Use bash with pipefail so any failed command in a pipeline fails build
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# Install image dependencies
+RUN apt-get update && apt-get install -y \
+    libpango-1.0-0 \
+    libharfbuzz0b \
+    libpangoft2-1.0-0 \
+    libfontconfig1 \
+    libffi-dev \
+    shared-mime-info \
+    && rm -rf /var/lib/apt/lists/*
+
 # Define build time arguments
 ARG APP_GROUP=app-grp
 ARG APP_USER=app-usr

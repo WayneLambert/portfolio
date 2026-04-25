@@ -1,45 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'cv_base.html' %}
 
 {% load static %}
 
-{% block title %}{{ block.super }} | CV{% endblock title %}
+{% block title %}
+  Wayne Lambert | Senior Software Engineer (Python, Django, Distributed Systems)
+{% endblock title %}
 
 {% block desc %}
-  Senior Django Web Developer | Builds intuitive, interactive, and scalable web apps. | Birmingham, UK
+  Senior Software Engineer (Python / Django) | Builds intuitive, interactive, scalable web apps. | Peterborough, UK
 {% endblock desc %}
 
 {% block content %}
   <div class="container px-3 px-lg-5">
-    <div class="text-center pt-4">
-      <ul id="filters" class="filters cv pl-0">
-        <li class="type active" data-filter=".chronological"><i class="fa fa-clock-o mr-1"></i>Chronological</li>
-        <li class="type" data-filter=".functional"><i class="fa fa-laptop mr-1"></i>Functional</li>
-      </ul>
-    </div>
-    <!-- Chronological CV Isotope -->
-    <div class="row isotope col-12">
-      <div class="isotope-item chronological">
-        <p class="card-text text-center">
-          Career history and achievements overview
-        </p>
-        {% include 'components/chronological.html' %}
+    {% include 'cv_controls.html' %}
+    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-1 shadow-lg">
+      {% include 'components/header.html' %}
+      {% include 'components/statement.html' %}
+      <hr>
+      <div class="cv-body">
+        <div class="row">
+          <div class="cv-main col-12 col-lg-8 col-xl-8 pr-0 pr-lg-3">
+            {% include 'components/career_history.html' %}
+          </div>
+          <aside class="cv-aside col-12 col-lg-4 col-xl-4 px-lg-4">
+            <section class="technical-expertise-section py-1">
+              {% include 'components/technical_expertise.html' %}
+              <hr>
+              {% include 'components/education.html' %}
+              <hr>
+              {% include 'components/interests.html' %}
+            </section>
+          </aside>
+        </div>
       </div>
-    </div>
-    <!-- Project Portfolio CV Isotope -->
-    <div class="row isotope col-12">
-      <div class="isotope-item functional">
-        <p class="card-text text-center">
-          Personal portfolio projects and skills in web development/programming
-        </p>
-        {% include 'components/functional.html' %}
-      </div>
-    </div>
+      {% include 'components/footer.html' %}
+    </article>
   </div>
-
-  {% block additional_js %}
-    <script type="text/javascript" src="{% static 'assets/plugins/imagesloaded.pkgd.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/plugins/isotope.pkgd.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/isotope-custom.js' %}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/isotope-cv-custom.js' %}"></script>
-  {% endblock additional_js %}
 {% endblock content %}
