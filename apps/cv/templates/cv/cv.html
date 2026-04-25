@@ -1,8 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'cv_base.html' %}
 
 {% load static %}
 
-{% block title %}{{ block.super }} | CV{% endblock title %}
+{% block title %}
+  Wayne Lambert | Senior Software Engineer (Python, Django, Distributed Systems)
+{% endblock title %}
 
 {% block desc %}
   Senior Software Engineer (Python / Django) | Builds intuitive, interactive, scalable web apps. | Peterborough, UK
@@ -10,26 +12,28 @@
 
 {% block content %}
   <div class="container px-3 px-lg-5">
-    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-5 shadow-lg">
+    {% include 'cv_controls.html' %}
+    <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-1 shadow-lg">
       {% include 'components/header.html' %}
-      <hr>
       {% include 'components/statement.html' %}
       <hr>
       <div class="cv-body">
         <div class="row">
-          <div class="cv-main col-12 col-lg-8 col-xl-9 pr-0 pr-lg-3">
+          <div class="cv-main col-12 col-lg-8 col-xl-8 pr-0 pr-lg-3">
             {% include 'components/career_history.html' %}
           </div>
-          <aside class="cv-aside col-12 col-lg-4 col-xl-3 px-lg-4 pb-lg-4">
-            <section class="skills-section py-3">
-            {% include 'components/skills.html' %}
-            {% include 'components/education.html' %}
-            {% include 'components/interests.html' %}
-            {% include 'components/other.html' %}
+          <aside class="cv-aside col-12 col-lg-4 col-xl-4 px-lg-4">
+            <section class="technical-expertise-section py-1">
+              {% include 'components/technical_expertise.html' %}
+              <hr>
+              {% include 'components/education.html' %}
+              <hr>
+              {% include 'components/interests.html' %}
+            </section>
           </aside>
         </div>
       </div>
-      <hr>
+      {% include 'components/footer.html' %}
     </article>
   </div>
 {% endblock content %}

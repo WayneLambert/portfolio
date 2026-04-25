@@ -15,6 +15,7 @@ $smoky-white: #fafafa;
 $theme-error: #d9603c;
 $countdown-game-color: #1c3297;
 $countdown-letter-number-divider-color: #70a1d8;
+$theme-colour-cv-bg: #162e93;
 
 // Footer Colours
 $theme-color-footer: #0e83cd;
@@ -34,7 +35,8 @@ $gray-700: lighten($theme-text-color-primary, 20%);
 $gray-800: lighten($theme-text-color-primary, 10%);
 $gray-900: $theme-text-color-primary;
 
-$theme-colors: ("primary": $theme-color-primary,
+$theme-colors: (
+  "primary": $theme-color-primary,
   "secondary": $theme-text-color-secondary,
 );
 

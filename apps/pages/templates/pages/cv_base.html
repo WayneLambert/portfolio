@@ -1,0 +1,52 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Senior Software Engineer based in the UK specialising in Python, Django, distributed systems,
+      and high-volume data platforms. Experienced in building scalable, production-grade systems and
+      multi-tenant architectures."
+    >
+    <meta
+      name="keywords"
+      content="Senior Software Engineer, Python Developer, Django Developer, Backend Engineer,
+      Distributed Systems, Data Engineering, UK Software Engineer, Wayne Lambert"
+    >
+    <meta name="author" content="Wayne Lambert" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/favicon/apple-touch-icon.png' %}" />
+    <link rel="shortcut icon" type="image/png" sizes="32x32" href="{% static 'assets/favicon/favicon-32x32.png' %}" />
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="{% static 'assets/favicon/favicon-16x16.png' %}" />
+    <link rel="manifest" href="{% static 'assets/favicon/site.webmanifest' %}" />
+
+    <link
+      rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/theme-3.css' %}" />
+
+    {% block additional_head %}{% endblock additional_head %}
+
+    {% block additional_css %}{% endblock additional_css %}
+  </head>
+
+  <body>
+    <div class="cv-container">
+      {% block content %}{% endblock content %}
+    </div>
+
+    {% include 'js.html' %}
+
+    {% block additional_js %}{% endblock additional_js %}
+  </body>
+</html>
