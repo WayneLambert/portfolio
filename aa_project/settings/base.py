@@ -57,9 +57,7 @@ PROJECT_APPS = [
     "apps.countdown_numbers.apps.CountdownNumbersConfig",
     "apps.cv.apps.CvConfig",
     "apps.pages.apps.PagesConfig",
-    "apps.roulette.apps.RouletteConfig",
     "apps.scraping.apps.ScrapingConfig",
-    "apps.text_analysis.apps.TextAnalysisConfig",
     "apps.users.apps.UsersConfig",
 ]
 
@@ -100,9 +98,7 @@ TEMPLATES = [
             os.path.join(APPS_DIR, "cv/templates/cv/"),
             os.path.join(APPS_DIR, "users/templates/users/"),
             os.path.join(APPS_DIR, "users/templates/registration/"),
-            os.path.join(APPS_DIR, "roulette/templates/roulette/"),
             os.path.join(APPS_DIR, "scraping/templates/scraping/"),
-            os.path.join(APPS_DIR, "text_analysis/templates/text_analysis/"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {

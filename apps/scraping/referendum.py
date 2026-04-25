@@ -1,13 +1,11 @@
-import string
-
 from collections import defaultdict
+import string
 from typing import Any, List, Tuple
 
 from django.shortcuts import render
 
-import requests
-
 from bs4 import BeautifulSoup
+import httpx
 
 
 class ScrapingError(Exception):
@@ -38,7 +36,7 @@ def scrape_content() -> List[List[int]]:
     BASE_URL = "https://www.bbc.co.uk/news/politics/eu_referendum/results/local/"
     results = defaultdict(list)
     for letter in ALPHABET:
-        page_response = requests.get(f"{BASE_URL}{letter}", timeout=5)
+        page_response = httpx.get(f"{BASE_URL}{letter}", timeout=5)
         try:
             page_content = BeautifulSoup(page_response.content, "html.parser")
             areas = page_content.find_all("div", attrs={"class": "eu-ref-result-bar"})
@@ -69,7 +67,7 @@ def scrape_content() -> List[List[int]]:
                     .getText()
                     .replace("Turnout: ", "")
                 )
-        except:  # pragma: no cover
+        except Exception:
             raise ScrapingError
 
     return results

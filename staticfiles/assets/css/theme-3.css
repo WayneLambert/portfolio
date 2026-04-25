@@ -9923,52 +9923,10 @@ a.cv-link:hover {
 .index-alert {
   padding: 0;
 }
-.footer {
-  font-family: "Lato", arial, sans-serif;
-  background: #0e83cd;
-  color: #fff;
-  padding: 15px 0;
-  font-size: 16px;
-}
-.footer .footer-col {
-  padding-top: 15px;
-}
-.footer .footer-col.about .more .svg-inline--fa {
-  margin-left: 5px;
-  position: relative;
-  top: 1px;
-}
-.footer .footer-col.links {
-  margin-right: 5px;
-}
-.footer .footer-col.links li {
-  margin-bottom: 10px;
-}
-.footer .footer-col.contact {
-  font-size: 16px;
-  margin-right: 10px;
-}
-.footer .footer-col.contact p {
-  color: #444;
-}
-.footer .footer-col .title {
-  color: rgb(4.2191780822, 39.4794520548, 61.7808219178);
-  font-weight: normal;
-  font-size: 18px;
-  padding-bottom: 10px;
-}
-.footer .footer-col p {
-  color: #fff;
-}
-.footer .footer-col a {
-  color: rgb(7.4794520548, 69.9863013699, 109.5205479452);
-}
-.footer .footer-col a:hover {
-  color: #000;
-}
+
 .footer .bottom-bar {
-  background: #444;
-  color: #999;
+  background: #162e93;
+  color: #ffffff;
   font-size: 18px;
   width: 100%;
 }
@@ -9984,7 +9942,7 @@ a.cv-link:hover {
   vertical-align: middle;
 }
 .footer .bottom-bar .social-left li a {
-  color: #999;
+  color: #ffffff;
   font-size: 20px;
 }
 .footer .bottom-bar .social-right {
