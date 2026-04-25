@@ -17,6 +17,7 @@
         'paste_preprocess',
         'setup',
         'urlconverter_callback',
+        'media_url_resolver',
       ];
       fns.forEach((fn_name) => {
         if (typeof mce_conf[fn_name] != 'undefined') {
@@ -29,14 +30,17 @@
         }
       });
 
-      const id = el.id;
-      if ('elements' in mce_conf && mce_conf['mode'] == 'exact') {
-        mce_conf['elements'] = id;
+      // replace default prefix of 'empty-form' if used in selector
+      if (mce_conf.selector && mce_conf.selector.includes('__prefix__')) {
+        mce_conf.selector = `#${el.id}`;
+      }
+      else if (!('selector' in mce_conf)) {
+        mce_conf['target'] = el;
       }
       if (el.dataset.mceGzConf) {
         tinyMCE_GZ.init(JSON.parse(el.dataset.mceGzConf));
       }
-      if (!tinyMCE.editors[id]) {
+      if (!tinyMCE.get(el.id)) {
         tinyMCE.init(mce_conf);
       }
     }
@@ -44,7 +48,6 @@
 
   // Call function fn when the DOM is loaded and ready. If it is already
   // loaded, call the function now.
-  // http://youmightnotneedjquery.com/#ready
   function ready(fn) {
     if (document.readyState !== 'loading') {
       fn();
@@ -53,18 +56,27 @@
     }
   }
 
+  function initializeTinyMCE(element, formsetName) {
+    Array.from(element.querySelectorAll('.tinymce')).forEach(area => initTinyMCE(area));
+  }
+
   ready(function() {
+    if (!tinyMCE) {
+      throw 'tinyMCE is not loaded. If you customized TINYMCE_JS_URL, double-check its content.';
+    }
     // initialize the TinyMCE editors on load
-    document.querySelectorAll('.tinymce').forEach(function(el) {
-      initTinyMCE(el);
-    });
+    initializeTinyMCE(document);
 
     // initialize the TinyMCE editor after adding an inline in the django admin context.
     if (typeof(django) !== 'undefined' && typeof(django.jQuery) !== 'undefined') {
-      django.jQuery(document).on('formset:added', function(event, $row, formsetName) {
-        $row.find('textarea.tinymce').each(function() {
-          initTinyMCE(this);
-        });
+      django.jQuery(document).on('formset:added', (event, $row, formsetName) => {
+        if (event.detail && event.detail.formsetName) {
+          // Django >= 4.1
+          initializeTinyMCE(event.target);
+        } else {
+          // Django < 4.1, use $row
+          initializeTinyMCE($row.get(0));
+        }
       });
     }
   });
