@@ -14,11 +14,6 @@ RUN apt-get update && apt-get install -y \
     shared-mime-info \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Dart Sass
-RUN curl -L https://github.com/sass/dart-sass/releases/download/1.77.8/dart-sass-1.77.8-linux-x64.tar.gz \
-  | tar -xz -C /usr/local \
-    && ln -s /usr/local/dart-sass/sass /usr/local/bin/sass
-
 # Define build time arguments
 ARG APP_GROUP=app-grp
 ARG APP_USER=app-usr
@@ -57,9 +52,6 @@ RUN uv sync --locked --no-dev --no-editable --compile-bytecode
 
 # Copy application source code into image
 COPY --chown=${APP_USER}:${APP_GROUP} . .
-
-# Compile Sass
-RUN sass scss:static/assets/css --style=compressed --no-source-map
 
 # Collect static files upon deployment
 CMD [ "python", "manage.py", "collectstatic", "--noinput", "--clear" ]
