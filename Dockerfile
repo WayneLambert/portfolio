@@ -49,5 +49,8 @@ COPY --chown=${APP_USER}:${APP_GROUP} pyproject.toml uv.lock ./
 # Sync project environment from the lockfile without dev dependencies
 RUN uv sync --locked --no-dev --no-editable --compile-bytecode
 
+# Run static files collection for application
+RUN python manage.py collectstatic --noinput
+
 # Copy application source code into image
 COPY --chown=${APP_USER}:${APP_GROUP} . .
