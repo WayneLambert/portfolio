@@ -2,11 +2,12 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse
 
+from apps.helpers import add_middleware_to_request
+
 import pytest
 
-from apps.contacts.models import Contact
-from apps.contacts.views import ContactFormView, ContactSubmittedView
-from apps.helpers import add_middleware_to_request
+from contacts.models import Contact
+from contacts.views import ContactFormView, ContactSubmittedView
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

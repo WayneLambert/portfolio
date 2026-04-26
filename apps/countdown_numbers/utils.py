@@ -1,6 +1,6 @@
-"""Fnctions not associated with core game logic or validations."""
+"""Functions not associated with core game logic or validations."""
 
-from apps.countdown_numbers.models import NumbersGame
+from countdown_numbers.models import NumbersGame
 
 
 def create_record(context: dict):

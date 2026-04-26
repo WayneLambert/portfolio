@@ -1,6 +1,6 @@
 import pytest
 
-from apps.blog.forms import PostForm
+from blog.forms import PostForm
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

@@ -1,7 +1,9 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from apps.users.views import (
+from two_factor.views import QRGeneratorView
+
+from users.views import (
     ProfileUpdateView,
     ProfileView,
     UserLoginView,
@@ -14,8 +16,6 @@ from apps.users.views import (
     UserSetupEmailView,
     UserSetupQRView,
 )
-
-from two_factor.views import QRGeneratorView
 
 
 app_name = "users"

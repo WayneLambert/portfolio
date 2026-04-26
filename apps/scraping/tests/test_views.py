@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from apps.scraping.views import ScrapingOptionsView
+from scraping.views import ScrapingOptionsView
 
 
 class TestScrapingOptionsView:

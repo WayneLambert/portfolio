@@ -6,9 +6,10 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+
 from tinymce.models import HTMLField
 
-from apps.blog.managers import PublishedManager
+from blog.managers import PublishedManager
 
 
 class Category(models.Model):

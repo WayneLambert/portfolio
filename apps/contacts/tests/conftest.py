@@ -5,11 +5,10 @@ The `captcha` field defined in `forms.py` is defined as a key in the
 the reCAPTCHA challenge will pass and the form will successfully post.
 """
 
+from mixer.backend.django import mixer
 import pytest
 
-from mixer.backend.django import mixer
-
-from apps.contacts.models import Contact
+from contacts.models import Contact
 
 
 @pytest.fixture(name="random_contact", scope="function")

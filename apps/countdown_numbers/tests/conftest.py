@@ -1,10 +1,9 @@
 """Fixtures to facilitate the testing of the Countdown Numbers app"""
 
+from mixer.backend.django import mixer
 import pytest
 
-from mixer.backend.django import mixer
-
-from apps.countdown_numbers.models import NumbersGame
+from countdown_numbers.models import NumbersGame
 
 
 @pytest.fixture(scope="function")

@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
-from apps.countdown_letters import logic, utils, validations
-from apps.countdown_letters.forms import LetterSelectionForm, SelectedLettersForm
+from countdown_letters import logic, utils, validations
+from countdown_letters.forms import LetterSelectionForm, SelectedLettersForm
 
 
 def selection_screen(request):

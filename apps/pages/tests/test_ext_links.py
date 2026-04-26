@@ -24,7 +24,11 @@ organisational purposes and to facilitate testing.
 
 import os
 
-from apps.pages.templatetags.ext_links import (
+import pytest
+import requests
+
+from .helpers import app_names
+from pages.templatetags.ext_links import (
     CountdownLetters,
     CountdownNumbers,
     DataScience,
@@ -32,11 +36,6 @@ from apps.pages.templatetags.ext_links import (
     Scraping,
     SocialMedia,
 )
-
-import pytest
-import requests
-
-from pages.helpers import app_names
 
 
 @pytest.mark.slow(reason="Sends a GET request to each link")

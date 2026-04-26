@@ -1,4 +1,4 @@
-from apps.countdown_letters import validations
+from countdown_letters import validations
 
 
 def test_is_eligible_answer(given_answers_list, letters: str = "SVEODRETR"):

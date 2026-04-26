@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from apps.blog.models import Category, Post
-from apps.users.models import Profile
+from blog.models import Category, Post
+from users.models import Profile
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -1,10 +1,9 @@
 from django.db import models
 
+from mixer.backend.django import mixer
 import pytest
 
-from mixer.backend.django import mixer
-
-from apps.countdown_letters.models import LettersGame
+from countdown_letters.models import LettersGame
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

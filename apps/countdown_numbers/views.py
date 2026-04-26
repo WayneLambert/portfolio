@@ -5,8 +5,8 @@ from urllib.parse import urlencode
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
-from apps.countdown_numbers import logic, utils, validations
-from apps.countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
+from countdown_numbers import logic, utils, validations
+from countdown_numbers.forms import NumberSelectionForm, SelectedNumbersForm
 
 
 def selection_screen(request):

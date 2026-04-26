@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.countdown_letters.views import game_screen, results_screen, selection_screen
+from countdown_letters.views import game_screen, results_screen, selection_screen
 
 
 app_name = "countdown_letters"

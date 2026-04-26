@@ -2,8 +2,8 @@ from urllib.parse import urlencode
 
 from django.urls import reverse
 
-from apps.countdown_letters import logic
-from apps.countdown_letters.models import LettersGame
+from countdown_letters import logic
+from countdown_letters.models import LettersGame
 
 
 def build_game_screen_url(num_vowels_selected: int) -> str:

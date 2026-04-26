@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django.forms.widgets import TextInput
 
-from apps.countdown_numbers.models import NumbersGame
+from countdown_numbers.models import NumbersGame
 
 
 class NumbersGameAdmin(admin.ModelAdmin):

@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from apps.api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
+from api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 
 class TestURLs:

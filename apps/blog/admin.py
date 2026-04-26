@@ -4,7 +4,7 @@ from django.db.models import Count
 from django.forms.widgets import TextInput
 from django.utils.safestring import mark_safe
 
-from apps.blog.models import Category, Post
+from blog.models import Category, Post
 
 
 class CategoryAdmin(admin.ModelAdmin):

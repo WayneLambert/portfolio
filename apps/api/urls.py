@@ -1,6 +1,6 @@
 from django.urls import include, path
 
-from apps.api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
+from api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 
 app_name = "api"

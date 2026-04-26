@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db import models
 from django.forms.widgets import Textarea, TextInput
 
-from apps.countdown_letters.models import LettersGame
+from countdown_letters.models import LettersGame
 
 
 class LettersGameAdmin(admin.ModelAdmin):

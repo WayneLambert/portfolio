@@ -65,6 +65,7 @@ class LinkGenerator:
 
 
 class CountdownLetters:
+
     @register.simple_tag(name="countdown_letters_game_rules_link")
     def game_rules():
         return "http://wiki.apterous.org/Letters_game"
@@ -77,6 +78,7 @@ class CountdownLetters:
 
 
 class CountdownNumbers:
+
     @register.simple_tag(name="countdown_numbers_game_rules_link")
     def game_rules():  # pragma: no cover
         return "http://datagenetics.com/blog/august32014/index.html"
@@ -89,23 +91,6 @@ class CountdownNumbers:
 
 
 class Scraping:
-    @register.simple_tag(name="churchill_speech_link")
-    def churchill_speech():
-        return "https://www.goodreads.com/quotes/55276-i-have-nothing-to-offer-but-blood-toil-tears-and"
-
-    @register.simple_tag(name="gettysburg_speech_link")
-    def gettysburg_speech():
-        return "https://www.goodreads.com/work/quotes/4694-the-illustrated-gettysburg-address"
-
-    @register.simple_tag(name="scraping_gettysburg_source_code_link")
-    def gettysburg_source_code():
-        scraping_code_url = LinkGenerator.github_url(type="code", app="scraping")
-        return f"{scraping_code_url}/gettysburg.py"
-
-    @register.simple_tag(name="scraping_churchill_source_code_link")
-    def churchill_source_code():
-        scraping_code_url = LinkGenerator.github_url(type="code", app="scraping")
-        return f"{scraping_code_url}/churchill.py"
 
     @register.simple_tag(name="scraping_referendum_source_code_link")
     def referendum_source_code():
@@ -115,13 +100,6 @@ class Scraping:
     @register.simple_tag(name="scraping_sample_ref_results_link")
     def sample_referendum_results():
         return "https://www.bbc.co.uk/news/politics/eu_referendum/results/local/a"
-
-
-class TextAnalysis:
-    @register.simple_tag(name="text_analysis_views_source_code_link")
-    def views_source_code():
-        scraping_code_url = LinkGenerator.github_url(type="code", app="text_analysis")
-        return f"{scraping_code_url}/views.py"
 
 
 class DataScience:

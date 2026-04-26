@@ -16,9 +16,9 @@ from django.views.generic import (
     UpdateView,
 )
 
-from apps.blog import search
-from apps.blog.forms import PostForm
-from apps.blog.models import Category, Post
+from blog import search
+from blog.forms import PostForm
+from blog.models import Category, Post
 
 
 class PostView(ListView):

@@ -1,4 +1,4 @@
-from apps.countdown_numbers.templatetags import template_helpers
+from countdown_numbers.templatetags import template_helpers
 
 
 def test_remove_brackets():

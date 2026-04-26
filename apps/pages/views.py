@@ -20,42 +20,6 @@ class PortfolioView(TemplateView):
     template_name = "portfolio.html"
 
 
-class PrivacyPolicyView(TemplateView):
-    template_name = "privacy.html"
-
-
-class BlogReviewView(TemplateView):
-    template_name = "reviews/blog.html"
-
-
-class APIReviewView(TemplateView):
-    template_name = "reviews/api.html"
-
-
-class CountdownLettersReviewView(TemplateView):
-    template_name = "reviews/countdown_letters.html"
-
-
-class CountdownNumbersReviewView(TemplateView):
-    template_name = "reviews/countdown_numbers.html"
-
-
-class RouletteReviewView(TemplateView):
-    template_name = "reviews/roulette.html"
-
-
-class ScrapingReviewView(TemplateView):
-    template_name = "reviews/scraping.html"
-
-
-class TextAnalysisReviewView(TemplateView):
-    template_name = "reviews/text_analysis.html"
-
-
-class DataScienceReviewView(TemplateView):
-    template_name = "reviews/data_science.html"
-
-
 # Custom Error Templates
 class BadRequestView(TemplateView):
     template_name = "errors/400.html"

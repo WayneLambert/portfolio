@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from apps.contacts.views import ContactFormView, ContactSubmittedView
+from contacts.views import ContactFormView, ContactSubmittedView
 
 
 class TestURLs:
