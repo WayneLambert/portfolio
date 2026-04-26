@@ -1,12 +1,5 @@
 ![Python Django Portfolio Blog](https://wl-portfolio.s3.eu-west-2.amazonaws.com/images/python-django-portfolio.png)
 
-[![codecov](https://codecov.io/gh/WayneLambert/portfolio/branch/main/graph/badge.svg?precision=2)](https://codecov.io/gh/WayneLambert/portfolio)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://timothycrosley.github.io/isort/)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-
 This is the code for my portfolio site hosted at
 <https://waynelambert.dev>.
 
@@ -51,26 +44,12 @@ Take on Rachel Riley in this simulation of the numbers game from Countdown.
 - [Countdown: Numbers Game](https://waynelambert.dev/countdown-numbers/selection/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/countdown-numbers/)
 
-## Holiday Roulette
-
-Leave it to fate to decide your next luxurious holiday destination in this suspenseful game.
-
-- [Holiday Roulette](https://waynelambert.dev/roulette/game/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/roulette/)
-
 ## Web Scraping
 
-Scrape EU Referendum results and famous speeches from the web.
+Scrape EU Referendum results from the web.
 
 - [Web Scraping](https://waynelambert.dev/scraping/scraping-options/)
 - [Project Review](https://waynelambert.dev/portfolio/reviews/scraping/)
-
-## Text Analysis
-
-Calculate the number of words and letters input/pasted by the user.
-
-- [Text Analysis](https://waynelambert.dev/text-analysis/analyse/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/text-analysis/)
 
 ## Data Science Projects
 
@@ -82,9 +61,6 @@ Explore fascinating datasets analysed using Python's Data Science libraries.
 ## Contact Me
 
 You can contact me at [wayne.a.lambert@gmail.com](mailto:wayne.a.lambert@gmail.com) or by using the [contact form](https://waynelambert.dev/contact/) on the site.
-
-If you'd like to find out more about me, you can also read my ['About
-Me'](https://waynelambert.dev/about-me/) page.
 
 ## License
 

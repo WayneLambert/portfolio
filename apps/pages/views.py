@@ -16,20 +16,14 @@ class SiteHomeView(ListView):
     queryset = Post.published.all()[:3]
 
 
-# Static Pages
 class PortfolioView(TemplateView):
     template_name = "portfolio.html"
-
-
-class AboutMeView(TemplateView):
-    template_name = "about_me.html"
 
 
 class PrivacyPolicyView(TemplateView):
     template_name = "privacy.html"
 
 
-# Reviews
 class BlogReviewView(TemplateView):
     template_name = "reviews/blog.html"
 

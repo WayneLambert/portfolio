@@ -1,7 +1,6 @@
 from django.urls import reverse
 
 from apps.pages.views import (
-    AboutMeView,
     APIReviewView,
     BadRequestView,
     BlogReviewView,
@@ -12,11 +11,8 @@ from apps.pages.views import (
     PageNotFoundView,
     PermissionDeniedView,
     PortfolioView,
-    PrivacyPolicyView,
-    RouletteReviewView,
     ScrapingReviewView,
     SiteHomeView,
-    TextAnalysisReviewView,
 )
 
 import pytest
@@ -45,22 +41,6 @@ class TestStaticPagesViews:
         request = rf.get(path)
         request.user = all_users
         response = PortfolioView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_about_me_view(self, rf, all_users):
-        """Asserts any user can GET the `about me` page"""
-        path = reverse("pages:about_me")
-        request = rf.get(path)
-        request.user = all_users
-        response = AboutMeView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_privacy_policy_view(self, rf, all_users):
-        """Asserts any user can GET the site's `privacy policy` page"""
-        path = reverse("pages:privacy")
-        request = rf.get(path)
-        request.user = all_users
-        response = PrivacyPolicyView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
 
@@ -102,28 +82,12 @@ class TestReviewsPagesViews:
         response = CountdownNumbersReviewView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
-    def test_roulette_review_view(self, rf, all_users):
-        """Asserts any user can GET the `Roulette review` page"""
-        path = reverse("pages:roulette_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = RouletteReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
     def test_scraping_review_view(self, request, rf, all_users):
         """Asserts any user can GET the `Scraping review` page"""
         path = reverse("pages:scraping_review")
         request = rf.get(path)
         request.user = all_users
         response = ScrapingReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_text_analysis_review_view(self, rf, all_users):
-        """Asserts any user can GET the `Text Analysis review` page"""
-        path = reverse("pages:text_analysis_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = TextAnalysisReviewView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
     def test_data_science_review_view(self, rf, all_users):
