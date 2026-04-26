@@ -21,42 +21,36 @@ within software projects.
 A full CRUD application using Django's models, views, and templates.
 
 - [Blog Home Page](https://waynelambert.dev/blog)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/blog/)
 
 ## Django Rest API Endpoints
 
 API endpoints enabling front-end developers to consume with their preferred framework.
 
 - [API Endpoints](https://waynelambert.dev/api/blog/posts/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/api/)
 
 ## Countdown: Letters Game
 
 Take on Susie Dent in this simulation of the letters game from Countdown.
 
 - [Countdown: Letters Game](https://waynelambert.dev/countdown-letters/selection/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/countdown-letters/)
 
 ## Countdown: Numbers Game
 
 Take on Rachel Riley in this simulation of the numbers game from Countdown.
 
 - [Countdown: Numbers Game](https://waynelambert.dev/countdown-numbers/selection/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/countdown-numbers/)
 
 ## Web Scraping
 
 Scrape EU Referendum results from the web.
 
 - [Web Scraping](https://waynelambert.dev/scraping/scraping-options/)
-- [Project Review](https://waynelambert.dev/portfolio/reviews/scraping/)
 
 ## Data Science Projects
 
 Explore fascinating datasets analysed using Python's Data Science libraries.
 
 - [Data Science Projects](https://github.com/WayneLambert/data-science-portfolio/tree/main/notebooks)
-- [Data Science Review](https://waynelambert.dev/portfolio/reviews/data-science/)
 
 ## Contact Me
 
