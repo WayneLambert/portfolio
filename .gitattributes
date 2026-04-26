@@ -2,16 +2,4 @@
 scss/bootstrap/* linguist-vendored
 
 static/* linguist-vendored
-
-staticfiles/admin/* linguist-vendored
-staticfiles/assets/css/bootstrap*.css linguist-vendored
-staticfiles/assets/fontawesome/* linguist-vendored
-staticfiles/assets/icons/* linguist-vendored
-staticfiles/assets/plugins/* linguist-vendored
-staticfiles/debug_toolbar/* linguist-vendored
-staticfiles/django_extensions/* linguist-vendored
-staticfiles/django_tinymce/* linguist-vendored
-staticfiles/guardian/* linguist-vendored
-staticfiles/highlight/* linguist-vendored
-staticfiles/rest_framework/* linguist-vendored
-staticfiles/tinymce/* linguist-vendored
+staticfiles/* linguist-vendored

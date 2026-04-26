@@ -1,7 +1,5 @@
 from django.contrib.auth import views as auth_views
-from django.urls import path, reverse_lazy
-
-from two_factor.views import QRGeneratorView
+from django.urls import path
 
 from apps.users.views import (
     ProfileUpdateView,
@@ -16,6 +14,8 @@ from apps.users.views import (
     UserSetupEmailView,
     UserSetupQRView,
 )
+
+from two_factor.views import QRGeneratorView
 
 
 app_name = "users"

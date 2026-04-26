@@ -7,10 +7,11 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
+
 from django_otp.util import random_hex
 from encrypted_model_fields.fields import EncryptedCharField
 
-from apps.users.utils import get_challenge_expiration_timestamp, token_validator
+from users.utils import get_challenge_expiration_timestamp, token_validator
 
 
 class Profile(models.Model):
@@ -61,12 +62,12 @@ class Profile(models.Model):
 
     @property
     def is_two_factor_auth_by_token(self) -> bool:
-        """ " Returns whether user is authenticated by token"""
+        """Returns whether user is authenticated by token"""
         return self.user.totpdevice_set.exists()
 
     @property
     def is_two_factor_auth_by_email(self) -> bool:
-        """ " Returns whether user is authenticated by email"""
+        """Returns whether user is authenticated by email"""
         try:
             user_email_token = self.user.user_email_tokens.latest("id")
         except ObjectDoesNotExist:
@@ -78,7 +79,7 @@ class Profile(models.Model):
 
     @property
     def is_two_factor_authenticated(self) -> bool:
-        """ " Returns whether user is authenticated by either token or email"""
+        """Returns whether user is authenticated by either token or email"""
         return bool(self.is_two_factor_auth_by_token or self.is_two_factor_auth_by_email)
 
 
@@ -126,9 +127,7 @@ class EmailToken(models.Model):
 
     @property
     def is_token_within_expiry(self) -> bool:
-        """ "
-        Returns whether email token is within its token expiration date
-        """
+        """Returns whether email token is within its expiration date"""
         if not self.token_expiration_timestamp:
             return False
         return timezone.now() <= self.token_expiration_timestamp

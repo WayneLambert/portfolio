@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.pages.views import (
+from pages.views import (
     APIReviewView,
     BlogReviewView,
     CountdownLettersReviewView,
