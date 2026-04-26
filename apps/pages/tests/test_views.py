@@ -1,6 +1,8 @@
 from django.urls import reverse
 
-from apps.pages.views import (
+import pytest
+
+from pages.views import (
     APIReviewView,
     BadRequestView,
     BlogReviewView,
@@ -14,8 +16,6 @@ from apps.pages.views import (
     ScrapingReviewView,
     SiteHomeView,
 )
-
-import pytest
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

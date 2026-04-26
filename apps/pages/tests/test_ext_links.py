@@ -36,12 +36,11 @@ from apps.pages.templatetags.ext_links import (
 import pytest
 import requests
 
-from .helpers import app_names
+from pages.helpers import app_names
 
 
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestSocialMedia:
-
     @staticmethod
     def test_github_profile():
         link = requests.get(SocialMedia.github_profile_link())
@@ -67,7 +66,6 @@ class TestSocialMedia:
 @pytest.mark.parametrize(argnames="type", argvalues=["code", "issues"])
 @pytest.mark.parametrize(argnames="app", argvalues=app_names())
 class TestLinkGenerator:
-
     @staticmethod
     def test_github_url(type, app):
         link = requests.get(LinkGenerator.github_url(type, app))
@@ -77,7 +75,6 @@ class TestLinkGenerator:
 @pytest.mark.skipif("GITHUB_RUN_ID" in os.environ, reason="Times out in GitHub Actions")
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestCountdownLetters:
-
     @staticmethod
     def test_game_rules():
         link = requests.get(CountdownLetters.game_rules(), timeout=10)
@@ -99,7 +96,6 @@ class TestCountdownNumbers:
 
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestScraping:
-
     @staticmethod
     def test_referendum_source_code():
         link = requests.get(Scraping.referendum_source_code())
@@ -113,7 +109,6 @@ class TestScraping:
 
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestDataScience:
-
     @staticmethod
     def test_notebooks():
         link = requests.get(DataScience.notebooks())

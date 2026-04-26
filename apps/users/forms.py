@@ -1,11 +1,12 @@
-from crispy_forms.helper import FormHelper
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+from crispy_forms.helper import FormHelper
 from two_factor.forms import TOTPDeviceForm
 from two_factor.utils import totp_digits
 
-from apps.users.models import Profile
+from users.models import Profile
 
 
 class UserRegisterForm(UserCreationForm):

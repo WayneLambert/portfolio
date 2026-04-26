@@ -143,6 +143,7 @@ max-complexity = 10
 "aa_project.settings.prod.py" = ["F403", "F405"]
 "aa_project.settings.dev.py" = ["F403", "F405"]
 "aa_project.settings.pytest.pytest.py" = ["F403"]
+"apps.users.apps.py" = ["F401"]
 
 [tool.ruff.lint.isort]
 section-order = [

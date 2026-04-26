@@ -21,21 +21,21 @@ from django.utils.safestring import mark_safe
 from django.views.generic import CreateView, DetailView, TemplateView
 from django.views.generic.edit import FormView
 
-from apps.users.forms import (
+from shapeshifter.views import MultiModelFormView
+from two_factor.forms import AuthenticationTokenForm
+from two_factor.plugins.registry import registry
+from two_factor.views.core import LoginView, SetupView
+
+from users.forms import (
     EmailTokenSubmissionForm,
     ProfileUpdateForm,
     UserRegisterForm,
     UserTOTPDeviceForm,
     UserUpdateForm,
 )
-from apps.users.mixins import TwoFactorAuthUserMixin
-from apps.users.models import EmailToken, Profile
-from apps.users.utils import generate_token, get_challenge_expiration_timestamp
-
-from shapeshifter.views import MultiModelFormView
-from two_factor.forms import AuthenticationTokenForm
-from two_factor.plugins.registry import registry
-from two_factor.views.core import LoginView, SetupView
+from users.mixins import TwoFactorAuthUserMixin
+from users.models import EmailToken, Profile
+from users.utils import generate_token, get_challenge_expiration_timestamp
 
 
 class UserRegisterView(CreateView):

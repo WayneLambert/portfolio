@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 
-from apps.blog.models import Post
+from blog.models import Post
 
 
 class SiteHomeView(ListView):
