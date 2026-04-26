@@ -2,8 +2,8 @@ import pytest
 
 from mixer.backend.django import mixer
 
-from apps.blog.models import Category
-from apps.blog.templatetags.blog_tags import category_sidebar
+from blog.models import Category
+from blog.templatetags.blog_tags import category_sidebar
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

@@ -1,8 +1,8 @@
+from hypothesis import given
 import hypothesis.strategies as st
 import pytest
-from hypothesis import given
 
-from apps.countdown_letters import logic
+from countdown_letters import logic
 
 
 class TestGameSetup:

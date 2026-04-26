@@ -1,21 +1,19 @@
-import os
-
 from io import BytesIO
+import os
 
 from django.contrib.auth.models import AnonymousUser
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.utils import timezone
 
-import pytest
-
 from django_otp.util import random_hex
 from mixer.backend.django import mixer
 from PIL import Image
+import pytest
 
-from apps.blog.models import Category, Post
-from apps.blog.tests import helpers
-from apps.users.models import EmailToken
-from apps.users.utils import get_challenge_expiration_timestamp
+from blog.models import Category, Post
+from blog.tests import helpers
+from users.models import EmailToken
+from users.utils import get_challenge_expiration_timestamp
 
 
 @pytest.fixture(scope="function")

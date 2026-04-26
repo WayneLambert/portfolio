@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 
-from apps.blog.models import Category, Post
+from blog.models import Category, Post
 
 
 class CategorySitemap(Sitemap):

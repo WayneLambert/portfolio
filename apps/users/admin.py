@@ -5,7 +5,7 @@ from django.contrib.auth.models import Group
 from django.utils.safestring import mark_safe
 from django_otp.plugins.otp_static.models import StaticDevice
 
-from apps.users.models import EmailToken, Profile
+from users.models import EmailToken, Profile
 
 
 class ProfileAdmin(admin.ModelAdmin):

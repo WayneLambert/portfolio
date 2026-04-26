@@ -2,11 +2,10 @@
 
 from typing import Dict, List
 
+from mixer.backend.django import mixer
 import pytest
 
-from mixer.backend.django import mixer
-
-from apps.countdown_letters.models import LettersGame
+from countdown_letters.models import LettersGame
 
 
 @pytest.fixture(scope="module")

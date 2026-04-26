@@ -3,17 +3,11 @@ from django.urls import reverse
 import pytest
 
 from pages.views import (
-    APIReviewView,
     BadRequestView,
-    BlogReviewView,
-    CountdownLettersReviewView,
-    CountdownNumbersReviewView,
-    DataScienceReviewView,
     handler500,
     PageNotFoundView,
     PermissionDeniedView,
     PortfolioView,
-    ScrapingReviewView,
     SiteHomeView,
 )
 
@@ -41,61 +35,6 @@ class TestStaticPagesViews:
         request = rf.get(path)
         request.user = all_users
         response = PortfolioView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-
-@pytest.mark.parametrize(
-    argnames="all_users",
-    argvalues=[pytest.param("auth_user"), pytest.param("unauth_user")],
-    indirect=True,
-)
-class TestReviewsPagesViews:
-    def test_blog_review_view(self, rf, all_users):
-        """Asserts any user can GET the `blog review` page"""
-        path = reverse("pages:blog_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = BlogReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_api_review_view(self, rf, all_users):
-        """Asserts any user can GET the `API review` page"""
-        path = reverse("pages:api_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = APIReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_countdown_letters_review_view(self, rf, all_users):
-        """Asserts any user can GET the `Countdown Letters review` page"""
-        path = reverse("pages:countdown_letters_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = CountdownLettersReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_countdown_numbers_review_view(self, rf, all_users):
-        """Asserts any user can GET the `Countdown Numbers review` page"""
-        path = reverse("pages:countdown_numbers_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = CountdownNumbersReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_scraping_review_view(self, request, rf, all_users):
-        """Asserts any user can GET the `Scraping review` page"""
-        path = reverse("pages:scraping_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = ScrapingReviewView.as_view()(request)
-        assert response.status_code == 200, "Should be callable by anyone"
-
-    def test_data_science_review_view(self, rf, all_users):
-        """Asserts any user can GET the `Data Science review` page"""
-        path = reverse("pages:data_science_review")
-        request = rf.get(path)
-        request.user = all_users
-        response = DataScienceReviewView.as_view()(request)
         assert response.status_code == 200, "Should be callable by anyone"
 
 

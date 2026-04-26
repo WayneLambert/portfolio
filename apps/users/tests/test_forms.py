@@ -1,6 +1,6 @@
 import pytest
 
-from apps.users.forms import (
+from users.forms import (
     EmailTokenSubmissionForm,
     ProfileUpdateForm,
     UserRegisterForm,

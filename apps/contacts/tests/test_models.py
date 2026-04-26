@@ -4,7 +4,7 @@ import pytest
 
 from mixer.backend.django import mixer
 
-from apps.contacts.models import Contact
+from contacts.models import Contact
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

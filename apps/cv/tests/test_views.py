@@ -1,5 +1,6 @@
 from django.urls import reverse
-from apps.cv.views import CVView
+
+from cv.views import CVView
 
 
 def test_cv(rf):

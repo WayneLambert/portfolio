@@ -4,8 +4,8 @@ A collection of classes and functions that are required to implement
 the core logic for the Countdown Letters Game.
 """
 
-import os
 from collections import Counter
+import os
 from random import choices, random
 from typing import Dict, List, Set
 

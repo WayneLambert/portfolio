@@ -2,7 +2,7 @@ from django.urls import reverse
 
 import pytest
 
-from apps.api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
+from api.views import CategoryListAPIView, PostDetailAPIView, PostListAPIView
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from mixer.backend.django import mixer
 from tinymce.models import HTMLField
 
-from apps.blog.models import Category, Post
+from blog.models import Category, Post
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
 

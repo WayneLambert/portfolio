@@ -1,9 +1,8 @@
+from hypothesis import given
 import hypothesis.strategies as st
 import pytest
 
-from hypothesis import given
-
-from apps.countdown_numbers import logic
+from countdown_numbers import logic
 
 
 @given(num_from_top=st.integers(min_value=0, max_value=4))

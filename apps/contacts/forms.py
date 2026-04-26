@@ -3,7 +3,7 @@ from django import forms
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV3
 
-from apps.contacts.models import Contact
+from contacts.models import Contact
 
 
 class ContactForm(forms.ModelForm):

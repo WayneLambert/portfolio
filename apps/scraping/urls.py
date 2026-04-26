@@ -1,7 +1,7 @@
 from django.urls import path
 
-from apps.scraping.referendum import get_referendum_results
-from apps.scraping.views import ScrapingOptionsView
+from scraping.referendum import get_referendum_results
+from scraping.views import ScrapingOptionsView
 
 
 app_name = "scraping"

@@ -1,10 +1,11 @@
 import os
-import sys
 from pathlib import Path
+import sys
+
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 APPS_DIR = os.path.join(BASE_DIR, "apps")
-sys.path.insert(0, APPS_DIR)
+sys.path.insert(0, str(BASE_DIR / "apps"))
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
@@ -50,15 +51,15 @@ THIRD_PARTY_APPS = [
 
 # Project Apps
 PROJECT_APPS = [
-    "apps.api.apps.ApiConfig",
-    "apps.blog.apps.BlogConfig",
-    "apps.contacts.apps.ContactsConfig",
-    "apps.countdown_letters.apps.CountdownLettersConfig",
-    "apps.countdown_numbers.apps.CountdownNumbersConfig",
-    "apps.cv.apps.CvConfig",
-    "apps.pages.apps.PagesConfig",
-    "apps.scraping.apps.ScrapingConfig",
-    "apps.users.apps.UsersConfig",
+    "api.apps.ApiConfig",
+    "blog.apps.BlogConfig",
+    "contacts.apps.ContactsConfig",
+    "countdown_letters.apps.CountdownLettersConfig",
+    "countdown_numbers.apps.CountdownNumbersConfig",
+    "cv.apps.CvConfig",
+    "pages.apps.PagesConfig",
+    "scraping.apps.ScrapingConfig",
+    "users.apps.UsersConfig",
 ]
 
 INSTALLED_APPS = (

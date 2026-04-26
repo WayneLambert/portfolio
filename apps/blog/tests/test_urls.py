@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from apps.blog.views import (
+from blog.views import (
     AuthorPostListView,
     CategoryPostListView,
     ContentsListView,

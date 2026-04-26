@@ -5,10 +5,11 @@ from django.shortcuts import resolve_url
 from django.urls import reverse
 
 import apps.helpers as apps_helpers
-from apps.users.models import Profile
-from apps.users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 import pytest
+
+from users.models import Profile
+from users.views import ProfileUpdateView, ProfileView, UserRegisterView
 
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)

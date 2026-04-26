@@ -1,6 +1,6 @@
 import pytest
 
-from apps.countdown_numbers import validations
+from countdown_numbers import validations
 
 
 @pytest.mark.django_db

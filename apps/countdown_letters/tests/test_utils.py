@@ -1,4 +1,4 @@
-from apps.countdown_letters import utils
+from countdown_letters import utils
 
 
 class TestURL:

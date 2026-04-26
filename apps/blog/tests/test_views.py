@@ -1,7 +1,9 @@
-import pytest
 from django.urls import reverse
 
-import apps.blog.views as blog_views
+import pytest
+
+import blog.views as blog_views
+
 
 pytestmark = pytest.mark.django_db(reset_sequences=True)
 
