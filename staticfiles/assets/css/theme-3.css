@@ -9682,12 +9682,11 @@ hr {
   border: 1px solid rgba(0, 0, 0, 0.025);
 }
 .cv-header {
-  background: #162e93;
+  background: #e5e5e5;
   color: hsla(0, 0%, 100%, 0.9);
-  height: 180px;
 }
 .cv-header .name {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 .cv-header .title {
@@ -9698,6 +9697,18 @@ hr {
 }
 .cv-header a:hover {
   color: #fff;
+}
+.cv-contact-item {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  align-items: center;
+  column-gap: 0.25rem;
+}
+.cv-contact-item i {
+  text-align: left;
+}
+.cv-contact-item a {
+  text-decoration: none;
 }
 .cv-social {
   font-size: 0.875rem;

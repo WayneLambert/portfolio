@@ -2,17 +2,15 @@
 
 {% load static %}
 
-{% block title %}
-  Wayne Lambert | Senior Software Engineer (Python, Django, Distributed Systems)
-{% endblock title %}
+{% block title %}{{ block.super }} | Senior Software Engineer{% endblock title %}
 
 {% block desc %}
-  Senior Software Engineer (Python / Django) | Builds intuitive, interactive, scalable web apps. | Peterborough, UK
+  Senior Software Engineer specialising in scalable distributed systems, data processing, and high-performance
+  backend architecture.
 {% endblock desc %}
 
 {% block content %}
   <div class="container px-3 px-lg-5">
-    {% include 'cv_controls.html' %}
     <article class="cv-wrapper mx-auto theme-bg-light p-5 mb-5 my-1 shadow-lg">
       {% include 'components/header.html' %}
       {% include 'components/statement.html' %}
