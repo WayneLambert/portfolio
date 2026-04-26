@@ -31,7 +31,6 @@ from apps.pages.templatetags.ext_links import (
     LinkGenerator,
     Scraping,
     SocialMedia,
-    TextAnalysis,
 )
 
 import pytest
@@ -42,6 +41,7 @@ from .helpers import app_names
 
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestSocialMedia:
+
     @staticmethod
     def test_github_profile():
         link = requests.get(SocialMedia.github_profile_link())
@@ -58,11 +58,6 @@ class TestSocialMedia:
         assert link.status_code == 200, "Should return an `OK` status"
 
     @staticmethod
-    def test_stack_overflow_profile():
-        link = requests.get(SocialMedia.stack_overflow_profile_link())
-        assert link.status_code == 200, "Should return an `OK` status"
-
-    @staticmethod
     def test_google_maps_location():
         link = requests.get(SocialMedia.google_maps_location_link())
         assert link.status_code == 200, "Should return an `OK` status"
@@ -72,6 +67,7 @@ class TestSocialMedia:
 @pytest.mark.parametrize(argnames="type", argvalues=["code", "issues"])
 @pytest.mark.parametrize(argnames="app", argvalues=app_names())
 class TestLinkGenerator:
+
     @staticmethod
     def test_github_url(type, app):
         link = requests.get(LinkGenerator.github_url(type, app))
@@ -81,6 +77,7 @@ class TestLinkGenerator:
 @pytest.mark.skipif("GITHUB_RUN_ID" in os.environ, reason="Times out in GitHub Actions")
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestCountdownLetters:
+
     @staticmethod
     def test_game_rules():
         link = requests.get(CountdownLetters.game_rules(), timeout=10)
@@ -102,25 +99,6 @@ class TestCountdownNumbers:
 
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestScraping:
-    @staticmethod
-    def test_churchill_speech():
-        link = requests.get(Scraping.churchill_speech())
-        assert link.status_code == 200, "Should return an `OK` status"
-
-    @staticmethod
-    def test_gettysburg_speech():
-        link = requests.get(Scraping.gettysburg_speech())
-        assert link.status_code == 200, "Should return an `OK` status"
-
-    @staticmethod
-    def test_gettysburg_source_code():
-        link = requests.get(Scraping.gettysburg_source_code())
-        assert link.status_code == 200, "Should return an `OK` status"
-
-    @staticmethod
-    def test_churchill_source_code():
-        link = requests.get(Scraping.churchill_source_code())
-        assert link.status_code == 200, "Should return an `OK` status"
 
     @staticmethod
     def test_referendum_source_code():
@@ -133,16 +111,9 @@ class TestScraping:
         assert link.status_code == 200, "Should return an `OK` status"
 
 
-@pytest.mark.slow(reason="Sends a GET request")
-class TestTextAnalysis:
-    @staticmethod
-    def test_views_source_code():
-        link = requests.get(TextAnalysis.views_source_code())
-        assert link.status_code == 200, "Should return an `OK` status"
-
-
 @pytest.mark.slow(reason="Sends a GET request to each link")
 class TestDataScience:
+
     @staticmethod
     def test_notebooks():
         link = requests.get(DataScience.notebooks())

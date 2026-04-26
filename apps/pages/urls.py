@@ -1,7 +1,6 @@
 from django.urls import path
 
 from apps.pages.views import (
-    AboutMeView,
     APIReviewView,
     BlogReviewView,
     CountdownLettersReviewView,
@@ -45,6 +44,5 @@ urlpatterns = [
         DataScienceReviewView.as_view(),
         name="data_science_review",
     ),
-    path("about-me/", AboutMeView.as_view(), name="about_me"),
     path("privacy/", PrivacyPolicyView.as_view(), name="privacy"),
 ]

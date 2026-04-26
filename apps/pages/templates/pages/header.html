@@ -69,11 +69,6 @@
               <i class="fa fa-envelope mr-2"></i>Contact
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'pages:about_me' %}">
-              <i class="fa fa-info-circle mr-2"></i>About Me
-            </a>
-          </li>
           {% if user.profile.is_two_factor_authenticated %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

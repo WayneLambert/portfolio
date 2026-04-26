@@ -242,6 +242,7 @@ norecursedirs = [
   "*.egg",
   "node_modules",
   "media",
+  "infra",
   ".venv",
   "scss",
   "docs",
