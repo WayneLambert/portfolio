@@ -4,7 +4,7 @@
 {% block title %}{{ block.super }} | Register{% endblock title %}
 
 {% block content %}
-  <div class="container col-6 py-5">
+  <div class="container col-4 py-5">
     <div class="auth-wrapper theme-bg-light mx-auto shadow p-5 rounded">
       <h5 class="auth-heading text-center mb-2">Register an Account</h5>
       <div class="auth-form-container text-left mx-auto">
@@ -30,12 +30,8 @@
               {% render_field form.password2 class+="form-control" placeholder="Re-enter Password" %}
             </div>
           </fieldset>
-          <div class="extra mb-4 text-center text-muted">
-            By signing up, you agree to our
-            <a href="{% url 'pages:privacy' %}" class="theme-link">privacy policy</a>.
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary btn-block mx-auto">
+          <div class="text-left">
+            <button type="submit" class="btn btn-primary mx-auto">
               <i class="fa fa-sign-in mr-1"></i>
               Register Account
             </button>
