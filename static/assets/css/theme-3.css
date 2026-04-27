@@ -9701,14 +9701,29 @@ hr {
 .cv-contact-item {
   display: grid;
   grid-template-columns: 1.75rem 1fr;
+  column-gap: 0.75rem;
   align-items: center;
-  column-gap: 0.25rem;
 }
-.cv-contact-item i {
-  text-align: left;
+.cv-contact-item {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  align-items: center;
+  column-gap: 0.75rem;
+  min-width: 0;
+}
+.cv-contact-item span {
+  word-break: break-word;
 }
 .cv-contact-item a {
-  text-decoration: none;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.cv-contact-item-end {
+  justify-content: end;
+}
+.cv-contact-item-compact {
+  grid-template-columns: 1.2rem auto;
+  column-gap: 0.45rem;
 }
 .cv-social {
   font-size: 0.875rem;
