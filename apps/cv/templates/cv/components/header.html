@@ -2,46 +2,44 @@
 
 {% load ext_links %}
 
-<header class="cv-header px-4 py-3 p-0">
-  <div class="row align-items-center border-bottom pb-1">
-    <div class="col-6">
+<header class="cv-header px-3 py-3">
+  <div class="row align-items-center border-bottom pb-1 mb-2">
+    <div class="col-12 col-md-6">
       <h1 class="name mb-0">Wayne Lambert</h1>
     </div>
   </div>
 
   <div class="row text-dark pt-3">
-    <div class="col-4 cv-contact-item">
+    <div class="col-12 col-md-6 col-lg-4 cv-contact-item">
       <i class="fas fa-map-marker-alt fa-fw"></i>
       <a href="{% google_maps_location_link %}" target="_blank" rel="noreferrer">
         <span class="text-dark">Peterborough, UK</span>
       </a>
     </div>
-    <div class="col-4 cv-contact-item px-5">
+    <div class="col-12 col-md-6 col-lg-5 cv-contact-item">
       <i class="far fa-envelope fa-fw"></i>
       <a href="{% email_me_link %}">
         <span class="text-dark">wayne.a.lambert@gmail.com</span>
       </a>
     </div>
-    <div class="col-4 cv-contact-item d-flex justify-content-end">
+    <div class="col-12 col-md-6 col-lg-3 cv-contact-item cv-contact-item-end cv-contact-item-compact">
       <i class="fas fa-mobile-alt fa-fw"></i>
       <span class="text-dark">+44 7950 315504</span>
     </div>
-  </div>
 
-  <div class="row text-dark pt-1">
-    <div class="col-4 cv-contact-item">
+    <div class="col-12 col-md-6 col-lg-4 cv-contact-item">
       <i class="fab fa-github-alt fa-fw"></i>
       <a href="{% github_profile_link %}" target="_blank" rel="noreferrer">
-        <span class="text-dark">github.com/WayneLambert</span>
+        <span class="text-dark">WayneLambert</span>
       </a>
     </div>
-    <div class="col-4 cv-contact-item px-5">
+    <div class="col-12 col-md-6 col-lg-5 cv-contact-item">
       <i class="fab fa-linkedin-in fa-fw"></i>
       <a href="{% linkedin_profile_link %}" target="_blank" rel="noreferrer">
         <span class="text-dark">linkedin.com/in/waynelambert/</span>
       </a>
     </div>
-    <div class="col-4 cv-contact-item d-flex justify-content-end">
+    <div class="col-12 col-md-6 col-lg-3 cv-contact-item cv-contact-item-end cv-contact-item-compact">
       <i class="fas fa-globe fa-fw"></i>
       <a href="{% url 'pages:home' %}" target="_blank" rel="noreferrer">
         <span class="text-dark">waynelambert.dev</span>
