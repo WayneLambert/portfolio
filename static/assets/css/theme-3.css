@@ -9718,6 +9718,10 @@ hr {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+.cv-contact-item i {
+  width: 1.75rem;
+  text-align: center;
+}
 .cv-contact-item-end {
   justify-content: end;
 }
