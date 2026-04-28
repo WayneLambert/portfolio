@@ -9696,7 +9696,7 @@ hr {
   color: hsla(0, 0%, 100%, 0.6);
 }
 .cv-header a:hover {
-  color: #fff;
+  color: #000;
 }
 .cv-contact-item {
   display: grid;
@@ -9717,6 +9717,10 @@ hr {
 .cv-contact-item a {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+.cv-contact-item i {
+  width: 1.75rem;
+  text-align: center;
 }
 .cv-contact-item-end {
   justify-content: end;
