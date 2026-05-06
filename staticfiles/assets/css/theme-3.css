@@ -9753,21 +9753,9 @@ hr {
   color: #fff;
 }
 .cv-section-heading {
-  position: relative;
-  padding-left: 1rem;
-  font-size: 1rem;
-  color: #162e93;
+  background: #e5e5e5;
 }
-.cv-section-heading:before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 100%;
-  background: #162e93;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
+
 a.cv-link {
   color: rgb(79.25, 79.25, 79.25);
 }
