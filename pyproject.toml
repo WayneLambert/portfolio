@@ -125,7 +125,7 @@ target-version = "py314"
 
 [tool.ruff.lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
-select = ["E4", "E7", "E9", "F"]
+select = ["E4", "E7", "E9", "F", "I"]
 extend-select = ["I"]
 ignore = ["I001"]
 
@@ -150,9 +150,8 @@ section-order = [
   "future",
   "standard-library",
   "django",
-  "first-party",
   "third-party",
-  "local-folder",
+  "first-party",
 ]
 
 from-first = false
@@ -164,25 +163,32 @@ order-by-type = false
 known-third-party = [
   "bs4",
   "captcha",
-  "PIL",
+  "click",
   "crispy_forms",
+  "django_recaptcha",
+  "django_ses",
+  "django_otp",
   "dj_database_url",
+  "encrypted_model_fields",
   "factory",
   "hypothesis",
-  "psycopg",
+  "httpx",
   "mixer",
   "phonenumber_field",
+  "PIL",
+  "psycopg",
   "pytest",
-  "rest_framework",
   "requests",
+  "rest_framework",
   "rich",
   "sequences",
   "shapeshifter",
-  "two_factor",
+  "storages",
   "tinymce",
+  "two_factor",
 ]
 
-known-local-folder = [
+known-first-party = [
   "api",
   "blog",
   "contacts",
